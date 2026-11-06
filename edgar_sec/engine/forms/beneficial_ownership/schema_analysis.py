@@ -19,19 +19,10 @@ from edgar_sec.engine.forms.common.extraction import (
     FieldKind,
     FieldSpec,
     RequiredElement,
-    local_name,
+    find_deep_elements_any,
     validate_xml_required,
     validate_xml_values,
 )
-
-
-def _elements(root: ET.Element, names: tuple[str, ...]) -> list[ET.Element]:
-    name_set = set(names)
-    return [element for element in root.iter() if local_name(element.tag) in name_set]
-
-
-def _text(element: ET.Element) -> str:
-    return "".join(element.itertext()).strip()
 
 
 def analyze_schema_xml(
@@ -109,8 +100,8 @@ def analyze_schema_xml(
     event_tag = (
         "eventDateRequiresFilingThisStatement" if family == "13G" else "dateOfEvent"
     )
-    for cover in _elements(root, ("coverPageHeader",)):
-        dates = _elements(cover, (event_tag,))
+    for cover in find_deep_elements_any(root, ("coverPageHeader",)):
+        dates = find_deep_elements_any(cover, (event_tag,))
         if not dates:
             anomalies.append(_missing_field(accession, event_tag))
         anomalies.extend(
@@ -129,7 +120,7 @@ def analyze_schema_xml(
             )
         )
 
-    for details in _elements(root, ("signatureDetails",)):
+    for details in find_deep_elements_any(root, ("signatureDetails",)):
         anomalies.extend(
             validate_xml_required(
                 details,

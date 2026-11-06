@@ -507,6 +507,34 @@ def count_deep_elements(parent: ET.Element, tag_name: str) -> int:
     return sum(1 for elem in parent.iter() if local_name(elem.tag) == tag_name)
 
 
+def find_deep_elements_any(
+    parent: ET.Element, names: Sequence[str]
+) -> list[ET.Element]:
+    """Return subtree elements carrying any of the names, in document order."""
+    wanted = set(names)
+    return [elem for elem in parent.iter() if local_name(elem.tag) in wanted]
+
+
+def deep_element_index(parent: ET.Element) -> dict[str, list[ET.Element]]:
+    """Index subtree elements by local name, each list in document order."""
+    index: dict[str, list[ET.Element]] = {}
+    for element in parent.iter():
+        index.setdefault(local_name(element.tag), []).append(element)
+    return index
+
+
+def grouped_deep_elements(
+    elements_by_tag: Mapping[str, Sequence[ET.Element]], names: Sequence[str]
+) -> list[ET.Element]:
+    """Return indexed elements grouped by the requested names' order."""
+    return [element for name in names for element in elements_by_tag.get(name, ())]
+
+
+def xml_subtree_text_normalized(element: ET.Element) -> str:
+    """Return the subtree's text nodes trimmed and joined by single spaces."""
+    return " ".join(part.strip() for part in element.itertext() if part.strip())
+
+
 def validate_xml_required(
     root: ET.Element,
     requirements: Sequence[RequiredElement],
@@ -685,17 +713,20 @@ __all__ = [
     "emit_field_value",
     "all_deep_texts",
     "count_deep_elements",
+    "deep_element_index",
     "extract_value",
     "child_element_index",
     "find_child_element",
     "find_child_elements",
     "find_deep_elements",
+    "find_deep_elements_any",
     "find_element_path",
     "first_deep_text",
     "has_deep_element",
     "local_name",
     "find_xml_element",
     "format_field_value",
+    "grouped_deep_elements",
     "normalize_record_dates",
     "normalize_record_fields",
     "normalize_jurisdiction_code",
@@ -708,4 +739,5 @@ __all__ = [
     "xml_date_is_valid",
     "xml_element_text",
     "xml_element_text_or_none",
+    "xml_subtree_text_normalized",
 ]

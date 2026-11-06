@@ -2,6 +2,11 @@ from __future__ import annotations
 
 import xml.etree.ElementTree as ET
 
+from edgar_sec.engine.forms.common.extraction import (
+    deep_element_index,
+    grouped_deep_elements,
+)
+
 
 def field_observations(
     root: ET.Element,
@@ -10,14 +15,9 @@ def field_observations(
 ) -> dict[str, dict[str, int]]:
     observations: dict[str, dict[str, int]] = {}
     if elements_by_tag is None:
-        elements_by_tag = {}
-        for element in root.iter():
-            tag = element.tag.rsplit("}", 1)[-1]
-            elements_by_tag.setdefault(tag, []).append(element)
+        elements_by_tag = deep_element_index(root)
     for field, names in fields.items():
-        elements = [
-            element for name in names for element in elements_by_tag.get(name, ())
-        ]
+        elements = grouped_deep_elements(elements_by_tag, names)
         populated = sum(
             any(part.strip() for part in element.itertext()) for element in elements
         )

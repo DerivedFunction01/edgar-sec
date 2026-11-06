@@ -16,7 +16,12 @@ from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
     SCHEDULE_13G_XML_NAMESPACE,
 )
 from edgar_sec.engine.forms.common.entities import is_valid_cusip
-from edgar_sec.engine.forms.common.extraction import local_name
+from edgar_sec.engine.forms.common.extraction import (
+    deep_element_index,
+    grouped_deep_elements,
+    local_name,
+    xml_subtree_text_normalized,
+)
 from edgar_sec.engine.forms.common.numbers import normalize_schema_number
 from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
 from edgar_sec.foundation.regex.builder import build_alternation
@@ -130,21 +135,6 @@ def _is_clean_numeric_cover(field: str, value: str) -> bool:
     )
 
 
-def _text(element: ET.Element) -> str:
-    return " ".join(part.strip() for part in element.itertext() if part.strip())
-
-
-def _elements(
-    root: ET.Element,
-    names: tuple[str, ...],
-    elements_by_tag: dict[str, list[ET.Element]] | None = None,
-) -> list[ET.Element]:
-    if elements_by_tag is not None:
-        return [el for name in names for el in elements_by_tag.get(name, ())]
-    wanted = set(names)
-    return [element for element in root.iter() if local_name(element.tag) in wanted]
-
-
 def _source_has_signature(source_text: str) -> bool:
     for heading in RE_SIGNATURE_HEADING.finditer(source_text):
         section = source_text[heading.end() : heading.end() + 3000]
@@ -214,11 +204,10 @@ def analyze_xml(
     anomalies: list[dict[str, Any]] = []
     review_signals: list[dict[str, Any]] = []
     parents: dict[ET.Element, ET.Element] = {}
-    elements_by_tag: dict[str, list[ET.Element]] = {}
     for parent in root.iter():
         for child in parent:
             parents[child] = parent
-        elements_by_tag.setdefault(local_name(parent.tag), []).append(parent)
+    elements_by_tag = deep_element_index(root)
     namespace, _, _ = root.tag.rpartition("}")
     ns_uri = namespace.removeprefix("{")
     root_name = local_name(root.tag)
@@ -263,8 +252,8 @@ def analyze_xml(
                 }
             )
 
-    item_containers = _elements(
-        root, ("items1To7", "narrativeItems", "items"), elements_by_tag
+    item_containers = grouped_deep_elements(
+        elements_by_tag, ("items1To7", "narrativeItems", "items")
     )
     for container in item_containers:
         seen_items: set[str] = set()
@@ -289,13 +278,15 @@ def analyze_xml(
                     }
                 )
             seen_items.add(name)
-            item_text = _text(child)
+            item_text = xml_subtree_text_normalized(child)
             if (
                 RE_SIGNATURE_HEADING.search(item_text)
                 and CONFORMED_SIGNATURE_RE.search(item_text)
                 and not any(
-                    _text(element)
-                    for element in _elements(root, ("signature",), elements_by_tag)
+                    xml_subtree_text_normalized(element)
+                    for element in grouped_deep_elements(
+                        elements_by_tag, ("signature",)
+                    )
                 )
             ):
                 anomalies.append(
@@ -314,10 +305,15 @@ def analyze_xml(
                     for element in child:
                         if (
                             local_name(element.tag) == "filingPersonName"
-                            and len(_text(element)) > 240
-                            and len(RE_SUBSECTION_SPLIT.findall(_text(element))) >= 2
+                            and len(xml_subtree_text_normalized(element)) > 240
+                            and len(
+                                RE_SUBSECTION_SPLIT.findall(
+                                    xml_subtree_text_normalized(element)
+                                )
+                            )
+                            >= 2
                         ):
-                            value = _text(element)
+                            value = xml_subtree_text_normalized(element)
                             anomalies.append(
                                 {
                                     "accession": accession,
@@ -334,10 +330,15 @@ def analyze_xml(
                     for element in child:
                         if (
                             local_name(element.tag) == "percentageOfClassSecurities"
-                            and len(_text(element)) > 240
-                            and len(RE_SUBSECTION_SPLIT.findall(_text(element))) >= 2
+                            and len(xml_subtree_text_normalized(element)) > 240
+                            and len(
+                                RE_SUBSECTION_SPLIT.findall(
+                                    xml_subtree_text_normalized(element)
+                                )
+                            )
+                            >= 2
                         ):
-                            value = _text(element)
+                            value = xml_subtree_text_normalized(element)
                             anomalies.append(
                                 {
                                     "accession": accession,
@@ -351,7 +352,8 @@ def analyze_xml(
 
     source_has_signature = bool(source_text and _source_has_signature(source_text))
     xml_has_signature = any(
-        _text(element) for element in _elements(root, ("signature",), elements_by_tag)
+        xml_subtree_text_normalized(element)
+        for element in grouped_deep_elements(elements_by_tag, ("signature",))
     )
     if source_has_signature and not xml_has_signature:
         anomalies.append(
@@ -363,8 +365,8 @@ def analyze_xml(
         )
 
     for name in COVER_VALUE_FIELDS:
-        for element in _elements(root, FIELD_TAGS[name], elements_by_tag):
-            value = _text(element)
+        for element in grouped_deep_elements(elements_by_tag, FIELD_TAGS[name]):
+            value = xml_subtree_text_normalized(element)
             boilerplate = (
                 None
                 if _is_narrative_element(element, parents)
@@ -411,10 +413,10 @@ def analyze_xml(
         "aggregateAmountOwned",
         "percentOfClass",
     ):
-        for element in _elements(root, FIELD_TAGS[field], elements_by_tag):
+        for element in grouped_deep_elements(elements_by_tag, FIELD_TAGS[field]):
             if _is_narrative_element(element, parents):
                 continue
-            value = _text(element)
+            value = xml_subtree_text_normalized(element)
             if _boilerplate_match(field, value) is not None:
                 continue
             contamination = (
@@ -454,8 +456,8 @@ def analyze_xml(
                     }
                 )
 
-    for element in _elements(root, FIELD_TAGS["issuerCusip"], elements_by_tag):
-        value = _text(element)
+    for element in grouped_deep_elements(elements_by_tag, FIELD_TAGS["issuerCusip"]):
+        value = xml_subtree_text_normalized(element)
         normalized = value.replace(" ", "").replace("-", "")
         if CUSIP_UNAVAILABLE_POLICY.is_missing(value):
             anomalies.append(
@@ -523,8 +525,8 @@ def analyze_xml(
             )
 
     for name in CHECKBOX_FIELDS:
-        for element in _elements(root, (name,), elements_by_tag):
-            value = _text(element).upper()
+        for element in grouped_deep_elements(elements_by_tag, (name,)):
+            value = xml_subtree_text_normalized(element).upper()
             if value and value not in {"Y", "N"}:
                 anomalies.append(
                     {
@@ -540,16 +542,16 @@ def analyze_xml(
     field_values = {
         field: [
             value
-            for element in _elements(root, names, elements_by_tag)
-            if (value := _text(element))
+            for element in grouped_deep_elements(elements_by_tag, names)
+            if (value := xml_subtree_text_normalized(element))
         ]
         for field, names in FIELD_TAGS.items()
     }
     value_frequencies = {
         name: [
-            _text(element)
-            for element in _elements(root, (name,), elements_by_tag)
-            if _text(element)
+            xml_subtree_text_normalized(element)
+            for element in grouped_deep_elements(elements_by_tag, (name,))
+            if xml_subtree_text_normalized(element)
         ]
         for name in CATEGORICAL_FIELDS
     }
