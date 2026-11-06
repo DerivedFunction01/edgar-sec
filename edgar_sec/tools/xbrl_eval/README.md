@@ -5,8 +5,8 @@ Layer 6. XBRL census, screening, and benchmark verification.
 ## Purpose
 
 Score grounded XBRL populations through the client facade and adjudicate
-results as JSON. Census, screen, facade battery, token-coverage audit, and
-lattice mining all read archived cohorts and bundles; none fetch remotely.
+results as JSON. Its evaluation runners all read archived cohorts and bundles;
+none fetch remotely.
 
 ## Contracts
 

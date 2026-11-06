@@ -27,7 +27,7 @@ line that trips a scanner can only be silenced by changing the scanner.
 - Every finding is blocking: `run_all()` returns `1` if any scanner reported any,
   with no severity distinction between them.
 
-Four behaviours are worth naming because they are not what the name implies.
+Some behaviours are worth naming because they are not what the name implies.
 `environment-access` matches raw line text, so `os.environ` inside a string or a
 comment still trips it. `clean-exit` passes a file whose exits all sit inside its
 main guard. `file-length` emits an advisory-sounding finding that blocks exactly
@@ -75,12 +75,14 @@ and findings, and exits non-zero when any scanner reported:
   hard violation does. Either the rule or the wording should change.
 - **No suppression mechanism.** No `noqa` equivalent, no allowlist file, no
   per-line pragma. A false positive has to be fixed by editing the scanner.
-- **`layer-boundary` is the only AST scanner.** Third-party and standard-library
-  imports are out of scope, as is any dynamic import via `importlib` or
+- **`layer-boundary` is not the only AST scanner.** `batch-defaults`,
+  `prose-length`, `sql-interpolation`, and `string-lookup` also parse ASTs;
+  what is specific to `layer-boundary` is that third-party and standard-library
+  imports are out of its scope, as is any dynamic import via `importlib` or
   `__import__`; relative upward imports *are* resolved, so both spellings are
   reported alike. A file that fails to parse is skipped silently. The line- and
   regex-oriented scanners can be evaded by constructing a violation across lines.
-- **Discovery covers two trees and two root files.** Nothing in `roadmap/`,
+- **Discovery covers two trees and two root files.** Nothing in
   `ruff.toml`, CI configuration, dependency manifests, or documentation is
   scanned, so a secret or a hardcoded limit committed outside those paths is
   invisible. There is also no file-content, git-history, or runtime scanning: a

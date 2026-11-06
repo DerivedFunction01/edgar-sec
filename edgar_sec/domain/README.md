@@ -23,5 +23,5 @@ counter belongs above this layer.
 
 ## Deliberate gaps
 
-- **Endpoint coverage stops at submissions and the archive**: `sec_urls.py` builds submissions, historical submissions, and archive document URLs; XBRL APIs and `company_tickers.json` are not included; callers assemble those URLs themselves.
+- **Endpoint coverage stops at submissions and the archive**: `sec_urls.py` builds submissions, historical submissions, archive document, index, full-submission, and XBRL package URLs; XBRL APIs and `company_tickers.json` are not included; callers assemble those URLs themselves.
 - **The `layer-boundary` scanner does not check for cycles**: It flags only upward layer-rank dependencies; same-layer import cycles remain a review responsibility.

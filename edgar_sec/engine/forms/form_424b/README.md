@@ -3,11 +3,6 @@
 Review analysis for the merged Rule 424 prospectus family (`424B`):
 cover-header extraction (424(b)/(a) rule reference, registration
 number, registrant, document kind, offering terms) and taxonomy
-section segmentation over `analyze_form_case`.
+section segmentation over the shared form analysis.
 
-Entry points:
-
-- `analysis.analyze_case(case_dir, record)` — one case → report dict
-  with `form_424b` fields and anomalies.
-- `analysis.summarize_cases(cases)` — `form_424b` scorecard counts.
-- `analysis.build_parser` — the `review analyze` plugin CLI.
+The review entry points live in the package's `analysis` module.

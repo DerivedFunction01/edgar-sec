@@ -13,7 +13,7 @@ fixture bodies internally.
 - **Selected body capture**: Fixture BLOBs contain parser inputs and any lazy-index pages used for exact-form resolution; bundle containers and failed request histories are not retained.
 - **Plan capture**: Fill revalidates the pinned plan and fetches its executable targets without creating run state or attempts.
 - **Fill serialization**: A per-fixture exclusive lock prevents overlapping fills from issuing duplicate requests or case captures.
-- **Rewrite-only format**: Schema v3 rejects older fixture formats without migration or compatibility behavior.
+- **Rewrite-only format**: The fixture schema (whose version is declared in this package's `schema.py`) rejects older fixture formats without migration or compatibility behavior.
 - **Verified streaming**: Selected bodies are Zstandard-compressed on append and materialized incrementally with stored and original size/digest checks.
 - **Plan pin**: Fixture identity records the published plan ID, schema version, and canonical digest; fills from another plan are refused.
 - **Capture identity**: One immutable capture groups plan-selected target bodies; repeated fill skips already captured targets.

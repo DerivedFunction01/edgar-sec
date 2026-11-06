@@ -27,19 +27,18 @@ system and no table registry.
 
 - **One connection factory, and every connection is bounded by the machine.**
   `connect()` is the only `duckdb.connect()` call site in `edgar_sec` and sets
-  the four values AGENTS.md §2.3 requires, from
+  the values AGENTS.md requires, from
   `foundation.runtime.resources.derive_resources()` when the connection is
   opened rather than when the module is imported. The probe ladder and the
   worker budget are owned by
   [`../../foundation/runtime/README.md`](../../foundation/runtime/README.md).
 - **Publication is atomic, and the temp name is pid-scoped.** A writer stages to
   `<name>.tmp.<pid>`, fsyncs, `os.replace`s onto the target, and fsyncs the
-  parent directory, so a reader never observes a partial artifact. The one
-  writer that does not force the directory entry is named under
-  *Deliberate gaps*.
-- **Parquet format lives in one place.** `DEFAULT_ROW_GROUP_SIZE = 128_000` and
-  `DEFAULT_COMPRESSION = "zstd"` are the values AGENTS.md §2.5 names, and every
-  write path takes them rather than re-declaring a literal.
+  parent directory, so a reader never observes a partial artifact.
+- **Parquet format lives in one place.** The compression default is declared in
+  `parquet.py` and the row-group size is resolved through
+  `foundation.runtime.settings.parquet`; every write path takes them rather
+  than re-declaring a literal.
 - **JSON leaves through `atomic_write_json`, canonically by default.** It
   serializes with `foundation.serialization.canonical_json` and falls back to
   `json.dumps` only for a caller that explicitly asks for human-readable output.
@@ -64,35 +63,16 @@ system and no table registry.
   re-ingest, and gain no equivalence meaning in this package.
 - **A document has one identity.** The catalog materialization SQL mints
   `document_locator_key` and `occurrence_id` as digests of accession, document
-  path, and source CIK, and the document-storage chunk writer derives the same
-  locator key in Python through `domain.document.models`. The two spellings must
-  agree, so a document means the same thing whether it was fanned out from a
-  published part or written by a chunk worker.
-- **A published snapshot is immutable, and the pointer comes second.**
-  `write_manifest` refuses a `snapshot_id` that already has a manifest, then
-  writes the manifest, and only then publishes the pointer: a crash between the
-  two leaves a stale pointer to a snapshot that does exist, which is strictly
-  better than a pointer to one that does not. The pointer goes through
-  `atomic_write_text`, so snapshot tip pointers resolve `current` atomically.
-  `snapshot_identity` digests sorted inputs, so
-  consolidating the same sources twice yields the same id and a repeat is
-  recognizably a no-op.
-- **Part paths are snapshot-relative, and a purge is gated on part sharing.** A
-  recorded part path resolves against its *own* snapshot directory, so a
-  manifest cannot name a part belonging to another snapshot. `dependents_of` maps
-  each snapshot to those whose recorded part paths intersect its own, and
-  `expand_dependency_closure` grows a selection until nothing retained still
-  shares a part with it — two snapshots sharing a part are physically entangled,
-  so the dependent must be consolidated first.
+  path, and source CIK, so a document means the same thing wherever its
+  occurrence was written from.
+- **Snapshot mechanics live in [`dag/`](dag/README.md).** The DAG catalog owns
+  manifests, branch pointers, and retention; this package supplies only the
+  atomic writers and Parquet/DuckDB primitives those mechanics are built from.
 - **Parts are byte-budgeted, and index and payload are separate projections of
   one logical record**, so a consumer can read metadata without the text. Fiscal
   year and quarter are deliberately *not* stored: they are derived at
   consolidation time, so an older snapshot consolidates alongside a newer one
   with no migration.
-- **A chunk snapshot is validated against a fixed schema.**
-  `write_chunk_snapshot` in the document-storage pipeline writes and validates
-  chunk checkpoints against `DOCUMENT_SNAPSHOT_SCHEMA`, comparing a file's
-  schema for exact name order and equality.
 - **Expression nodes are global and immutable; aliases are session-scoped.**
   [`object_store/`](object_store/README.md) owns the SQLite schema and validates
   alias targets before moving a pointer.
@@ -147,17 +127,6 @@ system and no table registry.
   advisory.** The dependency analysis computes what is safe to remove, but
   nothing in this package deletes anything or enforces the closure. Artifact-owning
   pipelines must coordinate part removal explicitly.
-- **A damaged snapshot is skipped, not fatal.** `list_snapshots` logs a warning
-  and omits a manifest it cannot read or parse, so consolidation proceeds on a
-  partial view rather than letting one bad directory stop everything.
-  `read_pointer` likewise returns `None` for a missing or corrupt pointer
-  instead of raising.
-- **`SnapshotReader.logical_fingerprint` falls back to the snapshot id** when the
-  manifest records no fingerprint, so a reader that compares the result against a
-  real fingerprint is comparing two different things.
-- **`copy_query_to_parquet` does not fsync the parent directory**, unlike every
-  other writer in the package. The rename is atomic; the durability of the
-  directory entry is not forced.
 - **The `resource-allocation` scanner does not see through indirection.** It is a
   line-level rule, so a limit hidden behind a variable or a settings lookup is
   not flagged. The `connect()` contract holds by having exactly one

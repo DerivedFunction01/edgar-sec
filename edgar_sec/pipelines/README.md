@@ -58,8 +58,7 @@ here.
 The unifying rule of publication is that **nothing is published by a worker.**
 Workers emit immutable, schema-versioned fragments into a transient tree; a
 coordinator validates identity, provenance, schema, and duplicates, and only then
-writes into the published tree and advances the `current` pointer. Two of the
-three pipelines have workers at all.
+writes into the published tree and advances the `current` pointer.
 
 ## Layer position
 
@@ -89,7 +88,7 @@ lower layers it depends on.
   carries the canonical schema, holds exactly the rows its plan's roster range
   covers, and matches the expected input fingerprint; where text conventions are a
   pipeline's own concern, a matching processor fingerprint is required too.
-- Every DuckDB connection is bounded. All three pipelines call
+- Every DuckDB connection is bounded. All pipelines call
   `infra.storage.duckdb.connect()` and never a raw `duckdb.connect()`; `connect()`
   derives `threads`, `memory_limit`, `temp_directory`, and
   `preserve_insertion_order=false` from `derive_resources()`. Hardcoding them is
@@ -145,7 +144,7 @@ with no arguments shows the menu; `--list` prints the ids; `-h`/`--help` prints 
 docstring and the list; an unrecognized id prints an `Unknown pipeline` line naming
 the id and returns 1.
 
-    Commands: `metadata`, `filing-catalog`, `inventory`, `planning`, `acquisition`, `viewer`. Each entry points to its pipeline's operator module. Linked command surfaces in package READMEs are authoritative for subcommands, flags, and exit codes.
+    Each entry points to its entry module — an operator for the batch pipelines, a CLI module for the non-batch entries. The launcher registry in `run.py` is authoritative for the entry ids and their targets. Linked command surfaces in package READMEs are authoritative for subcommands, flags, and exit codes.
 
 Each pipeline's `operator.py` carries an
 `if __name__ == "__main__": sys.exit(main())` guard, as do `metadata_sync/cli.py`
@@ -160,16 +159,17 @@ Two obligations hold across the layer:
 
 ## Resumability and publication
 
-All three pipelines hold the AGENTS.md §4 lifecycle. The pipeline-specific
+All pipelines hold the AGENTS.md §4 lifecycle. The pipeline-specific
 mechanics — chunk layout, checkpoint predicates, merge validation, staging and
 publication, plan-bundle completeness, and consolidation — are documented in the
 package READMEs. What belongs at the layer:
 
-- **Chunk workers exist only in `metadata_sync`** and the
+- **Chunk workers exist in `metadata_sync` and `document_inventory`**, and the
   two use different pool types for a stated reason: Phase 1's work is
   network-bound, so it runs on a thread pool with DuckDB confined to the
-  coordinator, while Phase 2.5 normalizes a full filing document in memory, so it
-  runs on a process pool.
+  coordinator, while the inventory phase normalizes a full filing document in
+  memory, so it runs on a process pool. `document_acquisition` also runs targets
+  on a thread pool, without the chunk-checkpoint lifecycle.
 - **Completion is recorded in the data, not in a side ledger.**
   `metadata_sync` guarantees one row per requested CIK, including failures, so
   completion is determinable from the published rows.
@@ -180,16 +180,19 @@ package READMEs. What belongs at the layer:
   `data.sec.gov` submissions JSON and unnests nothing. The document locator
   vocabulary Phase 2.5 needs is produced by Phase 2.
 - **No intra-package import cycle detection.** The `layer-boundary` scanner
-  compares layer ranks only, so it cannot catch a cycle between two modules of this
-  layer or between two packages in it. A same-layer cross-package edge exists
-  today — `filing_catalog` reads `metadata_sync`'s path and snapshot helpers — and
-  it is acyclic by inspection, not by enforcement.
+  compares layer ranks and detects cycles among cross-pipeline `paths.py` /
+  `schemas.py` contract imports, but it cannot catch a cycle between two modules
+  inside one package. A same-layer cross-package edge exists today —
+  `filing_catalog` reads `metadata_sync`'s path and snapshot helpers — and its
+  contract-module cycle-freedom is enforced; anything deeper is acyclic by
+  inspection, not by enforcement.
 - **No pipeline's menu asks for an artifacts root.** Launcher entries resolve the
   configured project root, and a non-default root is a per-command `--artifacts`
-  flag. Only `filing_catalog` and `metadata_sync` expose that flag;
-  `viewer` is the same at the CLI (`--artifacts`, optional) and is not interactive at all.
-- **No scheduling, no cross-pipeline coordination, and no provenance graph.**
-  Each pipeline consumes the previous one's published artifact and nothing more.
-  The lineage that exists is local: `parent_plan_id` in a child `plan.json`,
+  flag. Every pipeline CLI exposes that flag; `viewer` is the same at the CLI
+  (`--artifacts`, optional) and is not interactive at all.
+- **No scheduling and no cross-pipeline coordination.** Each pipeline consumes
+  the previous one's published artifact and nothing more. Lineage is recorded in
+  each pipeline's snapshot DAG — parent refs, checkpoint anchors, and lineage
+  depth — and in local fields: `parent_plan_id` in a child `plan.json`,
   `source_snapshot_ids` in a document manifest, `input_fingerprint` in a Phase 1
-  plan. There is no run registry tying the three together.
+  plan. There is no single run registry tying the pipelines together.

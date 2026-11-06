@@ -6,7 +6,6 @@ Presentation and execution layer for the metadata sync CLI subcommands.
 
 | Concern | Modules |
 | :--- | :--- |
-| External SEC source refresh and comparison | [sources.py](sources.py) |
 | Cohort planning and status reporting | [plan.py](plan.py) |
 | Execution and chunk running | [run.py](run.py) |
 | Snapshot chunk merging | [merge.py](merge.py) |

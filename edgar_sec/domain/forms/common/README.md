@@ -18,4 +18,4 @@ support normalization without owning runtime evaluator dispatch.
 
 ## Deliberate gaps
 
-- **Alias vocabulary covers only periodic and current report families**: Registration, proxy, ownership, and beneficial-ownership forms have no alias entries; callers must decide their families.
+- **Alias vocabulary is wider than the profile catalog**: `FORM_FAMILY_ALIASES` covers families beyond those with a processing profile, including registration, proxy, ownership, and beneficial-ownership forms; a resolved family may still have no processing profile, and callers must handle that case. The alias table in `aliases.py` is authoritative for the families covered.

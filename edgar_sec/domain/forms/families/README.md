@@ -4,18 +4,20 @@
 
 Partitions form-specific evidence and structural definitions across SEC filing
 families: `annual/` for Form 10-K and 20-F, `quarterly/` for Form 10-Q, `current/`
-for Form 8-K, `ownership/` for Section 16 insider reports (Form 4), `registration/`
-for Securities Act registration statements (Form S-1), and `beneficial_ownership/` for Schedule 13D and Schedule 13G.
+for Form 8-K and 6-K, `ownership/` for Section 16 insider reports (Forms 3, 4, and
+5), `registration/` for Securities Act registration statements (Forms S-1, S-3,
+S-4, and S-8), `beneficial_ownership/` for Schedule 13D and Schedule 13G,
+`form144/` for Form 144, and one `form_*/` package per remaining modelled form.
 Each subpackage supplies
 declarative processing profiles, body evidence, and structural taxonomies.
 
 ## Contracts
 
 - **Per-family data isolation**: Evidence packs and item tables are isolated per family; `build_taxonomy_derived()` is the only cross-family dependency.
-- **Body-lexical packs**: Each family publishes a body-lexical pack built from its own term constants.
+- **Body-lexical packs**: The annual, quarterly, current, and registration families publish a body-lexical pack built from their own term constants; most `form_*/` families publish no body-lexical pack.
 - **Tier policies**: `body_forward` matches lowercased; `body_phrase_soft` is a supporting tier.
 
 ## Deliberate gaps
 
-- **No 6-K taxonomy**: `current/` covers 8-K but declares no 6-K item taxonomy or terms.
+- **No separate 6-K item taxonomy**: `current/` declares only the 8-K item table; 6-K rides the current-report evidence and checkbox schema and a processing profile with no taxonomy items of its own.
 - **`FORM_8K_DERIVED` has no parts**: Only item-level detection applies to an 8-K.

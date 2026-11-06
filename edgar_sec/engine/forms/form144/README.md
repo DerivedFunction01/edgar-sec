@@ -12,8 +12,8 @@ Provides automated semantic diagnostics for review runs, auditing field complete
 
 - **Schema-shaped output**: Recognized values use Form 144 XML field types; the analyzer reports missing conditional and required values.
 - **Source fidelity**: Values absent from source filings remain unpopulated without fabricated defaults.
-- **Unparsed tables**: Review runs persist residual table HTML in `operations/unparsed_sections.json`, outside XML payloads.
-- **Downward layering**: Imports only domain and infra modules; never tools, apps, or pipelines.
+- **Unparsed tables**: Review runs persist residual sections and unresolved dates as records in `operations/unparsed_sections.json`, outside XML payloads.
+- **Downward layering**: Imports only domain, engine, and foundation modules; never tools, apps, or pipelines.
 
 ## Deliberate gaps
 

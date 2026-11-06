@@ -8,8 +8,9 @@ into an immutable accession-document target plan for later acquisition.
 ## Contracts
 
 - Planning performs no network access and never mutates catalog or inventory state.
-- A filing-catalog plan must use schema 1.4 and declare target-part byte sizes and
-  SHA-256 digests. Older plans lack the current target feature shape and are refused;
+- A filing-catalog plan must use the target-plan schema version declared in
+  `domain.filing_catalog.schemas` and declare target-part byte sizes and SHA-256
+  digests. Older plans lack the current target feature shape and are refused;
   republish them from the rebuilt filing catalog.
 - Inventory-backed plans pin one immutable snapshot ID and verify its lineage and
   relation parts. `current` is resolved once; catalog-only plans require a profile
@@ -24,9 +25,9 @@ into an immutable accession-document target plan for later acquisition.
   `filing_summary`, or `xbrl_package`. The label is read from the pinned snapshot's
   optional `accession_enumeration` relation; a snapshot or accession without that
   relation reads as `index_html`. `source_origin` does not change with the vehicle.
-- New bundle version 2 identities include the bundle schema and matcher versions,
-  and each target part declares and verifies its byte size. Discovery accepts only
-  bundle version 2 with matcher v2.
+- New bundle identities include the bundle schema and matcher versions, and each
+  target part declares and verifies its byte size. Discovery accepts only the
+  bundle schema and matcher versions declared in `document_planning/schemas.py`.
 - Bundle-sequence and constructed-package rows are candidates, not proof that the
   requested document exists. Planning never starts acquisition.
 - **Current locator selection**: A usable matched child link selects `direct_url`

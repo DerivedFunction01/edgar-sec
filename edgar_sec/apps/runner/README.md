@@ -6,14 +6,13 @@ This package provides a unified coordinator that chains the repository's verifie
 pipeline primitives (`filing_catalog`, `document_planning`, and `document_acquisition`)
 into automated, end-to-end execution runs without manual plan-passing ceremony.
 
-It manages the inter-process SEC rate-limiting broker lifecycle, invokes collision-reconciled
-target matching, and delivers relational DataFrame results.
+It delivers relational DataFrame results; SEC rate pacing is owned by the transport layer (`infra.sec_http`), not by this package.
 
 ## Contracts
 
 - **Pipeline delegation**: Uses public pipeline coordinators rather than duplicating batch processing.
-- **Broker management**: Manages socket daemon broker lifecycle and cleans up transient sockets on exit.
-- **Resource bounds**: Clamps worker allocations to cgroup limits via resource derivation.
+- **Transport lifecycle**: The SEC transport is wrapped lazily for the run and closed on exit; this package owns no socket daemon or broker.
+- **Resource bounds**: Worker counts pass through as `requested_workers`; the acquisition pipeline's resource derivation bounds them against cgroup limits.
 - **Relational output**: Emits `FilingsResult` instances holding pointers to DuckDB-readable target relations.
 
 ## Deliberate gaps

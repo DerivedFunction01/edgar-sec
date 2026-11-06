@@ -18,10 +18,8 @@ Beneficial ownership (Schedule 13D and 13G) parsing and XML rendering live in `b
 - **Cover positions use distinct coordinate spaces.**
   `cover_boundary_detected_line` refers to pre-reflow text;
   `cover_boundary.end_line` refers to final text.
-- **`normalize_document` never raises on malformed input.** Every stage is
-  total; a payload that fails classification still produces a result.
-- **A binary route is refused, not normalized.** `NormalizationResult` holds only
-  text, and a PDF has none to hold and is deferred on text extraction.
+- **`normalize_document` never raises on malformed text input.** Every text stage is total; a payload that fails classification still produces a result. A binary route is the one refusal: it raises `ValueError`.
+- **A binary route is refused, not normalized.** `NormalizationResult` holds only text, and a PDF has none to hold; PDF text extraction is a separate handler (`normalize_pdf_document`), not a stage of `normalize_document`.
 - **`document_path` selects the route, and the payload decides markup.** The route
   from `domain/document/route.py` decides which stages are eligible and supplies the
   representation only where the payload cannot show it — an XML-native document
@@ -42,10 +40,8 @@ Beneficial ownership (Schedule 13D and 13G) parsing and XML rendering live in `b
 
 ## Deliberate gaps
 
-- **No page-artifact metadata is included in `NormalizationResult`.**
+- **No page-artifact metadata beyond page analysis is included in `NormalizationResult`.** The result carries `page_analysis`; the page policy's artifact and template outputs are discarded by the normalization stages.
 - **No runtime evaluator dispatch.** Normalization composes cover profiles and
   returns representation results; exhibit-header probing is a separate helper.
 - **HTML payloads do not use ASCII reflow.**
-- **Most form families are unmodelled.** Cover profiles exist for six families; every
-  other form resolves to `GENERIC`, so a family with real cover structure gets no
-  cover-aware handling until it is modelled.
+- **Some form families are unmodelled.** Every resolved family without a cover profile resolves to `GENERIC`, so a family with real cover structure gets no cover-aware handling until it is modelled. The cover profile registry in `engine/forms/cover/profiles.py` is authoritative for which families are modelled.

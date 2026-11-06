@@ -42,8 +42,8 @@ cleaned, projected, and had its page furniture resolved.
 
 ## Production consumers
 
-- `edgar_sec/engine/forms/normalize.py` — the `unpacked`, `page_policy`, and
-  `after_final_whitespace` stages of `normalize_document`.
+- `edgar_sec/engine/forms/normalize.py` — `prepare_input_text`, the page policy, and
+  the final whitespace pass of `normalize_document`.
 - `edgar_sec/engine/forms/cover/` — cover boundary, TOC, reflow, healing, body
   start, and closing, all over `page_markers/`.
 - `edgar_sec/engine/reflow/` and `edgar_sec/engine/tables/ascii_html/` —

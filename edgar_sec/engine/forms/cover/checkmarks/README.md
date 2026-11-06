@@ -32,26 +32,27 @@ full hypothesis table rather than resolved arbitrarily.
 
 - **`schemas.py` is not declared here.** `CheckboxConstraint`,
   `CoverCheckboxSchema`, and `STATUTORY_CHECKBOX_CONSTRAINTS` live in
-  `edgar_sec/domain/forms/common/schemas.py`; family schemas live in
-  `edgar_sec/domain/forms/families/{annual,quarterly,current,registration}/checkmarks.py`.
-  `solver.py` consumes them through `FAMILY_PROCESSING_PROFILES`.
-- **Inference follows `FAMILY_PROCESSING_PROFILES` schema scope**: `10-K`, `20-F`,
-  `10-Q`, `8-K`, `6-K`, `S-1`, `S-3`, `S-4`, and `S-8` have cover checkbox
-  schemas. Registered profiles `3`, `4`, `5`, `144`, `13D`, and `13G` have no
-  schema and return `NOT_APPLICABLE`; unknown families and unknown cover ends do
-  too. A schema-backed family returns `ABSENT` when extraction finds no candidates.
+  `edgar_sec/domain/forms/common/schemas.py`; family schemas live in the
+  `checkmarks.py` module of their family package under
+  `edgar_sec/domain/forms/families/`. `solver.py` consumes them through
+  `FAMILY_PROCESSING_PROFILES`.
+- **Inference follows `FAMILY_PROCESSING_PROFILES` schema scope**:
+  Registered families with a cover checkbox schema are inferred from it.
+  Registered profiles with no schema return `NOT_APPLICABLE`; unknown families
+  and unknown cover ends do too. A schema-backed family returns `ABSENT` when
+  extraction finds no candidates. The profile registry in
+  `domain/forms/families/processing_profiles.py` is authoritative for which
+  families carry a schema.
 - **More than two ambiguous glyph classes is `UNRESOLVED`.** The hypothesis
   enumeration is a full cross-product; past two glyphs it is refused rather than
   bounded, so a cover with three different Wingdings symbols is not solved.
 - **`PenaltyScorer` weights are not tuned per form.** One default set applies to
   every family. The dataclass is frozen and constructible with overrides, but
   nothing in this package selects different weights per form.
-- **`update_table_geometries` returns `tuple[object, ...]`**, not
-  `tuple[TableGeometry, ...]`, because it passes through any geometry that
-  carries a `render_result` attribute rather than requiring the concrete type.
+- **`update_table_geometries` returns a loosely typed tuple**, not the concrete geometry type, because it passes through any geometry that carries a `render_result` attribute rather than requiring the concrete type.
 - **A pure Yes/No table row is unwrapped, not re-wrapped.** Once its states are
   resolved the wrapper adds nothing, so `apply_cover_checkmark_decisions` strips
   the tags and the caller is told to drop the geometry.
-- **`extract_cover_candidates` takes `family` and discards it.** The parameter is
-  part of the call signature and is `del`-ed; per-family candidate vocabulary is
-  not implemented here.
+- **Per-family candidate vocabulary is schema-only**:
+  `extract_cover_candidates` uses `family` only to resolve the family's
+  checkbox schema; no other per-family candidate vocabulary is implemented here.

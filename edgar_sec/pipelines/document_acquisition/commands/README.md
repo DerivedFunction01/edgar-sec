@@ -4,7 +4,7 @@ Layer 4 command handlers for document acquisition.
 
 ## Purpose
 
-The package owns project, run, fixture, and review command handlers. The parent `cli.py` registers acquisition-specific fixture actions and the shared review generate/compare console; it also owns output options, gated placeholders, and process entry.
+The package owns project, run, status, publish, snapshot, fixture, and review command handlers. The parent `cli.py` registers acquisition-specific fixture actions and the shared review generate/compare console; it also owns output options, gated placeholders, and process entry.
 
 ## Contracts
 

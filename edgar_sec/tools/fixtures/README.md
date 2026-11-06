@@ -18,5 +18,6 @@ shards, and prices it, and candidates are scored for tagged content.
 
 ## Deliberate gaps
 
-- **No acquisition**: Downloading and filling fixtures belongs to the
-  document-acquisition pipeline, not this package.
+- **No fixture filling**: Downloading for candidate scoring happens here;
+  filling and publishing fixtures belongs to the document-acquisition pipeline,
+  not this package.

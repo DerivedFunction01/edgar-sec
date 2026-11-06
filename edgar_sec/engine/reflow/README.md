@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The stage for plain-text (non-HTML) filing content. Segmented blocks get one of three actions
+The stage for plain-text (non-HTML) filing content. Segmented blocks get one of the actions
 chosen from measured evidence: unwrap a hard-wrapped paragraph, preserve it unchanged, or wrap it
 in `<TABLE>` markers without altering a byte inside it. A second pass can promote a bounded run
 of numeric rows packed within a block or separated by one blank line when numeric-cell anchors
@@ -19,14 +19,13 @@ rather than tagged.
 
 - **The output is a pure function of the stage's inputs.** `reflow_ascii` takes text, a body
   boundary, an optional page analysis, and an optional policy. No clock, no filesystem, no
-  randomness; the same input yields the same text and the same decision tuple
-  (`tests/engine/reflow/engine/test_rewrapper.py::test_decisions_are_deterministic`).
+  randomness; the same input yields the same text and the same decision tuple.
 - **An already-tagged table is byte-for-byte protected.** `mask_tagged_tables` runs before
   any analysis and `restore_tagged_tables` after rendering, so a reflow can neither
   reclassify nor rewrite a `<TABLE>` span. Signature blocks are masked the same way through
   `mask_signature_regions`.
 - **No decision is ever made above the body boundary unless asked.** With
-  `unwrap_pre_body_prose` false (the default), every block ending at or before
+  `unwrap_pre_body_prose` false, every block ending at or before
   `body_start_line` resolves to preserve with evidence `("pre_body_region",)`.
 - **The body boundary is projected into the masked frame.** Masking removes the newlines
   inside a protected span, so `body_start_line` is translated by how many lines each span
@@ -92,7 +91,8 @@ supplies a different bridge predicate changes both, consistently.
 ## Production consumers
 
 - `edgar_sec/engine/forms/normalize.py` — `normalize_document` reflows the ASCII branch
-  (representation is not HTML, and `body_start_line > 0`), then re-maps `cover_boundary`,
+  (representation is not HTML, and `body_start_line > 0` or the profile has no cover),
+  then re-maps `cover_boundary`,
   `toc_span`, and `body_start` through `build_line_mapper`.
 - `edgar_sec/engine/forms/cover/healing/text.py` — `heal_cover_text` reflows the cover
   slice with the same policy minus the bridge and tail callbacks.
@@ -107,8 +107,9 @@ supplies a different bridge predicate changes both, consistently.
   numeric-cell recognition. It does not know that a particular word is a valid header, infer
   arbitrary nonnumeric grids, or guarantee complete capture where headers, subtotals, or rows have
   incompatible layouts.
-- **No table pass without a reliable body boundary.** The caller skips ASCII reflow when cover
-  analysis cannot supply `body_start_line`; otherwise a candidate row before that boundary is
-  excluded from untagged-table promotion.
+- **No table pass without a reliable body boundary, except coverless filings.** The caller
+  skips ASCII reflow when cover analysis cannot supply `body_start_line`, unless the profile
+  has no cover, in which case reflow runs from line 0; otherwise a candidate row before that
+  boundary is excluded from untagged-table promotion.
 - **No incremental or resumable pass, and no filesystem, network, or CLI.** A reflow is one
   call over the whole text: no per-block checkpoint, no resume, no streaming.

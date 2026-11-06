@@ -36,11 +36,11 @@ work. Its only side effects are directory creation in `runtime/paths.py` and
   module-scope import in either direction would be a cycle:
   `runtime/resources.derive_resources()` reaching into `.settings`, and the
   default factories in `runtime/settings/runtime.py` reaching into `..resources`.
-- The layer graph also forces *value* duplication. `runtime/settings/catalog.py`
-  mirrors constants whose owners sit above it — the Parquet row-group size and
-  the document batch and target sizes. Equality is pinned by tests in those
-  owning packages, so one-sided drift fails the gate instead of silently moving a
-  default. See [`runtime/settings/README.md`](runtime/settings/README.md).
+- The layer graph also forces *value* duplication. `runtime/settings/parquet.py`
+  declares the Parquet row-group size whose consumers sit above it. Equality is
+  pinned by a mirrored test, so one-sided drift fails the gate instead of
+  silently moving a default. See
+  [`runtime/settings/README.md`](runtime/settings/README.md).
 
 **Guarantees this layer makes to its callers**
 
@@ -108,12 +108,13 @@ finding. See [`checks/README.md`](checks/README.md).
 
 ## Deliberate gaps
 
-- **No packaging metadata.** There is no `pyproject.toml` and no console script.
-  Everything is invoked as `python check.py`, `python run.py`, or
-  `python -m edgar_sec.pipelines.<name>.operator`.
+- **No console script.** Packaging metadata lives in the root `pyproject.toml`
+  — the single dependency source `init_venv.py` builds from — but it declares
+  no console script. Everything is invoked as `python check.py`,
+  `python run.py`, or `python -m edgar_sec.pipelines.<name>.operator`.
 - **The gate sees Python source in two trees.** Discovery covers `edgar_sec/`
   and `tests/` plus `check.py` and `run.py`, skipping dot-prefixed path
-  components. Nothing in `roadmap/`, `ruff.toml`, CI configuration, dependency
+  components. Nothing in `ruff.toml`, CI configuration, dependency
   manifests, or documentation is scanned. See
   [`scanners/README.md`](scanners/README.md).
 - **No SEC domain knowledge, by design.** Identity primitives, filing schemas,

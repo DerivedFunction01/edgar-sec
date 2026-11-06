@@ -23,14 +23,15 @@ its own. See *Deliberate gaps* for what this package is not.
   store without consuming a request slot. A document already on disk costs no
   SEC request and no pacing delay; `force_refresh=True` skips the probe.
 - **Connection concurrency is bounded.** `threading.Semaphore(max_connections)`,
-  default 32, clamped to at least 1 — the only in-flight concurrency cap in the
-  infra layer. `SecHttpClient` has no semaphore of its own.
+  clamped so at least one connection is always allowed — the only in-flight
+  concurrency cap in the infra layer. `SecHttpClient` has no semaphore of its
+  own.
 - **Fetch errors come back as data.** `SecBroker.fetch` catches
   `PermanentHttpError`, `ResponseTooLargeError`, and `RetryExhausted`, then any
   other `Exception`, always returning
-  `{"status": "failed", "error": ..., "payload_length": 0}`. A worker that gets a
+  `{"status": "failed", "error": ..., "error_code": ..., "status_code": ..., "payload_length": 0}`. A worker that gets a
   404 decides what to do; it never has to distinguish "broker died" from "SEC
-  said no". `SecBrokerClient.fetch` mirrors this and adds a two-attempt
+  said no". `SecBrokerClient.fetch` mirrors this and adds a bounded
   socket-level retry with a socket reset between attempts.
 - **The socket is thread-local.** `SecBrokerClient` keeps one connected socket
   per thread in a `threading.local` and drops it on error, so a broken
@@ -39,17 +40,16 @@ its own. See *Deliberate gaps* for what this package is not.
   `{"socket_path": ...}` and rebuild the thread-local on the far side, so it can
   be handed to a `ProcessPoolExecutor` worker.
 - **Heap is reclaimed on a byte budget.** `_note_bytes` accumulates payload
-  bytes served; once the running total crosses
-  `_RECLAIM_BYTES_THRESHOLD = 512 MiB` the caller runs
-  `foundation.runtime.memory.reclaim()` outside the semaphore. This is
-  AGENTS.md §2.2 applied at a bounded batch interval, not per request.
+  bytes served; once the running total crosses `_RECLAIM_BYTES_THRESHOLD` the
+  caller runs `foundation.runtime.memory.reclaim()` outside the semaphore.
+  This is AGENTS.md §2.2 applied at a bounded batch interval, not per request.
 - **Liveness is checked before use, and shutdown is bounded.** `managed_broker`
-  polls `client.fetch(HEALTHCHECK_URL)` every 50 ms until `ready_timeout_s`
-  (default 5.0) elapses, raising `RuntimeError` naming the socket path if the
-  broker never answers; it then stops the server and joins for up to 2.0 s. On
-  normal exit from the `with` block it stops and joins for 3.0 s. `serve()`
-  unlinks the socket file in a `finally`, and `stop()` only sets an `Event` and
-  closes the listening socket, so it is safe to call from another thread.
+  polls `client.fetch(HEALTHCHECK_URL)` until `ready_timeout_s` elapses,
+  raising `RuntimeError` naming the socket path if the broker never answers;
+  shutdown stops the server and joins with bounded timeouts on both failure
+  and normal exit. `serve()` unlinks the socket file in a `finally`, and
+  `stop()` only sets an `Event` and closes the listening socket, so it is safe
+  to call from another thread.
 
 **Obligations callers place on this package**
 
@@ -61,7 +61,8 @@ its own. See *Deliberate gaps* for what this package is not.
 - `request_id` and `archive_url` in a request frame must both be strings;
   anything else is answered with a `failed` status rather than raising.
 - Frame sizes are trusted. `_recv_frame` rejects a negative length but sets no
-  upper bound, and the per-socket read timeout is `_READ_TIMEOUT_S = 30.0`.
+  upper bound, and each socket read is bounded by the `_READ_TIMEOUT_S`
+  timeout declared in the broker module.
 
 ## Deliberate gaps
 
@@ -78,9 +79,6 @@ its own. See *Deliberate gaps* for what this package is not.
 - **`BrokerRequestError` is dead.** It is defined and listed in `__all__`, but
   no path raises it: framing failures raise the base `BrokerError`, and a
   broker-reported failure comes back as a `{"status": "failed"}` dict.
-- **A warm-cache hit is indistinguishable from a live fetch.** Both come back
-  `{"status": "ok", ...}` with no flag; the difference is observable only by
-  instrumenting the client.
 - **`SecBrokerClient.metrics` always returns `None`.** The shared `HttpMetrics`
   lives on the server's client, so progress reporting has to come from the
   broker process, not the worker.
@@ -88,10 +86,11 @@ its own. See *Deliberate gaps* for what this package is not.
   held around `get_bytes`, so it limits how many fetches are in flight; the RPS
   ceiling comes from `RateLimiter` inside the client. Raising it does not raise
   the request rate.
-- **No `max_response_bytes` reachability from here.** The size cap is a
+- **No `max_response_bytes` reachability from `fetch`.** The size cap is a
   `SecHttpClient` constructor argument; a broker that builds its own client with
   no arguments gets the default of `None` — no cap — and `fetch` never forwards a
-  size limit.
+  size limit. The streaming operation is the exception: its request frame carries
+  `max_response_bytes` through to `stream_to_file`.
 - **The socket file survives a hard kill.** `serve()` unlinks it in a `finally`,
   which covers `stop()` and ordinary exceptions but not `SIGKILL`. It does
   unlink a stale socket before binding, so the next start recovers; the failure

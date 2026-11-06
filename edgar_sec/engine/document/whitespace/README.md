@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Three problems visible only once every earlier stage has run: line-end padding
+Problems visible only once every earlier stage has run: line-end padding
 left by markup wrapping, list items the source concatenated onto one line, and
 blank runs accumulated by block-tag substitution.
 
@@ -23,8 +23,7 @@ blank runs accumulated by block-tag substitution.
 
 ## Production consumers
 
-`edgar_sec/engine/forms/normalize.py` — the `after_final_whitespace` stage of
-`normalize_document`, after cover healing.
+`edgar_sec/engine/forms/normalize.py` — the final whitespace pass of `normalize_document`, after cover healing.
 
 ## Deliberate gaps
 
