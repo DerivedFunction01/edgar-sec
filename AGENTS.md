@@ -210,6 +210,7 @@ Every package in the repository owns a concise `README.md` (`edgar_sec/<layer>/<
 3. **Core Documentation Invariants**:
    - **Root `README.md` scope**: Onboarding and architecture gateway only. Pipeline execution belongs in pipeline READMEs; root maintains no multi-page CLI walkthrough or ASCII artifact tree.
    - **No volatile tuning**: Leave algorithm thresholds, window sizes, and counts with owning code; cite numbers in READMEs only when part of a persisted schema or wire contract.
+   - **Intent, not specifics**: A README states purpose, guarantees, and deliberate gaps; counts, versions, defaults, and file/route/entry-point or generated-layout listings live in the code that owns them, and a README that needs one names its owner rather than copying it.
    - **Tracked evidence only**: Cite only paths that exist in the repository; never reference untracked local scratch trees.
    - **Verified behavior, not intent**: Documented capabilities that fail or do not exist are defects; record planned work in `Deliberate gaps` rather than describing it as working.
    - **`AGENTS.md` is normative**: Where a README and this file disagree, this file wins.
