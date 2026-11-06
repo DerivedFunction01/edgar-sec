@@ -4,16 +4,23 @@ from __future__ import annotations
 
 import json
 from collections import Counter
+from dataclasses import replace
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.families.processing_profiles import get_family_entry
+from edgar_sec.engine.forms.cover.boundary.corridor import line_offset
 from edgar_sec.engine.forms.cover.boundary.detector import (
     find_cover_boundary_for_profile,
 )
 from edgar_sec.engine.forms.cover.checkmarks.solver import infer_cover_checkmarks
-from edgar_sec.engine.forms.cover.models import BoundaryInput, BoundarySignal
+from edgar_sec.engine.forms.cover.models import (
+    BoundaryInput,
+    BoundarySignal,
+    CoverBoundary,
+)
 from edgar_sec.engine.forms.cover.profiles import get_profile
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.engine.forms.sections.notes.detector import detect_notes_sequence
@@ -179,6 +186,98 @@ def rebuild_table_geometries(
     return replayed[1]
 
 
+@lru_cache(maxsize=32)
+def _production_fence_anchor(
+    raw_path: str, _size: int, _mtime_ns: int, form: str | None
+) -> tuple[str, ...] | None:
+    """Production's cover-fence anchor: the first nonblank lines at its end fence.
+    Replays the production front half (page policy, boundary detection) over the
+    raw bytes; an empty tuple means production fenced at the document end.
+    """
+    from edgar_sec.engine.document.page_markers.policy import (
+        apply_fast_html_page_policy,
+        apply_text_policy,
+    )
+    from edgar_sec.engine.document.unpacking.representation import (
+        Representation,
+        prepare_input_text,
+    )
+
+    path = Path(raw_path)
+    try:
+        text, representation, _encoding = prepare_input_text(path.read_bytes())
+        profile = get_profile(resolve_alias(form))
+        if representation is Representation.HTML:
+            text, analysis, *_rest = apply_fast_html_page_policy(
+                text, unwrap_false_tables=profile.unwrap_false_tables
+            )
+            rep_name = "html"
+        else:
+            text, analysis, *_rest = apply_text_policy(text)
+            rep_name = "ascii"
+        boundary = find_cover_boundary_for_profile(
+            BoundaryInput(text, representation=rep_name, page_analysis=analysis),
+            profile,
+        )
+    except Exception:
+        return None
+    if boundary.end_line is None:
+        return None
+    lines = text.splitlines()
+    if boundary.end_line >= len(lines):
+        return ()
+    anchor: list[str] = []
+    for line in lines[boundary.end_line :]:
+        stripped = line.strip()
+        if stripped:
+            anchor.append(stripped)
+        if len(anchor) == 4:
+            break
+    return tuple(anchor) if len(anchor) >= 2 else None
+
+
+def _anchor_end_line(lines: list[str], anchor: tuple[str, ...]) -> int | None:
+    """The line whose following nonblank sequence uniquely matches the anchor."""
+    stripped = [(i, line.strip()) for i, line in enumerate(lines) if line.strip()]
+    width = len(anchor)
+    matches = [
+        stripped[j][0]
+        for j in range(len(stripped) - width + 1)
+        if tuple(s for _i, s in stripped[j : j + width]) == anchor
+    ]
+    return matches[0] if len(matches) == 1 else None
+
+
+def _adopt_production_fence(
+    case_dir: Path, text: str, *, form: str | None, boundary: CoverBoundary
+) -> CoverBoundary:
+    """Move a re-derived end fence to production's, mapped by content anchor.
+    Applies only when the persisted raw bytes replay to the analyzed text and
+    production's fence lands strictly later; anything else keeps the boundary.
+    """
+    if boundary.end_line is None:
+        return boundary
+    raw_path = _locate_raw_artifact(case_dir)
+    if raw_path is None:
+        return boundary
+    try:
+        stat = raw_path.stat()
+    except OSError:
+        return boundary
+    key = (str(raw_path), stat.st_size, stat.st_mtime_ns, form)
+    replayed = _replayed_normalization(*key)
+    if replayed is None or replayed[0] != text:
+        return boundary
+    anchor = _production_fence_anchor(*key)
+    if anchor is None:
+        return boundary
+    lines = text.splitlines()
+    mapped = len(lines) if not anchor else _anchor_end_line(lines, anchor)
+    if mapped is None or mapped <= boundary.end_line:
+        return boundary
+    return replace(boundary, end_line=mapped, end_offset=line_offset(lines, mapped))
+
+
 def reinfer_unmasked_checkmarks(
     text: str,
     rep: dict[str, Any],
@@ -196,6 +295,10 @@ def reinfer_unmasked_checkmarks(
     )
     if boundary.end_line is None:
         return
+    if case_dir is not None:
+        boundary = _adopt_production_fence(
+            case_dir, text, form=family, boundary=boundary
+        )
     geometries = (
         rebuild_table_geometries(case_dir, text, form=family)
         if case_dir is not None
@@ -287,6 +390,9 @@ def analyze_form_case(
         lines=lines,
     )
     geometries = rebuild_table_geometries(case_dir, text, form=resolved_form)
+    boundary = _adopt_production_fence(
+        case_dir, text, form=resolved_form, boundary=boundary
+    )
     cm_result = infer_cover_checkmarks(
         text,
         boundary,

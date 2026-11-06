@@ -236,3 +236,113 @@ def test_reinfer_with_case_dir_geometries_and_fallback(tmp_path: Path) -> None:
         production.text, fallback_rep, family="14A", case_dir=bare_dir
     )
     assert fallback_rep["checkmarks"]["candidate_states"] == expected
+
+
+_FENCE_BAND_HTML = """\
+<html><body>
+<pre>
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM 40-F
+[X]  Annual report pursuant to Section 13(a) or 15(d) of the Securities Exchange Act of 1934
+For the fiscal year ended December 31, 2025  Commission File Number 000-00000
+ACME ROYALTY CORP.
+(Exact name of Registrant as specified in its charter)
+123 Main Street, Suite 100
+Denver, Colorado 80202
+(303) 555-0100
+(Address and telephone number of Registrant's principal executive offices)
+Securities registered or to be registered pursuant to Section 12(b) of the Act:
+Title of each class  Trading Symbol  Name of each exchange on which registered
+Common Shares  ACME  The NASDAQ Stock Market LLC
+Securities registered pursuant to Section 12(g) of the Act: None
+For annual reports, indicate by check mark the information filed with this Form:
+</pre>
+<table>
+<tr><td>[X]</td><td>Annual information form</td><td>[X]</td><td>Audited annual financial statements</td></tr>
+</table>
+<pre>
+Indicate the number of outstanding shares of each of the issuer's classes of capital or common stock as of the latest practicable date.
+Indicate by check mark whether the Registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports); and (2) has been subject to such filing requirements for the past 90 days.
+Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).
+Indicate by check mark whether the registrant is an emerging growth company as defined in Rule 12b-2 of the Exchange Act.
+Emerging growth company [X]
+If an emerging growth company that prepares its financial statements in accordance with U.S. GAAP, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards.
+The term "new or revised financial accounting standard" refers to any update issued by the Financial Accounting Standards Board to its Accounting Standards Codification after April 5, 2012.
+Indicate by check mark whether the registrant has filed a report on and attestation to its management's assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act by the registered public accounting firm that prepared or issued its audit report.
+Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant's executive officers during the relevant recovery period.
+EXPLANATORY NOTE
+Acme Royalty Corp. is a Canadian issuer that is permitted, under a multijurisdictional disclosure system, to prepare this annual report in accordance with the requirements of Canada.
+</pre>
+</body></html>"""
+
+_FENCE_BAND_STATES = {
+    "section_13a_15d_annual_report": "checked",
+    "furnished_aif": "checked",
+    "furnished_audited_financial_statements": "checked",
+    "emerging_growth_company": "checked",
+}
+
+
+def _write_fence_case(root: Path, text: str, raw: bytes | None) -> Path:
+    """Build a 40-F review artifact holding text and optional raw bytes."""
+    case_dir = root / "case"
+    ops_dir = case_dir / "operations"
+    ops_dir.mkdir(parents=True)
+    (ops_dir / "render_to_txt.txt").write_text(text, encoding="utf-8")
+    sidecar = {"accession": "0000000000-26-000001", "form": "40-F"}
+    (case_dir / "processing-review.json").write_text(
+        json.dumps(sidecar), encoding="utf-8"
+    )
+    if raw is not None:
+        (ops_dir / "raw.htm").write_bytes(raw)
+    return case_dir
+
+
+def test_analyze_form_case_adopts_production_fence(tmp_path: Path) -> None:
+    """With raw bytes, the review fence is production's; band states survive."""
+    raw = _FENCE_BAND_HTML.encode()
+    production = normalize_document(raw, form="40-F", document_path="raw.htm")
+    sidecar = {"accession": "0000000000-26-000001", "form": "40-F"}
+
+    bare_dir = _write_fence_case(tmp_path / "bare", production.text, None)
+    bare_rep = analyze_form_case(bare_dir, sidecar)
+    assert bare_rep is not None
+    # The re-derived fence ends at the unwrapped furnished line: band states lost.
+    assert bare_rep["checkmarks"]["candidate_states"] == {
+        "section_13a_15d_annual_report": "checked"
+    }
+
+    case_dir = _write_fence_case(tmp_path / "geo", production.text, raw)
+    rep = analyze_form_case(case_dir, sidecar)
+    assert rep is not None
+    assert rep["checkmarks"]["candidate_states"] == _FENCE_BAND_STATES
+    fence_line = production.text.splitlines().index("EXPLANATORY NOTE")
+    assert rep["boundary"]["end_line"] == fence_line
+
+
+def test_analyze_form_case_stale_text_keeps_rederived_fence(
+    tmp_path: Path,
+) -> None:
+    """A text the replay cannot reproduce keeps the re-derived fence."""
+    raw = _FENCE_BAND_HTML.encode()
+    production = normalize_document(raw, form="40-F", document_path="raw.htm")
+    sidecar = {"accession": "0000000000-26-000001", "form": "40-F"}
+    stale = production.text + "\nan extra line"
+    case_dir = _write_fence_case(tmp_path / "stale", stale, raw)
+    rep = analyze_form_case(case_dir, sidecar)
+    assert rep is not None
+    assert rep["checkmarks"]["candidate_states"] == {
+        "section_13a_15d_annual_report": "checked"
+    }
+
+
+def test_reinfer_with_case_dir_adopts_production_fence(tmp_path: Path) -> None:
+    """Reinfer over a raw-bearing case recovers the fence-band states."""
+    raw = _FENCE_BAND_HTML.encode()
+    production = normalize_document(raw, form="40-F", document_path="raw.htm")
+    case_dir = _write_fence_case(tmp_path / "geo", production.text, raw)
+    rep: dict = {"checkmarks": {"candidate_states": {}, "checked_keys": ()}}
+    reinfer_unmasked_checkmarks(production.text, rep, family="40-F", case_dir=case_dir)
+    assert rep["checkmarks"]["candidate_states"] == _FENCE_BAND_STATES
