@@ -94,12 +94,46 @@ class XbrlPaths:
     def snapshot_root(self, snapshot_id: str) -> Path:
         return self.snapshots_root / _validate_id(snapshot_id, "snapshot_id")
 
+    def snapshot_relation_dir(self, snapshot_id: str, relation: str) -> Path:
+        return DAGPaths(self.snapshots_root).relation_dir(snapshot_id, relation)
+
+    def snapshot_part_path(
+        self, snapshot_id: str, relation: str, part_index: int
+    ) -> Path:
+        return DAGPaths(self.snapshots_root).part_file(
+            snapshot_id, relation, part_index
+        )
+
     @property
     def review_runs_root(self) -> Path:
         return review_runs_root(self.artifacts_root, DATASET)
 
     def review_paths(self, review_id: str) -> ReviewPaths:
         return review_run_paths(self.artifacts_root, DATASET, review_id)
+
+    def review_manifest_path(self, run_id: str) -> Path:
+        return self.review_paths(run_id).manifest_path
+
+    def review_case_dir(self, run_id: str, accession: str) -> Path:
+        return self.review_paths(run_id).case_dir(accession)
+
+    def review_case_solved_nodes_path(self, run_id: str, accession: str) -> Path:
+        return self.review_case_dir(run_id, accession) / SOLVED_NODES_FILE
+
+    def review_case_rule_trace_path(self, run_id: str, accession: str) -> Path:
+        return self.review_case_dir(run_id, accession) / RULE_TRACE_FILE
+
+    def review_case_quarantine_path(self, run_id: str, accession: str) -> Path:
+        return self.review_case_dir(run_id, accession) / QUARANTINE_FILE
+
+    def review_case_hypotheses_path(self, run_id: str, accession: str) -> Path:
+        return self.review_case_dir(run_id, accession) / HYPOTHESES_FILE
+
+    def review_case_presentation_arcs_path(self, run_id: str, accession: str) -> Path:
+        return self.review_case_dir(run_id, accession) / PRESENTATION_ARCS_FILE
+
+    def review_case_calculation_arcs_path(self, run_id: str, accession: str) -> Path:
+        return self.review_case_dir(run_id, accession) / CALCULATION_ARCS_FILE
 
     @property
     def transient_root(self) -> Path:

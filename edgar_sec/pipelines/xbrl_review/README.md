@@ -34,8 +34,8 @@ The package provides both an interactive terminal console with paginated choice 
 | Subcommand | Description | Arguments |
 | :--- | :--- | :--- |
 | `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
-| `execute` | execute a projected run | `[--run-id]`, `[--artifacts]`, `[--json]` |
-| `project` | project a dataset into a resumable run | `[--dataset]`, `[--queries]`, `[--base-snapshot-id]`, `[--branch]`, `[--explicit-refresh]`, `[--chunk-size]`, `[--artifacts]`, `[--json]` |
+| `execute` | execute a projected run | `--run-id`, `[--artifacts]`, `[--json]` |
+| `project` | project a dataset into a resumable run | `--dataset`, `[--queries]`, `[--base-snapshot-id]`, `[--branch]`, `[--explicit-refresh]`, `[--chunk-size]`, `[--artifacts]`, `[--json]` |
 | `review` | generate and compare review runs with pipeline-specific commands | — |
 <!-- AUTOGEN:COMMANDS:END -->
 
@@ -92,6 +92,10 @@ The package provides both an interactive terminal console with paginated choice 
 │           ├── run_manifest.json
 │           └── work_order.parquet
 └── xbrl/
+    ├── fixtures/  # Root directory for XBRL fixture stores.
+    │   └── {fixture_id}/  # Root directory for one XBRL fixture.
+    │       ├── fixture.sqlite
+    │       └── manifest.json
     ├── review-runs/
     │   └── {run_id}/
     │       ├── cases/
@@ -105,18 +109,8 @@ The package provides both an interactive terminal console with paginated choice 
     │       └── manifest.jsonl
     ├── snapshots/
     │   ├── {snapshot_id}/
-    │   │   ├── calculation_arcs/
-    │   │   │   └── part-00000.parquet
-    │   │   ├── hypotheses/
-    │   │   │   └── part-00000.parquet
-    │   │   ├── presentation_arcs/
-    │   │   │   └── part-00000.parquet
-    │   │   ├── quarantine/
-    │   │   │   └── part-00000.parquet
-    │   │   ├── rule_trace/
-    │   │   │   └── part-00000.parquet
-    │   │   └── solved_nodes/
-    │   │       └── part-00000.parquet
+    │   │   └── {relation}/
+    │   │       └── part-{part_index}.parquet
     │   ├── .publication.lock
     │   └── catalog.sqlite  # SQLite DAG catalog database for published XBRL snapshots.
     └── unification_rules.duckdb

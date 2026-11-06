@@ -112,6 +112,87 @@ def test_tree_uses_stable_branch_connectors() -> None:
     assert result.endswith("```")
 
 
+def test_delegated_paths_render_through_factory_and_defaults(
+    tmp_path: Path,
+) -> None:
+    layout = _write_module(
+        tmp_path,
+        "layout",
+        '"""Shared layout owners."""\n'
+        "from dataclasses import dataclass\n"
+        "from pathlib import Path\n"
+        'MANIFEST_NAME = "manifest.jsonl"\n'
+        'CASES_NAME = "cases"\n'
+        "@dataclass(frozen=True)\n"
+        "class ExternalPaths:\n"
+        "    root: Path\n"
+        "    manifest_filename: str = MANIFEST_NAME\n"
+        "    cases_directory: str = CASES_NAME\n"
+        "    @property\n"
+        "    def manifest_path(self) -> Path:\n"
+        "        return self.root / self.manifest_filename\n"
+        "    @property\n"
+        "    def cases_root(self) -> Path:\n"
+        "        return self.root / self.cases_directory\n"
+        "    def case_dir(self, case_id: str) -> Path:\n"
+        "        return self.cases_root / case_id\n"
+        "def external_paths(root, run_id):\n"
+        '    return ExternalPaths(root / "review-runs" / run_id, MANIFEST_NAME)\n'
+        "class StorePaths:\n"
+        "    root: Path\n"
+        "    def relation_dir(self, snapshot_id: str, relation: str) -> Path:\n"
+        "        return self.root / snapshot_id / relation\n"
+        "    def part_path(\n"
+        "        self, snapshot_id: str, relation: str, part_index: int\n"
+        "    ) -> Path:\n"
+        "        return self.relation_dir(snapshot_id, relation) / (\n"
+        '            f"part-{part_index:05d}.parquet"\n'
+        "        )\n",
+    )
+    layout.with_name("paths.py").write_text(
+        '"""Sample path layout."""\nfrom pathlib import Path\n'
+        "from .layout import StorePaths, external_paths\n"
+        'SOLVED_FILE = "solved_nodes.parquet"\n'
+        "class SamplePaths:\n"
+        "    artifacts_root: Path\n"
+        "    @property\n"
+        "    def dataset_root(self) -> Path:\n"
+        '        return self.artifacts_root / "xbrl"\n'
+        "    def external(self, run_id: str):\n"
+        "        return external_paths(self.dataset_root, run_id)\n"
+        "    def manifest_path(self, run_id: str) -> Path:\n"
+        "        return self.external(run_id).manifest_path\n"
+        "    def case_dir(self, run_id: str, accession: str) -> Path:\n"
+        "        return self.external(run_id).case_dir(accession)\n"
+        "    def case_solved_path(self, run_id: str, accession: str) -> Path:\n"
+        "        return self.case_dir(run_id, accession) / SOLVED_FILE\n"
+        "    @property\n"
+        "    def snapshots_root(self) -> Path:\n"
+        '        return self.dataset_root / "snapshots"\n'
+        "    def relation_dir(self, snapshot_id: str, relation: str) -> Path:\n"
+        "        return StorePaths(self.snapshots_root).relation_dir(\n"
+        "            snapshot_id, relation\n"
+        "        )\n"
+        "    def part_path(\n"
+        "        self, snapshot_id: str, relation: str, part_index: int\n"
+        "    ) -> Path:\n"
+        "        return StorePaths(self.snapshots_root).part_path(\n"
+        "            snapshot_id, relation, part_index\n"
+        "        )\n",
+        encoding="utf-8",
+    )
+
+    result = render_paths_tree(layout.with_name("paths.py"))
+    assert "review-runs/" in result
+    assert "cases/" in result
+    assert "{cases_directory}" not in result
+    assert "manifest.jsonl" in result
+    assert "{accession}/" in result
+    assert "solved_nodes.parquet" in result
+    assert "{relation}/" in result
+    assert "part-{part_index}.parquet" in result
+
+
 def test_unresolved_path_requires_an_explicit_sentinel(tmp_path: Path) -> None:
     source = _write_module(
         tmp_path,
