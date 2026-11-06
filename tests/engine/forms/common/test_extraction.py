@@ -11,17 +11,21 @@ from edgar_sec.engine.forms.common.extraction import (
     build_scalar_evidence_record,
     constraint_issue,
     count_deep_elements,
+    deep_element_index,
     extract_value,
     find_child_element,
     find_child_elements,
     find_deep_elements,
+    find_deep_elements_any,
     find_element_path,
     first_deep_text,
+    grouped_deep_elements,
     has_deep_element,
     normalize_value,
     validate_xml_required,
     validate_xml_values,
     xml_element_text_or_none,
+    xml_subtree_text_normalized,
 )
 from edgar_sec.engine.forms.common.numbers import normalize_schema_number
 
@@ -223,3 +227,44 @@ def test_shared_xml_navigation_helpers() -> None:
         xml_element_text_or_none(item)
         for item in find_child_elements(namespaced, "item")
     ] == ["1", "2"]
+
+
+def test_shared_subtree_text_and_multi_name_deep_search() -> None:
+    root = ET.fromstring(
+        "<root><item> alpha <sub> beta </sub> gamma </item>"
+        "<other>delta</other><item>epsilon</item></root>"
+    )
+
+    first_item = find_child_element(root, "item")
+    assert first_item is not None
+    assert xml_subtree_text_normalized(first_item) == "alpha beta gamma"
+    spaced = ET.fromstring("<root><e>a  b<sub>c</sub></e></root>")
+    e_element = find_child_element(spaced, "e")
+    assert e_element is not None
+    assert xml_subtree_text_normalized(e_element) == "a  b c"
+    blank = ET.fromstring("<root><e>  <sub/> </e></root>")
+    blank_e = find_child_element(blank, "e")
+    assert blank_e is not None
+    assert xml_subtree_text_normalized(blank_e) == ""
+
+    assert [
+        xml_subtree_text_normalized(element)
+        for element in find_deep_elements_any(root, ("item", "other"))
+    ] == ["alpha beta gamma", "delta", "epsilon"]
+    assert find_deep_elements_any(root, ("root",)) == [root]
+    namespaced = ET.fromstring(
+        '<x:root xmlns:x="urn:probe"><x:item>1</x:item><item>2</item></x:root>'
+    )
+    assert [
+        xml_subtree_text_normalized(element)
+        for element in find_deep_elements_any(namespaced, ("item",))
+    ] == ["1", "2"]
+
+    index = deep_element_index(root)
+    assert [element.tag for element in index["item"]] == ["item", "item"]
+    assert index["root"] == [root]
+    assert [
+        xml_subtree_text_normalized(element)
+        for element in grouped_deep_elements(index, ("other", "item"))
+    ] == ["delta", "alpha beta gamma", "epsilon"]
+    assert grouped_deep_elements(index, ("absent",)) == []
