@@ -16,4 +16,4 @@ Provides immutable data structures representing cover page reporting person matr
 
 ## Deliberate gaps
 
-- **Group joint filing agreements**: Joint filing exhibit parsing is handled in Layer 3 normalizers.
+- **Group joint filing agreements**: Joint filing exhibit parsing is not implemented in any layer; a joint filing agreement exhibit is not parsed.

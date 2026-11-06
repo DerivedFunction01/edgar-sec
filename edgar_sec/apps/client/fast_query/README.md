@@ -1,6 +1,6 @@
 # fast_query
 
-Layer 5 (`apps/client/fast_query`) package providing sub-50ms catalog querying and lazy on-demand document loading.
+Layer 5 (`apps/client/fast_query`) package providing fast catalog querying and lazy on-demand document loading.
 
 ## Purpose
 
@@ -12,8 +12,8 @@ Layer 5 (`apps/client/fast_query`) package providing sub-50ms catalog querying a
 - **Lazy Content Hydration**: Filing content bytes, attachments, and renderers are instantiated as deferred closures and never fetched eagerly during query resolution.
 - **Raw/Rendered Separation**: `raw` returns candidate bytes without screening or index fetch. Rendered calls may recover the expected primary before form-specific XML parsing; an unsupported or structurally mismatched XML render returns the raw source rather than fabricated form XML.
 - **Inversion Recovery**: Rendered primary requests use the shared family trigger policy. TXT may return best-effort text if recovery cannot resolve the candidate; XML is emitted only when primary identity and family structure pass screening.
-- **Zero Barrel Re-exports**: Child symbols (`query_catalog_fast`, `make_document_fetcher`, `make_filing_renderer`) must be imported directly from their owning leaf modules.
+- **Zero Barrel Re-exports**: Child symbols must be imported directly from their owning leaf modules.
 
 ## Deliberate gaps
 
-- **Offline Catalog Reliance**: When catalog partitions are absent, falls back to direct SEC submissions JSON API for specified CIKs rather than executing local cohort planning.
+- **Offline Catalog Reliance**: When catalog partitions are absent — or present but matching no specified CIK — falls back to direct SEC submissions JSON API for specified CIKs rather than executing local cohort planning.

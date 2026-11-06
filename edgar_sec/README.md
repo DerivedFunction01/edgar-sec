@@ -11,8 +11,10 @@ and never from the layers above. This is not a convention — the
 gate on a violation.
 
 ```text
+Layer 6  tools/         code generation, fixture gathering, XBRL seeding and evaluation
+           │            may import every layer below; nothing may import it
 Layer 5  apps/          read-only, operator-facing consumers of published artifacts
-           │            may read every layer below; nothing may import it
+           │            may read every layer below
 Layer 4  pipelines/    orchestration: CLI, operator, planner, worker, merger
            │            the only layer permitted to sequence the others
 Layer 3  engine/       filing transformations and feature construction
@@ -34,7 +36,8 @@ Each layer owns one or more packages. Read the layer root README for contracts; 
 - **infra/** (Layer 2): I/O adapters: SEC HTTP, broker, DuckDB, Parquet, CAS
 - **engine/** (Layer 3): filing transformations and feature construction
 - **pipelines/** (Layer 4): orchestration: CLI, operator, planner, worker, merger
-- **apps/** (Layer 5): read-only, operator-facing consumers of published artifacts |
+- **apps/** (Layer 5): read-only, operator-facing consumers of published artifacts
+- **tools/** (Layer 6): code generation, fixture gathering, XBRL seeding and evaluation
 
 ## Shared engineering contract
 

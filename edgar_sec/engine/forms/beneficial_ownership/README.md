@@ -13,7 +13,7 @@ The engine consumes normalized text frames produced by `normalize_document`, avo
 - **Sequential text extraction**: Reporting person disclosure matrices are extracted from the normalized cover text slice without inspecting cell coordinate geometries.
 - **Unified 13D/13G matrices**: Reporting person disclosure matrices support both Schedule 13D (14 slots) and Schedule 13G (12 slots) using semantic tag mapping.
 - **Upstream glyph normalization**: Checkbox tokens and symbolic font glyphs are resolved prior to matrix extraction; the parser accepts canonical bracket tokens `[X]` and `[ ]`.
-- **Zero narrative regex passes**: Statutory narrative items are consumed directly from the normalization result's section sequence.
+- **Narrative items come from a section sequence**: Statutory narrative items are taken from a section sequence over the normalized text — recomputed with the family's taxonomy when one is registered, otherwise the normalization result's own sequence.
 - **Schema fields only**: Extractor provenance and unparsed narrative text are persisted in `operations/unparsed_sections.json`, outside the SEC XML payload.
 
 ## Deliberate gaps

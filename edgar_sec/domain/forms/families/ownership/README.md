@@ -14,4 +14,4 @@ Supplies declarative processing profiles and acquisition operation rules for SEC
 
 ## Deliberate gaps
 
-- **Forms 3 and 5 item taxonomies**: Item-level structures for initial statements and annual updates remain deferred.
+- **No item taxonomies in this family**: Item-level structures for Forms 3, 4, and 5 remain deferred; the package declares codes and the XML schema spec only.

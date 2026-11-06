@@ -94,10 +94,14 @@ files — a caller supplies a URL and chooses the accessor.
   ignored regardless.
 - **Every retryable status is handled alike**, with no special handling of a 503's
   `Retry-After`.
-- **No streaming download.** `get_bytes` reads a body `requests` already buffered
-  in full, so the size cap bounds *acceptance*, not the read.
-- **No redirect, proxy, or TLS configuration.** The session is mounted with a bare
-  adapter.
+- **No streaming `get_bytes`.** `get_bytes` reads a body `requests` already buffered
+  in full, so its size cap bounds *acceptance*, not the read. Streaming exists only
+  as `stream_to_file`, which writes, hashes, and counts chunk by chunk and enforces
+  its cap during the read.
+- **No proxy or TLS configuration, and no redirect handling on the buffered path.**
+  The session adapter disables urllib3 retries and nothing configures a proxy or
+  TLS; only `stream_to_file` follows redirects, manually, under a caller-supplied
+  validator.
 - **Metrics are in-process and lost on exit**, so a multi-process run's totals live
   only wherever the client happens to run. See
   [`../broker/README.md`](../broker/README.md).

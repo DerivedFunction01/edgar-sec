@@ -7,7 +7,7 @@ no knowledge of which phase is running or why an artifact is being written.
 
 ## Purpose
 
-Three subpackages, each a complete vertical over one external system:
+Subpackages, each a complete vertical over one external system:
 
 - `sec_http/` — the shared client for `data.sec.gov` and `www.sec.gov`: pacing,
   retry classification, a compressed on-disk response cache, metrics, and a
@@ -20,7 +20,7 @@ Three subpackages, each a complete vertical over one external system:
 - `storage/` — atomic filesystem publication, the Parquet format vocabulary, the
   DuckDB connection factory and its SQL dialect primitives, and the immutable
   snapshot-record/pointer machinery. See [`storage/README.md`](storage/README.md).
-- `distribution/` — multi-machine bundle export, signed cryptographic receipts,
+- `distribution/` — multi-machine bundle export, digest-bound cryptographic receipts,
   pipeline-affinity guards, chunk adoption, discovery, and interactive console. See
   [`distribution/README.md`](distribution/README.md).
 
@@ -45,13 +45,13 @@ lookup, and every layer above consumes the decision rather than re-making it.
 
 - **One DuckDB connection factory, and it is always bounded.**
   `storage/duckdb.connect()` is the only `duckdb.connect()` call site in
-  `edgar_sec`, and it sets the four values AGENTS.md §2.3 requires from
+  `edgar_sec`, and it sets the values AGENTS.md §2.3 requires from
   `foundation.runtime.resources.derive_resources()` — at connection time, not at
   import time, so importing the module does not probe the machine.
-- **One Parquet format vocabulary.** `storage/parquet.py` owns
-  `DEFAULT_ROW_GROUP_SIZE = 128_000` and `DEFAULT_COMPRESSION = "zstd"`, the
-  values AGENTS.md §2.5 names; every Parquet writer in the layer takes them
-  rather than re-declaring a literal.
+- **One Parquet format vocabulary.** `storage/parquet.py` owns the shared
+  compression default and resolves the row-group size from the
+  `parquet.row_group_size` setting in the foundation settings registry; every
+  Parquet writer in the layer takes them rather than re-declaring a literal.
 - **Publication is atomic.** Every writer stages to a temp file and renames, so
   a crashed run never leaves a half-written artifact in a published directory.
   The one exception is named in [`storage/README.md`](storage/README.md).
@@ -73,8 +73,9 @@ lookup, and every layer above consumes the decision rather than re-making it.
   `RuntimeResourceProfile` (or `None`) rather than per-call numbers. The
   resource contract holds by the single call site, not by a runtime check, so a
   bypass loses it silently.
-- Reuse `DEFAULT_ROW_GROUP_SIZE` / `DEFAULT_COMPRESSION` for Parquet writes; a
-  per-call literal reintroduces the inconsistency they exist to remove.
+- Reuse the shared compression default and the resolved row-group size for
+  Parquet writes; a per-call literal reintroduces the inconsistency they exist
+  to remove.
 - Pass the owning pipeline's snapshots root into `storage/manifests.py`. The
   layout is `<snapshots_root>/<snapshot_id>/manifest.json` with the pointer under
   `<snapshots_root>/current/`; `manifests.py` does not create or resolve that root
@@ -103,6 +104,5 @@ lookup, and every layer above consumes the decision rather than re-making it.
 - **Subpackage limitations are owned below**, and are not restated here:
   `sec_http/README.md` (no in-flight concurrency cap in the client, no
   read-only cache view), `broker/README.md` (a thin broker with no token
-  accounting and no supervisor), and `storage/README.md` (SQL built directly
-  with no scanner over it, Parquet as the only chunk format, no file-backed
-  DuckDB staging).
+  accounting and no supervisor), and `storage/README.md` (Parquet as the only
+  chunk format, no file-backed DuckDB staging).

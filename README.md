@@ -9,10 +9,11 @@ High-performance, memory-safe SEC EDGAR extraction engine and pipeline. Transfor
 `edgar_sec` is built from Layer 0 up with strict acyclic downward-only dependencies:
 
 ```text
+Layer 6: tools/        # Code generation, fixture gathering, XBRL seeding and evaluation
 Layer 5: apps/         # Read-only, operator-facing consumers of published artifacts
 Layer 4: pipelines/    # High-level orchestrators, CLI, and resumable execution
 Layer 3: engine/       # Normalization, array unrolling, Arrow batch construction
-Layer 2: infra/        # SEC HTTP transport, token-bucket rate limiter, DuckDB storage
+Layer 2: infra/        # SEC HTTP transport, slot-reservation rate limiter, DuckDB storage
 Layer 1: domain/       # Identity types (Cik, AccessionNumber) and schema definitions
 Layer 0: foundation/   # Shared primitives, runtime/fixture paths, resource budgets, settings, scanners
 ```
@@ -38,6 +39,15 @@ Layer 0: foundation/   # Shared primitives, runtime/fixture paths, resource budg
 > **Run every command from the repository root.** The artifacts, uploads, and
 > cache roots all derive from the current working directory.
 
+### Environment Setup
+```bash
+# Build the venv from pyproject.toml (uses uv when found, falls back to pip):
+python3 init_venv.py
+
+# Generate documented environment configuration:
+python -c "from edgar_sec.foundation.runtime.settings import render_dotenv; print(render_dotenv())" > .env
+```
+
 ### Interactive Launcher
 ```bash
 # Launch interactive dispatcher menu:
@@ -53,12 +63,6 @@ python run.py
 .venv/bin/python check.py --fast
 ```
 
-### Environment Setup
-```bash
-# Generate documented environment configuration:
-python -c "from edgar_sec.foundation.runtime.settings import render_dotenv; print(render_dotenv())" > .env
-```
-
 ### Pipeline Gateway
 
 Individual pipeline workflows, CLI arguments, and operational contracts are owned
@@ -72,6 +76,7 @@ by the respective pipeline package documentation:
 | **Document Inventory** | SEC index page review, projection, and catalog anti-join | [`pipelines/document_inventory`](edgar_sec/pipelines/document_inventory/README.md) |
 | **Document Planning** | Offline target-plan generation matching catalog and inventory evidence | [`pipelines/document_planning`](edgar_sec/pipelines/document_planning/README.md) |
 | **Document Acquisition** | Target projection, bounded SEC acquisition, and run-state management | [`pipelines/document_acquisition`](edgar_sec/pipelines/document_acquisition/README.md) |
+| **XBRL Review** | XBRL semantic review, cohort staging, and hypothesis promotion | [`pipelines/xbrl_review`](edgar_sec/pipelines/xbrl_review/README.md) |
 | **Dataset Viewer** | Operator browser and read-only DuckDB SQL console (Layer 5) | [`apps/viewer`](edgar_sec/apps/viewer/README.md) |
 
 ---
@@ -95,7 +100,8 @@ edgar_sec/               # each package has its own README.md (linked above)
 │                       #   projection, resumable S4, DAG-backed S5 publication/query),
 │                       #   document_planning (offline S6 target plans),
 │                       #   document_acquisition (S9 work-order projection and bounded acquisition)
-└── apps/               # Layer 5: the dataset viewer (read-only, no publishing)
+├── apps/               # Layer 5: dataset viewer, convenience client, and runner (read-only, no publishing)
+└── tools/              # Layer 6: docgen, worker calibration, fixture gathering, XBRL seeding/evaluation
 
 tests/                      # mirrors the edgar_sec/ package tree
 ├── support.py              # Shared fixture access and offline HTTP test doubles
@@ -104,9 +110,10 @@ tests/                      # mirrors the edgar_sec/ package tree
 
 check.py                # Unified repository quality gate runner
 run.py                  # Interactive terminal workflow dispatcher
+pyproject.toml          # Single dependency source (init_venv.py builds the venv from it)
+init_venv.py            # Venv bootstrap: flags-only, uv when found, pip fallback
 ruff.toml               # Lint configuration (suppressions live here, not in code)
 AGENTS.md               # Binding engineering contract and design guidelines
-roadmap/                # Multi-phase product roadmap specifications
 ```
 
 The test tree convention — every test directory is a package, and fixture access

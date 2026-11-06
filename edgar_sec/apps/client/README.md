@@ -20,5 +20,5 @@ lazy row-level polymorphic report projection (`as_report()`).
 
 ## Deliberate gaps
 
-- **No client-side state caching**: Pointers reference published pipeline artifacts rather than client memory.
-- **No live network fetches in data models**: `FilingsResult` and `FilingAggregate` perform no network I/O.
+- **No result-side state caching**: `FilingsResult` pointers reference published pipeline artifacts rather than client memory; caching lives in the bounded facade LRU and the SQLite document cache, not in the result model.
+- **No network code in data models**: `FilingsResult` and `FilingAggregate` issue no requests themselves; the fetch closures injected into an aggregate fetch live, lazily, when its payload is read.

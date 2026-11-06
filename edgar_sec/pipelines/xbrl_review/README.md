@@ -8,12 +8,12 @@ Orchestrates multi-firm XBRL semantic review runs, epistemic quarantine audits, 
 
 A projection run starts from a dataset of filing accessions (`project`), is executed by the pipeline's own worker (`execute`) — each filing solved from its seed bundle through the constraint solver, counter-solver, and tokenizer, staged as chunk attempts, and published as a snapshot through the DAG machinery — and can be staged as a review run (`review generate`) whose cases the objective differ compares across runs. Promotion of a candidate hypothesis into the unification knowledge base is gated on recorded census, pair-gate, and battery evidence, and promoted rules load back into the engine knowledge base that later runs are built over.
 
-The package provides both an interactive terminal console (`operator.py`) with paginated choice selection and a scriptable CLI (`cli.py`) supporting projection, execution, review artifact generation, objective diffing, gate-evidence computation, and rule promotion.
+The package provides both an interactive terminal console with paginated choice selection and a scriptable CLI supporting projection, execution, review artifact generation, objective diffing, gate-evidence computation, and rule promotion.
 
 ## Contracts
 
 - **Zero Network Fetching**: This pipeline operates exclusively over pre-extracted filing facts, cohorts, and linkbase bundles; it makes no live requests to SEC EDGAR.
-- **Objective Diffing**: Case comparisons report strictly what nodes were modified, added, removed, or left unchanged via `infra.storage.review.diff.diff_json`.
+- **Objective Diffing**: Case comparisons report strictly what nodes were modified, added, removed, or left unchanged via the infra storage layer's objective differ.
 - **Pure Engine Separation**: Semantic lattice decomposition, ISDA netting derivation, and constraint satisfaction remain in `engine.xbrl`; this pipeline owns only orchestration, staging, and persistence.
 - **Atomic Knowledge Base Updates**: Candidate rules are promoted into the DuckDB knowledge base via atomic transactional inserts.
 - **Gated Promotion**: A hypothesis promotes only with gate evidence recorded against it; `promote` refuses without passing census, pair-gate, and battery evidence, and promoted rules are loaded by later runs.
@@ -78,8 +78,10 @@ The package provides both an interactive terminal console (`operator.py`) with p
 │           ├── chunks/
 │           │   └── {chunk_id}/
 │           │       ├── attempt-{attempt_id}/
+│           │       │   ├── calculation_arcs.parquet
 │           │       │   ├── hypotheses.parquet
 │           │       │   ├── manifest.json
+│           │       │   ├── presentation_arcs.parquet
 │           │       │   ├── quarantine.parquet
 │           │       │   ├── rule_trace.parquet
 │           │       │   └── solved_nodes.parquet
@@ -94,14 +96,20 @@ The package provides both an interactive terminal console (`operator.py`) with p
     │   └── {run_id}/
     │       ├── cases/
     │       │   └── {accession}/
+    │       │       ├── calculation_arcs.parquet
     │       │       ├── hypotheses.parquet
+    │       │       ├── presentation_arcs.parquet
     │       │       ├── quarantine.parquet
     │       │       ├── rule_trace.parquet
     │       │       └── solved_nodes.parquet
     │       └── manifest.jsonl
     ├── snapshots/
     │   ├── {snapshot_id}/
+    │   │   ├── calculation_arcs/
+    │   │   │   └── part-00000.parquet
     │   │   ├── hypotheses/
+    │   │   │   └── part-00000.parquet
+    │   │   ├── presentation_arcs/
     │   │   │   └── part-00000.parquet
     │   │   ├── quarantine/
     │   │   │   └── part-00000.parquet

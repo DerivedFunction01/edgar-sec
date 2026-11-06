@@ -14,13 +14,13 @@ filer-authored tables. Recognized values are normalized to ownership XML types a
 - **Incomplete forms**: Unrecognized required values are omitted from XML and reported by analysis.
 - **Token-based cell disambiguation**: Table cells are mapped by lexical type invariants rather than rigid column coordinates.
 - **Declarative columns**: Table I and Table II columns are declared once as row specs and normalized through the shared field contract.
-- **Date anchoring**: Two-digit years resolve only against the external report date, then the filing date; an unanchored two-digit date is omitted and recorded in the sidecar.
+- **Date anchoring**: Two-digit years resolve against the external report date, then the filing date, then the filing's own period, transaction, and signature dates; a date with no anchor at all is omitted and recorded in the sidecar.
 - **No barrel re-exports**: Consumers import leaf modules directly.
 - **Layer discipline**: Sits in Layer 3 (`engine/`), importing only downwards.
 
 ## Deliberate gaps
 
-- **Paper and PDF routes deferred**: Only markup (`.htm`) routes are parsed into XML.
+- **Paper and PDF routes deferred**: Markup routes are parsed into XML, and plain-text routes fall back to the ASCII parser; no paper or PDF text extraction runs here.
 - **Late-filing Box 1(b) flags**: Preserved in diagnostic envelopes but not emitted as distinct statutory flags.
 - **Form 3 table layouts**: Initial-ownership tables parse for the supported holding layouts; other layouts stay in the sidecar.
 - **Non-standard co-owner schedules**: Joint filers sharing non-grid narrative blocks remain in the sidecar.

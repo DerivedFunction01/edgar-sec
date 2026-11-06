@@ -15,4 +15,4 @@ Validates acquired-body evidence, executes the selected document operations as p
 
 ## Deliberate gaps
 
-- **Partial operation support**: Non-identity transforms remain unsupported until their handlers and budgets are available.
+- **Partial operation support**: Non-identity transforms run where a handler is registered for the target's family and route; unregistered combinations fail closed for that operation.

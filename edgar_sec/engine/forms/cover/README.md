@@ -18,9 +18,9 @@ applies it but never owns it.
 ## Contracts
 
 - **`find_cover_boundary(input, None)`**: returns `BoundaryMethod.DISABLED` and no boundary. An absent policy is an explicit opt-out, never a default guess.
-- **No single signal is authoritative**: Every rung requires corroboration: an incorporated-reference phrase match is ignored unless at least two cover identity signals matched *or* a page marker was seen, and the same identity gate guards the TOC, PART, and ITEM rungs. This is why a current report never acquires a cover boundary even when its text contains a form heading.
-- **The ladder returns the first rung that fires and is corroborated**: incorporated reference, TOC span, bare TOC heading, exact PART, exact ITEM, decisive body prose, then the cover-only fragment.
-- **Every returned boundary carries evidence rows**: `approximate=True` always. A caller needing certainty should read `evidence`, not `confidence`.
+- **No single signal is authoritative**: Every rung requires corroboration: an incorporated-reference phrase match is ignored unless at least two cover identity signals matched *or* a page marker was seen, and the same identity gate guards the TOC, PART, and ITEM rungs. A form heading alone therefore never gives a current report a cover boundary; its boundary requires the same corroboration as any other family's.
+- **The ladder returns the first rung that fires and is corroborated**: incorporated reference, TOC span, bare TOC heading, exact PART, amendment transition, exact ITEM, decisive body prose, table body, then the cover-only fragment.
+- **Every returned boundary is `approximate=True`**: A found boundary carries evidence rows; an unknown or disabled boundary carries none. A caller needing certainty should read `evidence`, not `confidence`.
 - **Backward confirmation may only move the boundary earlier**: never later. A gap wider than the confirm window pulls the boundary back; a narrow gap leaves it alone.
 - **`infer_cover_checkmarks` reports UNRESOLVED on ties**: It never breaks a tie.
 - **`clean_cover_tables` classifies against raw text**: never against geometry rows from a prior render pass.

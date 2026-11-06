@@ -13,4 +13,4 @@ Resolves acquisition operations against family policy, document path facts, and 
 
 ## Deliberate gaps
 
-- **Limited built-in transforms**: The default registry supports raw identity, text normalization, and PDF text extraction; XML conversion requires a registered capability and handler.
+- **Limited built-in transforms**: The default registry supports raw identity, text normalization, and PDF text extraction; XML conversion requires a registered capability and handler. Render-to-text of a flat XML primary for a family with no profile is not applicable, not unsupported: XML is data, and no text render is attempted.

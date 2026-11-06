@@ -7,38 +7,21 @@ phase-specific parameters.
 
 ## The registry
 
-Every setting under a dotted path, with its derived `env` name and per-spec source
-flags. A default marked `secret` is contact identity that must never be published.
+Settings are declared as `SettingSpec`s by the modular providers under
+`foundation/runtime/settings/` — one provider per concern, covering runtime
+budgets, project paths, SEC access, Parquet and SQL batching, and the
+concerns phases register for themselves. The registry declared there is the
+single source of truth: `collect_specs()` introspects every declared spec —
+its logical path, derived environment name, type, default, and per-spec
+source flags — so this README does not copy the registry out as a table.
 
-| Logical path | Env name | Type | Default | env | config | cli | secret | machine_local |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| `runtime.worker_memory_mib` | `RUNTIME_WORKER_MEMORY_MIB` | int | `512` | yes | no | no | no | yes |
-| `runtime.worker_memory_safety` | `RUNTIME_WORKER_MEMORY_SAFETY` | float | `0.9` | yes | no | no | no | yes |
-| `runtime.workers` | `RUNTIME_WORKERS` | int | `auto_worker_count(...)` | yes | no | yes | no | yes |
-| `runtime.chunk_size` | `RUNTIME_CHUNK_SIZE` | int | `1000` | yes | no | yes | no | no |
-| `runtime.threads` | `RUNTIME_THREADS` | int | `default_threads()` | yes | no | yes | no | yes |
-| `runtime.memory_fraction` | `RUNTIME_MEMORY_FRACTION` | float | `0.6` | yes | no | no | no | yes |
-| `runtime.memory_limit` | `RUNTIME_MEMORY_LIMIT` | str | `default_memory_limit(fraction)` | yes | no | yes | no | yes |
-| `runtime.temp_directory` | `RUNTIME_TEMP_DIRECTORY` | str | `<tempdir>/edgar-sec-spill` | yes | no | no | no | yes |
-| `artifacts.root` | `ARTIFACTS_ROOT` | Path | `.artifacts` | yes | no | no | no | yes |
-| `cache.root` | `CACHE_ROOT` | Path | `<artifacts.root>/caches` | yes | no | no | no | yes |
-| `cache.ttl_s` | `CACHE_TTL_S` | int | `7776000` (90 days) | yes | no | no | no | yes |
-| `sec.user_agent` | `SEC_USER_AGENT` | str | `"Sample Company Name AdminContact@sample.com"` | yes | no | yes | **yes** | no |
-| `sec.rate_limit_rps` | `SEC_RATE_LIMIT_RPS` | float | `8.0` | yes | no | yes | no | yes |
-| `sec.timeout_s` | `SEC_TIMEOUT_S` | float | `15.0` | yes | no | yes | no | yes |
-| `sec.max_retries` | `SEC_MAX_RETRIES` | int | `3` | yes | no | yes | no | yes |
-| `sec.max_failure_attempts` | `SEC_MAX_FAILURE_ATTEMPTS` | int | `3` | yes | no | yes | no | yes |
-| `catalog.row_group_size` | `CATALOG_ROW_GROUP_SIZE` | int | `128000` | no | no | no | no | no |
-| `documents.read_batch_size` | `DOCUMENTS_READ_BATCH_SIZE` | int | `4096` | yes | no | no | no | yes |
-| `documents.payload_target_bytes` | `DOCUMENTS_PAYLOAD_TARGET_BYTES` | int | `100663296` (96 MiB) | yes | no | no | no | yes |
-| `dag.graph_limit` | `DAG_GRAPH_LIMIT` | int | `25` | yes | yes | yes | no | no |
-| `interactive.page_size` | `INTERACTIVE_PAGE_SIZE` | int | `15` | yes | yes | yes | no | no |
+`sec.user_agent` is the only `secret=True` spec; a default marked `secret`
+is contact identity that must never be published.
 
-`sec.user_agent` is the only `secret=True` spec. The `catalog.row_group_size`
-and `documents.*` defaults duplicate
-authorities owned by `infra.storage.parquet` and `pipelines.document_storage`; the
-layer graph forbids Layer 0 from importing them, so each pair is pinned by a
-mirrored test instead.
+One default is deliberately duplicated: the `parquet.row_group_size`
+default declared here is consumed above this layer by
+`infra.storage.parquet`; the layer graph forbids Layer 0 from importing it,
+so the pair is pinned by a mirrored test instead.
 
 ## Contracts
 
@@ -68,9 +51,8 @@ mirrored test instead.
   `secret=True` protects a value you resolve yourself.
 - Do not declare `config=True` without a backing store; a spec that advertises
   persistence nothing implements is a capability that does not exist.
-- Treat a change to the `validate_fraction` bound as settings-breaking: `1.0` is
-  currently accepted, and narrowing the range would reject a value that resolves
-  today.
+- Treat a change to the `validate_fraction` bound as settings-breaking:
+  narrowing the accepted range would reject a value that resolves today.
 
 ## Deliberate gaps
 

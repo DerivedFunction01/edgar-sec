@@ -3,7 +3,7 @@
 ## Purpose
 
 Vocabulary, term sets, and `TableFamilySpec` definitions for the supplementary schedules
-embedded in SEC filing notes (ASC 260/330/350/360/470/715/740/815/820/842) plus the
+embedded in SEC filing notes (ASC 220/260/330/350/360/470/715/718/740/815/820/842) plus the
 statutory exhibit index concepts of Regulation S-K Item 601. Each schedule declares its
 terms, its exclusions, and its 2D shape; the family specs are assembled into
 `FAMILY_SPECS` by `tables/families.py`.

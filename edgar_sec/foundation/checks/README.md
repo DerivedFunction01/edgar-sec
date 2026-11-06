@@ -7,8 +7,8 @@ test execution.
 
 ## Contracts
 
-- **Deterministic & dependency-free**: standard library only (`ast`, `pathlib`, `json`, `subprocess`).
-- **Layer 0**: imports only from `foundation.scanners` and `foundation.runtime.paths`, enforced by the `layer-boundary` scanner.
+- **Deterministic**: standard library plus the Layer 0 modules it orchestrates (`foundation.scanners`, `foundation.runtime.paths`, and, lazily in the runner, `foundation.runtime.resources`).
+- **Layer 0**: imports only from within `foundation`, enforced by the `layer-boundary` scanner.
 - **Transient cache isolation**: the dep graph lives in `.artifacts/transient/cache/dep_graph.json`, written by atomic rename from a `.tmp` sibling, so it never dirties the git tree.
 - **Test selection is derived purely from the working tree**: direct test edits, 0-hop mirrors, conftest scope, and the reverse import closure. A source change to `check.py` selects all of `tests/foundation/checks/`.
 - **Cache staleness is bounded**: entries are keyed on `mtime_ns`, evicted when their file disappears from a full-tree scan, and discarded wholesale on a version mismatch or unreadable payload.

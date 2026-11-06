@@ -12,9 +12,9 @@ unresolved-content evidence.
 
 ## Contracts
 
-- **Layer discipline**: Sits in Layer 3 (`engine/`), importing only from `domain` and `foundation`.
-- **Pure transformation**: Offline text and node parsing with zero network or filesystem I/O.
-- **Total functions**: Parsers never throw on malformed or partial input.
+- **Layer discipline**: Sits in Layer 3 (`engine/`), importing only from `domain`, `foundation`, and other `engine` modules.
+- **Pure transformation**: Offline text and node parsing with zero network I/O; only the unparsed-sections sidecar loader reads the filesystem.
+- **Total parsers**: Text parsers never throw on malformed or partial input; the sidecar loader and field-spec validation raise `ValueError` on invalid records.
 - **One field contract**: Families declare fields and table columns as specs; this module owns normalization, constraint checking, and XML emission.
 - **One evidence record**: Unresolved scalar values and unparsed regions share a single sidecar record shape.
 - **One mark writer**: `marks.py` owns how a recognized mark is written back into parser input; the token vocabulary stays in the domain layer.

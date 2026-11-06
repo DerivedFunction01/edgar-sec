@@ -11,7 +11,8 @@ cover machinery.
 Reviews the SD face: registrant and commission file number off the
 cover, the rule-election checkbox pair resolved through the shared
 checkmark machinery, the Section 1 / 2 / 3 items, and the EX-1.01 /
-EX-2.01 companion signals the primary itself records.
+EX-1.02 / EX-2.01 / EX-99.1 companion signals the primary itself
+records.
 
 ## Contracts
 
@@ -20,11 +21,11 @@ EX-2.01 companion signals the primary itself records.
   extraction, combined); item presence is only a fallback when no
   box resolves, and a filing with neither is reported undetermined,
   never guessed.
-- **Companions are signals, never parsed**: EX-1.01 (conflict
-  minerals report) and EX-2.01 (payment report) are recorded as
-  type-and-presence signals from the primary's own exhibit
-  references. EX-2.01 content is Inline XBRL and routes to XBRL
-  provenance, not text parsing.
+- **Companions are signals, never parsed**: EX-1.01 and EX-1.02
+  (conflict minerals reports) and EX-2.01 and EX-99.1 (payment
+  reports) are recorded as type-and-presence signals from the
+  primary's own exhibit references. EX-2.01 content is Inline XBRL
+  and routes to XBRL provenance, not text parsing.
 
 ## Deliberate gaps
 

@@ -55,7 +55,7 @@ distinct output line to name.
 ## Production consumers
 
 - `edgar_sec/engine/forms/normalize.py` — `normalize_document`, on the ASCII branch
-  (representation is not HTML, and `body_start_line > 0`).
+  (representation is not HTML, and `body_start_line > 0` or the profile has no cover).
 - `edgar_sec/engine/forms/cover/healing/text.py` — `heal_cover_text`, on the cover slice.
 
 ## Deliberate gaps
@@ -71,8 +71,8 @@ distinct output line to name.
   as one string.
 - **No `PageMarkerAnalysis` construction.** `page_analysis` is read for `page_number_runs`
   and nothing else; building one belongs to `engine/document/page_markers/`.
-- **No coverage accounting in the result.** `ReflowResult` carries text, decisions, and the
-  two protected-region lists — not the lines before and after the body boundary, and not a
-  count of what the resolver absorbed. A caller wanting that must read the decision evidence.
+- **No coverage accounting in the result.** `ReflowResult` does not carry the lines before
+  and after the body boundary, or a count of what the resolver absorbed. A caller wanting
+  that must read the decision evidence.
 - **No reference-implementation parity harness.** The mirrored suite above is the only executable
   record.

@@ -12,7 +12,7 @@ zero-network pipeline: read the published Phase 1 snapshot, unnest its nested
 `filings` arrays into flat document targets, and publish a selectable work order
 for a future acquisition phase.
 
-Two planning scopes with genuinely different jobs:
+Planning scopes with genuinely different jobs:
 
 - **Deterministic** (`plan --scope deterministic`, the default) — a fast,
   rule-based slice filtered by forms, document suffixes, a date selection,
@@ -42,9 +42,12 @@ ways a network dependency creeps in.
   existing snapshot directory, and source parts that share a CIK. A Phase 1 schema
   change fails loudly instead of producing a silently truncated catalog, and an
   explicit `--artifacts` root cannot silently destroy published state.
-- **`materialize` writes one target shard per source part.** Occurrence dedup is per
-  shard and keyed on `source_cik`, so parts sharing a CIK are refused rather than
-  repaired. Peak memory is set by the densest single part rather than by the cohort.
+- **`materialize` writes one target shard per source part.** For a checkpoint,
+  occurrence dedup is per shard and keyed on `source_cik`, so parts sharing a CIK
+  are refused rather than repaired. For a delta source — one whose handoff names
+  a parent snapshot already in the catalog — each shard instead excludes the
+  parent's occurrences, so the child's shards hold only what the parent lacks.
+  Peak memory is set by the densest single part rather than by the cohort.
 - **Target shards are not globally sorted, and the manifest says so.** Each shard
   is ordered by the projection key; shards follow Phase 1 source-part order, whose
   CIK ranges overlap. `sort_order: "source_part_order"` is recorded so a consumer
@@ -60,10 +63,10 @@ ways a network dependency creeps in.
   (`--branch`, default `main`; `--expected-branch-tip` pins the branch tip expected at
   commit). A stale tip leaves the pointer unchanged. Scratch materialization (an explicit
   artifacts root) writes the snapshot but never moves the pointer.
-- **`plan --catalog` selects input; it does not publish.** It is a read selector over
-  published Phase 1 snapshots for later `materialize`/`plan` use. Source identity,
-  inferred lineage, and scratch roots are governed by `materialize`, whose durable path
-  advances the DAG catalog pointer.
+- **`plan --catalog` selects input; it does not publish a catalog.** It is a read
+  selector over published catalog snapshots (an id or `current`) for `plan` use.
+  Source identity, inferred lineage, and scratch roots are governed by
+  `materialize`, whose durable path advances the DAG catalog pointer.
 - **Plan identity is a function of the request.** The same catalog and the same
   filters always resolve to the same published bundle, and an exact rerun reuses it
   instead of forking a new one. A directory that exists but describes a different
@@ -73,8 +76,9 @@ ways a network dependency creeps in.
 - **A plan bundle is complete when it matches its recorded manifest.** That requires
   every required file, the seed sidecar for a policy plan, and a match between the
   on-disk partition set and the one recorded in `plan.json`, so a legitimately empty
-  plan remains complete while a bundle that lost a shard is rejected. Schema 1.4
-  plans also verify each selected target part's row count, byte size, and SHA-256.
+  plan remains complete while a bundle that lost a shard is rejected. Plans at the
+  target-plan schema version declared in `domain.filing_catalog.schemas` also
+  verify each selected target part's row count, byte size, and SHA-256.
 - **A zero-row plan is still structurally complete and reusable.** The `targets/`
   directory and `locator_groups.parquet` are always written.
 - **Cohort inputs are content-bound and fail closed.** Deterministic `--cohort`
@@ -182,7 +186,7 @@ python run.py filing-catalog plan --catalog --scope deterministic --forms 10-K -
 python run.py filing-catalog plan --catalog --scope deterministic --accession-limit 100 --min-exhibit-like 10
 
 # Plan a policy-driven target list
-python run.py filing-catalog plan --catalog --scope policy --auto-policy --cohort curated
+python run.py filing-catalog plan --catalog --scope policy --auto-policy --seed-cohort curated
 
 # Expand a policy plan to meet target units
 python run.py filing-catalog expand --parent-plan plan-2024-01-15 --target-units 500
@@ -215,7 +219,11 @@ The catalog is built one source part at a time, and each part's occurrences are
 written to its own `filing_targets/part-NNNNN.parquet`. The DAG node records output
 relations, schema versions, form counts, and source provenance in SQLite. Staging is
 published before the durable DAG record is advanced; no JSON snapshot sidecar is
-written or used to classify snapshot folders.
+written or used to classify snapshot folders. When the source is a metadata
+delta, the node is published as kind `delta` with a parent ref to the base
+catalog, its profiles are the base and delta profiles unioned with newer rows
+superseding by `fetched_at`, and readers compose the full target set through DAG
+lineage rather than from the child's shards alone.
 
 Sharding bounds peak memory to the densest single part instead of the whole cohort,
 and it adds one precondition: because occurrence dedup is per shard, source parts
@@ -379,9 +387,11 @@ with it.
   but not its output, and needs equality tests against the current query first. Until
   then, a large deterministic plan must be narrowed with `--forms`, `--dates`, or
   `--limit`.
-- **Selection feature snapshots are not catalogued.** Their content-addressed cache
-  records remain separate from the catalog DAG and are not discovered as filing
-  catalogs.
+- **Selection feature snapshots are catalogued, but are not filing catalogs.**
+  They are published as DAG nodes on `features/<hash>` branches in the same
+  snapshots root; loading one requires its DAG registration. They carry no
+  `filing_targets` relation, so catalog discovery surfaces them with zero targets
+  and no form counts rather than as selectable catalogs.
 - **Target shards are not globally sorted, and no consumer can make them so
   without a full re-sort.** Restoring a dataset total order would mean one sort
   over the whole occurrence set, which is the memory ceiling this layout exists to
@@ -394,8 +404,9 @@ with it.
 - **`selection_report.json` is an audit artifact.** No production machine reads it or
   the feasibility prediction inside it; they exist for a human reviewing a run.
 - **Selection identity and payload integrity are separate.** `plan_fingerprint`
-  covers selected locator keys; schema 1.4 adds `target_parts` digests for the
-  selected occurrence Parquet files. Other sidecars remain governed by their own
+  covers selected locator keys; the current target-plan schema (declared in
+  `domain.filing_catalog.schemas`) adds `target_parts` digests for the selected
+  occurrence Parquet files. Other sidecars remain governed by their own
   schema and validation contracts.
 - **A fresh policy plan tolerates an underfilled quota; an expansion does not.**
   A first plan reflects a corpus; an expansion is a promise the caller made.

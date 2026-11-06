@@ -9,12 +9,13 @@ lifecycle.
 
 ## Purpose
 
-| Concern | Modules |
-| :--- | :--- |
-| Configuration sources. `env.py` is the only module permitted to touch `os.environ`. | `env.py`, `settings/` |
-| Where project roots and shared artifact/fixture layout are resolved. | `paths.py`, `fixtures.py`, `settings/paths.py` |
-| How much may run at once, from cgroup and `/proc` facts rather than raw CPU count. | `resources.py` |
-| How a run presents itself and splits work. | `progress.py`, `interactive.py`, `partitions.py` |
+The package's concerns are: configuration sources, with environment access
+confined to a single module in this package and configurable values declared
+by the settings providers under `settings/`; where project roots and the
+shared artifact and fixture layout are resolved; how much may run at once,
+from cgroup and `/proc` facts rather than raw CPU count; how freed heap is
+returned to the OS; how operator output is rendered to the terminal and how
+a run presents its progress; and how work is split across workers.
 
 Not a pipeline runner: this package does not run a pipeline, create workers, or
 know what a CIK or an accession number is.
@@ -39,9 +40,11 @@ know what a CIK or an accession number is.
   cgroup v2 (`memory.max` minus `memory.current`, returning `None` when
   `memory.max` is the literal `max`), then cgroup v1, then psutil, then
   `/proc/meminfo` `MemAvailable`, and only then `_physical_memory_bytes()`.
-- `auto_worker_count(available, worker_memory_mib=512, safety_fraction=0.9)`
-  returns `max(1, min(cores, mem_workers))`, so the memory budget and the CPU
-  count are both upper bounds and the answer is never zero.
+- `auto_worker_count(available, ...)` returns
+  `max(1, min(cores, mem_workers))`, so the memory budget and the CPU
+  count are both upper bounds and the answer is never zero. Its per-worker
+  memory budget and safety fraction are declared in code and in the settings
+  registry, not here.
 - `usable_memory_bytes()` and `auto_worker_count()` reject a `safety_fraction`
   outside `(0, 1]` with `ValueError`; `default_memory_limit()` rejects a
   `fraction` outside `(0, 1]`.
@@ -53,12 +56,12 @@ know what a CIK or an accession number is.
   `edgar_sec` package directory or anywhere beneath it. Passing an explicit
   `repo_root` bypasses that check, because a caller that names the root has
   already answered the question.
-- The artifacts root is the registered setting `artifacts.root` (env
-  `ARTIFACTS_ROOT`, default `.artifacts`), read by `resolve_paths()` through the
-  registry. A relative value is anchored to the project root; an absolute value
-  is taken as given. The uploads root is always `repo_root / "uploads"` and has
-  no override. **There is no cache root here**: the cache root is `cache.root`
-  (env `CACHE_ROOT`, default `<artifacts>/caches`), read through
+- The artifacts root is the registered setting `artifacts.root`, read by
+  `resolve_paths()` through the registry; its environment name and default
+  live in that registry. A relative value is anchored to the project root; an
+  absolute value is taken as given. The uploads root is always
+  `repo_root / "uploads"` and has no override. **There is no cache root
+  here**: the cache root is the registered setting `cache.root`, read through
   `resolve_runtime_settings().cache_root`. Both roots have exactly one
   authority.
 - `runtime_root()` and `transient_dir()` are shared
@@ -84,11 +87,12 @@ know what a CIK or an accession number is.
 - Never read `os.environ` or `os.getenv` outside `env.py`; the
   `environment-access` scanner reports a finding for any other module.
 - Never hardcode a `".artifacts"` literal. The `artifact-paths` scanner exempts
-  only `runtime/paths.py`, `runtime/settings/paths.py`, and `check.py`.
+  only the modules that own the path vocabulary and the gate entry point.
 - Never hardcode `threads=`, `max_workers=`, or `memory_limit=`. The
-  `resource-allocation` scanner exempts `runtime/resources.py`,
-  `runtime/settings/`, `foundation/scanners/`, and `scratch/`. Derive with
-  `derive_resources()` or accept `None` and let the caller supply the value.
+  `resource-allocation` scanner exempts only the modules that own the resource
+  budgets and the settings registry, the scanners themselves, and scratch.
+  Derive with `derive_resources()` or accept `None` and let the caller supply
+  the value.
 - Run the CLI from the repository root. `resolve_paths()` treats the working
   directory as the project root, so running from anywhere else publishes into a
   parallel tree; the package-directory case is the one it refuses outright.

@@ -100,10 +100,10 @@ python -m edgar_sec.apps.viewer.cli --api-only
 
 ### Endpoints
 
-`GET /api/health`, `GET /api/tree`, `GET /api/files/{id}/text`,
-`GET /api/datasets`, `GET /api/documents`, `GET /api/datasets/{id}/schema`,
-`.../stats`, `.../rows`, `.../blob`, `POST /api/datasets/{id}/sql`,
-`GET /api/documents/{id}`. The OpenAPI document is served under `/api` so it can
+The HTTP surface is a small set of read-only JSON endpoints for health, tree
+browsing, file text, and dataset schema, stats, rows, and blob access, plus the
+SQL console submission; the route registration in `server.py` is authoritative
+for the exact paths. The OpenAPI document is served under `/api` so it can
 never collide with the static mount at `/`.
 
 `ArtifactSummary`'s and `TreeEntry`'s field names are part of this contract: the
@@ -139,8 +139,8 @@ bun test
   a relation does not appear and there is no override. The tree is a view of what
   this app can show, not a faithful copy of the filesystem.
 - **Documents are not rendered as pages.** Payload parts carry zstd-compressed
-  filings; `/blob` decompresses and returns the full text plus a `preview`
-  truncated to `MAX_BLOB_PREVIEW` (500 chars). There is no cap on the returned
+  filings; `/blob` decompresses and returns the full text plus a short
+  `preview`. There is no cap on the returned
   `text` itself, so the response size is bounded by the filing, not by the app.
   There is no HTML-sanitizing renderer, and `ui/src/` injects no raw markup, so
   filing HTML arrives as text rather than injected.

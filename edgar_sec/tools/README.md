@@ -34,7 +34,7 @@ evaluate grounded XBRL populations.
   observed per-case call work is sufficient to reject it against a direct result.
 - **One pytest invocation per probe**: Mixed selections retain their original
   selectors and shared session-fixture behavior.
-- **Offline execution**: Tooling performs zero network I/O.
+- **Offline generation and calibration**: `docgen` and `workers` perform zero network I/O. The gathering tools are the exception by design: `fixtures` scoring and `xbrl_discovery` seeding fetch from SEC and taxonomy hosts.
 
 ## Deliberate gaps
 
