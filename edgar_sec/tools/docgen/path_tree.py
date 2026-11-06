@@ -227,6 +227,14 @@ class _PathResolver:
             name = member.target.id
             if name in result.fields:
                 continue
+            default = (
+                self._expr(module, member.value, {}, None)
+                if member.value is not None
+                else None
+            )
+            if isinstance(default, (str, int, float)):
+                result.fields[name] = default
+                continue
             result.fields[name] = self._field_value(module, member.annotation, name)
         slots = next(
             (
@@ -465,9 +473,7 @@ class _PathResolver:
             for item in node.body
             if isinstance(item, ast.AnnAssign) and isinstance(item.target, ast.Name)
         ]
-        fields = {
-            item.target.id: self._placeholder(item.target.id) for item in annotations
-        }
+        fields: dict[str, Any] = {}
         for item, argument in zip(annotations, call.args):
             fields[item.target.id] = self._expr(module, argument, env, current)
         for keyword in call.keywords:
