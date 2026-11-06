@@ -399,6 +399,35 @@ def test_segment_breakdown_reproduces_msft_specimen() -> None:
     }
 
 
+def test_segment_breakdown_serves_msft_statement_declared_partition() -> None:
+    """MSFT revenue's two filed partitions: the statement-declared pair serves."""
+    view = _facade("0000950170-24-087843").financials.segment_breakdown(
+        concept_qname="us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        axis_qname="srt:ProductOrServiceAxis",
+    )
+    assert view.classification is not None
+    assert view.classification.kind == "overlapping_partitions"
+    assert view.total == 245_122_000_000.0
+    assert view.member_sum == view.total
+    assert view.verified is True
+    assert view.values_by_member == {
+        "us-gaap:ProductMember": 64_773_000_000.0,
+        "us-gaap:ServiceOtherMember": 180_349_000_000.0,
+    }
+    assert view.filed_member_sum == 490_244_000_000.0
+    assert len(view.alternates) == 1
+    alternate = view.alternates[0]
+    assert len(alternate) == 10
+    assert sum(member.value for member in alternate) == 245_122_000_000.0
+    # The bare call still resolves to NoncurrentAssets by geography: its
+    # verified total (301,369,000,000) outranks every revenue candidate in
+    # the bare-call ordering, before this plan and after it.
+    default = _facade("0000950170-24-087843").financials.segment_breakdown()
+    assert default.concept_qname == "us-gaap:NoncurrentAssets"
+    assert default.axis_qname == "srt:StatementGeographicalAxis"
+    assert default.verified is True
+
+
 def test_segment_breakdown_reports_googl_gap() -> None:
     """GOOGL segment revenue falls short of the total; the gap is reported."""
     view = _facade("0001652044-25-000014").financials.segment_breakdown(
