@@ -9,7 +9,9 @@ from dataclasses import dataclass, replace
 from functools import cache
 
 from edgar_sec.domain.forms.common.checkmarks import (
+    CHECKED_SYMBOLS,
     CHECKMARK_MARK_RE,
+    UNCHECKED_SYMBOLS,
     is_fill_in_mark_token,
     is_unchecked_mark_token,
 )
@@ -44,7 +46,7 @@ def _compile_label_pattern(phrase: str) -> re.Pattern[str]:
     """Compile a cover-label phrase with bounded whitespace and flexible hyphenation."""
     escaped = re.escape(phrase)
     pattern = escaped.replace(r"\ ", r"[ \t]{1,6}")
-    pattern = pattern.replace(r"\-", r"[ \t]*-[ \t]*")
+    pattern = pattern.replace(r"\-", r"[ \t]*[-\u2010\u2011\u2012\u2013\u2014][ \t]*")
     pattern = pattern.replace(r"\(", r"[ \t]*\([ \t]*").replace(r"\)", r"[ \t]*\)")
     left_b = r"\b" if phrase[0].isalnum() else ""
     right_b = r"\b" if phrase[-1].isalnum() else ""
@@ -130,13 +132,27 @@ def _label_matches(
     return accepted
 
 
+# A mark fused to its label word by text extraction (``√Rule``, ``xRule``):
+# the glyph is never a letter inside a word, and the capital that follows is
+# the label's first letter, so the pair reads as mark plus label start.
+_GLUED_SYMBOL_CLASS = "".join(
+    re.escape(symbol)
+    for symbol in (*CHECKED_SYMBOLS, *UNCHECKED_SYMBOLS)
+    if symbol != "¨"
+)
+_GLUED_MARK_RE = re.compile(rf"(?<![\w])(?:[{_GLUED_SYMBOL_CLASS}]|[xX])(?=[A-Z])")
+
+
 def _mark_matches(
     text: str,
     *,
     answers: Sequence[re.Match[str]] = (),
 ) -> list[re.Match[str]]:
     del answers
-    return list(CHECKMARK_MARK_RE.finditer(text))
+    marks = list(CHECKMARK_MARK_RE.finditer(text))
+    marks.extend(_GLUED_MARK_RE.finditer(text))
+    marks.sort(key=lambda match: (match.start(), match.end()))
+    return marks
 
 
 def _answer_for_mark(
