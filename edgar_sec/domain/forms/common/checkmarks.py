@@ -89,6 +89,9 @@ FONT_GLYPH_MAPPINGS = {
         "þ": "checked",
         "ý": "checked",
         "¨": "unchecked",
+        "\uf078": "checked",
+        "\uf0a3": "unchecked",
+        "ü": "checked",
     },
     "wingdings 2": {
         "r": "unchecked",
@@ -125,6 +128,7 @@ FONT_GLYPH_MAPPINGS = {
         "X": "checked",
         "þ": "checked",
         "ý": "checked",
+        "a": "checked",
     },
     "symbol": {"þ": "checked", "ý": "checked"},
 }
@@ -188,13 +192,26 @@ RAW_UNCHECKED_TOKENS = (
 CHECKED_TOKENS = frozenset(RAW_CHECKED_TOKENS)
 UNCHECKED_TOKENS = frozenset(RAW_UNCHECKED_TOKENS)
 
-BARE_MARK_TOKENS = ("x", "X", "o", "O", "þ", "ý", "\uf0a8", "r", "R")
+BARE_MARK_TOKENS = (
+    "x",
+    "X",
+    "o",
+    "O",
+    "þ",
+    "ý",
+    "\uf0a8",
+    "r",
+    "R",
+    "\uf078",
+    "\uf0a3",
+    "ü",
+)
 
 # Symbol-font remnants: in the filed corpora these glyphs appear only as
 # isolated mark tokens. CHECKMARK_MARK_RE reaches a bare glyph only when no
 # word character adjoins it, so a letter ý inside a word is never classified.
-GUARDED_CHECKED_GLYPHS = ("ý", "þ")
-GUARDED_UNCHECKED_GLYPHS = ("\uf0a8",)
+GUARDED_CHECKED_GLYPHS = ("ý", "þ", "\uf078", "ü")
+GUARDED_UNCHECKED_GLYPHS = ("\uf0a8", "\uf0a3")
 
 CHECKMARK_MARK_TOKENS = (
     *RAW_CHECKED_TOKENS,
