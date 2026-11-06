@@ -128,6 +128,52 @@ def test_prose_asterisks_are_not_checkbox_candidates() -> None:
     assert candidates == ()
 
 
+def test_a_glued_checked_symbol_binds_to_its_label() -> None:
+    text = (
+        "FORM SD\n"
+        "√Rule 13p-1 under the Securities Exchange Act (17 CFR 240.13p-1) "
+        "for the reporting period from January 1 to December 31, 2025.\n"
+        "Rule 13q-1 under the Securities Exchange Act (17 CFR 240.13q-1) "
+        "for the fiscal year ended December 31, 2025.\n"
+    )
+    candidates = extract_cover_candidates(text, _boundary(text), family="SD")
+
+    by_key = {candidate.semantic_key: candidate for candidate in candidates}
+    assert by_key["rule_13p_1"].source_token == "√"
+    assert by_key["rule_13p_1"].known_state == "checked"
+
+
+def test_a_glued_box_glyph_and_bare_x_bind_to_their_labels() -> None:
+    text = (
+        "FORM SD\n"
+        "⌧Rule 13p-1 under the Securities Exchange Act (17 CFR 240.13p-1)\n"
+        "xRule 13q-1 under the Securities Exchange Act (17 CFR 240.13q-1)\n"
+    )
+    candidates = extract_cover_candidates(text, _boundary(text), family="SD")
+
+    by_key = {candidate.semantic_key: candidate for candidate in candidates}
+    assert by_key["rule_13p_1"].source_token == "⌧"
+    assert by_key["rule_13p_1"].known_state == "checked"
+    assert by_key["rule_13q_1"].source_token == "x"
+    assert by_key["rule_13q_1"].known_state == "checked"
+
+
+def test_a_label_with_nonbreaking_hyphens_binds_its_mark() -> None:
+    text = (
+        "FORM SD\n"
+        "[X] Rule 13p\u20111 under the Securities Exchange Act "
+        "(17 CFR 240.13p\u20111) for the reporting period from January 1 "
+        "to December 31, 2016.\n"
+        "[ ] Rule 13q-1 under the Securities Exchange Act "
+        "(17 CFR 240.13q-1) for the fiscal year ended December 31, 2016.\n"
+    )
+    candidates = extract_cover_candidates(text, _boundary(text), family="SD")
+
+    by_key = {candidate.semantic_key: candidate for candidate in candidates}
+    assert by_key["rule_13p_1"].known_state == "checked"
+    assert by_key["rule_13q_1"].known_state == "unchecked"
+
+
 def test_an_unknown_boundary_end_yields_no_candidates() -> None:
     boundary = CoverBoundary(
         start_line=None,

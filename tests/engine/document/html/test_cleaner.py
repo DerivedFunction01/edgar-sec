@@ -146,6 +146,40 @@ def test_normalize_font_qualified_numeric_glyph_entities() -> None:
     assert normalized.count("[ ]") == 1
 
 
+def test_normalize_font_qualified_wingdings_pua_glyphs() -> None:
+    normalized = normalize_font_qualified_glyphs(
+        "<font style=\"font-family:'Wingdings',sans-serif\">&#61560;</font>"
+        "<font style=\"font-family:'Wingdings',serif\">&#xf0a3;</font>"
+        '<font face="Wingdings">\uf078</font>'
+    )
+    assert normalized.count("[X]") == 2
+    assert normalized.count("[ ]") == 1
+
+
+def test_normalize_font_qualified_wingdings_named_uuml_entity() -> None:
+    normalized = normalize_font_qualified_glyphs(
+        '<FONT STYLE="font-family: Wingdings">&uuml;</FONT>'
+    )
+    assert "[X]" in normalized
+
+
+def test_normalize_font_qualified_letter_glyphs() -> None:
+    normalized = normalize_font_qualified_glyphs(
+        "<font style=\"font-family:'Wingdings 2',sans-serif\">S</font>"
+        '<font style="font-family:Webdings">a</font>'
+    )
+    assert normalized.count("[X]") == 2
+
+
+def test_normalize_font_qualified_letter_glyph_family_scope() -> None:
+    normalized = normalize_font_qualified_glyphs(
+        '<font face="Wingdings">S</font>'
+        '<span style="font-family: Webdings">a longer span of text</span>'
+    )
+    assert "[X]" not in normalized
+    assert "S" in normalized
+
+
 def test_normalize_font_qualified_glyphs_leaves_ordinary_fonts_alone() -> None:
     text = '<p style="font-family: Arial">Quarterly results</p>'
     assert normalize_font_qualified_glyphs(text) == text

@@ -89,11 +89,12 @@ RE_PART = re.compile(
     re.IGNORECASE,
 )
 
-# Real ITEM headings (1, 1A, 1.01, 5.02, 9.01, etc.) carry a title-case title after an optional
-# separator. TOC rows ("ITEM 1. BUSINESS ..... 1") fail because the title may
-# contain dot leaders or a trailing page number.
+# Real ITEM headings carry a title-case title after an optional separator;
+# TOC rows fail on dot leaders or a trailing page number. A decimal number
+# fused to its title ("Item 2.01Resource ...") is an explicit first alternative.
+_ITEM_NUMBER_PATTERN = r"(?:\d+\.\d{1,2}(?=[A-Z])|\d+[A-Z]?(?:\.\d{1,2})?\b)"
 RE_ITEM_EXACT = re.compile(
-    r"^\s*ITEMS?\s+(?:\d+[A-Z]?(?:\.\d{1,2})?)\b\s*(?:[.:;\-\u2013\u2014]+\s*)?"
+    rf"^\s*ITEMS?\s+{_ITEM_NUMBER_PATTERN}\s*(?:[.:;\-\u2013\u2014]+\s*)?"
     r"(?:(?-i:[A-Z])[A-Za-z0-9,&'()\s-]*)?[:.]?\s*"
     r"(?:\(\s*continued\s*\))?\s*$",
     re.IGNORECASE,
@@ -106,7 +107,7 @@ _PART_HEADING_RE = re.compile(
     re.IGNORECASE,
 )
 _ITEM_HEADING_RE = re.compile(
-    r"^\s*(?:[\|+•\t-]\s*)?ITEMS?\s+(\d+[A-Z]?(?:\.\d{1,2})?)\b(?:\s*[:.\-]\s*|\s+)?(?:\(\s*continued\s*\))?(.*)$",
+    rf"^\s*(?:[\|+•\t-]\s*)?ITEMS?\s+({_ITEM_NUMBER_PATTERN})(?:\s*[:.\-]\s*|\s+)?(?:\(\s*continued\s*\))?(.*)$",
     re.IGNORECASE,
 )
 _PART_INLINE_RE = re.compile(r"\bPART\s+([IVXLCDM]+|\d+)\b", re.IGNORECASE)

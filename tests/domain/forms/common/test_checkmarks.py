@@ -31,6 +31,19 @@ def test_font_glyph_state() -> None:
     assert font_glyph_state("Wingdings", "Z") is None
 
 
+def test_font_glyph_state_wingdings_pua_and_latin1_remnants() -> None:
+    assert font_glyph_state("Wingdings", "\uf078") == "checked"
+    assert font_glyph_state("Wingdings", "\uf0a3") == "unchecked"
+    assert font_glyph_state("Wingdings", "ü") == "checked"
+    assert font_glyph_state("Wingdings 2", "\uf078") is None
+    assert font_glyph_state("Symbol", "ü") is None
+
+
+def test_font_glyph_state_webdings_letter_check() -> None:
+    assert font_glyph_state("Webdings", "a") == "checked"
+    assert font_glyph_state("Wingdings", "a") is None
+
+
 def test_font_bullet_glyph_state() -> None:
     assert font_bullet_glyph_state("Wingdings", "n") == "•"
     assert font_bullet_glyph_state("Wingdings", "u") == "○"
@@ -46,6 +59,19 @@ def test_checkmark_mark_re() -> None:
     assert CHECKMARK_MARK_RE.search("( )") is not None
     assert CHECKMARK_MARK_RE.search("☒") is not None
     assert CHECKMARK_MARK_RE.search("☐") is not None
+
+
+def test_guarded_remnant_glyphs_classify_only_as_isolated_tokens() -> None:
+    assert mark_token_state("\uf078", allow_bare=True) == "checked"
+    assert mark_token_state("\uf0a3", allow_bare=True) == "unchecked"
+    assert mark_token_state("ü", allow_bare=True) == "checked"
+    assert mark_token_state("\uf078") is None
+    assert mark_token_state("\uf0a3") is None
+    assert mark_token_state("ü") is None
+    assert CHECKMARK_MARK_RE.search(" \uf078 ") is not None
+    assert CHECKMARK_MARK_RE.search(" \uf0a3 ") is not None
+    assert CHECKMARK_MARK_RE.search(" ü ") is not None
+    assert CHECKMARK_MARK_RE.search("Müller") is None
 
 
 def test_mark_token_state_recognizes_known_tokens() -> None:

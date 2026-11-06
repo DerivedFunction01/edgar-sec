@@ -94,6 +94,36 @@ def test_is_exact_heading_is_true_only_for_isolated_headings() -> None:
     assert is_exact_heading("ITEM 15. EXHIBITS ....... 40") is False
 
 
+def test_parse_section_heading_reads_a_fused_decimal_item() -> None:
+    parsed = parse_section_heading(
+        "Item 2.01Resource Extraction Issuer Disclosure and Report"
+    )
+
+    assert parsed is not None
+    assert parsed.kind is SectionKind.ITEM
+    assert parsed.identifier == "2.01"
+    assert parsed.title.startswith("Resource")
+
+
+def test_match_structural_line_finds_a_fused_item_heading() -> None:
+    match = match_structural_line(
+        "Item 2.01Resource Extraction Issuer Disclosure and Report", 50
+    )
+
+    assert match is not None
+    assert match.role == StructuralRole.ITEM
+    assert match.is_exact_heading is True
+
+
+def test_a_fused_item_reference_in_prose_stays_inexact() -> None:
+    line = "Item 2.01(c) provides that the registrant is relying on the provision"
+
+    assert is_exact_heading(line) is False
+    match = match_structural_line(line, 52)
+    assert match is not None
+    assert match.is_exact_heading is False
+
+
 def test_is_continuation_prose_accepts_lowercase_and_bullet_lines() -> None:
     assert is_continuation_prose("hereof. the registrant agrees") is True
     assert is_continuation_prose("* Item 3. Legal Proceedings") is True

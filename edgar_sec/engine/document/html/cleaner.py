@@ -79,8 +79,20 @@ _RE_STYLE_FONT_FAMILY = re.compile(
 )
 _RE_STYLE_FONT = re.compile(r"(?i)\bfont\s*:\s*([^;\"]+)")
 _RE_FACE_ATTR = re.compile(r"(?i)\bface\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))")
-_RE_GLYPH = re.compile(r"[\u00a8\u00a3\u00fe\u00fdrRnNuUoOxX]")
+_RE_GLYPH = re.compile(r"[\u00a8\u00a3\u00fe\u00fd\u00fc\uf078\uf0a3aSrRnNuUoOxX]")
 _RE_NUMERIC_GLYPH_ENTITY = re.compile(r"&#(?:x([0-9a-f]+)|(\d+));?", re.IGNORECASE)
+
+# Named entities for the Latin-1 glyph keys, which filers emit as entities
+# (e.g. &uuml;) far more often than as numeric references.
+_NAMED_GLYPH_ENTITIES = {
+    "pound": "\u00a3",
+    "uml": "\u00a8",
+    "uuml": "\u00fc",
+    "yacute": "\u00fd",
+    "thorn": "\u00fe",
+}
+_NAMED_GLYPH_ALT = build_alternation(list(_NAMED_GLYPH_ENTITIES), auto_escape=True)
+_RE_NAMED_GLYPH_ENTITY = re.compile(rf"&({_NAMED_GLYPH_ALT});")
 _VOID_TAGS = frozenset(
     {
         "area",
@@ -153,7 +165,7 @@ def _replace_font_glyphs(text: str, font_family: str) -> str:
     def replace(match: re.Match[str]) -> str:
         glyph = match.group(0)
         if (
-            glyph in {"r", "R", "o", "O", "x", "X", "s", "S", "n", "N", "u", "U"}
+            glyph in {"r", "R", "o", "O", "x", "X", "s", "S", "n", "N", "u", "U", "a"}
             and not is_standalone
         ):
             return glyph
@@ -222,6 +234,9 @@ def normalize_font_qualified_glyphs(html: str) -> str:
                 decoded = _RE_NUMERIC_GLYPH_ENTITY.sub(
                     _decode_numeric_glyph_entity, token
                 )
+                decoded = _RE_NAMED_GLYPH_ENTITY.sub(
+                    _decode_named_glyph_entity, decoded
+                )
                 output.append(_replace_font_glyphs(decoded, current_font))
             continue
 
@@ -278,6 +293,11 @@ def _decode_numeric_glyph_entity(match: re.Match[str]) -> str:
     if value > 0x10FFFF:
         return match.group(0)
     glyph = chr(value)
+    return glyph if _RE_GLYPH.fullmatch(glyph) else match.group(0)
+
+
+def _decode_named_glyph_entity(match: re.Match[str]) -> str:
+    glyph = _NAMED_GLYPH_ENTITIES[match.group(1)]
     return glyph if _RE_GLYPH.fullmatch(glyph) else match.group(0)
 
 
