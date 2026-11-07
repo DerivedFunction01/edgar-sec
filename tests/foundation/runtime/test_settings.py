@@ -110,21 +110,36 @@ def test_include_filter_yields_nothing_for_unknown_registry() -> None:
 
 def test_surface_policy_census_matches_the_domain_surface_set() -> None:
     from edgar_sec.domain.sec_urls import SEC_SURFACES
-    from edgar_sec.foundation.runtime.settings import resolve_surface_ttls
+    from edgar_sec.foundation.runtime.settings import (
+        resolve_no_store_surfaces,
+        resolve_surface_ttls,
+    )
     from edgar_sec.foundation.runtime.settings.sec import (
+        SURFACE_KIND_NO_STORE,
         SURFACE_KIND_STATIC,
         SURFACE_KIND_TRANSIENT,
         SURFACE_POLICIES,
     )
 
     assert set(SURFACE_POLICIES) == set(SEC_SURFACES)
-    assert len(SURFACE_POLICIES) == 15
+    assert len(SURFACE_POLICIES) == 19
     kinds = {policy.kind for policy in SURFACE_POLICIES.values()}
-    assert kinds == {SURFACE_KIND_STATIC, SURFACE_KIND_TRANSIENT}
+    assert kinds == {
+        SURFACE_KIND_STATIC,
+        SURFACE_KIND_TRANSIENT,
+        SURFACE_KIND_NO_STORE,
+    }
+    assert resolve_no_store_surfaces() == frozenset({"current_filings", "efts"})
     table = resolve_surface_ttls()
     for surface_id, policy in SURFACE_POLICIES.items():
         if policy.kind == SURFACE_KIND_STATIC:
             assert table[surface_id] is None
+        elif policy.kind == SURFACE_KIND_NO_STORE:
+            assert surface_id not in table
+            assert policy.ttl_path is None
+        elif surface_id == "structured_disclosure_feeds":
+            assert table[surface_id] == 300
+            assert table[surface_id] < 600
         else:
             assert table[surface_id] == 24 * 60 * 60
 

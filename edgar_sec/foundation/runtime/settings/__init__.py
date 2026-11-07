@@ -24,6 +24,7 @@ from .parquet import get_parquet_specs
 from .runtime import get_runtime_specs
 from .sql import get_sql_specs
 from .sec import (
+    SURFACE_KIND_NO_STORE,
     SURFACE_KIND_STATIC,
     SURFACE_POLICIES,
     SecSettings,
@@ -282,23 +283,33 @@ def resolve_runtime_settings(
 
 def resolve_surface_policy(
     env: Mapping[str, str] | None = None,
-) -> tuple[dict[str, int | None], int]:
-    """Per-surface TTL table plus the inherited default transient TTL.
+) -> tuple[dict[str, int | None], int, frozenset[str]]:
+    """TTL table, default TTL, and the no-store bypass set for SEC surfaces.
 
-    A transient surface whose policy names no TTL setting inherits
-    ``sec.ttl.default_s``; static surfaces resolve to None (never expires).
+    Transient surfaces inherit ``sec.ttl.default_s`` when they name no TTL
+    setting; static surfaces resolve to None; no-store surfaces carry no TTL.
     """
     raw = resolve_settings(include=["sec.ttl"], env=env)
     default_ttl = int(raw["sec.ttl.default_s"])
     table: dict[str, int | None] = {}
+    no_store: set[str] = set()
     for surface_id, policy in SURFACE_POLICIES.items():
-        if policy.kind == SURFACE_KIND_STATIC:
+        if policy.kind == SURFACE_KIND_NO_STORE:
+            no_store.add(surface_id)
+        elif policy.kind == SURFACE_KIND_STATIC:
             table[surface_id] = None
         elif policy.ttl_path is not None:
             table[surface_id] = int(raw[policy.ttl_path])
         else:
             table[surface_id] = default_ttl
-    return table, default_ttl
+    return table, default_ttl, frozenset(no_store)
+
+
+def resolve_no_store_surfaces(
+    env: Mapping[str, str] | None = None,
+) -> frozenset[str]:
+    """Surface ids whose responses are never read from or written to cache."""
+    return resolve_surface_policy(env=env)[2]
 
 
 def resolve_surface_ttls(
@@ -311,7 +322,7 @@ def resolve_surface_ttls(
 def resolve_surface_ttl_s(
     surface_id: str, env: Mapping[str, str] | None = None
 ) -> int | None:
-    """TTL in seconds for one surface; None for static or unregistered ids."""
+    """TTL for one surface; None for static, no-store, or unregistered ids."""
     return resolve_surface_ttls(env=env).get(surface_id)
 
 
@@ -368,6 +379,7 @@ __all__ = [
     "environment_name",
     "flatten_settings",
     "render_dotenv",
+    "resolve_no_store_surfaces",
     "resolve_runtime_settings",
     "resolve_settings",
     "resolve_surface_policy",
