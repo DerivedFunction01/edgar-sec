@@ -30,7 +30,7 @@ def cmd_plan(options: PlanOptions) -> int:
     if options.from_archive and options.cohort:
         raise ValueError("--from-archive and --cohort are mutually exclusive")
     metadata = resolve_metadata_paths(options.artifacts_root)
-    fingerprint_map = None
+    fingerprints_path = None
     if options.from_archive:
         store = BulkArchiveStore(metadata.bulk_archives_root)
         reference = store.open(SUBMISSIONS_BULK_SOURCE_ID, options.archive_sha or None)
@@ -42,7 +42,7 @@ def cmd_plan(options: PlanOptions) -> int:
             metadata.transient_dir(f"archive-roster-{reference.sha256[:12]}")
             / "ciks.parquet"
         )
-        plan, fingerprint_map = build_archive_plan(
+        plan, fingerprints_path = build_archive_plan(
             store,
             reference,
             chunk_size=options.chunk_size,
@@ -58,7 +58,7 @@ def cmd_plan(options: PlanOptions) -> int:
             selected_limit=options.limit,
         )
     run_paths = resolve_run_paths(plan.plan_id, options.artifacts_root)
-    write_plan(plan, run_paths, member_fingerprint_map=fingerprint_map)
+    write_plan(plan, run_paths, member_fingerprints_path=fingerprints_path)
     rows = [
         KeyValueRow("plan_id", plan.plan_id),
         KeyValueRow("roster_id", plan.roster.roster_id),

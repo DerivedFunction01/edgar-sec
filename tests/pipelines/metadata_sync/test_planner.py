@@ -376,3 +376,73 @@ def _retag(run_paths, key: str, value: str | None) -> None:
     else:
         manifest[key] = value
     run_paths.plan_file.write_text(json.dumps(manifest), encoding="utf-8")
+
+
+def test_fingerprint_index_serves_lookups_across_row_groups(
+    tmp_path: Path,
+) -> None:
+    import pyarrow as pa
+
+    from edgar_sec.infra.storage.parquet import write_parquet_table
+    from edgar_sec.pipelines.metadata_sync.planner import (
+        FINGERPRINTS_SCHEMA,
+        FingerprintIndex,
+    )
+
+    ciks = [f"{i:010d}" for i in range(5)]
+    table = pa.table(
+        {"cik_padded": ciks, "fingerprint": [f"fp-{i}" for i in range(5)]},
+        schema=FINGERPRINTS_SCHEMA,
+    )
+    path = tmp_path / "fingerprints.parquet"
+    write_parquet_table(table, path, row_group_size=2)
+
+    index = FingerprintIndex(path)
+    assert len(index) == 5
+    assert list(index) == ciks
+    assert index["0000000003"] == "fp-3"
+    assert index.get("0000000000") == "fp-0"
+    assert index.get("9999999999") is None
+    assert index.get("9999999999", "fallback") == "fallback"
+    with pytest.raises(KeyError):
+        index["9999999999"]
+
+
+def test_archive_plan_datasets_match_the_dict_computation(
+    tmp_path: Path,
+) -> None:
+    import zipfile
+
+    from edgar_sec.infra.storage.bulk_archive import BulkArchiveStore
+    from edgar_sec.infra.storage.parquet import read_parquet_table
+    from edgar_sec.pipelines.metadata_sync.planner import (
+        build_archive_plan,
+        member_fingerprints,
+        read_fingerprints,
+        roster_rows_from_member_index,
+    )
+
+    store = BulkArchiveStore(tmp_path / "store")
+    zip_path = tmp_path / "bulk.zip"
+    with zipfile.ZipFile(zip_path, "w") as archive:
+        archive.writestr("CIK0000001761.json", b"{}")
+        archive.writestr("CIK0000001761-submissions-001.json", b"{}")
+        archive.writestr("CIK0000000020.json", b"{}")
+    reference = store.put_file(
+        "submissions_bulk", zip_path, source_url="https://example.invalid/bulk.zip"
+    )
+
+    plan, fingerprints_path = build_archive_plan(
+        store,
+        reference,
+        chunk_size=2,
+        roster_dataset_path=tmp_path / "ciks.parquet",
+    )
+
+    index = store.member_index(reference)
+    assert plan.roster.range_rows(0, plan.row_count) == tuple(
+        roster_rows_from_member_index(index)
+    )
+    assert read_fingerprints(fingerprints_path) == member_fingerprints(index)
+    roster_table = read_parquet_table(tmp_path / "ciks.parquet")
+    assert roster_table.column("ordinal").to_pylist() == [0, 1]

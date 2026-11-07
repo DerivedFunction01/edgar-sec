@@ -20,6 +20,9 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+import pyarrow as pa
+import pyarrow.compute as pc
+
 from edgar_sec.domain.submissions.schemas import (
     SUBMISSION_METADATA_SCHEMA,
     TERMINAL_STATUSES,
@@ -29,15 +32,17 @@ from edgar_sec.engine.submissions.builder import (
     normalize_submissions,
 )
 from edgar_sec.foundation.runtime.memory import reclaim
+from edgar_sec.infra.storage.duckdb import arrow_reader, connect
 from edgar_sec.infra.storage.parquet import (
     StagedParquetWriter,
+    cast_table,
     read_parquet_table,
     write_parquet_table,
 )
 
 from .checkpoints import inspect_chunk
 from .paths import RunPaths
-from .planner import Plan, utc_now_iso
+from .planner import Plan, utc_now_iso, write_fingerprints
 from .sec_client import (
     BulkSubmissionsArchive,
     BulkSubmissionsClient,
@@ -304,17 +309,39 @@ class CarryProvider:
     def __init__(self, staging_dir: Path) -> None:
         self._staging_dir = staging_dir
 
-    def rows_for(self, chunk_id: int) -> dict[str, dict[str, Any]] | None:
-        """Carried rows for one chunk keyed by CIK, or ``None`` when none staged."""
-        rows: dict[str, dict[str, Any]] = {}
-        for path in sorted(self._staging_dir.glob(f"chunk_{chunk_id:04d}.*.parquet")):
-            table = read_parquet_table(path)
-            for row in table.to_pylist():
-                rows[str(row["cik"])] = row
-        return rows or None
+    def table_for(self, chunk_id: int) -> pa.Table | None:
+        """Carried rows for one chunk, or ``None`` when none were staged.
+
+        A CIK staged more than once keeps its last staged row, matching the
+        order the staging pass encountered the prior parts in.
+        """
+        paths = sorted(self._staging_dir.glob(f"chunk_{chunk_id:04d}.*.parquet"))
+        if not paths:
+            return None
+        tables = [read_parquet_table(path) for path in paths]
+        table = tables[0] if len(tables) == 1 else pa.concat_tables(tables)
+        last: dict[str, int] = {}
+        for position, cik in enumerate(table.column("cik").to_pylist()):
+            last[str(cik)] = position
+        if len(last) != table.num_rows:
+            table = table.take(pa.array(sorted(last.values()), type=pa.int64()))
+        return table
 
 
 CARRY_BUFFER_ROWS = 8192
+CARRY_BUFFER_BYTES = 128 * 1024 * 1024
+CARRY_BATCH_ROWS = 256
+
+_CARRY_SQL = """
+SELECT p.*, r.ordinal AS __carry_ordinal
+FROM read_parquet(?) p
+JOIN read_parquet(?) r ON r.cik_padded = p.cik
+JOIN read_parquet(?) f
+  ON f.cik_padded = p.cik AND f.fingerprint = p.input_fingerprint
+"""
+
+_SNAPSHOT_ID_INDEX = SUBMISSION_METADATA_SCHEMA.get_field_index("snapshot_id")
+_FETCHED_AT_INDEX = SUBMISSION_METADATA_SCHEMA.get_field_index("fetched_at")
 
 
 def stage_carried_rows(
@@ -322,59 +349,93 @@ def stage_carried_rows(
     run_paths: RunPaths,
     *,
     prior_part_paths: Sequence[Path],
-    fingerprints: Mapping[str, str],
+    fingerprints: Mapping[str, str] | None = None,
+    fingerprints_path: Path | None = None,
     snapshot_id: str,
 ) -> CarryReport:
     """Stage prior-snapshot rows whose fingerprint matches the current archive.
 
-    Only snapshot identity and fetch time are re-stamped; every other field
-    carries byte-identically. Buffering is capped, spilling per chunk.
+    Carriage is decided by a DuckDB join on (cik, fingerprint); carried
+    rows stream in bounded Arrow batches, re-stamped only in identity.
     """
     staging_dir = run_paths.metadata.transient_dir(f"carry-{plan.plan_id}") / "chunks"
     staging_dir.mkdir(parents=True, exist_ok=True)
+    if fingerprints_path is None:
+        if fingerprints is None:
+            raise ValueError("carry staging requires a fingerprint dataset")
+        fingerprints_path = staging_dir.parent / "fingerprints.parquet"
+        write_fingerprints(fingerprints, fingerprints_path)
+    if not prior_part_paths:
+        return CarryReport(staging_dir=staging_dir, carried_rows=0, carried_by_chunk={})
+    roster_path = plan.roster.dataset
+    if roster_path is None:
+        raise ValueError("carry staging requires a roster dataset")
     stamp = utc_now_iso()
-    ordinals = {
-        cik: ordinal for ordinal, (cik, _name) in enumerate(plan.roster.iter_rows())
-    }
-    buffers: dict[int, list[dict[str, Any]]] = {}
+    buffers: dict[int, list[pa.Table]] = {}
     spills: dict[int, int] = {}
     carried_by_chunk: dict[int, int] = {}
-    buffered = 0
+    buffered_rows = 0
+    buffered_bytes = 0
 
     def flush(chunk_id: int) -> None:
-        rows = buffers.pop(chunk_id, [])
-        if not rows:
+        tables = buffers.pop(chunk_id, [])
+        if not tables:
             return
+        table = tables[0] if len(tables) == 1 else pa.concat_tables(tables)
         spill = spills.get(chunk_id, 0)
         spills[chunk_id] = spill + 1
         write_parquet_table(
-            build_submission_table(rows),
-            staging_dir / f"chunk_{chunk_id:04d}.{spill}.parquet",
+            table, staging_dir / f"chunk_{chunk_id:04d}.{spill}.parquet"
         )
-        carried_by_chunk[chunk_id] = carried_by_chunk.get(chunk_id, 0) + len(rows)
+        carried_by_chunk[chunk_id] = carried_by_chunk.get(chunk_id, 0) + table.num_rows
 
-    for part in prior_part_paths:
-        for row in read_parquet_table(part).to_pylist():
-            cik = str(row["cik"])
-            ordinal = ordinals.get(cik)
-            if ordinal is None:
-                continue
-            if fingerprints.get(cik) is None or (
-                row["input_fingerprint"] != fingerprints[cik]
+    con = connect()
+    try:
+        reader = arrow_reader(
+            con,
+            _CARRY_SQL,
+            params=[
+                [str(part) for part in prior_part_paths],
+                str(roster_path),
+                str(fingerprints_path),
+            ],
+            batch_size=CARRY_BATCH_ROWS,
+        )
+        for batch in reader:
+            ordinals = batch.column("__carry_ordinal")
+            table = cast_table(
+                pa.Table.from_batches([batch]), SUBMISSION_METADATA_SCHEMA
+            )
+            table = table.set_column(
+                _SNAPSHOT_ID_INDEX,
+                "snapshot_id",
+                pa.array([snapshot_id] * table.num_rows, type=pa.string()),
+            )
+            table = table.set_column(
+                _FETCHED_AT_INDEX,
+                "fetched_at",
+                pa.array([stamp] * table.num_rows, type=pa.string()),
+            )
+            chunk_ids = pc.divide(ordinals, plan.chunk_size)
+            for chunk_id in pc.unique(chunk_ids).to_pylist():
+                part = table.filter(pc.equal(chunk_ids, int(chunk_id)))
+                buffers.setdefault(int(chunk_id), []).append(part)
+                buffered_rows += part.num_rows
+                buffered_bytes += part.nbytes
+            if (
+                buffered_rows >= CARRY_BUFFER_ROWS
+                or buffered_bytes >= CARRY_BUFFER_BYTES
             ):
-                continue
-            carried = dict(row)
-            carried["snapshot_id"] = snapshot_id
-            carried["fetched_at"] = stamp
-            chunk_id = ordinal // plan.chunk_size
-            buffers.setdefault(chunk_id, []).append(carried)
-            buffered += 1
-            if buffered >= CARRY_BUFFER_ROWS:
                 for open_chunk in sorted(buffers):
                     flush(open_chunk)
-                buffered = 0
+                buffered_rows = 0
+                buffered_bytes = 0
+                reclaim()
+    finally:
+        con.close()
     for open_chunk in sorted(buffers):
         flush(open_chunk)
+    reclaim()
     return CarryReport(
         staging_dir=staging_dir,
         carried_rows=sum(carried_by_chunk.values()),
@@ -394,7 +455,7 @@ def run_chunk(
     progress: Callable[[dict[str, Any]], None] | None = None,
     bulk_pool: ProcessPoolExecutor | None = None,
     fingerprints: Mapping[str, str] | None = None,
-    carry_rows: Mapping[str, dict[str, Any]] | None = None,
+    carry_table: pa.Table | None = None,
 ) -> ChunkResult:
     """Execute one chunk and atomically write its checkpoint Parquet.
     A valid existing checkpoint short-circuits the run.
@@ -426,22 +487,39 @@ def run_chunk(
         existing_ciks = set() if force else writer.get_existing_ids()
         remaining_ciks = tuple(c for c in ciks if c not in existing_ciks)
 
-        if remaining_ciks and carry_rows:
-            carried = [carry_rows[cik] for cik in remaining_ciks if cik in carry_rows]
-            if carried:
-                writer.write_batch(build_submission_table(carried))
+        if remaining_ciks and carry_table is not None and carry_table.num_rows:
+            positions = pc.index_in(
+                carry_table.column("cik"),
+                value_set=pa.array(remaining_ciks, type=pa.string()),
+            )
+            matched = [
+                (int(position), row_index)
+                for row_index, position in enumerate(positions.to_pylist())
+                if position is not None
+            ]
+            if matched:
+                matched.sort()
+                carried = carry_table.take(
+                    pa.array([row_index for _pos, row_index in matched])
+                )
+                writer.write_batch(carried)
+                carried_ciks = {remaining_ciks[pos] for pos, _row in matched}
                 if progress is not None:
-                    for row in carried:
+                    for cik, status in zip(
+                        carried.column("cik").to_pylist(),
+                        carried.column("status").to_pylist(),
+                        strict=True,
+                    ):
                         progress(
                             {
                                 "type": "cik_normalized",
-                                "cik": str(row["cik"]),
-                                "status": row["status"],
+                                "cik": str(cik),
+                                "status": status,
                                 "historical_files": 0,
                             }
                         )
                 remaining_ciks = tuple(
-                    cik for cik in remaining_ciks if cik not in carry_rows
+                    cik for cik in remaining_ciks if cik not in carried_ciks
                 )
 
         if remaining_ciks:
@@ -574,7 +652,7 @@ def run_chunk_ids(
                         progress=progress,
                         bulk_pool=bulk_pool,
                         fingerprints=fingerprints,
-                        carry_rows=carry.rows_for(chunk_id) if carry else None,
+                        carry_table=carry.table_for(chunk_id) if carry else None,
                     )
                 )
     finally:

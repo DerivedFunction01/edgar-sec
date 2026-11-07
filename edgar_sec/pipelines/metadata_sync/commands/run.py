@@ -7,7 +7,7 @@ from edgar_sec.pipelines.metadata_sync.checkpoints import (
     discover_completed_chunks,
 )
 from edgar_sec.pipelines.metadata_sync.options import RunOptions
-from edgar_sec.pipelines.metadata_sync.planner import load_plan, read_fingerprints
+from edgar_sec.pipelines.metadata_sync.planner import FingerprintIndex, load_plan
 from edgar_sec.pipelines.metadata_sync.progress import progress_renderer
 from edgar_sec.pipelines.metadata_sync.run_lock import RunLock
 from edgar_sec.pipelines.metadata_sync.sec_client import (
@@ -36,7 +36,7 @@ def cmd_run(
     plan = load_plan(run_paths)
     fingerprints = None
     if plan.is_archive_plan:
-        fingerprints = read_fingerprints(run_paths.fingerprints_file)
+        fingerprints = FingerprintIndex(run_paths.fingerprints_file)
         if client is None:
             metadata = getattr(run_paths, "metadata", None)
             if metadata is None:
@@ -65,7 +65,7 @@ def cmd_run(
             plan,
             run_paths,
             prior_part_paths=prior.paths,
-            fingerprints=fingerprints,
+            fingerprints_path=run_paths.fingerprints_file,
             snapshot_id=snapshot_id,
         )
         carry = CarryProvider(carry_report.staging_dir)
