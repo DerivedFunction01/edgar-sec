@@ -10,6 +10,9 @@ from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
 from edgar_sec.pipelines.cohort.sources import (
     SOURCE_URLS,
+    publish_exchange_source,
+    publish_mf_source,
+    publish_ticker_txt_source,
     publish_tickers_source,
     publish_universe_source,
     refresh_official_source,
@@ -275,3 +278,111 @@ def test_ticker_publisher_handles_single_quote_in_name(tmp_path: Path) -> None:
     table = pq.read_table(paths.resolve_relative_path(record.dataset_path))
     rows = table.to_pylist()
     assert rows[0]["name"] == "CAMPBELL'S Co"
+
+
+def test_exchange_source_publishes_canonical_rows(tmp_path: Path) -> None:
+    paths = CohortPaths(tmp_path)
+    catalog = CohortCatalog(paths)
+    record = publish_exchange_source(
+        fixture_path("company_tickers_exchange_mini.json"),
+        paths=paths,
+        catalog=catalog,
+    )
+
+    assert record.origin_kind == "official_source"
+    assert record.pinned
+    assert record.row_count == 3
+    details = json.loads(record.origin_json)
+    assert details["source_name"] == "company_tickers_exchange"
+    assert details["listing_row_count"] == 3
+    assert details["exchange_count"] == 2
+    table = pq.read_table(paths.resolve_relative_path(record.dataset_path))
+    rows = table.to_pylist()
+    assert [row["cik_padded"] for row in rows] == [
+        "0000000010",
+        "0000000020",
+        "0000000030",
+    ]
+    assert rows[0]["name"] == "Alpha Inc"
+
+
+def test_exchange_source_rejects_wrong_fields(tmp_path: Path) -> None:
+    paths = CohortPaths(tmp_path)
+    catalog = CohortCatalog(paths)
+    raw = tmp_path / "exchange.json"
+    raw.write_text(
+        json.dumps({"fields": ["cik", "name"], "data": [[10, "Alpha Inc"]]}),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="fields must be"):
+        publish_exchange_source(raw, paths=paths, catalog=catalog)
+
+
+def test_mf_source_publishes_distinct_ciks_with_empty_names(
+    tmp_path: Path,
+) -> None:
+    paths = CohortPaths(tmp_path)
+    catalog = CohortCatalog(paths)
+    record = publish_mf_source(
+        fixture_path("company_tickers_mf_mini.json"), paths=paths, catalog=catalog
+    )
+
+    assert record.row_count == 2
+    details = json.loads(record.origin_json)
+    assert details["source_name"] == "company_tickers_mf"
+    assert details["listing_row_count"] == 3
+    assert details["distinct_series_count"] == 2
+    assert details["distinct_class_count"] == 3
+    table = pq.read_table(paths.resolve_relative_path(record.dataset_path))
+    rows = table.to_pylist()
+    assert [row["cik_padded"] for row in rows] == ["0000002110", "0000003100"]
+    assert all(row["name"] == "" for row in rows)
+
+
+def test_ticker_txt_source_publishes_distinct_ciks(tmp_path: Path) -> None:
+    paths = CohortPaths(tmp_path)
+    catalog = CohortCatalog(paths)
+    record = publish_ticker_txt_source(
+        fixture_path("ticker_mini.txt"), paths=paths, catalog=catalog
+    )
+
+    assert record.row_count == 2
+    details = json.loads(record.origin_json)
+    assert details["source_name"] == "ticker_txt"
+    assert details["line_count"] == 3
+    assert details["distinct_cik_count"] == 2
+
+
+def test_ticker_txt_source_rejects_malformed_line(tmp_path: Path) -> None:
+    paths = CohortPaths(tmp_path)
+    catalog = CohortCatalog(paths)
+    raw = tmp_path / "ticker.txt"
+    raw.write_text("a\t10\nnot-a-pair\n", encoding="utf-8")
+
+    with pytest.raises(ValueError, match="not a ticker/CIK pair"):
+        publish_ticker_txt_source(raw, paths=paths, catalog=catalog)
+
+
+def test_refresh_new_sources_activate_pointers(tmp_path: Path) -> None:
+    paths = CohortPaths(tmp_path)
+    catalog = CohortCatalog(paths)
+    session = FakeSession()
+    session.register_bytes(
+        SOURCE_URLS["company_tickers_exchange"],
+        fixture_path("company_tickers_exchange_mini.json").read_bytes(),
+    )
+    session.register_bytes(
+        SOURCE_URLS["company_tickers_mf"],
+        fixture_path("company_tickers_mf_mini.json").read_bytes(),
+    )
+    session.register_bytes(
+        SOURCE_URLS["ticker_txt"], fixture_path("ticker_mini.txt").read_bytes()
+    )
+    client = build_test_http(session)
+
+    for source in ("company_tickers_exchange", "company_tickers_mf", "ticker_txt"):
+        record = refresh_official_source(
+            source, client=client, paths=paths, catalog=catalog
+        )
+        assert resolve_active_source(source, catalog=catalog) == record

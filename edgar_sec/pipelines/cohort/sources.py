@@ -25,9 +25,20 @@ from edgar_sec.infra.storage.cohort.paths import CohortPaths
 SOURCE_URLS = {
     "cik_lookup": "https://www.sec.gov/Archives/edgar/cik-lookup-data.txt",
     "company_tickers": "https://www.sec.gov/files/company_tickers.json",
+    "company_tickers_exchange": (
+        "https://www.sec.gov/files/company_tickers_exchange.json"
+    ),
+    "company_tickers_mf": "https://www.sec.gov/files/company_tickers_mf.json",
+    "ticker_txt": "https://www.sec.gov/include/ticker.txt",
 }
 _SOURCE_SCHEMA_VERSION = "1.0.0"
-_SOURCE_SUFFIXES = {"cik_lookup": ".txt", "company_tickers": ".json"}
+_SOURCE_SUFFIXES = {
+    "cik_lookup": ".txt",
+    "company_tickers": ".json",
+    "company_tickers_exchange": ".json",
+    "company_tickers_mf": ".json",
+    "ticker_txt": ".txt",
+}
 
 
 def _source_name(source_name: str) -> str:
@@ -197,6 +208,196 @@ def publish_tickers_source(
         connection.close()
 
 
+def _table_cik(value: object, source: str, index: int) -> str:
+    if isinstance(value, bool) or value is None:
+        raise ValueError(f"{source} row {index} has no CIK")
+    text = str(value).strip()
+    if not text.isascii() or not text.isdigit() or not 1 <= int(text) <= 9_999_999_999:
+        raise ValueError(f"{source} row {index} has invalid CIK")
+    return text
+
+
+def _load_table_rows(raw: Path, source: str, fields: list[str]) -> list:
+    try:
+        with raw.open("r", encoding="utf-8") as stream:
+            payload = json.load(stream)
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValueError(f"{source} source is not valid UTF-8 JSON: {exc}") from exc
+    if not isinstance(payload, dict) or payload.get("fields") != fields:
+        raise ValueError(f"{source} source fields must be {fields}")
+    data = payload.get("data")
+    if not isinstance(data, list) or not data:
+        raise ValueError(f"{source} source must carry a non-empty data list")
+    return data
+
+
+def _publish_ticker_rows(
+    raw: Path,
+    *,
+    source: str,
+    rows: list[tuple[str, str]],
+    description: str,
+    metrics: dict[str, int],
+    paths: CohortPaths,
+    catalog: CohortCatalog,
+) -> CohortRecord:
+    raw_sha256 = file_sha256(raw)
+    existing = _matching_source_record(source, raw_sha256, paths=paths, catalog=catalog)
+    if existing is not None:
+        return existing
+    connection = connect()
+    try:
+        _insert_ticker_rows(connection, rows)
+        snapshot_id = _snapshot_id(source, raw_sha256)
+        return _publish_query(
+            connection,
+            _ticker_rows_canonical_query(),
+            [],
+            paths=paths,
+            catalog=catalog,
+            name=None,
+            description=description,
+            tags=("system", "official-source", f"source:{source}"),
+            origin_kind="official_source",
+            origin_details=_origin_details(
+                source_name=source,
+                raw_sha256=raw_sha256,
+                snapshot_id=snapshot_id,
+                observed_at=datetime.now(UTC).isoformat(),
+                source_metrics=metrics,
+            ),
+            pinned=True,
+        )
+    finally:
+        connection.close()
+
+
+def publish_exchange_source(
+    raw_path: Path, *, paths: CohortPaths, catalog: CohortCatalog
+) -> CohortRecord:
+    source = _source_name("company_tickers_exchange")
+    raw = Path(raw_path)
+    if not raw.is_file():
+        raise FileNotFoundError(raw)
+    existing = _matching_source_record(
+        source, file_sha256(raw), paths=paths, catalog=catalog
+    )
+    if existing is not None:
+        return existing
+    data = _load_table_rows(raw, source, ["cik", "name", "ticker", "exchange"])
+    rows: list[tuple[str, str]] = []
+    exchanges: set[str] = set()
+    for index, row in enumerate(data):
+        if not isinstance(row, list) or len(row) != 4:
+            raise ValueError(f"{source} row {index} must have four fields")
+        cik_raw, name, ticker, exchange = row
+        cik_text = _table_cik(cik_raw, source, index)
+        if not isinstance(name, str) or not isinstance(ticker, str):
+            raise ValueError(f"{source} row {index} has invalid listing fields")
+        if exchange is not None and not isinstance(exchange, str):
+            raise ValueError(f"{source} row {index} has an invalid exchange")
+        if exchange:
+            exchanges.add(exchange)
+        rows.append((cik_text, name.strip()))
+    if not rows:
+        raise ValueError(f"{source} source has no usable entries")
+    return _publish_ticker_rows(
+        raw,
+        source=source,
+        rows=rows,
+        description="Official SEC exchange-listed company tickers",
+        metrics={"listing_row_count": len(rows), "exchange_count": len(exchanges)},
+        paths=paths,
+        catalog=catalog,
+    )
+
+
+def publish_mf_source(
+    raw_path: Path, *, paths: CohortPaths, catalog: CohortCatalog
+) -> CohortRecord:
+    source = _source_name("company_tickers_mf")
+    raw = Path(raw_path)
+    if not raw.is_file():
+        raise FileNotFoundError(raw)
+    existing = _matching_source_record(
+        source, file_sha256(raw), paths=paths, catalog=catalog
+    )
+    if existing is not None:
+        return existing
+    data = _load_table_rows(raw, source, ["cik", "seriesId", "classId", "symbol"])
+    ciks: list[str] = []
+    seen: set[str] = set()
+    series: set[str] = set()
+    classes: set[str] = set()
+    for index, row in enumerate(data):
+        if not isinstance(row, list) or len(row) != 4:
+            raise ValueError(f"{source} row {index} must have four fields")
+        cik_text = _table_cik(row[0], source, index)
+        if not all(isinstance(value, str) for value in row[1:]):
+            raise ValueError(f"{source} row {index} has invalid series fields")
+        series.add(row[1])
+        classes.add(row[2])
+        if cik_text not in seen:
+            seen.add(cik_text)
+            ciks.append(cik_text)
+    if not ciks:
+        raise ValueError(f"{source} source has no usable entries")
+    return _publish_ticker_rows(
+        raw,
+        source=source,
+        rows=[(cik, "") for cik in ciks],
+        description="Official SEC mutual fund tickers",
+        metrics={
+            "listing_row_count": len(data),
+            "distinct_series_count": len(series),
+            "distinct_class_count": len(classes),
+        },
+        paths=paths,
+        catalog=catalog,
+    )
+
+
+def publish_ticker_txt_source(
+    raw_path: Path, *, paths: CohortPaths, catalog: CohortCatalog
+) -> CohortRecord:
+    source = _source_name("ticker_txt")
+    raw = Path(raw_path)
+    if not raw.is_file():
+        raise FileNotFoundError(raw)
+    existing = _matching_source_record(
+        source, file_sha256(raw), paths=paths, catalog=catalog
+    )
+    if existing is not None:
+        return existing
+    try:
+        text = raw.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError) as exc:
+        raise ValueError(f"{source} source is not valid UTF-8 text: {exc}") from exc
+    rows: list[tuple[str, str]] = []
+    for lineno, line in enumerate(text.splitlines(), start=1):
+        if not line.strip():
+            continue
+        parts = line.split("\t")
+        if len(parts) != 2 or not parts[0].strip():
+            raise ValueError(f"{source} line {lineno} is not a ticker/CIK pair")
+        cik_text = _table_cik(parts[1], source, lineno)
+        rows.append((cik_text, ""))
+    if not rows:
+        raise ValueError(f"{source} source has no usable entries")
+    return _publish_ticker_rows(
+        raw,
+        source=source,
+        rows=rows,
+        description="Official SEC ticker-to-CIK flat file",
+        metrics={
+            "line_count": len(rows),
+            "distinct_cik_count": len({cik for cik, _name in rows}),
+        },
+        paths=paths,
+        catalog=catalog,
+    )
+
+
 _UNIVERSE_CTE = """
     WITH raw AS (
         SELECT row_number() OVER () AS source_order, line
@@ -291,6 +492,15 @@ def publish_universe_source(
         connection.close()
 
 
+_PUBLISHERS = {
+    "cik_lookup": publish_universe_source,
+    "company_tickers": publish_tickers_source,
+    "company_tickers_exchange": publish_exchange_source,
+    "company_tickers_mf": publish_mf_source,
+    "ticker_txt": publish_ticker_txt_source,
+}
+
+
 def refresh_official_source(
     source_name: str,
     *,
@@ -315,11 +525,7 @@ def refresh_official_source(
             stream.flush()
             os.fsync(stream.fileno())
         temporary = Path(temporary_name)
-        record = (
-            publish_universe_source(temporary, paths=paths, catalog=catalog)
-            if source == "cik_lookup"
-            else publish_tickers_source(temporary, paths=paths, catalog=catalog)
-        )
+        record = _PUBLISHERS[source](temporary, paths=paths, catalog=catalog)
         swap_active_source_pointer(source, record.cohort_id, catalog=catalog)
         return record
     finally:
@@ -349,6 +555,9 @@ def resolve_active_source(
 
 __all__ = [
     "SOURCE_URLS",
+    "publish_exchange_source",
+    "publish_mf_source",
+    "publish_ticker_txt_source",
     "publish_tickers_source",
     "publish_universe_source",
     "refresh_official_source",

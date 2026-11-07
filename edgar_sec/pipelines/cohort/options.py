@@ -124,7 +124,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
     refresh.add_argument(
         "--source",
-        choices=("cik_lookup", "company_tickers"),
+        choices=(
+            "cik_lookup",
+            "company_tickers",
+            "company_tickers_exchange",
+            "company_tickers_mf",
+            "ticker_txt",
+        ),
         default="cik_lookup",
         help="which official source to refresh",
     )

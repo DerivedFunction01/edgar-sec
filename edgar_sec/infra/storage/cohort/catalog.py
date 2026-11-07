@@ -23,6 +23,23 @@ from .paths import (
 )
 
 MANIFEST_SCHEMA_VERSION = "2.0.0"
+_OFFICIAL_SOURCE_NAMES = frozenset(
+    {
+        "cik_lookup",
+        "company_tickers",
+        "company_tickers_exchange",
+        "company_tickers_mf",
+        "ticker_txt",
+    }
+)
+_OFFICIAL_SOURCE_ALIASES = {
+    "universe": "cik_lookup",
+    "tickers": "company_tickers",
+    "exchange": "company_tickers_exchange",
+    "funds": "company_tickers_mf",
+    "ticker-file": "ticker_txt",
+}
+
 _FAMILY_INDEX_ID_RE = re.compile(r"^[a-f0-9]{32}$")
 _HEX_PREFIX_RE = re.compile(r"[0-9a-fA-F]+")
 
@@ -612,10 +629,7 @@ class CohortCatalog:
     ) -> CohortRecord:
         if min_prefix_len < 1:
             raise ValueError("min_prefix_len must be positive")
-        source_name = {
-            "universe": "cik_lookup",
-            "tickers": "company_tickers",
-        }.get(id_or_name)
+        source_name = _OFFICIAL_SOURCE_ALIASES.get(id_or_name)
         if source_name is not None:
             with self._connection() as connection:
                 pointer = connection.execute(
@@ -686,7 +700,7 @@ class CohortCatalog:
     def set_active_source_pointer(
         self, source_name: str, active_snapshot_id: str
     ) -> None:
-        if source_name not in {"cik_lookup", "company_tickers"}:
+        if source_name not in _OFFICIAL_SOURCE_NAMES:
             raise CohortIdentifierError(f"unknown official source: {source_name!r}")
         with self._connection() as connection:
             cohort = connection.execute(

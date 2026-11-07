@@ -58,6 +58,9 @@ def pick_cohort(catalog: object) -> str | None:
     for source_name, alias, title in (
         ("cik_lookup", "universe", "Active SEC Universe"),
         ("company_tickers", "tickers", "Active Operating Filers"),
+        ("company_tickers_exchange", "exchange", "Exchange-listed Filers"),
+        ("company_tickers_mf", "funds", "Mutual Fund Tickers"),
+        ("ticker_txt", "ticker-file", "Ticker-to-CIK File"),
     ):
         cohort_id = catalog.get_active_source_pointer(source_name)
         record = catalog.get_cohort(cohort_id) if cohort_id else None
@@ -217,12 +220,21 @@ def _workspace(catalog: object, store: object) -> object:
     return CohortWorkspace(paths, catalog=catalog, store=store)
 
 
+_REFRESH_SOURCES = (
+    ("1", "Universe (cik_lookup)", "cik_lookup"),
+    ("2", "Active tickers", "company_tickers"),
+    ("3", "Exchange-listed tickers", "company_tickers_exchange"),
+    ("4", "Mutual fund tickers", "company_tickers_mf"),
+    ("5", "Ticker file (ticker_txt)", "ticker_txt"),
+)
+
+
 def _refresh_source() -> None:
     source = prompt_choice(
         "Official source to refresh",
-        [("1", "Universe (cik_lookup)"), ("2", "Active tickers")],
+        [(key, label) for key, label, _name in _REFRESH_SOURCES],
     )
-    source_name = "cik_lookup" if source == "1" else "company_tickers"
+    source_name = {key: name for key, _label, name in _REFRESH_SOURCES}[source]
     from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
     from edgar_sec.infra.sec_http.client import SecHttpClient
     from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
