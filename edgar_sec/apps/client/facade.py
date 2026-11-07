@@ -9,7 +9,18 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Literal, Sequence
 
 from edgar_sec.apps.client.cache import DocumentCache, get_default_cache
+from edgar_sec.apps.client.content_cache import (
+    ContentCache,
+    ContentCodec,
+    estimate_retained_bytes,
+)
 from edgar_sec.apps.client.fast_query.query import query_catalog_fast
+from edgar_sec.apps.client.sequence_codec import (
+    decode_notes,
+    decode_sections,
+    encode_notes,
+    encode_sections,
+)
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.apps.runner.config import DateFilterInput, FilingQuery, PipelineConfig
 from edgar_sec.apps.runner.coordinator import PipelineRunner
@@ -47,6 +58,40 @@ def derive_facade_capacity(resources: RuntimeResourceProfile | None = None) -> i
     profile = resources if resources is not None else derive_resources()
     budget_bytes = profile.worker_memory_mib * MEBIBYTE
     return max(1, budget_bytes // _RETAINED_BYTES_PER_FACADE)
+
+
+def derive_content_cache_budget(
+    resources: RuntimeResourceProfile | None = None,
+) -> int:
+    """Content-cache byte budget: a settings fraction of one worker memory share."""
+    from edgar_sec.foundation.runtime.settings import resolve_settings
+
+    profile = resources if resources is not None else derive_resources()
+    fraction = float(
+        resolve_settings(include=["client"])["client.content_cache_fraction"]
+    )
+    return max(1, int(profile.worker_memory_mib * MEBIBYTE * fraction))
+
+
+def derive_content_disk_budget() -> int:
+    """Disk-tier byte budget for spilled derivations, from the settings seam."""
+    from edgar_sec.foundation.runtime.settings import resolve_settings
+
+    return int(resolve_settings(include=["client"])["client.content_disk_budget_bytes"])
+
+
+_CONTENT_CODECS: dict[str, ContentCodec] = {
+    "sections": (
+        encode_sections,
+        decode_sections,
+        lambda seq: seq.payload_sha256 or "",
+    ),
+    "notes": (
+        encode_notes,
+        decode_notes,
+        lambda seq: seq.payload_sha256 or "",
+    ),
+}
 
 
 class FacadeCache:
@@ -116,6 +161,8 @@ class Edgar:
         workers: int | None = None,
         cache: DocumentCache | None = None,
         facade_capacity: int | None = None,
+        content_cache_budget: int | None = None,
+        content_disk_budget: int | None = None,
     ) -> None:
         self.artifacts_root = (
             Path(artifacts_root) if artifacts_root is not None else None
@@ -125,9 +172,9 @@ class Edgar:
         self._cache = cache
         self._facade_capacity = facade_capacity
         self._facade_cache: FacadeCache | None = None
-        self._sections_cache: dict[str, SectionSequence] = {}
-        self._text_cache: dict[str, str] = {}
-        self._notes_cache: dict[str, NotesSequence] = {}
+        self._content_cache_budget = content_cache_budget
+        self._content_disk_budget = content_disk_budget
+        self._content_cache: ContentCache | None = None
 
     @property
     def sec_client(self) -> SecHttpClient:
@@ -160,6 +207,31 @@ class Edgar:
         if self._facade_cache is None:
             self._facade_cache = FacadeCache(self._facade_capacity)
         return self._facade_cache
+
+    @property
+    def content_cache(self) -> ContentCache:
+        """Return the byte-bounded LRU over filing text and parsed sequences."""
+        if self._content_cache is None:
+            from edgar_sec.foundation.runtime.paths import resolve_paths
+
+            budget = self._content_cache_budget
+            if budget is None:
+                budget = derive_content_cache_budget()
+            disk_budget = self._content_disk_budget
+            if disk_budget is None:
+                disk_budget = derive_content_disk_budget()
+            root = (
+                self.artifacts_root
+                if self.artifacts_root is not None
+                else resolve_paths().artifacts_root
+            )
+            self._content_cache = ContentCache(
+                budget,
+                disk_dir=root / "cache" / "content",
+                disk_budget_bytes=disk_budget,
+                codecs=_CONTENT_CODECS,
+            )
+        return self._content_cache
 
     def _bulk_archive_store(self) -> "BulkArchiveStore":
         from edgar_sec.infra.storage.bulk_archive import BulkArchiveStore
@@ -463,9 +535,8 @@ class Edgar:
         vacuum: bool = True,
     ) -> dict[str, int]:
         """Clear documents cache, responses cache, or both matching filters."""
-        self._sections_cache.clear()
-        self._text_cache.clear()
-        self._notes_cache.clear()
+        if self._content_cache is not None:
+            self._content_cache.clear()
         if self._facade_cache is not None:
             self._facade_cache.clear()
         cleared: dict[str, int] = {"documents": 0, "responses": 0}
@@ -493,7 +564,12 @@ class Edgar:
     def cache_stats(self) -> dict[str, object] | None:
         """Return statistics describing the SQLite response cache."""
         client = self.sec_client or SecHttpClient()
-        return client.cache_stats()
+        stats = client.cache_stats()
+        if stats is None:
+            return None
+        extended = dict(stats)
+        extended["content_cache"] = self.content_cache.stats()
+        return extended
 
     def xbrl(self, filing: FilingAggregate) -> Xbrl:
         """Parse linkbases and return unified interactive Xbrl facade."""
@@ -514,11 +590,21 @@ class Edgar:
         if not filing.has_sections:
             return SectionSequence(sections=(), family=filing.form)
 
-        acc = filing.accession.value
-        if text is None and acc in self._sections_cache:
-            return self._sections_cache[acc]
+        if text is not None:
+            return self._detect_sections(filing, text)
+        return self.content_cache.get_or_build(
+            ("sections", filing.accession.value),
+            lambda: self._build_sections(filing),
+        )
 
-        body = text if text is not None else self._extract_filing_text(filing)
+    def _build_sections(self, filing: FilingAggregate) -> tuple[SectionSequence, int]:
+        body = self._extract_filing_text(filing)
+        seq = self._detect_sections(filing, body)
+        return seq, estimate_retained_bytes(seq) if body else 0
+
+    def _detect_sections(self, filing: FilingAggregate, body: str) -> SectionSequence:
+        from edgar_sec.engine.forms.sections.models import SectionSequence
+
         if not body:
             return SectionSequence(sections=(), family=filing.form)
 
@@ -540,7 +626,7 @@ class Edgar:
         toc_span = (
             (toc_info.start_line, toc_info.end_line) if toc_info is not None else None
         )
-        seq = detect_section_sequence(
+        return detect_section_sequence(
             body,
             family=family,
             taxonomy_items=taxonomy,
@@ -549,9 +635,6 @@ class Edgar:
                 entry.profile if entry is not None else None
             ),
         )
-        if text is None:
-            self._sections_cache[acc] = seq
-        return seq
 
     def section(
         self, filing: FilingAggregate, item: str, text: str | None = None
@@ -567,6 +650,24 @@ class Edgar:
 
     def notes(self, filing: FilingAggregate, text: str | None = None) -> NotesSequence:
         """Detect and return financial statement footnotes."""
+        from edgar_sec.engine.forms.sections.models import NotesSequence
+
+        if not filing.has_notes:
+            return NotesSequence(notes=())
+
+        if text is not None:
+            return self._detect_notes(filing, text)
+        return self.content_cache.get_or_build(
+            ("notes", filing.accession.value),
+            lambda: self._build_notes(filing),
+        )
+
+    def _build_notes(self, filing: FilingAggregate) -> tuple[NotesSequence, int]:
+        body = self._extract_filing_text(filing)
+        seq = self._detect_notes(filing, body)
+        return seq, estimate_retained_bytes(seq) if body else 0
+
+    def _detect_notes(self, filing: FilingAggregate, body: str) -> NotesSequence:
         from edgar_sec.domain.forms.common.processing import profile_version_of
         from edgar_sec.domain.forms.families.processing_profiles import (
             get_family_profile,
@@ -576,24 +677,13 @@ class Edgar:
             detect_notes_sequence,
         )
 
-        if not filing.has_notes:
-            return NotesSequence(notes=())
-
-        acc = filing.accession.value
-        if text is None and acc in self._notes_cache:
-            return self._notes_cache[acc]
-
-        body = text if text is not None else self._extract_filing_text(filing)
         if not body:
             return NotesSequence(notes=())
 
-        seq = detect_notes_sequence(
+        return detect_notes_sequence(
             body,
             renderer_version=profile_version_of(get_family_profile(filing.form)),
         )
-        if text is None:
-            self._notes_cache[acc] = seq
-        return seq
 
     def note(
         self,
@@ -630,19 +720,25 @@ class Edgar:
         return find_toc_span(body)
 
     def _extract_filing_text(self, filing: FilingAggregate) -> str:
-        acc = filing.accession.value
-        cached = self._text_cache.get(acc)
-        if cached is not None:
-            return cached
+        return self.content_cache.get_or_build(
+            ("text", filing.accession.value),
+            lambda: self._read_filing_text(filing),
+        )
+
+    def _read_filing_text(self, filing: FilingAggregate) -> tuple[str, int]:
         from edgar_sec.domain.forms.reports import CompanyReport
 
         report = filing.as_report()
         if isinstance(report, CompanyReport):
             text = report.text() or ""
-            if text:
-                self._text_cache[acc] = text
-            return text
-        return ""
+            return text, len(text)
+        return "", 0
 
 
-__all__ = ["Edgar", "FacadeCache", "derive_facade_capacity"]
+__all__ = [
+    "Edgar",
+    "FacadeCache",
+    "derive_content_cache_budget",
+    "derive_content_disk_budget",
+    "derive_facade_capacity",
+]

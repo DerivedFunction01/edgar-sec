@@ -167,3 +167,13 @@ def test_bulk_archive_retention_setting_defaults_and_env() -> None:
     assert overridden["sec.bulk_archive.retention"] == 7
     runtime = resolve_runtime_settings(env={"SEC_BULK_ARCHIVE_RETENTION": "3"})
     assert runtime.sec.bulk_archive_retention == 3
+
+
+def test_content_cache_fraction_defaults_and_env() -> None:
+    settings = resolve_settings(include=["client"])
+    assert settings["client.content_cache_fraction"] == 0.25
+    assert settings["client.content_disk_budget_bytes"] == 2 * 1024 * 1024 * 1024
+    overridden = resolve_settings(env={"CLIENT_CONTENT_CACHE_FRACTION": "0.5"})
+    assert overridden["client.content_cache_fraction"] == 0.5
+    overridden = resolve_settings(env={"CLIENT_CONTENT_DISK_BUDGET_BYTES": "4096"})
+    assert overridden["client.content_disk_budget_bytes"] == 4096
