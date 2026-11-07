@@ -10,6 +10,7 @@ from edgar_sec.domain.identity import Cik
 from edgar_sec.domain.submissions.models import Address, EntityProfile
 
 if TYPE_CHECKING:
+    from edgar_sec.apps.client.concept import ConceptResult
     from edgar_sec.apps.client.facade import Edgar
     from edgar_sec.apps.client.models import FilingsResult
     from edgar_sec.apps.client.xbrl import Xbrl
@@ -81,6 +82,14 @@ class Company:
             mode=mode,
             workers=workers,
         )
+
+    def concept(self, taxonomy: str, tag: str) -> tuple[ConceptResult, ...]:
+        """Fetch SEC-reported values for one XBRL concept, exactly as reported."""
+        from edgar_sec.apps.client.concept import fetch_concept
+        from edgar_sec.apps.client.facade import Edgar
+
+        client = self.facade or Edgar()
+        return fetch_concept(self.cik, taxonomy, tag, client=client.sec_client)
 
     def clear_cache(
         self,
