@@ -13,7 +13,19 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from edgar_sec.foundation.runtime.settings.sec import SURFACE_POLICIES
+from edgar_sec.foundation.runtime.settings.sec import (
+    SURFACE_KIND_NO_STORE,
+    SURFACE_KIND_STATIC,
+    SURFACE_KIND_TRANSIENT,
+    SURFACE_POLICIES,
+)
+
+_KNOWN_SURFACE_KINDS = {
+    SURFACE_KIND_STATIC,
+    SURFACE_KIND_TRANSIENT,
+    SURFACE_KIND_NO_STORE,
+}
+_SETTINGS_MODULE = "edgar_sec/foundation/runtime/settings/sec.py"
 
 from .base import Scanner, ScannerFinding
 from .files import discover_python_files
@@ -120,6 +132,29 @@ def scan_sec_surfaces() -> list[ScannerFinding]:
     """Scan Python files for SEC URL shapes with no governed surface."""
     findings: list[ScannerFinding] = []
     book = _load_rule_book()
+    for surface, policy in sorted(SURFACE_POLICIES.items()):
+        if policy.kind not in _KNOWN_SURFACE_KINDS:
+            findings.append(
+                ScannerFinding(
+                    scanner="sec-surface",
+                    source="static",
+                    path=_SETTINGS_MODULE,
+                    line=1,
+                    message=f"SEC surface {surface!r} has unknown kind {policy.kind!r}",
+                    hint="use a governed surface kind in SURFACE_POLICIES",
+                )
+            )
+        elif policy.kind == SURFACE_KIND_NO_STORE and policy.ttl_path is not None:
+            findings.append(
+                ScannerFinding(
+                    scanner="sec-surface",
+                    source="static",
+                    path=_SETTINGS_MODULE,
+                    line=1,
+                    message=f"no-store SEC surface {surface!r} must not name a TTL",
+                    hint="a no-store surface is never cached, so it carries no TTL",
+                )
+            )
     for surface, line in sorted(book.surfaces.items()):
         if surface not in SURFACE_POLICIES:
             findings.append(

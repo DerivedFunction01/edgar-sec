@@ -10,7 +10,7 @@ import hashlib
 import sqlite3
 import threading
 import time
-from collections.abc import Mapping
+from collections.abc import Collection, Mapping
 from functools import lru_cache
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -30,10 +30,25 @@ def _now() -> str:
 
 
 @lru_cache(maxsize=1)
-def _resolved_surface_policy() -> tuple[dict[str, int | None], int]:
+def _resolved_surface_policy() -> tuple[dict[str, int | None], int, frozenset[str]]:
     from edgar_sec.foundation.runtime.settings import resolve_surface_policy
 
     return resolve_surface_policy()
+
+
+def _is_no_store_url(
+    url: str, no_store_surfaces: Collection[str] | None = None
+) -> bool:
+    """True when the URL's governed surface is a no-store surface."""
+    surface = classify_sec_surface(url)
+    if surface is None:
+        return False
+    surfaces = (
+        _resolved_surface_policy()[2]
+        if no_store_surfaces is None
+        else no_store_surfaces
+    )
+    return surface in surfaces
 
 
 def _format_expiry(fetched: float, ttl_s: int) -> str:
@@ -60,7 +75,7 @@ def _expires_at(
     surface = classify_sec_surface(url)
     if surface is not None:
         if surface_ttls is None:
-            table, resolved_default = _resolved_surface_policy()
+            table, resolved_default, _no_store = _resolved_surface_policy()
             default_ttl = (
                 resolved_default
                 if default_surface_ttl_s is None
@@ -98,6 +113,7 @@ class SqlCache:
         ttl_s: int = DEFAULT_CACHE_TTL_S,
         surface_ttls: Mapping[str, int | None] | None = None,
         default_surface_ttl_s: int | None = None,
+        surface_no_store: Collection[str] | None = None,
     ) -> None:
         self.cache_dir = Path(cache_dir).resolve()
         self.db_path = self.cache_dir / "responses.sqlite"
@@ -106,6 +122,7 @@ class SqlCache:
         self.ttl_s = ttl_s
         self._surface_ttls = surface_ttls
         self._default_surface_ttl_s = default_surface_ttl_s
+        self._surface_no_store = surface_no_store
 
         self.db_path.touch(exist_ok=True)
         self._con = sqlite3.connect(str(self.db_path), check_same_thread=False)
@@ -113,6 +130,9 @@ class SqlCache:
         self._con.execute("PRAGMA journal_mode=WAL")
         self._con.execute("PRAGMA busy_timeout=5000")
         self._create_tables()
+
+    def _is_no_store(self, url: str) -> bool:
+        return _is_no_store_url(url, self._surface_no_store)
 
     def _create_tables(self) -> None:
         with self._lock, self._con:
@@ -147,6 +167,8 @@ class SqlCache:
 
     def get(self, url: str) -> bytes | None:
         """Fetch and decompress response bytes if present and not expired."""
+        if self._is_no_store(url):
+            return None
         digest = _url_sha256(url)
         with self._lock:
             cursor = self._con.execute(
@@ -172,6 +194,8 @@ class SqlCache:
         mutable: bool = False,
     ) -> None:
         """Compress and persist response bytes."""
+        if self._is_no_store(url):
+            return
         digest = _url_sha256(url)
         compressed = compress_payload(payload)
         now = _now()

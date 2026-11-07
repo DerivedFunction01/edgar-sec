@@ -9,13 +9,23 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from urllib.parse import parse_qs, urljoin, urlsplit, urlunsplit
+from urllib.parse import parse_qs, urlencode, urljoin, urlsplit, urlunsplit
 
 from edgar_sec.domain.identity import AccessionNumber, Cik
 
 SEC_SUBMISSIONS_BASE = "https://data.sec.gov/submissions"
 SEC_XBRL_API_BASE = "https://data.sec.gov/api/xbrl"
 SEC_ARCHIVE_BASE = "https://www.sec.gov/Archives/edgar/data"
+SEC_EDGAR_BASE = "https://www.sec.gov/Archives/edgar"
+SEC_BROWSE_EDGAR_URL = "https://www.sec.gov/cgi-bin/browse-edgar"
+EFTS_SEARCH_BASE = "https://efts.sec.gov/LATEST/search-index"
+
+STRUCTURED_FEED_FILES: dict[str, str] = {
+    "usgaap": "usgaap.rss.xml",
+    "risk_return": "xbrl-rr.rss.xml",
+    "inline": "xbrl-inline.rss.xml",
+    "all": "xbrlrss.all.xml",
+}
 SUBMISSIONS_BULK_URL = (
     "https://www.sec.gov/Archives/edgar/daily-index/bulkdata/submissions.zip"
 )
@@ -48,6 +58,49 @@ def historical_submissions_url(source_file: str) -> str:
 def submissions_bulk_url() -> str:
     """Return the nightly bulk submissions ZIP URL (all CIK documents)."""
     return SUBMISSIONS_BULK_URL
+
+
+def current_filings_url(
+    form: str | None = None,
+    cik: str | int | None = None,
+    count: int | None = None,
+    start: int | None = None,
+) -> str:
+    """Return the getcurrent Atom feed URL with only the supplied filters."""
+    params: list[tuple[str, str]] = [("action", "getcurrent")]
+    if form is not None:
+        params.append(("type", str(form)))
+    if cik is not None:
+        params.append(("CIK", str(cik)))
+    if count is not None:
+        params.append(("count", str(count)))
+    if start is not None:
+        params.append(("start", str(start)))
+    params.append(("output", "atom"))
+    return f"{SEC_BROWSE_EDGAR_URL}?{urlencode(params)}"
+
+
+def structured_feed_url(feed: str) -> str:
+    """Return the URL of one named structured-disclosure live feed."""
+    key = str(feed).strip()
+    filename = STRUCTURED_FEED_FILES.get(key)
+    if filename is None and key in STRUCTURED_FEED_FILES.values():
+        filename = key
+    if filename is None:
+        raise ValueError(f"unknown structured-disclosure feed: {feed!r}")
+    return f"{SEC_EDGAR_BASE}/{filename}"
+
+
+def structured_archive_url(year: int, month: int) -> str:
+    """Return the monthly structured-disclosure archive URL."""
+    if not 1 <= int(month) <= 12:
+        raise ValueError(f"month must be in 1..12, got {month!r}")
+    return f"{SEC_EDGAR_BASE}/monthly/xbrlrss-{int(year):04d}-{int(month):02d}.xml"
+
+
+def efts_search_url() -> str:
+    """Return the EFTS search-index base URL; query encoding is the client's."""
+    return EFTS_SEARCH_BASE
 
 
 def companyconcept_url(cik: str | int, taxonomy: str, tag: str) -> str:
@@ -383,6 +436,10 @@ SURFACE_COMPANY_TICKERS_EXCHANGE = "company_tickers_exchange"
 SURFACE_COMPANY_TICKERS_MF = "company_tickers_mf"
 SURFACE_TICKER_TXT = "ticker_txt"
 SURFACE_CIK_LOOKUP = "cik_lookup"
+SURFACE_CURRENT_FILINGS = "current_filings"
+SURFACE_STRUCTURED_DISCLOSURE_FEEDS = "structured_disclosure_feeds"
+SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES = "structured_disclosure_archives"
+SURFACE_EFTS = "efts"
 
 SEC_SURFACES: tuple[str, ...] = (
     SURFACE_SUBMISSIONS,
@@ -400,6 +457,10 @@ SEC_SURFACES: tuple[str, ...] = (
     SURFACE_COMPANY_TICKERS_MF,
     SURFACE_TICKER_TXT,
     SURFACE_CIK_LOOKUP,
+    SURFACE_CURRENT_FILINGS,
+    SURFACE_STRUCTURED_DISCLOSURE_FEEDS,
+    SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES,
+    SURFACE_EFTS,
 )
 
 # Each builder names the surface its URLs belong to.
@@ -413,6 +474,10 @@ URL_BUILDER_SURFACES: dict[str, str] = {
     "index_json_url_for": SURFACE_ARCHIVE_INDEX_JSON,
     "full_submission_url_for": SURFACE_FULL_SUBMISSION_BUNDLES,
     "xbrl_package_url_for": SURFACE_XBRL_PACKAGES,
+    "current_filings_url": SURFACE_CURRENT_FILINGS,
+    "structured_feed_url": SURFACE_STRUCTURED_DISCLOSURE_FEEDS,
+    "structured_archive_url": SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES,
+    "efts_search_url": SURFACE_EFTS,
 }
 
 # Classification rules as data: (surface id, host, path pattern), first match
@@ -426,6 +491,19 @@ SEC_SURFACE_RULES: tuple[tuple[str, str, str], ...] = (
     ),
     (SURFACE_SUBMISSIONS, "data.sec.gov", r"^/submissions(/|$)"),
     (SURFACE_COMPANYCONCEPT, "data.sec.gov", r"^/api/xbrl(/|$)"),
+    (SURFACE_CURRENT_FILINGS, "www.sec.gov", r"^/cgi-bin/browse-edgar"),
+    (SURFACE_EFTS, "efts.sec.gov", r"^/LATEST/search-index$"),
+    (
+        SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES,
+        "www.sec.gov",
+        r"^/Archives/edgar/monthly/xbrlrss-\d{4}-\d{2}\.xml$",
+    ),
+    (
+        SURFACE_STRUCTURED_DISCLOSURE_FEEDS,
+        "www.sec.gov",
+        r"^/Archives/edgar/(usgaap\.rss|xbrl-rr\.rss|xbrl-inline\.rss"
+        r"|xbrlrss\.all)\.xml$",
+    ),
     (
         SURFACE_SUBMISSIONS_BULK,
         "www.sec.gov",
@@ -498,9 +576,13 @@ def classify_sec_surface(url: str | None) -> str | None:
 
 __all__ = [
     "CIK_PADDED_WIDTH",
+    "EFTS_SEARCH_BASE",
     "SEC_ARCHIVE_BASE",
+    "SEC_BROWSE_EDGAR_URL",
+    "SEC_EDGAR_BASE",
     "SEC_SUBMISSIONS_BASE",
     "SEC_XBRL_API_BASE",
+    "STRUCTURED_FEED_FILES",
     "SUBMISSIONS_BULK_URL",
     "DEFAULT_ARCHIVE_URL_POLICY",
     "FILING_SUMMARY_DOCUMENT",
@@ -511,6 +593,10 @@ __all__ = [
     "SURFACE_ARCHIVE_INDEX_PAGES",
     "SURFACE_CIK_LOOKUP",
     "SURFACE_COMPANYCONCEPT",
+    "SURFACE_CURRENT_FILINGS",
+    "SURFACE_EFTS",
+    "SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES",
+    "SURFACE_STRUCTURED_DISCLOSURE_FEEDS",
     "SURFACE_COMPANY_TICKERS",
     "SURFACE_COMPANY_TICKERS_EXCHANGE",
     "SURFACE_COMPANY_TICKERS_MF",
@@ -528,6 +614,8 @@ __all__ = [
     "archives_url",
     "classify_sec_surface",
     "companyconcept_url",
+    "current_filings_url",
+    "efts_search_url",
     "full_submission_url_for",
     "historical_submissions_url",
     "index_json_url_for",
@@ -537,6 +625,8 @@ __all__ = [
     "parse_archive_url",
     "resolve_archive_href",
     "resolve_sec_href",
+    "structured_archive_url",
+    "structured_feed_url",
     "submissions_bulk_url",
     "submissions_url",
     "validate_archive_url",

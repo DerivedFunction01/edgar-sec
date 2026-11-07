@@ -23,6 +23,8 @@ DEFAULT_TRANSIENT_TTL_S = 24 * 60 * 60
 
 SURFACE_KIND_STATIC = "static"
 SURFACE_KIND_TRANSIENT = "transient"
+SURFACE_KIND_NO_STORE = "no-store"
+DEFAULT_STRUCTURED_FEED_TTL_S = 300
 
 
 def _require_positive(value: object) -> None:
@@ -110,6 +112,19 @@ SURFACE_POLICIES: dict[str, SurfacePolicy] = {
         SurfacePolicy(
             "taxonomy_archives", SURFACE_KIND_STATIC, "immutable per release"
         ),
+        SurfacePolicy("current_filings", SURFACE_KIND_NO_STORE, "filing events"),
+        SurfacePolicy(
+            "structured_disclosure_feeds",
+            SURFACE_KIND_TRANSIENT,
+            "10-minute publication cycle",
+            "sec.ttl.structured_disclosure_feeds",
+        ),
+        SurfacePolicy(
+            "structured_disclosure_archives",
+            SURFACE_KIND_STATIC,
+            "immutable once the month completes",
+        ),
+        SurfacePolicy("efts", SURFACE_KIND_NO_STORE, "live index"),
     )
 }
 
@@ -208,12 +223,12 @@ def get_sec_specs() -> dict[str, dict[str, SettingSpec]]:
     }
 
 
-def _ttl_spec(description: str) -> SettingSpec:
+def _ttl_spec(description: str, default: int = DEFAULT_TRANSIENT_TTL_S) -> SettingSpec:
     from . import SettingSpec
 
     return SettingSpec(
         value_type=int,
-        default=DEFAULT_TRANSIENT_TTL_S,
+        default=default,
         env=True,
         cli=True,
         machine_local=True,
@@ -240,6 +255,11 @@ def _ttl_specs() -> dict[str, SettingSpec]:
         "company_tickers_mf": _ttl_spec("freshness window for company_tickers_mf.json"),
         "ticker_txt": _ttl_spec("freshness window for ticker.txt"),
         "cik_lookup": _ttl_spec("freshness window for cik-lookup-data.txt"),
+        "structured_disclosure_feeds": _ttl_spec(
+            "freshness window for structured-disclosure feeds; strictly below "
+            "the 600-second publication cycle",
+            default=DEFAULT_STRUCTURED_FEED_TTL_S,
+        ),
     }
 
 
@@ -249,9 +269,11 @@ __all__ = [
     "DEFAULT_MAX_FAILURE_ATTEMPTS",
     "DEFAULT_MAX_RETRIES",
     "DEFAULT_RATE_LIMIT_RPS",
+    "DEFAULT_STRUCTURED_FEED_TTL_S",
     "DEFAULT_TIMEOUT_S",
     "DEFAULT_TRANSIENT_TTL_S",
     "DEFAULT_USER_AGENT",
+    "SURFACE_KIND_NO_STORE",
     "SURFACE_KIND_STATIC",
     "SURFACE_KIND_TRANSIENT",
     "SURFACE_POLICIES",

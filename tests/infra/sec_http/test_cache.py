@@ -28,6 +28,85 @@ def test_cache_miss_then_put_get(tmp_path: Path) -> None:
         cache.close()
 
 
+NO_STORE_URL = "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom"
+EFTS_URL = "https://efts.sec.gov/LATEST/search-index?q=%22x%22"
+
+
+def test_no_store_put_writes_no_cache_row(tmp_path: Path) -> None:
+    cache = SqlCache(tmp_path, ttl_s=3600)
+    try:
+        for url in (NO_STORE_URL, EFTS_URL):
+            cache.put(url, b"payload", sha256="abc", byte_size=7, content_kind="text")
+            assert cache.get(url) is None
+        assert cache.stats()["responses_count"] == 0
+    finally:
+        cache.close()
+
+
+def test_no_store_get_ignores_a_seeded_cache_row(tmp_path: Path) -> None:
+    """A row planted directly in SQLite is still never read for a no-store URL."""
+    from edgar_sec.foundation.compression import compress_payload
+    from edgar_sec.infra.sec_http.cache import _now, _url_sha256
+
+    cache = SqlCache(tmp_path, ttl_s=3600)
+    try:
+        with cache._con:
+            cache._con.execute(
+                "INSERT INTO url_responses (url_sha256, url, payload,"
+                " payload_sha256, byte_size, content_kind, fetched_at, expires_at)"
+                " VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                (
+                    _url_sha256(NO_STORE_URL),
+                    NO_STORE_URL,
+                    compress_payload(b"stale"),
+                    "abc",
+                    5,
+                    "text",
+                    _now(),
+                    None,
+                ),
+            )
+        assert cache.stats()["responses_count"] == 1
+        assert cache.get(NO_STORE_URL) is None
+    finally:
+        cache.close()
+
+
+def test_no_store_fetch_through_a_transport_fake_never_caches(
+    tmp_path: Path,
+) -> None:
+    from edgar_sec.infra.sec_http.client import SecHttpClient
+
+    class _Response:
+        status_code = 200
+        content = b"<feed/>"
+        headers: dict[str, str] = {}
+
+    class _Session:
+        def __init__(self) -> None:
+            self.calls: list[str] = []
+
+        def get(self, url: str, headers: object = None, timeout: object = None):
+            self.calls.append(url)
+            return _Response()
+
+        def mount(self, *_args: object) -> None:
+            pass
+
+    session = _Session()
+    client = SecHttpClient(
+        user_agent="Sample Company test@sample.com",
+        cache_dir=tmp_path,
+        session_factory=lambda: session,
+    )
+    assert client.get_bytes(NO_STORE_URL) == b"<feed/>"
+    assert client.get_bytes(NO_STORE_URL) == b"<feed/>"
+    assert session.calls == [NO_STORE_URL, NO_STORE_URL]
+    stats = client.cache_stats()
+    assert stats is not None
+    assert stats["responses_count"] == 0
+
+
 def test_failure_ledger_records_and_clears(tmp_path: Path) -> None:
     cache = SqlCache(tmp_path, ttl_s=3600)
     try:
