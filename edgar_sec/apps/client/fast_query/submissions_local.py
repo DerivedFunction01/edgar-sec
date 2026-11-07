@@ -6,6 +6,7 @@ the latest published submissions snapshot, so covered CIKs need no HTTP call.
 
 from __future__ import annotations
 
+from bisect import bisect_right
 from collections.abc import Sequence
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -26,6 +27,7 @@ __all__ = ["materialize_from_snapshot"]
 
 _METADATA_DATASET = "metadata"
 _RELATION = "submissions"
+_INDEX_RELATION = "cik_index"
 
 
 def _fresh_after() -> datetime | None:
@@ -117,7 +119,22 @@ def _read_snapshot_rows(
         )
         if not part_paths:
             continue
-        payloads = _query_parts(part_paths, sorted(remaining))
+        index_paths: tuple[Path, ...] = ()
+        if _INDEX_RELATION in node.relations:
+            index_paths = catalog.resolve_relation(
+                node.snapshot_id,
+                _INDEX_RELATION,
+                relative_to=root / node.snapshot_id,
+                verify_digests=False,
+            )
+        payloads = _query_parts(
+            part_paths,
+            sorted(remaining),
+            index_paths=index_paths,
+            part_row_counts=tuple(
+                descriptor.row_count for descriptor in node.relations[_RELATION]
+            ),
+        )
         for cik_key, payload in payloads.items():
             covered[cik_key] = materialize_from_payload(
                 remaining[cik_key],
@@ -132,28 +149,114 @@ def _read_snapshot_rows(
     return covered
 
 
-def _query_parts(
-    part_paths: tuple[Path, ...], cik_keys: list[str]
-) -> dict[str, dict[str, Any]]:
-    cik_list = ", ".join(sql_literal(cik) for cik in cik_keys)
-    paths = [str(path) for path in part_paths]
-    with connect() as con:
-        present = {
-            str(row[0])
-            for row in con.execute(
-                f"SELECT DISTINCT cik FROM read_parquet(?) WHERE cik IN ({cik_list})",
+def _locate_in_index(
+    index_paths: tuple[Path, ...], cik_list: str
+) -> tuple[dict[str, int], int] | None:
+    """Return wanted CIKs' zero-based index positions and the index size.
+
+    The index is the node's sorted distinct CIK list, so a position plus
+    the parts' row counts identifies the part holding each CIK.
+    """
+    paths = [str(path) for path in index_paths]
+    try:
+        with connect() as con:
+            rows = con.execute(
+                f"""
+                SELECT cik, rn - 1, total
+                FROM (
+                    SELECT cik,
+                           row_number() OVER (ORDER BY cik) AS rn,
+                           count(*) OVER () AS total
+                    FROM read_parquet(?)
+                )
+                WHERE cik IN ({cik_list})
+                """,
                 [paths],
             ).fetchall()
-        }
-        if not present:
-            return {}
+    except Exception:
+        return None
+    if not rows:
+        return {}, 0
+    totals = {int(row[2]) for row in rows}
+    if len(totals) != 1:
+        return None
+    return {str(row[0]): int(row[1]) for row in rows}, totals.pop()
+
+
+def _resolve_target_parts(
+    part_paths: tuple[Path, ...],
+    part_row_counts: tuple[int, ...],
+    positions: dict[str, int],
+    index_size: int,
+) -> tuple[Path, ...] | None:
+    """Map index positions to the parts holding them, or None on drift.
+
+    Descriptor order and row counts must partition the sorted index
+    exactly; any mismatch refuses targeting rather than guessing a part.
+    """
+    if len(part_row_counts) != len(part_paths):
+        return None
+    if sum(part_row_counts) != index_size or any(
+        count <= 0 for count in part_row_counts
+    ):
+        return None
+    starts: list[int] = []
+    offset = 0
+    for count in part_row_counts:
+        starts.append(offset)
+        offset += count
+    chosen: set[int] = set()
+    for position in positions.values():
+        if not 0 <= position < index_size:
+            return None
+        chosen.add(bisect_right(starts, position) - 1)
+    return tuple(part_paths[i] for i in sorted(chosen))
+
+
+def _query_parts(
+    part_paths: tuple[Path, ...],
+    cik_keys: list[str],
+    *,
+    index_paths: tuple[Path, ...] = (),
+    part_row_counts: tuple[int, ...] = (),
+) -> dict[str, dict[str, Any]]:
+    cik_list = ", ".join(sql_literal(cik) for cik in cik_keys)
+    targets = part_paths
+    present: set[str] | None = None
+    if index_paths:
+        located = _locate_in_index(index_paths, cik_list)
+        if located is not None:
+            positions, index_size = located
+            present = set(positions)
+            if not present:
+                return {}
+            resolved = _resolve_target_parts(
+                part_paths, part_row_counts, positions, index_size
+            )
+            if resolved is not None:
+                targets = resolved
+    paths = [str(path) for path in targets]
+    with connect() as con:
+        if present is None:
+            present = {
+                str(row[0])
+                for row in con.execute(
+                    f"SELECT DISTINCT cik FROM read_parquet(?) WHERE cik IN ({cik_list})",
+                    [paths],
+                ).fetchall()
+            }
+            if not present:
+                return {}
         filing_rows = con.execute(
             f"""
             SELECT cik,
                    f.accession_number, f.filing_date, f.report_date, f.form,
                    f.primary_document
-            FROM (SELECT cik, unnest(filings) AS f FROM read_parquet(?))
-            WHERE cik IN ({cik_list})
+            FROM (
+                SELECT cik, unnest(filings) AS f
+                FROM read_parquet(?)
+                WHERE cik IN ({cik_list})
+            )
             """,
             [paths],
         ).fetchall()
