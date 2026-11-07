@@ -29,6 +29,7 @@ own the domain vocabulary or schemas it consumes (that is `edgar_sec/domain`).
 - **index_pages/**: pure SEC filing index-page HTML parser
 - **filing_summary/**: pure SEC FilingSummary and XBRL-package enumerator
 - **xbrl/**: taxonomy linkbase discovery, classification, and Parquet storage
+- **text_search/**: BM25 ranking and exact/regex matching over the materialized text index, with coverage stated on every result
 
 Each package's README carries its deliberate gaps.
 

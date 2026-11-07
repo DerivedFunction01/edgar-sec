@@ -192,6 +192,39 @@ class Edgar:
             return None
         return store.read_member(reference, member_name)
 
+    def search_documents(
+        self,
+        query: str,
+        *,
+        mode: str = "bm25",
+        accessions: tuple[str, ...] = (),
+        ciks: tuple[int, ...] = (),
+        forms: tuple[str, ...] = (),
+        date_from: str | None = None,
+        date_to: str | None = None,
+        attachment_scope: str = "all_documents",
+        limit: int = 50,
+    ):  # noqa: ANN202 - SearchResult is imported lazily to keep facade light
+        """Search our acquired holdings through the materialized text index.
+
+        Every result carries a coverage block; a scoped target absent from
+        the corpus is reported not-in-corpus, never as a plain no-match.
+        """
+        from edgar_sec.apps.client.text_search import search_documents
+
+        return search_documents(
+            query,
+            mode=mode,
+            artifacts_root=self.artifacts_root,
+            accessions=accessions,
+            ciks=ciks,
+            forms=forms,
+            date_from=date_from,
+            date_to=date_to,
+            attachment_scope=attachment_scope,
+            limit=limit,
+        )
+
     def pipeline(self, config: PipelineConfig | FilingQuery) -> FilingsResult:
         """Execute end-to-end acquisition via the high-throughput pipeline runner."""
         if not isinstance(config, PipelineConfig):

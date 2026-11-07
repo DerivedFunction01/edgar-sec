@@ -41,6 +41,9 @@ _NEUTRAL_CALLS = frozenset({"join", "int", "float", "bool", "len", "str", "sorte
 _SQL_COMPILER_PATHS = frozenset(
     {
         "edgar_sec/infra/storage/duckdb.py",
+        # Text search SQL composes only fixed fragments and placeholder lists;
+        # every caller value reaches the statement as a bound parameter.
+        "edgar_sec/engine/text_search/engine.py",
         # Runner input SQL uses only format-selected readers and allowlisted columns;
         # source paths are bound values and ticker lookup is a fixed join.
         "edgar_sec/apps/runner/coordinator.py",
