@@ -7,19 +7,23 @@ from edgar_sec.pipelines.metadata_sync.checkpoints import (
     discover_completed_chunks,
 )
 from edgar_sec.pipelines.metadata_sync.options import RunOptions
-from edgar_sec.pipelines.metadata_sync.planner import load_plan
+from edgar_sec.pipelines.metadata_sync.planner import load_plan, read_fingerprints
 from edgar_sec.pipelines.metadata_sync.progress import progress_renderer
 from edgar_sec.pipelines.metadata_sync.run_lock import RunLock
 from edgar_sec.pipelines.metadata_sync.sec_client import (
     BulkSubmissionsClient,
     SubmissionsClient,
 )
+from edgar_sec.pipelines.metadata_sync.snapshot import resolve_snapshot_parts
 from edgar_sec.pipelines.metadata_sync.worker import (
+    CarryProvider,
+    CarryReport,
     resolve_workers,
     run_chunk_ids,
+    stage_carried_rows,
 )
 
-from .client import build_bulk_client, build_client
+from .client import build_bulk_client, build_bulk_client_from_store, build_client
 
 
 def cmd_run(
@@ -30,11 +34,41 @@ def cmd_run(
     """Execute the chunks this invocation owns."""
     run_paths = options.run_paths()
     plan = load_plan(run_paths)
-    if client is None and options.bulk:
-        client = build_bulk_client(run_paths.chunk_file(0).parent)
+    fingerprints = None
+    if plan.is_archive_plan:
+        fingerprints = read_fingerprints(run_paths.fingerprints_file)
+        if client is None:
+            metadata = getattr(run_paths, "metadata", None)
+            if metadata is None:
+                raise ValueError("archive plans execute from the artifacts tree")
+            client = build_bulk_client_from_store(
+                metadata.bulk_archives_root,
+                plan.archive_source_id,
+                plan.archive_sha256,
+            )
+    elif client is None and options.bulk:
+        client = build_bulk_client(run_paths.metadata.bulk_archives_root)
     targets = list(options.chunk_ids) or plan.chunk_ids()
     if not targets:
         raise ValueError("no chunks selected")
+    snapshot_id = options.effective_snapshot_id(plan)
+    carry_report: CarryReport | None = None
+    carry = None
+    if options.carry_from_snapshot:
+        if fingerprints is None:
+            raise ValueError("--carry-from requires an archive plan")
+        metadata = getattr(run_paths, "metadata", None)
+        if metadata is None:
+            raise ValueError("carry-forward executes from the artifacts tree")
+        prior = resolve_snapshot_parts(metadata, options.carry_from_snapshot)
+        carry_report = stage_carried_rows(
+            plan,
+            run_paths,
+            prior_part_paths=prior.paths,
+            fingerprints=fingerprints,
+            snapshot_id=snapshot_id,
+        )
+        carry = CarryProvider(carry_report.staging_dir)
     completed = discover_completed_chunks(plan, run_paths)
     outstanding = sum(
         plan.chunk_length(chunk_id) for chunk_id in targets if chunk_id not in completed
@@ -52,25 +86,38 @@ def cmd_run(
                 plan,
                 run_paths,
                 targets,
-                snapshot_id=options.effective_snapshot_id(plan),
+                snapshot_id=snapshot_id,
                 workers=resolve_workers(options.workers),
                 completed=completed,
                 progress=progress,
+                fingerprints=fingerprints,
+                carry=carry,
             )
     finally:
         if bar is not None:
             bar.close()
     written = sum(1 for r in results if not r.skipped_existing)
+    written_rows = sum(r.row_count for r in results if not r.skipped_existing)
     summary_rows = [
         KeyValueRow("plan_id", plan.plan_id),
         KeyValueRow("total_chunks", str(len(results))),
         KeyValueRow("written", str(written)),
         KeyValueRow("skipped", str(len(results) - written)),
-        KeyValueRow(
-            "total_rows",
-            str(sum(r.row_count for r in results if not r.skipped_existing)),
-        ),
+        KeyValueRow("total_rows", str(written_rows)),
     ]
+    if carry_report is not None:
+        carried_here = sum(
+            carry_report.carried_by_chunk.get(r.chunk_id, 0)
+            for r in results
+            if not r.skipped_existing
+        )
+        summary_rows.append(KeyValueRow("carried_rows", str(carried_here)))
+        summary_rows.append(
+            KeyValueRow("normalized_rows", str(written_rows - carried_here))
+        )
+        summary_rows.append(
+            KeyValueRow("carry_from_snapshot", options.carry_from_snapshot)
+        )
     if isinstance(client, BulkSubmissionsClient):
         summary_rows.append(KeyValueRow("source", "submissions bulk archive"))
         summary_rows.append(

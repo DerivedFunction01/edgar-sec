@@ -69,6 +69,9 @@ class MergeReport:
     parent_snapshot_id: str = ""
     roster_id: str = ""
     delta_roster_id: str = ""
+    archive_source_id: str = ""
+    archive_sha256: str = ""
+    prior_snapshot_id: str = ""
     schema_version: str = SCHEMA_VERSION
     sort_order: str = "chunk_order"
     parts: list[dict[str, Any]] = field(default_factory=list)
@@ -101,6 +104,9 @@ class MergeReport:
             "parent_snapshot_id": self.parent_snapshot_id,
             "roster_id": self.roster_id,
             "delta_roster_id": self.delta_roster_id,
+            "archive_source_id": self.archive_source_id,
+            "archive_sha256": self.archive_sha256,
+            "prior_snapshot_id": self.prior_snapshot_id,
             "schema_version": self.schema_version,
             "merged_at": self.merged_at,
             "duplicate_accessions": self.duplicate_accessions,
@@ -173,47 +179,67 @@ def validate_chunks(plan: Plan, run_paths: RunPaths) -> list[Path]:
     if roster_path is None:
         raise MergeError("merge rejected: planned roster dataset is missing")
 
+    fingerprints_path: Path | None = None
+    if plan.is_archive_plan:
+        fingerprints_path = getattr(run_paths, "fingerprints_file", None)
+        if fingerprints_path is None or not fingerprints_path.is_file():
+            raise MergeError(
+                "merge rejected: archive plan is missing its fingerprint dataset"
+            )
+
     con = connect()
     try:
         for chunk_id in sorted(chunk_ids):
             start = plan.chunk_start(chunk_id)
             stop = start + plan.chunk_length(chunk_id)
-            coverage_errors, foreign_fingerprints, bad_statuses = con.execute(
-                """
-                WITH expected AS (
-                    SELECT cik_padded AS cik
-                    FROM read_parquet(?)
-                    WHERE ordinal >= ? AND ordinal < ?
-                ), actual AS (
-                    SELECT cik, input_fingerprint, status
-                    FROM read_parquet(?)
-                )
-                SELECT
-                    (SELECT count(*) FROM (
-                        SELECT cik FROM expected EXCEPT SELECT cik FROM actual
-                    )) +
-                    (SELECT count(*) FROM (
-                        SELECT cik FROM actual EXCEPT SELECT cik FROM expected
-                    )),
-                    count(*) FILTER (
-                        WHERE input_fingerprint IS NOT NULL
-                          AND input_fingerprint <> ''
-                          AND input_fingerprint <> ?
-                    ),
-                    count(*) FILTER (
-                        WHERE status IS NULL
-                           OR status NOT IN ('ok', 'partial', 'failed')
+            if fingerprints_path is not None:
+                coverage_errors, foreign_fingerprints, bad_statuses = (
+                    _validate_chunk_archive(
+                        con,
+                        roster_path,
+                        start,
+                        stop,
+                        found[chunk_id],
+                        fingerprints_path,
                     )
-                FROM actual
-                """,
-                [
-                    str(roster_path),
-                    start,
-                    stop,
-                    str(found[chunk_id]),
-                    fingerprint,
-                ],
-            ).fetchone()
+                )
+            else:
+                coverage_errors, foreign_fingerprints, bad_statuses = con.execute(
+                    """
+                    WITH expected AS (
+                        SELECT cik_padded AS cik
+                        FROM read_parquet(?)
+                        WHERE ordinal >= ? AND ordinal < ?
+                    ), actual AS (
+                        SELECT cik, input_fingerprint, status
+                        FROM read_parquet(?)
+                    )
+                    SELECT
+                        (SELECT count(*) FROM (
+                            SELECT cik FROM expected EXCEPT SELECT cik FROM actual
+                        )) +
+                        (SELECT count(*) FROM (
+                            SELECT cik FROM actual EXCEPT SELECT cik FROM expected
+                        )),
+                        count(*) FILTER (
+                            WHERE input_fingerprint IS NOT NULL
+                              AND input_fingerprint <> ''
+                              AND input_fingerprint <> ?
+                        ),
+                        count(*) FILTER (
+                            WHERE status IS NULL
+                               OR status NOT IN ('ok', 'partial', 'failed')
+                        )
+                    FROM actual
+                    """,
+                    [
+                        str(roster_path),
+                        start,
+                        stop,
+                        str(found[chunk_id]),
+                        fingerprint,
+                    ],
+                ).fetchone()
             if coverage_errors:
                 raise MergeError(
                     f"merge rejected: chunk {chunk_id} CIK coverage differs from the plan"
@@ -237,6 +263,59 @@ def plan_schema():
     from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 
     return SUBMISSION_METADATA_SCHEMA
+
+
+def _validate_chunk_archive(
+    con: Any,
+    roster_path: Path,
+    start: int,
+    stop: int,
+    chunk_path: Path,
+    fingerprints_path: Path,
+) -> tuple[int, int, int]:
+    """Coverage, fingerprint, and status checks for an archive chunk.
+
+    Fingerprints are per-CIK here, so the check joins the plan's
+    fingerprint dataset rather than one plan-level value.
+    """
+    return con.execute(
+        """
+        WITH expected AS (
+            SELECT cik_padded AS cik
+            FROM read_parquet(?)
+            WHERE ordinal >= ? AND ordinal < ?
+        ), actual AS (
+            SELECT cik, input_fingerprint, status
+            FROM read_parquet(?)
+        ), member_fp AS (
+            SELECT cik_padded AS cik, fingerprint
+            FROM read_parquet(?)
+        )
+        SELECT
+            (SELECT count(*) FROM (
+                SELECT cik FROM expected EXCEPT SELECT cik FROM actual
+            )) +
+            (SELECT count(*) FROM (
+                SELECT cik FROM actual EXCEPT SELECT cik FROM expected
+            )),
+            (SELECT count(*) FROM actual
+             JOIN member_fp ON member_fp.cik = actual.cik
+             WHERE actual.input_fingerprint IS NULL
+                OR actual.input_fingerprint <> member_fp.fingerprint),
+            count(*) FILTER (
+                WHERE status IS NULL
+                   OR status NOT IN ('ok', 'partial', 'failed')
+            )
+        FROM actual
+        """,
+        [
+            str(roster_path),
+            start,
+            stop,
+            str(chunk_path),
+            str(fingerprints_path),
+        ],
+    ).fetchone()
 
 
 def publish_cik_index(
@@ -374,6 +453,9 @@ def merge_chunks(
         parent_snapshot_id=plan.parent_id or recorded.get("parent_snapshot_id", ""),
         roster_id=plan.roster.roster_id,
         delta_roster_id=recorded.get("delta_roster_id", ""),
+        archive_source_id=recorded.get("archive_source_id", ""),
+        archive_sha256=recorded.get("archive_sha256", ""),
+        prior_snapshot_id=recorded.get("prior_snapshot_id", ""),
         merged_at=utc_now_iso(),
     )
     emit({"type": "chunks_validated", "chunks": len(chunk_paths)})
@@ -471,6 +553,11 @@ def publish_snapshot(
         "warnings": report.warnings,
         "sort_order": report.sort_order,
     }
+    if report.archive_sha256:
+        metadata["archive_source_id"] = report.archive_source_id
+        metadata["archive_sha256"] = report.archive_sha256
+    if report.prior_snapshot_id:
+        metadata["prior_snapshot_id"] = report.prior_snapshot_id
     dag_manifest = DAGNodeManifest(
         snapshot_id=report.snapshot_id,
         kind="delta" if report.parent_snapshot_id else "checkpoint",
