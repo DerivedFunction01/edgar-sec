@@ -152,6 +152,7 @@ class ParserDiagnostic:
         "invalid_size",
         "unsafe_href",
         "malformed_html",
+        "malformed_json",
         "malformed_xml",
         "malformed_package",
         "unsupported_encoding",

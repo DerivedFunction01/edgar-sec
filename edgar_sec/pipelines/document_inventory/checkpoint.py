@@ -249,6 +249,12 @@ def _empty_outcome(accession: str, index_url: str, status: str) -> dict[str, Any
     }
 
 
+def _index_vehicle(source_url: str | None) -> str:
+    return (
+        "index_json" if source_url and source_url.endswith("/index.json") else "index"
+    )
+
+
 def outcome_row(
     result: Any,
     *,
@@ -268,7 +274,7 @@ def outcome_row(
             bundle_url=result.bundle_url,
             bundle_size=result.bundle_size,
             diagnostics_json=_diagnostics_json(result.diagnostics),
-            vehicle="index",
+            vehicle=_index_vehicle(result.source_url),
             source_url=result.source_url,
         )
         return row
@@ -291,7 +297,7 @@ def outcome_row(
             page_sha256=result.page_sha256,
             response_size=response_size,
             diagnostics_json=_diagnostics_json(result.diagnostics),
-            vehicle="index",
+            vehicle=_index_vehicle(result.source_url),
             source_url=result.source_url,
         )
         return row
@@ -315,7 +321,7 @@ def outcome_row(
             ),
             error_code=result.diagnostic.code,
             error_detail=result.diagnostic.detail,
-            vehicle="index",
+            vehicle=_index_vehicle(result.source_url),
             source_url=result.source_url,
         )
         return row

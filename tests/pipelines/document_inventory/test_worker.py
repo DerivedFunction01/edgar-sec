@@ -111,6 +111,7 @@ PACKAGE_URL = (
     "https://www.sec.gov/Archives/edgar/data/1/000000000126000001/"
     "0000000001-26-000001-xbrl.zip"
 )
+JSON_URL = "https://www.sec.gov/Archives/edgar/data/1/000000000126000001/index.json"
 
 
 def _summary_item(**overrides) -> IndexWorkItem:
@@ -217,12 +218,54 @@ def test_package_fallback_on_unrecognized_summary() -> None:
 def test_index_fallback_when_both_vehicles_absent() -> None:
     item = _summary_item()
     broker = _StubBroker(
-        failures={SUMMARY_URL: (404, "http_not_found"), PACKAGE_URL: (404, "missing")}
+        failures={
+            SUMMARY_URL: (404, "http_not_found"),
+            PACKAGE_URL: (404, "missing"),
+            JSON_URL: (404, "missing"),
+        }
     )
     result = process_accession(item, broker)
 
     assert isinstance(result, ParsedIndexPage)
-    assert broker.calls == [SUMMARY_URL, PACKAGE_URL, item.index_url]
+    assert broker.calls == [SUMMARY_URL, PACKAGE_URL, JSON_URL, item.index_url]
+
+
+def test_index_json_serves_listing_before_html() -> None:
+    import json as json_module
+
+    payload = json_module.dumps(
+        {
+            "directory": {
+                "item": [
+                    {"name": "acme10k.htm", "last-modified": "2026-01-01", "size": "10"}
+                ]
+            }
+        }
+    ).encode("utf-8")
+    item = _summary_item()
+    broker = _StubBroker(
+        documents={JSON_URL: payload},
+        failures={SUMMARY_URL: (404, "http_not_found"), PACKAGE_URL: (404, "missing")},
+    )
+    result = process_accession(item, broker)
+
+    assert isinstance(result, ParsedIndexPage)
+    assert result.source_url == JSON_URL
+    assert [entry.filename for entry in result.entries] == ["acme10k.htm"]
+    assert broker.calls == [SUMMARY_URL, PACKAGE_URL, JSON_URL]
+
+
+def test_index_json_unrecognized_falls_back_to_html() -> None:
+    item = _summary_item()
+    broker = _StubBroker(
+        documents={JSON_URL: b"{}"},
+        failures={SUMMARY_URL: (404, "http_not_found"), PACKAGE_URL: (404, "missing")},
+    )
+    result = process_accession(item, broker)
+
+    assert isinstance(result, ParsedIndexPage)
+    assert result.source_url == item.index_url
+    assert broker.calls == [SUMMARY_URL, PACKAGE_URL, JSON_URL, item.index_url]
 
 
 def test_throttled_summary_stops_the_chain() -> None:

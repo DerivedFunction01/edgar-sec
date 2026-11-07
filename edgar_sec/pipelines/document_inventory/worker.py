@@ -19,9 +19,12 @@ from edgar_sec.domain.document_inventory.models import (
     IndexWorkItem,
 )
 from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.domain.document_inventory.models import ParsedIndexPage
 from edgar_sec.domain.sec_urls import (
     FILING_SUMMARY_DOCUMENT,
     archives_url,
+    index_json_url_for,
+    parse_archive_url,
     xbrl_package_url_for,
 )
 from edgar_sec.engine.filing_summary.parser import (
@@ -29,6 +32,7 @@ from edgar_sec.engine.filing_summary.parser import (
     parse_xbrl_package,
 )
 from edgar_sec.engine.index_pages.parser import parse_html_index
+from edgar_sec.engine.index_pages.parser_json import parse_json_index
 from edgar_sec.foundation.runtime.memory import reclaim
 
 from .broker import IndexFetchFailure, IndexPageBrokerClient
@@ -90,6 +94,9 @@ def _process_via_index(
     *,
     force_refresh: bool,
 ) -> IndexParseOutcome | IndexFetchFailure:
+    json_outcome = _process_via_index_json(item, broker, force_refresh=force_refresh)
+    if json_outcome is not None:
+        return json_outcome
     page = broker.fetch_index(
         item.accession, item.index_url, force_refresh=force_refresh
     )
@@ -98,6 +105,30 @@ def _process_via_index(
     return parse_html_index(
         IndexPageInput(item.accession, item.index_url, page.html_bytes)
     )
+
+
+def _process_via_index_json(
+    item: IndexWorkItem,
+    broker: IndexPageBrokerClient,
+    *,
+    force_refresh: bool,
+) -> ParsedIndexPage | None:
+    parts = parse_archive_url(item.index_url)
+    if parts is None:
+        return None
+    json_url = index_json_url_for(item.accession, parts.archive_cik)
+    try:
+        fetched = broker.fetch_document(
+            item.accession, json_url, force_refresh=force_refresh
+        )
+    except Exception:  # noqa: BLE001
+        return None
+    if isinstance(fetched, IndexFetchFailure):
+        return None
+    outcome = parse_json_index(
+        IndexPageInput(item.accession, json_url, fetched.payload_bytes)
+    )
+    return outcome if isinstance(outcome, ParsedIndexPage) else None
 
 
 def _enumeration_input(

@@ -132,6 +132,13 @@ def _serving_http(items: list[IndexWorkItem], **kwargs: object) -> _FakeHttp:
     return _FakeHttp({item.index_url: INDEX_HTML for item in items}, **kwargs)  # type: ignore[arg-type]
 
 
+def _expected_calls(items: list[IndexWorkItem]) -> set[str]:
+    """Index-vehicle fetch chain per accession: index.json first, HTML fallback."""
+    calls = {item.index_url for item in items}
+    calls |= {item.index_url.rsplit("/", 1)[0] + "/index.json" for item in items}
+    return calls
+
+
 def _outcome_by_accession(paths, chunk_id: str, attempt: str) -> dict[str, dict]:
     return {
         row["accession"]: row for row in iter_outcome_rows(paths, chunk_id, attempt)
@@ -307,7 +314,7 @@ def test_run_commits_every_chunk_with_one_broker(tmp_path: Path, monkeypatch) ->
     assert len(summary.chunks) == 2
     assert summary.committed_count == 2
     assert summary.refusal_count == 0
-    assert set(fake.calls) == {item.index_url for item in items}
+    assert set(fake.calls) == _expected_calls(items)
     for chunk in summary.chunks:
         validation = validate_committed_chunk(
             paths,
@@ -412,7 +419,7 @@ def test_corrupt_attempt_is_recomputed_whole(tmp_path: Path) -> None:
         items, IDENTITY, paths, http_client=second, workers=1
     )
     assert after.chunks[0].attempt_id != chunk.attempt_id
-    assert set(second.calls) == {item.index_url for item in items}
+    assert set(second.calls) == _expected_calls(items)
 
 
 def test_default_resume_keeps_retryable_failures_without_refetch(
@@ -451,7 +458,10 @@ def test_retry_replaces_only_failed_accessions(tmp_path: Path) -> None:
         retry_failures=True,
         progress_callback=events.append,
     )
-    assert second.calls == [failing_url]
+    assert second.calls == [
+        failing_url.rsplit("/", 1)[0] + "/index.json",
+        failing_url,
+    ]
     assert run2.chunks[0].attempt_id != run1.chunks[0].attempt_id
     assert run2.refusal_count == 0
     fresh_rows = _outcome_by_accession(paths, chunk_id, run2.chunks[0].attempt_id)
@@ -575,7 +585,7 @@ def test_signal_drains_current_result_without_advancing_chunk_pointer(
     assert cancelled.cancelled
     assert cancelled.status == "cancelled"
     assert cancelled.committed_count == 0
-    assert len(first.calls) == 1
+    assert len(first.calls) == 2
     identity, _members = next(
         iter_work_order_chunks(paths.work_order_path(), chunk_size=3)
     )
@@ -595,7 +605,7 @@ def test_signal_drains_current_result_without_advancing_chunk_pointer(
     assert not resumed.cancelled
     assert resumed.status == "completed"
     assert resumed.committed_count == 1
-    assert len(second.calls) == len(items) - 1
+    assert len(second.calls) == 2 * (len(items) - 1)
     assert sum(event["count"] for event in progress_events) == len(items)
 
 
@@ -672,7 +682,7 @@ def test_spawn_pool_executes_chunks(tmp_path: Path) -> None:
     )
     assert len(summary.chunks) == 2
     assert summary.committed_count == 2
-    assert set(fake.calls) == {item.index_url for item in items}
+    assert set(fake.calls) == _expected_calls(items)
     assert not list(paths.run_root.rglob("*.tmp"))
     assert not list(paths.run_root.rglob("*.sqlite"))
 
