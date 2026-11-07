@@ -4,10 +4,17 @@ from __future__ import annotations
 
 import threading
 import time
+from pathlib import Path
 
 import pytest
 
-from edgar_sec.apps.client.facade import Edgar, FacadeCache, derive_facade_capacity
+from edgar_sec.apps.client.facade import (
+    Edgar,
+    FacadeCache,
+    derive_content_cache_budget,
+    derive_content_disk_budget,
+    derive_facade_capacity,
+)
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -18,7 +25,7 @@ from edgar_sec.engine.xbrl.storage.storage import (
     read_declarations_parquet,
 )
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
-from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
+from edgar_sec.foundation.runtime.resources import MEBIBYTE, RuntimeResourceProfile
 from tests.engine.xbrl.solve.conftest import load_seed_cohort
 
 _FIRMS = ("MSFT", "AAPL", "JPM")
@@ -224,3 +231,133 @@ def test_cache_holds_real_facades_by_key(cohort) -> None:
         (hit.qname, hit.tier, hit.rule) for hit in build("JPM").search("revenue").hits
     ]
     assert cached_hits == fresh_hits
+
+
+def test_content_cache_budget_derives_from_the_worker_memory_share() -> None:
+    """Verify the content budget is the settings fraction of one worker share."""
+    assert derive_content_cache_budget(_profile(512)) == 512 * MEBIBYTE // 4
+    assert derive_content_cache_budget(_profile(1024)) == 2 * (512 * MEBIBYTE // 4)
+    assert derive_content_cache_budget(_profile(1024)) > derive_content_cache_budget(
+        _profile(128)
+    )
+
+
+def _sample_filing(tmp_path: Path) -> FilingAggregate:
+    text = (
+        "PART I\n"
+        "ITEM 1. BUSINESS\n"
+        "The business overview.\n"
+        "ITEM 1A. RISK FACTORS\n"
+        "General risks.\n"
+        "PART II\n"
+        "ITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\n"
+        "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n"
+        "Note 1. Summary of Significant Accounting Policies\n"
+        "Accounting details.\n"
+        "Note 2. Revenue Recognition\n"
+        "Revenue details.\n"
+    )
+    path = tmp_path / "10k_primary.txt"
+    path.write_text(text, encoding="utf-8")
+    cik = Cik.from_raw(320193)
+    return FilingAggregate(
+        accession=AccessionNumber.from_any("0000320193-23-000106"),
+        primary_cik=cik,
+        ciks=(cik,),
+        form="10-K",
+        filing_date="2023-11-03",
+        report_date="2023-09-30",
+        primary_document_path="10k_primary.txt",
+        primary_storage_path=path,
+    )
+
+
+def _count_detections(monkeypatch: pytest.MonkeyPatch) -> list[int]:
+    from edgar_sec.engine.forms.sections.items import detector
+
+    real = detector.detect_section_sequence
+    calls: list[int] = []
+
+    def counting(*args: object, **kwargs: object) -> object:
+        calls.append(1)
+        return real(*args, **kwargs)
+
+    monkeypatch.setattr(detector, "detect_section_sequence", counting)
+    return calls
+
+
+def test_edgar_sections_and_notes_revisits_are_content_cache_hits(
+    monkeypatch, tmp_path
+) -> None:
+    """Verify revisits return the identical sequence and detect only once."""
+    calls = _count_detections(monkeypatch)
+    edgar = Edgar(artifacts_root=tmp_path)
+    filing = _sample_filing(tmp_path)
+    first = edgar.sections(filing)
+    assert len(first.sections) > 0
+    assert edgar.sections(filing) is first
+    assert len(calls) == 1
+    notes = edgar.notes(filing)
+    assert len(notes.notes) == 2
+    assert edgar.notes(filing) is notes
+    stats = edgar.content_cache.stats()
+    assert stats["ram"]["current_bytes"] > 0
+    assert stats["ram"]["budget_bytes"] == derive_content_cache_budget()
+
+
+def test_edgar_tiny_ram_budget_serves_sequences_from_disk(
+    monkeypatch, tmp_path
+) -> None:
+    """Verify RAM-refused derivations are re-served from disk, not recomputed."""
+    calls = _count_detections(monkeypatch)
+    edgar = Edgar(artifacts_root=tmp_path, content_cache_budget=64)
+    filing = _sample_filing(tmp_path)
+    first = edgar.sections(filing)
+    second = edgar.sections(filing)
+    assert first == second
+    assert len(first.sections) > 0
+    assert len(calls) == 1
+    assert len(edgar.content_cache) == 0
+    stats = edgar.content_cache.stats()
+    assert stats["ram"]["bypassed_oversize"] >= 1
+    assert stats["disk"]["entries"] >= 1
+    assert stats["disk"]["hits"] >= 1
+
+
+def test_edgar_clear_cache_empties_the_content_cache(tmp_path) -> None:
+    """Verify clear_cache drops retained text and sequences with the rest."""
+    edgar = Edgar(artifacts_root=tmp_path)
+    edgar.sections(_sample_filing(tmp_path))
+    assert len(edgar.content_cache) >= 1
+    edgar.clear_cache(scope="documents")
+    assert len(edgar.content_cache) == 0
+    spilled = Edgar(artifacts_root=tmp_path, content_cache_budget=64)
+    spilled.sections(_sample_filing(tmp_path))
+    assert spilled.content_cache.stats()["disk"]["entries"] >= 1
+    spilled.clear_cache(scope="documents")
+    assert spilled.content_cache.stats()["disk"]["entries"] == 0
+
+
+def test_cache_stats_extends_response_stats_with_the_content_cache(
+    tmp_path,
+) -> None:
+    """Verify the response stats keep their shape and gain a content block."""
+    from edgar_sec.infra.sec_http.client import SecHttpClient
+
+    edgar = Edgar(
+        artifacts_root=tmp_path,
+        sec_client=SecHttpClient(cache_dir=tmp_path / "http_cache"),
+    )
+    stats = edgar.cache_stats()
+    assert stats is not None
+    assert stats["content_cache"]["ram"]["budget_bytes"] == (
+        derive_content_cache_budget()
+    )
+    assert stats["content_cache"]["ram"]["current_bytes"] == 0
+    assert stats["content_cache"]["disk"]["budget_bytes"] == (
+        derive_content_disk_budget()
+    )
+    edgar.sections(_sample_filing(tmp_path))
+    stats = edgar.cache_stats()
+    assert stats is not None
+    assert stats["content_cache"]["ram"]["current_bytes"] > 0
