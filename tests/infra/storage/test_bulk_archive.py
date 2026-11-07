@@ -127,3 +127,24 @@ def test_distinct_sources_do_not_share_retention(tmp_path: Path) -> None:
         )
         assert reference.sha256 == digest
         assert store.open(source_id) == reference
+
+
+def test_read_member_inflates_a_deflated_member(tmp_path: Path) -> None:
+    import io
+
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+        archive.writestr("CIK0000000041.json", b'{"cik": "0000000041"}' * 50)
+    source = tmp_path / "incoming-deflated.zip"
+    source.write_bytes(buffer.getvalue())
+    store = BulkArchiveStore(tmp_path / "store")
+    reference = store.put_file(
+        "submissions_bulk",
+        source,
+        source_url=SOURCE_URL,
+        fetched_at="2026-11-06T08:00:00+00:00",
+    )
+
+    assert store.read_member(reference, "CIK0000000041.json") == (
+        b'{"cik": "0000000041"}' * 50
+    )

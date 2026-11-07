@@ -7,22 +7,36 @@ assignment, worker count, or time.
 from __future__ import annotations
 
 import json
+import os
 import re
-from collections.abc import Mapping
+import shutil
+from collections.abc import Iterator, Mapping
 from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 import pyarrow as pa
+import pyarrow.parquet as pq
 
 from edgar_sec.domain.submissions.schemas import SCHEMA_VERSION
 from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
+from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_parquet_read_batch_size,
+)
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.infra.storage.parquet import write_parquet_table
+from edgar_sec.infra.storage.duckdb import arrow_table, connect
+from edgar_sec.infra.storage.parquet import read_parquet_schema, write_parquet_table
 
 from .paths import RunPaths
-from .roster import Roster, RosterError, read_roster, write_roster, write_roster_rows
+from .roster import (
+    ROSTER_SCHEMA,
+    Roster,
+    RosterError,
+    derive_roster_id,
+    read_roster,
+    write_roster,
+)
 
 if TYPE_CHECKING:
     from edgar_sec.infra.storage.bulk_archive import ArchiveReference, BulkArchiveStore
@@ -36,10 +50,49 @@ FINGERPRINTS_SCHEMA = pa.schema(
     [("cik_padded", pa.string(), False), ("fingerprint", pa.string(), False)]
 )
 
+_ARCHIVE_FINGERPRINTS_SQL = r"""
+WITH mains AS (
+  SELECT substr(member_name, 4, 10) AS cik, crc32 AS main_crc
+  FROM read_parquet(?) WHERE regexp_matches(member_name, '^CIK[0-9]{10}\.json$')
+), shards AS (
+  SELECT substr(member_name, 4, 10) AS cik,
+         CAST(regexp_extract(member_name, '-submissions-([0-9]+)\.json$', 1)
+              AS BIGINT) AS shard_no,
+         crc32
+  FROM read_parquet(?)
+  WHERE regexp_matches(member_name, '^CIK[0-9]{10}-submissions-[0-9]+\.json$')
+), shard_csv AS (
+  SELECT cik, string_agg(CAST(crc32 AS VARCHAR), ',' ORDER BY shard_no) AS shard_crcs
+  FROM shards GROUP BY cik
+)
+SELECT m.cik AS cik_padded,
+       sha256('member-fingerprint-v1:' || m.cik || ':'
+              || CAST(m.main_crc AS VARCHAR) || ':'
+              || coalesce(s.shard_crcs, '')) AS fingerprint
+FROM mains m LEFT JOIN shard_csv s ON s.cik = m.cik
+ORDER BY m.cik
+"""
+
+_ARCHIVE_ROSTER_SQL = r"""
+SELECT CAST(row_number() OVER (ORDER BY cik) - 1 AS BIGINT) AS ordinal,
+       cik AS cik_padded, '' AS name
+FROM (
+  SELECT substr(member_name, 4, 10) AS cik
+  FROM read_parquet(?) WHERE regexp_matches(member_name, '^CIK[0-9]{10}\.json$')
+)
+ORDER BY cik
+"""
+
+_ARCHIVE_MAIN_COUNT_SQL = r"""
+SELECT count(*), count(DISTINCT substr(member_name, 4, 10))
+FROM read_parquet(?) WHERE regexp_matches(member_name, '^CIK[0-9]{10}\.json$')
+"""
+
 __all__ = [
     "FINGERPRINTS_SCHEMA",
     "PLAN_FORMAT_VERSION",
     "PLAN_MANIFEST_KIND",
+    "FingerprintIndex",
     "Plan",
     "build_archive_plan",
     "build_plan",
@@ -311,23 +364,121 @@ def read_fingerprints(path: Path) -> dict[str, str]:
     }
 
 
+class FingerprintIndex(Mapping[str, str]):
+    """Per-CIK fingerprints read from a plan dataset one row group at a time.
+
+    The dataset is CIK-sorted, so the row groups a lookup can touch are
+    known from footer statistics; only the group a lookup lands in is read.
+    """
+
+    def __init__(self, path: Path) -> None:
+        self._handle = pq.ParquetFile(path)
+        self._spans = [
+            self._group_span(index)
+            for index in range(self._handle.metadata.num_row_groups)
+        ]
+        self._cached_group: int | None = None
+        self._cached: dict[str, str] = {}
+
+    def __len__(self) -> int:
+        return self._handle.metadata.num_rows
+
+    def __iter__(self) -> Iterator[str]:
+        for batch in self._handle.iter_batches(
+            batch_size=resolve_parquet_read_batch_size(), columns=["cik_padded"]
+        ):
+            yield from (str(value) for value in batch.column("cik_padded").to_pylist())
+
+    def __getitem__(self, cik: str) -> str:
+        value = self.get(cik)
+        if value is None:
+            raise KeyError(cik)
+        return value
+
+    def get(self, cik: str, default: str | None = None) -> str | None:
+        """One CIK's fingerprint, or ``default`` when the CIK is unplanned."""
+        for group in self._candidates(cik):
+            if group != self._cached_group:
+                self._load_group(group)
+            if cik in self._cached:
+                return self._cached[cik]
+        return default
+
+    def _candidates(self, cik: str) -> list[int]:
+        return [
+            index
+            for index, span in enumerate(self._spans)
+            if span is None or span[0] <= cik <= span[1]
+        ]
+
+    def _group_span(self, index: int) -> tuple[str, str] | None:
+        column = self._handle.schema_arrow.get_field_index("cik_padded")
+        statistics = self._handle.metadata.row_group(index).column(column).statistics
+        if statistics is None or not statistics.has_min_max:
+            return None
+        return str(statistics.min), str(statistics.max)
+
+    def _load_group(self, group: int) -> None:
+        table = self._handle.read_row_group(
+            group, columns=["cik_padded", "fingerprint"]
+        )
+        self._cached = {
+            str(cik): str(fingerprint)
+            for cik, fingerprint in zip(
+                table.column("cik_padded").to_pylist(),
+                table.column("fingerprint").to_pylist(),
+                strict=True,
+            )
+        }
+        self._cached_group = group
+
+
 def build_archive_plan(
     store: "BulkArchiveStore",
     reference: "ArchiveReference",
     *,
     chunk_size: int,
     roster_dataset_path: Path,
-) -> tuple[Plan, dict[str, str]]:
+    fingerprints_dataset_path: Path | None = None,
+) -> tuple[Plan, Path]:
     """Build a full plan over a stored archive's membership.
 
-    The roster is the archive's own CIK set and the plan identity binds the
-    archive digest, so a new night's archive is a new plan.
+    The plan identity binds the archive digest, so a new night's archive
+    is a new plan; both datasets are computed in DuckDB, never as dicts.
     """
-    index = store.member_index(reference)
-    roster, _digest = write_roster_rows(
-        roster_rows_from_member_index(index), roster_dataset_path
+    fingerprints_path = fingerprints_dataset_path or roster_dataset_path.with_name(
+        "fingerprints.parquet"
     )
-    fingerprints = member_fingerprints(index)
+    index_path = str(reference.member_index_path)
+    con = connect()
+    try:
+        main_count, distinct_ciks = con.execute(
+            _ARCHIVE_MAIN_COUNT_SQL, [index_path]
+        ).fetchone()
+        if int(main_count) != int(distinct_ciks):
+            raise RosterError("archive member index holds a duplicate CIK main")
+        roster_table = arrow_table(
+            con, _ARCHIVE_ROSTER_SQL, params=[index_path], schema=ROSTER_SCHEMA
+        )
+        fingerprint_table = arrow_table(
+            con,
+            _ARCHIVE_FINGERPRINTS_SQL,
+            params=[index_path, index_path],
+            schema=FINGERPRINTS_SCHEMA,
+        )
+    finally:
+        con.close()
+    write_parquet_table(roster_table, roster_dataset_path)
+    if not read_parquet_schema(roster_dataset_path).equals(
+        ROSTER_SCHEMA, check_metadata=False
+    ):
+        raise RosterError(f"roster dataset schema drifted: {roster_dataset_path}")
+    roster = Roster(
+        roster_id=derive_roster_id(roster_dataset_path),
+        row_count=roster_table.num_rows,
+        dataset=Path(roster_dataset_path),
+    )
+    write_parquet_table(fingerprint_table, fingerprints_path)
     plan = build_plan(
         roster,
         chunk_size=chunk_size,
@@ -337,7 +488,28 @@ def build_archive_plan(
         archive_source_id=reference.source_id,
         archive_sha256=reference.sha256,
     )
-    return plan, fingerprints
+    return plan, fingerprints_path
+
+
+def _publish_fingerprints(source: Path, target: Path) -> str:
+    """Publish a fingerprint dataset beside a plan; return its digest.
+
+    Bytes are copied, not re-encoded, matching the roster's treatment.
+    """
+    if not read_parquet_schema(source).equals(
+        FINGERPRINTS_SCHEMA, check_metadata=False
+    ):
+        raise RosterError(f"fingerprint dataset schema drifted: {source}")
+    if source.resolve() != target.resolve():
+        target.parent.mkdir(parents=True, exist_ok=True)
+        staged = target.with_name(f".{target.name}.tmp.{os.getpid()}")
+        try:
+            shutil.copyfile(source, staged)
+            os.replace(staged, target)
+        finally:
+            if staged.exists():
+                staged.unlink()
+    return file_sha256(target)
 
 
 def write_plan(
@@ -345,6 +517,7 @@ def write_plan(
     run_paths: RunPaths,
     *,
     member_fingerprint_map: Mapping[str, str] | None = None,
+    member_fingerprints_path: Path | None = None,
 ) -> str:
     """Write the plan bundle: roster dataset, execution manifest, input manifest.
     The roster is written and digested first, so a manifest never references a
@@ -353,7 +526,11 @@ def write_plan(
     digest = write_roster(plan.roster, run_paths.roster_file)
     manifest = plan.to_manifest()
     manifest["roster_artifact_sha256"] = digest
-    if member_fingerprint_map is not None:
+    if member_fingerprints_path is not None:
+        manifest["member_fingerprints_sha256"] = _publish_fingerprints(
+            member_fingerprints_path, run_paths.fingerprints_file
+        )
+    elif member_fingerprint_map is not None:
         manifest["member_fingerprints_sha256"] = write_fingerprints(
             member_fingerprint_map, run_paths.fingerprints_file
         )

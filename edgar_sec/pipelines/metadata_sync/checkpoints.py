@@ -123,9 +123,9 @@ def discover_completed_chunks(plan: Plan, run_paths: RunPaths) -> dict[int, Chun
     if plan.is_archive_plan:
         fingerprints_path = getattr(run_paths, "fingerprints_file", None)
         if fingerprints_path is not None and fingerprints_path.is_file():
-            from .planner import read_fingerprints
+            from .planner import FingerprintIndex
 
-            fingerprints = read_fingerprints(fingerprints_path)
+            fingerprints = FingerprintIndex(fingerprints_path)
     for chunk_id in plan.chunk_ids():
         info = inspect_chunk(
             chunk_id,

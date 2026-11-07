@@ -9,7 +9,9 @@ from __future__ import annotations
 import json
 import os
 import shutil
+import struct
 import zipfile
+import zlib
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -20,7 +22,13 @@ from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.settings import resolve_settings
 
 from .atomic import _fsync_dir, atomic_write_json
+from .duckdb import connect
 from .parquet import read_parquet_table, write_parquet_table
+
+_LOCAL_HEADER = struct.Struct("<IHHHHHIIIHH")
+_LOCAL_HEADER_SIGNATURE = 0x04034B50
+_STORED = 0
+_DEFLATE = 8
 
 ARCHIVE_FILE_NAME = "archive.zip"
 MANIFEST_FILE_NAME = "manifest.json"
@@ -192,14 +200,49 @@ class BulkArchiveStore:
         return read_parquet_table(reference.member_index_path)
 
     def read_member(self, reference: ArchiveReference, member_name: str) -> bytes:
-        """One member's bytes, read from the stored archive in place."""
-        with zipfile.ZipFile(reference.path) as archive:
-            try:
-                return archive.read(member_name)
-            except KeyError:
-                raise ValueError(
-                    f"member {member_name!r} is not in archive {reference.sha256}"
-                ) from None
+        """One member's bytes, read from the stored archive in place.
+
+        Located through the stored member index, so the archive's central
+        directory is never materialized for a single-member read.
+        """
+        con = connect()
+        try:
+            row = con.execute(
+                "SELECT header_offset, compressed_size, uncompressed_size, crc32 "
+                "FROM read_parquet(?) WHERE member_name = ?",
+                [str(reference.member_index_path), member_name],
+            ).fetchone()
+        finally:
+            con.close()
+        if row is None:
+            raise ValueError(
+                f"member {member_name!r} is not in archive {reference.sha256}"
+            )
+        header_offset, compressed_size, uncompressed_size, crc32 = (
+            int(value) for value in row
+        )
+        with open(reference.path, "rb") as handle:
+            header = _LOCAL_HEADER.unpack(
+                os.pread(handle.fileno(), _LOCAL_HEADER.size, header_offset)
+            )
+            if header[0] != _LOCAL_HEADER_SIGNATURE:
+                raise zipfile.BadZipFile(f"member {member_name!r} has no local header")
+            flags, method = header[2], header[3]
+            if flags & 0x1:
+                raise ValueError(f"member {member_name!r} is encrypted")
+            data_at = header_offset + _LOCAL_HEADER.size + header[9] + header[10]
+            raw = os.pread(handle.fileno(), compressed_size, data_at)
+        if method == _STORED:
+            payload = raw
+        elif method == _DEFLATE:
+            payload = zlib.decompress(raw, wbits=-zlib.MAX_WBITS)
+        else:
+            raise ValueError(
+                f"member {member_name!r} uses unsupported compression {method}"
+            )
+        if len(payload) != uncompressed_size or zlib.crc32(payload) != crc32:
+            raise zipfile.BadZipFile(f"member {member_name!r} fails its CRC check")
+        return payload
 
     def _reference(self, source_id: str, sha256: str) -> ArchiveReference | None:
         archive_dir = self.root / source_id / sha256
