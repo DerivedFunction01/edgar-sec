@@ -17,6 +17,8 @@ lazy row-level polymorphic report projection (`as_report()`).
 - **Batch streaming**: Batch runs stream one outcome per filing under `apps.client.batch`: at most one facade live per worker, nothing accumulated by the runner, and a filing's failure — including its worker's death — is recorded as that filing's named error in the run's result.
 - **Lazy row projection**: `FilingAggregate` models are hydrated on demand when indexing specific rows.
 - **Zero-copy analytical query**: DuckDB queries run directly over Parquet partitions in the artifact store.
+- **Local-first submissions fallback**: When the fast path must fall back to submissions data, CIKs covered by the latest published submissions snapshot are materialized locally from it; only uncovered CIKs go to the live per-CIK fetch.
+- **Concept lookups serve reported values**: `Company.concept()` returns SEC-reported values exactly as reported, one row per data point with its provenance; it is a lookup and cross-check surface that never feeds the financial statements machinery.
 
 ## Deliberate gaps
 

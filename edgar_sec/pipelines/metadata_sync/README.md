@@ -28,6 +28,12 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
   pins the branch pointer expected at commit and refuses the publish (without moving the
   pointer) if the branch moved. `--base-snapshot-id` selects the delta parent for
   augmentation; it is not the target branch and never rewinds `main`.
+- A run may instead source every CIK from the single submissions bulk archive
+  (`run --bulk`): the archive carries full history, historical shards included,
+  and each row records its provenance (bulk source, archive digest, per-member
+  hash). Bulk normalization is pure-Python work and runs on a spawn process
+  pool created once per run and held warm across chunks; the per-CIK fetch
+  path keeps its thread pool, being network-bound.
 - Plan identity, chunk coverage, checkpoint validation, merge publication, worker
   distribution, and snapshot verification remain owned by their existing modules.
 - A run lock is never taken from a live local owner. `--confirm-stale-lock` attests
@@ -46,7 +52,7 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
 | `distrib` | Distributed worker bundle lifecycle | — |
 | `merge` | publish a snapshot | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--confirm-stale-lock]` |
 | `plan` | generate a deterministic plan | `--cohort`, `[--limit]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]` |
-| `run` | execute resumable chunks | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--chunks]`, `[--chunk]`, `[--confirm-stale-lock]` |
+| `run` | execute resumable chunks | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--chunks]`, `[--chunk]`, `[--confirm-stale-lock]`, `[--bulk]` |
 | `status` | report plan progress | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]` |
 <!-- AUTOGEN:COMMANDS:END -->
 

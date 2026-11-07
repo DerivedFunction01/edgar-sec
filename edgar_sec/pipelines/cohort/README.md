@@ -18,7 +18,11 @@ Provides Phase 0 command-line and interactive orchestration for the shared cohor
 - Interactive cohort, workspace, and upload selection is paginated and filterable;
   headless list, query, and find results use aligned tables.
 - Official SEC source refresh is owned here; `diff` accepts cohort IDs/names and
-  the active `universe`/`tickers` aliases, with optional canonical delta publication.
+  the active source aliases (`universe`, `tickers`, `exchange`, `funds`,
+  `ticker-file`), with optional canonical delta publication.
+- Every official source publisher emits only the canonical membership schema
+  (padded CIK and name); source-specific fields such as exchange or fund
+  series/class survive only as origin-metric counts, never as extra columns.
 - Bounded sampling and roster-delta Parquet transformations are owned by
   `engine.company_family`; this pipeline resolves inputs and handles CLI/catalog writes.
 
