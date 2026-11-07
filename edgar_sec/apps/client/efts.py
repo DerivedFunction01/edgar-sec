@@ -9,7 +9,8 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass, replace
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
+from pathlib import Path
 from typing import Any
 from urllib.parse import urlencode
 
@@ -19,14 +20,17 @@ from edgar_sec.domain.sec_urls import efts_search_url
 __all__ = [
     "EftsAggregation",
     "EftsBucket",
+    "EftsCapture",
     "EftsCoverage",
     "EftsEndpointError",
     "EftsError",
     "EftsHit",
+    "EftsHitIdentity",
     "EftsIntegrityError",
     "EftsPage",
     "EftsQuery",
     "EftsSearchResult",
+    "capture_full_text_search",
     "full_text_search",
     "iter_search_pages",
     "search_all",
@@ -512,4 +516,196 @@ def search_all(
             items_cache_hazard=bool(query.items),
         ),
         aggregations=aggregations,
+    )
+
+
+@dataclass(frozen=True, slots=True)
+class EftsHitIdentity:
+    """The identity fields a capture artefact persists per hit."""
+
+    document_id: str
+    accession: str
+    filename: str
+    cik: str
+    form: str
+    file_date: str
+
+
+@dataclass(frozen=True, slots=True)
+class EftsCapture:
+    """A written query artefact: where it lives and what the query did."""
+
+    directory: Path
+    query_hash: str
+    executed_at: str
+    coverage: EftsCoverage
+    identities: tuple[EftsHitIdentity, ...]
+
+
+def _query_record(query: EftsQuery) -> dict[str, Any]:
+    return {
+        "text": query.text,
+        "forms": list(query.forms),
+        "ciks": list(query.ciks),
+        "items": list(query.items),
+        "startdt": query.startdt,
+        "enddt": query.enddt,
+        "sec_syntax": query.sec_syntax,
+    }
+
+
+def _identity_of(hit: EftsHit) -> EftsHitIdentity:
+    return EftsHitIdentity(
+        document_id=hit.document_id,
+        accession=hit.accession,
+        filename=hit.filename,
+        cik=hit.ciks[0] if hit.ciks else "",
+        form=hit.form,
+        file_date=hit.file_date,
+    )
+
+
+def capture_full_text_search(
+    query: EftsQuery,
+    *,
+    client: Any,
+    artifacts_root: Path | str | None = None,
+    exhaustive: bool = False,
+) -> EftsCapture:
+    """Run a search and write its explicit capture artefact.
+
+    Pages stream into the artefact's Parquet table as they arrive; the
+    artefact is a query record, in no DAG and read by no other surface.
+    """
+    import pyarrow as pa
+
+    from edgar_sec.foundation.runtime.paths import resolve_paths
+    from edgar_sec.foundation.serialization import canonical_hash
+    from edgar_sec.infra.storage.atomic import atomic_write_json
+    from edgar_sec.infra.storage.parquet import StagedParquetWriter
+
+    root = (
+        Path(artifacts_root)
+        if artifacts_root is not None
+        else resolve_paths().artifacts_root
+    )
+    record = _query_record(query)
+    query_hash = canonical_hash(record)
+    directory = root / "queries" / "efts" / query_hash
+    directory.mkdir(parents=True, exist_ok=True)
+    executed_at = datetime.now(timezone.utc).isoformat()
+    schema = pa.schema(
+        [
+            ("document_id", pa.string()),
+            ("accession", pa.string()),
+            ("filename", pa.string()),
+            ("cik", pa.string()),
+            ("form", pa.string()),
+            ("file_date", pa.string()),
+        ]
+    )
+    identities: list[EftsHitIdentity] = []
+    aggregations: tuple[EftsAggregation, ...] = ()
+    total_value, total_relation = 0, "eq"
+    any_gte = False
+    with StagedParquetWriter(
+        directory / "hits.parquet", schema, id_column="document_id"
+    ) as writer:
+
+        def _absorb(page: EftsPage, seen: set[str] | None) -> None:
+            rows: dict[str, list[str]] = {name: [] for name in schema.names}
+            for hit in page.hits:
+                if seen is not None:
+                    if hit.document_id in seen:
+                        continue
+                    seen.add(hit.document_id)
+                identity = _identity_of(hit)
+                identities.append(identity)
+                rows["document_id"].append(identity.document_id)
+                rows["accession"].append(identity.accession)
+                rows["filename"].append(identity.filename)
+                rows["cik"].append(identity.cik)
+                rows["form"].append(identity.form)
+                rows["file_date"].append(identity.file_date)
+            if rows["document_id"]:
+                writer.write_batch(rows)
+
+        if exhaustive:
+            if query.startdt is None or query.enddt is None:
+                raise EftsError(
+                    "exhaustive capture requires an explicit startdt/enddt "
+                    "pair to slice on"
+                )
+            seen: set[str] = set()
+            start = date.fromisoformat(query.startdt)
+            end = date.fromisoformat(query.enddt)
+            for slice_start, slice_end in _month_slices(start, end):
+                sliced = replace(
+                    query,
+                    startdt=slice_start.isoformat(),
+                    enddt=slice_end.isoformat(),
+                )
+                for page in iter_search_pages(sliced, client=client):
+                    if not aggregations:
+                        aggregations = page.aggregations
+                    if page.offset == 0:
+                        total_value += page.total_value
+                    any_gte = any_gte or page.total_relation == "gte"
+                    _absorb(page, seen)
+            total_relation = "gte" if any_gte else "eq"
+        else:
+            for page in iter_search_pages(query, client=client):
+                if not aggregations:
+                    aggregations = page.aggregations
+                total_value, total_relation = (
+                    page.total_value,
+                    page.total_relation,
+                )
+                _absorb(page, None)
+        writer.commit(expected_count=len(identities))
+    coverage = EftsCoverage(
+        total_value=total_value,
+        total_relation=total_relation,
+        hits_returned=len(identities),
+        truncated=total_relation == "gte"
+        or (not exhaustive and len(identities) < total_value),
+        ceiling_reached=not exhaustive and len(identities) >= RESULT_WINDOW,
+        items_cache_hazard=bool(query.items),
+    )
+    atomic_write_json(
+        directory / "query.json",
+        {
+            "artefact": "efts_query_capture",
+            "label": "record of a query, not catalog state",
+            "query": record,
+            "query_hash": query_hash,
+            "executed_at": executed_at,
+            "exhaustive": exhaustive,
+            "coverage": {
+                "total_value": coverage.total_value,
+                "total_relation": coverage.total_relation,
+                "hits_returned": coverage.hits_returned,
+                "truncated": coverage.truncated,
+                "ceiling_reached": coverage.ceiling_reached,
+                "items_cache_hazard": coverage.items_cache_hazard,
+            },
+            "aggregations": [
+                {
+                    "name": agg.name,
+                    "buckets": [
+                        {"key": bucket.key, "doc_count": bucket.doc_count}
+                        for bucket in agg.buckets
+                    ],
+                    "sum_other_doc_count": agg.sum_other_doc_count,
+                }
+                for agg in aggregations
+            ],
+        },
+    )
+    return EftsCapture(
+        directory=directory,
+        query_hash=query_hash,
+        executed_at=executed_at,
+        coverage=coverage,
+        identities=tuple(identities),
     )

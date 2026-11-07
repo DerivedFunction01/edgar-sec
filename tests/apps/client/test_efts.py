@@ -380,6 +380,92 @@ def test_no_store_transport_never_caches_a_search(tmp_path: Path) -> None:
     assert stats["responses_count"] == 0
 
 
+def test_capture_writes_artefact_with_the_live_hit_set(tmp_path: Path) -> None:
+    import pyarrow.parquet as pq
+
+    from edgar_sec.apps.client.efts import capture_full_text_search
+
+    query = EftsQuery(text='"revenue recognition"', ciks=("320193",))
+    live = full_text_search(
+        query, client=_FakeHttp(load_fixture("efts/search_phrase.json"))
+    )
+    capture = capture_full_text_search(
+        query,
+        client=_FakeHttp(load_fixture("efts/search_phrase.json")),
+        artifacts_root=tmp_path,
+    )
+
+    assert capture.directory == tmp_path / "queries" / "efts" / capture.query_hash
+    record = json.loads((capture.directory / "query.json").read_text())
+    assert record["artefact"] == "efts_query_capture"
+    assert record["query"]["ciks"] == ["0000320193"]
+    assert record["query_hash"] == capture.query_hash
+    assert record["executed_at"] == capture.executed_at
+    assert record["coverage"]["total_value"] == 115
+    assert record["coverage"]["hits_returned"] == 3
+    assert [agg["name"] for agg in record["aggregations"]] == [
+        "entity_filter",
+        "sic_filter",
+        "biz_states_filter",
+        "form_filter",
+    ]
+
+    table = pq.read_table(capture.directory / "hits.parquet")
+    rows = table.to_pylist()
+    assert [row["document_id"] for row in rows] == [
+        hit.document_id for hit in live.hits
+    ]
+    assert [row["accession"] for row in rows] == [hit.accession for hit in live.hits]
+    assert rows[0]["filename"] == "dex993.htm"
+    assert rows[0]["cik"] == "0000320193"
+    assert rows[0]["form"] == "8-K"
+    assert rows[0]["file_date"] == "2010-01-25"
+    assert [i.document_id for i in capture.identities] == [
+        hit.document_id for hit in live.hits
+    ]
+
+
+def test_capture_streams_every_page_and_dedupes_when_exhaustive(
+    tmp_path: Path,
+) -> None:
+    import pyarrow.parquet as pq
+
+    from edgar_sec.apps.client.efts import capture_full_text_search
+
+    paged = capture_full_text_search(
+        EftsQuery(text="apple"),
+        client=_PagedHttp(total=250),
+        artifacts_root=tmp_path,
+    )
+    assert paged.coverage.hits_returned == 250
+    assert pq.read_table(paged.directory / "hits.parquet").num_rows == 250
+
+    sliced = capture_full_text_search(
+        EftsQuery(text="apple", startdt="2020-01-01", enddt="2020-02-29"),
+        client=_SlicedHttp(),
+        artifacts_root=tmp_path,
+        exhaustive=True,
+    )
+    assert [i.filename for i in sliced.identities] == ["a.htm", "b.htm", "c.htm"]
+    assert pq.read_table(sliced.directory / "hits.parquet").num_rows == 3
+
+
+def test_plain_search_leaves_the_artifacts_tree_untouched(tmp_path: Path) -> None:
+    from edgar_sec.apps.client.facade import Edgar
+
+    http = _FakeHttp(load_fixture("efts/search_phrase.json"))
+    facade = Edgar(artifacts_root=tmp_path, sec_client=http)  # type: ignore[arg-type]
+    facade.full_text_search(text='"revenue recognition"', ciks=(320193,))
+    assert list(tmp_path.iterdir()) == []
+
+    capture = facade.capture_full_text_search(
+        EftsQuery(text='"revenue recognition"', ciks=("320193",))
+    )
+    assert capture.directory.is_dir()
+    assert (capture.directory / "query.json").is_file()
+    assert (capture.directory / "hits.parquet").is_file()
+
+
 def test_fixture_payloads_are_json_objects() -> None:
     for name in (
         "search_basic",

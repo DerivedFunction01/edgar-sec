@@ -22,7 +22,7 @@ from edgar_sec.foundation.runtime.resources import (
 from edgar_sec.infra.sec_http.client import SecHttpClient
 
 if TYPE_CHECKING:
-    from edgar_sec.apps.client.efts import EftsQuery, EftsSearchResult
+    from edgar_sec.apps.client.efts import EftsCapture, EftsQuery, EftsSearchResult
     from edgar_sec.apps.client.entity import Company
     from edgar_sec.apps.client.xbrl import Xbrl
     from edgar_sec.infra.storage.bulk_archive import (
@@ -250,6 +250,26 @@ class Edgar:
         if exhaustive:
             return search_all(query, client=self.sec_client, exhaustive=True)
         return full_text_search(query, client=self.sec_client, max_hits=max_hits)
+
+    def capture_full_text_search(
+        self,
+        query: EftsQuery,
+        *,
+        exhaustive: bool = False,
+    ) -> EftsCapture:
+        """Run a search and write its explicit capture artefact.
+
+        The only persistence path for a search: a plain
+        ``full_text_search`` call writes nothing.
+        """
+        from edgar_sec.apps.client.efts import capture_full_text_search
+
+        return capture_full_text_search(
+            query,
+            client=self.sec_client,
+            artifacts_root=self.artifacts_root,
+            exhaustive=exhaustive,
+        )
 
     def pipeline(self, config: PipelineConfig | FilingQuery) -> FilingsResult:
         """Execute end-to-end acquisition via the high-throughput pipeline runner."""
