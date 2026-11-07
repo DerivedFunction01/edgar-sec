@@ -34,6 +34,7 @@ from edgar_sec.foundation.runtime.resources import (
 from edgar_sec.infra.sec_http.client import SecHttpClient
 
 if TYPE_CHECKING:
+    from edgar_sec.apps.client.efts import EftsCapture, EftsQuery, EftsSearchResult
     from edgar_sec.apps.client.entity import Company
     from edgar_sec.apps.client.feeds import FeedEventsResult
     from edgar_sec.apps.client.xbrl import Xbrl
@@ -289,6 +290,84 @@ class Edgar:
             filed_from=filed_from,
             filed_to=filed_to,
             limit=limit,
+        )
+
+    def full_text_search(
+        self,
+        query: EftsQuery | None = None,
+        *,
+        text: str = "",
+        forms: Sequence[str] = (),
+        ciks: Sequence[str | int] = (),
+        tickers: Sequence[str] = (),
+        items: Sequence[str] = (),
+        startdt: str | None = None,
+        enddt: str | None = None,
+        sec_syntax: str | None = None,
+        max_hits: int | None = None,
+        exhaustive: bool = False,
+    ) -> EftsSearchResult:
+        """Search the SEC full-text index live; nothing is persisted.
+
+        Accepts an ``EftsQuery`` or query parts; tickers resolve to CIKs.
+        ``exhaustive`` date-slices past the ceiling, requiring a date pair.
+        """
+        from edgar_sec.apps.client.efts import (
+            EftsQuery,
+            full_text_search,
+            search_all,
+        )
+
+        resolved_ciks = tuple(str(c) for c in ciks)
+        for ticker in tickers:
+            from edgar_sec.apps.client.resolver import resolve_entity_profile
+
+            profile = resolve_entity_profile(ticker, self.artifacts_root)
+            if profile.cik.value == 1 and profile.name == str(ticker):
+                raise ValueError(f"unresolved ticker: {ticker!r}")
+            resolved_ciks += (profile.cik.to_10digit(),)
+        if query is None:
+            query = EftsQuery(
+                text=text,
+                forms=tuple(str(f) for f in forms),
+                ciks=resolved_ciks,
+                items=tuple(str(i) for i in items),
+                startdt=startdt,
+                enddt=enddt,
+                sec_syntax=sec_syntax,
+            )
+        elif resolved_ciks:
+            query = EftsQuery(
+                text=query.text,
+                forms=query.forms,
+                ciks=tuple(query.ciks) + resolved_ciks,
+                items=query.items,
+                startdt=query.startdt,
+                enddt=query.enddt,
+                sec_syntax=query.sec_syntax,
+            )
+        if exhaustive:
+            return search_all(query, client=self.sec_client, exhaustive=True)
+        return full_text_search(query, client=self.sec_client, max_hits=max_hits)
+
+    def capture_full_text_search(
+        self,
+        query: EftsQuery,
+        *,
+        exhaustive: bool = False,
+    ) -> EftsCapture:
+        """Run a search and write its explicit capture artefact.
+
+        The only persistence path for a search: a plain
+        ``full_text_search`` call writes nothing.
+        """
+        from edgar_sec.apps.client.efts import capture_full_text_search
+
+        return capture_full_text_search(
+            query,
+            client=self.sec_client,
+            artifacts_root=self.artifacts_root,
+            exhaustive=exhaustive,
         )
 
     def pipeline(self, config: PipelineConfig | FilingQuery) -> FilingsResult:
