@@ -10,7 +10,6 @@ import json
 import os
 import tempfile
 import threading
-import zipfile
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -29,6 +28,7 @@ from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.errors import PermanentHttpError, RetryExhausted
 from edgar_sec.infra.sec_http.streaming import StreamFailure
 from edgar_sec.infra.storage.bulk_archive import ArchiveReference, BulkArchiveStore
+from edgar_sec.infra.storage.member_index import MemberIndex, ensure_member_index
 
 __all__ = [
     "SUBMISSIONS_BULK_SOURCE_ID",
@@ -167,11 +167,20 @@ class BulkSubmissionsArchive:
     replaces the per-CIK fan-out for a bulk sync.
     """
 
-    def __init__(self, zip_path: str | Path, *, archive_sha256: str = "") -> None:
+    def __init__(
+        self,
+        zip_path: str | Path,
+        *,
+        archive_sha256: str = "",
+        member_index_path: str | Path | None = None,
+    ) -> None:
         self.zip_path = Path(zip_path)
         self.archive_sha256 = archive_sha256 or file_sha256(self.zip_path)
-        self._archive = zipfile.ZipFile(self.zip_path)
-        self._members = {info.filename: info for info in self._archive.infolist()}
+        if member_index_path is None:
+            member_index_path = ensure_member_index(self.zip_path, self.archive_sha256)
+        self.member_index_path = Path(member_index_path)
+        self._index = MemberIndex(self.member_index_path)
+        self._zip_fd = os.open(self.zip_path, os.O_RDONLY)
         self.store_reference: ArchiveReference | None = None
 
     @classmethod
@@ -212,7 +221,8 @@ class BulkSubmissionsArchive:
         return archive
 
     def close(self) -> None:
-        self._archive.close()
+        self._index.close()
+        os.close(self._zip_fd)
 
     def result_for(self, cik_padded: str) -> CikFetchResult:
         """Build one CIK's fetch result from archive members, shards included."""
@@ -221,13 +231,12 @@ class BulkSubmissionsArchive:
         result.source_kind = "bulk"
         result.source_archive_sha256 = self.archive_sha256
         member_name = f"CIK{cik_padded}.json"
-        info = self._members.get(member_name)
-        if info is None:
+        raw = self._index.read_member(self._zip_fd, member_name)
+        if raw is None:
             result.permanent_error = (
                 f"CIK {cik_padded} is not present in the bulk archive"
             )
             return result
-        raw = self._archive.read(info)
         result.byte_count = len(raw)
         result.response_sha256 = sha256_bytes(raw)
         payload = _parse_member(raw)
@@ -237,11 +246,11 @@ class BulkSubmissionsArchive:
         result.payload = payload
         result.fetched_ok = True
         for name in SubmissionsClient._historical_names(payload):
-            shard = self._members.get(name)
-            if shard is None:
+            shard_raw = self._index.read_member(self._zip_fd, name)
+            if shard_raw is None:
                 result.historical_errors.append(f"{name}: not present in bulk archive")
                 continue
-            hist_payload = _parse_member(self._archive.read(shard))
+            hist_payload = _parse_member(shard_raw)
             if hist_payload is None:
                 result.historical_errors.append(
                     f"{name}: not a JSON object in bulk archive"
