@@ -197,11 +197,17 @@ def _run_chunk_rows(
 _BULK_CLIENT: BulkSubmissionsClient | None = None
 
 
-def _init_bulk_client(zip_path: str, archive_sha256: str) -> None:
+def _init_bulk_client(
+    zip_path: str, archive_sha256: str, member_index_path: str
+) -> None:
     """Pool initializer: open this child's own handle on the bulk archive."""
     global _BULK_CLIENT
     _BULK_CLIENT = BulkSubmissionsClient(
-        BulkSubmissionsArchive(zip_path, archive_sha256=archive_sha256)
+        BulkSubmissionsArchive(
+            zip_path,
+            archive_sha256=archive_sha256,
+            member_index_path=member_index_path,
+        )
     )
 
 
@@ -541,6 +547,7 @@ def run_chunk_ids(
             initargs=(
                 str(client.archive.zip_path),
                 client.archive.archive_sha256,
+                str(client.archive.member_index_path),
             ),
         )
     try:
