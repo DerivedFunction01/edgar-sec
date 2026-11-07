@@ -44,7 +44,14 @@ def _payload(accession: str, form: str = "10-K") -> dict[str, Any]:
     }
 
 
-def _publish_snapshot(tmp_path: Path, rows: list[dict[str, Any]]) -> None:
+def _publish_snapshot(
+    tmp_path: Path,
+    rows: list[dict[str, Any]],
+    *,
+    created_at: str | None = None,
+) -> None:
+    from datetime import UTC, datetime
+
     root = snapshots_root(tmp_path, "metadata")
     snapshot_dir = root / SNAPSHOT_ID
     parts_dir = snapshot_dir / "parts"
@@ -57,7 +64,7 @@ def _publish_snapshot(tmp_path: Path, rows: list[dict[str, Any]]) -> None:
         parents=(),
         checkpoint_anchor_id=SNAPSHOT_ID,
         lineage_depth=0,
-        created_at="2026-01-01T00:00:00Z",
+        created_at=created_at or datetime.now(UTC).isoformat(timespec="seconds"),
         relations={
             "submissions": (
                 PartDescriptor(
@@ -152,6 +159,31 @@ def test_uncovered_cik_falls_back_to_live_fetch(tmp_path: Path) -> None:
         f"{OTHER}-26-000777",
     }
     assert live.calls == [submissions_url(OTHER)]
+
+
+def test_a_stale_snapshot_is_not_served_locally(tmp_path: Path) -> None:
+    """Freshness is the submissions policy's question, not the caller's."""
+    _publish_snapshot(
+        tmp_path,
+        [_row(FORD, _payload(f"{FORD}-26-000001"))],
+        created_at="2020-01-01T00:00:00+00:00",
+    )
+    cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
+    live = _LiveClient({submissions_url(FORD): _payload(f"{FORD}-26-000002")})
+
+    items = collect_submissions_fallback(
+        [FORD],
+        None,
+        None,
+        None,
+        {},
+        live,
+        cache,
+        artifacts_root=tmp_path,
+    )
+
+    assert [item.accession.raw for item in items] == [f"{FORD}-26-000002"]
+    assert live.calls == [submissions_url(FORD)]
 
 
 def test_no_snapshot_published_yields_no_local_coverage(tmp_path: Path) -> None:

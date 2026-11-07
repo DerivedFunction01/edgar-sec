@@ -106,3 +106,64 @@ def test_include_filter_restricts_registries() -> None:
 
 def test_include_filter_yields_nothing_for_unknown_registry() -> None:
     assert resolve_settings(include=["nope"]) == {}
+
+
+def test_surface_policy_census_matches_the_domain_surface_set() -> None:
+    from edgar_sec.domain.sec_urls import SEC_SURFACES
+    from edgar_sec.foundation.runtime.settings import resolve_surface_ttls
+    from edgar_sec.foundation.runtime.settings.sec import (
+        SURFACE_KIND_STATIC,
+        SURFACE_KIND_TRANSIENT,
+        SURFACE_POLICIES,
+    )
+
+    assert set(SURFACE_POLICIES) == set(SEC_SURFACES)
+    assert len(SURFACE_POLICIES) == 15
+    kinds = {policy.kind for policy in SURFACE_POLICIES.values()}
+    assert kinds == {SURFACE_KIND_STATIC, SURFACE_KIND_TRANSIENT}
+    table = resolve_surface_ttls()
+    for surface_id, policy in SURFACE_POLICIES.items():
+        if policy.kind == SURFACE_KIND_STATIC:
+            assert table[surface_id] is None
+        else:
+            assert table[surface_id] == 24 * 60 * 60
+
+
+def test_surface_ttl_environment_override() -> None:
+    from edgar_sec.foundation.runtime.settings import resolve_surface_ttl_s
+
+    assert (
+        resolve_surface_ttl_s("company_tickers", env={"SEC_TTL_COMPANY_TICKERS": "60"})
+        == 60
+    )
+    assert resolve_surface_ttl_s("archive_documents") is None
+    assert resolve_surface_ttl_s("no_such_surface") is None
+
+
+def test_a_transient_policy_without_a_ttl_path_inherits_the_default() -> None:
+    import edgar_sec.foundation.runtime.settings as settings_pkg
+    from edgar_sec.foundation.runtime.settings.sec import (
+        SURFACE_KIND_TRANSIENT,
+        SurfacePolicy,
+    )
+
+    policies = dict(settings_pkg.SURFACE_POLICIES)
+    policies["synthetic_surface"] = SurfacePolicy(
+        "synthetic_surface", SURFACE_KIND_TRANSIENT, "test cadence"
+    )
+    original = settings_pkg.SURFACE_POLICIES
+    settings_pkg.SURFACE_POLICIES = policies
+    try:
+        table = settings_pkg.resolve_surface_ttls(env={"SEC_TTL_DEFAULT_S": "123"})
+        assert table["synthetic_surface"] == 123
+    finally:
+        settings_pkg.SURFACE_POLICIES = original
+
+
+def test_bulk_archive_retention_setting_defaults_and_env() -> None:
+    settings = resolve_settings(include=["sec.bulk_archive"])
+    assert settings["sec.bulk_archive.retention"] == 2
+    overridden = resolve_settings(env={"SEC_BULK_ARCHIVE_RETENTION": "7"})
+    assert overridden["sec.bulk_archive.retention"] == 7
+    runtime = resolve_runtime_settings(env={"SEC_BULK_ARCHIVE_RETENTION": "3"})
+    assert runtime.sec.bulk_archive_retention == 3

@@ -17,6 +17,101 @@ DEFAULT_RATE_LIMIT_RPS = 8.0
 DEFAULT_TIMEOUT_S = 15.0
 DEFAULT_MAX_RETRIES = 3
 DEFAULT_MAX_FAILURE_ATTEMPTS = 3
+DEFAULT_BULK_ARCHIVE_RETENTION = 2
+DEFAULT_BULK_ARCHIVE_MAX_BYTES = 8 * 1024**3
+DEFAULT_TRANSIENT_TTL_S = 24 * 60 * 60
+
+SURFACE_KIND_STATIC = "static"
+SURFACE_KIND_TRANSIENT = "transient"
+
+
+def _require_positive(value: object) -> None:
+    if isinstance(value, bool) or not isinstance(value, int) or value <= 0:
+        raise ValueError(f"expected a positive integer, got {value!r}")
+
+
+@dataclass(frozen=True, slots=True)
+class SurfacePolicy:
+    """Freshness policy for one governed SEC surface.
+
+    ``ttl_path`` names the settings path carrying the surface's TTL; a
+    transient surface without one inherits ``sec.ttl.default_s``.
+    """
+
+    surface_id: str
+    kind: str
+    cadence: str
+    ttl_path: str | None = None
+
+
+# The governed census, keyed by the surface ids the domain URL classifier
+# produces. Static surfaces never expire; transient surfaces carry a TTL.
+SURFACE_POLICIES: dict[str, SurfacePolicy] = {
+    policy.surface_id: policy
+    for policy in (
+        SurfacePolicy(
+            "submissions",
+            SURFACE_KIND_TRANSIENT,
+            "filing events",
+            "sec.ttl.submissions",
+        ),
+        SurfacePolicy(
+            "submissions_bulk",
+            SURFACE_KIND_TRANSIENT,
+            "nightly rebuild (~03:00 ET)",
+            "sec.ttl.submissions_bulk",
+        ),
+        SurfacePolicy(
+            "companyconcept",
+            SURFACE_KIND_TRANSIENT,
+            "filing events",
+            "sec.ttl.companyconcept",
+        ),
+        SurfacePolicy(
+            "company_tickers",
+            SURFACE_KIND_TRANSIENT,
+            "daily refresh",
+            "sec.ttl.company_tickers",
+        ),
+        SurfacePolicy(
+            "company_tickers_exchange",
+            SURFACE_KIND_TRANSIENT,
+            "daily refresh",
+            "sec.ttl.company_tickers_exchange",
+        ),
+        SurfacePolicy(
+            "company_tickers_mf",
+            SURFACE_KIND_TRANSIENT,
+            "daily refresh",
+            "sec.ttl.company_tickers_mf",
+        ),
+        SurfacePolicy(
+            "ticker_txt", SURFACE_KIND_TRANSIENT, "daily refresh", "sec.ttl.ticker_txt"
+        ),
+        SurfacePolicy(
+            "cik_lookup", SURFACE_KIND_TRANSIENT, "daily refresh", "sec.ttl.cik_lookup"
+        ),
+        SurfacePolicy("archive_documents", SURFACE_KIND_STATIC, "immutable once filed"),
+        SurfacePolicy(
+            "archive_index_pages", SURFACE_KIND_STATIC, "immutable once filed"
+        ),
+        SurfacePolicy(
+            "archive_index_json", SURFACE_KIND_STATIC, "immutable once filed"
+        ),
+        SurfacePolicy(
+            "full_submission_bundles", SURFACE_KIND_STATIC, "immutable once filed"
+        ),
+        SurfacePolicy("xbrl_packages", SURFACE_KIND_STATIC, "immutable once filed"),
+        SurfacePolicy(
+            "submissions_historical_shards",
+            SURFACE_KIND_STATIC,
+            "immutable once rolled",
+        ),
+        SurfacePolicy(
+            "taxonomy_archives", SURFACE_KIND_STATIC, "immutable per release"
+        ),
+    )
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -28,6 +123,8 @@ class SecSettings:
     timeout_s: float = DEFAULT_TIMEOUT_S
     max_retries: int = DEFAULT_MAX_RETRIES
     max_failure_attempts: int = DEFAULT_MAX_FAILURE_ATTEMPTS
+    bulk_archive_retention: int = DEFAULT_BULK_ARCHIVE_RETENTION
+    bulk_archive_max_bytes: int = DEFAULT_BULK_ARCHIVE_MAX_BYTES
 
     @property
     def header_user_agent(self) -> str:
@@ -83,16 +180,82 @@ def get_sec_specs() -> dict[str, dict[str, SettingSpec]]:
                 machine_local=True,
                 description="failure ledger budget before a repeatedly failing URL is skipped",
             ),
+            "bulk_archive": {
+                "retention": SettingSpec(
+                    value_type=int,
+                    default=DEFAULT_BULK_ARCHIVE_RETENTION,
+                    env=True,
+                    cli=True,
+                    machine_local=True,
+                    validate=_require_positive,
+                    description=(
+                        "newest bulk archives kept per source in the bulk-archive "
+                        "store; older archives are pruned at put time"
+                    ),
+                ),
+                "max_bytes": SettingSpec(
+                    value_type=int,
+                    default=DEFAULT_BULK_ARCHIVE_MAX_BYTES,
+                    env=True,
+                    cli=True,
+                    machine_local=True,
+                    validate=_require_positive,
+                    description="byte bound for one streamed bulk archive download",
+                ),
+            },
+            "ttl": _ttl_specs(),
         },
     }
 
 
+def _ttl_spec(description: str) -> SettingSpec:
+    from . import SettingSpec
+
+    return SettingSpec(
+        value_type=int,
+        default=DEFAULT_TRANSIENT_TTL_S,
+        env=True,
+        cli=True,
+        machine_local=True,
+        validate=_require_positive,
+        description=description,
+    )
+
+
+def _ttl_specs() -> dict[str, SettingSpec]:
+    return {
+        "default_s": _ttl_spec(
+            "freshness window inherited by a transient SEC surface with no "
+            "surface-specific TTL setting"
+        ),
+        "submissions": _ttl_spec("freshness window for per-CIK submissions JSON"),
+        "submissions_bulk": _ttl_spec(
+            "freshness window for the submissions bulk archive"
+        ),
+        "companyconcept": _ttl_spec("freshness window for companyconcept JSON"),
+        "company_tickers": _ttl_spec("freshness window for company_tickers.json"),
+        "company_tickers_exchange": _ttl_spec(
+            "freshness window for company_tickers_exchange.json"
+        ),
+        "company_tickers_mf": _ttl_spec("freshness window for company_tickers_mf.json"),
+        "ticker_txt": _ttl_spec("freshness window for ticker.txt"),
+        "cik_lookup": _ttl_spec("freshness window for cik-lookup-data.txt"),
+    }
+
+
 __all__ = [
+    "DEFAULT_BULK_ARCHIVE_MAX_BYTES",
+    "DEFAULT_BULK_ARCHIVE_RETENTION",
     "DEFAULT_MAX_FAILURE_ATTEMPTS",
     "DEFAULT_MAX_RETRIES",
     "DEFAULT_RATE_LIMIT_RPS",
     "DEFAULT_TIMEOUT_S",
+    "DEFAULT_TRANSIENT_TTL_S",
     "DEFAULT_USER_AGENT",
+    "SURFACE_KIND_STATIC",
+    "SURFACE_KIND_TRANSIENT",
+    "SURFACE_POLICIES",
     "SecSettings",
+    "SurfacePolicy",
     "get_sec_specs",
 ]

@@ -105,8 +105,10 @@ def test_a_mutable_text_response_is_cached_with_a_ttl(tmp_path: Path) -> None:
     assert row["expires_at"] is not None
 
 
-def test_a_default_text_response_is_pinned(tmp_path: Path) -> None:
-    """Without the declaration the same URL keeps the archive default."""
+def test_a_transient_text_response_expires_on_its_surface_window(
+    tmp_path: Path,
+) -> None:
+    """cik-lookup is a transient surface: it expires without any declaration."""
     url = "https://www.sec.gov/Archives/edgar/cik-lookup-data.txt"
     session = _TextSession(url, b"NAME:0000000001:\n")
     client = SecHttpClient(
@@ -119,7 +121,7 @@ def test_a_default_text_response_is_pinned(tmp_path: Path) -> None:
     row = client._cache._con.execute(
         "SELECT expires_at FROM url_responses WHERE url = ?", (url,)
     ).fetchone()
-    assert row["expires_at"] is None
+    assert row["expires_at"] is not None
 
 
 class _Response:

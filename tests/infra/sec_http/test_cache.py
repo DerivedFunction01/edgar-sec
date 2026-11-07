@@ -100,6 +100,64 @@ def test_a_json_url_expires_without_being_declared_mutable(tmp_path: Path) -> No
     )
 
 
+def _stored_expiry(cache: SqlCache, url: str) -> str | None:
+    row = cache._con.execute(
+        "SELECT expires_at FROM url_responses WHERE url = ?", (url,)
+    ).fetchone()
+    return row["expires_at"]
+
+
+def test_governed_surfaces_expire_on_their_own_windows() -> None:
+    """Two transient surfaces with different policy windows expire differently."""
+    from datetime import datetime
+
+    from edgar_sec.infra.sec_http.cache import _expires_at
+
+    table = {"submissions": 60, "companyconcept": 3600}
+    now = 1_700_000_000.0
+    sub_expiry = _expires_at(
+        "https://data.sec.gov/submissions/CIK0000320193.json",
+        now=now,
+        ttl_s=3600,
+        surface_ttls=table,
+        default_surface_ttl_s=30,
+    )
+    concept_expiry = _expires_at(
+        "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/Assets.json",
+        now=now,
+        ttl_s=3600,
+        surface_ttls=table,
+        default_surface_ttl_s=30,
+    )
+    delta = datetime.fromisoformat(concept_expiry) - datetime.fromisoformat(sub_expiry)
+    assert delta.total_seconds() == 3540
+
+
+def test_static_index_json_never_expires_under_the_policy(tmp_path: Path) -> None:
+    """The suffix rule used to expire static per-accession index.json files."""
+    cache = SqlCache(tmp_path, ttl_s=3600)
+    try:
+        url = (
+            "https://www.sec.gov/Archives/edgar/data/320193/"
+            "000032019323000106/index.json"
+        )
+        cache.put(url, b"a", sha256="a", byte_size=1, content_kind="json")
+        assert _stored_expiry(cache, url) is None
+    finally:
+        cache.close()
+
+
+def test_transient_text_surface_expires_under_the_policy(tmp_path: Path) -> None:
+    """The suffix rule used to pin transient .txt surfaces forever."""
+    cache = SqlCache(tmp_path, ttl_s=3600)
+    try:
+        url = "https://www.sec.gov/include/ticker.txt"
+        cache.put(url, b"a", sha256="a", byte_size=1, content_kind="text")
+        assert _stored_expiry(cache, url) is not None
+    finally:
+        cache.close()
+
+
 def test_mutable_does_not_pin_an_expired_entry(tmp_path: Path) -> None:
     """mutable=True still expires once the TTL elapses; it is not 'forever'."""
     cache = SqlCache(tmp_path, ttl_s=0)

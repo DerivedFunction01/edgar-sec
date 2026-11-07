@@ -1,7 +1,7 @@
 """SQLite-backed HTTP response cache with zstandard compression and failure ledger.
 
 Responses are keyed by URL digest in an indexed WAL store, so concurrent
-multi-worker access is safe. Expiry is selective: only ``.json`` paths carry a TTL.
+multi-worker access is safe. Expiry follows the per-surface freshness policy.
 """
 
 from __future__ import annotations
@@ -10,11 +10,15 @@ import hashlib
 import sqlite3
 import threading
 import time
+from collections.abc import Mapping
+from functools import lru_cache
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from edgar_sec.domain.sec_urls import classify_sec_surface
 from edgar_sec.foundation.compression import compress_payload, decompress_payload
 from edgar_sec.foundation.runtime.settings.paths import DEFAULT_CACHE_TTL_S
+from edgar_sec.foundation.runtime.settings.sec import DEFAULT_TRANSIENT_TTL_S
 
 
 def _url_sha256(url: str) -> str:
@@ -25,23 +29,59 @@ def _now() -> str:
     return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
 
+@lru_cache(maxsize=1)
+def _resolved_surface_policy() -> tuple[dict[str, int | None], int]:
+    from edgar_sec.foundation.runtime.settings import resolve_surface_policy
+
+    return resolve_surface_policy()
+
+
+def _format_expiry(fetched: float, ttl_s: int) -> str:
+    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(fetched + ttl_s))
+
+
 def _expires_at(
     url: str,
     *,
     now: float | None = None,
     ttl_s: int = DEFAULT_CACHE_TTL_S,
     mutable: bool = False,
+    surface_ttls: Mapping[str, int | None] | None = None,
+    default_surface_ttl_s: int | None = None,
 ) -> str | None:
     """Expiry timestamp, or None when a response never expires.
 
-    ``.json`` carries the TTL because archive documents are immutable; ``mutable``
-    extends it to a URL whose extension would pin the response forever.
+    A classified surface follows its policy (static never expires unless the
+    caller declares ``mutable``); unclassified URLs keep the suffix rule.
     """
-    governed = mutable or urlsplit(url).path.lower().endswith(".json")
-    if not governed or ttl_s <= 0:
+    if ttl_s <= 0:
         return None
     fetched = time.time() if now is None else now
-    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(fetched + ttl_s))
+    surface = classify_sec_surface(url)
+    if surface is not None:
+        if surface_ttls is None:
+            table, resolved_default = _resolved_surface_policy()
+            default_ttl = (
+                resolved_default
+                if default_surface_ttl_s is None
+                else default_surface_ttl_s
+            )
+        else:
+            table = surface_ttls
+            default_ttl = (
+                DEFAULT_TRANSIENT_TTL_S
+                if default_surface_ttl_s is None
+                else default_surface_ttl_s
+            )
+        if surface in table:
+            surface_ttl = table[surface]
+            if surface_ttl is None:
+                return _format_expiry(fetched, default_ttl) if mutable else None
+            return _format_expiry(fetched, surface_ttl)
+    governed = mutable or urlsplit(url).path.lower().endswith(".json")
+    if not governed:
+        return None
+    return _format_expiry(fetched, ttl_s)
 
 
 def _is_expired(expires_at: str | None, *, now: str | None = None) -> bool:
@@ -52,13 +92,20 @@ class SqlCache:
     """SQLite response cache storing zstd-compressed payloads with failure ledger."""
 
     def __init__(
-        self, cache_dir: str | Path, *, ttl_s: int = DEFAULT_CACHE_TTL_S
+        self,
+        cache_dir: str | Path,
+        *,
+        ttl_s: int = DEFAULT_CACHE_TTL_S,
+        surface_ttls: Mapping[str, int | None] | None = None,
+        default_surface_ttl_s: int | None = None,
     ) -> None:
         self.cache_dir = Path(cache_dir).resolve()
         self.db_path = self.cache_dir / "responses.sqlite"
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self._lock = threading.Lock()
         self.ttl_s = ttl_s
+        self._surface_ttls = surface_ttls
+        self._default_surface_ttl_s = default_surface_ttl_s
 
         self.db_path.touch(exist_ok=True)
         self._con = sqlite3.connect(str(self.db_path), check_same_thread=False)
@@ -128,7 +175,13 @@ class SqlCache:
         digest = _url_sha256(url)
         compressed = compress_payload(payload)
         now = _now()
-        expires_at = _expires_at(url, ttl_s=self.ttl_s, mutable=mutable)
+        expires_at = _expires_at(
+            url,
+            ttl_s=self.ttl_s,
+            mutable=mutable,
+            surface_ttls=self._surface_ttls,
+            default_surface_ttl_s=self._default_surface_ttl_s,
+        )
         with self._lock, self._con:
             self._con.execute(
                 """

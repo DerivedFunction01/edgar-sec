@@ -366,6 +366,136 @@ def xbrl_package_url_for(archive_cik: str, accession: str) -> str:
     return archives_url(int(archive_cik), canonical, f"{dashed}-xbrl.zip")
 
 
+# Surface ids: the governed census of SEC surfaces, classified by URL shape.
+# The freshness policy for each id lives in the SEC settings provider.
+SURFACE_SUBMISSIONS = "submissions"
+SURFACE_SUBMISSIONS_HISTORICAL_SHARDS = "submissions_historical_shards"
+SURFACE_SUBMISSIONS_BULK = "submissions_bulk"
+SURFACE_COMPANYCONCEPT = "companyconcept"
+SURFACE_ARCHIVE_DOCUMENTS = "archive_documents"
+SURFACE_ARCHIVE_INDEX_PAGES = "archive_index_pages"
+SURFACE_ARCHIVE_INDEX_JSON = "archive_index_json"
+SURFACE_FULL_SUBMISSION_BUNDLES = "full_submission_bundles"
+SURFACE_XBRL_PACKAGES = "xbrl_packages"
+SURFACE_TAXONOMY_ARCHIVES = "taxonomy_archives"
+SURFACE_COMPANY_TICKERS = "company_tickers"
+SURFACE_COMPANY_TICKERS_EXCHANGE = "company_tickers_exchange"
+SURFACE_COMPANY_TICKERS_MF = "company_tickers_mf"
+SURFACE_TICKER_TXT = "ticker_txt"
+SURFACE_CIK_LOOKUP = "cik_lookup"
+
+SEC_SURFACES: tuple[str, ...] = (
+    SURFACE_SUBMISSIONS,
+    SURFACE_SUBMISSIONS_HISTORICAL_SHARDS,
+    SURFACE_SUBMISSIONS_BULK,
+    SURFACE_COMPANYCONCEPT,
+    SURFACE_ARCHIVE_DOCUMENTS,
+    SURFACE_ARCHIVE_INDEX_PAGES,
+    SURFACE_ARCHIVE_INDEX_JSON,
+    SURFACE_FULL_SUBMISSION_BUNDLES,
+    SURFACE_XBRL_PACKAGES,
+    SURFACE_TAXONOMY_ARCHIVES,
+    SURFACE_COMPANY_TICKERS,
+    SURFACE_COMPANY_TICKERS_EXCHANGE,
+    SURFACE_COMPANY_TICKERS_MF,
+    SURFACE_TICKER_TXT,
+    SURFACE_CIK_LOOKUP,
+)
+
+# Each builder names the surface its URLs belong to.
+URL_BUILDER_SURFACES: dict[str, str] = {
+    "submissions_url": SURFACE_SUBMISSIONS,
+    "historical_submissions_url": SURFACE_SUBMISSIONS_HISTORICAL_SHARDS,
+    "submissions_bulk_url": SURFACE_SUBMISSIONS_BULK,
+    "companyconcept_url": SURFACE_COMPANYCONCEPT,
+    "archives_url": SURFACE_ARCHIVE_DOCUMENTS,
+    "index_url_for": SURFACE_ARCHIVE_INDEX_PAGES,
+    "index_json_url_for": SURFACE_ARCHIVE_INDEX_JSON,
+    "full_submission_url_for": SURFACE_FULL_SUBMISSION_BUNDLES,
+    "xbrl_package_url_for": SURFACE_XBRL_PACKAGES,
+}
+
+# Classification rules as data: (surface id, host, path pattern), first match
+# wins. The sec-surface scanner reads this same table statically, so runtime
+# classification and the gate cannot drift apart.
+SEC_SURFACE_RULES: tuple[tuple[str, str, str], ...] = (
+    (
+        SURFACE_SUBMISSIONS_HISTORICAL_SHARDS,
+        "data.sec.gov",
+        r"^/submissions/[^/]*-submissions-[^/]*\.json$",
+    ),
+    (SURFACE_SUBMISSIONS, "data.sec.gov", r"^/submissions(/|$)"),
+    (SURFACE_COMPANYCONCEPT, "data.sec.gov", r"^/api/xbrl(/|$)"),
+    (
+        SURFACE_SUBMISSIONS_BULK,
+        "www.sec.gov",
+        r"^/Archives/edgar/daily-index/bulkdata/submissions\.zip$",
+    ),
+    (
+        SURFACE_CIK_LOOKUP,
+        "www.sec.gov",
+        r"^/Archives/edgar/cik-lookup-data\.txt$",
+    ),
+    (SURFACE_COMPANY_TICKERS, "www.sec.gov", r"^/files/company_tickers\.json$"),
+    (
+        SURFACE_COMPANY_TICKERS_EXCHANGE,
+        "www.sec.gov",
+        r"^/files/company_tickers_exchange\.json$",
+    ),
+    (
+        SURFACE_COMPANY_TICKERS_MF,
+        "www.sec.gov",
+        r"^/files/company_tickers_mf\.json$",
+    ),
+    (SURFACE_TICKER_TXT, "www.sec.gov", r"^/include/ticker\.txt$"),
+    (SURFACE_TAXONOMY_ARCHIVES, "www.sec.gov", r"^/files/[^/]*\.zip$"),
+    (
+        SURFACE_ARCHIVE_INDEX_JSON,
+        "www.sec.gov",
+        r"^/Archives/edgar/data/\d+/[^/]+/index\.json$",
+    ),
+    (
+        SURFACE_ARCHIVE_INDEX_PAGES,
+        "www.sec.gov",
+        r"^/Archives/edgar/data/\d+/[^/]+/[^/]*-index(-headers)?\.(html|txt)$",
+    ),
+    (
+        SURFACE_FULL_SUBMISSION_BUNDLES,
+        "www.sec.gov",
+        r"^/Archives/edgar/data/\d+/[^/]+/\d{10}-\d{2}-\d{6}\.txt$",
+    ),
+    (
+        SURFACE_XBRL_PACKAGES,
+        "www.sec.gov",
+        r"^/Archives/edgar/data/\d+/[^/]+/[^/]*-xbrl\.zip$",
+    ),
+    (SURFACE_ARCHIVE_DOCUMENTS, "www.sec.gov", r"^/Archives/edgar/data(/|$)"),
+    (SURFACE_TAXONOMY_ARCHIVES, "xbrl.sec.gov", r"^"),
+)
+
+_COMPILED_SURFACE_RULES = tuple(
+    (surface_id, host, re.compile(pattern))
+    for surface_id, host, pattern in SEC_SURFACE_RULES
+)
+
+
+def classify_sec_surface(url: str | None) -> str | None:
+    """Classify a SEC URL into its governed surface id, or None.
+
+    Classification is by URL shape (host and path), never by file suffix:
+    a transient ``.txt`` and a static ``index.json`` classify correctly.
+    """
+    if not url:
+        return None
+    parts = urlsplit(str(url).strip())
+    host = (parts.hostname or "").casefold()
+    path = parts.path or ""
+    for surface_id, rule_host, pattern in _COMPILED_SURFACE_RULES:
+        if host == rule_host and pattern.search(path):
+            return surface_id
+    return None
+
+
 __all__ = [
     "CIK_PADDED_WIDTH",
     "SEC_ARCHIVE_BASE",
@@ -374,10 +504,29 @@ __all__ = [
     "SUBMISSIONS_BULK_URL",
     "DEFAULT_ARCHIVE_URL_POLICY",
     "FILING_SUMMARY_DOCUMENT",
+    "SEC_SURFACES",
+    "SEC_SURFACE_RULES",
+    "SURFACE_ARCHIVE_DOCUMENTS",
+    "SURFACE_ARCHIVE_INDEX_JSON",
+    "SURFACE_ARCHIVE_INDEX_PAGES",
+    "SURFACE_CIK_LOOKUP",
+    "SURFACE_COMPANYCONCEPT",
+    "SURFACE_COMPANY_TICKERS",
+    "SURFACE_COMPANY_TICKERS_EXCHANGE",
+    "SURFACE_COMPANY_TICKERS_MF",
+    "SURFACE_FULL_SUBMISSION_BUNDLES",
+    "SURFACE_SUBMISSIONS",
+    "SURFACE_SUBMISSIONS_BULK",
+    "SURFACE_SUBMISSIONS_HISTORICAL_SHARDS",
+    "SURFACE_TAXONOMY_ARCHIVES",
+    "SURFACE_TICKER_TXT",
+    "SURFACE_XBRL_PACKAGES",
+    "URL_BUILDER_SURFACES",
     "ArchiveUrlPolicy",
     "ArchiveUrlParts",
     "accession_hyphenated",
     "archives_url",
+    "classify_sec_surface",
     "companyconcept_url",
     "full_submission_url_for",
     "historical_submissions_url",

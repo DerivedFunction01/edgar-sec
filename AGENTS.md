@@ -174,6 +174,12 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - `form-vocabulary`: Bans private CUSIP regexes outside `engine/forms/common/entities.py`,
   DOM table markup regexes outside legacy ASCII table unwrappers, and duplicate unit
   suffix literals outside `engine/forms/common/numbers.py`.
+- `sec-surface`: Bans SEC URL shapes constructed anywhere in the codebase that the
+  `domain/sec_urls.py` rule table cannot classify into a governed surface, and any
+  classified or builder-named surface with no freshness-policy row in the SEC settings
+  provider. The URL module owns the rule table (read statically, so the gate and the
+  runtime classifier cannot drift); the exhibits coverage registry's provenance
+  citations are exempt because they are never fetched.
 
 > [!NOTE]
 > `regex-alternations`, `legacy-shims`, `json-io`, and `date-patterns` exist to

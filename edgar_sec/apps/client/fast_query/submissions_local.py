@@ -7,6 +7,7 @@ the latest published submissions snapshot, so covered CIKs need no HTTP call.
 from __future__ import annotations
 
 from collections.abc import Sequence
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -14,7 +15,9 @@ from edgar_sec.apps.client.cache import DocumentCache
 from edgar_sec.apps.client.fast_query.submissions import materialize_from_payload
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.identity import Cik
+from edgar_sec.domain.sec_urls import SURFACE_SUBMISSIONS
 from edgar_sec.foundation.runtime.paths import snapshots_root
+from edgar_sec.foundation.runtime.settings import resolve_surface_ttl_s
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.traversal import walk_lineage
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
@@ -23,6 +26,30 @@ __all__ = ["materialize_from_snapshot"]
 
 _METADATA_DATASET = "metadata"
 _RELATION = "submissions"
+
+
+def _fresh_after() -> datetime | None:
+    """Oldest snapshot-node creation time the submissions policy still serves.
+
+    Freshness is the policy's question, not the caller's: a node older than
+    the submissions surface window is skipped, so its CIKs fall to live fetch.
+    """
+    ttl_s = resolve_surface_ttl_s(SURFACE_SUBMISSIONS)
+    if ttl_s is None:
+        return None
+    return datetime.now(UTC) - timedelta(seconds=ttl_s)
+
+
+def _node_is_fresh(node: Any, fresh_after: datetime | None) -> bool:
+    if fresh_after is None:
+        return True
+    try:
+        created = datetime.fromisoformat(str(node.created_at))
+    except ValueError:
+        return False
+    if created.tzinfo is None:
+        created = created.replace(tzinfo=UTC)
+    return created >= fresh_after
 
 
 def materialize_from_snapshot(
@@ -72,12 +99,15 @@ def _read_snapshot_rows(
     if pointer is None:
         return {}
     chain = walk_lineage(root, str(pointer["snapshot_id"]), read_only=True)
+    fresh_after = _fresh_after()
     covered: dict[str, list[FilingAggregate]] = {}
     remaining = dict(wanted)
     for node in reversed(chain.nodes):
         if not remaining:
             break
         if _RELATION not in node.relations:
+            continue
+        if not _node_is_fresh(node, fresh_after):
             continue
         part_paths = catalog.resolve_relation(
             node.snapshot_id,

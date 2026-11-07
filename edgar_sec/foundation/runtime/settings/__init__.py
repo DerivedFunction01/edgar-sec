@@ -22,7 +22,12 @@ from .paths import DEFAULT_DISTRIBUTION_ROOT, get_paths_specs
 from .parquet import get_parquet_specs
 from .runtime import get_runtime_specs
 from .sql import get_sql_specs
-from .sec import SecSettings, get_sec_specs
+from .sec import (
+    SURFACE_KIND_STATIC,
+    SURFACE_POLICIES,
+    SecSettings,
+    get_sec_specs,
+)
 
 MISSING = object()
 _SEGMENT_RE = re.compile(r"^[a-z][a-z0-9_]*$")
@@ -250,6 +255,8 @@ def resolve_runtime_settings(
         timeout_s=float(raw["sec.timeout_s"]),
         max_retries=int(raw["sec.max_retries"]),
         max_failure_attempts=int(raw["sec.max_failure_attempts"]),
+        bulk_archive_retention=int(raw["sec.bulk_archive.retention"]),
+        bulk_archive_max_bytes=int(raw["sec.bulk_archive.max_bytes"]),
     )
     temp_dir_val = raw.get("runtime.temp_directory")
     temp_dir = Path(str(temp_dir_val)) if temp_dir_val else None
@@ -269,6 +276,41 @@ def resolve_runtime_settings(
             str(raw.get("distribution.root", DEFAULT_DISTRIBUTION_ROOT))
         ),
     )
+
+
+def resolve_surface_policy(
+    env: Mapping[str, str] | None = None,
+) -> tuple[dict[str, int | None], int]:
+    """Per-surface TTL table plus the inherited default transient TTL.
+
+    A transient surface whose policy names no TTL setting inherits
+    ``sec.ttl.default_s``; static surfaces resolve to None (never expires).
+    """
+    raw = resolve_settings(include=["sec.ttl"], env=env)
+    default_ttl = int(raw["sec.ttl.default_s"])
+    table: dict[str, int | None] = {}
+    for surface_id, policy in SURFACE_POLICIES.items():
+        if policy.kind == SURFACE_KIND_STATIC:
+            table[surface_id] = None
+        elif policy.ttl_path is not None:
+            table[surface_id] = int(raw[policy.ttl_path])
+        else:
+            table[surface_id] = default_ttl
+    return table, default_ttl
+
+
+def resolve_surface_ttls(
+    env: Mapping[str, str] | None = None,
+) -> dict[str, int | None]:
+    """TTL in seconds per governed SEC surface; None means never expires."""
+    return resolve_surface_policy(env=env)[0]
+
+
+def resolve_surface_ttl_s(
+    surface_id: str, env: Mapping[str, str] | None = None
+) -> int | None:
+    """TTL in seconds for one surface; None for static or unregistered ids."""
+    return resolve_surface_ttls(env=env).get(surface_id)
 
 
 def flatten_settings(
@@ -326,4 +368,7 @@ __all__ = [
     "render_dotenv",
     "resolve_runtime_settings",
     "resolve_settings",
+    "resolve_surface_policy",
+    "resolve_surface_ttl_s",
+    "resolve_surface_ttls",
 ]

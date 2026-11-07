@@ -17,6 +17,7 @@ from .length import SCANNER as LENGTH_SCANNER
 from .prose_length import SCANNER as PROSE_LENGTH_SCANNER
 from .regex_alternations import SCANNER as REGEX_ALTERNATIONS_SCANNER
 from .resources import SCANNER as RESOURCES_SCANNER
+from .sec_surface import SCANNER as SEC_SURFACE_SCANNER
 from .secrets import SCANNER as SECRETS_SCANNER
 from .sha256_validation import SCANNER as SHA256_VALIDATION_SCANNER
 from .sql_interpolation import SCANNER as SQL_INTERPOLATION_SCANNER
@@ -45,6 +46,7 @@ ALL_SCANNERS: tuple[Scanner, ...] = (
     PROSE_LENGTH_SCANNER,
     FORM_ISOLATION_SCANNER,
     FORM_VOCABULARY_SCANNER,
+    SEC_SURFACE_SCANNER,
 )
 
 __all__ = [
@@ -64,6 +66,7 @@ __all__ = [
     "REGEX_ALTERNATIONS_SCANNER",
     "RESOURCES_SCANNER",
     "SECRETS_SCANNER",
+    "SEC_SURFACE_SCANNER",
     "SHA256_VALIDATION_SCANNER",
     "SQL_INTERPOLATION_SCANNER",
     "STRING_LOOKUP_SCANNER",
