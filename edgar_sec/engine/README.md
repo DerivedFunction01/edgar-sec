@@ -30,6 +30,7 @@ own the domain vocabulary or schemas it consumes (that is `edgar_sec/domain`).
 - **filing_summary/**: pure SEC FilingSummary and XBRL-package enumerator
 - **feeds/**: shared SEC feed client and Atom/RSS parsers producing domain feed events
 - **xbrl/**: taxonomy linkbase discovery, classification, and Parquet storage
+- **text_search/**: BM25 ranking and exact/regex matching over the materialized text index, with coverage stated on every result
 
 Each package's README carries its deliberate gaps.
 

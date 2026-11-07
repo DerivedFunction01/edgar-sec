@@ -43,6 +43,9 @@ the details below are the layer-level contracts only.
   records and workspace expressions before metadata collection begins.
 - [`xbrl_review/`](xbrl_review/README.md) — Multi-firm semantic lattice review,
   cohort staging, objective case comparison, and hypothesis rule promotion into the DuckDB knowledge base.
+- [`text_search/`](text_search/README.md) — Builds the materialized
+  token/postings index over acquired holdings (acquisition snapshot tip plus
+  the facade document cache), deduplicated by payload SHA-256.
 
 Layer 4 is the only layer permitted to orchestrate. Orchestration means ordering,
 chunking, checkpointing, validating, and publishing — deciding *what happens
