@@ -100,6 +100,20 @@ def test_flags_a_rule_surface_without_a_policy_row(synthetic_repo: Path) -> None
     assert "unregistered_surface" in findings[0].message
 
 
+def test_flags_a_no_store_policy_that_names_a_ttl(
+    synthetic_repo: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from types import SimpleNamespace
+
+    policies = dict(sec_surface.SURFACE_POLICIES)
+    policies["synthetic_no_store"] = SimpleNamespace(
+        kind=sec_surface.SURFACE_KIND_NO_STORE, ttl_path="sec.ttl.synthetic"
+    )
+    monkeypatch.setattr(sec_surface, "SURFACE_POLICIES", policies)
+    findings = sec_surface.scan_sec_surfaces()
+    assert any("synthetic_no_store" in f.message for f in findings)
+
+
 def test_static_interpretation_agrees_with_the_runtime_classifier() -> None:
     from edgar_sec.domain import sec_urls
 
@@ -124,6 +138,10 @@ def test_static_interpretation_agrees_with_the_runtime_classifier() -> None:
         "xbrl_package_url_for": sec_urls.xbrl_package_url_for(
             "320193", "0000320193-23-000106"
         ),
+        "current_filings_url": sec_urls.current_filings_url(),
+        "structured_feed_url": sec_urls.structured_feed_url("all"),
+        "structured_archive_url": sec_urls.structured_archive_url(2026, 3),
+        "efts_search_url": sec_urls.efts_search_url(),
     }
     assert set(builders) == set(sec_urls.URL_BUILDER_SURFACES)
     for builder_name, url in builders.items():

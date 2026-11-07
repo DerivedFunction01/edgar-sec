@@ -11,10 +11,15 @@ from edgar_sec.domain.sec_urls import (
     SEC_SUBMISSIONS_BASE,
     SEC_XBRL_API_BASE,
     archives_url,
+    classify_sec_surface,
     companyconcept_url,
+    current_filings_url,
+    efts_search_url,
     historical_submissions_url,
     index_json_url_for,
     normalize_cik,
+    structured_archive_url,
+    structured_feed_url,
     submissions_bulk_url,
     submissions_url,
 )
@@ -79,6 +84,51 @@ def test_index_json_url_for_unhyphenates_accession() -> None:
     )
     assert index_json_url_for("0000320193-23-000106", "0000320193") == expected
     assert index_json_url_for("000032019323000106", 320193) == expected
+
+
+def test_current_filings_url_pins_the_getcurrent_atom_shape() -> None:
+    assert current_filings_url() == (
+        "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom"
+    )
+    assert current_filings_url(form="10-K", cik="320193", count=40, start=80) == (
+        "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=10-K"
+        "&CIK=320193&count=40&start=80&output=atom"
+    )
+    assert classify_sec_surface(current_filings_url()) == "current_filings"
+
+
+@pytest.mark.parametrize(
+    ("feed", "filename"),
+    [
+        ("usgaap", "usgaap.rss.xml"),
+        ("risk_return", "xbrl-rr.rss.xml"),
+        ("inline", "xbrl-inline.rss.xml"),
+        ("all", "xbrlrss.all.xml"),
+    ],
+)
+def test_structured_feed_url_names_each_live_feed(feed: str, filename: str) -> None:
+    url = structured_feed_url(feed)
+    assert url == f"https://www.sec.gov/Archives/edgar/{filename}"
+    assert structured_feed_url(filename) == url
+    assert classify_sec_surface(url) == "structured_disclosure_feeds"
+
+
+def test_structured_feed_url_refuses_an_unknown_feed() -> None:
+    with pytest.raises(ValueError):
+        structured_feed_url("nope")
+
+
+def test_structured_archive_url_pins_the_monthly_shape() -> None:
+    url = structured_archive_url(2026, 3)
+    assert url == "https://www.sec.gov/Archives/edgar/monthly/xbrlrss-2026-03.xml"
+    assert classify_sec_surface(url) == "structured_disclosure_archives"
+    with pytest.raises(ValueError):
+        structured_archive_url(2026, 13)
+
+
+def test_efts_search_url_is_the_bare_search_index_base() -> None:
+    assert efts_search_url() == "https://efts.sec.gov/LATEST/search-index"
+    assert classify_sec_surface(efts_search_url()) == "efts"
 
 
 def test_submissions_bulk_url() -> None:
