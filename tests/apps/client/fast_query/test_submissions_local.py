@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.apps.client.cache import DocumentCache
@@ -194,3 +195,139 @@ def test_no_snapshot_published_yields_no_local_coverage(tmp_path: Path) -> None:
     )
 
     assert covered == {}
+
+
+def _publish_multi_part_snapshot(
+    tmp_path: Path,
+    parts: list[list[tuple[str, dict[str, Any]]]],
+    *,
+    row_count_overrides: dict[int, int] | None = None,
+) -> Path:
+    """Publish one snapshot whose submissions rows span several parts.
+
+    Returns the snapshot directory so a test can damage a part on disk.
+    """
+    from datetime import UTC, datetime
+
+    root = snapshots_root(tmp_path, "metadata")
+    snapshot_dir = root / SNAPSHOT_ID
+    parts_dir = snapshot_dir / "parts"
+    parts_dir.mkdir(parents=True)
+    descriptors: list[PartDescriptor] = []
+    all_ciks: list[str] = []
+    for i, part in enumerate(parts):
+        part_path = parts_dir / f"part-{i:03d}.parquet"
+        rows = [_row(cik, payload) for cik, payload in part]
+        pq.write_table(build_submission_table(rows), part_path)
+        row_count = len(rows)
+        if row_count_overrides and i in row_count_overrides:
+            row_count = row_count_overrides[i]
+        descriptors.append(
+            PartDescriptor(
+                path=f"parts/part-{i:03d}.parquet",
+                sha256=file_sha256(part_path),
+                row_count=row_count,
+                byte_size=part_path.stat().st_size,
+            )
+        )
+        all_ciks.extend(cik for cik, _ in part)
+    index_path = snapshot_dir / "ciks.parquet"
+    distinct_ciks = sorted(set(all_ciks))
+    pq.write_table(pa.table({"cik": distinct_ciks}), index_path)
+    manifest = DAGNodeManifest(
+        snapshot_id=SNAPSHOT_ID,
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id=SNAPSHOT_ID,
+        lineage_depth=0,
+        created_at=datetime.now(UTC).isoformat(timespec="seconds"),
+        relations={
+            "submissions": tuple(descriptors),
+            "cik_index": (
+                PartDescriptor(
+                    path="ciks.parquet",
+                    sha256=file_sha256(index_path),
+                    row_count=len(distinct_ciks),
+                    byte_size=index_path.stat().st_size,
+                ),
+            ),
+        },
+        logical_fingerprint="",
+        schema_versions={"submissions": "1.0.0"},
+    )
+    DAGCatalog(root).publish_node(manifest, branch_name="main")
+    return snapshot_dir
+
+
+def test_multi_part_lookup_reads_only_the_target_part(tmp_path: Path) -> None:
+    """Non-target parts are unreadable garbage; the lookup must not open them."""
+    snapshot_dir = _publish_multi_part_snapshot(
+        tmp_path,
+        [
+            [("0000000123", _payload("0000000123-26-000001"))],
+            [(FORD, _payload(f"{FORD}-26-000001"))],
+            [(OTHER, _payload(f"{OTHER}-26-000001"))],
+        ],
+    )
+    for name in ("part-000.parquet", "part-002.parquet"):
+        (snapshot_dir / "parts" / name).write_bytes(b"not parquet")
+    cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
+
+    items = collect_submissions_fallback(
+        [FORD],
+        None,
+        None,
+        None,
+        {},
+        _ExplodingClient(),
+        cache,
+        artifacts_root=tmp_path,
+    )
+
+    assert len(items) == 1
+    assert items[0].accession.raw == f"{FORD}-26-000001"
+
+
+def test_index_row_count_drift_falls_back_to_full_scan(tmp_path: Path) -> None:
+    """Descriptor counts that fail to partition the index refuse targeting."""
+    _publish_multi_part_snapshot(
+        tmp_path,
+        [
+            [("0000000123", _payload("0000000123-26-000001"))],
+            [(FORD, _payload(f"{FORD}-26-000001"))],
+        ],
+        row_count_overrides={0: 5},
+    )
+    cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
+
+    covered = materialize_from_snapshot(
+        [FORD], None, None, None, {}, cache, artifacts_root=tmp_path
+    )
+
+    assert set(covered) == {FORD}
+    assert covered[FORD][0].accession.raw == f"{FORD}-26-000001"
+
+
+def test_cik_absent_from_index_is_not_covered_locally(tmp_path: Path) -> None:
+    _publish_multi_part_snapshot(
+        tmp_path,
+        [[(FORD, _payload(f"{FORD}-26-000001"))]],
+    )
+    cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
+    live = _LiveClient(
+        {submissions_url(OTHER): _payload(f"{OTHER}-26-000777", form="8-K")}
+    )
+
+    items = collect_submissions_fallback(
+        [OTHER],
+        None,
+        None,
+        None,
+        {},
+        live,
+        cache,
+        artifacts_root=tmp_path,
+    )
+
+    assert [item.accession.raw for item in items] == [f"{OTHER}-26-000777"]
+    assert live.calls == [submissions_url(OTHER)]
