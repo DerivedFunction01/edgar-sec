@@ -5,6 +5,7 @@ from __future__ import annotations
 import atexit
 import gzip
 import json
+import shutil
 import tempfile
 import threading
 from collections.abc import Iterable
@@ -17,6 +18,8 @@ import pyarrow as pa
 from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.domain.sec_urls import historical_submissions_url, submissions_url
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.runtime.env import get_env
+from edgar_sec.foundation.runtime.paths import resolve_paths, transient_dataset_root
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.duckdb import Connection, connect
 from edgar_sec.pipelines.cohort.ingestion import ingest_file_to_cohort
@@ -122,8 +125,40 @@ def cik_payload(cik: str, name: str, accession: str | None = None) -> dict[str, 
     }
 
 
-#: A roster references a real Parquet artifact, so these scratch dirs go at exit.
-_SCRATCH: list[tempfile.TemporaryDirectory[str]] = []
+#: Scratch dirs are registered per process; the exit sweep removes exactly
+#: the dirs this process created, never another concurrent run's.
+_SCRATCH_DIRS: set[Path] = set()
+_SCRATCH_LOCK = threading.Lock()
+
+
+def scratch_base() -> Path:
+    """Scratch placement: TMPDIR when set, else the repo transient root."""
+    configured = get_env("TMPDIR")
+    if configured:
+        return Path(configured)
+    paths = resolve_paths(TESTS_ROOT.parent)
+    return transient_dataset_root(paths.artifacts_root, "tests")
+
+
+def _make_scratch_dir(prefix: str) -> Path:
+    base = scratch_base()
+    base.mkdir(parents=True, exist_ok=True)
+    created = Path(tempfile.mkdtemp(prefix=prefix, dir=base))
+    with _SCRATCH_LOCK:
+        _SCRATCH_DIRS.add(created)
+    return created
+
+
+def sweep_scratch_dirs() -> None:
+    """Remove this process's registered scratch dirs, each in isolation."""
+    with _SCRATCH_LOCK:
+        pending = tuple(_SCRATCH_DIRS)
+        _SCRATCH_DIRS.clear()
+    for path in pending:
+        shutil.rmtree(path, ignore_errors=True)
+
+
+atexit.register(sweep_scratch_dirs)
 
 
 def roster_of(
@@ -134,16 +169,12 @@ def roster_of(
     name_list = tuple(names) or ("",) * len(cik_list)
     if len(name_list) != len(cik_list):
         raise ValueError("roster_of needs one name per CIK")
-    scratch = tempfile.TemporaryDirectory(prefix="edgar-test-cohort-")
-    _SCRATCH.append(scratch)
+    scratch = _make_scratch_dir("edgar-test-cohort-")
     roster, _digest = write_roster_rows(
         list(zip(cik_list, name_list, strict=True)),
-        Path(scratch.name) / name,
+        scratch / name,
     )
     return roster
-
-
-atexit.register(lambda: [scratch.cleanup() for scratch in _SCRATCH])
 
 
 def era_submission_metadata(destination: Path) -> Path:
@@ -211,12 +242,11 @@ def scratch_root() -> Path:
     """Compiling writes a dataset, so read-only tests still need somewhere to put it."""
     global _ROOT_SCRATCH
     if _ROOT_SCRATCH is None:
-        _ROOT_SCRATCH = tempfile.TemporaryDirectory(prefix="edgar-test-root-")
-        _SCRATCH.append(_ROOT_SCRATCH)
-    return Path(_ROOT_SCRATCH.name)
+        _ROOT_SCRATCH = _make_scratch_dir("edgar-test-root-")
+    return _ROOT_SCRATCH
 
 
-_ROOT_SCRATCH: tempfile.TemporaryDirectory[str] | None = None
+_ROOT_SCRATCH: Path | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -839,6 +869,8 @@ __all__ = [
     "load_fixture",
     "make_pdf_bytes",
     "roster_of",
+    "scratch_base",
     "scratch_root",
+    "sweep_scratch_dirs",
     "submissions_document",
 ]
