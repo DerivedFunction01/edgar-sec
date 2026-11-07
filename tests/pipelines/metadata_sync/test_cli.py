@@ -39,6 +39,7 @@ COMMANDS = (
     "merge",
     "distrib",
     "augment",
+    "refresh",
     "dag",
 )
 
@@ -236,15 +237,27 @@ def test_merge_rejects_a_snapshot_id_override() -> None:
 
 def test_no_command_exposes_a_partition_count() -> None:
     """Assignment carries the split, so worker config cannot move the plan directory."""
-    for command in ("plan", "status", "run", "merge", "augment"):
+    for command in ("plan", "status", "run", "merge", "augment", "refresh"):
         assert "--partition-count" not in _flags(command), command
 
 
 def test_execution_commands_expose_the_stale_lock_attestation() -> None:
     """Recovery used to mean editing the artifact tree by hand."""
-    for command in ("run", "merge", "augment"):
+    for command in ("run", "merge", "augment", "refresh"):
         assert "--confirm-stale-lock" in _flags(command), command
     assert "--confirm-stale-lock" not in _flags("status")
+
+
+def test_refresh_takes_no_dataset_selector() -> None:
+    """The feed and the branch tip are the refresh's only inputs."""
+    flags = _flags("refresh")
+    assert "--new-snapshot-id" in flags
+    assert "--branch" in flags
+    assert not {"--cohort", "--plan-id", "--base-snapshot-id"} & flags
+    args = build_parser().parse_args(["refresh", "--chunk-size", "5"])
+    assert args.chunk_size == 5
+    assert args.branch == "main"
+    assert args.new_snapshot_id == ""
 
 
 def test_the_stale_lock_attestation_defaults_to_off() -> None:

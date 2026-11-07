@@ -34,10 +34,12 @@ from .roster import ROSTER_FILE_NAME, Roster, cohort_record_to_roster, read_rost
 __all__ = [
     "BundleRunPaths",
     "PlanOptions",
+    "RefreshOptions",
     "RunOptions",
     "derive_plan_id",
     "plan_options",
     "read_bundle_plan_id",
+    "refresh_options",
     "resolve_chunk_size",
     "resolve_cohort",
     "run_options",
@@ -199,6 +201,45 @@ class RunOptions:
         ``snapshot_id`` cannot disagree with the artifact holding it.
         """
         return self.snapshot_id or plan.plan_id
+
+
+@dataclass(slots=True)
+class RefreshOptions:
+    """Everything a feed refresh needs; the base is the branch tip it reads."""
+
+    artifacts_root: Path | None = None
+    chunk_size: int = DEFAULT_CHUNK_SIZE
+    workers: int | None = None
+    branch_name: str = "main"
+    expected_branch_tip: str | None = None
+    new_snapshot_id: str = ""
+    stale_lock_confirmed: bool = False
+
+    def metadata(self) -> MetadataPaths:
+        """Metadata layout this invocation writes into."""
+        return resolve_metadata_paths(self.artifacts_root)
+
+
+def refresh_options(
+    *,
+    artifacts_root: str | Path | None = None,
+    chunk_size: int | None = None,
+    workers: int | None = None,
+    branch_name: str = "main",
+    expected_branch_tip: str | None = None,
+    new_snapshot_id: str = "",
+    stale_lock_confirmed: bool = False,
+) -> RefreshOptions:
+    """Build refresh options from raw values, resolving settings once."""
+    return RefreshOptions(
+        artifacts_root=(Path(artifacts_root).resolve() if artifacts_root else None),
+        chunk_size=resolve_chunk_size(chunk_size),
+        workers=workers,
+        branch_name=branch_name,
+        expected_branch_tip=expected_branch_tip,
+        new_snapshot_id=new_snapshot_id,
+        stale_lock_confirmed=stale_lock_confirmed,
+    )
 
 
 def plan_options(
