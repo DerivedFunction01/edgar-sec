@@ -157,6 +157,66 @@ def test_resolve_alias(raw: str, expected: str) -> None:
     assert resolve_alias(raw) == expected
 
 
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        ("NTN 10D", "12B-25"),
+        ("NTN15D2", "12B-25"),
+        ("SP 15D2", "12B-25"),
+        ("SP 15D2/A", "12B-25"),
+        ("PREA14C", "14A"),
+        ("424H", "424B"),
+        ("424H/A", "424B"),
+        ("497K3A", "497"),
+        ("497VPU", "497"),
+        ("497VPI", "497"),
+        ("497VPSUB", "497"),
+        ("485A24F", "485"),
+        ("485B24F", "485"),
+        ("485BXTF", "485"),
+        ("486A24E", "485"),
+        ("486B24E", "485"),
+        ("F-4EF", "F-4"),
+        ("SC 13E1", "SC TO"),
+        ("SC 13E1/A", "SC TO"),
+    ],
+)
+def test_resolve_alias_universe_audit_additions(raw: str, expected: str) -> None:
+    assert resolve_alias(raw) == expected
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        # Universe strings that already resolved before the audit additions.
+        ("ABS-EE", "ABS-EE"),
+        ("ABS-EE/A", "ABS-EE"),
+        ("C/A-W", "C"),
+        ("C-U-W", "C"),
+        ("10KT405/A", "10-K"),
+        ("15F-12B/A", "15"),
+        ("8-B12G/A", "8-B"),
+        ("F-7/A", "F-7"),
+        ("NT 10-D", "12B-25"),
+        ("NT 10-D/A", "12B-25"),
+        ("NT 15D2", "12B-25"),
+        ("NT-NCEN/A", "12B-25"),
+        ("10-QSB", "10-Q"),
+        ("10-QSB/A", "10-Q"),
+        ("10-KSB", "10-K"),
+        ("10-KSB/A", "10-K"),
+        ("11-KT/A", "11-K"),
+    ],
+)
+def test_resolve_alias_universe_no_regression(raw: str, expected: str) -> None:
+    assert resolve_alias(raw) == expected
+
+
+def test_space_separated_pos_suffix_collapses() -> None:
+    assert form_family("F-7 POS") == "F-7"
+    assert resolve_alias("F-7 POS") == "F-7"
+
+
 def test_suffix_stripping_prefers_pos_before_amendment() -> None:
     assert form_family("10-K/A-POS") == "10-K"
     assert form_family("10-K/A_W") == "10-K"
