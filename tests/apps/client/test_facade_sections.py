@@ -92,7 +92,7 @@ def test_form4_dormant_and_bypassed(tmp_path: Path) -> None:
 def test_10k_sections_and_notes_detection(tmp_path: Path) -> None:
     """Ensure covered 10-K extracts sections, notes, and lineage metadata."""
     f10k = _sample_10k_filing(tmp_path)
-    client = Edgar()
+    client = Edgar(artifacts_root=tmp_path)
 
     sec_seq = client.sections(f10k)
     assert len(sec_seq.sections) > 0
