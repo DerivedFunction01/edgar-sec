@@ -24,6 +24,10 @@ from edgar_sec.infra.sec_http.client import SecHttpClient
 if TYPE_CHECKING:
     from edgar_sec.apps.client.entity import Company
     from edgar_sec.apps.client.xbrl import Xbrl
+    from edgar_sec.infra.storage.bulk_archive import (
+        ArchiveReference,
+        BulkArchiveStore,
+    )
     from edgar_sec.domain.document.aggregate import FilingAggregate
     from edgar_sec.engine.forms.cover.toc.models import TocSpan
     from edgar_sec.engine.forms.sections.models import (
@@ -156,6 +160,37 @@ class Edgar:
         if self._facade_cache is None:
             self._facade_cache = FacadeCache(self._facade_capacity)
         return self._facade_cache
+
+    def _bulk_archive_store(self) -> "BulkArchiveStore":
+        from edgar_sec.infra.storage.bulk_archive import BulkArchiveStore
+        from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
+
+        metadata = resolve_metadata_paths(self.artifacts_root)
+        return BulkArchiveStore(metadata.bulk_archives_root)
+
+    def bulk_archive(
+        self, source_id: str, sha256: str | None = None
+    ) -> "ArchiveReference | None":
+        """Reference to a stored bulk archive, or ``None`` when unstored.
+
+        Read-only: the facade never downloads; absence is reported, not
+        repaired. The reference carries identity, manifest, and stored paths.
+        """
+        return self._bulk_archive_store().open(source_id, sha256)
+
+    def bulk_archive_member(
+        self, source_id: str, member_name: str, sha256: str | None = None
+    ) -> bytes | None:
+        """One member's bytes from a stored bulk archive.
+
+        ``None`` when the source is unstored; an unknown member of a stored
+        archive raises, as the store does.
+        """
+        store = self._bulk_archive_store()
+        reference = store.open(source_id, sha256)
+        if reference is None:
+            return None
+        return store.read_member(reference, member_name)
 
     def pipeline(self, config: PipelineConfig | FilingQuery) -> FilingsResult:
         """Execute end-to-end acquisition via the high-throughput pipeline runner."""
