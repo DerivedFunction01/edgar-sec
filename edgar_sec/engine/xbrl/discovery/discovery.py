@@ -62,9 +62,13 @@ def classify_linkbase(
     if "TAXONOMY EXTENSION SCHEMA" in desc:
         return LinkbaseType.SCHEMA
 
-    if dt == "EX-101.INS" or fn.endswith("_htm.xml"):
+    if (
+        dt == "EX-101.INS"
+        or (dt.startswith("EX-") and dt.endswith(".INS"))
+        or fn.endswith("_htm.xml")
+    ):
         return LinkbaseType.INSTANCE
-    if "EXTRACTED XBRL INSTANCE" in desc:
+    if "EXTRACTED XBRL INSTANCE" in desc or "XBRL INSTANCE DOCUMENT" in desc:
         return LinkbaseType.INSTANCE
 
     if fn.endswith("-xbrl.zip") or fn.endswith("_xbrl.zip"):
