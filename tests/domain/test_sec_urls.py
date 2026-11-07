@@ -9,9 +9,13 @@ import pytest
 from edgar_sec.domain.sec_urls import (
     SEC_ARCHIVE_BASE,
     SEC_SUBMISSIONS_BASE,
+    SEC_XBRL_API_BASE,
     archives_url,
+    companyconcept_url,
     historical_submissions_url,
+    index_json_url_for,
     normalize_cik,
+    submissions_bulk_url,
     submissions_url,
 )
 
@@ -58,6 +62,29 @@ def test_archives_url_ignores_padding_style_of_both_arguments() -> None:
     padded = archives_url("0000320193", "0000320193-23-000106", "a.htm")
     bare = archives_url("320193", "000032019323000106", "a.htm")
     assert padded == bare
+
+
+def test_companyconcept_url_pads_cik_and_keeps_tag_verbatim() -> None:
+    expected = (
+        "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/Assets.json"
+    )
+    assert SEC_XBRL_API_BASE == "https://data.sec.gov/api/xbrl"
+    assert companyconcept_url("320193", "us-gaap", "Assets") == expected
+    assert companyconcept_url(320193, "us-gaap", "Assets") == expected
+
+
+def test_index_json_url_for_unhyphenates_accession() -> None:
+    expected = (
+        "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/index.json"
+    )
+    assert index_json_url_for("0000320193-23-000106", "0000320193") == expected
+    assert index_json_url_for("000032019323000106", 320193) == expected
+
+
+def test_submissions_bulk_url() -> None:
+    assert submissions_bulk_url() == (
+        "https://www.sec.gov/Archives/edgar/daily-index/bulkdata/submissions.zip"
+    )
 
 
 def test_engine_builder_agrees_with_the_canonical_archive_shape() -> None:

@@ -14,7 +14,11 @@ from urllib.parse import parse_qs, urljoin, urlsplit, urlunsplit
 from edgar_sec.domain.identity import AccessionNumber, Cik
 
 SEC_SUBMISSIONS_BASE = "https://data.sec.gov/submissions"
+SEC_XBRL_API_BASE = "https://data.sec.gov/api/xbrl"
 SEC_ARCHIVE_BASE = "https://www.sec.gov/Archives/edgar/data"
+SUBMISSIONS_BULK_URL = (
+    "https://www.sec.gov/Archives/edgar/daily-index/bulkdata/submissions.zip"
+)
 
 CIK_PADDED_WIDTH = 10
 
@@ -39,6 +43,19 @@ def submissions_url(cik: str | int) -> str:
 def historical_submissions_url(source_file: str) -> str:
     """Return the canonical URL of a historical submissions file."""
     return f"{SEC_SUBMISSIONS_BASE}/{source_file}"
+
+
+def submissions_bulk_url() -> str:
+    """Return the nightly bulk submissions ZIP URL (all CIK documents)."""
+    return SUBMISSIONS_BULK_URL
+
+
+def companyconcept_url(cik: str | int, taxonomy: str, tag: str) -> str:
+    """Return the companyconcept URL for one taxonomy tag of one CIK."""
+    return (
+        f"{SEC_XBRL_API_BASE}/companyconcept/CIK{normalize_cik(cik)}"
+        f"/{taxonomy}/{tag}.json"
+    )
 
 
 def archives_url(
@@ -71,6 +88,22 @@ def index_url_for(
         archive_cik,
         identity.normalized,
         f"{identity}-index.html",
+        archive_base_url=archive_base_url,
+    )
+
+
+def index_json_url_for(
+    accession: AccessionNumber | str,
+    archive_cik: Cik | str | int,
+    *,
+    archive_base_url: str = SEC_ARCHIVE_BASE,
+) -> str:
+    """Build the directory ``index.json`` URL for an accession."""
+    identity = AccessionNumber.from_any(accession)
+    return archives_url(
+        archive_cik,
+        identity.normalized,
+        "index.json",
         archive_base_url=archive_base_url,
     )
 
@@ -337,20 +370,25 @@ __all__ = [
     "CIK_PADDED_WIDTH",
     "SEC_ARCHIVE_BASE",
     "SEC_SUBMISSIONS_BASE",
+    "SEC_XBRL_API_BASE",
+    "SUBMISSIONS_BULK_URL",
     "DEFAULT_ARCHIVE_URL_POLICY",
     "FILING_SUMMARY_DOCUMENT",
     "ArchiveUrlPolicy",
     "ArchiveUrlParts",
     "accession_hyphenated",
     "archives_url",
+    "companyconcept_url",
     "full_submission_url_for",
     "historical_submissions_url",
+    "index_json_url_for",
     "index_url_for",
     "normalize_accession",
     "normalize_cik",
     "parse_archive_url",
     "resolve_archive_href",
     "resolve_sec_href",
+    "submissions_bulk_url",
     "submissions_url",
     "validate_archive_url",
     "xbrl_package_url_for",
