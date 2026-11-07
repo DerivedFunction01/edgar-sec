@@ -93,6 +93,22 @@ def _add_cohort_source(sub: argparse.ArgumentParser, *, with_limit: bool) -> Non
         sub.add_argument("--limit", type=positive_int_type, default=None)
 
 
+def _add_plan_source(sub: argparse.ArgumentParser) -> None:
+    """Attach the plan command's dataset selector: a cohort or a stored archive."""
+    sub.add_argument("--cohort", default="", help="published cohort name or id")
+    sub.add_argument("--limit", type=positive_int_type, default=None)
+    sub.add_argument(
+        "--from-archive",
+        action="store_true",
+        help="plan over the stored submissions bulk archive's membership",
+    )
+    sub.add_argument(
+        "--archive-sha",
+        default="",
+        help="archive digest to plan over; defaults to the newest stored",
+    )
+
+
 def _add_chunk_selection(sub: argparse.ArgumentParser) -> None:
     sub.add_argument("--chunks", default="", help="chunk ids or ranges, e.g. '0-3,7'")
     sub.add_argument(
@@ -111,10 +127,12 @@ def _add_stale_lock_option(sub: argparse.ArgumentParser) -> None:
 
 def _plan_options(args: argparse.Namespace) -> PlanOptions:
     return plan_options(
-        cohort=args.cohort,
+        cohort=getattr(args, "cohort", "") or "",
         artifacts_root=args.artifacts or None,
         chunk_size=args.chunk_size,
         limit=getattr(args, "limit", None),
+        from_archive=getattr(args, "from_archive", False),
+        archive_sha=getattr(args, "archive_sha", "") or "",
     )
 
 
@@ -133,6 +151,7 @@ def _run_options(args: argparse.Namespace) -> RunOptions:
         expected_branch_tip=getattr(args, "expected_branch_tip", None),
         stale_lock_confirmed=getattr(args, "confirm_stale_lock", False),
         bulk=getattr(args, "bulk", False),
+        carry_from_snapshot=getattr(args, "carry_from", "") or "",
     )
 
 
@@ -163,7 +182,7 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     plan_parser = subparsers.add_parser("plan", help="generate a deterministic plan")
-    _add_cohort_source(plan_parser, with_limit=True)
+    _add_plan_source(plan_parser)
     _add_common(plan_parser)
     plan_parser.set_defaults(func=lambda args: cmd_plan(_plan_options(args)))
 
@@ -181,6 +200,12 @@ def build_parser() -> argparse.ArgumentParser:
         "--bulk",
         action="store_true",
         help="fetch from the submissions bulk ZIP instead of per-CIK requests",
+    )
+    run_parser.add_argument(
+        "--carry-from",
+        default="",
+        help="prior published snapshot whose unchanged rows carry forward "
+        "(archive plans only)",
     )
     run_parser.set_defaults(func=lambda args: cmd_run(_run_options(args)))
 

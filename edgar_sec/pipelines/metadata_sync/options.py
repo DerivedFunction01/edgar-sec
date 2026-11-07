@@ -21,6 +21,7 @@ from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from .paths import (
     ASSIGNMENTS_DIR,
     CHUNKS_DIR,
+    FINGERPRINTS_FILE_NAME,
     RECEIPT_FILE,
     ROSTER_DIR,
     MetadataPaths,
@@ -54,6 +55,11 @@ class BundleRunPaths:
     def plan_file(self) -> Path:
         """Execution manifest inside the copied bundle."""
         return self.bundle_root / PLAN_FILE_NAME
+
+    @property
+    def fingerprints_file(self) -> Path:
+        """Per-CIK member-CRC fingerprints inside the copied bundle."""
+        return self.bundle_root / FINGERPRINTS_FILE_NAME
 
     @property
     def plan_bundle(self) -> Path:
@@ -108,6 +114,8 @@ class PlanOptions:
     artifacts_root: Path | None = None
     chunk_size: int = DEFAULT_CHUNK_SIZE
     limit: int | None = None
+    from_archive: bool = False
+    archive_sha: str = ""
 
     def metadata(self) -> MetadataPaths:
         """Metadata layout this invocation writes into."""
@@ -178,6 +186,7 @@ class RunOptions:
     expected_branch_tip: str | None = None
     stale_lock_confirmed: bool = False
     bulk: bool = False
+    carry_from_snapshot: str = ""
 
     def run_paths(self) -> Any:
         """Plan-scoped paths; with ``bundle_root`` they point at a copied bundle."""
@@ -198,6 +207,8 @@ def plan_options(
     artifacts_root: str | Path | None = None,
     chunk_size: int | None = None,
     limit: int | None = None,
+    from_archive: bool = False,
+    archive_sha: str = "",
 ) -> PlanOptions:
     """Build plan options from raw values, resolving effective settings once."""
     return PlanOptions(
@@ -205,6 +216,8 @@ def plan_options(
         artifacts_root=(Path(artifacts_root).resolve() if artifacts_root else None),
         chunk_size=resolve_chunk_size(chunk_size),
         limit=limit,
+        from_archive=from_archive,
+        archive_sha=archive_sha,
     )
 
 
@@ -235,6 +248,7 @@ def run_options(
     expected_branch_tip: str | None = None,
     stale_lock_confirmed: bool = False,
     bulk: bool = False,
+    carry_from_snapshot: str = "",
 ) -> RunOptions:
     """A plan reference arrives directly, from the cohort, or from a bundle
     naming itself.
@@ -268,6 +282,7 @@ def run_options(
         expected_branch_tip=expected_branch_tip,
         stale_lock_confirmed=stale_lock_confirmed,
         bulk=bulk,
+        carry_from_snapshot=carry_from_snapshot,
     )
 
 

@@ -92,9 +92,16 @@ def test_resolve_chunk_size_is_pure_over_its_argument(monkeypatch: pytest.Monkey
     assert resolve_chunk_size(None) == 7
 
 
-def test_plan_options_have_only_the_cohort_dataset_selector():
+def test_plan_options_carry_the_dataset_selectors():
     assert not hasattr(PlanOptions, "workers")
-    assert PlanOptions.__slots__ == ("cohort", "artifacts_root", "chunk_size", "limit")
+    assert PlanOptions.__slots__ == (
+        "cohort",
+        "artifacts_root",
+        "chunk_size",
+        "limit",
+        "from_archive",
+        "archive_sha",
+    )
 
 
 def test_a_published_cohort_is_required(tmp_path: Path):

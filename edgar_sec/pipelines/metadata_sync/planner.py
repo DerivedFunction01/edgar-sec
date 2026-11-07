@@ -7,29 +7,49 @@ assignment, worker count, or time.
 from __future__ import annotations
 
 import json
+import re
+from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+import pyarrow as pa
 
 from edgar_sec.domain.submissions.schemas import SCHEMA_VERSION
-from edgar_sec.foundation.hashing import sha256_bytes
+from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.infra.storage.parquet import write_parquet_table
 
 from .paths import RunPaths
-from .roster import Roster, RosterError, read_roster, write_roster
+from .roster import Roster, RosterError, read_roster, write_roster, write_roster_rows
 
-PLAN_FORMAT_VERSION = "2.0.0"
+if TYPE_CHECKING:
+    from edgar_sec.infra.storage.bulk_archive import ArchiveReference, BulkArchiveStore
+
+PLAN_FORMAT_VERSION = "2.1.0"
 PLAN_MANIFEST_KIND = "metadata_plan"
 
+_MAIN_MEMBER_RE = re.compile(r"^CIK(\d{10})\.json$")
+_SHARD_MEMBER_RE = re.compile(r"^CIK(\d{10})-submissions-(\d+)\.json$")
+FINGERPRINTS_SCHEMA = pa.schema(
+    [("cik_padded", pa.string(), False), ("fingerprint", pa.string(), False)]
+)
+
 __all__ = [
+    "FINGERPRINTS_SCHEMA",
     "PLAN_FORMAT_VERSION",
     "PLAN_MANIFEST_KIND",
     "Plan",
+    "build_archive_plan",
     "build_plan",
     "derive_plan_id",
     "load_plan",
+    "member_fingerprints",
+    "read_fingerprints",
+    "roster_rows_from_member_index",
     "utc_now_iso",
+    "write_fingerprints",
     "write_plan",
 ]
 
@@ -49,6 +69,7 @@ def derive_plan_id(
     parent_id: str = "",
     plan_format_version: str = PLAN_FORMAT_VERSION,
     schema_version: str = SCHEMA_VERSION,
+    archive_sha256: str = "",
 ) -> str:
     """Derive a stable plan identifier from the plan-defining inputs.
     Assignment, worker count, and timestamps are excluded by construction.
@@ -64,6 +85,7 @@ def derive_plan_id(
             parent_id,
             roster_id,
             str(chunk_size),
+            archive_sha256,
         )
     )
     return sha256_bytes(material.encode("utf-8"))[:16]
@@ -87,6 +109,13 @@ class Plan:
     schema_version: str = SCHEMA_VERSION
     roster_sha256: str = ""
     selected_limit: int | None = None
+    archive_source_id: str = ""
+    archive_sha256: str = ""
+
+    @property
+    def is_archive_plan(self) -> bool:
+        """True when this plan's roster and fingerprints come from a bulk archive."""
+        return bool(self.archive_sha256)
 
     @property
     def row_count(self) -> int:
@@ -94,10 +123,14 @@ class Plan:
         return self.roster.row_count
 
     def lineage(self) -> dict[str, str]:
-        """Parent identity carried by a delta plan to publication."""
+        """Identity a plan carries into its snapshot's publication record."""
         recorded: dict[str, str] = {}
         if self.parent_id:
             recorded["parent_snapshot_id"] = self.parent_id
+        if self.archive_source_id:
+            recorded["archive_source_id"] = self.archive_source_id
+        if self.archive_sha256:
+            recorded["archive_sha256"] = self.archive_sha256
         return recorded
 
     @property
@@ -160,6 +193,8 @@ class Plan:
             "input_name": self.input_name,
             "input_fingerprint": self.input_fingerprint,
             "selected_limit": self.selected_limit,
+            "archive_source_id": self.archive_source_id,
+            "archive_sha256": self.archive_sha256,
         }
 
 
@@ -173,6 +208,8 @@ def build_plan(
     input_fingerprint: str = "",
     created_at: str | None = None,
     selected_limit: int | None = None,
+    archive_source_id: str = "",
+    archive_sha256: str = "",
 ) -> Plan:
     """Build the immutable plan for a selected roster."""
     if chunk_size < 1:
@@ -181,7 +218,11 @@ def build_plan(
         raise RosterError("a plan requires a non-empty roster")
     return Plan(
         plan_id=derive_plan_id(
-            roster.roster_id, chunk_size, kind=kind, parent_id=parent_id
+            roster.roster_id,
+            chunk_size,
+            kind=kind,
+            parent_id=parent_id,
+            archive_sha256=archive_sha256,
         ),
         roster=roster,
         chunk_size=chunk_size,
@@ -191,10 +232,120 @@ def build_plan(
         input_name=input_name,
         input_fingerprint=input_fingerprint,
         selected_limit=selected_limit,
+        archive_source_id=archive_source_id,
+        archive_sha256=archive_sha256,
     )
 
 
-def write_plan(plan: Plan, run_paths: RunPaths) -> str:
+def _parse_member_index(
+    index: pa.Table,
+) -> tuple[dict[str, int], dict[str, list[tuple[int, int]]]]:
+    mains: dict[str, int] = {}
+    shards: dict[str, list[tuple[int, int]]] = {}
+    names = index.column("member_name").to_pylist()
+    crcs = index.column("crc32").to_pylist()
+    for name, crc in zip(names, crcs, strict=True):
+        main = _MAIN_MEMBER_RE.fullmatch(str(name))
+        if main:
+            mains[main.group(1)] = int(crc)
+            continue
+        shard = _SHARD_MEMBER_RE.fullmatch(str(name))
+        if shard:
+            shards.setdefault(shard.group(1), []).append(
+                (int(shard.group(2)), int(crc))
+            )
+    return mains, shards
+
+
+def roster_rows_from_member_index(index: pa.Table) -> list[tuple[str, str]]:
+    """Roster rows for an archive: every CIK with a main member, CIK-sorted.
+
+    The archive carries no display names, so names publish empty, as the
+    mutual-fund ticker source already does.
+    """
+    mains, _shards = _parse_member_index(index)
+    return [(cik, "") for cik in sorted(mains)]
+
+
+def member_fingerprints(index: pa.Table) -> dict[str, str]:
+    """Per-CIK input fingerprint from member CRCs (main plus shards).
+
+    A CIK's fingerprint changes exactly when one of its archive members
+    changes, which is what makes CRC carry-forward sound.
+    """
+    mains, shards = _parse_member_index(index)
+    fingerprints: dict[str, str] = {}
+    for cik, main_crc in mains.items():
+        shard_crcs = ",".join(str(crc) for _number, crc in sorted(shards.get(cik, [])))
+        material = f"member-fingerprint-v1:{cik}:{main_crc}:{shard_crcs}"
+        fingerprints[cik] = sha256_bytes(material.encode("utf-8"))
+    return fingerprints
+
+
+def write_fingerprints(fingerprints: Mapping[str, str], path: Path) -> str:
+    """Write the per-CIK fingerprint dataset beside a plan; return its digest."""
+    ordered = sorted(fingerprints)
+    table = pa.table(
+        {
+            "cik_padded": ordered,
+            "fingerprint": [fingerprints[cik] for cik in ordered],
+        },
+        schema=FINGERPRINTS_SCHEMA,
+    )
+    write_parquet_table(table, path)
+    return file_sha256(path)
+
+
+def read_fingerprints(path: Path) -> dict[str, str]:
+    """Read a plan's per-CIK fingerprint dataset."""
+    from edgar_sec.infra.storage.parquet import read_parquet_table
+
+    table = read_parquet_table(path)
+    return {
+        str(cik): str(fingerprint)
+        for cik, fingerprint in zip(
+            table.column("cik_padded").to_pylist(),
+            table.column("fingerprint").to_pylist(),
+            strict=True,
+        )
+    }
+
+
+def build_archive_plan(
+    store: "BulkArchiveStore",
+    reference: "ArchiveReference",
+    *,
+    chunk_size: int,
+    roster_dataset_path: Path,
+) -> tuple[Plan, dict[str, str]]:
+    """Build a full plan over a stored archive's membership.
+
+    The roster is the archive's own CIK set and the plan identity binds the
+    archive digest, so a new night's archive is a new plan.
+    """
+    index = store.member_index(reference)
+    roster, _digest = write_roster_rows(
+        roster_rows_from_member_index(index), roster_dataset_path
+    )
+    fingerprints = member_fingerprints(index)
+    plan = build_plan(
+        roster,
+        chunk_size=chunk_size,
+        kind="full",
+        input_name=f"archive:{reference.source_id}",
+        input_fingerprint=reference.sha256,
+        archive_source_id=reference.source_id,
+        archive_sha256=reference.sha256,
+    )
+    return plan, fingerprints
+
+
+def write_plan(
+    plan: Plan,
+    run_paths: RunPaths,
+    *,
+    member_fingerprint_map: Mapping[str, str] | None = None,
+) -> str:
     """Write the plan bundle: roster dataset, execution manifest, input manifest.
     The roster is written and digested first, so a manifest never references a
     cohort that is not beside it.
@@ -202,6 +353,10 @@ def write_plan(plan: Plan, run_paths: RunPaths) -> str:
     digest = write_roster(plan.roster, run_paths.roster_file)
     manifest = plan.to_manifest()
     manifest["roster_artifact_sha256"] = digest
+    if member_fingerprint_map is not None:
+        manifest["member_fingerprints_sha256"] = write_fingerprints(
+            member_fingerprint_map, run_paths.fingerprints_file
+        )
     atomic_write_json(run_paths.plan_file, manifest, canonical=False, indent=2)
     atomic_write_json(
         run_paths.input_manifest_file,
@@ -243,6 +398,7 @@ def load_plan(run_paths: RunPaths) -> Plan:
     chunk_size = int(manifest.get("chunk_size", 0))
     kind = str(manifest.get("kind", "full"))
     parent_id = str(manifest.get("parent_snapshot_id", ""))
+    archive_sha256 = str(manifest.get("archive_sha256", ""))
     expected = derive_plan_id(
         roster.roster_id,
         chunk_size,
@@ -250,6 +406,7 @@ def load_plan(run_paths: RunPaths) -> Plan:
         parent_id=parent_id,
         plan_format_version=str(manifest.get("plan_format_version", "")),
         schema_version=str(manifest.get("schema_version", "")),
+        archive_sha256=archive_sha256,
     )
     if manifest.get("plan_id") != expected:
         raise ValueError(
@@ -276,6 +433,8 @@ def load_plan(run_paths: RunPaths) -> Plan:
         schema_version=SCHEMA_VERSION,
         roster_sha256=str(manifest.get("roster_artifact_sha256", "")),
         selected_limit=int(limit) if isinstance(limit, int) else None,
+        archive_source_id=str(manifest.get("archive_source_id", "")),
+        archive_sha256=archive_sha256,
     )
 
 

@@ -305,6 +305,70 @@ def test_utc_stamp_is_second_resolution() -> None:
     assert stamp.endswith("Z") and len(stamp) == 20
 
 
+def _member_index(rows: list[tuple[str, int]]):
+    import pyarrow as pa
+
+    from edgar_sec.infra.storage.bulk_archive import MEMBER_INDEX_SCHEMA
+
+    return pa.table(
+        {
+            "member_name": [name for name, _crc in rows],
+            "crc32": [crc for _name, crc in rows],
+            "compressed_size": [1] * len(rows),
+            "uncompressed_size": [1] * len(rows),
+            "header_offset": [0] * len(rows),
+        },
+        schema=MEMBER_INDEX_SCHEMA,
+    )
+
+
+def test_member_fingerprints_track_main_and_shard_crcs() -> None:
+    from edgar_sec.pipelines.metadata_sync.planner import member_fingerprints
+
+    base = _member_index(
+        [
+            ("CIK0000000020.json", 11),
+            ("CIK0000001761.json", 22),
+            ("CIK0000001761-submissions-001.json", 33),
+        ]
+    )
+    fingerprints = member_fingerprints(base)
+    assert set(fingerprints) == {"0000000020", "0000001761"}
+
+    shard_changed = _member_index(
+        [
+            ("CIK0000000020.json", 11),
+            ("CIK0000001761.json", 22),
+            ("CIK0000001761-submissions-001.json", 34),
+        ]
+    )
+    changed = member_fingerprints(shard_changed)
+    assert changed["0000000020"] == fingerprints["0000000020"]
+    assert changed["0000001761"] != fingerprints["0000001761"]
+
+    main_changed = _member_index([("CIK0000000020.json", 12)])
+    assert member_fingerprints(main_changed)["0000000020"] != fingerprints["0000000020"]
+
+
+def test_roster_rows_come_from_main_members_only() -> None:
+    from edgar_sec.pipelines.metadata_sync.planner import (
+        roster_rows_from_member_index,
+    )
+
+    index = _member_index(
+        [
+            ("CIK0000001761.json", 22),
+            ("CIK0000001761-submissions-001.json", 33),
+            ("CIK0000000020.json", 11),
+            ("companyfacts.zip", 44),
+        ]
+    )
+    assert roster_rows_from_member_index(index) == [
+        ("0000000020", ""),
+        ("0000001761", ""),
+    ]
+
+
 def _retag(run_paths, key: str, value: str | None) -> None:
     manifest = json.loads(run_paths.plan_file.read_text(encoding="utf-8"))
     if value is None:

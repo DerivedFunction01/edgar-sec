@@ -160,9 +160,18 @@ def test_a_plan_needs_a_cohort_reference() -> None:
         assert not {"--input", "--roster", "--universe"} & flags
 
 
-def test_a_plan_with_no_cohort_reference_is_rejected() -> None:
-    with pytest.raises(SystemExit):
-        build_parser().parse_args(["plan"])
+def test_a_plan_with_no_dataset_selector_is_rejected(tmp_path: Path) -> None:
+    from edgar_sec.pipelines.metadata_sync.commands.plan import cmd_plan
+    from edgar_sec.pipelines.metadata_sync.options import plan_options
+
+    args = build_parser().parse_args(["plan"])
+    assert args.cohort == "" and not args.from_archive
+    with pytest.raises(ValueError, match="--cohort is required"):
+        cmd_plan(plan_options(artifacts_root=tmp_path))
+    with pytest.raises(ValueError, match="mutually exclusive"):
+        cmd_plan(
+            plan_options(cohort="c-test", from_archive=True, artifacts_root=tmp_path)
+        )
 
 
 def test_execution_commands_accept_a_plan_reference() -> None:

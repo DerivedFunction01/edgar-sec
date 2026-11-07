@@ -6,6 +6,7 @@ refetched rather than merged.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -59,6 +60,7 @@ def inspect_chunk(
     *,
     expected_ciks: tuple[str, ...] | None = None,
     expected_fingerprint: str | None = None,
+    expected_fingerprints: Mapping[str, str] | None = None,
 ) -> ChunkInfo | None:
     """Validate one chunk checkpoint, returning ``None`` when unusable."""
     if not path.is_file():
@@ -81,7 +83,12 @@ def inspect_chunk(
             len(ciks) != len(expected_ciks) or set(ciks) != set(expected_ciks)
         ):
             return None
-        if expected_fingerprint:
+        if expected_fingerprints is not None:
+            recorded = table.column("input_fingerprint").to_pylist()
+            for cik, value in zip(ciks, recorded, strict=True):
+                if value != expected_fingerprints.get(cik):
+                    return None
+        elif expected_fingerprint:
             non_null = pc.drop_null(table.column("input_fingerprint"))
             if len(non_null) > 0:
                 uniques = pc.unique(non_null).to_pylist()
@@ -112,12 +119,20 @@ def discover_completed_chunks(plan: Plan, run_paths: RunPaths) -> dict[int, Chun
     """Return every valid chunk checkpoint for a plan, keyed by chunk id."""
     completed: dict[int, ChunkInfo] = {}
     fingerprint = plan.input_fingerprint or None
+    fingerprints: Mapping[str, str] | None = None
+    if plan.is_archive_plan:
+        fingerprints_path = getattr(run_paths, "fingerprints_file", None)
+        if fingerprints_path is not None and fingerprints_path.is_file():
+            from .planner import read_fingerprints
+
+            fingerprints = read_fingerprints(fingerprints_path)
     for chunk_id in plan.chunk_ids():
         info = inspect_chunk(
             chunk_id,
             run_paths.chunk_file(chunk_id),
             expected_ciks=plan.chunk_ciks(chunk_id),
             expected_fingerprint=fingerprint,
+            expected_fingerprints=fingerprints,
         )
         if info is not None:
             completed[chunk_id] = info
