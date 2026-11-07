@@ -39,6 +39,8 @@ def test_namespace_key_reads_each_host_pattern() -> None:
     assert namespace_key("http://xbrl.sec.gov/ffd/2025q4") == ("ffd", "2025q4")
     assert namespace_key("http://xbrl.sec.gov/rxp/2026") == ("rxp", "2026")
     assert namespace_key("http://xbrl.sec.gov/cef/2022") == ("cef", "2022")
+    assert namespace_key("http://xbrl.sec.gov/fnd/2026") == ("fnd", "2026")
+    assert namespace_key("http://xbrl.sec.gov/fnd/2024q3") == ("fnd", "2024q3")
     assert namespace_key("http://xbrl.sec.gov/invest/2013-01-31") == (
         "invest",
         "2013",
@@ -60,7 +62,16 @@ def test_archive_reproduces_the_retired_table_exactly() -> None:
     """The retired JSON's own slice union still equals it entry for entry."""
     table: dict[str, str] = {}
     for taxonomy, version in CURRENT_SLICES:
-        if taxonomy in ("ifrs", "ffd", "rxp", "cef", "us-gaap-ebp", "invest", "oef"):
+        if taxonomy in (
+            "ifrs",
+            "ffd",
+            "rxp",
+            "cef",
+            "us-gaap-ebp",
+            "invest",
+            "oef",
+            "fnd",
+        ):
             continue
         table.update(slice_table(taxonomy, version))
     assert len(table) == _RETIRED_TABLE_SIZE
@@ -107,6 +118,7 @@ def test_prefix_sets_derive_from_the_slice_inventory() -> None:
         "dei",
         "ecd",
         "ffd",
+        "fnd",
         "ifrs",
         "invest",
         "oef",
@@ -126,6 +138,7 @@ def test_prefix_sets_derive_from_the_slice_inventory() -> None:
             "ffd",
             "rxp",
             "cef",
+            "fnd",
             "invest",
             "oef",
             "us-gaap-ebp",
@@ -183,6 +196,14 @@ def test_archive_covers_every_published_span() -> None:
     assert slice_versions("ffd") == ("2024", "2024q2", "2025", "2025q4", "2026")
     assert slice_versions("rxp") == ("2023", "2024", "2025", "2026")
     assert slice_versions("cef") == ("2022", "2023", "2024", "2025", "2026")
+    assert slice_versions("fnd") == (
+        "2023",
+        "2024",
+        "2024q3",
+        "2025",
+        "2026",
+        "2026q3",
+    )
     assert slice_versions("us-gaap-ebp") == ("2024", "2025", "2026")
     assert slice_versions("invest") == ("2011", "2012", "2013")
     assert slice_versions("oef") == ("2023", "2024", "2024q3", "2025", "2026")

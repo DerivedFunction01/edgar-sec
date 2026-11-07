@@ -141,4 +141,4 @@ def test_extended_factories_registered_in_battery_and_driver() -> None:
         assert name in _STATEMENT_CALLS
         assert name in STATEMENT_FACTORIES
     assert "probe" in COHORT_NAMES
-    assert len(cohort_folders("probe")) == 90
+    assert len(cohort_folders("probe")) == 445

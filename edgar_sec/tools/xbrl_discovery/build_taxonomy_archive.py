@@ -74,6 +74,8 @@ def _releases() -> tuple[tuple[str, str, str], ...]:
         releases.append(("rxp", str(year), f"{_SEC}/rxp/{year}/rxp-{year}.xsd"))
     for year in range(2022, 2027):
         releases.append(("cef", str(year), f"{_SEC}/cef/{year}/cef-{year}.xsd"))
+    for version in ("2023", "2024", "2024q3", "2025", "2026", "2026q3"):
+        releases.append(("fnd", version, f"{_SEC}/fnd/{version}/fnd-{version}.xsd"))
     for year in (2011, 2012, 2013):
         releases.append(
             ("invest", str(year), f"{_SEC}/invest/{year}/invest-{year}-01-31.xsd")

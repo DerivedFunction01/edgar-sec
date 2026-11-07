@@ -29,6 +29,7 @@ TAXONOMY_PREFIXES: dict[str, str] = {
     "ffd": "ffd",
     "rxp": "rxp",
     "cef": "cef",
+    "fnd": "fnd",
     "invest": "invest",
     "oef": "oef",
     "us-gaap-ebp": "us-gaap-ebp",
@@ -48,6 +49,7 @@ CURRENT_SLICES: tuple[tuple[str, str], ...] = (
     ("ffd", "2026"),
     ("rxp", "2026"),
     ("cef", "2026"),
+    ("fnd", "2026"),
     ("invest", "2013"),
     ("oef", "2026"),
     ("us-gaap-ebp", "2026"),
@@ -57,7 +59,7 @@ _DATED = re.compile(r"^(\d{4})-\d{2}-\d{2}$")
 _FASB_TAXONOMIES = build_alternation(("us-gaap-ebp", "us-gaap", "srt"))
 _FASB = re.compile(rf"^https?://(?:www\.)?fasb\.org/({_FASB_TAXONOMIES})/([^/]+)$")
 _SEC_TAXONOMIES = build_alternation(
-    ("cef", "cyd", "dei", "ecd", "ffd", "invest", "oef", "rxp")
+    ("cef", "cyd", "dei", "ecd", "ffd", "fnd", "invest", "oef", "rxp")
 )
 _SEC = re.compile(rf"^https?://xbrl\.sec\.gov/({_SEC_TAXONOMIES})/([^/]+)$")
 _XBRL_US = re.compile(r"^https?://(?:taxonomies\.)?xbrl\.us/(us-gaap)/([^/]+)$")

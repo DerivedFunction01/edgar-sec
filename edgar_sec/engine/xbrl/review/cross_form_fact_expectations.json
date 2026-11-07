@@ -70,33 +70,223 @@
     "taxonomy": "ecd"
   },
   "11-K|us-gaap-ebp|annual": {
-    "dimensioned_numeric": 6489,
-    "facts": 20353,
-    "filings": 5,
+    "dimensioned_numeric": 15771,
+    "facts": 29852,
+    "filings": 15,
     "form": "11-K",
-    "numeric_facts": 6489,
+    "numeric_facts": 15788,
     "period_shape": "annual",
-    "quarantined_facts": 6489,
+    "quarantined_facts": 15771,
     "taxonomy": "us-gaap-ebp"
   },
-  "DEF 14A|ecd|annual": {
-    "dimensioned_numeric": 146,
-    "facts": 270,
-    "filings": 2,
+  "424H/A|ffd|quarterly": {
+    "dimensioned_numeric": 0,
+    "facts": 20,
+    "filings": 1,
+    "form": "424H/A",
+    "numeric_facts": 1,
+    "period_shape": "quarterly",
+    "quarantined_facts": 0,
+    "taxonomy": "ffd"
+  },
+  "424H|ffd|quarterly": {
+    "dimensioned_numeric": 0,
+    "facts": 21,
+    "filings": 1,
+    "form": "424H",
+    "numeric_facts": 1,
+    "period_shape": "quarterly",
+    "quarantined_facts": 0,
+    "taxonomy": "ffd"
+  },
+  "424I|ffd|quarterly": {
+    "dimensioned_numeric": 4,
+    "facts": 104,
+    "filings": 4,
+    "form": "424I",
+    "numeric_facts": 8,
+    "period_shape": "quarterly",
+    "quarantined_facts": 4,
+    "taxonomy": "ffd"
+  },
+  "486APOS|cef|quarterly": {
+    "dimensioned_numeric": 41,
+    "facts": 67,
+    "filings": 1,
+    "form": "486APOS",
+    "numeric_facts": 41,
+    "period_shape": "quarterly",
+    "quarantined_facts": 41,
+    "taxonomy": "cef"
+  },
+  "486BPOS|cef|quarterly": {
+    "dimensioned_numeric": 116,
+    "facts": 165,
+    "filings": 1,
+    "form": "486BPOS",
+    "numeric_facts": 122,
+    "period_shape": "quarterly",
+    "quarantined_facts": 115,
+    "taxonomy": "cef"
+  },
+  "486BXT|cef|quarterly": {
+    "dimensioned_numeric": 0,
+    "facts": 6,
+    "filings": 1,
+    "form": "486BXT",
+    "numeric_facts": 0,
+    "period_shape": "quarterly",
+    "quarantined_facts": 0,
+    "taxonomy": "cef"
+  },
+  "DEF 14A|cef|quarterly": {
+    "dimensioned_numeric": 4,
+    "facts": 21,
+    "filings": 1,
     "form": "DEF 14A",
-    "numeric_facts": 209,
+    "numeric_facts": 18,
+    "period_shape": "quarterly",
+    "quarantined_facts": 4,
+    "taxonomy": "cef"
+  },
+  "DEF 14A|ecd|annual": {
+    "dimensioned_numeric": 763,
+    "facts": 1337,
+    "filings": 11,
+    "form": "DEF 14A",
+    "numeric_facts": 1077,
     "period_shape": "annual",
-    "quarantined_facts": 146,
+    "quarantined_facts": 753,
     "taxonomy": "ecd"
   },
-  "N-CSRS|cef|ytd": {
-    "dimensioned_numeric": 171,
-    "facts": 229,
+  "F-10/A|ffd|quarterly": {
+    "dimensioned_numeric": 0,
+    "facts": 41,
     "filings": 1,
+    "form": "F-10/A",
+    "numeric_facts": 1,
+    "period_shape": "quarterly",
+    "quarantined_facts": 0,
+    "taxonomy": "ffd"
+  },
+  "F-10EF|ffd|quarterly": {
+    "dimensioned_numeric": 0,
+    "facts": 63,
+    "filings": 1,
+    "form": "F-10EF",
+    "numeric_facts": 1,
+    "period_shape": "quarterly",
+    "quarantined_facts": 0,
+    "taxonomy": "ffd"
+  },
+  "F-10|ffd|quarterly": {
+    "dimensioned_numeric": 18,
+    "facts": 143,
+    "filings": 2,
+    "form": "F-10",
+    "numeric_facts": 20,
+    "period_shape": "quarterly",
+    "quarantined_facts": 18,
+    "taxonomy": "ffd"
+  },
+  "N-14 8C/A|ffd|quarterly": {
+    "dimensioned_numeric": 1,
+    "facts": 21,
+    "filings": 1,
+    "form": "N-14 8C/A",
+    "numeric_facts": 2,
+    "period_shape": "quarterly",
+    "quarantined_facts": 1,
+    "taxonomy": "ffd"
+  },
+  "N-14 8C|ffd|quarterly": {
+    "dimensioned_numeric": 3,
+    "facts": 53,
+    "filings": 1,
+    "form": "N-14 8C",
+    "numeric_facts": 4,
+    "period_shape": "quarterly",
+    "quarantined_facts": 3,
+    "taxonomy": "ffd"
+  },
+  "N-1A|oef|annual": {
+    "dimensioned_numeric": 18,
+    "facts": 99,
+    "filings": 1,
+    "form": "N-1A",
+    "numeric_facts": 21,
+    "period_shape": "annual",
+    "quarantined_facts": 18,
+    "taxonomy": "oef"
+  },
+  "N-2 POSASR|cef|quarterly": {
+    "dimensioned_numeric": 0,
+    "facts": 6,
+    "filings": 1,
+    "form": "N-2 POSASR",
+    "numeric_facts": 0,
+    "period_shape": "quarterly",
+    "quarantined_facts": 0,
+    "taxonomy": "cef"
+  },
+  "N-2/A|cef|quarterly": {
+    "dimensioned_numeric": 2,
+    "facts": 123,
+    "filings": 1,
+    "form": "N-2/A",
+    "numeric_facts": 94,
+    "period_shape": "quarterly",
+    "quarantined_facts": 1,
+    "taxonomy": "cef"
+  },
+  "N-2ASR|cef|quarterly": {
+    "dimensioned_numeric": 3,
+    "facts": 90,
+    "filings": 1,
+    "form": "N-2ASR",
+    "numeric_facts": 49,
+    "period_shape": "quarterly",
+    "quarantined_facts": 3,
+    "taxonomy": "cef"
+  },
+  "N-2MEF|ffd|quarterly": {
+    "dimensioned_numeric": 1,
+    "facts": 17,
+    "filings": 1,
+    "form": "N-2MEF",
+    "numeric_facts": 2,
+    "period_shape": "quarterly",
+    "quarantined_facts": 1,
+    "taxonomy": "ffd"
+  },
+  "N-2|cef|quarterly": {
+    "dimensioned_numeric": 20,
+    "facts": 86,
+    "filings": 1,
+    "form": "N-2",
+    "numeric_facts": 20,
+    "period_shape": "quarterly",
+    "quarantined_facts": 20,
+    "taxonomy": "cef"
+  },
+  "N-CSRS|cef|quarterly": {
+    "dimensioned_numeric": 137,
+    "facts": 553,
+    "filings": 5,
     "form": "N-CSRS",
-    "numeric_facts": 182,
+    "numeric_facts": 369,
+    "period_shape": "quarterly",
+    "quarantined_facts": 137,
+    "taxonomy": "cef"
+  },
+  "N-CSRS|cef|ytd": {
+    "dimensioned_numeric": 416,
+    "facts": 673,
+    "filings": 8,
+    "form": "N-CSRS",
+    "numeric_facts": 473,
     "period_shape": "ytd",
-    "quarantined_facts": 128,
+    "quarantined_facts": 365,
     "taxonomy": "cef"
   },
   "N-CSRS|oef|ytd": {
@@ -110,13 +300,23 @@
     "taxonomy": "oef"
   },
   "N-CSR|cef|annual": {
-    "dimensioned_numeric": 532,
-    "facts": 934,
-    "filings": 3,
+    "dimensioned_numeric": 771,
+    "facts": 1981,
+    "filings": 11,
     "form": "N-CSR",
-    "numeric_facts": 577,
+    "numeric_facts": 1188,
     "period_shape": "annual",
-    "quarantined_facts": 522,
+    "quarantined_facts": 734,
+    "taxonomy": "cef"
+  },
+  "N-CSR|cef|quarterly": {
+    "dimensioned_numeric": 78,
+    "facts": 237,
+    "filings": 2,
+    "form": "N-CSR",
+    "numeric_facts": 178,
+    "period_shape": "quarterly",
+    "quarantined_facts": 76,
     "taxonomy": "cef"
   },
   "N-CSR|oef|quarterly": {
@@ -129,14 +329,134 @@
     "quarantined_facts": 2727,
     "taxonomy": "oef"
   },
-  "SD|rxp|annual": {
-    "dimensioned_numeric": 96,
-    "facts": 306,
+  "POS AMI|cef|quarterly": {
+    "dimensioned_numeric": 42,
+    "facts": 162,
     "filings": 1,
+    "form": "POS AMI",
+    "numeric_facts": 42,
+    "period_shape": "quarterly",
+    "quarantined_facts": 42,
+    "taxonomy": "cef"
+  },
+  "POSASR|ffd|quarterly": {
+    "dimensioned_numeric": 16,
+    "facts": 226,
+    "filings": 5,
+    "form": "POSASR",
+    "numeric_facts": 20,
+    "period_shape": "quarterly",
+    "quarantined_facts": 16,
+    "taxonomy": "ffd"
+  },
+  "S-11MEF|ffd|quarterly": {
+    "dimensioned_numeric": 2,
+    "facts": 42,
+    "filings": 2,
+    "form": "S-11MEF",
+    "numeric_facts": 4,
+    "period_shape": "quarterly",
+    "quarantined_facts": 2,
+    "taxonomy": "ffd"
+  },
+  "S-11|ffd|quarterly": {
+    "dimensioned_numeric": 1,
+    "facts": 18,
+    "filings": 1,
+    "form": "S-11",
+    "numeric_facts": 2,
+    "period_shape": "quarterly",
+    "quarantined_facts": 1,
+    "taxonomy": "ffd"
+  },
+  "SC 13E3|ffd|quarterly": {
+    "dimensioned_numeric": 1,
+    "facts": 16,
+    "filings": 1,
+    "form": "SC 13E3",
+    "numeric_facts": 2,
+    "period_shape": "quarterly",
+    "quarantined_facts": 1,
+    "taxonomy": "ffd"
+  },
+  "SC TO-I/A|ffd|quarterly": {
+    "dimensioned_numeric": 0,
+    "facts": 15,
+    "filings": 1,
+    "form": "SC TO-I/A",
+    "numeric_facts": 1,
+    "period_shape": "quarterly",
+    "quarantined_facts": 0,
+    "taxonomy": "ffd"
+  },
+  "SC TO-I|ffd|quarterly": {
+    "dimensioned_numeric": 1,
+    "facts": 16,
+    "filings": 1,
+    "form": "SC TO-I",
+    "numeric_facts": 2,
+    "period_shape": "quarterly",
+    "quarantined_facts": 1,
+    "taxonomy": "ffd"
+  },
+  "SC TO-T|ffd|quarterly": {
+    "dimensioned_numeric": 2,
+    "facts": 29,
+    "filings": 2,
+    "form": "SC TO-T",
+    "numeric_facts": 4,
+    "period_shape": "quarterly",
+    "quarantined_facts": 2,
+    "taxonomy": "ffd"
+  },
+  "SC13E4F|ffd|quarterly": {
+    "dimensioned_numeric": 2,
+    "facts": 32,
+    "filings": 2,
+    "form": "SC13E4F",
+    "numeric_facts": 4,
+    "period_shape": "quarterly",
+    "quarantined_facts": 2,
+    "taxonomy": "ffd"
+  },
+  "SD|rxp|annual": {
+    "dimensioned_numeric": 18615,
+    "facts": 41938,
+    "filings": 180,
     "form": "SD",
-    "numeric_facts": 101,
+    "numeric_facts": 19313,
     "period_shape": "annual",
-    "quarantined_facts": 27,
+    "quarantined_facts": 5644,
     "taxonomy": "rxp"
+  },
+  "SF-1/A|ffd|quarterly": {
+    "dimensioned_numeric": 2,
+    "facts": 62,
+    "filings": 2,
+    "form": "SF-1/A",
+    "numeric_facts": 4,
+    "period_shape": "quarterly",
+    "quarantined_facts": 2,
+    "taxonomy": "ffd"
+  },
+  "SF-1|ffd|quarterly": {
+    "dimensioned_numeric": 2,
+    "facts": 39,
+    "filings": 2,
+    "form": "SF-1",
+    "numeric_facts": 4,
+    "period_shape": "quarterly",
+    "quarantined_facts": 2,
+    "taxonomy": "ffd"
+  },
+  "SF-3|ffd|quarterly": {
+    "dimensioned_numeric": 0,
+    "facts": 15,
+    "filings": 1,
+    "form": "SF-3",
+    "numeric_facts": 1,
+    "period_shape": "quarterly",
+    "quarantined_facts": 0,
+    "taxonomy": "ffd"
   }
 }
