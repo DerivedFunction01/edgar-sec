@@ -5,7 +5,6 @@ from __future__ import annotations
 import threading
 from collections import OrderedDict
 from collections.abc import Callable
-from datetime import date
 from pathlib import Path
 from typing import TYPE_CHECKING, Literal, Sequence
 
@@ -22,6 +21,7 @@ from edgar_sec.apps.client.sequence_codec import (
     encode_notes,
     encode_sections,
 )
+from edgar_sec.apps.client.surfaces import FeedSearchSurfaces
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.apps.runner.config import DateFilterInput, FilingQuery, PipelineConfig
 from edgar_sec.apps.runner.coordinator import PipelineRunner
@@ -34,9 +34,7 @@ from edgar_sec.foundation.runtime.resources import (
 from edgar_sec.infra.sec_http.client import SecHttpClient
 
 if TYPE_CHECKING:
-    from edgar_sec.apps.client.efts import EftsCapture, EftsQuery, EftsSearchResult
     from edgar_sec.apps.client.entity import Company
-    from edgar_sec.apps.client.feeds import FeedEventsResult
     from edgar_sec.apps.client.xbrl import Xbrl
     from edgar_sec.infra.storage.bulk_archive import (
         ArchiveReference,
@@ -153,7 +151,7 @@ class FacadeCache:
             self._build_locks.clear()
 
 
-class Edgar:
+class Edgar(FeedSearchSurfaces):
     """Convenience client for querying, acquiring, and analyzing SEC filings."""
 
     def __init__(
@@ -266,142 +264,6 @@ class Edgar:
         if reference is None:
             return None
         return store.read_member(reference, member_name)
-
-    def feed_events(
-        self,
-        *,
-        forms: Sequence[str] | str = (),
-        sources: Sequence[str] | str = (),
-        filed_from: date | str | None = None,
-        filed_to: date | str | None = None,
-        limit: int | None = None,
-    ) -> "FeedEventsResult":
-        """Structured-disclosure events from the published feeds ledger.
-
-        Read-only: an unstored ledger is reported as absence
-        (``ledger_present`` is False), never repaired with a live fetch.
-        """
-        from edgar_sec.apps.client.feeds import read_feed_events
-
-        return read_feed_events(
-            self.artifacts_root,
-            forms=(forms,) if isinstance(forms, str) else tuple(forms),
-            sources=(sources,) if isinstance(sources, str) else tuple(sources),
-            filed_from=filed_from,
-            filed_to=filed_to,
-            limit=limit,
-        )
-
-    def full_text_search(
-        self,
-        query: EftsQuery | None = None,
-        *,
-        text: str = "",
-        forms: Sequence[str] = (),
-        ciks: Sequence[str | int] = (),
-        tickers: Sequence[str] = (),
-        items: Sequence[str] = (),
-        startdt: str | None = None,
-        enddt: str | None = None,
-        sec_syntax: str | None = None,
-        max_hits: int | None = None,
-        exhaustive: bool = False,
-    ) -> EftsSearchResult:
-        """Search the SEC full-text index live; nothing is persisted.
-
-        Accepts an ``EftsQuery`` or query parts; tickers resolve to CIKs.
-        ``exhaustive`` date-slices past the ceiling, requiring a date pair.
-        """
-        from edgar_sec.apps.client.efts import (
-            EftsQuery,
-            full_text_search,
-            search_all,
-        )
-
-        resolved_ciks = tuple(str(c) for c in ciks)
-        for ticker in tickers:
-            from edgar_sec.apps.client.resolver import resolve_entity_profile
-
-            profile = resolve_entity_profile(ticker, self.artifacts_root)
-            if profile.cik.value == 1 and profile.name == str(ticker):
-                raise ValueError(f"unresolved ticker: {ticker!r}")
-            resolved_ciks += (profile.cik.to_10digit(),)
-        if query is None:
-            query = EftsQuery(
-                text=text,
-                forms=tuple(str(f) for f in forms),
-                ciks=resolved_ciks,
-                items=tuple(str(i) for i in items),
-                startdt=startdt,
-                enddt=enddt,
-                sec_syntax=sec_syntax,
-            )
-        elif resolved_ciks:
-            query = EftsQuery(
-                text=query.text,
-                forms=query.forms,
-                ciks=tuple(query.ciks) + resolved_ciks,
-                items=query.items,
-                startdt=query.startdt,
-                enddt=query.enddt,
-                sec_syntax=query.sec_syntax,
-            )
-        if exhaustive:
-            return search_all(query, client=self.sec_client, exhaustive=True)
-        return full_text_search(query, client=self.sec_client, max_hits=max_hits)
-
-    def capture_full_text_search(
-        self,
-        query: EftsQuery,
-        *,
-        exhaustive: bool = False,
-    ) -> EftsCapture:
-        """Run a search and write its explicit capture artefact.
-
-        The only persistence path for a search: a plain
-        ``full_text_search`` call writes nothing.
-        """
-        from edgar_sec.apps.client.efts import capture_full_text_search
-
-        return capture_full_text_search(
-            query,
-            client=self.sec_client,
-            artifacts_root=self.artifacts_root,
-            exhaustive=exhaustive,
-        )
-
-    def search_documents(
-        self,
-        query: str,
-        *,
-        mode: str = "bm25",
-        accessions: tuple[str, ...] = (),
-        ciks: tuple[int, ...] = (),
-        forms: tuple[str, ...] = (),
-        date_from: str | None = None,
-        date_to: str | None = None,
-        attachment_scope: str = "all_documents",
-        limit: int = 50,
-    ):  # noqa: ANN202 - SearchResult is imported lazily to keep facade light
-        """Search our acquired holdings through the materialized text index.
-
-        Every result carries a coverage block; a scoped target absent from
-        the corpus is reported not-in-corpus, never as a plain no-match.
-        """
-        from edgar_sec.apps.client.text_search import search_documents
-
-        return search_documents(
-            query,
-            mode=mode,
-            artifacts_root=self.artifacts_root,
-            accessions=accessions,
-            ciks=ciks,
-            forms=forms,
-            date_from=date_from,
-            date_to=date_to,
-            attachment_scope=attachment_scope,
-            limit=limit,
-        )
 
     def pipeline(self, config: PipelineConfig | FilingQuery) -> FilingsResult:
         """Execute end-to-end acquisition via the high-throughput pipeline runner."""
