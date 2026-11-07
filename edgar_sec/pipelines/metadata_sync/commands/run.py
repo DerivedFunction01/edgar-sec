@@ -10,19 +10,28 @@ from edgar_sec.pipelines.metadata_sync.options import RunOptions
 from edgar_sec.pipelines.metadata_sync.planner import load_plan
 from edgar_sec.pipelines.metadata_sync.progress import progress_renderer
 from edgar_sec.pipelines.metadata_sync.run_lock import RunLock
-from edgar_sec.pipelines.metadata_sync.sec_client import SubmissionsClient
+from edgar_sec.pipelines.metadata_sync.sec_client import (
+    BulkSubmissionsClient,
+    SubmissionsClient,
+)
 from edgar_sec.pipelines.metadata_sync.worker import (
     resolve_workers,
     run_chunk_ids,
 )
 
-from .client import build_client
+from .client import build_bulk_client, build_client
 
 
-def cmd_run(options: RunOptions, *, client: SubmissionsClient | None = None) -> int:
+def cmd_run(
+    options: RunOptions,
+    *,
+    client: SubmissionsClient | BulkSubmissionsClient | None = None,
+) -> int:
     """Execute the chunks this invocation owns."""
     run_paths = options.run_paths()
     plan = load_plan(run_paths)
+    if client is None and options.bulk:
+        client = build_bulk_client(run_paths.chunk_file(0).parent)
     targets = list(options.chunk_ids) or plan.chunk_ids()
     if not targets:
         raise ValueError("no chunks selected")
@@ -52,17 +61,23 @@ def cmd_run(options: RunOptions, *, client: SubmissionsClient | None = None) -> 
         if bar is not None:
             bar.close()
     written = sum(1 for r in results if not r.skipped_existing)
+    summary_rows = [
+        KeyValueRow("plan_id", plan.plan_id),
+        KeyValueRow("total_chunks", str(len(results))),
+        KeyValueRow("written", str(written)),
+        KeyValueRow("skipped", str(len(results) - written)),
+        KeyValueRow(
+            "total_rows",
+            str(sum(r.row_count for r in results if not r.skipped_existing)),
+        ),
+    ]
+    if isinstance(client, BulkSubmissionsClient):
+        summary_rows.append(KeyValueRow("source", "submissions bulk archive"))
+        summary_rows.append(
+            KeyValueRow("bulk_archive_sha256", client.archive.archive_sha256)
+        )
     render_output(
-        [
-            KeyValueRow("plan_id", plan.plan_id),
-            KeyValueRow("total_chunks", str(len(results))),
-            KeyValueRow("written", str(written)),
-            KeyValueRow("skipped", str(len(results) - written)),
-            KeyValueRow(
-                "total_rows",
-                str(sum(r.row_count for r in results if not r.skipped_existing)),
-            ),
-        ],
+        summary_rows,
         title=f"Run Summary ({plan.plan_id[:8]})",
     )
     return 0

@@ -6,16 +6,30 @@ engine. The HTTP client is injected.
 
 from __future__ import annotations
 
+import json
+import threading
+import zipfile
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any
 
-from edgar_sec.domain.sec_urls import historical_submissions_url, submissions_url
+from edgar_sec.domain.sec_urls import (
+    historical_submissions_url,
+    submissions_bulk_url,
+    submissions_url,
+)
+from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
 from edgar_sec.foundation.runtime.settings.paths import DEFAULT_CACHE_TTL_S
 from edgar_sec.foundation.runtime.settings.sec import SecSettings
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.errors import PermanentHttpError, RetryExhausted
 
-__all__ = ["CikFetchResult", "SubmissionsClient"]
+__all__ = [
+    "BulkSubmissionsArchive",
+    "BulkSubmissionsClient",
+    "CikFetchResult",
+    "SubmissionsClient",
+]
 
 
 @dataclass
@@ -33,6 +47,8 @@ class CikFetchResult:
     historical_payloads: list = field(default_factory=list)
     historical_errors: list[str] = field(default_factory=list)
     historical_files_fetched: int = 0
+    source_kind: str = "per_cik"
+    source_archive_sha256: str = ""
 
     def terminal_error(self) -> str | None:
         """Permanent failure if present, else the exhausted-retry failure."""
@@ -121,3 +137,91 @@ class SubmissionsClient:
             if name:
                 names.append(str(name))
         return names
+
+
+class BulkSubmissionsArchive:
+    """One downloaded submissions bulk ZIP, opened for per-CIK extraction.
+
+    The archive carries full history, shards included, so one download
+    replaces the per-CIK fan-out for a bulk sync.
+    """
+
+    def __init__(self, zip_path: str | Path, *, archive_sha256: str = "") -> None:
+        self.zip_path = Path(zip_path)
+        self.archive_sha256 = archive_sha256 or file_sha256(self.zip_path)
+        self._archive = zipfile.ZipFile(self.zip_path)
+        self._members = {info.filename: info for info in self._archive.infolist()}
+
+    @classmethod
+    def download(
+        cls, http: SecHttpClient, dest_dir: str | Path
+    ) -> "BulkSubmissionsArchive":
+        """Stream the bulk ZIP into ``dest_dir`` and open it for extraction."""
+        target_dir = Path(dest_dir)
+        target_dir.mkdir(parents=True, exist_ok=True)
+        target = target_dir / "submissions-bulk.zip"
+        http.stream_to_file(submissions_bulk_url(), target)
+        return cls(target)
+
+    def close(self) -> None:
+        self._archive.close()
+
+    def result_for(self, cik_padded: str) -> CikFetchResult:
+        """Build one CIK's fetch result from archive members, shards included."""
+        result = CikFetchResult(cik_padded=cik_padded)
+        result.source_url = submissions_bulk_url()
+        result.source_kind = "bulk"
+        result.source_archive_sha256 = self.archive_sha256
+        member_name = f"CIK{cik_padded}.json"
+        info = self._members.get(member_name)
+        if info is None:
+            result.permanent_error = (
+                f"CIK {cik_padded} is not present in the bulk archive"
+            )
+            return result
+        raw = self._archive.read(info)
+        result.byte_count = len(raw)
+        result.response_sha256 = sha256_bytes(raw)
+        payload = _parse_member(raw)
+        if payload is None:
+            result.permanent_error = f"bulk member {member_name} is not a JSON object"
+            return result
+        result.payload = payload
+        result.fetched_ok = True
+        for name in SubmissionsClient._historical_names(payload):
+            shard = self._members.get(name)
+            if shard is None:
+                result.historical_errors.append(f"{name}: not present in bulk archive")
+                continue
+            hist_payload = _parse_member(self._archive.read(shard))
+            if hist_payload is None:
+                result.historical_errors.append(
+                    f"{name}: not a JSON object in bulk archive"
+                )
+                continue
+            result.historical_payloads.append(
+                (historical_submissions_url(name), name, hist_payload)
+            )
+            result.historical_files_fetched += 1
+        return result
+
+
+class BulkSubmissionsClient:
+    """The worker pool's ``fetch_cik`` surface over a bulk archive."""
+
+    def __init__(self, archive: BulkSubmissionsArchive) -> None:
+        self.archive = archive
+        self._lock = threading.Lock()
+
+    def fetch_cik(self, cik_padded: str) -> CikFetchResult:
+        """Return the archive-sourced result for one CIK."""
+        with self._lock:
+            return self.archive.result_for(cik_padded)
+
+
+def _parse_member(raw: bytes) -> dict | None:
+    try:
+        payload = json.loads(raw)
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        return None
+    return payload if isinstance(payload, dict) else None

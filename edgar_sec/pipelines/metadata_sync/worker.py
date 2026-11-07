@@ -6,9 +6,15 @@ HTTP client and its SQLite cache are thread-safe and the work is network-bound.
 
 from __future__ import annotations
 
+import multiprocessing
 import signal
 from collections.abc import Callable, Iterator
-from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
+from concurrent.futures import (
+    FIRST_COMPLETED,
+    ProcessPoolExecutor,
+    ThreadPoolExecutor,
+    wait,
+)
 from contextlib import contextmanager
 from dataclasses import dataclass, field
 from typing import Any
@@ -27,7 +33,12 @@ from edgar_sec.infra.storage.parquet import StagedParquetWriter, read_parquet_ta
 from .checkpoints import inspect_chunk
 from .paths import RunPaths
 from .planner import Plan, utc_now_iso
-from .sec_client import CikFetchResult, SubmissionsClient
+from .sec_client import (
+    BulkSubmissionsArchive,
+    BulkSubmissionsClient,
+    CikFetchResult,
+    SubmissionsClient,
+)
 
 RECLAIM_INTERVAL = 64
 
@@ -62,7 +73,7 @@ class ChunkResult:
 
 
 def normalize_one_cik(
-    client: SubmissionsClient,
+    client: SubmissionsClient | BulkSubmissionsClient,
     cik_padded: str,
     *,
     input_name: str,
@@ -99,7 +110,7 @@ def normalize_one_cik(
 
 
 def _run_chunk_rows(
-    client: SubmissionsClient,
+    client: SubmissionsClient | BulkSubmissionsClient,
     writer: StagedParquetWriter,
     ciks: tuple[str, ...],
     *,
@@ -164,8 +175,90 @@ def _run_chunk_rows(
     return historical_files
 
 
+_BULK_CLIENT: BulkSubmissionsClient | None = None
+
+
+def _init_bulk_client(zip_path: str, archive_sha256: str) -> None:
+    """Pool initializer: open this child's own handle on the bulk archive."""
+    global _BULK_CLIENT
+    _BULK_CLIENT = BulkSubmissionsClient(
+        BulkSubmissionsArchive(zip_path, archive_sha256=archive_sha256)
+    )
+
+
+def _normalize_bulk_cik(
+    task: tuple[str, str, str, str, int],
+) -> tuple[dict[str, Any], int]:
+    """Normalize one CIK in a pool child from the bulk archive."""
+    cik_padded, input_name, snapshot_id, input_fingerprint, chunk_id = task
+    if _BULK_CLIENT is None:  # pragma: no cover - initializer always runs first
+        raise RuntimeError("bulk pool child was not initialized")
+    row, result = normalize_one_cik(
+        _BULK_CLIENT,
+        cik_padded,
+        input_name=input_name,
+        snapshot_id=snapshot_id,
+        input_fingerprint=input_fingerprint,
+        chunk_id=chunk_id,
+    )
+    return row, result.historical_files_fetched
+
+
+def _run_chunk_rows_bulk(
+    pool: ProcessPoolExecutor,
+    writer: StagedParquetWriter,
+    ciks: tuple[str, ...],
+    *,
+    chunk_id: int,
+    input_name: str,
+    snapshot_id: str,
+    input_fingerprint: str,
+    progress: Callable[[dict[str, Any]], None] | None,
+) -> int:
+    """Normalize bulk CIKs on the process pool, writing each row at once."""
+    historical_files = 0
+    processed = 0
+    pending = {
+        pool.submit(
+            _normalize_bulk_cik,
+            (cik_padded, input_name, snapshot_id, input_fingerprint, chunk_id),
+        ): cik_padded
+        for cik_padded in ciks
+    }
+    while pending:
+        done, _ = wait(pending, return_when=FIRST_COMPLETED)
+        failure: Exception | None = None
+        for future in done:
+            cik_padded = pending.pop(future)
+            try:
+                row, fetched = future.result()
+            except Exception as exc:
+                if failure is None:
+                    failure = exc
+                continue
+            historical_files += fetched
+            writer.write_batch(build_submission_table([row]))
+            processed += 1
+            if progress is not None:
+                progress(
+                    {
+                        "type": "cik_normalized",
+                        "cik": cik_padded,
+                        "status": row["status"],
+                        "historical_files": fetched,
+                    }
+                )
+            del row
+            if processed % RECLAIM_INTERVAL == 0:
+                reclaim()
+        if failure is not None:
+            raise failure
+    reclaim()
+    return historical_files
+
+
 def run_chunk(
-    client: SubmissionsClient,
+    client: SubmissionsClient | BulkSubmissionsClient,
     plan: Plan,
     run_paths: RunPaths,
     chunk_id: int,
@@ -174,6 +267,7 @@ def run_chunk(
     workers: int | None = None,
     force: bool = False,
     progress: Callable[[dict[str, Any]], None] | None = None,
+    bulk_pool: ProcessPoolExecutor | None = None,
 ) -> ChunkResult:
     """Execute one chunk and atomically write its checkpoint Parquet.
     A valid existing checkpoint short-circuits the run.
@@ -205,17 +299,29 @@ def run_chunk(
         remaining_ciks = tuple(c for c in ciks if c not in existing_ciks)
 
         if remaining_ciks:
-            _run_chunk_rows(
-                client,
-                writer,
-                remaining_ciks,
-                chunk_id=chunk_id,
-                input_name=plan.input_name,
-                snapshot_id=snapshot_id,
-                input_fingerprint=plan.input_fingerprint,
-                workers=workers,
-                progress=progress,
-            )
+            if bulk_pool is not None:
+                _run_chunk_rows_bulk(
+                    bulk_pool,
+                    writer,
+                    remaining_ciks,
+                    chunk_id=chunk_id,
+                    input_name=plan.input_name,
+                    snapshot_id=snapshot_id,
+                    input_fingerprint=plan.input_fingerprint,
+                    progress=progress,
+                )
+            else:
+                _run_chunk_rows(
+                    client,
+                    writer,
+                    remaining_ciks,
+                    chunk_id=chunk_id,
+                    input_name=plan.input_name,
+                    snapshot_id=snapshot_id,
+                    input_fingerprint=plan.input_fingerprint,
+                    workers=workers,
+                    progress=progress,
+                )
 
         total_rows = writer.commit(expected_count=len(ciks))
 
@@ -262,7 +368,7 @@ def _graceful_sigterm() -> Iterator[None]:
 
 
 def run_chunk_ids(
-    client: SubmissionsClient,
+    client: SubmissionsClient | BulkSubmissionsClient,
     plan: Plan,
     run_paths: RunPaths,
     chunk_ids: list[int],
@@ -277,27 +383,48 @@ def run_chunk_ids(
     """
     done = completed or {}
     results: list[ChunkResult] = []
-    with _graceful_sigterm():
-        for chunk_id in chunk_ids:
-            if chunk_id in done:
+    bulk_pool: ProcessPoolExecutor | None = None
+    if isinstance(client, BulkSubmissionsClient) and any(
+        chunk_id not in done for chunk_id in chunk_ids
+    ):
+        # Bulk normalize is pure-Python and GIL-bound, so it runs on a spawn
+        # process pool created once per run and held warm across chunks; the
+        # per-CIK fetch path keeps its thread pool, being network-bound.
+        bulk_pool = ProcessPoolExecutor(
+            max_workers=resolve_workers(workers),
+            mp_context=multiprocessing.get_context("spawn"),
+            initializer=_init_bulk_client,
+            initargs=(
+                str(client.archive.zip_path),
+                client.archive.archive_sha256,
+            ),
+        )
+    try:
+        with _graceful_sigterm():
+            for chunk_id in chunk_ids:
+                if chunk_id in done:
+                    results.append(
+                        ChunkResult(
+                            chunk_id=chunk_id,
+                            path=str(run_paths.chunk_file(chunk_id)),
+                            row_count=0,
+                            skipped_existing=True,
+                        )
+                    )
+                    continue
                 results.append(
-                    ChunkResult(
-                        chunk_id=chunk_id,
-                        path=str(run_paths.chunk_file(chunk_id)),
-                        row_count=0,
-                        skipped_existing=True,
+                    run_chunk(
+                        client,
+                        plan,
+                        run_paths,
+                        chunk_id,
+                        snapshot_id=snapshot_id,
+                        workers=workers,
+                        progress=progress,
+                        bulk_pool=bulk_pool,
                     )
                 )
-                continue
-            results.append(
-                run_chunk(
-                    client,
-                    plan,
-                    run_paths,
-                    chunk_id,
-                    snapshot_id=snapshot_id,
-                    workers=workers,
-                    progress=progress,
-                )
-            )
+    finally:
+        if bulk_pool is not None:
+            bulk_pool.shutdown()
     return results

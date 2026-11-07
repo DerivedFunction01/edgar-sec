@@ -90,7 +90,14 @@ def query_catalog_fast(
                 else SecHttpClient()
             )
             items = collect_submissions_fallback(
-                ciks, forms, dates, limit, factories, client, doc_cache
+                ciks,
+                forms,
+                dates,
+                limit,
+                factories,
+                client,
+                doc_cache,
+                artifacts_root=catalog_paths.artifacts_root,
             )
         return FilingsResult(
             run_id="fast-path",
@@ -203,7 +210,14 @@ def query_catalog_fast(
             else SecHttpClient()
         )
         items = collect_submissions_fallback(
-            ciks, forms, dates, limit, factories, client, doc_cache
+            ciks,
+            forms,
+            dates,
+            limit,
+            factories,
+            client,
+            doc_cache,
+            artifacts_root=catalog_paths.artifacts_root,
         )
         return FilingsResult(
             run_id="fast-path",

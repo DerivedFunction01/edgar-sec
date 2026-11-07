@@ -106,6 +106,86 @@ def test_full_replay_produces_publishable_snapshot(
     assert current_snapshot_id(run_paths.metadata) == plan.plan_id
 
 
+def test_bulk_replay_matches_per_cik_rows(
+    client, session: FakeSession, tmp_path: Path
+) -> None:
+    """A bulk-mode replay publishes the same rows as the per-CIK replay."""
+    import zipfile
+
+    from edgar_sec.pipelines.metadata_sync.sec_client import (
+        BulkSubmissionsArchive,
+        BulkSubmissionsClient,
+    )
+
+    _seed_session(session)
+    cohort = fixture_cohort("cik_sec_mini.csv")
+
+    plan_a, paths_a = _plan_for(tmp_path / "live", cohort, 2)
+    write_plan(plan_a, paths_a)
+    run_chunk_ids(
+        client,
+        plan_a,
+        paths_a,
+        plan_a.chunk_ids(),
+        snapshot_id=plan_a.plan_id,
+        workers=2,
+    )
+    publish_snapshot(merge_chunks(plan_a, paths_a, plan_a.plan_id), paths_a.metadata)
+    rows_a = {
+        row["cik"]: row for row in _published_rows(paths_a.metadata, plan_a.plan_id)
+    }
+
+    members: dict[str, bytes] = {
+        f"CIK{FORD}.json": json.dumps(load_fixture("recent_submissions.json")).encode(),
+        FORD_HIST: json.dumps(load_fixture("historical_submissions.json")).encode(),
+    }
+    for cik in ("0000001985", "0000001761", "0000000020"):
+        members[f"CIK{cik}.json"] = json.dumps(
+            {
+                "name": f"COMPANY {cik}",
+                "filings": {
+                    "recent": {
+                        "accessionNumber": [f"{cik}-26-000001"],
+                        "filingDate": ["2026-01-02"],
+                        "form": ["10-K"],
+                        "size": [1024],
+                    },
+                    "files": [],
+                },
+            }
+        ).encode()
+    zip_path = tmp_path / "submissions.zip"
+    with zipfile.ZipFile(zip_path, "w") as archive:
+        for name, payload in members.items():
+            archive.writestr(name, payload)
+    bulk_client = BulkSubmissionsClient(BulkSubmissionsArchive(zip_path))
+
+    plan_b, paths_b = _plan_for(tmp_path / "bulk", cohort, 2)
+    write_plan(plan_b, paths_b)
+    run_chunk_ids(
+        bulk_client,
+        plan_b,
+        paths_b,
+        plan_b.chunk_ids(),
+        snapshot_id=plan_b.plan_id,
+        workers=2,
+    )
+    publish_snapshot(merge_chunks(plan_b, paths_b, plan_b.plan_id), paths_b.metadata)
+    rows_b = {
+        row["cik"]: row for row in _published_rows(paths_b.metadata, plan_b.plan_id)
+    }
+
+    assert set(rows_b) == set(rows_a)
+    for cik, live_row in rows_a.items():
+        bulk_row = rows_b[cik]
+        assert bulk_row["status"] == live_row["status"]
+        strip = lambda rows: [  # noqa: E731
+            {k: v for k, v in row.items() if k != "source_file"} for row in rows
+        ]
+        assert strip(bulk_row["filings"]) == strip(live_row["filings"])
+        assert bulk_row["historical_files_total"] == live_row["historical_files_total"]
+
+
 def test_replay_is_resumable_and_does_not_refetch(
     client, session: FakeSession, tmp_path: Path
 ) -> None:

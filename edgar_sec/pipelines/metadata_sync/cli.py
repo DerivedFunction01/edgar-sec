@@ -132,6 +132,7 @@ def _run_options(args: argparse.Namespace) -> RunOptions:
         branch_name=getattr(args, "branch", "main") or "main",
         expected_branch_tip=getattr(args, "expected_branch_tip", None),
         stale_lock_confirmed=getattr(args, "confirm_stale_lock", False),
+        bulk=getattr(args, "bulk", False),
     )
 
 
@@ -176,6 +177,11 @@ def build_parser() -> argparse.ArgumentParser:
     _add_common(run_parser)
     _add_chunk_selection(run_parser)
     _add_stale_lock_option(run_parser)
+    run_parser.add_argument(
+        "--bulk",
+        action="store_true",
+        help="fetch from the submissions bulk ZIP instead of per-CIK requests",
+    )
     run_parser.set_defaults(func=lambda args: cmd_run(_run_options(args)))
 
     merge_parser = subparsers.add_parser("merge", help="publish a snapshot")

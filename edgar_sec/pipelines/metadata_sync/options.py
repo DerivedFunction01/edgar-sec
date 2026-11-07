@@ -177,6 +177,7 @@ class RunOptions:
     branch_name: str = "main"
     expected_branch_tip: str | None = None
     stale_lock_confirmed: bool = False
+    bulk: bool = False
 
     def run_paths(self) -> Any:
         """Plan-scoped paths; with ``bundle_root`` they point at a copied bundle."""
@@ -233,6 +234,7 @@ def run_options(
     branch_name: str = "main",
     expected_branch_tip: str | None = None,
     stale_lock_confirmed: bool = False,
+    bulk: bool = False,
 ) -> RunOptions:
     """A plan reference arrives directly, from the cohort, or from a bundle
     naming itself.
@@ -265,6 +267,7 @@ def run_options(
         branch_name=branch_name,
         expected_branch_tip=expected_branch_tip,
         stale_lock_confirmed=stale_lock_confirmed,
+        bulk=bulk,
     )
 
 

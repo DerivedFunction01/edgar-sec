@@ -10,6 +10,7 @@ from edgar_sec.domain.sec_urls import historical_submissions_url, submissions_ur
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.pipelines.metadata_sync.sec_client import (
+    BulkSubmissionsClient,
     CikFetchResult,
     SubmissionsClient,
 )
@@ -109,6 +110,157 @@ def test_malformed_historical_descriptors_are_ignored() -> None:
     assert SubmissionsClient._historical_names(
         {"filings": {"files": [{"name": "a.json"}, "junk", {}]}}
     ) == ["a.json"]
+
+
+def _write_bulk_zip(path: Path, members: dict[str, bytes]) -> Path:
+    import zipfile
+
+    with zipfile.ZipFile(path, "w") as archive:
+        for name, payload in members.items():
+            archive.writestr(name, payload)
+    return path
+
+
+def _bulk_members() -> dict[str, bytes]:
+    import json as json_module
+
+    main = _payload()
+    main["filings"]["files"] = [
+        {"name": FORD_HIST, "filingFrom": "2020-01-01", "filingTo": "2020-12-31"}
+    ]
+    shard = {
+        "accessionNumber": [f"{FORD}-20-000009"],
+        "filingDate": ["2020-03-01"],
+        "reportDate": ["2019-12-31"],
+        "form": ["10-K"],
+        "primaryDocument": ["ford-10k.htm"],
+    }
+    return {
+        f"CIK{FORD}.json": json_module.dumps(main).encode("utf-8"),
+        FORD_HIST: json_module.dumps(shard).encode("utf-8"),
+    }
+
+
+def test_bulk_archive_yields_payload_history_and_provenance(tmp_path: Path) -> None:
+    from edgar_sec.domain.sec_urls import submissions_bulk_url
+    from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
+    from edgar_sec.pipelines.metadata_sync.sec_client import BulkSubmissionsArchive
+
+    members = _bulk_members()
+    zip_path = _write_bulk_zip(tmp_path / "submissions.zip", members)
+    archive = BulkSubmissionsArchive(zip_path)
+    client = BulkSubmissionsClient(archive)
+    result = client.fetch_cik(FORD)
+
+    assert result.fetched_ok is True
+    assert result.payload is not None and result.payload["name"] == "FORD MOTOR CO"
+    assert result.historical_files_fetched == 1
+    assert result.historical_errors == []
+    file_url, name, _hist = result.historical_payloads[0]
+    assert (file_url, name) == (historical_submissions_url(FORD_HIST), FORD_HIST)
+    assert result.source_kind == "bulk"
+    assert result.source_url == submissions_bulk_url()
+    assert result.source_archive_sha256 == file_sha256(zip_path)
+    assert result.response_sha256 == sha256_bytes(members[f"CIK{FORD}.json"])
+    assert result.byte_count == len(members[f"CIK{FORD}.json"])
+
+
+def test_bulk_archive_missing_cik_is_a_permanent_error(tmp_path: Path) -> None:
+    from edgar_sec.pipelines.metadata_sync.sec_client import BulkSubmissionsArchive
+
+    archive = BulkSubmissionsArchive(
+        _write_bulk_zip(tmp_path / "s.zip", _bulk_members())
+    )
+    result = archive.result_for("0000999999")
+
+    assert result.fetched_ok is False
+    assert result.permanent_error is not None
+    assert result.terminal_error() == result.permanent_error
+
+
+def test_bulk_archive_bad_member_is_per_cik_and_others_survive(
+    tmp_path: Path,
+) -> None:
+    from edgar_sec.pipelines.metadata_sync.sec_client import BulkSubmissionsArchive
+
+    members = _bulk_members()
+    members["CIK0000999999.json"] = b"{broken"
+    archive = BulkSubmissionsArchive(_write_bulk_zip(tmp_path / "s.zip", members))
+
+    broken = archive.result_for("0000999999")
+    healthy = archive.result_for(FORD)
+
+    assert broken.permanent_error is not None and broken.payload is None
+    assert healthy.fetched_ok is True
+
+
+def test_bulk_archive_missing_shard_is_a_historical_error(tmp_path: Path) -> None:
+    from edgar_sec.pipelines.metadata_sync.sec_client import BulkSubmissionsArchive
+
+    members = _bulk_members()
+    del members[FORD_HIST]
+    archive = BulkSubmissionsArchive(_write_bulk_zip(tmp_path / "s.zip", members))
+    result = archive.result_for(FORD)
+
+    assert result.fetched_ok is True
+    assert result.historical_files_fetched == 0
+    assert len(result.historical_errors) == 1
+    assert FORD_HIST in result.historical_errors[0]
+
+
+def test_bulk_rows_match_per_cik_rows(session: FakeSession, tmp_path: Path) -> None:
+    """Bulk and per-CIK paths normalize to the same rows, history included."""
+    import json as json_module
+
+    from edgar_sec.engine.submissions.builder import normalize_submissions
+    from edgar_sec.pipelines.metadata_sync.sec_client import BulkSubmissionsArchive
+
+    members = _bulk_members()
+    main = json_module.loads(members[f"CIK{FORD}.json"])
+    shard = json_module.loads(members[FORD_HIST])
+    session.register(submissions_url(FORD), main)
+    session.register(historical_submissions_url(FORD_HIST), shard)
+    live = build_test_client(session).fetch_cik(FORD)
+    bulk = BulkSubmissionsArchive(
+        _write_bulk_zip(tmp_path / "s.zip", members)
+    ).result_for(FORD)
+
+    def _row(result: CikFetchResult) -> dict:
+        return normalize_submissions(
+            result.payload or {},
+            cik_padded=FORD,
+            input_name="test",
+            snapshot_id="snap-1",
+            fetched_at="2026-01-01T00:00:00Z",
+            source_url=result.source_url,
+            byte_count=result.byte_count,
+            historical_payloads=result.historical_payloads,
+            historical_errors=result.historical_errors,
+            response_sha256=result.response_sha256,
+            input_fingerprint="fp",
+            chunk_id=0,
+        )
+
+    live_row, bulk_row = _row(live), _row(bulk)
+    assert bulk_row["status"] == live_row["status"] == "ok"
+    # Filing rows differ only in source_file, the per-fetch provenance stamp.
+    strip = lambda rows: [  # noqa: E731
+        {k: v for k, v in row.items() if k != "source_file"} for row in rows
+    ]
+    assert strip(bulk_row["filings"]) == strip(live_row["filings"])
+    assert len(bulk_row["filings"]) == 2
+    from edgar_sec.domain.sec_urls import submissions_bulk_url
+
+    assert {row["source_file"] for row in bulk_row["filings"]} == {
+        submissions_bulk_url(),
+        historical_submissions_url(FORD_HIST),
+    }
+    assert {row["source_file"] for row in live_row["filings"]} == {
+        submissions_url(FORD),
+        historical_submissions_url(FORD_HIST),
+    }
+    assert bulk_row["historical_files_total"] == live_row["historical_files_total"]
+    assert bulk_row["identity"] == live_row["identity"]
 
 
 def test_client_requires_an_identity_source() -> None:

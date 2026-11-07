@@ -41,6 +41,22 @@ def materialize_from_submissions(
     except Exception:
         return []
 
+    return materialize_from_payload(
+        cik_inst, payload, forms, dates, limit, factories, doc_cache
+    )
+
+
+def materialize_from_payload(
+    cik: str | int | Cik,
+    payload: dict[str, Any],
+    forms: str | Sequence[str] | None,
+    dates: str | None,
+    limit: int | None,
+    factories: dict[str, Any],
+    doc_cache: DocumentCache,
+) -> list[FilingAggregate]:
+    """Materialize filing aggregates from one parsed submissions payload."""
+    cik_inst = cik if isinstance(cik, Cik) else Cik.from_raw(cik)
     recent = payload.get("filings", {}).get("recent", {})
     if not recent:
         return []
@@ -106,10 +122,38 @@ def collect_submissions_fallback(
     factories: dict[str, Any],
     client: SecHttpClient,
     doc_cache: DocumentCache,
+    *,
+    artifacts_root: Any = None,
 ) -> tuple[FilingAggregate, ...]:
-    """Collect filings across CIKs using SEC submissions API fallback."""
+    """Collect filings across CIKs, local snapshot first, live fetch second.
+
+    CIKs covered by the latest published submissions snapshot are served from
+    it without an HTTP call; the rest use the live submissions fetch.
+    """
+    local: dict[str, list[FilingAggregate]] = {}
+    if artifacts_root is not None:
+        from edgar_sec.apps.client.fast_query.submissions_local import (
+            materialize_from_snapshot,
+        )
+
+        local = materialize_from_snapshot(
+            ciks,
+            forms,
+            dates,
+            limit,
+            factories,
+            doc_cache,
+            artifacts_root=artifacts_root,
+        )
     aggregates: list[FilingAggregate] = []
     for c in ciks:
+        try:
+            cik_key = (c if isinstance(c, Cik) else Cik.from_raw(c)).to_10digit()
+        except Exception:
+            cik_key = ""
+        if cik_key in local:
+            aggregates.extend(local[cik_key])
+            continue
         on_the_fly = materialize_from_submissions(
             c, forms, dates, limit, factories, doc_cache, client
         )
