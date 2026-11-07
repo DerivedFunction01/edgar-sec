@@ -20,6 +20,7 @@ DEFAULT_MAX_FAILURE_ATTEMPTS = 3
 DEFAULT_BULK_ARCHIVE_RETENTION = 2
 DEFAULT_BULK_ARCHIVE_MAX_BYTES = 8 * 1024**3
 DEFAULT_TRANSIENT_TTL_S = 24 * 60 * 60
+DEFAULT_FEED_MAX_PAGES = 100
 
 SURFACE_KIND_STATIC = "static"
 SURFACE_KIND_TRANSIENT = "transient"
@@ -218,6 +219,20 @@ def get_sec_specs() -> dict[str, dict[str, SettingSpec]]:
                     description="byte bound for one streamed bulk archive download",
                 ),
             },
+            "feeds": {
+                "max_pages": SettingSpec(
+                    value_type=int,
+                    default=DEFAULT_FEED_MAX_PAGES,
+                    env=True,
+                    cli=True,
+                    machine_local=True,
+                    validate=_require_positive,
+                    description=(
+                        "page cap for one current-filings feed walk; a walk that "
+                        "reaches it stops rather than paging without bound"
+                    ),
+                ),
+            },
             "ttl": _ttl_specs(),
         },
     }
@@ -266,6 +281,7 @@ def _ttl_specs() -> dict[str, SettingSpec]:
 __all__ = [
     "DEFAULT_BULK_ARCHIVE_MAX_BYTES",
     "DEFAULT_BULK_ARCHIVE_RETENTION",
+    "DEFAULT_FEED_MAX_PAGES",
     "DEFAULT_MAX_FAILURE_ATTEMPTS",
     "DEFAULT_MAX_RETRIES",
     "DEFAULT_RATE_LIMIT_RPS",
