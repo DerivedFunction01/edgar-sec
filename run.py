@@ -31,6 +31,12 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         module="edgar_sec.pipelines.metadata_sync.operator",
     ),
     LauncherEntry(
+        id="feeds",
+        label="Structured Disclosure Feeds",
+        description="Structured-disclosure RSS feed ledger: live run, archive backfill, status",
+        module="edgar_sec.pipelines.feeds.operator",
+    ),
+    LauncherEntry(
         id="filing-catalog",
         label="Filing Catalog",
         description="Offline DuckDB catalog materialization and target planning",
