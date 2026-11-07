@@ -5,6 +5,7 @@ from __future__ import annotations
 import threading
 from collections import OrderedDict
 from collections.abc import Callable
+from datetime import date
 from pathlib import Path
 from typing import TYPE_CHECKING, Literal, Sequence
 
@@ -34,6 +35,7 @@ from edgar_sec.infra.sec_http.client import SecHttpClient
 
 if TYPE_CHECKING:
     from edgar_sec.apps.client.entity import Company
+    from edgar_sec.apps.client.feeds import FeedEventsResult
     from edgar_sec.apps.client.xbrl import Xbrl
     from edgar_sec.infra.storage.bulk_archive import (
         ArchiveReference,
@@ -263,6 +265,31 @@ class Edgar:
         if reference is None:
             return None
         return store.read_member(reference, member_name)
+
+    def feed_events(
+        self,
+        *,
+        forms: Sequence[str] | str = (),
+        sources: Sequence[str] | str = (),
+        filed_from: date | str | None = None,
+        filed_to: date | str | None = None,
+        limit: int | None = None,
+    ) -> "FeedEventsResult":
+        """Structured-disclosure events from the published feeds ledger.
+
+        Read-only: an unstored ledger is reported as absence
+        (``ledger_present`` is False), never repaired with a live fetch.
+        """
+        from edgar_sec.apps.client.feeds import read_feed_events
+
+        return read_feed_events(
+            self.artifacts_root,
+            forms=(forms,) if isinstance(forms, str) else tuple(forms),
+            sources=(sources,) if isinstance(sources, str) else tuple(sources),
+            filed_from=filed_from,
+            filed_to=filed_to,
+            limit=limit,
+        )
 
     def pipeline(self, config: PipelineConfig | FilingQuery) -> FilingsResult:
         """Execute end-to-end acquisition via the high-throughput pipeline runner."""
