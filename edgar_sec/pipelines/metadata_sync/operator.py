@@ -24,6 +24,7 @@ from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 
 from .commands.merge import cmd_merge
 from .commands.plan import cmd_plan, cmd_status
+from .commands.refresh import cmd_refresh
 from .commands.run import cmd_run
 
 from .cli import main as cli_main
@@ -42,6 +43,7 @@ from .options import (
     RunOptions,
     derive_plan_id,
     read_bundle_plan_id,
+    refresh_options,
     run_options,
 )
 from .paths import resolve_metadata_paths
@@ -378,6 +380,31 @@ def augment(state: WizardState) -> None:
     run_augment(state)
 
 
+def refresh(state: WizardState) -> None:
+    """Refresh the current tip's stale CIKs from the current-filings feed."""
+    metadata = state.metadata()
+    tip = current_snapshot_id(metadata)
+    if not tip:
+        print("no published snapshot to refresh; merge a plan first")
+        return
+    decision = confirm_stale_lock(metadata.snapshot_lock_path(tip))
+    if not decision.proceed:
+        return
+    if not confirm_network():
+        print("cancelled; nothing was fetched")
+        return
+    cmd_refresh(
+        refresh_options(
+            artifacts_root=state.artifacts_root or None,
+            workers=_ask_int("Worker threads (blank = machine-derived)"),
+            stale_lock_confirmed=decision.confirmed,
+        )
+    )
+    published = current_snapshot_id(metadata)
+    if published:
+        print(f"current snapshot is now {published}")
+
+
 def open_metadata_distrib_console(state: WizardState) -> None:
     """Launch the interactive worker distribution console."""
     from edgar_sec.infra.distribution.menu import (
@@ -431,6 +458,7 @@ def build_operator_menu(state: WizardState | None = None) -> tuple[MenuAction, .
         menu_action("Status and resume inspect", lambda: status(session)),
         menu_action("Run chunks", lambda: run(session)),
         menu_action("Augment published snapshot", lambda: augment(session)),
+        menu_action("Refresh from current-filings feed", lambda: refresh(session)),
         menu_action(
             "Worker distribution console (export, worker, import, commands)",
             lambda: open_metadata_distrib_console(session),

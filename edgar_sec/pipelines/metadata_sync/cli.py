@@ -25,12 +25,15 @@ from .assignment import AssignmentError
 from .commands.augment import cmd_augment
 from .commands.merge import cmd_merge
 from .commands.plan import cmd_plan, cmd_status
+from .commands.refresh import cmd_refresh
 from .commands.run import cmd_run
 from .distribution_adapter import MetadataDistributionAdapter
 from .options import (
     PlanOptions,
+    RefreshOptions,
     RunOptions,
     plan_options,
+    refresh_options,
     run_options,
 )
 from .paths import resolve_metadata_paths
@@ -133,6 +136,18 @@ def _plan_options(args: argparse.Namespace) -> PlanOptions:
         limit=getattr(args, "limit", None),
         from_archive=getattr(args, "from_archive", False),
         archive_sha=getattr(args, "archive_sha", "") or "",
+    )
+
+
+def _refresh_options(args: argparse.Namespace) -> RefreshOptions:
+    return refresh_options(
+        artifacts_root=args.artifacts or None,
+        chunk_size=args.chunk_size,
+        workers=args.workers,
+        branch_name=getattr(args, "branch", "main") or "main",
+        expected_branch_tip=getattr(args, "expected_branch_tip", None),
+        new_snapshot_id=getattr(args, "new_snapshot_id", "") or "",
+        stale_lock_confirmed=getattr(args, "confirm_stale_lock", False),
     )
 
 
@@ -242,6 +257,19 @@ def build_parser() -> argparse.ArgumentParser:
         ),
     )
     augment_parser.set_defaults(func=lambda args: _augment_from_args(args))
+
+    refresh_parser = subparsers.add_parser(
+        "refresh", help="refresh stale CIKs from the current-filings feed"
+    )
+    _add_common(refresh_parser)
+    _add_branch_guard(refresh_parser)
+    _add_stale_lock_option(refresh_parser)
+    refresh_parser.add_argument(
+        "--new-snapshot-id",
+        default="",
+        help="snapshot id to publish under; defaults to the derived plan id",
+    )
+    refresh_parser.set_defaults(func=lambda args: cmd_refresh(_refresh_options(args)))
 
     dag_parser = attach_dag_subparser(
         subparsers,
