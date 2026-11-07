@@ -68,6 +68,31 @@ def test_classify_linkbase_types() -> None:
     assert classify_linkbase_entry(_make_entry("10-K", "f.htm", "Primary")) is None
 
 
+def test_classify_exhibit_typed_instance() -> None:
+    """Exhibit-typed instance members classify as instances."""
+    assert (
+        classify_linkbase_entry(
+            _make_entry("EX-2.01.INS", "nmnt-20231231.xml", "XBRL INSTANCE DOCUMENT")
+        )
+        == LinkbaseType.INSTANCE
+    )
+    assert (
+        classify_linkbase_entry(_make_entry("EX-2.01.INS", "nmnt-20231231.xml", ""))
+        == LinkbaseType.INSTANCE
+    )
+    assert (
+        classify_linkbase_entry(
+            _make_entry("XML", "nmnt-20231231.xml", "XBRL INSTANCE DOCUMENT")
+        )
+        == LinkbaseType.INSTANCE
+    )
+    assert classify_linkbase_entry(_make_entry("EX-2.01", "ex201.htm", "")) is None
+    assert (
+        classify_linkbase_entry(_make_entry("EX-2.01.SCH", "nmnt-20231231.xsd", ""))
+        == LinkbaseType.SCHEMA
+    )
+
+
 def test_extract_filing_linkbases_from_parsed_fixture() -> None:
     """Verify end-to-end linkbase extraction from real index HTML."""
     html = fixture_path("xbrl/msft_index_page.html").read_bytes()
