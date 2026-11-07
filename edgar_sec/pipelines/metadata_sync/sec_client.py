@@ -7,13 +7,17 @@ engine. The HTTP client is injected.
 from __future__ import annotations
 
 import json
+import os
+import tempfile
 import threading
 import zipfile
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 from edgar_sec.domain.sec_urls import (
+    SUBMISSIONS_BULK_URL,
     historical_submissions_url,
     submissions_bulk_url,
     submissions_url,
@@ -23,13 +27,30 @@ from edgar_sec.foundation.runtime.settings.paths import DEFAULT_CACHE_TTL_S
 from edgar_sec.foundation.runtime.settings.sec import SecSettings
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.errors import PermanentHttpError, RetryExhausted
+from edgar_sec.infra.sec_http.streaming import StreamFailure
+from edgar_sec.infra.storage.bulk_archive import ArchiveReference, BulkArchiveStore
 
 __all__ = [
+    "SUBMISSIONS_BULK_SOURCE_ID",
     "BulkSubmissionsArchive",
     "BulkSubmissionsClient",
     "CikFetchResult",
     "SubmissionsClient",
 ]
+
+SUBMISSIONS_BULK_SOURCE_ID = "submissions_bulk"
+
+
+def _validate_bulk_redirect(url: str) -> None:
+    """Bulk downloads may redirect only within the bulkdata directory."""
+    parts = urlsplit(url)
+    expected = urlsplit(SUBMISSIONS_BULK_URL)
+    if (
+        parts.scheme != "https"
+        or parts.netloc != expected.netloc
+        or not parts.path.startswith("/Archives/edgar/daily-index/bulkdata/")
+    ):
+        raise ValueError(f"bulk redirect left the bulkdata directory: {url}")
 
 
 @dataclass
@@ -151,17 +172,44 @@ class BulkSubmissionsArchive:
         self.archive_sha256 = archive_sha256 or file_sha256(self.zip_path)
         self._archive = zipfile.ZipFile(self.zip_path)
         self._members = {info.filename: info for info in self._archive.infolist()}
+        self.store_reference: ArchiveReference | None = None
 
     @classmethod
     def download(
-        cls, http: SecHttpClient, dest_dir: str | Path
+        cls,
+        http: SecHttpClient,
+        store: BulkArchiveStore,
+        *,
+        max_bytes: int,
     ) -> "BulkSubmissionsArchive":
-        """Stream the bulk ZIP into ``dest_dir`` and open it for extraction."""
-        target_dir = Path(dest_dir)
-        target_dir.mkdir(parents=True, exist_ok=True)
-        target = target_dir / "submissions-bulk.zip"
-        http.stream_to_file(submissions_bulk_url(), target)
-        return cls(target)
+        """Stream the bulk ZIP once, store it, and open the stored copy."""
+        url = submissions_bulk_url()
+        staging_dir = store.root / ".downloads"
+        staging_dir.mkdir(parents=True, exist_ok=True)
+        descriptor, staging_name = tempfile.mkstemp(
+            prefix="submissions-bulk-", suffix=".zip", dir=staging_dir
+        )
+        staging = Path(staging_name)
+        try:
+            os.close(descriptor)
+            result = http.stream_to_file(
+                url,
+                staging,
+                max_response_bytes=max_bytes,
+                validate_redirect=_validate_bulk_redirect,
+            )
+            if isinstance(result, StreamFailure):
+                raise RuntimeError(
+                    f"bulk archive download failed ({result.code}): {result.detail}"
+                )
+            reference = store.put_file(
+                SUBMISSIONS_BULK_SOURCE_ID, staging, source_url=url
+            )
+        finally:
+            staging.unlink(missing_ok=True)
+        archive = cls(reference.path, archive_sha256=reference.sha256)
+        archive.store_reference = reference
+        return archive
 
     def close(self) -> None:
         self._archive.close()

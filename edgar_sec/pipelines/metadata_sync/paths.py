@@ -21,12 +21,14 @@ from edgar_sec.foundation.runtime.paths import (
 from .roster import ROSTER_FILE_NAME
 
 METADATA_DIR = "metadata"
+BULK_ARCHIVES_DIR = "bulk_archives"
 PARTS_DIR = "parts"
 ROSTER_DIR = "roster"
 INPUT_DIR = "input"
 INPUT_MANIFEST_FILE = "input_manifest.json"
 ASSIGNMENTS_DIR = "assignments"
 RECEIPT_FILE = "receipt.json"
+FINGERPRINTS_FILE_NAME = "fingerprints.parquet"
 
 PLANS_DIR = foundation_paths.PLANS_DIR
 CHUNKS_DIR = foundation_paths.CHUNKS_DIR
@@ -47,6 +49,11 @@ class MetadataPaths:
     def snapshots_root(self) -> Path:
         """Root of published snapshot directories."""
         return self.metadata_root / foundation_paths.SNAPSHOTS_DIR
+
+    @property
+    def bulk_archives_root(self) -> Path:
+        """Root of the shared bulk-archive store (all sources, all pipelines)."""
+        return self.artifacts_root / BULK_ARCHIVES_DIR
 
     @property
     def plans_root(self) -> Path:
@@ -93,6 +100,11 @@ class RunPaths:
     def plan_file(self) -> Path:
         """Small execution manifest for this plan."""
         return self.metadata.plan_dir(self.plan_id) / PLAN_FILE_NAME
+
+    @property
+    def fingerprints_file(self) -> Path:
+        """Per-CIK member-CRC fingerprints for an archive plan."""
+        return self.plan_bundle / FINGERPRINTS_FILE_NAME
 
     @property
     def plan_bundle(self) -> Path:
@@ -158,7 +170,9 @@ def resolve_run_paths(
 
 __all__ = [
     "ASSIGNMENTS_DIR",
+    "BULK_ARCHIVES_DIR",
     "CHUNKS_DIR",
+    "FINGERPRINTS_FILE_NAME",
     "INPUT_DIR",
     "INPUT_MANIFEST_FILE",
     "METADATA_DIR",

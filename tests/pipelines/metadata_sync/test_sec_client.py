@@ -330,3 +330,99 @@ def test_a_cached_url_is_served_without_touching_the_transport(tmp_path: Path) -
     assert result.fetched_ok is True
     assert result.payload == {"cik": "20"}
     assert result.terminal_error() is None
+
+
+class _StreamingHttp:
+    """Fake transport honoring the real ``stream_to_file`` call shape."""
+
+    def __init__(self, payload: bytes) -> None:
+        self.payload = payload
+        self.calls: list[dict] = []
+
+    def stream_to_file(
+        self, url, destination, *, max_response_bytes, validate_redirect
+    ):
+        from edgar_sec.foundation.hashing import sha256_bytes
+        from edgar_sec.infra.sec_http.streaming import StreamedResponse
+
+        validate_redirect(url)
+        Path(destination).write_bytes(self.payload)
+        self.calls.append({"url": url, "max_response_bytes": max_response_bytes})
+        return StreamedResponse(
+            status_code=200,
+            requested_url=url,
+            final_url=url,
+            sha256=sha256_bytes(self.payload),
+            byte_size=len(self.payload),
+            content_type="application/zip",
+            content_encoding=None,
+            path=Path(destination),
+        )
+
+
+def test_bulk_download_stores_the_archive_and_serves_from_the_store(
+    tmp_path: Path,
+) -> None:
+    import io
+    import zipfile as zipfile_module
+
+    from edgar_sec.domain.sec_urls import submissions_bulk_url
+    from edgar_sec.infra.storage.bulk_archive import BulkArchiveStore
+    from edgar_sec.pipelines.metadata_sync.sec_client import (
+        SUBMISSIONS_BULK_SOURCE_ID,
+        BulkSubmissionsArchive,
+    )
+
+    buffer = io.BytesIO()
+    with zipfile_module.ZipFile(buffer, "w") as archive:
+        for name, payload in _bulk_members().items():
+            archive.writestr(name, payload)
+    http = _StreamingHttp(buffer.getvalue())
+    store = BulkArchiveStore(tmp_path / "store")
+
+    archive = BulkSubmissionsArchive.download(http, store, max_bytes=10_000_000)
+    client = BulkSubmissionsClient(archive)
+    result = client.fetch_cik(FORD)
+
+    assert result.fetched_ok is True
+    assert result.historical_files_fetched == 1
+    assert http.calls[0]["url"] == submissions_bulk_url()
+    assert http.calls[0]["max_response_bytes"] == 10_000_000
+    assert archive.store_reference is not None
+    stored = store.open(SUBMISSIONS_BULK_SOURCE_ID)
+    assert stored is not None
+    assert stored.sha256 == archive.archive_sha256
+    assert archive.zip_path == stored.path
+    assert not list((tmp_path / "store" / ".downloads").glob("*.zip"))
+
+
+def test_bulk_download_stream_failure_raises_with_the_failure_detail(
+    tmp_path: Path,
+) -> None:
+    import pytest
+
+    from edgar_sec.infra.sec_http.streaming import StreamFailure
+    from edgar_sec.infra.storage.bulk_archive import BulkArchiveStore
+    from edgar_sec.pipelines.metadata_sync.sec_client import BulkSubmissionsArchive
+
+    class FailingHttp:
+        def stream_to_file(self, url, destination, **_kwargs):
+            return StreamFailure("http_error", True, 503, "service unavailable")
+
+    store = BulkArchiveStore(tmp_path / "store")
+    with pytest.raises(RuntimeError, match="service unavailable"):
+        BulkSubmissionsArchive.download(FailingHttp(), store, max_bytes=1024)
+    assert store.open("submissions_bulk") is None
+
+
+def test_bulk_redirect_validator_rejects_leaving_the_bulkdata_directory() -> None:
+    import pytest
+
+    from edgar_sec.domain.sec_urls import submissions_bulk_url
+    from edgar_sec.pipelines.metadata_sync.sec_client import _validate_bulk_redirect
+
+    _validate_bulk_redirect(submissions_bulk_url())
+    with pytest.raises(ValueError):
+        _validate_bulk_redirect("https://example.com/Archives/edgar/daily-index/x.zip")
+    with pytest.raises(ValueError):
+        _validate_bulk_redirect("https://www.sec.gov/Archives/edgar/data/1/x.zip")
