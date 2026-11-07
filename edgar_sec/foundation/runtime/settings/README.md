@@ -39,6 +39,11 @@ so the pair is pinned by a mirrored test instead.
 - `flatten_settings(resolved)` drops every path whose spec is `secret=True`, so
   `sec.user_agent` cannot reach a manifest, provenance record, or log.
   `resolve_settings()` itself still returns the secret.
+- Freshness and retention are registry values, not call-site literals: the SEC
+  provider declares the per-surface freshness policy and the bulk-archive
+  retention count, and consumers resolve them from here. The surface
+  vocabulary itself is owned by `domain/sec_urls.py` and pinned to the policy
+  table by test and by the `sec-surface` scanner.
 - `render_dotenv()` returns a documented template string with machine-derived
   defaults and secrets commented out. Nothing in this package writes it to disk.
 

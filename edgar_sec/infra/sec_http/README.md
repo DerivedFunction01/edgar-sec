@@ -41,12 +41,13 @@ files — a caller supplies a URL and chooses the accessor.
 - **The failure ledger is per-URL and spans runs.** A URL that previously failed
   permanently, or failed too often, raises before a request is sent;
   `ignore_failure_history=True` bypasses the preflight.
-- **The cache is compressed, keyed by URL, with a selective TTL.** Only responses
-  whose path implies mutability expire; an immutable archive document never does,
-  because re-fetching millions of them would dismantle the cache. A caller that
-  knows a URL is mutable despite its path passes `mutable=True` to `get_bytes`.
-  The TTL is the `cache.ttl_s` setting; the SQLite connection runs in WAL mode so
-  workers can share it.
+- **The cache is compressed, keyed by URL, with per-surface expiry.** A URL is
+  classified to a governed SEC surface and expires on that surface's freshness
+  window from the SEC settings registry; static archive surfaces never expire,
+  because re-fetching millions of them would dismantle the cache. Unclassified
+  URLs keep the cache-wide `cache.ttl_s` default. A caller that knows a URL is
+  mutable despite its surface passes `mutable=True` to `get_bytes`. The SQLite
+  connection runs in WAL mode so workers can share it.
 - **With no `cache_dir` there is no cache and no ledger.** Every cache and ledger
   call is guarded, so the client works fully uncached — and loses the
   failure-history preflight with it.

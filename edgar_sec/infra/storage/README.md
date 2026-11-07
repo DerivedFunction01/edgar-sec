@@ -68,6 +68,12 @@ system and no table registry.
 - **Snapshot mechanics live in [`dag/`](dag/README.md).** The DAG catalog owns
   manifests, branch pointers, and retention; this package supplies only the
   atomic writers and Parquet/DuckDB primitives those mechanics are built from.
+- **Bulk archives are file artifacts, never rows.** The bulk-archive store
+  keeps each downloaded archive as one content-addressed file with a manifest,
+  plus a Parquet member index derived from its central directory; members are
+  read in place through the archive and never mass-extracted. Retention is a
+  per-source count the store resolves from the settings registry at put time,
+  and storing identical bytes is a no-op.
 - **Parts are byte-budgeted, and index and payload are separate projections of
   one logical record**, so a consumer can read metadata without the text. Fiscal
   year and quarter are deliberately *not* stored: they are derived at

@@ -6,9 +6,11 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
 
 ## Contracts
 
-- Plan and augmentation commands accept only `--cohort` as their dataset selector.
-  It resolves a published cohort name or identifier; the active `universe` and
-  `tickers` aliases resolve through the shared source catalog.
+- Plan accepts a published `--cohort` or `--from-archive` as its dataset selector;
+  augmentation accepts only `--cohort`. A cohort resolves a published cohort name
+  or identifier; the active `universe` and `tickers` aliases resolve through the
+  shared source catalog. `--from-archive` plans over the stored submissions bulk
+  archive's own membership, with per-CIK fingerprints derived from member CRCs.
 - Metadata planning is offline and never refreshes official sources. Use the cohort
   command surface to refresh a source before selecting its active alias.
 - A catalog record is adapted only after its relative dataset path resolves through
@@ -34,6 +36,14 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
   hash). Bulk normalization is pure-Python work and runs on a spawn process
   pool created once per run and held warm across chunks; the per-CIK fetch
   path keeps its thread pool, being network-bound.
+- The bulk archive lands in the shared bulk-archive store before use, and an
+  archive plan binds the stored digest: the run reads that archive, never a
+  fresher download. `run --carry-from <snapshot>` on an archive plan reuses a
+  prior snapshot's rows for CIKs whose member CRCs are unchanged, re-stamping
+  only snapshot identity and fetch time; the run summary reports carried versus
+  normalized rows. Archive baselines publish as DAG checkpoints carrying the
+  archive identity in their manifest metadata, on their own branch — the
+  catalog of record adopts one only by a later explicit pointer move.
 - Plan identity, chunk coverage, checkpoint validation, merge publication, worker
   distribution, and snapshot verification remain owned by their existing modules.
 - A run lock is never taken from a live local owner. `--confirm-stale-lock` attests
@@ -51,8 +61,8 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
 | `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
 | `distrib` | Distributed worker bundle lifecycle | — |
 | `merge` | publish a snapshot | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--confirm-stale-lock]` |
-| `plan` | generate a deterministic plan | `--cohort`, `[--limit]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]` |
-| `run` | execute resumable chunks | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--chunks]`, `[--chunk]`, `[--confirm-stale-lock]`, `[--bulk]` |
+| `plan` | generate a deterministic plan | `[--cohort]`, `[--limit]`, `[--from-archive]`, `[--archive-sha]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]` |
+| `run` | execute resumable chunks | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--chunks]`, `[--chunk]`, `[--confirm-stale-lock]`, `[--bulk]`, `[--carry-from]` |
 | `status` | report plan progress | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]` |
 <!-- AUTOGEN:COMMANDS:END -->
 
@@ -89,6 +99,7 @@ python run.py metadata augment --cohort new-cohort --base-snapshot-id 2024-01-15
 <!-- AUTOGEN:PATHS:START -->
 ```text
 {artifacts_root}/
+├── bulk_archives/  # Root of the shared bulk-archive store (all sources, all pipelines).
 ├── metadata/  # Root of the published metadata dataset.
 │   ├── plans/  # Root of published metadata plan bundles.
 │   │   └── {plan_id}/  # Directory holding one immutable plan.
@@ -98,6 +109,7 @@ python run.py metadata augment --cohort new-cohort --base-snapshot-id 2024-01-15
 │   │       │   └── input_manifest.json  # Diagnostics about where the selected cohort came from.
 │   │       ├── roster/
 │   │       │   └── ciks.parquet  # The CIK cohort, stored once for the whole plan.
+│   │       ├── fingerprints.parquet  # Per-CIK member-CRC fingerprints for an archive plan.
 │   │       ├── plan.json  # Small execution manifest for this plan.
 │   │       └── run.lock  # Exclusive run lock for this plan.
 │   └── snapshots/  # Root of published snapshot directories.
