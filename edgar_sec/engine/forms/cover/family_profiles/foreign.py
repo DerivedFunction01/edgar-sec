@@ -1,7 +1,6 @@
-"""Cover profiles for the foreign registration families (F-1/F-2, F-3,
-F-4), the MJDS forms, and 40-F, composed from the shared kit in
-``profiles``.
-"""
+"""Cover profiles for the foreign-issuer families (F-1/F-2, F-3, F-4),
+the MJDS forms, F-6, SUPPL, and F-N, composed from the shared kit in
+``profiles``."""
 
 from __future__ import annotations
 
@@ -14,9 +13,6 @@ from edgar_sec.domain.forms.common.models import (
 from edgar_sec.domain.forms.common.vocabulary import (
     COVER_EVIDENCE_TERMS,
     COVER_START_IDENTITY_TERMS,
-)
-from edgar_sec.domain.forms.families.form_40f.taxonomy import (
-    FORM_40F_FURNISHED_KINDS,
 )
 from edgar_sec.domain.forms.families.form_f1.taxonomy import (
     FORM_F1_ITEMS,
@@ -55,18 +51,6 @@ from edgar_sec.engine.forms.cover.profiles import (
     CoverProfile,
     _make_profile,
 )
-
-__all__ = [
-    "build_form_40f_profile",
-    "build_form_f1_profile",
-    "build_form_f3_profile",
-    "build_form_f4_profile",
-    "build_form_f6_profile",
-    "build_form_fn_profile",
-    "build_form_mjds_profile",
-    "build_form_suppl_profile",
-]
-
 
 _REGISTRATION_F_COVER_LABELS: tuple[str, ...] = (
     *COMMON_COVER_LABELS,
@@ -213,59 +197,6 @@ def build_form_mjds_profile(family: str = "F-10") -> CoverProfile:
                 *prospectus,
                 *FORWARD_LOOKING_PHRASES,
             ),
-            body_ngrams=registration.body_ngrams,
-            body_verbs=registration.body_verbs,
-            body_terms=registration.body_terms,
-            cover_terms=registration.cover_terms,
-            lexical=registration.body_lexical,
-        ),
-    )
-
-
-_40F_COVER_LABELS: tuple[str, ...] = (
-    *COMMON_COVER_LABELS,
-    "form 40-f",
-    "province or other jurisdiction",
-    "registration statement under section 12",
-    "annual report under section 13(a) or 15(d)",
-    "for the fiscal year ended",
-)
-
-
-def build_form_40f_profile(family: str = "40-F") -> CoverProfile:
-    """Cover profile for Form 40-F: the MJDS wrapper cover; the body is
-    furnished Canadian documents, segmented by kind, not by item.
-    """
-    registration = RegistrationEvidence()
-    furnished = tuple(
-        phrase for phrases in FORM_40F_FURNISHED_KINDS.values() for phrase in phrases
-    )
-    return _make_profile(
-        family=family,
-        boundary=CoverBoundaryPolicy(
-            signals=(
-                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
-                BoundarySignal.PAGE_MARKERS,
-                BoundarySignal.TOC_TRANSITION,
-                BoundarySignal.PART_FALLBACK,
-                BoundarySignal.AMENDMENT_TRANSITION,
-                BoundarySignal.BODY_PROSE_FALLBACK,
-            )
-        ),
-        labels=_40F_COVER_LABELS,
-        healing_rules=GENERIC_PHRASE_RULES,
-        cover_evidence=CoverEvidencePack(
-            identity_terms=COVER_START_IDENTITY_TERMS,
-            shape_terms=(
-                *COMMON_COVER_LABELS,
-                *COVER_EVIDENCE_TERMS,
-                *_40F_COVER_LABELS,
-            ),
-            labels=_40F_COVER_LABELS,
-        ),
-        body_evidence=BodyEvidencePack(
-            structural_headings=furnished,
-            semantic_headings=(*furnished, *FORWARD_LOOKING_PHRASES),
             body_ngrams=registration.body_ngrams,
             body_verbs=registration.body_verbs,
             body_terms=registration.body_terms,
@@ -439,3 +370,14 @@ def build_form_fn_profile(family: str = "F-N") -> CoverProfile:
             ),
         ),
     )
+
+
+__all__ = [
+    "build_form_f1_profile",
+    "build_form_f3_profile",
+    "build_form_f4_profile",
+    "build_form_f6_profile",
+    "build_form_fn_profile",
+    "build_form_mjds_profile",
+    "build_form_suppl_profile",
+]
