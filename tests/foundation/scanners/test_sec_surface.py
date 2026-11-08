@@ -127,6 +127,8 @@ def test_static_interpretation_agrees_with_the_runtime_classifier() -> None:
         "companyconcept_url": sec_urls.companyconcept_url(
             "320193", "us-gaap", "Assets"
         ),
+        "companyfacts_url": sec_urls.companyfacts_url("320193"),
+        "frames_url": sec_urls.frames_url("us-gaap", "Assets", "USD", "CY2025Q4I"),
         "archives_url": sec_urls.archives_url(320193, "000032019323000106", "aapl.htm"),
         "index_url_for": sec_urls.index_url_for("0000320193-23-000106", 320193),
         "index_json_url_for": sec_urls.index_json_url_for(
