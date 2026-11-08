@@ -351,6 +351,51 @@ def test_menu_gates_rows_on_filing_capabilities(tmp_path: Path) -> None:
         assert label in incapable
 
 
+def test_menu_availability_no_filing_then_capable_then_incapable(
+    tmp_path: Path,
+) -> None:
+    from types import SimpleNamespace
+
+    from edgar_sec.domain.forms.families.current.processing import (
+        PROFILE as _CURRENT,
+    )
+
+    gated = (
+        "List sections",
+        "Read one section",
+        "List notes",
+        "Read one note",
+        "Table of contents",
+        "XBRL summary",
+        "Earnings exhibit",
+    )
+    no_filing = operator.ClientSession(facade=_FakeFacade(tmp_path))
+    for label in gated:
+        assert label not in _menu_labels(no_filing)
+    capable_agg = SimpleNamespace(
+        has_sections=True,
+        has_notes=True,
+        has_toc=True,
+        has_xbrl=True,
+        processing_profile=_CURRENT,
+    )
+    capable = operator.ClientSession(facade=_FakeFacade(tmp_path))
+    capable.select_filing("0000320193-25-000001", aggregate=capable_agg)
+    for label in gated:
+        assert label in _menu_labels(capable)
+    incapable_agg = SimpleNamespace(
+        has_sections=False,
+        has_notes=False,
+        has_toc=False,
+        has_xbrl=False,
+        processing_profile=SimpleNamespace(family="other"),
+    )
+    incapable = operator.ClientSession(facade=_FakeFacade(tmp_path))
+    incapable.select_filing("0000320193-25-000002", aggregate=incapable_agg)
+    for label in gated:
+        assert label not in _menu_labels(incapable)
+
+
 def test_primary_document_detail_dial(tmp_path: Path) -> None:
     session = _session(tmp_path, _filing(tmp_path))
     minimal = _run("primary_document", session, {"detail": "minimal"})

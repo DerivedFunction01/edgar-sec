@@ -222,7 +222,12 @@ def _catalog_entries(session: Any, query: str) -> list[dict[str, Any]]:
                 return [_entry_dict(item) for item in provider()]
     artifacts = getattr(facade, "artifacts_root", None)
     if not artifacts:
-        return []
+        try:
+            from edgar_sec.foundation.runtime.paths import resolve_paths
+
+            artifacts = resolve_paths().artifacts_root
+        except Exception:  # noqa: BLE001 - no readable root reads as no candidates
+            return []
     try:
         from edgar_sec.infra.storage.duckdb import connect
         from edgar_sec.pipelines.filing_catalog.paths import (
@@ -245,8 +250,13 @@ def _catalog_entries(session: Any, query: str) -> list[dict[str, Any]]:
     except Exception:  # noqa: BLE001 - no readable catalog reads as no candidates
         return []
     entries: list[dict[str, Any]] = []
+    seen: set[str] = set()
     for cik, identity, listings in rows:
         identity = identity or {}
+        key = str(cik) or str(identity.get("name") or "")
+        if key in seen:
+            continue
+        seen.add(key)
         entries.append(
             {
                 "name": str(identity.get("name") or ""),

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -168,6 +169,64 @@ def test_seed_company_and_refusal(tmp_path: Path) -> None:
     assert session.sets["co"].accessions == frozenset({_acc(8)})
     assert _run("seed_company", session, {"identifier": "  "}).error_code == "refused"
     assert _run("seed_company", session, {}).error_code == "refused"
+
+
+def test_seed_company_with_name_seeds_from_resolved_company(
+    tmp_path: Path,
+) -> None:
+    result = _result(tmp_path, [(8, "10-Q")])
+
+    class _ResolvedCompany:
+        def filings(self, **kwargs):
+            return result
+
+    class _NameFacade:
+        def __init__(self) -> None:
+            self.calls: list = []
+            self.company_result = result
+
+        def company(self, identifier):
+            self.calls.append(("company", identifier))
+            if str(identifier) in ("320193", "0000320193"):
+                return _ResolvedCompany()
+            profile = SimpleNamespace(cik=Cik(1), name=str(identifier))
+            return SimpleNamespace(profile=profile, name=str(identifier))
+
+        def company_candidates(self, query):
+            return [{"name": "Apple Inc", "cik": "320193", "tickers": ["AAPL"]}]
+
+    facade = _NameFacade()
+    session = operator.ClientSession(facade=facade)
+    outcome = _run(
+        "seed_company", session, {"into": "co", "identifier": "Apple", "limit": 3}
+    )
+    assert outcome.error_code is None
+    assert outcome.data["identifier"] == "Apple"
+    assert outcome.data["via"] == "name"
+    assert outcome.data["set"] == "co"
+    assert session.sets["co"].accessions == frozenset({_acc(8)})
+    assert ("company", "320193") in facade.calls
+
+
+def test_seed_company_raw_backend_error_does_not_leak_sql(tmp_path: Path) -> None:
+    class _RaisingFacade:
+        def company(self, identifier):
+            raise RuntimeError(
+                'Binder Error: Referenced column "raw_name" not found '
+                "in FROM clause! SELECT raw_name FROM catalog"
+            )
+
+        def company_candidates(self, query):
+            return []
+
+    session = operator.ClientSession(facade=_RaisingFacade())
+    outcome = _run("seed_company", session, {"into": "co", "identifier": "Apple"})
+    assert outcome.error_code == "not_found"
+    payload = json.dumps(outcome.to_payload())
+    assert "raw_name" not in payload
+    assert "Binder" not in payload
+    assert "SELECT" not in payload
+    assert "co" not in session.sets
 
 
 def test_seed_dataset_json_shapes_and_parquet(tmp_path: Path) -> None:

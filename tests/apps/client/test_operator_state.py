@@ -83,6 +83,43 @@ def test_bulk_archive_lists_dataset_sources_by_id(tmp_path) -> None:
     assert result.total == 3
 
 
+def test_bulk_archive_lists_source_when_facade_root_is_none(
+    tmp_path, monkeypatch
+) -> None:
+    from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
+
+    artifacts_root = tmp_path / "artifacts"
+    bulk_root = resolve_metadata_paths(artifacts_root).bulk_archives_root
+    sha_dir = bulk_root / "submissions_bulk" / ("ab" * 32)
+    sha_dir.mkdir(parents=True)
+
+    class _ProductionShapeFacade:
+        """Real Edgar shape: artifacts_root None, no bulk providers."""
+
+        artifacts_root = None
+
+        def bulk_archive(self, source_id, sha256=None):
+            if source_id == "submissions_bulk":
+                return _reference(source_id, tmp_path)
+            return None
+
+    facade = _ProductionShapeFacade()
+    assert facade.artifacts_root is None
+    assert not hasattr(facade, "bulk_archive_sources")
+    assert not hasattr(facade, "bulk_sources")
+    assert not hasattr(facade, "archive_sources")
+    monkeypatch.setattr(
+        "edgar_sec.foundation.runtime.paths.resolve_paths",
+        lambda: SimpleNamespace(artifacts_root=artifacts_root),
+    )
+    session = operator.ClientSession(facade=facade)
+    result = operator.execute_by_id("bulk_archive", session, {})
+    assert result.error_code is None
+    assert result.data["present"] is True
+    listed = [entry["source_id"] for entry in result.data["sources"]]
+    assert listed == ["submissions_bulk"]
+
+
 def test_bulk_archive_manifest_as_key_value_rows(tmp_path) -> None:
     session, _ = _session(tmp_path)
     options = {"source_id": "bdc_datasets"}

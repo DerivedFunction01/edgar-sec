@@ -49,7 +49,7 @@ _SOURCE = "Name of the set to filter; empty means the current set."
 _INTO_SOURCE = "Target set name; empty means the source set, updated in place."
 _QUERY_HELP = "Selects by ticker. Refusal: a seed with no tickers, CIKs, accessions, forms, or dates is refused; a limit alone is not a constraint."
 _SNAP_HELP = "Selects by form. Refusal: a seed with no forms, CIKs, or dates is refused; a limit alone is not a constraint."
-_ID_HELP = "Company identifier (ticker or CIK); it is the seed's constraint, so an empty identifier is refused."
+_ID_HELP = "Company identifier: a CIK or ticker resolves directly; a name resolves through scored candidates over the catalog's name data, and a near-tie refuses with the candidates listed rather than picking one. It is the seed's constraint, so an empty identifier is refused."
 _FILE_HELP = "JSON or Parquet dataset with an accession column/list (the xbrl_review dataset idiom); the file is the constraint, so an empty path is refused. Accessions only are retained, never a result."
 _FORM_HELP = "Forms to remove or keep; an empty list is refused, and a set with no retained result is refused because its forms cannot be known."
 _MSG_QUERY = "seed refused: no constraining input (tickers, ciks, accessions, forms, or dates); a limit alone is not a constraint"
@@ -366,11 +366,17 @@ def _execute_seed_company(options: SeedCompanyOptions, session: Any):
         return _error("key_value", "refused", title, "seed refused: no identifier")
     if _bad_limit(options.limit):
         return _error("key_value", "invalid_options", title, "limit below 1")
-    company = session.facade.company(options.identifier)
+    from edgar_sec.apps.client.operator_company import _resolve_company
+
+    company, resolution, failure = _resolve_company(
+        session, options.identifier, "key_value"
+    )
+    if failure is not None:
+        return failure
     result = company.filings(
         forms=tuple(options.forms) or None, limit=options.limit, dates=options.dates
     )
-    extra = {"identifier": options.identifier}
+    extra = {"identifier": options.identifier, "via": resolution.get("via", "")}
     return _seeded(session, options.into, result, "company", extra)
 
 

@@ -85,7 +85,12 @@ class CacheVacuumOptions:
 def _bulk_root(session: Any) -> Path | None:
     artifacts = getattr(session.facade, "artifacts_root", None)
     if not artifacts:
-        return None
+        try:
+            from edgar_sec.foundation.runtime.paths import resolve_paths
+
+            artifacts = resolve_paths().artifacts_root
+        except Exception:  # noqa: BLE001 - no readable root reads as no store
+            return None
     from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 
     return resolve_metadata_paths(artifacts).bulk_archives_root

@@ -234,6 +234,124 @@ def test_company_unknown_name_is_not_a_placeholder(tmp_path) -> None:
     assert "sections" not in result.data
 
 
+def _write_catalog_snapshot(artifacts_root: Path) -> None:
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+
+    snapshots_root = artifacts_root / "filing_catalog" / "snapshots"
+    snapshot_dir = snapshots_root / "snap-test"
+    snapshot_dir.mkdir(parents=True)
+    schema = pa.schema(
+        [
+            ("cik", pa.string()),
+            ("identity", pa.struct([("name", pa.string())])),
+            (
+                "listings",
+                pa.list_(
+                    pa.struct([("ticker", pa.string()), ("exchange", pa.string())])
+                ),
+            ),
+        ]
+    )
+    rows = [
+        {
+            "cik": "0000320193",
+            "identity": {"name": "Apple Inc"},
+            "listings": [{"ticker": "AAPL", "exchange": "Nasdaq"}],
+        },
+        {
+            "cik": "0000111111",
+            "identity": {"name": "American Alpha Inc"},
+            "listings": [{"ticker": "AMAL", "exchange": "NYSE"}],
+        },
+        {
+            "cik": "0000222222",
+            "identity": {"name": "American Beta Inc"},
+            "listings": [{"ticker": "AMBE", "exchange": "NYSE"}],
+        },
+    ]
+    table = pa.Table.from_pylist(rows, schema=schema)
+    pq.write_table(table, snapshot_dir / "company_profiles.parquet")
+    second_dir = snapshots_root / "snap-test-2"
+    second_dir.mkdir(parents=True)
+    pq.write_table(table, second_dir / "company_profiles.parquet")
+
+
+class _ProductionShapeFacade:
+    """Real Edgar shape: artifacts_root None, no candidate providers."""
+
+    def __init__(self, tmp_path: Path) -> None:
+        self.artifacts_root = None
+        self.calls: list[str] = []
+        self.apple = _FakeCompany(tmp_path, "Apple Inc", 320193)
+        self.alpha = _FakeCompany(tmp_path, "American Alpha Inc", 111111)
+        self.beta = _FakeCompany(tmp_path, "American Beta Inc", 222222)
+        self.companies = {
+            "320193": self.apple,
+            "0000320193": self.apple,
+            "111111": self.alpha,
+            "0000111111": self.alpha,
+            "222222": self.beta,
+            "0000222222": self.beta,
+        }
+
+    def company(self, identifier):
+        self.calls.append(str(identifier))
+        found = self.companies.get(str(identifier))
+        if found is not None:
+            return found
+        if str(identifier) == "AAPL":
+            return self.apple
+        profile = SimpleNamespace(cik=Cik(1), name=str(identifier))
+        return SimpleNamespace(profile=profile, name=str(identifier))
+
+
+def _production_session(tmp_path, monkeypatch):
+    artifacts_root = tmp_path / "artifacts"
+    _write_catalog_snapshot(artifacts_root)
+    monkeypatch.setattr(
+        "edgar_sec.foundation.runtime.paths.resolve_paths",
+        lambda: SimpleNamespace(artifacts_root=artifacts_root),
+    )
+    facade = _ProductionShapeFacade(tmp_path)
+    return operator.ClientSession(facade=facade), facade
+
+
+def test_company_name_resolves_from_catalog_when_facade_root_is_none(
+    tmp_path, monkeypatch
+) -> None:
+    session, facade = _production_session(tmp_path, monkeypatch)
+    assert facade.artifacts_root is None
+    assert not hasattr(facade, "company_candidates")
+    assert not hasattr(facade, "name_candidates")
+    assert not hasattr(facade, "company_name_candidates")
+    options = {"identifier": "Apple", "include": ["profile"]}
+    result = operator.execute_by_id("company", session, options)
+    assert result.error_code is None
+    assert result.data["resolution"]["via"] == "name"
+    candidates = result.data["resolution"]["candidates"]
+    assert [c["name"] for c in candidates].count("Apple Inc") == 1
+    assert candidates[0]["name"] == "Apple Inc"
+    assert candidates[0]["cik"] == "0000320193"
+    assert candidates[0]["score"] >= 0.6
+    assert result.data["company"]["cik"] == "0000320193"
+    assert result.data["company"]["name"] == "Apple Inc"
+
+
+def test_company_ambiguous_name_refuses_from_catalog_when_root_is_none(
+    tmp_path, monkeypatch
+) -> None:
+    session, facade = _production_session(tmp_path, monkeypatch)
+    assert facade.artifacts_root is None
+    result = operator.execute_by_id("company", session, {"identifier": "American"})
+    assert result.error_code == "refused"
+    candidates = result.data["candidates"]
+    assert len(candidates) >= 2
+    names = {candidate["name"] for candidate in candidates[:2]}
+    assert names == {"American Alpha Inc", "American Beta Inc"}
+    assert candidates[0]["score"] == candidates[1]["score"]
+
+
 def test_company_composite_accounts_a_failing_section(tmp_path) -> None:
     session, _ = _session(tmp_path)
     result = operator.execute_by_id("company", session, {"identifier": "BRKN"})

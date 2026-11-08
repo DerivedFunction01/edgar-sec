@@ -354,9 +354,11 @@ def test_main_wires_menu_host_with_header(monkeypatch) -> None:
     def fake_entrypoint(title, menu, cli_main, argv, **kwargs):
         captured["title"] = title
         captured["header"] = kwargs["before_menu"]()
+        resolved = menu() if callable(menu) else menu
         captured["labels"] = [
-            item.label for item in menu if isinstance(item, MenuAction)
+            item.label for item in resolved if isinstance(item, MenuAction)
         ]
+        captured["menu_callable"] = callable(menu)
         return 0
 
     monkeypatch.setattr(operator, "operator_entrypoint", fake_entrypoint)
@@ -364,6 +366,7 @@ def test_main_wires_menu_host_with_header(monkeypatch) -> None:
     session.add_set("tech", ["A1"])
     assert operator.main([], session=session) == 0
     assert captured["title"] == operator.MENU_TITLE
+    assert captured["menu_callable"] is True
     assert "current set: tech (1)" in str(captured["header"])
     assert "Session summary" in list(captured["labels"])
 

@@ -685,7 +685,7 @@ def main(argv: list[str] | None = None, *, session: ClientSession | None = None)
     held = session or ClientSession()
     return operator_entrypoint(
         MENU_TITLE,
-        build_operator_menu(held),
+        lambda: build_operator_menu(held),
         lambda args: _argv_dispatch(args, held),
         argv,
         interrupted_message=INTERRUPTED_MESSAGE,
