@@ -156,6 +156,21 @@ def load_vintage(
     )
 
 
+def _quoted(name: str) -> str:
+    """Return a column name as a double-quoted SQL identifier."""
+    return '"' + str(name).replace('"', '""') + '"'
+
+
+def _table_columns(con, relation: str) -> list[str]:
+    """Column names of one relation, in definition order."""
+    rows = con.execute(
+        "SELECT column_name FROM information_schema.columns "
+        "WHERE table_name = ? ORDER BY ordinal_position",
+        [relation],
+    ).fetchall()
+    return [str(row[0]) for row in rows]
+
+
 def _load_member(
     con,
     spec: DatasetSpec,
@@ -164,27 +179,57 @@ def _load_member(
     vintage: str,
     archive_sha: str,
 ) -> None:
-    """Replace one (set, vintage, sha) slice of a relation from a TSV file."""
+    """Replace one (set, vintage, sha) slice of a relation from a TSV file.
+
+    Slices align by column name, never by position: a vintage whose
+    member is wider adds its new columns to the relation, and a narrower
+    vintage leaves the wider columns NULL for its rows.
+    """
+    staging = f"_stage_{relation}"
     con.execute(
-        f"CREATE TABLE IF NOT EXISTS {sql_identifier(relation)} AS "
-        f"SELECT {sql_literal(spec.set_id)} AS set_id, "
-        f"{sql_literal(vintage)} AS vintage, "
-        f"{sql_literal(archive_sha)} AS archive_sha, * FROM "
-        f"read_csv({sql_literal(str(path))}, header = true, sep = '\\t', "
-        "all_varchar = true) WHERE false"
+        f"CREATE OR REPLACE TEMP TABLE {sql_identifier(staging)} AS "
+        f"SELECT * FROM read_csv({sql_literal(str(path))}, header = true, "
+        "sep = '\\t', all_varchar = true)"
     )
+    stage_columns = _table_columns(con, staging)
+    target_columns = _table_columns(con, relation)
+    if not target_columns:
+        con.execute(
+            f"CREATE TABLE {sql_identifier(relation)} AS "
+            f"SELECT {sql_literal(spec.set_id)} AS set_id, "
+            f"{sql_literal(vintage)} AS vintage, "
+            f"{sql_literal(archive_sha)} AS archive_sha, * FROM "
+            f"{sql_identifier(staging)} WHERE false"
+        )
+        target_columns = list(_META_COLUMNS) + stage_columns
+    else:
+        for column in stage_columns:
+            if column not in target_columns:
+                con.execute(
+                    f"ALTER TABLE {sql_identifier(relation)} "
+                    f"ADD COLUMN {_quoted(column)} VARCHAR"
+                )
+                target_columns.append(column)
     con.execute(
         f"DELETE FROM {sql_identifier(relation)} "
         "WHERE set_id = ? AND vintage = ? AND archive_sha = ?",
         [spec.set_id, vintage, archive_sha],
     )
-    con.execute(
-        f"INSERT INTO {sql_identifier(relation)} "
-        f"SELECT {sql_literal(spec.set_id)}, {sql_literal(vintage)}, "
-        f"{sql_literal(archive_sha)}, * FROM "
-        f"read_csv({sql_literal(str(path))}, header = true, sep = '\\t', "
-        "all_varchar = true)"
+    data_columns = [c for c in target_columns if c not in _META_COLUMNS]
+    select_list = ", ".join(
+        _quoted(column) if column in stage_columns else "NULL"
+        for column in data_columns
     )
+    insert_list = ", ".join(
+        [_quoted(column) for column in _META_COLUMNS]
+        + [_quoted(column) for column in data_columns]
+    )
+    con.execute(
+        f"INSERT INTO {sql_identifier(relation)} ({insert_list}) "
+        f"SELECT {sql_literal(spec.set_id)}, {sql_literal(vintage)}, "
+        f"{sql_literal(archive_sha)}, {select_list} FROM {sql_identifier(staging)}"
+    )
+    con.execute(f"DROP TABLE {sql_identifier(staging)}")
 
 
 def load_bdc_population(con, yearly_csvs: dict[int, Path], *, loaded_at: str) -> int:
