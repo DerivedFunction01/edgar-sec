@@ -20,6 +20,7 @@ headline figures are review signals; image exhibits are refused.
 - **PDF exhibits ride the document-processing PDF route** (`convert_pdf_to_text`, embedded text layer only); the converted text joins the text class. Raw PDF bytes never enter `normalize_document`.
 - **Every unextracted table is accounted**: fallback geometries, prose-borne headlines, and unstructureable exhibits each produce a named review signal with its specimen class; nothing is silently dropped or best-effort parsed.
 - **No EX-99 exhibit is honest absence**: the result carries `absence_reason="no_ex99_exhibit"` and no exhibit.
+- **Table indices are exhibit-local positions**: `table_index` counts the exhibit's geometries in order, matching the corpus record's inventory numbering; the geometry machinery's own index is not served.
 
 ## Deliberate gaps
 

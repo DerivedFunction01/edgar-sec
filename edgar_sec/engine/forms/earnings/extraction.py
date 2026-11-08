@@ -149,7 +149,7 @@ def _table_roles(
     return tuple(roles)
 
 
-def _structure_table(geometry: TableGeometry) -> EarningsTable:
+def _structure_table(geometry: TableGeometry, position: int) -> EarningsTable:
     rows = tuple(tuple(_collapse(cell) for cell in row) for row in geometry.rows)
     caption: str | None = None
     body = rows
@@ -169,11 +169,11 @@ def _structure_table(geometry: TableGeometry) -> EarningsTable:
         if any(row)
     )
     return EarningsTable(
-        table_index=geometry.table_index,
+        table_index=position,
         caption=caption,
         periods=periods,
         rows=typed_rows,
-        roles=_table_roles(rows, geometry.table_index),
+        roles=_table_roles(rows, position),
     )
 
 
@@ -292,19 +292,19 @@ def _structure_payload(
         )
         return _Structured(candidate, result.text, (), result.table_geometries)
     tables: list[EarningsTable] = []
-    for geometry in result.table_geometries:
+    for position, geometry in enumerate(result.table_geometries):
         if geometry.is_fallback:
             signals.append(
                 ReviewSignal(
                     kind="fallback_geometry",
                     specimen_class=_CLASS_HTML_STATEMENT,
                     filename=candidate.filename,
-                    table_index=geometry.table_index,
+                    table_index=position,
                     detail="geometry machinery fell back for this table",
                 )
             )
             continue
-        tables.append(_structure_table(geometry))
+        tables.append(_structure_table(geometry, position))
     return _Structured(candidate, result.text, tuple(tables), result.table_geometries)
 
 
@@ -425,11 +425,9 @@ def extract_earnings_payloads(
         )
     structured_ids = {table.table_index for table in tables}
     raw_rows = {
-        geometry.table_index: tuple(
-            tuple(_collapse(cell) for cell in row) for row in geometry.rows
-        )
-        for geometry in effective.geometries
-        if geometry.table_index in structured_ids
+        position: tuple(tuple(_collapse(cell) for cell in row) for row in geometry.rows)
+        for position, geometry in enumerate(effective.geometries)
+        if position in structured_ids
     }
     headline = _headline_from(tables, raw_rows)
     if headline is None:
