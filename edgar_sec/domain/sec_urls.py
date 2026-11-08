@@ -171,6 +171,7 @@ def _coerce_index_day(day: date | str) -> date:
             continue
     raise ValueError(f"day must be a date or ISO/YYYYMMDD string, got {day!r}")
 
+
 SEC_DATASETS_BASE = "https://www.sec.gov/files"
 
 
