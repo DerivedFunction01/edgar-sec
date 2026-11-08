@@ -126,6 +126,18 @@ SURFACE_POLICIES: dict[str, SurfacePolicy] = {
             "immutable once the month completes",
         ),
         SurfacePolicy("efts", SURFACE_KIND_NO_STORE, "live index"),
+        SurfacePolicy(
+            "full_index",
+            SURFACE_KIND_TRANSIENT,
+            "quarterly publication; immutable once the quarter completes",
+            "sec.ttl.full_index",
+        ),
+        SurfacePolicy(
+            "daily_index",
+            SURFACE_KIND_TRANSIENT,
+            "daily refresh",
+            "sec.ttl.daily_index",
+        ),
     )
 }
 
@@ -270,6 +282,11 @@ def _ttl_specs() -> dict[str, SettingSpec]:
         "company_tickers_mf": _ttl_spec("freshness window for company_tickers_mf.json"),
         "ticker_txt": _ttl_spec("freshness window for ticker.txt"),
         "cik_lookup": _ttl_spec("freshness window for cik-lookup-data.txt"),
+        "full_index": _ttl_spec(
+            "freshness window for the in-progress quarter's full index; "
+            "completed quarters are immutable once published"
+        ),
+        "daily_index": _ttl_spec("freshness window for daily index files"),
         "structured_disclosure_feeds": _ttl_spec(
             "freshness window for structured-disclosure feeds; strictly below "
             "the 600-second publication cycle",

@@ -122,7 +122,7 @@ def test_surface_policy_census_matches_the_domain_surface_set() -> None:
     )
 
     assert set(SURFACE_POLICIES) == set(SEC_SURFACES)
-    assert len(SURFACE_POLICIES) == 19
+    assert len(SURFACE_POLICIES) == 21
     kinds = {policy.kind for policy in SURFACE_POLICIES.values()}
     assert kinds == {
         SURFACE_KIND_STATIC,

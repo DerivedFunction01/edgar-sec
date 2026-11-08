@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from datetime import date, datetime
 from urllib.parse import parse_qs, urlencode, urljoin, urlsplit, urlunsplit
 
 from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -101,6 +102,74 @@ def structured_archive_url(year: int, month: int) -> str:
 def efts_search_url() -> str:
     """Return the EFTS search-index base URL; query encoding is the client's."""
     return EFTS_SEARCH_BASE
+
+
+FULL_INDEX_FLAVOURS: tuple[str, ...] = (
+    "master",
+    "company",
+    "form",
+    "crawler",
+    "xbrl",
+)
+DAILY_INDEX_FLAVOURS: tuple[str, ...] = ("master", "company", "form", "crawler")
+_INDEX_EXTENSIONS: tuple[str, ...] = ("idx", "gz", "zip", "Z")
+
+
+def _index_quarter(year: int, quarter: int) -> str:
+    if not 1 <= int(quarter) <= 4:
+        raise ValueError(f"quarter must be in 1..4, got {quarter!r}")
+    return f"{int(year):04d}/QTR{int(quarter)}"
+
+
+def full_index_url(
+    year: int, quarter: int, flavour: str, extension: str = "idx"
+) -> str:
+    """Return one quarterly full-index file URL for a flavour.
+
+    The crawler flavour is served only uncompressed; the other flavours
+    are also served as ``gz`` / ``zip`` / ``Z`` archives of the same rows.
+    """
+    key = str(flavour).strip()
+    if key not in FULL_INDEX_FLAVOURS:
+        raise ValueError(f"unknown full-index flavour: {flavour!r}")
+    if extension not in _INDEX_EXTENSIONS:
+        raise ValueError(f"unknown index extension: {extension!r}")
+    if key == "crawler" and extension != "idx":
+        raise ValueError("the crawler index is served only as .idx")
+    return (
+        f"{SEC_EDGAR_BASE}/full-index/{_index_quarter(year, quarter)}/{key}.{extension}"
+    )
+
+
+def daily_index_url(day: date | str, flavour: str = "master") -> str:
+    """Return one daily-index file URL; the quarter derives from ``day``.
+
+    Daily files are per-day (``{flavour}.{YYYYMMDD}.idx``) and served only
+    uncompressed, so the day is the builder's primary input.
+    """
+    key = str(flavour).strip()
+    if key not in DAILY_INDEX_FLAVOURS:
+        raise ValueError(f"unknown daily-index flavour: {flavour!r}")
+    when = _coerce_index_day(day)
+    quarter = (when.month - 1) // 3 + 1
+    return (
+        f"{SEC_EDGAR_BASE}/daily-index/{_index_quarter(when.year, quarter)}"
+        f"/{key}.{when:%Y%m%d}.idx"
+    )
+
+
+def _coerce_index_day(day: date | str) -> date:
+    if isinstance(day, datetime):
+        return day.date()
+    if isinstance(day, date):
+        return day
+    text = str(day).strip()
+    for fmt in ("%Y-%m-%d", "%Y%m%d"):
+        try:
+            return datetime.strptime(text, fmt).date()
+        except ValueError:
+            continue
+    raise ValueError(f"day must be a date or ISO/YYYYMMDD string, got {day!r}")
 
 
 def companyconcept_url(cik: str | int, taxonomy: str, tag: str) -> str:
@@ -436,6 +505,8 @@ SURFACE_COMPANY_TICKERS_EXCHANGE = "company_tickers_exchange"
 SURFACE_COMPANY_TICKERS_MF = "company_tickers_mf"
 SURFACE_TICKER_TXT = "ticker_txt"
 SURFACE_CIK_LOOKUP = "cik_lookup"
+SURFACE_FULL_INDEX = "full_index"
+SURFACE_DAILY_INDEX = "daily_index"
 SURFACE_CURRENT_FILINGS = "current_filings"
 SURFACE_STRUCTURED_DISCLOSURE_FEEDS = "structured_disclosure_feeds"
 SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES = "structured_disclosure_archives"
@@ -457,6 +528,8 @@ SEC_SURFACES: tuple[str, ...] = (
     SURFACE_COMPANY_TICKERS_MF,
     SURFACE_TICKER_TXT,
     SURFACE_CIK_LOOKUP,
+    SURFACE_FULL_INDEX,
+    SURFACE_DAILY_INDEX,
     SURFACE_CURRENT_FILINGS,
     SURFACE_STRUCTURED_DISCLOSURE_FEEDS,
     SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES,
@@ -474,6 +547,8 @@ URL_BUILDER_SURFACES: dict[str, str] = {
     "index_json_url_for": SURFACE_ARCHIVE_INDEX_JSON,
     "full_submission_url_for": SURFACE_FULL_SUBMISSION_BUNDLES,
     "xbrl_package_url_for": SURFACE_XBRL_PACKAGES,
+    "full_index_url": SURFACE_FULL_INDEX,
+    "daily_index_url": SURFACE_DAILY_INDEX,
     "current_filings_url": SURFACE_CURRENT_FILINGS,
     "structured_feed_url": SURFACE_STRUCTURED_DISCLOSURE_FEEDS,
     "structured_archive_url": SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES,
@@ -508,6 +583,16 @@ SEC_SURFACE_RULES: tuple[tuple[str, str, str], ...] = (
         SURFACE_SUBMISSIONS_BULK,
         "www.sec.gov",
         r"^/Archives/edgar/daily-index/bulkdata/submissions\.zip$",
+    ),
+    (
+        SURFACE_FULL_INDEX,
+        "www.sec.gov",
+        r"^/Archives/edgar/full-index/\d{4}/QTR[1-4]/[^/]+$",
+    ),
+    (
+        SURFACE_DAILY_INDEX,
+        "www.sec.gov",
+        r"^/Archives/edgar/daily-index/\d{4}/QTR[1-4]/[^/]+$",
     ),
     (
         SURFACE_CIK_LOOKUP,
@@ -582,6 +667,8 @@ __all__ = [
     "SEC_EDGAR_BASE",
     "SEC_SUBMISSIONS_BASE",
     "SEC_XBRL_API_BASE",
+    "DAILY_INDEX_FLAVOURS",
+    "FULL_INDEX_FLAVOURS",
     "STRUCTURED_FEED_FILES",
     "SUBMISSIONS_BULK_URL",
     "DEFAULT_ARCHIVE_URL_POLICY",
@@ -593,6 +680,8 @@ __all__ = [
     "SURFACE_ARCHIVE_INDEX_PAGES",
     "SURFACE_CIK_LOOKUP",
     "SURFACE_COMPANYCONCEPT",
+    "SURFACE_DAILY_INDEX",
+    "SURFACE_FULL_INDEX",
     "SURFACE_CURRENT_FILINGS",
     "SURFACE_EFTS",
     "SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES",
@@ -615,6 +704,8 @@ __all__ = [
     "classify_sec_surface",
     "companyconcept_url",
     "current_filings_url",
+    "daily_index_url",
+    "full_index_url",
     "efts_search_url",
     "full_submission_url_for",
     "historical_submissions_url",
