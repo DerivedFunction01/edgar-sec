@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -34,11 +35,13 @@ from .roster import ROSTER_FILE_NAME, Roster, cohort_record_to_roster, read_rost
 __all__ = [
     "BundleRunPaths",
     "PlanOptions",
+    "ReconcileOptions",
     "RefreshOptions",
     "RunOptions",
     "derive_plan_id",
     "plan_options",
     "read_bundle_plan_id",
+    "reconcile_options",
     "refresh_options",
     "resolve_chunk_size",
     "resolve_cohort",
@@ -218,6 +221,60 @@ class RefreshOptions:
     def metadata(self) -> MetadataPaths:
         """Metadata layout this invocation writes into."""
         return resolve_metadata_paths(self.artifacts_root)
+
+
+@dataclass(slots=True)
+class ReconcileOptions:
+    """Everything a daily-index reconciliation needs over a date range."""
+
+    start_date: date | None = None
+    end_date: date | None = None
+    artifacts_root: Path | None = None
+    chunk_size: int = DEFAULT_CHUNK_SIZE
+    workers: int | None = None
+    branch_name: str = "main"
+    expected_branch_tip: str | None = None
+    new_snapshot_id: str = ""
+    stale_lock_confirmed: bool = False
+
+    def metadata(self) -> MetadataPaths:
+        """Metadata layout this invocation writes into."""
+        return resolve_metadata_paths(self.artifacts_root)
+
+
+def reconcile_options(
+    *,
+    start_date: date | str | None = None,
+    end_date: date | str | None = None,
+    artifacts_root: str | Path | None = None,
+    chunk_size: int | None = None,
+    workers: int | None = None,
+    branch_name: str = "main",
+    expected_branch_tip: str | None = None,
+    new_snapshot_id: str = "",
+    stale_lock_confirmed: bool = False,
+) -> ReconcileOptions:
+    """Build reconcile options from raw values, resolving settings once."""
+    return ReconcileOptions(
+        start_date=_coerce_option_date(start_date, "start_date"),
+        end_date=_coerce_option_date(end_date, "end_date"),
+        artifacts_root=(Path(artifacts_root).resolve() if artifacts_root else None),
+        chunk_size=resolve_chunk_size(chunk_size),
+        workers=workers,
+        branch_name=branch_name,
+        expected_branch_tip=expected_branch_tip,
+        new_snapshot_id=new_snapshot_id,
+        stale_lock_confirmed=stale_lock_confirmed,
+    )
+
+
+def _coerce_option_date(value: date | str | None, name: str) -> date | None:
+    if value is None or isinstance(value, date):
+        return value
+    try:
+        return date.fromisoformat(str(value).strip())
+    except ValueError as exc:
+        raise ValueError(f"{name} must be an ISO date, got {value!r}") from exc
 
 
 def refresh_options(
