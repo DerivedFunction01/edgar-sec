@@ -25,6 +25,7 @@ from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 
 from .commands.merge import cmd_merge
 from .commands.plan import cmd_plan, cmd_status
+from .commands.reconcile import cmd_reconcile
 from .commands.refresh import cmd_refresh
 from .commands.run import cmd_run
 
@@ -44,6 +45,7 @@ from .options import (
     RunOptions,
     derive_plan_id,
     read_bundle_plan_id,
+    reconcile_options,
     refresh_options,
     run_options,
 )
@@ -406,6 +408,43 @@ def refresh(state: WizardState) -> None:
         print(f"current snapshot is now {published}")
 
 
+def reconcile(state: WizardState) -> None:
+    """Reconcile the current tip against the daily index over a date range."""
+    from datetime import date
+
+    metadata = state.metadata()
+    tip = current_snapshot_id(metadata)
+    if not tip:
+        print("no published snapshot to reconcile; merge a plan first")
+        return
+    start_text = prompt_text("Start date (ISO, e.g. 2026-11-02)", "").strip()
+    end_text = prompt_text("End date (ISO, e.g. 2026-11-06)", "").strip()
+    try:
+        start = date.fromisoformat(start_text)
+        end = date.fromisoformat(end_text)
+    except ValueError:
+        print("dates must be ISO dates; nothing was fetched")
+        return
+    decision = confirm_stale_lock(metadata.snapshot_lock_path(tip))
+    if not decision.proceed:
+        return
+    if not confirm_network():
+        print("cancelled; nothing was fetched")
+        return
+    cmd_reconcile(
+        reconcile_options(
+            start_date=start,
+            end_date=end,
+            artifacts_root=state.artifacts_root or None,
+            workers=_ask_int("Worker threads (blank = machine-derived)"),
+            stale_lock_confirmed=decision.confirmed,
+        )
+    )
+    published = current_snapshot_id(metadata)
+    if published:
+        print(f"current snapshot is now {published}")
+
+
 def open_metadata_distrib_console(state: WizardState) -> None:
     """Launch the interactive worker distribution console."""
     from edgar_sec.infra.distribution.menu import (
@@ -464,6 +503,7 @@ def build_operator_menu(
         MenuSeparator("Snapshot Maintenance"),
         menu_action("Augment published snapshot", lambda: augment(session)),
         menu_action("Refresh from current-filings feed", lambda: refresh(session)),
+        menu_action("Reconcile from daily index", lambda: reconcile(session)),
         MenuSeparator("Consoles"),
         menu_action(
             "Worker distribution console (export, worker, import, commands)",

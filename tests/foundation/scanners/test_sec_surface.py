@@ -115,7 +115,7 @@ def test_flags_a_no_store_policy_that_names_a_ttl(
 
 
 def test_static_interpretation_agrees_with_the_runtime_classifier() -> None:
-    from edgar_sec.domain import sec_urls
+    from edgar_sec.domain import dataset_urls, index_urls, sec_urls
 
     book = sec_surface._load_rule_book()
     builders = {
@@ -127,6 +127,8 @@ def test_static_interpretation_agrees_with_the_runtime_classifier() -> None:
         "companyconcept_url": sec_urls.companyconcept_url(
             "320193", "us-gaap", "Assets"
         ),
+        "companyfacts_url": sec_urls.companyfacts_url("320193"),
+        "frames_url": sec_urls.frames_url("us-gaap", "Assets", "USD", "CY2025Q4I"),
         "archives_url": sec_urls.archives_url(320193, "000032019323000106", "aapl.htm"),
         "index_url_for": sec_urls.index_url_for("0000320193-23-000106", 320193),
         "index_json_url_for": sec_urls.index_json_url_for(
@@ -138,10 +140,16 @@ def test_static_interpretation_agrees_with_the_runtime_classifier() -> None:
         "xbrl_package_url_for": sec_urls.xbrl_package_url_for(
             "320193", "0000320193-23-000106"
         ),
+        "full_index_url": index_urls.full_index_url(2024, 1, "master"),
+        "daily_index_url": index_urls.daily_index_url("2024-02-13", "master"),
         "current_filings_url": sec_urls.current_filings_url(),
         "structured_feed_url": sec_urls.structured_feed_url("all"),
         "structured_archive_url": sec_urls.structured_archive_url(2026, 3),
         "efts_search_url": sec_urls.efts_search_url(),
+        "bdc_dataset_url": dataset_urls.bdc_dataset_url("2025q1"),
+        "nmfp_dataset_url": dataset_urls.nmfp_dataset_url("20220808-20220908"),
+        "mfrr_dataset_url": dataset_urls.mfrr_dataset_url("2010q4"),
+        "bdc_report_url": dataset_urls.bdc_report_url(2026),
     }
     assert set(builders) == set(sec_urls.URL_BUILDER_SURFACES)
     for builder_name, url in builders.items():

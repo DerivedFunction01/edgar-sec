@@ -40,6 +40,7 @@ COMMANDS = (
     "distrib",
     "augment",
     "refresh",
+    "reconcile",
     "dag",
 )
 

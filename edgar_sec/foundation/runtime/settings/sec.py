@@ -65,6 +65,18 @@ SURFACE_POLICIES: dict[str, SurfacePolicy] = {
             "sec.ttl.submissions_bulk",
         ),
         SurfacePolicy(
+            "companyfacts",
+            SURFACE_KIND_TRANSIENT,
+            "filing events",
+            "sec.ttl.companyfacts",
+        ),
+        SurfacePolicy(
+            "frames",
+            SURFACE_KIND_TRANSIENT,
+            "filing events",
+            "sec.ttl.frames",
+        ),
+        SurfacePolicy(
             "companyconcept",
             SURFACE_KIND_TRANSIENT,
             "filing events",
@@ -126,6 +138,38 @@ SURFACE_POLICIES: dict[str, SurfacePolicy] = {
             "immutable once the month completes",
         ),
         SurfacePolicy("efts", SURFACE_KIND_NO_STORE, "live index"),
+        SurfacePolicy(
+            "full_index",
+            SURFACE_KIND_TRANSIENT,
+            "quarterly publication; immutable once the quarter completes",
+            "sec.ttl.full_index",
+        ),
+        SurfacePolicy(
+            "daily_index",
+            SURFACE_KIND_TRANSIENT,
+            "daily refresh",
+            "sec.ttl.daily_index",
+        ),
+        SurfacePolicy(
+            "bdc_datasets",
+            SURFACE_KIND_STATIC,
+            "static per vintage; a re-posted vintage is a new content hash",
+        ),
+        SurfacePolicy(
+            "nmfp_datasets",
+            SURFACE_KIND_STATIC,
+            "static per vintage; a re-posted vintage is a new content hash",
+        ),
+        SurfacePolicy(
+            "mfrr_datasets",
+            SURFACE_KIND_STATIC,
+            "static per vintage; a re-posted vintage is a new content hash",
+        ),
+        SurfacePolicy(
+            "bdc_report",
+            SURFACE_KIND_STATIC,
+            "static per report year; a re-published year is a new content hash",
+        ),
     )
 }
 
@@ -263,6 +307,8 @@ def _ttl_specs() -> dict[str, SettingSpec]:
             "freshness window for the submissions bulk archive"
         ),
         "companyconcept": _ttl_spec("freshness window for companyconcept JSON"),
+        "companyfacts": _ttl_spec("freshness window for companyfacts JSON"),
+        "frames": _ttl_spec("freshness window for frames JSON"),
         "company_tickers": _ttl_spec("freshness window for company_tickers.json"),
         "company_tickers_exchange": _ttl_spec(
             "freshness window for company_tickers_exchange.json"
@@ -270,6 +316,11 @@ def _ttl_specs() -> dict[str, SettingSpec]:
         "company_tickers_mf": _ttl_spec("freshness window for company_tickers_mf.json"),
         "ticker_txt": _ttl_spec("freshness window for ticker.txt"),
         "cik_lookup": _ttl_spec("freshness window for cik-lookup-data.txt"),
+        "full_index": _ttl_spec(
+            "freshness window for the in-progress quarter's full index; "
+            "completed quarters are immutable once published"
+        ),
+        "daily_index": _ttl_spec("freshness window for daily index files"),
         "structured_disclosure_feeds": _ttl_spec(
             "freshness window for structured-disclosure feeds; strictly below "
             "the 600-second publication cycle",

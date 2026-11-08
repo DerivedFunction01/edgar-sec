@@ -48,6 +48,7 @@ def test_menu_groups_entries_under_separators() -> None:
         "cohort",
         "metadata",
         "feeds",
+        "datasets",
         "filing-catalog",
         "inventory",
         "planning",

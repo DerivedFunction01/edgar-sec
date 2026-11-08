@@ -153,7 +153,10 @@ from edgar_sec.domain.forms.families.annual.taxonomy import (
     FORM_10K_ITEMS,
     FORM_20F_ITEMS,
 )
-from edgar_sec.domain.forms.families.current.taxonomy import FORM_8K_ITEMS
+from edgar_sec.domain.forms.families.current.taxonomy import (
+    FORM_6K_ITEMS,
+    FORM_8K_ITEMS,
+)
 from edgar_sec.domain.forms.families.quarterly.taxonomy import FORM_10Q_ITEMS
 from edgar_sec.domain.forms.families.registration.taxonomy import (
     FORM_S1_ITEMS,
@@ -291,6 +294,7 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         family="6-K",
         profile=CURRENT_PROFILE,
         cover_checkbox_schema=SIX_K_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_6K_ITEMS,
     ),
     ProcessingCatalogEntry(
         family="S-1",

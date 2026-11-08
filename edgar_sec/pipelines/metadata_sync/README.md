@@ -62,6 +62,8 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
 | `distrib` | Distributed worker bundle lifecycle | — |
 | `merge` | publish a snapshot | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--confirm-stale-lock]` |
 | `plan` | generate a deterministic plan | `[--cohort]`, `[--limit]`, `[--from-archive]`, `[--archive-sha]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]` |
+| `reconcile` | reconcile the tip against the daily index | `--start-date`, `--end-date`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--confirm-stale-lock]`, `[--new-snapshot-id]` |
+| `refresh` | refresh stale CIKs from the current-filings feed | `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--confirm-stale-lock]`, `[--new-snapshot-id]` |
 | `run` | execute resumable chunks | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--chunks]`, `[--chunk]`, `[--confirm-stale-lock]`, `[--bulk]`, `[--carry-from]` |
 | `status` | report plan progress | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]` |
 <!-- AUTOGEN:COMMANDS:END -->
@@ -92,6 +94,9 @@ python run.py metadata merge --plan-id 2024-01-15T120000Z --branch main
 
 # Augment existing snapshot with new CIKs
 python run.py metadata augment --cohort new-cohort --base-snapshot-id 2024-01-15T120000Z
+
+# Reconcile the tip against the daily index over a date range
+python run.py metadata reconcile --start-date 2026-11-02 --end-date 2026-11-06
 ```
 
 ## Artifact layout

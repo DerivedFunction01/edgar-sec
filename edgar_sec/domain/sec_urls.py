@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from datetime import date, datetime
 from urllib.parse import parse_qs, urlencode, urljoin, urlsplit, urlunsplit
 
 from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -103,12 +104,25 @@ def efts_search_url() -> str:
     return EFTS_SEARCH_BASE
 
 
+SEC_DATASETS_BASE = "https://www.sec.gov/files"
+
+
 def companyconcept_url(cik: str | int, taxonomy: str, tag: str) -> str:
     """Return the companyconcept URL for one taxonomy tag of one CIK."""
     return (
         f"{SEC_XBRL_API_BASE}/companyconcept/CIK{normalize_cik(cik)}"
         f"/{taxonomy}/{tag}.json"
     )
+
+
+def companyfacts_url(cik: str | int) -> str:
+    """Return the companyfacts URL for one CIK's full facts document."""
+    return f"{SEC_XBRL_API_BASE}/companyfacts/CIK{normalize_cik(cik)}.json"
+
+
+def frames_url(taxonomy: str, tag: str, unit: str, period: str) -> str:
+    """Return the frames URL for one concept aggregated over one period."""
+    return f"{SEC_XBRL_API_BASE}/frames/{taxonomy}/{tag}/{unit}/{period}.json"
 
 
 def archives_url(
@@ -425,6 +439,8 @@ SURFACE_SUBMISSIONS = "submissions"
 SURFACE_SUBMISSIONS_HISTORICAL_SHARDS = "submissions_historical_shards"
 SURFACE_SUBMISSIONS_BULK = "submissions_bulk"
 SURFACE_COMPANYCONCEPT = "companyconcept"
+SURFACE_COMPANYFACTS = "companyfacts"
+SURFACE_FRAMES = "frames"
 SURFACE_ARCHIVE_DOCUMENTS = "archive_documents"
 SURFACE_ARCHIVE_INDEX_PAGES = "archive_index_pages"
 SURFACE_ARCHIVE_INDEX_JSON = "archive_index_json"
@@ -436,16 +452,24 @@ SURFACE_COMPANY_TICKERS_EXCHANGE = "company_tickers_exchange"
 SURFACE_COMPANY_TICKERS_MF = "company_tickers_mf"
 SURFACE_TICKER_TXT = "ticker_txt"
 SURFACE_CIK_LOOKUP = "cik_lookup"
+SURFACE_FULL_INDEX = "full_index"
+SURFACE_DAILY_INDEX = "daily_index"
 SURFACE_CURRENT_FILINGS = "current_filings"
 SURFACE_STRUCTURED_DISCLOSURE_FEEDS = "structured_disclosure_feeds"
 SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES = "structured_disclosure_archives"
 SURFACE_EFTS = "efts"
+SURFACE_BDC_DATASETS = "bdc_datasets"
+SURFACE_NMFP_DATASETS = "nmfp_datasets"
+SURFACE_MFRR_DATASETS = "mfrr_datasets"
+SURFACE_BDC_REPORT = "bdc_report"
 
 SEC_SURFACES: tuple[str, ...] = (
     SURFACE_SUBMISSIONS,
     SURFACE_SUBMISSIONS_HISTORICAL_SHARDS,
     SURFACE_SUBMISSIONS_BULK,
     SURFACE_COMPANYCONCEPT,
+    SURFACE_COMPANYFACTS,
+    SURFACE_FRAMES,
     SURFACE_ARCHIVE_DOCUMENTS,
     SURFACE_ARCHIVE_INDEX_PAGES,
     SURFACE_ARCHIVE_INDEX_JSON,
@@ -457,10 +481,16 @@ SEC_SURFACES: tuple[str, ...] = (
     SURFACE_COMPANY_TICKERS_MF,
     SURFACE_TICKER_TXT,
     SURFACE_CIK_LOOKUP,
+    SURFACE_FULL_INDEX,
+    SURFACE_DAILY_INDEX,
     SURFACE_CURRENT_FILINGS,
     SURFACE_STRUCTURED_DISCLOSURE_FEEDS,
     SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES,
     SURFACE_EFTS,
+    SURFACE_BDC_DATASETS,
+    SURFACE_NMFP_DATASETS,
+    SURFACE_MFRR_DATASETS,
+    SURFACE_BDC_REPORT,
 )
 
 # Each builder names the surface its URLs belong to.
@@ -469,15 +499,23 @@ URL_BUILDER_SURFACES: dict[str, str] = {
     "historical_submissions_url": SURFACE_SUBMISSIONS_HISTORICAL_SHARDS,
     "submissions_bulk_url": SURFACE_SUBMISSIONS_BULK,
     "companyconcept_url": SURFACE_COMPANYCONCEPT,
+    "companyfacts_url": SURFACE_COMPANYFACTS,
+    "frames_url": SURFACE_FRAMES,
     "archives_url": SURFACE_ARCHIVE_DOCUMENTS,
     "index_url_for": SURFACE_ARCHIVE_INDEX_PAGES,
     "index_json_url_for": SURFACE_ARCHIVE_INDEX_JSON,
     "full_submission_url_for": SURFACE_FULL_SUBMISSION_BUNDLES,
     "xbrl_package_url_for": SURFACE_XBRL_PACKAGES,
+    "full_index_url": SURFACE_FULL_INDEX,
+    "daily_index_url": SURFACE_DAILY_INDEX,
     "current_filings_url": SURFACE_CURRENT_FILINGS,
     "structured_feed_url": SURFACE_STRUCTURED_DISCLOSURE_FEEDS,
     "structured_archive_url": SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES,
     "efts_search_url": SURFACE_EFTS,
+    "bdc_dataset_url": SURFACE_BDC_DATASETS,
+    "nmfp_dataset_url": SURFACE_NMFP_DATASETS,
+    "mfrr_dataset_url": SURFACE_MFRR_DATASETS,
+    "bdc_report_url": SURFACE_BDC_REPORT,
 }
 
 # Classification rules as data: (surface id, host, path pattern), first match
@@ -490,7 +528,9 @@ SEC_SURFACE_RULES: tuple[tuple[str, str, str], ...] = (
         r"^/submissions/[^/]*-submissions-[^/]*\.json$",
     ),
     (SURFACE_SUBMISSIONS, "data.sec.gov", r"^/submissions(/|$)"),
-    (SURFACE_COMPANYCONCEPT, "data.sec.gov", r"^/api/xbrl(/|$)"),
+    (SURFACE_COMPANYCONCEPT, "data.sec.gov", r"^/api/xbrl/companyconcept(/|$)"),
+    (SURFACE_COMPANYFACTS, "data.sec.gov", r"^/api/xbrl/companyfacts(/|$)"),
+    (SURFACE_FRAMES, "data.sec.gov", r"^/api/xbrl/frames(/|$)"),
     (SURFACE_CURRENT_FILINGS, "www.sec.gov", r"^/cgi-bin/browse-edgar"),
     (SURFACE_EFTS, "efts.sec.gov", r"^/LATEST/search-index$"),
     (
@@ -510,9 +550,39 @@ SEC_SURFACE_RULES: tuple[tuple[str, str, str], ...] = (
         r"^/Archives/edgar/daily-index/bulkdata/submissions\.zip$",
     ),
     (
+        SURFACE_FULL_INDEX,
+        "www.sec.gov",
+        r"^/Archives/edgar/full-index/\d{4}/QTR[1-4]/[^/]+$",
+    ),
+    (
+        SURFACE_DAILY_INDEX,
+        "www.sec.gov",
+        r"^/Archives/edgar/daily-index/\d{4}/QTR[1-4]/[^/]+$",
+    ),
+    (
         SURFACE_CIK_LOOKUP,
         "www.sec.gov",
         r"^/Archives/edgar/cik-lookup-data\.txt$",
+    ),
+    (
+        SURFACE_BDC_DATASETS,
+        "www.sec.gov",
+        r"^/files/datastandardsinnovation/data/business-development-company-bdc-data-sets/[^/]+_bdc\.zip$",
+    ),
+    (
+        SURFACE_NMFP_DATASETS,
+        "www.sec.gov",
+        r"^/files/dera/data/form-n-mfp-data-sets/[^/]+_nmfp\.zip$",
+    ),
+    (
+        SURFACE_MFRR_DATASETS,
+        "www.sec.gov",
+        r"^/files/dera/data/mutual-fund-prospectus-risk/return-summary-data-sets/[^/]+_rr1\.zip$",
+    ),
+    (
+        SURFACE_BDC_REPORT,
+        "www.sec.gov",
+        r"^/files/investment/data/other/business-development-company-report/business-development-company-\d{4}\.csv$",
     ),
     (SURFACE_COMPANY_TICKERS, "www.sec.gov", r"^/files/company_tickers\.json$"),
     (
@@ -579,9 +649,12 @@ __all__ = [
     "EFTS_SEARCH_BASE",
     "SEC_ARCHIVE_BASE",
     "SEC_BROWSE_EDGAR_URL",
+    "SEC_DATASETS_BASE",
     "SEC_EDGAR_BASE",
     "SEC_SUBMISSIONS_BASE",
     "SEC_XBRL_API_BASE",
+    "DAILY_INDEX_FLAVOURS",
+    "FULL_INDEX_FLAVOURS",
     "STRUCTURED_FEED_FILES",
     "SUBMISSIONS_BULK_URL",
     "DEFAULT_ARCHIVE_URL_POLICY",
@@ -590,9 +663,17 @@ __all__ = [
     "SEC_SURFACE_RULES",
     "SURFACE_ARCHIVE_DOCUMENTS",
     "SURFACE_ARCHIVE_INDEX_JSON",
+    "SURFACE_BDC_DATASETS",
+    "SURFACE_BDC_REPORT",
+    "SURFACE_MFRR_DATASETS",
+    "SURFACE_NMFP_DATASETS",
     "SURFACE_ARCHIVE_INDEX_PAGES",
     "SURFACE_CIK_LOOKUP",
     "SURFACE_COMPANYCONCEPT",
+    "SURFACE_COMPANYFACTS",
+    "SURFACE_FRAMES",
+    "SURFACE_DAILY_INDEX",
+    "SURFACE_FULL_INDEX",
     "SURFACE_CURRENT_FILINGS",
     "SURFACE_EFTS",
     "SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES",
@@ -614,6 +695,8 @@ __all__ = [
     "archives_url",
     "classify_sec_surface",
     "companyconcept_url",
+    "companyfacts_url",
+    "frames_url",
     "current_filings_url",
     "efts_search_url",
     "full_submission_url_for",

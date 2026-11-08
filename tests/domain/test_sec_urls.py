@@ -13,6 +13,8 @@ from edgar_sec.domain.sec_urls import (
     archives_url,
     classify_sec_surface,
     companyconcept_url,
+    companyfacts_url,
+    frames_url,
     current_filings_url,
     efts_search_url,
     historical_submissions_url,
@@ -23,6 +25,7 @@ from edgar_sec.domain.sec_urls import (
     submissions_bulk_url,
     submissions_url,
 )
+from edgar_sec.domain.index_urls import daily_index_url, full_index_url
 
 
 def test_base_prefixes_are_canonical() -> None:
@@ -76,6 +79,38 @@ def test_companyconcept_url_pads_cik_and_keeps_tag_verbatim() -> None:
     assert SEC_XBRL_API_BASE == "https://data.sec.gov/api/xbrl"
     assert companyconcept_url("320193", "us-gaap", "Assets") == expected
     assert companyconcept_url(320193, "us-gaap", "Assets") == expected
+
+
+def test_companyfacts_url_pads_cik() -> None:
+    expected = "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json"
+    assert companyfacts_url("320193") == expected
+    assert companyfacts_url(320193) == expected
+
+
+def test_frames_url_pins_taxonomy_tag_unit_period_shape() -> None:
+    assert frames_url("us-gaap", "Assets", "USD", "CY2025Q4I") == (
+        "https://data.sec.gov/api/xbrl/frames/us-gaap/Assets/USD/CY2025Q4I.json"
+    )
+    assert frames_url("us-gaap", "Revenues", "USD", "CY2025Q4") == (
+        "https://data.sec.gov/api/xbrl/frames/us-gaap/Revenues/USD/CY2025Q4.json"
+    )
+
+
+def test_facts_family_urls_each_classify_to_their_own_surface() -> None:
+    assert classify_sec_surface(companyconcept_url(320193, "us-gaap", "Assets")) == (
+        "companyconcept"
+    )
+    assert classify_sec_surface(companyfacts_url(320193)) == "companyfacts"
+    assert (
+        classify_sec_surface(frames_url("us-gaap", "Assets", "USD", "CY2025Q4I"))
+        == "frames"
+    )
+
+
+def test_bare_xbrl_api_path_classifies_as_no_facts_family_surface() -> None:
+    assert classify_sec_surface("https://data.sec.gov/api/xbrl") is None
+    assert classify_sec_surface("https://data.sec.gov/api/xbrl/") is None
+    assert classify_sec_surface("https://data.sec.gov/api/xbrl/other/x") is None
 
 
 def test_index_json_url_for_unhyphenates_accession() -> None:
@@ -135,6 +170,51 @@ def test_submissions_bulk_url() -> None:
     assert submissions_bulk_url() == (
         "https://www.sec.gov/Archives/edgar/daily-index/bulkdata/submissions.zip"
     )
+    assert classify_sec_surface(submissions_bulk_url()) == "submissions_bulk"
+
+
+@pytest.mark.parametrize("flavour", ["master", "company", "form", "crawler", "xbrl"])
+def test_full_index_url_pins_the_quarterly_shape(flavour: str) -> None:
+    url = full_index_url(2024, 1, flavour)
+    assert (
+        url == f"https://www.sec.gov/Archives/edgar/full-index/2024/QTR1/{flavour}.idx"
+    )
+    assert classify_sec_surface(url) == "full_index"
+
+
+def test_full_index_url_names_a_compressed_variant() -> None:
+    url = full_index_url(2024, 1, "master", extension="gz")
+    assert url == "https://www.sec.gov/Archives/edgar/full-index/2024/QTR1/master.gz"
+    assert classify_sec_surface(url) == "full_index"
+
+
+def test_full_index_url_refuses_unserved_shapes() -> None:
+    with pytest.raises(ValueError):
+        full_index_url(2024, 5, "master")
+    with pytest.raises(ValueError):
+        full_index_url(2024, 1, "nope")
+    with pytest.raises(ValueError):
+        full_index_url(2024, 1, "crawler", extension="gz")
+
+
+@pytest.mark.parametrize("flavour", ["master", "company", "form", "crawler"])
+def test_daily_index_url_pins_the_per_day_shape(flavour: str) -> None:
+    url = daily_index_url("2026-11-06", flavour)
+    assert url == (
+        "https://www.sec.gov/Archives/edgar/daily-index/2026/QTR4/"
+        f"{flavour}.20261106.idx"
+    )
+    assert classify_sec_surface(url) == "daily_index"
+
+
+def test_daily_index_url_derives_the_quarter_from_the_day() -> None:
+    assert daily_index_url("2024-02-13", "master") == (
+        "https://www.sec.gov/Archives/edgar/daily-index/2024/QTR1/master.20240213.idx"
+    )
+    with pytest.raises(ValueError):
+        daily_index_url("2026-11-06", "xbrl")
+    with pytest.raises(ValueError):
+        daily_index_url("not-a-date", "master")
 
 
 def test_engine_builder_agrees_with_the_canonical_archive_shape() -> None:
@@ -148,3 +228,46 @@ def test_engine_builder_agrees_with_the_canonical_archive_shape() -> None:
         "0000320193", "0000320193-23-000106", "aapl-20230930.htm"
     )
     assert reason is None
+
+
+def test_dataset_builders_pin_their_shapes_and_surfaces() -> None:
+    from edgar_sec.domain.dataset_urls import (
+        bdc_dataset_url,
+        bdc_report_url,
+        mfrr_dataset_url,
+        nmfp_dataset_url,
+    )
+
+    bdc = bdc_dataset_url("2025q1")
+    assert bdc == (
+        "https://www.sec.gov/files/datastandardsinnovation/data/"
+        "business-development-company-bdc-data-sets/2025q1_bdc.zip"
+    )
+    assert classify_sec_surface(bdc) == "bdc_datasets"
+    nmfp = nmfp_dataset_url("20220808-20220908")
+    assert nmfp == (
+        "https://www.sec.gov/files/dera/data/form-n-mfp-data-sets/"
+        "20220808-20220908_nmfp.zip"
+    )
+    assert classify_sec_surface(nmfp) == "nmfp_datasets"
+    mfrr = mfrr_dataset_url("2010q4")
+    assert mfrr == (
+        "https://www.sec.gov/files/dera/data/mutual-fund-prospectus-risk/"
+        "return-summary-data-sets/2010q4_rr1.zip"
+    )
+    assert classify_sec_surface(mfrr) == "mfrr_datasets"
+    report = bdc_report_url(2026)
+    assert report == (
+        "https://www.sec.gov/files/investment/data/other/"
+        "business-development-company-report/business-development-company-2026.csv"
+    )
+    assert classify_sec_surface(report) == "bdc_report"
+
+
+def test_dataset_builders_refuse_path_like_vintages() -> None:
+    from edgar_sec.domain.dataset_urls import bdc_dataset_url, bdc_report_url
+
+    with pytest.raises(ValueError):
+        bdc_dataset_url("../2025q1")
+    with pytest.raises(ValueError):
+        bdc_report_url(1999)

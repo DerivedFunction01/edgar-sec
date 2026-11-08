@@ -34,7 +34,11 @@ from edgar_sec.domain.forms.families.current.evidence import (
     CURRENT_COVER_TERMS,
     CurrentReportEvidence,
 )
-from edgar_sec.domain.forms.families.current.taxonomy import FORM_8K_ITEMS
+from edgar_sec.domain.forms.families.current.taxonomy import (
+    FORM_6K_DERIVED,
+    FORM_6K_ITEMS,
+    FORM_8K_ITEMS,
+)
 from edgar_sec.domain.forms.families.quarterly.evidence import (
     QuarterlyReportEvidence,
 )
@@ -516,8 +520,9 @@ def _build_profiles() -> dict[str, CoverProfile]:
     current = CurrentReportEvidence()
     generic_6k = replace(
         build_current_profile("6-K"),
+        derived_taxonomy=FORM_6K_DERIVED,
         body_evidence=BodyEvidencePack(
-            structural_headings=(),
+            structural_headings=tuple(d.item for d in FORM_6K_ITEMS),
             semantic_headings=(
                 "signatures",
                 "signature",

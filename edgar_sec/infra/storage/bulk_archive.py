@@ -90,9 +90,15 @@ def _resolve_retention() -> int:
 
 
 def _write_member_index(payload: Path, destination: Path) -> int:
-    """Extract the central directory of ``payload`` into a parquet index."""
-    with zipfile.ZipFile(payload) as archive:
-        infos = archive.infolist()
+    """Extract the central directory of ``payload`` into a parquet index.
+
+    A non-ZIP payload (e.g. a report CSV) has no members: its index is
+    empty, not an error — storage is content-addressed for any payload.
+    """
+    infos: list[zipfile.ZipInfo] = []
+    if zipfile.is_zipfile(payload):
+        with zipfile.ZipFile(payload) as archive:
+            infos = archive.infolist()
     table = pa.table(
         {
             "member_name": [info.filename for info in infos],

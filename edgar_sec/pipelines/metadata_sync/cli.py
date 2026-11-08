@@ -25,14 +25,17 @@ from .assignment import AssignmentError
 from .commands.augment import cmd_augment
 from .commands.merge import cmd_merge
 from .commands.plan import cmd_plan, cmd_status
+from .commands.reconcile import cmd_reconcile
 from .commands.refresh import cmd_refresh
 from .commands.run import cmd_run
 from .distribution_adapter import MetadataDistributionAdapter
 from .options import (
     PlanOptions,
+    ReconcileOptions,
     RefreshOptions,
     RunOptions,
     plan_options,
+    reconcile_options,
     refresh_options,
     run_options,
 )
@@ -141,6 +144,20 @@ def _plan_options(args: argparse.Namespace) -> PlanOptions:
 
 def _refresh_options(args: argparse.Namespace) -> RefreshOptions:
     return refresh_options(
+        artifacts_root=args.artifacts or None,
+        chunk_size=args.chunk_size,
+        workers=args.workers,
+        branch_name=getattr(args, "branch", "main") or "main",
+        expected_branch_tip=getattr(args, "expected_branch_tip", None),
+        new_snapshot_id=getattr(args, "new_snapshot_id", "") or "",
+        stale_lock_confirmed=getattr(args, "confirm_stale_lock", False),
+    )
+
+
+def _reconcile_options(args: argparse.Namespace) -> ReconcileOptions:
+    return reconcile_options(
+        start_date=getattr(args, "start_date", "") or None,
+        end_date=getattr(args, "end_date", "") or None,
         artifacts_root=args.artifacts or None,
         chunk_size=args.chunk_size,
         workers=args.workers,
@@ -270,6 +287,27 @@ def build_parser() -> argparse.ArgumentParser:
         help="snapshot id to publish under; defaults to the derived plan id",
     )
     refresh_parser.set_defaults(func=lambda args: cmd_refresh(_refresh_options(args)))
+
+    reconcile_parser = subparsers.add_parser(
+        "reconcile", help="reconcile the tip against the daily index"
+    )
+    _add_common(reconcile_parser)
+    _add_branch_guard(reconcile_parser)
+    _add_stale_lock_option(reconcile_parser)
+    reconcile_parser.add_argument(
+        "--start-date", required=True, help="first day of the index range (ISO)"
+    )
+    reconcile_parser.add_argument(
+        "--end-date", required=True, help="last day of the index range (ISO)"
+    )
+    reconcile_parser.add_argument(
+        "--new-snapshot-id",
+        default="",
+        help="snapshot id to publish under; defaults to the derived plan id",
+    )
+    reconcile_parser.set_defaults(
+        func=lambda args: cmd_reconcile(_reconcile_options(args))
+    )
 
     dag_parser = attach_dag_subparser(
         subparsers,

@@ -27,14 +27,42 @@ FORM_8K_ITEMS: tuple[ItemDefinition, ...] = (
     ItemDefinition("ITEM 9.01", 9, ("Financial Statements and Exhibits",)),
 )
 
+IFRS_HEADLINE_FORMS: frozenset[str] = frozenset({"6-K", "6-K/A"})
+
+
+def uses_ifrs_headline_vocabulary(form: str) -> bool:
+    """Whether a current-report form's headlines use IFRS label vocabulary."""
+    return form.upper().strip() in IFRS_HEADLINE_FORMS
+
+
 ITEMS: dict[str, str] = {d.item: d.names[0] for d in FORM_8K_ITEMS}
 PARTS: tuple[str, ...] = ()
 
 FORM_8K_DERIVED = build_taxonomy_derived(FORM_8K_ITEMS, PARTS)
 
+# Exhibit-anchored 6-K taxonomy, adopted under the Step 18 census bar
+# (.artifacts/run-logs/2026-11-08-sixk-census.md): the one drafted item
+# that cleared per-item precision and coverage on the held-out slice.
+FORM_6K_ITEMS: tuple[ItemDefinition, ...] = (
+    ItemDefinition(
+        "PRESS RELEASE",
+        1,
+        ("press release", "for immediate release"),
+    ),
+)
+
+ITEMS_6K: dict[str, str] = {d.item: d.names[0] for d in FORM_6K_ITEMS}
+
+FORM_6K_DERIVED = build_taxonomy_derived(FORM_6K_ITEMS, PARTS)
+
 __all__ = [
+    "FORM_6K_DERIVED",
+    "FORM_6K_ITEMS",
     "FORM_8K_DERIVED",
     "FORM_8K_ITEMS",
+    "IFRS_HEADLINE_FORMS",
     "ITEMS",
+    "ITEMS_6K",
     "PARTS",
+    "uses_ifrs_headline_vocabulary",
 ]

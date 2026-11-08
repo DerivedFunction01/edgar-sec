@@ -288,3 +288,24 @@ def test_skips_dense_pseudo_toc_cluster() -> None:
     labels = [s.item_identifier for s in seq.sections]
     assert labels == ["ITEM 1", "ITEM 1A"]
     assert seq.sections[0].start_line >= 6
+
+
+def test_detect_6_k_press_release_item_from_census_exemplars() -> None:
+    from edgar_sec.domain.forms.families.current.taxonomy import FORM_6K_ITEMS
+    from tests.support import fixture_path
+
+    for name in (
+        "sixk_press_release_0000912282-05-000713.txt",
+        "sixk_press_release_0000899797-02-000224.txt",
+    ):
+        text = fixture_path(name).read_text(encoding="utf-8")
+        seq = detect_section_sequence(text, family="6-K", taxonomy_items=FORM_6K_ITEMS)
+        assert [s.item_identifier for s in seq.sections] == ["ITEM PRESS RELEASE"]
+
+
+def test_6_k_text_without_press_release_names_no_item() -> None:
+    from edgar_sec.domain.forms.families.current.taxonomy import FORM_6K_ITEMS
+
+    text = "Report of foreign private issuer.\nThe registrant furnished a report.\n"
+    seq = detect_section_sequence(text, family="6-K", taxonomy_items=FORM_6K_ITEMS)
+    assert seq.sections == ()

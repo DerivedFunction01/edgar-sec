@@ -1,4 +1,4 @@
-"""Current report family profiles for Form 8-K."""
+"""Current report family profiles for Forms 8-K and 6-K."""
 
 from __future__ import annotations
 
@@ -14,6 +14,15 @@ PRIMARY_PROFILE_8K = PrimaryReportProfile(
     commission_header_required=True,
 )
 
+PRIMARY_PROFILE_6K = PrimaryReportProfile(
+    family="6-K",
+    version="v1",
+    statutory_titles=CURRENT_TITLES,
+    designator_tokens=aliases_for_family("6-K"),
+    commission_header_required=True,
+)
+
 __all__ = [
+    "PRIMARY_PROFILE_6K",
     "PRIMARY_PROFILE_8K",
 ]
