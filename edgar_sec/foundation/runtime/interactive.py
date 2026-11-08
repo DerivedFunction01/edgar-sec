@@ -73,13 +73,15 @@ def build_menu(
     return assign_menu_keys(actions, exit_key=exit_key)
 
 
-def prompt_text(prompt: str, default: str = "") -> str:
+def prompt_text(prompt: str, default: str = "", *, eof_raises: bool = False) -> str:
     """Prompt user for terminal input with an optional default value."""
     p_str = f"{prompt} [{default}]: " if default else f"{prompt}: "
     try:
         raw = input(p_str).strip()
         return raw or default
     except EOFError:
+        if eof_raises:
+            raise
         return default
 
 
@@ -117,7 +119,10 @@ def prompt_choice(
         print(f"  {key}. {label}")
 
     while True:
-        res = prompt_text("Choice", default).strip().lower()
+        try:
+            res = prompt_text("Choice", default, eof_raises=True).strip().lower()
+        except EOFError:
+            return default
         if res in valid_keys:
             return res
         print(
@@ -299,7 +304,10 @@ def run_interactive_menu(
                 print(f"  {a.key}. {a.label}")
         print(f"  {exit_key}. Exit")
 
-        raw = prompt_text("\nChoice", "").strip()
+        try:
+            raw = prompt_text("\nChoice", "", eof_raises=True).strip()
+        except EOFError:
+            return 0
         if raw == exit_key:
             return 0
         if not raw:

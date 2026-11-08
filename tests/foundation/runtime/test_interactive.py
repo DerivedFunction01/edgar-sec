@@ -4,6 +4,8 @@ action keeps the session alive, and a pick-list filters before numbering.
 
 from __future__ import annotations
 
+import pytest
+
 from edgar_sec.foundation.runtime.interactive import (
     DEFAULT_PAGE_SIZE,
     MenuAction,
@@ -141,6 +143,42 @@ def test_prompt_text_returns_the_default_on_end_of_input(monkeypatch) -> None:
         "edgar_sec.foundation.runtime.interactive.input", raise_eof, raising=False
     )
     assert prompt_text("Anything", "fallback") == "fallback"
+
+
+def test_prompt_text_reraises_end_of_input_when_asked(monkeypatch) -> None:
+    def raise_eof(_prompt: str = "") -> str:
+        raise EOFError
+
+    monkeypatch.setattr(
+        "edgar_sec.foundation.runtime.interactive.input", raise_eof, raising=False
+    )
+    with pytest.raises(EOFError):
+        prompt_text("Anything", "fallback", eof_raises=True)
+
+
+def test_prompt_choice_returns_the_default_on_end_of_input(monkeypatch) -> None:
+    def raise_eof(_prompt: str = "") -> str:
+        raise EOFError
+
+    monkeypatch.setattr(
+        "edgar_sec.foundation.runtime.interactive.input", raise_eof, raising=False
+    )
+    assert prompt_choice("Pick", [("a", "Alpha"), ("b", "Beta")], "a") == "a"
+
+
+def test_run_interactive_menu_exits_on_end_of_input(monkeypatch) -> None:
+    def raise_eof(_prompt: str = "") -> str:
+        raise EOFError
+
+    monkeypatch.setattr(
+        "edgar_sec.foundation.runtime.interactive.input", raise_eof, raising=False
+    )
+    ran: list[str] = []
+    result = run_interactive_menu(
+        "Title", [MenuAction("1", "Work", lambda: ran.append("1"))]
+    )
+    assert result == 0
+    assert ran == []
 
 
 def test_prompt_choice_keeps_asking_until_a_valid_key(monkeypatch, capsys) -> None:
