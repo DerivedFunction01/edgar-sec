@@ -467,36 +467,20 @@ def build_beneficial_ownership_profile(family: str = "13D") -> CoverProfile:
 
 
 def _build_profiles() -> dict[str, CoverProfile]:
-    from edgar_sec.engine.forms.cover.family_profiles import (
-        build_form_11k_profile,
-        build_form_12b25_profile,
-        build_form_12reg_profile,
-        build_form_14a_profile,
-        build_form_15_profile,
-        build_form_424b_profile,
-        build_form_425_profile,
-        build_form_497_profile,
-        build_form_drs_profile,
-        build_form_fwp_profile,
-        build_form_ncsr_profile,
-        build_form_nq_profile,
-        build_form_nsar_profile,
-        build_form_tender_profile,
-    )
-    from edgar_sec.engine.forms.cover.family_profiles_sd import (
-        build_form_sd_profile,
-    )
-    from edgar_sec.engine.forms.cover.family_profiles_18k import (
-        build_form_18k_profile,
-    )
-    from edgar_sec.engine.forms.cover.family_profiles_rega import (
-        build_form_rega_profile,
-    )
-    from edgar_sec.engine.forms.cover.family_profiles_abs import (
+    from edgar_sec.engine.forms.cover.family_profiles.abs import (
         build_form_abs_reports_profile,
     )
-    from edgar_sec.engine.forms.cover.family_profiles_f import (
+    from edgar_sec.engine.forms.cover.family_profiles.annual import (
+        build_form_11k_profile,
+        build_form_18k_profile,
         build_form_40f_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.exchange_act import (
+        build_form_12b25_profile,
+        build_form_12reg_profile,
+        build_form_15_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.foreign import (
         build_form_f1_profile,
         build_form_f3_profile,
         build_form_f4_profile,
@@ -504,6 +488,28 @@ def _build_profiles() -> dict[str, CoverProfile]:
         build_form_fn_profile,
         build_form_mjds_profile,
         build_form_suppl_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.funds import (
+        build_form_497_profile,
+        build_form_ncsr_profile,
+        build_form_nq_profile,
+        build_form_nsar_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.prospectus import (
+        build_form_424b_profile,
+        build_form_425_profile,
+        build_form_fwp_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.regulation_a import (
+        build_form_rega_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.residual import (
+        build_form_drs_profile,
+        build_form_sd_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles.schedules import (
+        build_form_14a_profile,
+        build_form_tender_profile,
     )
 
     annual_common = replace(

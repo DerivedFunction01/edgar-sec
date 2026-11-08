@@ -1,6 +1,5 @@
 """Cover profile for the ABS text reports (10-D / ABS-15G), composed
-from the shared kit in ``profiles``.
-"""
+from the shared kit in ``profiles``."""
 
 from __future__ import annotations
 
@@ -87,4 +86,6 @@ def build_form_abs_reports_profile(family: str) -> CoverProfile:
     )
 
 
-__all__ = ["build_form_abs_reports_profile"]
+__all__ = [
+    "build_form_abs_reports_profile",
+]

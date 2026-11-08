@@ -1,6 +1,5 @@
 """Cover profiles for the Regulation A text reports (1-SA, 1-U),
-composed from the shared kit in ``profiles``.
-"""
+composed from the shared kit in ``profiles``."""
 
 from __future__ import annotations
 
@@ -82,4 +81,6 @@ def build_form_rega_profile(family: str) -> CoverProfile:
     )
 
 
-__all__ = ["build_form_rega_profile"]
+__all__ = [
+    "build_form_rega_profile",
+]
