@@ -174,10 +174,8 @@ class _FixtureReviewConsole:
 
     def plan_summary(self, plan: dict | None) -> str:
         if plan is None:
-            return "Active S6 target plan: none"
-        return (
-            f"Active S6 target plan: {plan['plan_id']} (digest {plan['plan_digest']})"
-        )
+            return "Active target plan: none"
+        return f"Active target plan: {plan['plan_id']} (digest {plan['plan_digest']})"
 
     def plan_items(self) -> list[PickItem]:
         items = []

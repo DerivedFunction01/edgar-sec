@@ -6,6 +6,13 @@ import sqlite3
 import sys
 from dataclasses import asdict, replace
 
+from edgar_sec.foundation.runtime.render import (
+    Grid,
+    KeyValueRow,
+    ProseRow,
+    RenderComponent,
+    render_output,
+)
 from edgar_sec.pipelines.document_acquisition.models import AcquisitionStatusReport
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 from edgar_sec.pipelines.document_acquisition.run_state.evidence import (
@@ -84,6 +91,91 @@ def _status_safe_mapping(value) -> dict[str, object]:
     return {key: item for key, item in asdict(value).items() if "path" not in key}
 
 
+def _counts_value(report: AcquisitionStatusReport) -> str:
+    counts = ", ".join(
+        f"{name}={count}"
+        for name, count in sorted(report.target_counts.items())
+        if count
+    )
+    return counts or "no targets"
+
+
+def _lock_value(report: AcquisitionStatusReport) -> str:
+    lock = report.active_lock
+    if lock is None:
+        return "none"
+    return f"host={lock.host} pid={lock.pid} started_at_utc={lock.started_at_utc}"
+
+
+def _status_components(
+    reports: list[AcquisitionStatusReport],
+) -> list[RenderComponent]:
+    if not reports:
+        return [ProseRow("No acquisition runs found.")]
+    if len(reports) == 1:
+        report = reports[0]
+        rows: list[RenderComponent] = [
+            KeyValueRow("run_id", report.run_id),
+            KeyValueRow("state", report.state),
+            KeyValueRow("target_counts", _counts_value(report)),
+            KeyValueRow("retryable_failure_count", str(report.retryable_failure_count)),
+            KeyValueRow(
+                "non_retryable_failure_count",
+                str(report.non_retryable_failure_count),
+            ),
+            KeyValueRow("lock", _lock_value(report)),
+        ]
+        if report.invalid_reason:
+            rows.append(KeyValueRow("invalid_reason", report.invalid_reason))
+        return rows
+    return [
+        Grid(
+            headers=(
+                "run_id",
+                "state",
+                "target_counts",
+                "retryable_failures",
+                "non_retryable_failures",
+                "lock",
+                "invalid_reason",
+            ),
+            rows=tuple(
+                (
+                    report.run_id,
+                    report.state,
+                    _counts_value(report),
+                    str(report.retryable_failure_count),
+                    str(report.non_retryable_failure_count),
+                    _lock_value(report),
+                    report.invalid_reason or "",
+                )
+                for report in reports
+            ),
+        )
+    ]
+
+
+def _target_components(
+    run_id: str, target, attempt_rows: list[dict[str, object]]
+) -> list[RenderComponent]:
+    components: list[RenderComponent] = [
+        KeyValueRow("run_id", run_id),
+        KeyValueRow("target_id", target.target_id),
+        KeyValueRow("target_outcome", target.outcome),
+    ]
+    if attempt_rows:
+        components.append(
+            Grid(
+                headers=tuple(attempt_rows[0]),
+                rows=tuple(
+                    tuple("" if value is None else str(value) for value in row.values())
+                    for row in attempt_rows
+                ),
+            )
+        )
+    return components
+
+
 def cmd_status(args: argparse.Namespace) -> int:
     try:
         if args.target_id and not args.run_id:
@@ -110,9 +202,10 @@ def cmd_status(args: argparse.Namespace) -> int:
             if args.json:
                 print(json.dumps(payload, sort_keys=True))
             else:
-                print(f"{args.run_id}: target {target.target_id} ({target.outcome})")
-                for attempt in attempt_rows:
-                    print("  " + json.dumps(attempt, sort_keys=True))
+                render_output(
+                    _target_components(args.run_id, target, attempt_rows),
+                    title="Acquisition Target Status",
+                )
             return 0
 
         run_ids = (args.run_id,) if args.run_id else discover_run_ids(paths)
@@ -132,16 +225,6 @@ def cmd_status(args: argparse.Namespace) -> int:
     }
     if args.json:
         print(json.dumps(payload, sort_keys=True))
-    elif not reports:
-        print("No acquisition runs found.")
     else:
-        for report in reports:
-            counts = ", ".join(
-                f"{name}={count}"
-                for name, count in sorted(report.target_counts.items())
-                if count
-            )
-            print(f"{report.run_id}: {report.state}; {counts or 'no targets'}")
-            if report.invalid_reason:
-                print(f"  invalid: {report.invalid_reason}")
+        render_output(_status_components(reports), title="Acquisition Status")
     return 1 if invalid else 0
