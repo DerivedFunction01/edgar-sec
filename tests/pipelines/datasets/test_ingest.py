@@ -110,11 +110,11 @@ def test_import_bdc_population_archives_csvs_and_loads(tmp_path: Path) -> None:
     paths = resolve_datasets_paths(tmp_path)
     loaded = import_bdc_population(
         paths,
-        (2026, 2025),
+        (2026, 2025, 2024),
         http=_ReportHttp(),  # type: ignore[arg-type]
         loaded_at="2026-11-08T00:00:00+00:00",
     )
-    assert loaded == 2
+    assert loaded == 3
     con = open_store(paths.store_file)
     try:
         rows = con.execute(
@@ -122,6 +122,10 @@ def test_import_bdc_population_archives_csvs_and_loads(tmp_path: Path) -> None:
         ).fetchall()
     finally:
         con.close()
-    assert rows == [("0002025001", 2025), ("0002026001", 2026)]
+    assert rows == [
+        ("0002024001", 2024),
+        ("0002025001", 2025),
+        ("0002026001", 2026),
+    ]
     store = BulkArchiveStore(paths.bulk_archives_root)
     assert store.open("bdc_report") is not None

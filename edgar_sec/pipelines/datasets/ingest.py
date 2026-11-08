@@ -168,8 +168,11 @@ def import_bdc_population(
         payload = http.get_bytes(url)
         raw = work / f"bdc-report-{year}.csv"
         raw.write_bytes(payload)
-        reference = store.put_file(BDC_POPULATION_SOURCE_ID, raw, source_url=url)
-        yearly[year] = reference.path
+        store.put_file(BDC_POPULATION_SOURCE_ID, raw, source_url=url)
+        # Load from the local copy: archive retention keeps only the
+        # newest payloads per source, so a stored reference may be
+        # pruned by a later year's put before the load reads it.
+        yearly[year] = raw
     con = open_store(paths.store_file)
     try:
         return load_bdc_population(con, yearly, loaded_at=stamp)
