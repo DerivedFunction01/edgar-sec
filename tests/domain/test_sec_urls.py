@@ -13,6 +13,8 @@ from edgar_sec.domain.sec_urls import (
     archives_url,
     classify_sec_surface,
     companyconcept_url,
+    companyfacts_url,
+    frames_url,
     current_filings_url,
     efts_search_url,
     historical_submissions_url,
@@ -76,6 +78,38 @@ def test_companyconcept_url_pads_cik_and_keeps_tag_verbatim() -> None:
     assert SEC_XBRL_API_BASE == "https://data.sec.gov/api/xbrl"
     assert companyconcept_url("320193", "us-gaap", "Assets") == expected
     assert companyconcept_url(320193, "us-gaap", "Assets") == expected
+
+
+def test_companyfacts_url_pads_cik() -> None:
+    expected = "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json"
+    assert companyfacts_url("320193") == expected
+    assert companyfacts_url(320193) == expected
+
+
+def test_frames_url_pins_taxonomy_tag_unit_period_shape() -> None:
+    assert frames_url("us-gaap", "Assets", "USD", "CY2025Q4I") == (
+        "https://data.sec.gov/api/xbrl/frames/us-gaap/Assets/USD/CY2025Q4I.json"
+    )
+    assert frames_url("us-gaap", "Revenues", "USD", "CY2025Q4") == (
+        "https://data.sec.gov/api/xbrl/frames/us-gaap/Revenues/USD/CY2025Q4.json"
+    )
+
+
+def test_facts_family_urls_each_classify_to_their_own_surface() -> None:
+    assert classify_sec_surface(companyconcept_url(320193, "us-gaap", "Assets")) == (
+        "companyconcept"
+    )
+    assert classify_sec_surface(companyfacts_url(320193)) == "companyfacts"
+    assert (
+        classify_sec_surface(frames_url("us-gaap", "Assets", "USD", "CY2025Q4I"))
+        == "frames"
+    )
+
+
+def test_bare_xbrl_api_path_classifies_as_no_facts_family_surface() -> None:
+    assert classify_sec_surface("https://data.sec.gov/api/xbrl") is None
+    assert classify_sec_surface("https://data.sec.gov/api/xbrl/") is None
+    assert classify_sec_surface("https://data.sec.gov/api/xbrl/other/x") is None
 
 
 def test_index_json_url_for_unhyphenates_accession() -> None:

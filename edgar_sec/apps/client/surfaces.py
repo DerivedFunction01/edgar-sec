@@ -14,6 +14,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from edgar_sec.apps.client.efts import EftsCapture, EftsQuery, EftsSearchResult
     from edgar_sec.apps.client.feeds import FeedEventsResult
+    from edgar_sec.apps.client.frames import FrameResult
     from edgar_sec.infra.sec_http.client import SecHttpClient
 
 
@@ -22,6 +23,22 @@ class FeedSearchSurfaces:
 
     artifacts_root: Path | None
     sec_client: SecHttpClient
+
+    def frames(
+        self,
+        taxonomy: str,
+        tag: str,
+        unit: str,
+        period: str,
+    ) -> "FrameResult":
+        """Fetch one SEC frame's cross-company aggregates for a concept.
+
+        Cross-check only: rows are SEC aggregates carrying the frame
+        identity as provenance, never per-filing facts.
+        """
+        from edgar_sec.apps.client.frames import fetch_frame
+
+        return fetch_frame(taxonomy, tag, unit, period, client=self.sec_client)
 
     def feed_events(
         self,

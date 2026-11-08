@@ -65,6 +65,18 @@ SURFACE_POLICIES: dict[str, SurfacePolicy] = {
             "sec.ttl.submissions_bulk",
         ),
         SurfacePolicy(
+            "companyfacts",
+            SURFACE_KIND_TRANSIENT,
+            "filing events",
+            "sec.ttl.companyfacts",
+        ),
+        SurfacePolicy(
+            "frames",
+            SURFACE_KIND_TRANSIENT,
+            "filing events",
+            "sec.ttl.frames",
+        ),
+        SurfacePolicy(
             "companyconcept",
             SURFACE_KIND_TRANSIENT,
             "filing events",
@@ -263,6 +275,8 @@ def _ttl_specs() -> dict[str, SettingSpec]:
             "freshness window for the submissions bulk archive"
         ),
         "companyconcept": _ttl_spec("freshness window for companyconcept JSON"),
+        "companyfacts": _ttl_spec("freshness window for companyfacts JSON"),
+        "frames": _ttl_spec("freshness window for frames JSON"),
         "company_tickers": _ttl_spec("freshness window for company_tickers.json"),
         "company_tickers_exchange": _ttl_spec(
             "freshness window for company_tickers_exchange.json"

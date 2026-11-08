@@ -111,6 +111,16 @@ def companyconcept_url(cik: str | int, taxonomy: str, tag: str) -> str:
     )
 
 
+def companyfacts_url(cik: str | int) -> str:
+    """Return the companyfacts URL for one CIK's full facts document."""
+    return f"{SEC_XBRL_API_BASE}/companyfacts/CIK{normalize_cik(cik)}.json"
+
+
+def frames_url(taxonomy: str, tag: str, unit: str, period: str) -> str:
+    """Return the frames URL for one concept aggregated over one period."""
+    return f"{SEC_XBRL_API_BASE}/frames/{taxonomy}/{tag}/{unit}/{period}.json"
+
+
 def archives_url(
     cik: str | int,
     accession_number: str,
@@ -425,6 +435,8 @@ SURFACE_SUBMISSIONS = "submissions"
 SURFACE_SUBMISSIONS_HISTORICAL_SHARDS = "submissions_historical_shards"
 SURFACE_SUBMISSIONS_BULK = "submissions_bulk"
 SURFACE_COMPANYCONCEPT = "companyconcept"
+SURFACE_COMPANYFACTS = "companyfacts"
+SURFACE_FRAMES = "frames"
 SURFACE_ARCHIVE_DOCUMENTS = "archive_documents"
 SURFACE_ARCHIVE_INDEX_PAGES = "archive_index_pages"
 SURFACE_ARCHIVE_INDEX_JSON = "archive_index_json"
@@ -446,6 +458,8 @@ SEC_SURFACES: tuple[str, ...] = (
     SURFACE_SUBMISSIONS_HISTORICAL_SHARDS,
     SURFACE_SUBMISSIONS_BULK,
     SURFACE_COMPANYCONCEPT,
+    SURFACE_COMPANYFACTS,
+    SURFACE_FRAMES,
     SURFACE_ARCHIVE_DOCUMENTS,
     SURFACE_ARCHIVE_INDEX_PAGES,
     SURFACE_ARCHIVE_INDEX_JSON,
@@ -469,6 +483,8 @@ URL_BUILDER_SURFACES: dict[str, str] = {
     "historical_submissions_url": SURFACE_SUBMISSIONS_HISTORICAL_SHARDS,
     "submissions_bulk_url": SURFACE_SUBMISSIONS_BULK,
     "companyconcept_url": SURFACE_COMPANYCONCEPT,
+    "companyfacts_url": SURFACE_COMPANYFACTS,
+    "frames_url": SURFACE_FRAMES,
     "archives_url": SURFACE_ARCHIVE_DOCUMENTS,
     "index_url_for": SURFACE_ARCHIVE_INDEX_PAGES,
     "index_json_url_for": SURFACE_ARCHIVE_INDEX_JSON,
@@ -490,7 +506,9 @@ SEC_SURFACE_RULES: tuple[tuple[str, str, str], ...] = (
         r"^/submissions/[^/]*-submissions-[^/]*\.json$",
     ),
     (SURFACE_SUBMISSIONS, "data.sec.gov", r"^/submissions(/|$)"),
-    (SURFACE_COMPANYCONCEPT, "data.sec.gov", r"^/api/xbrl(/|$)"),
+    (SURFACE_COMPANYCONCEPT, "data.sec.gov", r"^/api/xbrl/companyconcept(/|$)"),
+    (SURFACE_COMPANYFACTS, "data.sec.gov", r"^/api/xbrl/companyfacts(/|$)"),
+    (SURFACE_FRAMES, "data.sec.gov", r"^/api/xbrl/frames(/|$)"),
     (SURFACE_CURRENT_FILINGS, "www.sec.gov", r"^/cgi-bin/browse-edgar"),
     (SURFACE_EFTS, "efts.sec.gov", r"^/LATEST/search-index$"),
     (
@@ -593,6 +611,8 @@ __all__ = [
     "SURFACE_ARCHIVE_INDEX_PAGES",
     "SURFACE_CIK_LOOKUP",
     "SURFACE_COMPANYCONCEPT",
+    "SURFACE_COMPANYFACTS",
+    "SURFACE_FRAMES",
     "SURFACE_CURRENT_FILINGS",
     "SURFACE_EFTS",
     "SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES",
@@ -614,6 +634,8 @@ __all__ = [
     "archives_url",
     "classify_sec_surface",
     "companyconcept_url",
+    "companyfacts_url",
+    "frames_url",
     "current_filings_url",
     "efts_search_url",
     "full_submission_url_for",
