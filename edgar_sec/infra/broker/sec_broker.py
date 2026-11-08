@@ -130,6 +130,8 @@ class SecBroker:
         self._semaphore = threading.Semaphore(self._max_connections)
         self._server: socket.socket | None = None
         self._stop = threading.Event()
+        self._ready = threading.Event()
+        self._start_error: BaseException | None = None
 
     @property
     def metrics(self) -> HttpMetrics:
@@ -475,10 +477,17 @@ class SecBroker:
         except FileNotFoundError:
             pass
         server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-        server.bind(str(self.socket_path))
-        server.listen(_SOCKET_BACKLOG)
+        try:
+            server.bind(str(self.socket_path))
+            server.listen(_SOCKET_BACKLOG)
+        except BaseException as exc:
+            self._start_error = exc
+            self._ready.set()
+            server.close()
+            raise
         server.settimeout(0.5)
         self._server = server
+        self._ready.set()
         try:
             while not self._stop.is_set():
                 try:
@@ -501,6 +510,22 @@ class SecBroker:
                 self.socket_path.unlink()
             except FileNotFoundError:
                 pass
+
+    def wait_ready(self, timeout_s: float) -> None:
+        """Block until serve() signals the socket is bound and listening.
+
+        A rendezvous, not a poll: scheduling delay cannot fail the wait;
+        the timeout guards only a hang, and startup failures re-raise.
+        """
+        if not self._ready.wait(timeout_s):
+            raise RuntimeError(
+                f"SecBroker serve thread never signaled readiness on "
+                f"{self.socket_path} within {timeout_s}s (hang, not slow start)"
+            )
+        if self._start_error is not None:
+            raise RuntimeError(
+                f"SecBroker failed to start on {self.socket_path}"
+            ) from self._start_error
 
     def stop(self) -> None:
         self._stop.set()

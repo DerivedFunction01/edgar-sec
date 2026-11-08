@@ -3,9 +3,8 @@
 from __future__ import annotations
 
 import threading
-import time
 from collections.abc import Iterator
-from contextlib import contextmanager, suppress
+from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
@@ -21,9 +20,13 @@ def managed_broker(
     socket_path: str | Path,
     http_client: Any | None = None,
     max_connections: int = 32,
-    ready_timeout_s: float = 5.0,
+    ready_timeout_s: float = 60.0,
 ) -> Iterator[SecBrokerClient]:
-    """Context manager hosting a live SecBroker server for the duration of a block."""
+    """Context manager hosting a live SecBroker server for the duration of a block.
+
+    Startup waits on the broker's readiness signal (set once the socket
+    listens); ready_timeout_s is only a hang guard.
+    """
     path = Path(socket_path)
     path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
     server = SecBroker(
@@ -35,23 +38,16 @@ def managed_broker(
     thread.start()
 
     client = SecBrokerClient(path)
-    deadline = time.monotonic() + ready_timeout_s
-    ready = False
-    while time.monotonic() < deadline:
-        with suppress(Exception):
-            result = client.fetch(HEALTHCHECK_URL)
-            if isinstance(result, dict) and result.get("status") == "ok":
-                ready = True
-                break
-        time.sleep(0.05)
-
-    if not ready:
+    try:
+        server.wait_ready(ready_timeout_s)
+        result = client.fetch(HEALTHCHECK_URL)
+        if not (isinstance(result, dict) and result.get("status") == "ok"):
+            raise RuntimeError(f"SecBroker healthcheck failed on {path}: {result!r}")
+    except BaseException:
         client.close()
         server.stop()
         thread.join(timeout=2.0)
-        raise RuntimeError(
-            f"SecBroker failed to start on {path} within {ready_timeout_s}s"
-        )
+        raise
 
     try:
         yield client
