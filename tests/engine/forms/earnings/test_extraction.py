@@ -169,6 +169,31 @@ def test_image_only_exhibit_is_refused_not_ocred() -> None:
     assert [s.kind for s in result.review_signals] == ["image_exhibit_refused"]
 
 
+def test_numbered_candidate_declaring_foreign_exhibit_is_flagged() -> None:
+    """An EX-99.2 candidate whose body declares another exhibit is flagged."""
+    candidates = select_exhibit_candidates((("ex99-2.htm", "EX-99.2"),))
+    body = b"<html><body><p>EXHIBIT 10.1</p><p>Material contract.</p></body></html>"
+    payloads = tuple(ExhibitPayload(candidate=c, raw=body) for c in candidates)
+    result = extract_earnings_payloads(
+        accession="0000000000-00-000001", form="8-K", payloads=payloads
+    )
+    assert [s.kind for s in result.review_signals] == ["possible_role_mismatch"]
+
+
+def test_numbered_candidate_declaring_itself_is_not_flagged() -> None:
+    """An EX-99.2 candidate whose body declares 99.2 raises no role mismatch."""
+    candidates = select_exhibit_candidates((("ex99-2.htm", "EX-99.2"),))
+    body = (
+        b"<html><body><p>EXHIBIT 99.2</p><p>FOR IMMEDIATE RELEASE</p>"
+        b"<p>Company announced results today.</p></body></html>"
+    )
+    payloads = tuple(ExhibitPayload(candidate=c, raw=body) for c in candidates)
+    result = extract_earnings_payloads(
+        accession="0000000000-00-000001", form="8-K", payloads=payloads
+    )
+    assert [s.kind for s in result.review_signals] == ["no_statement_tables"]
+
+
 def test_unacquired_payload_is_a_review_signal() -> None:
     """A selected exhibit whose payload is missing is accounted, not dropped."""
     candidates = select_exhibit_candidates((("ex99-1.htm", "EX-99.1"),))
