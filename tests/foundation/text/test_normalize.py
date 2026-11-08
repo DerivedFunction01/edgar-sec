@@ -3,6 +3,7 @@
 from edgar_sec.foundation.text.normalize import (
     collapse_excessive_blank_lines,
     collapse_whitespace,
+    fold_smart_quotes,
     sanitize_unicode_whitespace,
 )
 
@@ -16,6 +17,20 @@ def test_sanitize_unicode_whitespace() -> None:
     # Zero-width spaces and markers
     with_zw = "Securities\u200b\u200c\u200dExchange"
     assert sanitize_unicode_whitespace(with_zw) == "SecuritiesExchange"
+
+
+def test_fold_smart_quotes() -> None:
+    raw = "\u201cTotal stockholders\u2019 equity,\u201d said \u2018management\u2019"
+    assert fold_smart_quotes(raw) == "\"Total stockholders' equity,\" said 'management'"
+    # Primes are not quotes in filing text and pass through untouched.
+    assert fold_smart_quotes("5\u2032 6\u2033") == "5\u2032 6\u2033"
+    assert fold_smart_quotes("") == ""
+
+
+def test_sanitize_preserves_smart_quotes() -> None:
+    # Canonicalization preserves recorded quotes; matchers fold at their own seam.
+    raw = "Stonie R. O\u2019Briant"
+    assert sanitize_unicode_whitespace(raw) == raw
 
 
 def test_collapse_whitespace() -> None:

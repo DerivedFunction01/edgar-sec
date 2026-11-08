@@ -177,3 +177,20 @@ def test_unacquired_payload_is_a_review_signal() -> None:
         accession="0000000000-00-000001", form="8-K", payloads=payloads
     )
     assert [s.kind for s in result.review_signals] == ["payload_not_acquired"]
+
+
+def test_curly_apostrophe_balance_sheet_specimen_earns_its_role() -> None:
+    """A balance sheet whose equity label carries U+2019 still earns the role."""
+    html = (
+        "<html><body><table>"
+        "<tr><td>Total assets</td><td>100</td></tr>"
+        "<tr><td>Total liabilities</td><td>40</td></tr>"
+        "<tr><td>Total stockholders\u2019 equity</td><td>60</td></tr>"
+        "</table></body></html>"
+    ).encode()
+    candidates = select_exhibit_candidates((("ex99-1.htm", "EX-99.1"),))
+    payloads = tuple(ExhibitPayload(candidate=c, raw=html) for c in candidates)
+    result = extract_earnings_payloads(
+        accession="0000000000-00-000001", form="8-K", payloads=payloads
+    )
+    assert any("balance_sheet" in table.roles for table in result.tables)
