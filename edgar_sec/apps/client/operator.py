@@ -472,10 +472,18 @@ GATHERERS: dict[str, Callable[[ClientSession], Any]] = {}
 
 
 def _register_sibling_rows() -> None:
-    from edgar_sec.apps.client import operator_selection
+    from edgar_sec.apps.client import (
+        operator_fetch,
+        operator_run_records,
+        operator_selection,
+    )
 
     operator_selection.register(REGISTRY)
     GATHERERS.update(operator_selection.GATHERERS)
+    operator_fetch.register(REGISTRY)
+    GATHERERS.update(operator_fetch.GATHERERS)
+    operator_run_records.register(REGISTRY)
+    GATHERERS.update(operator_run_records.GATHERERS)
 
 
 _register_sibling_rows()
