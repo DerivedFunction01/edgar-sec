@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import sys
 
+from edgar_sec.foundation.runtime.render import KeyValueRow, render_output
 from edgar_sec.foundation.runtime.settings.validators import positive_int_type
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.dag.cli import (
@@ -90,12 +91,17 @@ def _cmd_execute(args: argparse.Namespace) -> int:
             )
         )
     else:
-        print(
-            f"Executed run {result.run_id}: snapshot {result.snapshot_id}, "
-            f"{result.chunks} chunks, {result.filings} filings, "
-            f"{result.solved_count} solved, "
-            f"{result.quarantine_count} quarantined, "
-            f"{result.hypotheses_count} hypotheses, {result.wall_ms} ms"
+        render_output(
+            [
+                KeyValueRow("snapshot_id", result.snapshot_id),
+                KeyValueRow("chunks", str(result.chunks)),
+                KeyValueRow("filings", str(result.filings)),
+                KeyValueRow("solved_count", str(result.solved_count)),
+                KeyValueRow("quarantine_count", str(result.quarantine_count)),
+                KeyValueRow("hypotheses_count", str(result.hypotheses_count)),
+                KeyValueRow("wall_ms", f"{result.wall_ms} ms"),
+            ],
+            title=f"Executed run {result.run_id}",
         )
     return 0
 

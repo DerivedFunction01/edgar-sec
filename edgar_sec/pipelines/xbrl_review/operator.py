@@ -16,6 +16,7 @@ from edgar_sec.foundation.runtime.interactive import (
     operator_entrypoint,
     prompt_paginated_choice,
 )
+from edgar_sec.foundation.runtime.render import KeyValueRow, render_output
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.infra.storage.review.diff import compare_review_runs
 from edgar_sec.pipelines.xbrl_review.cli import main as cli_main
@@ -90,13 +91,15 @@ def _action_generate_review() -> None:
 
     print(f"\nGenerating review artifacts for {len(filings)} filing(s)...")
     run = execute_review_generation(filings)
-    print(
-        f"Review run created: {run.run_id}\n"
-        f"  Total filings:   {run.total_filings}\n"
-        f"  Solved nodes:    {run.solved_count}\n"
-        f"  Quarantined:     {run.quarantine_count}\n"
-        f"  Hypotheses:      {run.hypotheses_count}\n"
-        f"  Output path:     {run.run_dir}"
+    render_output(
+        [
+            KeyValueRow("Total filings", str(run.total_filings)),
+            KeyValueRow("Solved nodes", str(run.solved_count)),
+            KeyValueRow("Quarantined", str(run.quarantine_count)),
+            KeyValueRow("Hypotheses", str(run.hypotheses_count)),
+            KeyValueRow("Output path", str(run.run_dir)),
+        ],
+        title=f"Review run created: {run.run_id}",
     )
 
 
@@ -136,14 +139,16 @@ def _action_compare_runs() -> None:
         output_dir=diff_dir,
         adapter=adapter,
     )
-    print(
-        f"\nComparison Summary:\n"
-        f"  Total cases:  {summary.total_cases}\n"
-        f"  Unchanged:    {summary.unchanged_count}\n"
-        f"  Changed:      {summary.changed_count}\n"
-        f"  Added:        {summary.added_count}\n"
-        f"  Removed:      {summary.removed_count}\n"
-        f"  Diff report:  {diff_dir / 'summary.txt'}"
+    render_output(
+        [
+            KeyValueRow("Total cases", str(summary.total_cases)),
+            KeyValueRow("Unchanged", str(summary.unchanged_count)),
+            KeyValueRow("Changed", str(summary.changed_count)),
+            KeyValueRow("Added", str(summary.added_count)),
+            KeyValueRow("Removed", str(summary.removed_count)),
+            KeyValueRow("Diff report", str(diff_dir / "summary.txt")),
+        ],
+        title="Comparison Summary",
     )
 
 

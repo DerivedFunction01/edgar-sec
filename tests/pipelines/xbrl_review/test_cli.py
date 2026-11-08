@@ -4,10 +4,13 @@ import json
 from pathlib import Path
 
 import pyarrow as pa
+import pytest
 
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.infra.storage.parquet import write_parquet_table
+from edgar_sec.pipelines.xbrl_review import cli as cli_module
 from edgar_sec.pipelines.xbrl_review.cli import build_parser, main
+from edgar_sec.pipelines.xbrl_review.execution import ExecutionResult
 from edgar_sec.pipelines.xbrl_review.paths import HYPOTHESES_FILE
 from edgar_sec.pipelines.xbrl_review.review import execute_review_generation
 from edgar_sec.pipelines.xbrl_review.schemas import HYPOTHESES_SCHEMA
@@ -35,6 +38,58 @@ def test_build_parser_structure() -> None:
     assert "compare" in rev_p._subparsers._actions[1].choices
     assert "promote" in rev_p._subparsers._actions[1].choices
     assert "gates" in rev_p._subparsers._actions[1].choices
+
+
+def _stub_execution(monkeypatch: pytest.MonkeyPatch) -> None:
+    result = ExecutionResult(
+        run_id="run-42",
+        snapshot_id="snap-abc123",
+        chunks=5,
+        filings=12,
+        solved_count=90,
+        quarantine_count=3,
+        hypotheses_count=7,
+        wall_ms=1234.0,
+    )
+    monkeypatch.setattr(
+        cli_module,
+        "execute_projection_run",
+        lambda run_id, artifacts_root="": result,
+    )
+
+
+def test_cli_execute_text_renders_result_block(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture
+) -> None:
+    """Verify execute text mode renders as aligned key-values."""
+    _stub_execution(monkeypatch)
+    assert main(["execute", "--run-id", "run-42"]) == 0
+    out = capsys.readouterr().out
+    assert out == (
+        "Executed run run-42\n"
+        "  snapshot_id       snap-abc123\n"
+        "  chunks            5\n"
+        "  filings           12\n"
+        "  solved_count      90\n"
+        "  quarantine_count  3\n"
+        "  hypotheses_count  7\n"
+        "  wall_ms           1234.0 ms\n"
+    )
+
+
+def test_cli_execute_json_output_is_byte_exact(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture
+) -> None:
+    """Verify execute --json output keeps its exact serialized form."""
+    _stub_execution(monkeypatch)
+    assert main(["execute", "--run-id", "run-42", "--json"]) == 0
+    out = capsys.readouterr().out
+    assert out == (
+        '{"chunks": 5, "filings": 12, "hypotheses_count": 7, '
+        '"quarantine_count": 3, "run_id": "run-42", '
+        '"snapshot_id": "snap-abc123", "solved_count": 90, '
+        '"wall_ms": 1234.0}\n'
+    )
 
 
 def test_cli_promote_command(tmp_path: Path) -> None:
