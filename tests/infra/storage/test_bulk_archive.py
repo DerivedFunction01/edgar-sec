@@ -18,7 +18,10 @@ def _zip_bytes(members: dict[str, bytes]) -> bytes:
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w") as archive:
         for name, payload in members.items():
-            archive.writestr(name, payload)
+            # Fixed timestamp: a wall-clock entry time would make the
+            # "identical bytes" payloads differ across a 2 s boundary.
+            info = zipfile.ZipInfo(name, date_time=(2026, 1, 1, 0, 0, 0))
+            archive.writestr(info, payload)
     return buffer.getvalue()
 
 
