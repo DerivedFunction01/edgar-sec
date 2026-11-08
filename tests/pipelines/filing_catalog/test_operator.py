@@ -10,6 +10,7 @@ from typing import Any
 import pytest
 
 from edgar_sec.engine.selection.policy import SelectionPolicy
+from edgar_sec.foundation.runtime.interactive import MenuAction, MenuSeparator
 from edgar_sec.pipelines.filing_catalog import cli, operator
 from edgar_sec.pipelines.filing_catalog.operator import (
     MENU_TITLE,
@@ -45,8 +46,19 @@ def _stub_auto_policy(catalog: str, paths: Any = None) -> SelectionPolicy:
     )
 
 
+def _menu_actions() -> list[MenuAction]:
+    return [entry for entry in build_operator_menu() if isinstance(entry, MenuAction)]
+
+
+def test_the_menu_groups_its_actions_under_separators() -> None:
+    entries = build_operator_menu()
+    separators = [entry.title for entry in entries if isinstance(entry, MenuSeparator)]
+    assert separators == ["Catalogs, Plans & Snapshots", "Target Planning"]
+    assert [action.key for action in _menu_actions()] == ["1", "2", "3", "4", "5"]
+
+
 def test_the_menu_exposes_every_command_an_operator_can_drive() -> None:
-    labels = [action.label.lower() for action in build_operator_menu()]
+    labels = [action.label.lower() for action in _menu_actions()]
     assert any("report" in label for label in labels)
     assert any("materialize" in label or "dag" in label for label in labels)
     assert any("catalog" in label and "plan" in label for label in labels)
@@ -58,14 +70,14 @@ def test_every_cli_subcommand_is_reachable_one_way_or_the_other() -> None:
     """A command with no menu entry and no documented reason is dead surface."""
     menu = " ".join(
         (action.label + " " + action.callback.__name__).lower()
-        for action in build_operator_menu()
+        for action in _menu_actions()
     )
     for command in ("materialize", "plan", "expand", "status"):
         assert command in menu, command
 
 
 def test_every_action_is_callable() -> None:
-    for action in build_operator_menu():
+    for action in _menu_actions():
         assert callable(action.callback)
 
 
@@ -74,7 +86,7 @@ def test_every_action_is_callable() -> None:
 
 def test_actions_delegate_to_the_cli_commands() -> None:
     """The wizard must not reimplement behaviour the CLI already owns."""
-    for action in build_operator_menu():
+    for action in _menu_actions():
         assert action.callback.__module__ == operator.__name__
     assert operator.cmd_status is cli.cmd_status
     assert operator.cmd_plan is cli.cmd_plan
@@ -90,8 +102,8 @@ def test_a_supplied_command_bypasses_the_menu(monkeypatch: pytest.MonkeyPatch) -
     assert calls == [["status"]]
 
 
-def test_the_menu_title_names_the_phase() -> None:
-    assert "Filing Catalog" in MENU_TITLE
+def test_the_menu_title_names_the_pipeline() -> None:
+    assert MENU_TITLE == "Filing Catalog"
 
 
 def test_snapshot_console_launches_interactively(
@@ -207,7 +219,7 @@ def test_every_prompted_action_builds_a_usable_namespace(
     for name in ("cmd_status", "cmd_plan", "cmd_materialize", "cmd_expand"):
         monkeypatch.setattr(operator, name, _capture)
 
-    for action in build_operator_menu():
+    for action in _menu_actions():
         action.callback()
 
     assert [namespace.command for namespace in seen] == [
@@ -260,7 +272,7 @@ def test_no_action_ever_asks_for_the_artifacts_root(
     for name in ("cmd_status", "cmd_plan", "cmd_materialize", "cmd_expand"):
         monkeypatch.setattr(operator, name, lambda args: seen.append(args) or 0)
 
-    for action in build_operator_menu():
+    for action in _menu_actions():
         action.callback()
 
     # The policy action answers blank, which is its write-a-new-draft path.

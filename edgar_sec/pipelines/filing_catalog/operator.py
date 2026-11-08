@@ -18,6 +18,7 @@ from edgar_sec.domain.filing_catalog.schemas import (
 )
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    MenuSeparator,
     PickItem,
     build_menu,
     menu_action,
@@ -25,6 +26,7 @@ from edgar_sec.foundation.runtime.interactive import (
     prompt_paginated_choice,
     prompt_text,
 )
+from edgar_sec.foundation.runtime.render import KeyValueRow, render_output
 from edgar_sec.pipelines.filing_catalog.discovery import (
     auto_policy,
     current_catalog_id,
@@ -47,7 +49,7 @@ from .cli import main as cli_main
 
 __all__ = ["build_operator_menu", "main"]
 
-MENU_TITLE = "Filing Catalog (Phase 02)"
+MENU_TITLE = "Filing Catalog"
 
 
 def _namespace(
@@ -279,10 +281,14 @@ def _write_policy_draft(paths: FilingCatalogPaths, catalog: str) -> Path:
     destination = resolve_draft_path(paths.policies_root, stem)
     policy.write(destination)
     print(f"wrote policy draft {destination}")
-    print(f"  forms        {len(policy.forms)}")
-    print(f"  units        {policy.base_content_units}")
-    print(f"  dates        {policy.date_selection_text or '(all)'}")
-    print("  era bands    derived at plan time")
+    render_output(
+        [
+            KeyValueRow("forms", str(len(policy.forms))),
+            KeyValueRow("units", str(policy.base_content_units)),
+            KeyValueRow("dates", policy.date_selection_text or "(all)"),
+            KeyValueRow("era bands", "derived at plan time"),
+        ]
+    )
     print("edit the draft, then choose it to plan")
     return destination
 
@@ -377,14 +383,16 @@ def open_catalog_dag_console() -> None:
     run_dag_menu(config, argv=[])
 
 
-def build_operator_menu() -> tuple[MenuAction, ...]:
+def build_operator_menu() -> tuple[MenuAction | MenuSeparator, ...]:
     """Build the operator actions bound to the shared command functions."""
     return build_menu(
+        MenuSeparator("Catalogs, Plans & Snapshots"),
         menu_action("Report published catalogs and plans", _action_status),
         menu_action(
             "Snapshot DAG console (materialize/publish, switch current, inspect, branches, tags)",
             open_catalog_dag_console,
         ),
+        MenuSeparator("Target Planning"),
         menu_action("Publish a deterministic target plan", _action_plan),
         menu_action("Publish a selection policy plan", _action_plan_policy),
         menu_action("Expand a policy plan to more locators", _action_expand),
