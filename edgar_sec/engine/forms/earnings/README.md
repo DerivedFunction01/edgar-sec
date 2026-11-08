@@ -21,6 +21,8 @@ headline figures are review signals; image exhibits are refused.
 - **Every unextracted table is accounted**: fallback geometries, prose-borne headlines, and unstructureable exhibits each produce a named review signal with its specimen class; nothing is silently dropped or best-effort parsed.
 - **No EX-99 exhibit is honest absence**: the result carries `absence_reason="no_ex99_exhibit"` and no exhibit.
 - **Table indices are exhibit-local positions**: `table_index` counts the exhibit's geometries in order, matching the corpus record's inventory numbering; the geometry machinery's own index is not served.
+- **Numeric recognition is the shared forms vocabulary**: cell recognition goes through `engine/forms/common/numbers.py` (`clean_numeric`, built on the schema numeric tokens and currency token handling), as with the XML family processors; values are still served exactly as printed.
+- **Table roles stay lane-local by measurement**: a 2026-11-08 comparison over the Step 6 corpus (1,136 tables) scored the shared table-taxonomy classifier far below the lane heuristics on earnings exhibits (balance-sheet recall 3/81, 114 income-statement false positives, 7 headline components lost downstream), so roles are assigned by this package's heuristics; the classifier is not wired in. Record: `.artifacts/run-logs/2026-11-08-table-taxonomy-measurement.md`.
 
 ## Deliberate gaps
 

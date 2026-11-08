@@ -29,13 +29,13 @@ from edgar_sec.engine.forms.earnings.models import (
     HeadlineFigures,
     ReviewSignal,
 )
+from edgar_sec.engine.forms.common.numbers import clean_numeric
 from edgar_sec.engine.forms.earnings.selection import select_exhibit_candidates
 from edgar_sec.engine.forms.normalize import NormalizationResult, normalize_document
 from edgar_sec.engine.forms.plugins.exhibit_selection import evaluate_exhibit_body
 from edgar_sec.engine.tables.ascii_html.model import TableGeometry
 
 _WS_RE = re.compile(r"\s+")
-_NUMERIC_RE = re.compile(r"^\(?\$?\s*-?[\d][\d,]*(\.\d+)?\)?\s*%?$")
 _REVENUE_RE = re.compile(r"^(total\s+)?(net\s+)?(revenues?|sales)\b")
 _NET_INCOME_RE = re.compile(r"^net\s+(income|loss|earnings)\b")
 
@@ -75,7 +75,7 @@ def _label_of(row: tuple[str, ...]) -> str:
 def _first_numeric(row: tuple[str, ...]) -> str | None:
     for cell in row[1:]:
         collapsed = _collapse(cell)
-        if _NUMERIC_RE.match(collapsed):
+        if clean_numeric(collapsed) is not None:
             return collapsed
     return None
 
