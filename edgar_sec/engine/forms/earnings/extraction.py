@@ -34,6 +34,7 @@ from edgar_sec.engine.forms.earnings.selection import select_exhibit_candidates
 from edgar_sec.engine.forms.normalize import NormalizationResult, normalize_document
 from edgar_sec.engine.forms.plugins.exhibit_selection import evaluate_exhibit_body
 from edgar_sec.engine.tables.ascii_html.model import TableGeometry
+from edgar_sec.foundation.text.normalize import fold_smart_quotes
 
 _WS_RE = re.compile(r"\s+")
 _REVENUE_RE = re.compile(r"^(total\s+)?(net\s+)?(revenues?|sales)\b")
@@ -65,7 +66,7 @@ class _Structured:
 
 
 def _collapse(value: str) -> str:
-    return _WS_RE.sub(" ", value or "").strip()
+    return _WS_RE.sub(" ", fold_smart_quotes(value or "")).strip()
 
 
 def _label_of(row: tuple[str, ...]) -> str:

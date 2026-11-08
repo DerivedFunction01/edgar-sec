@@ -2,7 +2,7 @@
 
 Pattern vocabulary more than one layer needs: month tables and the ordered SEC
 date formats, bullet and roman-numeral tokens, the English closed-class word
-lists, Unicode whitespace normalisation, Cartesian phrase generation, soft-wrap
+lists, Unicode whitespace and quote normalisation, Cartesian phrase generation, soft-wrap
 line healing, and token-level matching. It does not parse documents and knows
 nothing about filings.
 

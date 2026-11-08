@@ -34,10 +34,26 @@ STRIP_ZERO_WIDTH = frozenset(
     }
 )
 
+FOLD_QUOTES = {
+    "\u2018": "'",  # LEFT SINGLE QUOTATION MARK
+    "\u2019": "'",  # RIGHT SINGLE QUOTATION MARK
+    "\u201c": '"',  # LEFT DOUBLE QUOTATION MARK
+    "\u201d": '"',  # RIGHT DOUBLE QUOTATION MARK
+}
+
+_FOLD_QUOTES_TRANS = str.maketrans(FOLD_QUOTES)
+
 _RE_STRIP_ZERO_WIDTH = re.compile(f"[{''.join(STRIP_ZERO_WIDTH)}]+")
 _RE_NORMALIZE_SPACE = re.compile(f"[{''.join(NORMALIZE_TO_SPACE)}]")
 _RE_MULTI_BLANKS = re.compile(r"\n{3,}")
 _RE_MULTI_SPACES = re.compile(r"[ \t]+")
+
+
+def fold_smart_quotes(text: str) -> str:
+    """Fold typographic quotes to ASCII, so one quote vocabulary reaches matchers."""
+    if not text:
+        return ""
+    return text.translate(_FOLD_QUOTES_TRANS)
 
 
 def sanitize_unicode_whitespace(text: str) -> str:
@@ -63,9 +79,11 @@ def collapse_excessive_blank_lines(text: str) -> str:
 
 
 __all__ = [
+    "FOLD_QUOTES",
     "NORMALIZE_TO_SPACE",
     "STRIP_ZERO_WIDTH",
     "collapse_excessive_blank_lines",
     "collapse_whitespace",
+    "fold_smart_quotes",
     "sanitize_unicode_whitespace",
 ]
