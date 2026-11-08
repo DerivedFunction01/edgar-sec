@@ -11,7 +11,8 @@ from typing import Any
 import pyarrow.parquet as pq
 import pytest
 
-from edgar_sec.domain.sec_urls import daily_index_url, submissions_url
+from edgar_sec.domain.index_urls import daily_index_url
+from edgar_sec.domain.sec_urls import submissions_url
 from edgar_sec.infra.sec_http.errors import PermanentHttpError
 from edgar_sec.pipelines.metadata_sync.commands.reconcile import cmd_reconcile
 from edgar_sec.pipelines.metadata_sync.discovery import current_snapshot_id

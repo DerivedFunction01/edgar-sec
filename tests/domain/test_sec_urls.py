@@ -16,9 +16,7 @@ from edgar_sec.domain.sec_urls import (
     companyfacts_url,
     frames_url,
     current_filings_url,
-    daily_index_url,
     efts_search_url,
-    full_index_url,
     historical_submissions_url,
     index_json_url_for,
     normalize_cik,
@@ -27,6 +25,7 @@ from edgar_sec.domain.sec_urls import (
     submissions_bulk_url,
     submissions_url,
 )
+from edgar_sec.domain.index_urls import daily_index_url, full_index_url
 
 
 def test_base_prefixes_are_canonical() -> None:
@@ -266,7 +265,7 @@ def test_dataset_builders_pin_their_shapes_and_surfaces() -> None:
 
 
 def test_dataset_builders_refuse_path_like_vintages() -> None:
-    from edgar_sec.domain.sec_urls import bdc_dataset_url, bdc_report_url
+    from edgar_sec.domain.dataset_urls import bdc_dataset_url, bdc_report_url
 
     with pytest.raises(ValueError):
         bdc_dataset_url("../2025q1")

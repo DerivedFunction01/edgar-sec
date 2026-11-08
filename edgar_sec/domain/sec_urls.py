@@ -104,117 +104,7 @@ def efts_search_url() -> str:
     return EFTS_SEARCH_BASE
 
 
-FULL_INDEX_FLAVOURS: tuple[str, ...] = (
-    "master",
-    "company",
-    "form",
-    "crawler",
-    "xbrl",
-)
-DAILY_INDEX_FLAVOURS: tuple[str, ...] = ("master", "company", "form", "crawler")
-_INDEX_EXTENSIONS: tuple[str, ...] = ("idx", "gz", "zip", "Z")
-
-
-def _index_quarter(year: int, quarter: int) -> str:
-    if not 1 <= int(quarter) <= 4:
-        raise ValueError(f"quarter must be in 1..4, got {quarter!r}")
-    return f"{int(year):04d}/QTR{int(quarter)}"
-
-
-def full_index_url(
-    year: int, quarter: int, flavour: str, extension: str = "idx"
-) -> str:
-    """Return one quarterly full-index file URL for a flavour.
-
-    The crawler flavour is served only uncompressed; the other flavours
-    are also served as ``gz`` / ``zip`` / ``Z`` archives of the same rows.
-    """
-    key = str(flavour).strip()
-    if key not in FULL_INDEX_FLAVOURS:
-        raise ValueError(f"unknown full-index flavour: {flavour!r}")
-    if extension not in _INDEX_EXTENSIONS:
-        raise ValueError(f"unknown index extension: {extension!r}")
-    if key == "crawler" and extension != "idx":
-        raise ValueError("the crawler index is served only as .idx")
-    return (
-        f"{SEC_EDGAR_BASE}/full-index/{_index_quarter(year, quarter)}/{key}.{extension}"
-    )
-
-
-def daily_index_url(day: date | str, flavour: str = "master") -> str:
-    """Return one daily-index file URL; the quarter derives from ``day``.
-
-    Daily files are per-day (``{flavour}.{YYYYMMDD}.idx``) and served only
-    uncompressed, so the day is the builder's primary input.
-    """
-    key = str(flavour).strip()
-    if key not in DAILY_INDEX_FLAVOURS:
-        raise ValueError(f"unknown daily-index flavour: {flavour!r}")
-    when = _coerce_index_day(day)
-    quarter = (when.month - 1) // 3 + 1
-    return (
-        f"{SEC_EDGAR_BASE}/daily-index/{_index_quarter(when.year, quarter)}"
-        f"/{key}.{when:%Y%m%d}.idx"
-    )
-
-
-def _coerce_index_day(day: date | str) -> date:
-    if isinstance(day, datetime):
-        return day.date()
-    if isinstance(day, date):
-        return day
-    text = str(day).strip()
-    for fmt in ("%Y-%m-%d", "%Y%m%d"):
-        try:
-            return datetime.strptime(text, fmt).date()
-        except ValueError:
-            continue
-    raise ValueError(f"day must be a date or ISO/YYYYMMDD string, got {day!r}")
-
-
 SEC_DATASETS_BASE = "https://www.sec.gov/files"
-
-
-def _dataset_vintage(vintage: str) -> str:
-    """Return a dataset vintage label, refusing anything path-like."""
-    label = str(vintage).strip()
-    if not label or "/" in label or "\\" in label or label.startswith("."):
-        raise ValueError(f"invalid dataset vintage: {vintage!r}")
-    return label
-
-
-def bdc_dataset_url(vintage: str) -> str:
-    """Return the BDC data-set ZIP URL for one vintage label."""
-    return (
-        f"{SEC_DATASETS_BASE}/datastandardsinnovation/data/"
-        f"business-development-company-bdc-data-sets/{_dataset_vintage(vintage)}_bdc.zip"
-    )
-
-
-def nmfp_dataset_url(vintage: str) -> str:
-    """Return the Form N-MFP data-set ZIP URL for one vintage label."""
-    return (
-        f"{SEC_DATASETS_BASE}/dera/data/form-n-mfp-data-sets/"
-        f"{_dataset_vintage(vintage)}_nmfp.zip"
-    )
-
-
-def mfrr_dataset_url(vintage: str) -> str:
-    """Return the MFRR data-set ZIP URL for one vintage label."""
-    return (
-        f"{SEC_DATASETS_BASE}/dera/data/mutual-fund-prospectus-risk/"
-        f"return-summary-data-sets/{_dataset_vintage(vintage)}_rr1.zip"
-    )
-
-
-def bdc_report_url(year: int) -> str:
-    """Return the SEC BDC Report CSV URL for one report year."""
-    if not 2000 <= int(year) <= 2100:
-        raise ValueError(f"BDC report year out of range: {year!r}")
-    return (
-        f"{SEC_DATASETS_BASE}/investment/data/other/"
-        f"business-development-company-report/business-development-company-{int(year)}.csv"
-    )
 
 
 def companyconcept_url(cik: str | int, taxonomy: str, tag: str) -> str:
@@ -803,22 +693,16 @@ __all__ = [
     "ArchiveUrlParts",
     "accession_hyphenated",
     "archives_url",
-    "bdc_dataset_url",
-    "bdc_report_url",
     "classify_sec_surface",
     "companyconcept_url",
     "companyfacts_url",
     "frames_url",
     "current_filings_url",
-    "daily_index_url",
-    "full_index_url",
     "efts_search_url",
     "full_submission_url_for",
     "historical_submissions_url",
     "index_json_url_for",
     "index_url_for",
-    "mfrr_dataset_url",
-    "nmfp_dataset_url",
     "normalize_accession",
     "normalize_cik",
     "parse_archive_url",

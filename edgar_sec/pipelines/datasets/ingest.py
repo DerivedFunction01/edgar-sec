@@ -10,7 +10,7 @@ from pathlib import Path
 
 from urllib.parse import urlsplit
 
-import edgar_sec.domain.sec_urls as sec_urls
+import edgar_sec.domain.dataset_urls as dataset_urls
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.streaming import StreamFailure
@@ -40,7 +40,7 @@ def build_http_client() -> SecHttpClient:
 
 def dataset_url(spec: DatasetSpec, vintage: str) -> str:
     """Return the registry URL for one vintage of a dataset set."""
-    builder = getattr(sec_urls, spec.builder)
+    builder = getattr(dataset_urls, spec.builder)
     return builder(vintage)
 
 
@@ -164,7 +164,7 @@ def import_bdc_population(
     store = BulkArchiveStore(paths.bulk_archives_root)
     yearly: dict[int, Path] = {}
     for year in years:
-        url = sec_urls.bdc_report_url(year)
+        url = dataset_urls.bdc_report_url(year)
         payload = http.get_bytes(url)
         raw = work / f"bdc-report-{year}.csv"
         raw.write_bytes(payload)

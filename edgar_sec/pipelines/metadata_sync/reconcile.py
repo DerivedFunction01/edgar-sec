@@ -13,7 +13,7 @@ from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.domain.sec_urls import daily_index_url
+from edgar_sec.domain.index_urls import daily_index_url
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.engine.index_pages.parser_idx import (
     IndexRow,
