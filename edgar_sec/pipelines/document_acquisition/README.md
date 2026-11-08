@@ -12,6 +12,10 @@ review menu: create and fill discovered fixtures, switch the active plan with `s
 generate parser reviews from captured selected bodies. Fixture fill fetches directly from
 the pinned plan and does not require an acquisition run.
 
+The package also carries a Feed-archives source leg: per-day SEC Feed tarballs are
+stored and inventoried into a published relation the planning machinery consumes,
+without acquiring any payload.
+
 ## Contracts
 
 - **Pinned selection policy**: Catalog-direct selection is exactly `submitted_primary` or `exact_form_with_lazy_index`; acquisition cannot replace or upgrade it.
@@ -39,6 +43,11 @@ the pinned plan and does not require an acquisition run.
 - **Processing boundary**: Engine owns candidate screening and resolves operation capability/handler pins from path facts; pipeline code owns source selection, the pinned operation contract, and staged outputs. SGML child filenames use content routes even when their names contain slashes.
 - **Transient ownership**: Acquired bodies remain under the shared transient root. Receipt-based cleanup is implemented in `snapshot/cleanup.py`: it removes a run's staging tree only when the publication receipt verifies against the snapshot DAG, or on explicit discard, and refuses a locked run.
 - **Payload boundary**: Snapshot payloads use separate binary and text Parquet relations; this package does not introduce an external CAS or durable payload directory.
+- **Feed archives are an inventory source, not an acquisition path**: `feed ingest --start --end` enumerates the stated range's per-day `.nc.tar.gz` units from the Feed directory listing, stores each in the shared bulk-archive store under source id `feed_archives`, and streams its SGML bundles into `feed_inventory` records (accession, CIK, form, filing date, bundle identity, archive SHA as lineage). Nothing enters the document store; payloads enter acquisition snapshots only through pinned plans over the published inventory.
+- **Feed inventory is streamed, never materialized**: Tarballs are read in stream mode one bundle at a time and only a bounded header segment of each bundle is parsed; a day's tarball is never held whole in memory and never extracted to disk outside the store.
+- **Feed publication is branch-isolated and delta-only**: The `feed_inventory` relation publishes on the dedicated `feed_archives` DAG branch in the existing snapshots root through the anti-join publish, so re-publishing known bundles is a no-op and run-publication lineage on `main` is untouched; the existing snapshot query and status machinery consumes the relation unchanged.
+- **Feed ingest resumes by content identity**: A day is skipped only when it is both in the store by its source URL and its archive SHA is already in the published inventory, so a crash between store-put and publish re-inventories from the stored bytes with no network fetch, and a fully ingested day is never re-fetched.
+- **Feed tarballs follow bulk-store default retention**: Stored tarballs prune to the newest per-source retention like every bulk source; the DAG-published inventory is the durable record, and a pruned day re-downloads on demand because the surface is static.
 
 ## Deliberate gaps
 
@@ -58,12 +67,16 @@ the pinned plan and does not require an acquisition run.
 - **No authorized XBRL ZIP execution or asset filtering**: A constructed ZIP
   candidate is not authorization to fetch/unzip it. Availability and selection of
   assets inside a complete-submission text file also lack a policy.
+- **No Feed payload leg**: The Feed-archives leg publishes inventory only; turning
+  an inventoried bundle into an acquired payload still requires a pinned plan, and
+  the firehose never becomes an unpinned acquisition path.
 
 ## Command surface
 
 <!-- AUTOGEN:COMMANDS:START -->
 | Subcommand | Description | Arguments |
 | :--- | :--- | :--- |
+| `feed` | Feed-archives source leg | — |
 | `fixture` | manage parser-body fixtures | — |
 | `project` | project a published target plan | `--plan-id`, `[--artifacts]`, `[--json]` |
 | `publish` | publish a completed run to the snapshot DAG | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--allow-errors]`, `[--artifacts]`, `[--json]` |
@@ -90,6 +103,8 @@ python run.py acquisition review holdout --run ./review-runs/run-NEW --spec ./ho
 python run.py acquisition publish --run-id RUN_ID --branch main
 python run.py acquisition snapshot status --branch main
 python run.py acquisition snapshot query --relation source_assets --branch main
+python run.py acquisition feed ingest --start 2026-11-02 --end 2026-11-06
+python run.py acquisition snapshot query --relation feed_inventory --branch feed_archives
 ```
 
 ## Artifact layout
@@ -97,6 +112,7 @@ python run.py acquisition snapshot query --relation source_assets --branch main
 <!-- AUTOGEN:PATHS:START -->
 ```text
 {artifacts_root}/
+├── bulk_archives/
 ├── document_acquisition/
 │   ├── fixtures/
 │   │   └── {fixture_id}/
@@ -113,6 +129,7 @@ python run.py acquisition snapshot query --relation source_assets --branch main
 ├── runtime/
 └── transient/
     └── document_acquisition/
+        ├── feed_archives/
         └── {run_id}/
             ├── handoff/
             │   └── receipts/

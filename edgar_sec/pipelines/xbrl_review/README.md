@@ -10,6 +10,11 @@ A projection run starts from a dataset of filing accessions (`project`), is exec
 
 The package provides both an interactive terminal console with paginated choice selection and a scriptable CLI supporting projection, execution, review artifact generation, objective diffing, gate-evidence computation, and rule promotion.
 
+The package also hosts the FSDS cross-check oracle: a pure comparison pass that
+joins solver-parsed facts against Financial Statement Data Sets rows over a
+stated panel and reports agreement and divergence classes. FSDS is an oracle
+here, never a source of answers.
+
 ## Contracts
 
 - **Zero Network Fetching**: This pipeline operates exclusively over pre-extracted filing facts, cohorts, and linkbase bundles; it makes no live requests to SEC EDGAR.
@@ -19,6 +24,10 @@ The package provides both an interactive terminal console with paginated choice 
 - **Gated Promotion**: A hypothesis promotes only with gate evidence recorded against it; `promote` refuses without passing census, pair-gate, and battery evidence, and promoted rules are loaded by later runs.
 - **Dataset-Only Projection**: Projection consumes a uniform dataset (JSON or Parquet) of filing accessions and writes a resumable work order; execution is a separate, explicit step.
 - **Self-Describing Quarantine**: The quarantine relation (schema v2) holds one row per (accession, concept) pair: `reason` from the engine's pair-level vocabulary (`QUARANTINE_REASONS` in `engine.xbrl.solve.counter_solver`, decided by exact-qname calc-arc membership and the unconsumed remainder's fact shape), `fact_count` as the pair's unconsumed fact count, and `period`/`numeric_value` from the pair's deterministic representative fact (undimensioned first, then period, value, unit, dimensions, context).
+- **FSDS oracle is a pure comparison**: The oracle pass takes FSDS facts, FSDS tag definitions, and solver facts as values and performs no store reads and no network I/O; assembling those inputs from the datasets store and the review bundles is the caller's work, because cross-pipeline imports are limited to paths and schemas.
+- **Segments are fact identity in the FSDS join**: Facts join on (accession, concept local name, unit, period end as YYYYMMDD, segments identity). The caller renders both sides into the same canonical segments form (`axis=member` pairs, sorted, `;`-joined); the oracle compares that string opaquely, so a dimensional fact never collapses onto its undimensioned counterpart.
+- **Custom tags branch on their version**: Tag semantics resolve through the FSDS tag definitions only. A standard (tag, version) pair joins by local concept name across accessions; a custom tag (`custom=1`) joins only when its version equals the fact's own accession — a custom fact carrying a foreign accession as its version is counted `custom_version_mismatch` and never joined, and a (tag, version) pair with no definition is counted `unresolved_tag`.
+- **Oracle outcome classes**: Per accession and panel-wide the pass reports agree / diverge / facts-only / solver-only, with each divergence carrying both sides' value tuples. Non-numeric solver facts are skipped, because FSDS num values are numeric-or-empty; an empty FSDS value diverges against a numeric solver value rather than agreeing with it.
 
 ## Deliberate gaps
 
@@ -27,6 +36,7 @@ The package provides both an interactive terminal console with paginated choice 
 - **No Catalog-Plan Projection**: Filing-catalog plans carry locator-group aggregates for acquisition planning, not per-filing XBRL work orders, so they are not a projection input; the dataset path is the only one.
 - **No Fixture Lifecycle**: Fixture create/fill/list belong to `pipelines.document_acquisition`'s fixture store. XBRL review generation consumes seed bundles resolved from the canonical cohort registry directly, so this package offers no fixture commands.
 - **Census Populations Live in the Tools Layer**: The scored census populations are produced by `edgar_sec.tools.xbrl_eval.xbrl_census` through the client facade; this pipeline scores that tool's summary with the engine's census expectations for gate evidence rather than re-implementing the populations.
+- **No FSDS serving and no oracle command**: FSDS rows are never served as answers from this package, and the oracle pass has no CLI or operator entry — a drive assembles the store rows and solver facts and calls the comparison directly.
 
 ## Command surface
 

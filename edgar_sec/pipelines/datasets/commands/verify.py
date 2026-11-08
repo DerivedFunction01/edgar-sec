@@ -34,6 +34,17 @@ def cmd_verify(options: DatasetsOptions) -> int:
                 f"report_only={check.report_only}",
             )
         )
+    for check in result.fsds:
+        rows.append(
+            KeyValueRow(
+                f"fsds_closure_{check.vintage}",
+                f"sub={check.sub_rows} num_accessions={check.num_accessions} "
+                f"orphans={check.num_orphan_accessions} "
+                f"sub_without_num={check.sub_without_num} "
+                f"num_pairs={check.num_tag_pairs} tag_pairs={check.tag_pairs} "
+                f"pair_divergence={check.tag_pair_divergence} ok={check.ok}",
+            )
+        )
     rows.append(KeyValueRow("ok", str(result.ok)))
     render_output(rows, title="Datasets Verify")
     return 0 if result.ok else 1

@@ -11,6 +11,7 @@ from .schema import (
     BINARY_PAYLOADS_SCHEMA,
     DOCUMENT_NOTES_SCHEMA,
     DOCUMENT_SECTIONS_SCHEMA,
+    FEED_INVENTORY_SCHEMA,
     LOGICAL_DOCUMENTS_SCHEMA,
     OPERATION_ATTEMPTS_SCHEMA,
     OPERATION_RESULTS_SCHEMA,
@@ -187,6 +188,15 @@ DOCUMENT_NOTES_SPEC = RelationSpec(
     entity_key="accession",
 )
 
+FEED_INVENTORY_SPEC = RelationSpec(
+    name="feed_inventory",
+    schema=FEED_INVENTORY_SCHEMA,
+    primary_key=("archive_sha256", "bundle_id"),
+    merge_strategy="append",
+    sort_order=("feed_date", "accession", "bundle_id"),
+    entity_key="accession",
+)
+
 ACQUISITION_RELATIONS: tuple[RelationSpec, ...] = (
     ACCESSION_CIKS_SPEC,
     SOURCE_ASSETS_SPEC,
@@ -206,6 +216,7 @@ ACQUISITION_RELATIONS: tuple[RelationSpec, ...] = (
     TEXT_PAYLOADS_SPEC,
     DOCUMENT_SECTIONS_SPEC,
     DOCUMENT_NOTES_SPEC,
+    FEED_INVENTORY_SPEC,
 )
 
 ACQUISITION_RELATIONS_BY_NAME: dict[str, RelationSpec] = {
@@ -221,6 +232,7 @@ __all__ = [
     "BINARY_PAYLOADS_SPEC",
     "DOCUMENT_NOTES_SPEC",
     "DOCUMENT_SECTIONS_SPEC",
+    "FEED_INVENTORY_SPEC",
     "LOGICAL_DOCUMENTS_SPEC",
     "OPERATION_ATTEMPTS_SPEC",
     "OPERATION_RESULTS_SPEC",

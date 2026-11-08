@@ -9,6 +9,10 @@ filings without managing intermediate pipeline states.
 It presents acquired targets as zero-copy Arrow, Pandas, or DuckDB relations, and supports
 lazy row-level polymorphic report projection (`as_report()`).
 
+The facade also exposes the SEC's pre-extracted company facts for one company
+(`Edgar.company_facts(cik)`), strictly as an oracle: SEC-reported values are
+compared against the parser's own output, never served as answers.
+
 ## Contracts
 
 - **Relational by default**: Filings cohorts are queried and exported as DataFrames rather than eager object graphs.
@@ -20,8 +24,11 @@ lazy row-level polymorphic report projection (`as_report()`).
 - **Zero-copy analytical query**: DuckDB queries run directly over Parquet partitions in the artifact store.
 - **Local-first submissions fallback**: When the fast path must fall back to submissions data, CIKs covered by the latest published submissions snapshot are materialized locally from it; only uncovered CIKs go to the live per-CIK fetch.
 - **Concept lookups serve reported values**: `Company.concept()` returns SEC-reported values exactly as reported, one row per data point with its provenance; it is a lookup and cross-check surface that never feeds the financial statements machinery.
+- **Company facts are cross-check only**: `Edgar.company_facts(cik)` fetches one CIK's companyfacts document through the shared `SecHttpClient` — rate limiter, identity, response cache, and failure ledger unchanged — and maps it to typed rows carrying taxonomy, tag, unit, value, period, accession, form, filed, and frame where served. The endpoint is an oracle against the parser's own output, not a serving source, and its rows are never re-shaped into a per-filing facts store at this layer.
+- **Facts comparison reports four outcome classes**: The cross-check consumer joins company-facts rows to instance-parsed values on (taxonomy, tag, unit, start, end), taking each key's facts side from its latest-filed point because amendment vintages coexist in the document, and reports agree / diverge / facts-only / parsed-only. A parsed absence is facts-only, never a divergence.
 
 ## Deliberate gaps
 
 - **No result-side state caching**: `FilingsResult` pointers reference published pipeline artifacts rather than client memory; caching lives in the bounded facade LRU and the SQLite document cache, not in the result model.
 - **No network code in data models**: `FilingsResult` and `FilingAggregate` issue no requests themselves; the fetch closures injected into an aggregate fetch live, lazily, when its payload is read.
+- **No company-facts serving leg**: Company facts have no answer path in this package; corpus-scale cross-check reads come from the bulk facts store published by `metadata_sync`, and a serving posture would require a new ruling.

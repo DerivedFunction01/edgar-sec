@@ -7,8 +7,8 @@ import pytest
 from edgar_sec.pipelines.datasets.specs import DATASET_SPECS, spec_for
 
 
-def test_adopted_sets_are_exactly_bdc_nmfp_mfrr() -> None:
-    assert sorted(DATASET_SPECS) == ["bdc", "mfrr", "nmfp"]
+def test_adopted_sets_are_exactly_bdc_nmfp_mfrr_fsds() -> None:
+    assert sorted(DATASET_SPECS) == ["bdc", "fsds", "mfrr", "nmfp"]
 
 
 def test_bdc_member_mapping_skips_soi_and_root_members() -> None:
@@ -33,6 +33,24 @@ def test_mfrr_member_mapping() -> None:
     spec = spec_for("mfrr")
     assert spec.relation_for("sub.tsv") == "mfrr_sub"
     assert spec.relation_for("scn.tsv") == "mfrr_scn"
+
+
+def test_fsds_member_mapping_uses_the_txt_suffix() -> None:
+    spec = spec_for("fsds")
+    assert spec.member_suffix == ".txt"
+    assert spec.relation_for("sub.txt") == "fsds_sub"
+    assert spec.relation_for("num.txt") == "fsds_num"
+    assert spec.relation_for("pre.txt") == "fsds_pre"
+    assert spec.relation_for("tag.txt") == "fsds_tag"
+    assert spec.relation_for("readme.htm") is None
+    assert spec.relation_for("sub.tsv") is None
+    assert spec.is_submission_member("sub.txt")
+
+
+def test_landed_specs_keep_the_default_tsv_suffix() -> None:
+    for set_id in ("bdc", "nmfp", "mfrr"):
+        assert spec_for(set_id).member_suffix == ".tsv"
+        assert spec_for(set_id).relation_for("tag.txt") is None
 
 
 def test_unknown_set_is_refused() -> None:

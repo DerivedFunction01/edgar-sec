@@ -36,6 +36,8 @@ from edgar_sec.pipelines.document_planning.paths import (
 )
 
 DATASET = "document_acquisition"
+BULK_ARCHIVES_DIR = "bulk_archives"
+FEED_STAGING_ID = "feed_archives"
 RUN_STATE_FILE = "state.sqlite"
 RUN_CANCELLED_FILE = "cancelled.json"
 RUN_STAGING_DIR = "staging"
@@ -67,6 +69,14 @@ class AcquisitionPaths:
         return resolve_document_planning_paths(
             artifacts_root=self.artifacts_root
         ).plan_dir(plan_id)
+
+    @property
+    def bulk_archives_root(self) -> Path:
+        return self.artifacts_root / BULK_ARCHIVES_DIR
+
+    @property
+    def feed_staging_root(self) -> Path:
+        return transient_dir(self.artifacts_root, DATASET, FEED_STAGING_ID)
 
     @property
     def fixtures_root(self) -> Path:
@@ -165,7 +175,9 @@ def resolve_acquisition_paths(
 
 
 __all__ = [
+    "BULK_ARCHIVES_DIR",
     "DATASET",
+    "FEED_STAGING_ID",
     "PLAN_TARGETS_DIR",
     "PUBLICATION_RECEIPT_FILE",
     "RUN_CANCELLED_FILE",

@@ -320,6 +320,33 @@ def _action_fixture_review_console() -> None:
     )
 
 
+def _action_feed_ingest() -> None:
+    start = prompt_text("First Feed day (YYYY-MM-DD)", "").strip()
+    end = prompt_text("Last Feed day (YYYY-MM-DD)", start).strip()
+    if not start or not end:
+        print("Feed ingest cancelled.")
+        return
+    if not prompt_confirm(
+        f"Ingest Feed tarballs {start}..{end} from SEC and publish inventory?",
+        default=False,
+    ):
+        print("Feed ingest cancelled; no network request was made.")
+        return
+    paths = resolve_acquisition_paths()
+    cli_main(
+        [
+            "feed",
+            "ingest",
+            "--start",
+            start,
+            "--end",
+            end,
+            "--artifacts",
+            str(paths.artifacts_root),
+        ]
+    )
+
+
 def _action_publish_run() -> None:
     paths = resolve_acquisition_paths()
     run_ids = discover_run_ids(paths)
@@ -383,6 +410,7 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
             _action_fixture_review_console,
             key="f",
         ),
+        menu_action("Ingest Feed archives inventory", _action_feed_ingest),
     )
 
 

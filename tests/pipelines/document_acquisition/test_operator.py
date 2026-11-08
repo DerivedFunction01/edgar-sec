@@ -34,9 +34,10 @@ def _console(tmp_path):
 
 def test_menu_routes_fixture_review_to_shared_console(monkeypatch):
     menu = operator.build_operator_menu()
-    assert [action.key for action in menu] == ["1", "2", "3", "p", "f"]
+    assert [action.key for action in menu] == ["1", "2", "3", "p", "f", "4"]
     assert "Snapshot DAG console" in menu[3].label
     assert "Fixtures and review console" in menu[4].label
+    assert "Feed archives" in menu[5].label
 
     from edgar_sec.infra.storage.review import operator as review_operator
 

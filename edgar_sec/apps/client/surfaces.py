@@ -13,9 +13,11 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
+    from edgar_sec.apps.client.companyfacts import CompanyFacts
     from edgar_sec.apps.client.efts import EftsCapture, EftsQuery, EftsSearchResult
     from edgar_sec.apps.client.feeds import FeedEventsResult
     from edgar_sec.apps.client.frames import FrameResult
+    from edgar_sec.domain.identity import Cik
     from edgar_sec.domain.document.aggregate import FilingAggregate
     from edgar_sec.engine.forms.earnings.models import EarningsExhibitResult
     from edgar_sec.infra.sec_http.client import SecHttpClient
@@ -42,6 +44,16 @@ class FeedSearchSurfaces:
         from edgar_sec.apps.client.frames import fetch_frame
 
         return fetch_frame(taxonomy, tag, unit, period, client=self.sec_client)
+
+    def company_facts(self, cik: str | int | "Cik") -> "CompanyFacts":
+        """Fetch one company's full SEC facts document, as reported.
+
+        Cross-check only: rows are the SEC's own reported values with
+        per-point provenance, never per-filing parsed facts.
+        """
+        from edgar_sec.apps.client.companyfacts import fetch_company_facts
+
+        return fetch_company_facts(cik, client=self.sec_client)
 
     def feed_events(
         self,

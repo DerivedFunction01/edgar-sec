@@ -17,10 +17,13 @@ from edgar_sec.foundation.runtime.paths import (
     RUN_LOCK_FILE,
     transient_dir,
 )
+from edgar_sec.infra.storage.dag.paths import DAGPaths
 
 from .roster import ROSTER_FILE_NAME
 
 METADATA_DIR = "metadata"
+FACTS_DIR = "facts"
+FACTS_STORE_FILE = "companyfacts.duckdb"
 BULK_ARCHIVES_DIR = "bulk_archives"
 PARTS_DIR = "parts"
 ROSTER_DIR = "roster"
@@ -54,6 +57,30 @@ class MetadataPaths:
     def bulk_archives_root(self) -> Path:
         """Root of the shared bulk-archive store (all sources, all pipelines)."""
         return self.artifacts_root / BULK_ARCHIVES_DIR
+
+    @property
+    def facts_root(self) -> Path:
+        """Root of the company-facts store and its published snapshots."""
+        return self.metadata_root / FACTS_DIR
+
+    @property
+    def facts_store_file(self) -> Path:
+        """The DuckDB company-facts store."""
+        return self.facts_root / FACTS_STORE_FILE
+
+    @property
+    def facts_snapshots_root(self) -> Path:
+        """Root of published facts snapshot directories, and of the pointer."""
+        return self.facts_root / foundation_paths.SNAPSHOTS_DIR
+
+    @property
+    def facts_catalog_file(self) -> Path:
+        """SQLite DAG catalog database for published facts snapshots."""
+        return DAGPaths(self.facts_snapshots_root).catalog_file
+
+    def facts_transient_dir(self, run_id: str) -> Path:
+        """Staging directory for one facts run, never published."""
+        return transient_dir(self.artifacts_root, METADATA_DIR, f"facts-{run_id}")
 
     @property
     def plans_root(self) -> Path:
@@ -172,6 +199,8 @@ __all__ = [
     "ASSIGNMENTS_DIR",
     "BULK_ARCHIVES_DIR",
     "CHUNKS_DIR",
+    "FACTS_DIR",
+    "FACTS_STORE_FILE",
     "FINGERPRINTS_FILE_NAME",
     "INPUT_DIR",
     "INPUT_MANIFEST_FILE",
