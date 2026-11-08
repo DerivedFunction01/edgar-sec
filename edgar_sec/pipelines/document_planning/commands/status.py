@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 
+from edgar_sec.foundation.runtime.render import Grid, render_output
 from edgar_sec.pipelines.document_planning.discovery import discover_document_plans
 from edgar_sec.pipelines.document_planning.paths import resolve_document_planning_paths
 from edgar_sec.pipelines.document_planning.profiles import discover_profiles
@@ -38,18 +39,46 @@ def cmd_status(args: argparse.Namespace) -> int:
     if args.json:
         print(json.dumps(result, sort_keys=True))
     else:
-        print("document-planning profiles")
-        for profile in profiles:
-            label = "valid" if profile["valid"] else f"invalid: {profile['error']}"
-            print(f"  {profile['profile_id']} v{profile['version'] or '?'} {label}")
-        print("published target plans")
-        for plan in plans:
-            label = (
-                "manifest-valid"
-                if plan["manifest_valid"]
-                else f"invalid: {plan['error']}"
-            )
-            print(f"  {plan['plan_id']} rows={plan['target_row_count']} {label}")
+        render_output(
+            [
+                Grid(
+                    headers=("Profile", "Version", "Status"),
+                    rows=tuple(
+                        (
+                            str(profile["profile_id"]),
+                            f"v{profile['version'] or '?'}",
+                            (
+                                "valid"
+                                if profile["valid"]
+                                else f"invalid: {profile['error']}"
+                            ),
+                        )
+                        for profile in profiles
+                    ),
+                )
+            ],
+            title="document-planning profiles",
+        )
+        render_output(
+            [
+                Grid(
+                    headers=("Plan", "Rows", "Status"),
+                    rows=tuple(
+                        (
+                            str(plan["plan_id"]),
+                            str(plan["target_row_count"]),
+                            (
+                                "manifest-valid"
+                                if plan["manifest_valid"]
+                                else f"invalid: {plan['error']}"
+                            ),
+                        )
+                        for plan in plans
+                    ),
+                )
+            ],
+            title="published target plans",
+        )
     return 0
 
 

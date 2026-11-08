@@ -5,6 +5,11 @@ from __future__ import annotations
 import argparse
 import json
 
+from edgar_sec.foundation.runtime.render import (
+    KeyValueRow,
+    RenderComponent,
+    render_output,
+)
 from edgar_sec.pipelines.document_planning.paths import resolve_document_planning_paths
 from edgar_sec.pipelines.document_planning.planner import (
     DocumentPlanningError,
@@ -48,14 +53,22 @@ def cmd_plan(args: argparse.Namespace) -> int:
     if args.json:
         print(json.dumps(summary, sort_keys=True))
     else:
-        print(f"published document plan {result.plan_id}")
-        print(f"  target rows       {summary['target_row_count']:,}")
-        print(f"  catalog plan      {summary['catalog_plan_id']}")
+        components: list[RenderComponent] = [
+            KeyValueRow("target rows", f"{summary['target_row_count']:,}"),
+            KeyValueRow("catalog plan", str(summary["catalog_plan_id"])),
+        ]
         if summary["inventory_snapshot_id"]:
-            print(f"  inventory snapshot {summary['inventory_snapshot_id']}")
-        print(f"  accession coverage {coverage}")
-        print(f"  status counts      {summary['status_counts']}")
-        print(f"  path               {summary['plan_path']}")
+            components.append(
+                KeyValueRow("inventory snapshot", str(summary["inventory_snapshot_id"]))
+            )
+        components.extend(
+            [
+                KeyValueRow("accession coverage", str(coverage)),
+                KeyValueRow("status counts", str(summary["status_counts"])),
+                KeyValueRow("path", str(summary["plan_path"])),
+            ]
+        )
+        render_output(components, title=f"published document plan {result.plan_id}")
     return 0
 
 
