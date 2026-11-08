@@ -5,6 +5,8 @@ Provides paginated pick-lists, bounded graph inspection, and pipeline integratio
 
 from __future__ import annotations
 
+import contextlib
+import io
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
@@ -12,12 +14,19 @@ from typing import Any
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    MenuSeparator,
     PickItem,
     build_menu,
     menu_action,
     operator_entrypoint,
     prompt_paginated_choice,
     prompt_text,
+)
+from edgar_sec.foundation.runtime.render import (
+    Grid,
+    KeyValueRow,
+    RenderComponent,
+    render_output,
 )
 from edgar_sec.foundation.runtime.settings import resolve_settings
 from edgar_sec.foundation.runtime.settings.dag import DEFAULT_DAG_GRAPH_LIMIT
@@ -67,15 +76,23 @@ class DAGMenuConfig:
         return self.specs
 
 
+def _rendered(components: list[RenderComponent], title: str = "") -> str:
+    buffer = io.StringIO()
+    with contextlib.redirect_stdout(buffer):
+        render_output(components, title=title)
+    return buffer.getvalue().removesuffix("\n")
+
+
 def render_dag_dashboard(config: DAGMenuConfig) -> str:
     """Render bounded O(1) header summary of the active snapshot repository."""
     root = config.resolve_root()
-    lines = ["=" * 72, f"   {config.title}", f"   Root: {root}"]
+    rows: list[RenderComponent] = [KeyValueRow("root", str(root))]
 
     if not root.exists():
-        lines.append("   Status: Uninitialized repository (no snapshots yet)")
-        lines.append("=" * 72)
-        return "\n".join(lines)
+        rows.append(
+            KeyValueRow("status", "Uninitialized repository (no snapshots yet)")
+        )
+        return _rendered(rows, title=config.title)
 
     ptr = read_pointer(root)
     branches = list_branches(root)
@@ -96,26 +113,36 @@ def render_dag_dashboard(config: DAGMenuConfig) -> str:
         catalog = DAGCatalog(root)
         tip = catalog.get_manifest(tip_id)
         if tip is not None:
-            lines.append(
-                f"   HEAD: (branch: current) -> {tip_id} ({tip.kind}) | Depth: {tip.lineage_depth}"
-            )
-            rel_counts = f"{len(tip.relations)} relations"
-            lines.append(
-                f"   Anchor: {tip.checkpoint_anchor_id} | {rel_counts} | Branches: {len(branches)} | Tags: {len(tags)}"
+            rows.extend(
+                [
+                    KeyValueRow("branch", "current"),
+                    KeyValueRow("head", f"{tip_id} ({tip.kind})"),
+                    KeyValueRow("depth", str(tip.lineage_depth)),
+                    KeyValueRow("anchor", tip.checkpoint_anchor_id),
+                    KeyValueRow("relations", str(len(tip.relations))),
+                    KeyValueRow("branches", str(len(branches))),
+                    KeyValueRow("tags", str(len(tags))),
+                ]
             )
         else:
-            lines.append(f"   HEAD: {tip_id} (manifest missing!)")
+            rows.append(KeyValueRow("head", f"{tip_id} (manifest missing!)"))
     else:
-        lines.append(
-            f"   HEAD: No active pointer | Branches: {len(branches)} | Tags: {len(tags)}"
+        rows.extend(
+            [
+                KeyValueRow("head", "No active pointer"),
+                KeyValueRow("branches", str(len(branches))),
+                KeyValueRow("tags", str(len(tags))),
+            ]
         )
 
     if staged_dirs:
-        lines.append(
-            f"   Staged Runs: {len(staged_dirs)} detected ({', '.join(staged_dirs[:3])})"
+        rows.append(
+            KeyValueRow(
+                "staged_runs",
+                f"{len(staged_dirs)} detected ({', '.join(staged_dirs[:3])})",
+            )
         )
-    lines.append("=" * 72)
-    return "\n".join(lines)
+    return _rendered(rows, title=config.title)
 
 
 def run_paginated_graph(
@@ -225,13 +252,15 @@ def _action_branch(config: DAGMenuConfig) -> None:
         if not branches:
             print("No branches found.")
             return
-        items = []
+        rows = []
         for b in branches:
             ptr = read_pointer(root, branch_name=None if b == "current" else b)
             s_id = str(ptr["snapshot_id"]) if ptr else "none"
-            prefix = "* " if b == "current" else "  "
-            items.append(PickItem(key=b, label=f"{prefix}{b:<16} -> {s_id}", value=b))
-        prompt_paginated_choice(items, prompt_label="Branches")
+            rows.append(("*" if b == "current" else "", b, s_id))
+        render_output(
+            [Grid(headers=("Current", "Branch", "Snapshot"), rows=tuple(rows))],
+            title="Branches",
+        )
     elif sub == "2":
         name = prompt_text("Branch name", "").strip()
         if not name:
@@ -266,18 +295,19 @@ def _action_tag(config: DAGMenuConfig) -> None:
         if not tags:
             print("No tags found.")
             return
-        items = []
-        for t in tags:
-            msg = f" [{t['message']}]" if t.get("message") else ""
-            date = t.get("created_at", "")[:10]
-            items.append(
-                PickItem(
-                    key=t["tag"],
-                    label=f"{t['tag']:<16} -> {t['snapshot_id']} ({date}){msg}",
-                    value=t["tag"],
-                )
+        rows = tuple(
+            (
+                t["tag"],
+                t["snapshot_id"],
+                t.get("created_at", "")[:10],
+                t.get("message") or "",
             )
-        prompt_paginated_choice(items, prompt_label="Tags")
+            for t in tags
+        )
+        render_output(
+            [Grid(headers=("Tag", "Snapshot", "Created", "Message"), rows=rows)],
+            title="Tags",
+        )
     elif sub == "2":
         name = prompt_text("Tag name", "").strip()
         if not name:
@@ -345,10 +375,12 @@ def _action_query_snapshot(config: DAGMenuConfig) -> None:
         print(f"Cannot open current snapshot: {exc}")
 
 
-def create_dag_menu(config: DAGMenuConfig) -> tuple[MenuAction, ...]:
+def create_dag_menu(
+    config: DAGMenuConfig,
+) -> tuple[MenuAction | MenuSeparator, ...]:
     """Construct MenuAction tuple for interactive DAG management."""
     root = config.resolve_root()
-    actions: list[MenuAction] = []
+    actions: list[MenuAction | MenuSeparator] = [MenuSeparator("Publish")]
 
     if config.publish_action is not None:
         actions.append(menu_action(config.publish_label, config.publish_action))
@@ -359,6 +391,7 @@ def create_dag_menu(config: DAGMenuConfig) -> tuple[MenuAction, ...]:
             lambda: _action_publish_staged(config),
         )
     )
+    actions.append(MenuSeparator("Inspect"))
     actions.append(
         menu_action(
             "View ASCII swimlane graph (paginated & filterable)",
@@ -375,6 +408,7 @@ def create_dag_menu(config: DAGMenuConfig) -> tuple[MenuAction, ...]:
                 lambda: _action_query_snapshot(config),
             )
         )
+    actions.append(MenuSeparator("Branches & Tags"))
     actions.append(
         menu_action(
             "Checkout / switch tip (pick-list: branches, tags, snapshots)",
@@ -393,6 +427,7 @@ def create_dag_menu(config: DAGMenuConfig) -> tuple[MenuAction, ...]:
             lambda: _action_tag(config),
         )
     )
+    actions.append(MenuSeparator("Maintenance"))
     if config.specs is not None:
         actions.append(
             menu_action(

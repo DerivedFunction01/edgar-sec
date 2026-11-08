@@ -28,10 +28,13 @@ def test_distrib_menu_config_and_dashboard(tmp_path: Path) -> None:
 
     dashboard = render_distrib_dashboard(config)
     assert "Worker Distribution Console" in dashboard
-    assert "Active Work: Mock work [work-1]" in dashboard
+    assert "active_work" in dashboard
+    assert "Mock work [work-1]" in dashboard
+    assert "=" * 72 not in dashboard
 
     menu_actions = create_distrib_menu(config)
     assert len(menu_actions) == 6
+    assert all(type(action).__name__ == "MenuAction" for action in menu_actions)
 
 
 def test_distrib_session_selects_adapter_work(
@@ -46,7 +49,7 @@ def test_distrib_session_selects_adapter_work(
 
 
 def test_distrib_menu_switch_work(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture
 ) -> None:
     from edgar_sec.infra.distribution.menu import _action_switch_work
 
@@ -67,3 +70,7 @@ def test_distrib_menu_switch_work(
     monkeypatch.setattr("builtins.input", lambda _: "2")
     _action_switch_work(config, session)
     assert session.work_id == "work-2"
+
+    out = capsys.readouterr().out
+    assert "Active Work Switched" in out
+    assert "work-2" in out

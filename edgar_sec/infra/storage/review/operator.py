@@ -15,6 +15,12 @@ from edgar_sec.foundation.runtime.interactive import (
     run_interactive_menu,
 )
 from edgar_sec.foundation.runtime.paths import resolve_paths
+from edgar_sec.foundation.runtime.render import (
+    Grid,
+    KeyValueRow,
+    ProseRow,
+    render_output,
+)
 
 from .adapter import ReviewAdapter
 from .diff import compare_review_runs
@@ -168,7 +174,13 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         adapter.create_fixture(
             fixture_id, plan["plan_id"], limit=limit, artifacts_root=root
         )
-        print(f"Fixture '{fixture_id}' created from plan '{plan['plan_id']}'.")
+        render_output(
+            [
+                KeyValueRow("fixture", fixture_id),
+                KeyValueRow("plan", plan["plan_id"]),
+            ],
+            title="Fixture Created",
+        )
 
     def _action_fill() -> None:
         plan = _plan_info() if config.require_active_plan else None
@@ -210,18 +222,30 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         else:
             result = config.fill_action(fixture_id, plan, limit, root)
         if result is not False:
-            print(f"Fixture '{fixture_id}' extended from plan '{plan['plan_id']}'.")
+            render_output(
+                [
+                    KeyValueRow("fixture", fixture_id),
+                    KeyValueRow("plan", plan["plan_id"]),
+                ],
+                title="Fixture Extended",
+            )
 
     def _action_list() -> None:
         fixtures = adapter.list_fixtures(root)
         if not fixtures:
             print("No fixtures found.")
             return
-        print(f"\nDiscovered {len(fixtures)} fixture(s):")
-        for f in fixtures:
-            fid = f.get("fixture_id", "unknown")
-            cases = f.get("case_count", f.get("total_cases", ""))
-            print(f"  * {fid:<24} ({cases} cases)")
+        rows = tuple(
+            (
+                str(f.get("fixture_id", "unknown")),
+                str(f.get("case_count", f.get("total_cases", ""))),
+            )
+            for f in fixtures
+        )
+        render_output(
+            [Grid(headers=("Fixture", "Cases"), rows=rows)],
+            title=f"Discovered {len(fixtures)} fixture(s):",
+        )
 
     def _action_generate() -> None:
         if config.require_active_plan and _plan_info() is None:
@@ -261,7 +285,10 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
             workers=workers,
             artifacts_root=root,
         )
-        print(f"Review artifacts written to: {output_dir}")
+        render_output(
+            [KeyValueRow("output_dir", str(output_dir))],
+            title="Review Artifacts Written",
+        )
 
     def _action_compare() -> None:
         runs: list[Path] = []
@@ -314,7 +341,8 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         compare_review_runs(
             base_dir=base_dir, new_dir=new_dir, output_dir=diff_dir, adapter=adapter
         )
-        print(ReviewPaths(diff_dir).summary_file.read_text(encoding="utf-8"))
+        summary_text = ReviewPaths(diff_dir).summary_file.read_text(encoding="utf-8")
+        render_output([ProseRow(line) for line in summary_text.splitlines() or [""]])
 
     def _action_analyze() -> None:
         if config.analyze_action is None:
@@ -364,7 +392,10 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
             )
             if chosen is not None:
                 session_plan = chosen.value
-                print(f"Active plan switched to {session_plan['plan_id']}")
+                render_output(
+                    [KeyValueRow("active_plan", str(session_plan["plan_id"]))],
+                    title="Active Plan Switched",
+                )
             return
         if not config.plans_root:
             print("No plans directory configured for this console.")
@@ -383,7 +414,10 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         )
         if chosen is not None:
             session_plan = chosen.value
-            print(f"Active plan switched to {session_plan['plan_id']}")
+            render_output(
+                [KeyValueRow("active_plan", str(session_plan["plan_id"]))],
+                title="Active Plan Switched",
+            )
 
     actions = [
         menu_action("Create fixture from a published plan", _action_create),
