@@ -231,7 +231,7 @@ def test_engine_builder_agrees_with_the_canonical_archive_shape() -> None:
 
 
 def test_dataset_builders_pin_their_shapes_and_surfaces() -> None:
-    from edgar_sec.domain.sec_urls import (
+    from edgar_sec.domain.dataset_urls import (
         bdc_dataset_url,
         bdc_report_url,
         mfrr_dataset_url,

@@ -115,7 +115,7 @@ def test_flags_a_no_store_policy_that_names_a_ttl(
 
 
 def test_static_interpretation_agrees_with_the_runtime_classifier() -> None:
-    from edgar_sec.domain import index_urls, sec_urls
+    from edgar_sec.domain import dataset_urls, index_urls, sec_urls
 
     book = sec_surface._load_rule_book()
     builders = {
@@ -146,6 +146,10 @@ def test_static_interpretation_agrees_with_the_runtime_classifier() -> None:
         "structured_feed_url": sec_urls.structured_feed_url("all"),
         "structured_archive_url": sec_urls.structured_archive_url(2026, 3),
         "efts_search_url": sec_urls.efts_search_url(),
+        "bdc_dataset_url": dataset_urls.bdc_dataset_url("2025q1"),
+        "nmfp_dataset_url": dataset_urls.nmfp_dataset_url("20220808-20220908"),
+        "mfrr_dataset_url": dataset_urls.mfrr_dataset_url("2010q4"),
+        "bdc_report_url": dataset_urls.bdc_report_url(2026),
     }
     assert set(builders) == set(sec_urls.URL_BUILDER_SURFACES)
     for builder_name, url in builders.items():
