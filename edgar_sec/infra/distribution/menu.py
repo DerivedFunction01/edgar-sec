@@ -10,6 +10,7 @@ from pathlib import Path
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    MenuSeparator,
     PickItem,
     build_menu,
     menu_action,
@@ -240,10 +241,11 @@ def _action_switch_work(config: DistribMenuConfig, session: DistribSession) -> N
 
 def create_distrib_menu(
     config: DistribMenuConfig, session: DistribSession | None = None
-) -> tuple[MenuAction, ...]:
+) -> tuple[MenuAction | MenuSeparator, ...]:
     root = config.resolve_root()
     active_session = session or DistribSession(config.work_id)
     actions = [
+        MenuSeparator("Worker Bundles"),
         menu_action(
             "List discovered worker bundles",
             lambda: cmd_list(config.adapter, destination=root),
@@ -264,6 +266,7 @@ def create_distrib_menu(
             "Render distributed execution commands",
             lambda: _action_commands(config, active_session),
         ),
+        MenuSeparator("Session"),
         menu_action(
             "Switch active work item",
             lambda: _action_switch_work(config, active_session),

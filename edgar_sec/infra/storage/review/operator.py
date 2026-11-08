@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 from edgar_sec.foundation.runtime.interactive import (
+    MenuSeparator,
     PickItem,
     prompt_paginated_choice,
     build_menu,
@@ -420,9 +421,11 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
             )
 
     actions = [
+        MenuSeparator("Fixtures"),
         menu_action("Create fixture from a published plan", _action_create),
         menu_action("Fill a discovered fixture from a plan", _action_fill),
         menu_action("List discovered fixtures", _action_list),
+        MenuSeparator("Review Runs"),
         menu_action("Generate parser review artifacts from fixture", _action_generate),
         menu_action("Compare two review runs (diff & summary)", _action_compare),
     ]
@@ -431,6 +434,7 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
     if (config.plans_root or config.plan_discovery is not None) and (
         config.require_active_plan or config.plan_summary is not None
     ):
+        actions.append(MenuSeparator("Session"))
         actions.append(menu_action("Switch active plan", _action_switch_plan, key="s"))
 
     menu = build_menu(*actions)

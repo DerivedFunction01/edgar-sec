@@ -33,8 +33,10 @@ def test_distrib_menu_config_and_dashboard(tmp_path: Path) -> None:
     assert "=" * 72 not in dashboard
 
     menu_actions = create_distrib_menu(config)
-    assert len(menu_actions) == 6
-    assert all(type(action).__name__ == "MenuAction" for action in menu_actions)
+    actions = [a for a in menu_actions if type(a).__name__ == "MenuAction"]
+    separators = [a.title for a in menu_actions if type(a).__name__ == "MenuSeparator"]
+    assert len(actions) == 6
+    assert separators == ["Worker Bundles", "Session"]
 
 
 def test_distrib_session_selects_adapter_work(
@@ -63,8 +65,12 @@ def test_distrib_menu_switch_work(
     adapter = TwoWorkAdapter()
     config = DistribMenuConfig(adapter=adapter, distribution_root=tmp_path)
     actions = create_distrib_menu(config)
-    assert len(actions) == 6
-    assert any("switch active work" in action.label.lower() for action in actions)
+    assert len([a for a in actions if type(a).__name__ == "MenuAction"]) == 6
+    assert any(
+        "switch active work" in action.label.lower()
+        for action in actions
+        if type(action).__name__ == "MenuAction"
+    )
 
     session = DistribSession("work-1")
     monkeypatch.setattr("builtins.input", lambda _: "2")

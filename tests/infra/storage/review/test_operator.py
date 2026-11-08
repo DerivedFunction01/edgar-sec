@@ -70,7 +70,8 @@ def test_list_fixtures_runs_and_exits(tmp_path: Path, monkeypatch, capsys) -> No
     assert "Cases" in out
     assert "fix-aaa" in out
     assert "fix-bbb" in out
-    assert "──" not in out
+    assert "── Fixtures" in out
+    assert "── Review Runs" in out
 
 
 def test_create_fixture_uses_the_provided_plan_and_proposes_fx_default(
