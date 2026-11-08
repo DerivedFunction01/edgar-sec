@@ -95,6 +95,7 @@ def test_the_menu_groups_its_actions_under_separators() -> None:
         "3",
         "4",
         "5",
+        "6",
         "d",
         "p",
     ]
