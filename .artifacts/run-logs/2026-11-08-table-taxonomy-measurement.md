@@ -49,3 +49,7 @@ The taxonomy's vocabulary does not earn its place on current earnings exhibits: 
 ## Common-numbers rework (same pass)
 
 Private `_NUMERIC_RE` removed from the earnings extraction; cell recognition now goes through `clean_numeric` in `engine/forms/common/numbers.py` (schema numeric tokens + currency token handling), the same shared machinery the XML family processors use. Values are still served as printed. Fixture-corpus extraction output before vs after the whole rework pass: **byte-identical** (7 specimens, full result dump diffed). No escape-hatch remnants: the only regexes left in the package are whitespace collapsing, the earnings-specific headline label patterns (no currency/unit/numeric vocabulary inside them), and the filename-family patterns in selection.
+
+## Gate on the reworked tip
+
+Scoped gate (`check.py tests/engine/forms tests/apps/client --workers 2`): all 21 scanners clean; pytest 1,888 passed, 1 failed — `test_statement_battery_audit.py::test_statement_graphs_reproduce_battery_facts`, an XBRL battery test that does not touch the earnings code. It passes in isolation both on the pre-rework tree (77s) and on the reworked tip (102s); the full-suite failure occurred under heavy box contention (suite wall time 37 min). The held-out drive ran on pre-rework code; its coverage claims ride table counts, roles, and headline values whose recognition path is proven fixture-identical above, and role assignment is unchanged by this pass — a drive re-run is not needed.
