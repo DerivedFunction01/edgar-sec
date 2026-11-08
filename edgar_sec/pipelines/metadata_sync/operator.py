@@ -12,6 +12,7 @@ from pathlib import Path
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    MenuSeparator,
     PickItem,
     build_menu,
     menu_action,
@@ -60,7 +61,7 @@ __all__ = [
     "render_session_header",
 ]
 
-MENU_TITLE = "Metadata Sync (Phase 01)"
+MENU_TITLE = "Metadata Sync"
 
 INTERRUPTED_MESSAGE = (
     "Interrupted. Completed chunks are preserved and will be skipped on resume;"
@@ -450,15 +451,20 @@ def open_metadata_dag_console(state: WizardState) -> None:
 # ----------------------------------------------------------------------- menu
 
 
-def build_operator_menu(state: WizardState | None = None) -> tuple[MenuAction, ...]:
+def build_operator_menu(
+    state: WizardState | None = None,
+) -> tuple[MenuAction | MenuSeparator, ...]:
     """Build the operator actions, bound to this session's state."""
     session = state if state is not None else WizardState()
     return build_menu(
+        MenuSeparator("Plan & Run"),
         menu_action("Plan generation", lambda: plan(session)),
         menu_action("Status and resume inspect", lambda: status(session)),
         menu_action("Run chunks", lambda: run(session)),
+        MenuSeparator("Snapshot Maintenance"),
         menu_action("Augment published snapshot", lambda: augment(session)),
         menu_action("Refresh from current-filings feed", lambda: refresh(session)),
+        MenuSeparator("Consoles"),
         menu_action(
             "Worker distribution console (export, worker, import, commands)",
             lambda: open_metadata_distrib_console(session),

@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pytest
 
+from edgar_sec.foundation.runtime.interactive import MenuAction, MenuSeparator
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest, PartDescriptor
 from edgar_sec.pipelines.metadata_sync import augment_flow
@@ -80,9 +81,27 @@ def _cohort_id(artifacts: Path) -> str:
 # ------------------------------------------------------------------------ menu
 
 
+def _menu_actions() -> list[MenuAction]:
+    return [entry for entry in build_operator_menu() if isinstance(entry, MenuAction)]
+
+
+def test_the_menu_groups_its_actions_under_separators() -> None:
+    entries = build_operator_menu()
+    separators = [entry.title for entry in entries if isinstance(entry, MenuSeparator)]
+    assert separators == ["Plan & Run", "Snapshot Maintenance", "Consoles"]
+    assert [action.key for action in _menu_actions()] == [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "d",
+        "p",
+    ]
+
+
 def test_menu_covers_the_whole_lifecycle() -> None:
-    menu = build_operator_menu()
-    labels = {action.key: action.label for action in menu}
+    labels = {action.key: action.label for action in _menu_actions()}
     assert "d" in labels and "distribution" in labels["d"].lower()
     assert "p" in labels and (
         "dag" in labels["p"].lower() or "snapshot" in labels["p"].lower()
@@ -94,12 +113,12 @@ def test_menu_covers_the_whole_lifecycle() -> None:
         for label in labels.values()
         for term in ("source", "cohort", "family-index")
     )
-    assert MENU_TITLE.startswith("Metadata Sync")
+    assert MENU_TITLE == "Metadata Sync"
 
 
 def test_every_menu_action_binds_to_a_shared_command() -> None:
     """A menu entry that points nowhere is how a command becomes dead surface."""
-    for action in build_operator_menu():
+    for action in _menu_actions():
         assert action.callback.__name__ == "<lambda>"
         assert callable(action.callback)
 
@@ -641,7 +660,7 @@ def test_main_states_that_completed_work_survives_an_interrupt(
             rendered.append(before_menu() or "")
         # Drive only status; the rest prompt for a plan this test has not set up.
         for action in actions:
-            if "status" in action.label.lower():
+            if isinstance(action, MenuAction) and "status" in action.label.lower():
                 try:
                     action.callback()
                 except KeyboardInterrupt:

@@ -9,6 +9,7 @@ from typing import Any
 import pytest
 
 from edgar_sec.domain.sec_urls import submissions_url
+from edgar_sec.foundation.runtime.interactive import MenuAction
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest
 from edgar_sec.pipelines.metadata_sync import augment_flow as flow
@@ -287,7 +288,11 @@ def test_no_published_cohorts_cancels_selection(
 
 def test_the_menu_still_delegates_augmentation_to_the_journey() -> None:
     """The action is a hand-off, so the menu owns no cohort logic."""
-    menu = {action.key: action for action in operator_module.build_operator_menu()}
+    menu = {
+        action.key: action
+        for action in operator_module.build_operator_menu()
+        if isinstance(action, MenuAction)
+    }
     assert menu["4"].label == "Augment published snapshot"
     assert callable(menu["d"].callback)
     assert callable(menu["p"].callback)
