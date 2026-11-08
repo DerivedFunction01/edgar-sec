@@ -41,6 +41,10 @@ the details below are the layer-level contracts only.
   owns review generation, its acquisition adapter, and shared-layout processing review evidence.
 - [`cohort/`](cohort/README.md) — Phase 0 cohort registry; manages shared cohort
   records and workspace expressions before metadata collection begins.
+- [`datasets/`](datasets/README.md) — SEC data-research dataset imports in the
+  oracle posture: BDC, N-MFP, and MFRR vintage ZIPs into a DuckDB store keyed
+  by content hash, the BDC Report population reference, and a DAG-published
+  index of the store.
 - [`xbrl_review/`](xbrl_review/README.md) — Multi-firm semantic lattice review,
   cohort staging, objective case comparison, and hypothesis rule promotion into the DuckDB knowledge base.
 - [`text_search/`](text_search/README.md) — Builds the materialized

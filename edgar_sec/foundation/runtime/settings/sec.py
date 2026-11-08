@@ -126,6 +126,26 @@ SURFACE_POLICIES: dict[str, SurfacePolicy] = {
             "immutable once the month completes",
         ),
         SurfacePolicy("efts", SURFACE_KIND_NO_STORE, "live index"),
+        SurfacePolicy(
+            "bdc_datasets",
+            SURFACE_KIND_STATIC,
+            "static per vintage; a re-posted vintage is a new content hash",
+        ),
+        SurfacePolicy(
+            "nmfp_datasets",
+            SURFACE_KIND_STATIC,
+            "static per vintage; a re-posted vintage is a new content hash",
+        ),
+        SurfacePolicy(
+            "mfrr_datasets",
+            SURFACE_KIND_STATIC,
+            "static per vintage; a re-posted vintage is a new content hash",
+        ),
+        SurfacePolicy(
+            "bdc_report",
+            SURFACE_KIND_STATIC,
+            "static per report year; a re-published year is a new content hash",
+        ),
     )
 }
 
