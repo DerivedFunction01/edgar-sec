@@ -156,7 +156,7 @@ def test_run_action_uses_paged_run_choice(monkeypatch) -> None:
     assert calls == [["run", "--run-id", "run-1", "--max-response-bytes", "4096"]]
 
 
-def test_console_discovers_only_fully_validated_s6_plans(tmp_path, monkeypatch) -> None:
+def test_console_discovers_only_fully_validated_plans(tmp_path, monkeypatch) -> None:
     console = _console(tmp_path)
     discoveries = [
         SimpleNamespace(plan_id="plan-a", plan=object()),
@@ -177,9 +177,9 @@ def test_console_discovers_only_fully_validated_s6_plans(tmp_path, monkeypatch) 
 
     assert console.plans() == [validated]
     assert console.plan_items()[0].value["plan_id"] == "plan-a"
-    assert console.plan_summary(None) == "Active S6 target plan: none"
+    assert console.plan_summary(None) == "Active target plan: none"
     assert console.plan_summary(console.plan_items()[0].value).startswith(
-        "Active S6 target plan: plan-a"
+        "Active target plan: plan-a"
     )
 
 

@@ -169,11 +169,78 @@ def test_status_target_view_is_exact_and_stable(capsys, tmp_path, monkeypatch):
             assert rows[0]["requested_url"].endswith("request.htm")
             assert rows[0]["source_sha256"] == "a" * 64
         else:
-            assert '"attempt_number": 1' in output
-            assert '"attempt_kind": "document_body"' in output
-            assert '"error_code": "transport_error"' in output
-            assert '"started_at_utc": "2025-01-01T00:00:00Z"' in output
+            assert "{" not in output
+            assert "attempt_number" in output
+            assert "document_body" in output
+            assert "transport_error" in output
+            assert "2025-01-01T00:00:00Z" in output
     assert events == ["manifest", "status", "target", ("attempts", target_id)] * 2
+
+
+def _fake_reports(monkeypatch, reports):
+    monkeypatch.setattr(status, "load_validated_work_order", lambda *_: ())
+    monkeypatch.setattr(
+        status, "inspect_run_state", lambda run_id, **_: reports[run_id]
+    )
+
+
+def test_status_text_list_renders_one_grid_row_per_run(capsys, tmp_path, monkeypatch):
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    paths.run_dir("run-b").mkdir(parents=True)
+    paths.run_dir("run-a").mkdir(parents=True)
+    reports = {
+        "run-a": AcquisitionStatusReport(
+            "run-a", "ready", {"pending": 1}, 0, 0, None, None
+        ),
+        "run-b": AcquisitionStatusReport(
+            "run-b",
+            "running",
+            {"pending": 2},
+            1,
+            2,
+            RunLockInfo("host", 100, "2025-01-01T00:00:00Z", "private-token"),
+            None,
+        ),
+    }
+    _fake_reports(monkeypatch, reports)
+
+    assert cli.main(["status", "--artifacts", str(tmp_path)]) == 0
+
+    output = capsys.readouterr().out
+    assert output.startswith("Acquisition Status\n")
+    assert "run_id" in output and "target_counts" in output
+    assert "run-a" in output and "ready" in output and "pending=1" in output
+    assert "run-b" in output and "running" in output and "pending=2" in output
+    assert "host=host pid=100" in output
+    assert "private-token" not in output
+
+
+def test_status_text_single_run_renders_key_value_block(capsys, tmp_path, monkeypatch):
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    paths.run_dir("run-1").mkdir(parents=True)
+    reports = {
+        "run-1": AcquisitionStatusReport(
+            "run-1", "ready", {"pending": 1, "acquired": 2}, 3, 1, None, None
+        )
+    }
+    _fake_reports(monkeypatch, reports)
+
+    assert cli.main(["status", "--run-id", "run-1", "--artifacts", str(tmp_path)]) == 0
+
+    output = capsys.readouterr().out
+    assert "state" in output and "ready" in output
+    assert "acquired=2, pending=1" in output
+    assert (
+        "retryable_failure_count" in output and "non_retryable_failure_count" in output
+    )
+    assert "lock" in output and "none" in output
+
+
+def test_status_text_no_runs_renders_prose_row(capsys, tmp_path):
+    assert cli.main(["status", "--artifacts", str(tmp_path)]) == 0
+    output = capsys.readouterr().out
+    assert "Acquisition Status" in output
+    assert "No acquisition runs found." in output
 
 
 def test_status_target_requires_run_and_rejects_unknown(capsys, tmp_path, monkeypatch):
