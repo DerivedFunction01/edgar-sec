@@ -117,6 +117,7 @@ def operation_help(spec: Any) -> dict[str, Any]:
         "result_kind": spec.result_kind,
         "hints": list(spec.hints),
         "options": options_schema(spec.options_type),
+        "invocation": f"--op {spec.id} --options '{{...}}'",
     }
 
 
@@ -137,6 +138,7 @@ def help_components(spec: Any) -> tuple[RenderComponent, ...]:
         KeyValueRow("effect", payload["effect"]),
         KeyValueRow("requires", payload["requires"]),
         KeyValueRow("result", payload["result_kind"]),
+        KeyValueRow("invocation", payload["invocation"]),
         Grid(headers=("field", "type", "default", "help"), rows=rows),
     ]
     if payload["hints"]:

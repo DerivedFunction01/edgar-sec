@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
 from dataclasses import dataclass, field, is_dataclass
 
 import pytest
@@ -11,6 +13,7 @@ from edgar_sec.apps.client import cli, operator
 from edgar_sec.apps.client.operator_discovery import operation_listing
 from edgar_sec.foundation.runtime.interactive import MenuAction
 from edgar_sec.foundation.runtime.render import Grid, KeyValueRow, ProseRow
+from tests.support import TESTS_ROOT
 
 
 class _FakeFacade:
@@ -179,12 +182,46 @@ def test_menu_gates_rows_on_requirement() -> None:
     registry = operator.assemble_registry(operator.REGISTRY.values(), (_probe_spec(),))
     session = _session()
     labels = _menu_labels(session, registry)
-    assert "Probe operation" not in labels
+    assert "Probe operation" in labels
     assert "Session summary" in labels
     assert "List operations" in labels
     assert "Operation help" in labels
     session.select_filing("A1")
     assert "Probe operation" in _menu_labels(session, registry)
+
+
+def test_menu_unmet_row_refuses_without_gathering(monkeypatch, capsys) -> None:
+    registry = operator.assemble_registry(operator.REGISTRY.values(), (_probe_spec(),))
+    gathered: list[bool] = []
+    monkeypatch.setitem(
+        operator.GATHERERS, "probe", lambda session: gathered.append(True)
+    )
+    menu = operator.build_operator_menu(_session(), registry=registry)
+    action = next(
+        item
+        for item in menu
+        if isinstance(item, MenuAction) and item.label == "Probe operation"
+    )
+    action.callback()
+    assert gathered == []
+    assert "missing_context" in capsys.readouterr().out
+
+
+def test_menu_gather_value_error_renders_invalid_options(monkeypatch, capsys) -> None:
+    def bad_gather(session):
+        raise ValueError("invalid year '1'")
+
+    monkeypatch.setitem(operator.GATHERERS, "session_summary", bad_gather)
+    menu = operator.build_operator_menu(_session())
+    action = next(
+        item
+        for item in menu
+        if isinstance(item, MenuAction) and item.label == "Session summary"
+    )
+    action.callback()
+    out = capsys.readouterr().out
+    assert "invalid_options" in out
+    assert "invalid year '1'" in out
 
 
 def test_session_summary_result_is_key_value() -> None:
@@ -195,7 +232,7 @@ def test_session_summary_result_is_key_value() -> None:
     assert result.data["current_set"] == "tech"
     assert "sets" not in result.data
     assert all(isinstance(row, KeyValueRow) for row in result.components)
-    assert result.total == result.shown == len(result.components)
+    assert result.total == result.shown == len(result.data)
 
 
 def test_argv_list_operations_text_and_json(capsys) -> None:
@@ -234,6 +271,55 @@ def test_argv_op_help_is_generated(capsys) -> None:
     assert "include_sets" in out
     assert "Selects whether named working sets are listed" in out
     assert "True" in out
+    assert "--op session_summary --options" in out
+
+
+def test_payload_message_carries_error_prose_only() -> None:
+    session = _session()
+    refused = operator.execute_by_id("session_summary", session, {"bogus": 1})
+    assert refused.error_code == "invalid_options"
+    payload = refused.to_payload()
+    assert payload["message"]
+    assert "bogus" in payload["message"]
+    ok = operator.execute_by_id("session_summary", session, {})
+    assert ok.error_code is None
+    assert ok.to_payload()["message"] is None
+
+
+def test_runpy_route_sibling_result_and_refusal() -> None:
+    repo = TESTS_ROOT.parent
+    done = subprocess.run(
+        [sys.executable, "run.py", "fetch", "--op", "vars", "--json"],
+        cwd=repo,
+        capture_output=True,
+        text=True,
+        timeout=120,
+    )
+    assert done.returncode == 0, done.stderr
+    payload = json.loads(done.stdout)
+    assert payload["kind"] == "grid"
+    assert payload["error_code"] is None
+    assert payload["message"] is None
+    refused = subprocess.run(
+        [
+            sys.executable,
+            "run.py",
+            "fetch",
+            "--op",
+            "seed_query",
+            "--options",
+            '{"limit": 5}',
+            "--json",
+        ],
+        cwd=repo,
+        capture_output=True,
+        text=True,
+        timeout=120,
+    )
+    assert refused.returncode == 1, refused.stderr
+    payload = json.loads(refused.stdout)
+    assert payload["error_code"] == "refused"
+    assert "no constraining input" in payload["message"]
 
 
 def test_argv_unknown_op_and_bad_options(capsys) -> None:

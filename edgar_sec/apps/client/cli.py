@@ -18,6 +18,15 @@ def build_parser() -> argparse.ArgumentParser:
         prog="fetch",
         description="Acquire and process SEC filings end-to-end into DataFrames",
         allow_abbrev=False,
+        epilog=(
+            "Operator surfaces (handled before this parser): "
+            "run with no arguments for the interactive menu; "
+            "--list-operations [--json] lists every operation; "
+            "--op <id> [--options '<json>'] [--json] runs one operation; "
+            "--op <id> --help shows one operation's fields; "
+            "--config <file> [--mode <mode>] [--snapshot <id>] "
+            "[--workers <n>] [--json] runs a config file."
+        ),
     )
     parser.add_argument("--forms", nargs="+", help="Filing form types")
     parser.add_argument("--ciks", nargs="+", help="Company CIKs")

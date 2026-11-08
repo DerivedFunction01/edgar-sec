@@ -13,7 +13,7 @@ from edgar_sec.apps.client.operator_discovery import (
     operation_listing,
     options_schema,
 )
-from edgar_sec.foundation.runtime.render import Grid
+from edgar_sec.foundation.runtime.render import Grid, KeyValueRow
 
 
 @dataclass(frozen=True)
@@ -59,6 +59,13 @@ def test_listing_includes_schema_and_renders() -> None:
 def test_help_states_default_and_refusal() -> None:
     payload = operation_help(_spec())
     assert payload["options"][0]["default"] == 5
+    assert payload["invocation"] == "--op probe --options '{...}'"
+    rows = [
+        (item.label, item.value)
+        for item in help_components(_spec())
+        if isinstance(item, KeyValueRow)
+    ]
+    assert ("invocation", "--op probe --options '{...}'") in rows
     text = "\n".join(
         cell
         for item in help_components(_spec())

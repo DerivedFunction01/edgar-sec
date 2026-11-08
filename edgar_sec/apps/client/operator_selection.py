@@ -12,7 +12,7 @@ from dataclasses import MISSING, dataclass, field, fields, replace
 from pathlib import Path
 from typing import Any, get_args, get_origin, get_type_hints
 
-from edgar_sec.foundation.runtime.interactive import prompt_text
+from edgar_sec.foundation.runtime.interactive import prompt_confirm, prompt_text
 from edgar_sec.foundation.runtime.render import Grid, KeyValueRow, ProseRow
 
 __all__ = [
@@ -728,6 +728,15 @@ def _parse_int(raw: str, default: int | None) -> int | None:
         return default
 
 
+def _bool_prompt(options_type: type, name: str, label: str) -> str:
+    if name == "confirm":
+        return "capture this search to disk?"
+    if name == "exhaustive":
+        names = {item.name for item in fields(options_type)}
+        return "exhaustive capture?" if "confirm" in names else "exhaustive retrieval?"
+    return f"{label}?"
+
+
 def _gather_options(session: Any, options_type: type):
     """Prompt for one row's fields by dataclass type; the menu gather mechanism.
 
@@ -740,7 +749,11 @@ def _gather_options(session: Any, options_type: type):
         annotation = hints.get(item.name, item.type)
         default = None if item.default is MISSING else item.default
         label = item.name.replace("_", " ")
-        if get_origin(annotation) is tuple:
+        if annotation is bool:
+            values[item.name] = prompt_confirm(
+                _bool_prompt(options_type, item.name, label), bool(default)
+            )
+        elif get_origin(annotation) is tuple:
             values[item.name] = _split(prompt_text(label, ""))
         elif annotation is Path:
             values[item.name] = Path(prompt_text(label, "").strip())

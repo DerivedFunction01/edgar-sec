@@ -205,6 +205,16 @@ def test_render_summary_empty_result(monkeypatch, capsys) -> None:
     assert "Showing 0 of 0 accessions" in out
 
 
+def test_help_epilog_states_operator_grammar() -> None:
+    text = cli.build_parser().format_help()
+    assert "--list-operations" in text
+    assert "--op <id>" in text
+    assert "--options '<json>'" in text
+    assert "--op <id> --help" in text
+    assert "--config <file>" in text
+    assert "interactive menu" in text
+
+
 def test_singular_role_flag_is_rejected(monkeypatch) -> None:
     _install_fake(monkeypatch)
     with pytest.raises(SystemExit) as excinfo:

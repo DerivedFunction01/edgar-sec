@@ -524,6 +524,22 @@ def test_gather_fetch_declined_confirmation_runs_nothing(monkeypatch) -> None:
         operator_fetch.GATHERERS["fetch"](session)
 
 
+def test_menu_snapshot_checkout_prompts_for_selector(
+    tmp_path: Path, monkeypatch
+) -> None:
+    facade = _FakeFacade(tmp_path, console=_populated_console())
+    session = operator.ClientSession(facade=facade)
+    monkeypatch.setattr(operator_fetch, "prompt_text", _fake_prompt({"selector": "v1"}))
+    menu = operator.build_operator_menu(session)
+    action = next(
+        item
+        for item in menu
+        if isinstance(item, MenuAction) and item.label == "Check out a snapshot"
+    )
+    action.callback()
+    assert session.read_context.snapshot == "v1"
+
+
 def test_menu_fetch_action_gathers_then_executes(tmp_path: Path, monkeypatch) -> None:
     facade = _FakeFacade(tmp_path, fetch_result=_result(tmp_path, [(1, "10-K")]))
     session = operator.ClientSession(facade=facade)

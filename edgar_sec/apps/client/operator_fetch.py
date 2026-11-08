@@ -644,4 +644,11 @@ def _gather_fetch(session: Any) -> FetchOptions:
     )
 
 
-GATHERERS: dict[str, Callable[[Any], Any]] = {"fetch": _gather_fetch}
+def _gather_snapshot_checkout(session: Any) -> SnapshotCheckoutOptions:
+    return SnapshotCheckoutOptions(selector=prompt_text("selector", "").strip())
+
+
+GATHERERS: dict[str, Callable[[Any], Any]] = {
+    "fetch": _gather_fetch,
+    "snapshot_checkout": _gather_snapshot_checkout,
+}

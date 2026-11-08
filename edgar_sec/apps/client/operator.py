@@ -76,6 +76,7 @@ ERROR_CODES = frozenset(
         "not_found",
         "absent",
         "external_failure",
+        "unsupported_version",
     }
 )
 
@@ -115,8 +116,10 @@ class ClientSession:
         facade: Any = None,
         *,
         read_context: ReadContext | None = None,
+        workers: int | None = None,
     ) -> None:
         self._facade = facade
+        self.workers = workers
         self.sets: dict[str, WorkingSet] = {}
         self.current_set_name: str = ""
         self.read_context = read_context or ReadContext()
@@ -193,6 +196,16 @@ class OpResult:
 
     def to_payload(self) -> dict[str, Any]:
         """The JSON-native rendering every operation offers."""
+        message: str | None = None
+        if self.error_code is not None:
+            prose = next(
+                (row.text for row in self.components if isinstance(row, ProseRow)),
+                None,
+            )
+            carried = self.data.get("message")
+            message = (
+                prose if prose is not None else (str(carried) if carried else None)
+            )
         return {
             "kind": self.kind,
             "title": self.title,
@@ -200,6 +213,7 @@ class OpResult:
             "total": self.total,
             "shown": self.shown,
             "error_code": self.error_code,
+            "message": message,
             "hints": list(self.hints),
         }
 
@@ -219,6 +233,7 @@ class OperationSpec:
     result_kind: str
     hints: tuple[str, ...] = ()
     executor: Executor | None = None
+    available: Callable[[ClientSession], bool] | None = None
 
     def __post_init__(self) -> None:
         if self.effect not in EFFECTS:
@@ -432,8 +447,8 @@ def _execute_session_summary(
         title="Session summary",
         components=tuple(rows),
         data=data,
-        total=len(rows),
-        shown=len(rows),
+        total=len(data),
+        shown=len(data),
         hints=("list operations to discover the next operation",),
     )
 
@@ -473,9 +488,15 @@ GATHERERS: dict[str, Callable[[ClientSession], Any]] = {}
 
 def _register_sibling_rows() -> None:
     from edgar_sec.apps.client import (
+        operator_company,
+        operator_config,
+        operator_drill,
+        operator_drill_exhibits,
         operator_fetch,
         operator_run_records,
         operator_selection,
+        operator_state,
+        operator_tools,
     )
 
     operator_selection.register(REGISTRY)
@@ -484,6 +505,18 @@ def _register_sibling_rows() -> None:
     GATHERERS.update(operator_fetch.GATHERERS)
     operator_run_records.register(REGISTRY)
     GATHERERS.update(operator_run_records.GATHERERS)
+    operator_drill.register(REGISTRY)
+    GATHERERS.update(operator_drill.GATHERERS)
+    operator_drill_exhibits.register(REGISTRY)
+    GATHERERS.update(operator_drill_exhibits.GATHERERS)
+    operator_tools.register(REGISTRY)
+    GATHERERS.update(operator_tools.GATHERERS)
+    operator_company.register(REGISTRY)
+    GATHERERS.update(operator_company.GATHERERS)
+    operator_state.register(REGISTRY)
+    GATHERERS.update(operator_state.GATHERERS)
+    operator_config.register(REGISTRY)
+    GATHERERS.update(operator_config.GATHERERS)
 
 
 _register_sibling_rows()
@@ -504,8 +537,19 @@ def render_session_header(session: ClientSession) -> str:
 
 def _run_and_render(spec: OperationSpec, session: ClientSession) -> None:
     gatherer = GATHERERS.get(spec.id)
-    if gatherer is not None:
-        result = execute_operation(spec, session, gatherer(session))
+    if gatherer is not None and session.satisfies(spec.requires):
+        try:
+            options = gatherer(session)
+        except ValueError as exc:
+            result = _error_result(
+                spec.result_kind, "invalid_options", spec.label, str(exc)
+            )
+        except Exception as exc:  # noqa: BLE001 - a gather failure is a coded result
+            result = _error_result(
+                spec.result_kind, "external_failure", spec.label, str(exc)
+            )
+        else:
+            result = execute_operation(spec, session, options)
     else:
         result = execute_operation(spec, session)
     if result.components:
@@ -527,11 +571,11 @@ def build_operator_menu(
     session: ClientSession,
     registry: Mapping[str, OperationSpec] | None = None,
 ) -> tuple[MenuAction | MenuSeparator, ...]:
-    """Build the menu, including a row only when its requirement is met."""
+    """Build the menu; requirement-gated rows stay listed, availability hides."""
     specs = REGISTRY if registry is None else registry
     actions: list[MenuAction | MenuSeparator] = [MenuSeparator("Operations")]
     for spec in specs.values():
-        if session.satisfies(spec.requires):
+        if spec.available is None or spec.available(session):
             actions.append(
                 menu_action(
                     spec.label,
@@ -615,6 +659,10 @@ def _argv_operation(rest: list[str], session: ClientSession) -> int:
 
 def _argv_dispatch(argv: list[str], session: ClientSession) -> int:
     args = list(argv)
+    if args[0] == "--config":
+        from edgar_sec.apps.client.operator_config import run_config_argv
+
+        return run_config_argv(args[1:], session)
     if args[0] == "--list-operations":
         rest = args[1:]
         if any(token != "--json" for token in rest):
@@ -646,4 +694,8 @@ def main(argv: list[str] | None = None, *, session: ClientSession | None = None)
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    # runpy re-execution splits module identity, so delegate to the
+    # canonically imported module whose OpResult sibling rows build.
+    from edgar_sec.apps.client.operator import main as _canonical_main
+
+    sys.exit(_canonical_main())
