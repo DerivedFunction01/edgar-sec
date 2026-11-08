@@ -111,10 +111,15 @@ def _has_active_pack(authority_id: str, code: str, pack: ExhibitPack) -> bool:
 def resolve_pack_for_identity(identity: ExhibitIdentity) -> ExhibitPack | None:
     """Resolve content pack for an exhibit identity.
 
+    Falls back to the base code for sub-code lookups (e.g. 99.2 -> 99).
     Returns the pack object if found, otherwise None.
     """
-    pack = _PACK_BY_CODE.get((identity.authority_id, identity.code))
-    if pack is None or not _has_active_pack(identity.authority_id, identity.code, pack):
+    code = identity.code
+    pack = _PACK_BY_CODE.get((identity.authority_id, code))
+    if pack is None and "." in code:
+        code = code.split(".")[0]
+        pack = _PACK_BY_CODE.get((identity.authority_id, code))
+    if pack is None or not _has_active_pack(identity.authority_id, code, pack):
         return None
     return pack
 

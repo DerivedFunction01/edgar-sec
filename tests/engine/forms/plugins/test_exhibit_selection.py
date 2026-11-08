@@ -127,6 +127,35 @@ def test_evaluate_reports_conflicting_designator_as_diagnostic():
     assert result.observed_identity == ExhibitIdentity("reg_s_k_item_601", "3.2")
 
 
+def test_evaluate_subsection_exhibit_under_its_own_identity():
+    """A 99.2 body is consistent under expected 99.2, not scored as 99."""
+    result = evaluate_exhibit_body(
+        "EXHIBIT 99.2\nFOR IMMEDIATE RELEASE\n",
+        filing_form="8-K",
+        expected_type="EX-99.2",
+        expected_identity=ExhibitIdentity("reg_s_k_item_601", "99.2"),
+    )
+
+    assert result is not None
+    assert result.expected_identity == ExhibitIdentity("reg_s_k_item_601", "99.2")
+    assert result.disposition == "consistent"
+    assert result.pack_id == "ex99"
+
+
+def test_evaluate_reports_sibling_subsection_as_mismatch():
+    """A 99.1 body under expected 99.2 mismatches; subsections stay exact."""
+    result = evaluate_exhibit_body(
+        "EXHIBIT 99.1\nFOR IMMEDIATE RELEASE\n",
+        filing_form="8-K",
+        expected_type="EX-99.2",
+        expected_identity=ExhibitIdentity("reg_s_k_item_601", "99.2"),
+    )
+
+    assert result is not None
+    assert result.disposition == "possible_role_mismatch"
+    assert result.observed_identity == ExhibitIdentity("reg_s_k_item_601", "99.1")
+
+
 def test_evaluate_abstains_for_disabled_authority_and_form():
     assert (
         evaluate_exhibit_body(

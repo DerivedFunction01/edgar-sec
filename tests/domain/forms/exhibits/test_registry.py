@@ -24,6 +24,27 @@ def test_resolve_pack_returns_none_missing_authority():
     assert resolve_pack_for_identity(identity) is None
 
 
+def test_resolve_pack_falls_back_to_base_code_for_sub_codes():
+    """A sub-code with no pack of its own resolves its base code's pack."""
+    for code in ("99.1", "99.2"):
+        pack = resolve_pack_for_identity(
+            ExhibitIdentity(authority_id="reg_s_k_item_601", code=code)
+        )
+        assert pack is not None
+        assert pack.pack_id == "ex99"
+
+
+def test_resolve_pack_sub_code_without_base_pack_stays_none():
+    """A sub-code whose base code has no pack does not resolve."""
+    for code in ("31.3", "3.3"):
+        assert (
+            resolve_pack_for_identity(
+                ExhibitIdentity(authority_id="reg_s_k_item_601", code=code)
+            )
+            is None
+        )
+
+
 def test_disabled_and_unsupported_mappings_do_not_resolve():
     """Disabled authorities and unsupported codes fail closed."""
     assert (

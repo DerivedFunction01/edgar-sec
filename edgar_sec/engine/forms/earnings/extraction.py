@@ -204,11 +204,12 @@ def _headline_from(
 
 
 def _role_mismatch(text: str, form: str, candidate: ExhibitCandidate) -> bool:
-    identity = ExhibitIdentity("reg_s_k_item_601", "99")
+    code = "99" if candidate.exhibit_number == 0 else f"99.{candidate.exhibit_number}"
+    identity = ExhibitIdentity("reg_s_k_item_601", code)
     assessment = evaluate_exhibit_body(
         text,
         filing_form=form,
-        expected_type="EX-99",
+        expected_type=f"EX-{code}",
         expected_identity=identity,
     )
     if assessment is None or assessment.disposition != "possible_role_mismatch":
