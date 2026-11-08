@@ -17,6 +17,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="fetch",
         description="Acquire and process SEC filings end-to-end into DataFrames",
+        allow_abbrev=False,
     )
     parser.add_argument("--forms", nargs="+", help="Filing form types")
     parser.add_argument("--ciks", nargs="+", help="Company CIKs")
