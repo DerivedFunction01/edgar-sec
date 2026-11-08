@@ -110,6 +110,16 @@ def test_form_15_and_12b25_profiles_resolve_with_schemas() -> None:
     assert "PART I" in form_12b25.body_evidence.structural_headings
 
 
+def test_form_18k_profile_resolves_with_taxonomy() -> None:
+    form_18k = get_profile("18-K/A")
+    assert form_18k.family == "18-K"
+    assert form_18k.boundary is not None
+    assert form_18k.checkbox_schema is None
+    assert form_18k.has_sections is True
+    assert form_18k.body_evidence is not None
+    assert "EXHIBIT INDEX" in form_18k.body_evidence.structural_headings
+
+
 def test_annual_profiles_enable_incorporated_reference() -> None:
     annual_names = {rule.name for rule in get_profile("10-K").healing_rules}
     quarterly_names = {rule.name for rule in get_profile("10-Q").healing_rules}

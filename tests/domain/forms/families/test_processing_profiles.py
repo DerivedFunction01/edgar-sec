@@ -396,6 +396,19 @@ def test_ars_entry_registered_on_generic_segmentation_profile() -> None:
     assert get_family_entry("ARS/A") is entry
 
 
+def test_18k_entry_registered_with_section_taxonomy() -> None:
+    from edgar_sec.domain.forms.families.form_18k.processing import PROFILE_FORM_18K
+    from edgar_sec.domain.forms.families.form_18k.taxonomy import FORM_18K_ITEMS
+
+    entry = get_family_entry("18-K")
+    assert entry is not None
+    assert entry.family == "18-K"
+    assert entry.profile is PROFILE_FORM_18K
+    assert entry.cover_checkbox_schema is None
+    assert entry.taxonomy_items == FORM_18K_ITEMS
+    assert get_family_entry("18-K/A") is entry
+
+
 @pytest.mark.parametrize(
     "family,variant",
     [

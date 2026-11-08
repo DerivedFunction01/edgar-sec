@@ -486,6 +486,9 @@ def _build_profiles() -> dict[str, CoverProfile]:
     from edgar_sec.engine.forms.cover.family_profiles_sd import (
         build_form_sd_profile,
     )
+    from edgar_sec.engine.forms.cover.family_profiles_18k import (
+        build_form_18k_profile,
+    )
     from edgar_sec.engine.forms.cover.family_profiles_rega import (
         build_form_rega_profile,
     )
@@ -542,6 +545,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
     form_fwp = build_form_fwp_profile("FWP")
     form_425 = build_form_425_profile("425")
     form_15 = build_form_15_profile("15")
+    form_18k = build_form_18k_profile("18-K")
     form_12b25 = build_form_12b25_profile("12B-25")
     form_25 = build_form_12reg_profile("25")
     form_8a = build_form_12reg_profile("8-A")
@@ -592,6 +596,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "FWP": form_fwp,
         "425": form_425,
         "15": form_15,
+        "18-K": form_18k,
         "12B-25": form_12b25,
         "25": form_25,
         "8-A": form_8a,
