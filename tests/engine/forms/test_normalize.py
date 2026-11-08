@@ -8,7 +8,7 @@ from edgar_sec.engine.forms.normalize import NormalizationResult, normalize_docu
 from edgar_sec.engine.forms.normalize import _trim_text_with_toc_span
 from edgar_sec.engine.forms.cover.toc.models import TocSpan
 from edgar_sec.engine.tables.protection.tags import SENTINEL_PREFIX, SENTINEL_SUFFIX
-from tests.support import load_fixture
+from tests.support import fixture_path, load_fixture
 
 
 def test_annual_10k_ascii_golden() -> None:
@@ -294,3 +294,45 @@ def test_xhtml_path_is_markup_not_text() -> None:
     res = normalize_document(_HARD_WRAPPED, form="REGDEX", document_path="note.xhtml")
 
     assert res.reflow is None
+
+
+@pytest.mark.parametrize(
+    ("fixture", "expected"),
+    [
+        (
+            "0001193125-17-066843__d308706d18ka.htm",
+            ["ITEM SIGNATURES", "ITEM EXHIBIT INDEX"],
+        ),
+        (
+            "0001104659-26-117215__tm2627716d1_18ka.htm",
+            [
+                "ITEM EXPLANATORY NOTE",
+                "ITEM CAPITALIZATION AND INDEBTEDNESS",
+                "ITEM SIGNATURES",
+                "ITEM EXHIBIT INDEX",
+            ],
+        ),
+        (
+            "0001206212-03-000011__m09206a1e18vkza.txt",
+            ["ITEM SIGNATURES", "ITEM EXHIBIT INDEX"],
+        ),
+    ],
+)
+def test_form_18k_specimens_resolve_sections(fixture: str, expected: list[str]) -> None:
+    """Census specimens resolve the sections their bodies carry."""
+    path = fixture_path(f"document/form_18k/{fixture}")
+    res = normalize_document(path.read_bytes(), form="18-K/A", document_path=path.name)
+
+    assert res.family == "18-K"
+    assert res.sections is not None
+    assert [s.item_identifier for s in res.sections.sections] == expected
+
+
+def test_form_18k_paper_stub_resolves_no_sections() -> None:
+    """A .paper primary has no body: sections stay honestly absent."""
+    fixture = "9999999997-02-012414__9999999997-02-012414.paper"
+    path = fixture_path(f"document/form_18k/{fixture}")
+    res = normalize_document(path.read_bytes(), form="18-K", document_path=path.name)
+
+    assert res.family == "18-K"
+    assert res.sections is None

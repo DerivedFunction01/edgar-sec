@@ -47,6 +47,8 @@ from edgar_sec.domain.forms.families.form_14a.checkmarks import (
 from edgar_sec.domain.forms.families.form_14a.processing import PROFILE_FORM_14A
 from edgar_sec.domain.forms.families.form_14a.taxonomy import FORM_14A_ITEMS
 from edgar_sec.domain.forms.families.form_15.processing import PROFILE_FORM_15
+from edgar_sec.domain.forms.families.form_18k.processing import PROFILE_FORM_18K
+from edgar_sec.domain.forms.families.form_18k.taxonomy import FORM_18K_ITEMS
 from edgar_sec.domain.forms.families.form_424b.processing import PROFILE_FORM_424B
 from edgar_sec.domain.forms.families.form_424b.taxonomy import FORM_424B_ITEMS
 from edgar_sec.domain.forms.families.form_f1.checkmarks import (
@@ -550,6 +552,11 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         profile=PROFILE_SD,
         cover_checkbox_schema=SD_CHECKBOX_SCHEMA,
         taxonomy_items=FORM_SD_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="18-K",
+        profile=PROFILE_FORM_18K,
+        taxonomy_items=FORM_18K_ITEMS,
     ),
     ProcessingCatalogEntry(
         family="1-A",
