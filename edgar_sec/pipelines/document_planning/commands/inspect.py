@@ -5,6 +5,12 @@ from __future__ import annotations
 import argparse
 import json
 
+from edgar_sec.foundation.runtime.render import (
+    Grid,
+    KeyValueRow,
+    RenderComponent,
+    render_output,
+)
 from edgar_sec.pipelines.document_planning.discovery import (
     DocumentPlanError,
     read_published_plan,
@@ -38,20 +44,33 @@ def cmd_inspect(args: argparse.Namespace) -> int:
     if args.json:
         print(json.dumps(report, sort_keys=True))
     else:
-        print(f"validated document plan {plan.plan_id}")
-        print(
-            f"  catalog plan      {report['catalog_plan_id']} ({report['catalog_plan_digest']})"
-        )
-        print(
-            f"  inventory snapshot {report['inventory_snapshot_id']} ({report['inventory_snapshot_digest']})"
-        )
-        print(f"  coverage          {report['distinct_accession_coverage']}")
-        print(f"  target rows       {report['target_row_count']:,}")
-        print(f"  statuses          {report['status_counts']}")
-        print(f"  origins           {report['origin_counts']}")
-        print(f"  reasons           {report['reason_counts']}")
-        for part in report["parts"]:
-            print(f"  part {part['path']} rows={part['rows']} sha256={part['sha256']}")
+        components: list[RenderComponent] = [
+            KeyValueRow(
+                "catalog plan",
+                f"{report['catalog_plan_id']} ({report['catalog_plan_digest']})",
+            ),
+            KeyValueRow(
+                "inventory snapshot",
+                f"{report['inventory_snapshot_id']} "
+                f"({report['inventory_snapshot_digest']})",
+            ),
+            KeyValueRow("coverage", str(report["distinct_accession_coverage"])),
+            KeyValueRow("target rows", f"{report['target_row_count']:,}"),
+            KeyValueRow("statuses", str(report["status_counts"])),
+            KeyValueRow("origins", str(report["origin_counts"])),
+            KeyValueRow("reasons", str(report["reason_counts"])),
+        ]
+        if report["parts"]:
+            components.append(
+                Grid(
+                    headers=("Part", "Rows", "SHA256"),
+                    rows=tuple(
+                        (str(part["path"]), str(part["rows"]), str(part["sha256"]))
+                        for part in report["parts"]
+                    ),
+                )
+            )
+        render_output(components, title=f"validated document plan {plan.plan_id}")
     return 0
 
 

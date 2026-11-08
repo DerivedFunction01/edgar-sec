@@ -10,6 +10,7 @@ from typing import Any
 from edgar_sec.domain.plan.discovery import discover_plans
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    MenuSeparator,
     PickItem,
     build_menu,
     menu_action,
@@ -17,6 +18,12 @@ from edgar_sec.foundation.runtime.interactive import (
     prompt_choice,
     prompt_paginated_choice,
     prompt_text,
+)
+from edgar_sec.foundation.runtime.render import (
+    KeyValueRow,
+    ProseRow,
+    RenderComponent,
+    render_output,
 )
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.document_planning.discovery import (
@@ -218,17 +225,23 @@ def _action_plan(session: OperatorSession) -> None:
         except (DocumentPlanningError, ValueError, OSError) as error:
             print(f"coverage preflight failed: {error}")
             return
-        print(f"resolved inventory snapshot: {preflight.snapshot_id}")
-        print(
-            "read-only coverage: "
-            f"{preflight.indexed_accessions:,} indexed / "
-            f"{preflight.unindexed_accessions:,} unindexed of "
-            f"{preflight.scoped_accessions:,} catalog accessions"
-        )
+        preflight_rows: list[RenderComponent] = [
+            KeyValueRow("resolved inventory snapshot", preflight.snapshot_id),
+            KeyValueRow(
+                "read-only coverage",
+                f"{preflight.indexed_accessions:,} indexed / "
+                f"{preflight.unindexed_accessions:,} unindexed of "
+                f"{preflight.scoped_accessions:,} catalog accessions",
+            ),
+        ]
         if preflight.unindexed_accessions:
-            print(
-                "project the selected accessions with 'inventory project' before planning"
+            preflight_rows.append(
+                ProseRow(
+                    "project the selected accessions with "
+                    "'inventory project' before planning"
+                )
             )
+        render_output(preflight_rows)
         session.snapshot_id = preflight.snapshot_id
     confirmation = prompt_text("Publish this immutable target plan? [y/N]", "n")
     if confirmation.strip().casefold() not in {"y", "yes"}:
@@ -244,13 +257,20 @@ def _action_plan(session: OperatorSession) -> None:
     except (DocumentPlanningError, ValueError, OSError) as error:
         print(f"planning refused: {error}")
         return
-    print(f"published document plan {result.plan_id}")
-    print(
-        f"  source pins {result.manifest['catalog_plan_digest']} / "
-        f"{result.manifest['inventory_snapshot_digest']}"
+    render_output(
+        [
+            KeyValueRow(
+                "source pins",
+                f"{result.manifest['catalog_plan_digest']} / "
+                f"{result.manifest['inventory_snapshot_digest']}",
+            ),
+            KeyValueRow(
+                "coverage", str(result.manifest["distinct_accession_coverage"])
+            ),
+            KeyValueRow("statuses", str(result.manifest["status_counts"])),
+        ],
+        title=f"published document plan {result.plan_id}",
     )
-    print(f"  coverage {result.manifest['distinct_accession_coverage']}")
-    print(f"  statuses {result.manifest['status_counts']}")
     session.plan_id = result.plan_id
 
 
@@ -284,7 +304,9 @@ def build_operator_menu(
 ) -> tuple[MenuAction, ...]:
     state = session or OperatorSession()
     return build_menu(
+        MenuSeparator("Planning"),
         menu_action("Plan document targets", lambda: _action_plan(state)),
+        MenuSeparator("Published Plans"),
         menu_action("Inspect a published plan", lambda: _action_inspect(state)),
         menu_action("List plans and profiles", _action_status),
     )
