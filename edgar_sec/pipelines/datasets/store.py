@@ -12,7 +12,12 @@ import zipfile
 from dataclasses import dataclass
 from pathlib import Path
 
-from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_literal
+from edgar_sec.infra.storage.duckdb import (
+    connect,
+    sql_identifier,
+    sql_literal,
+    sql_quoted_identifier,
+)
 
 from .specs import DatasetSpec
 
@@ -156,11 +161,6 @@ def load_vintage(
     )
 
 
-def _quoted(name: str) -> str:
-    """Return a column name as a double-quoted SQL identifier."""
-    return '"' + str(name).replace('"', '""') + '"'
-
-
 def _table_columns(con, relation: str) -> list[str]:
     """Column names of one relation, in definition order."""
     rows = con.execute(
@@ -181,9 +181,8 @@ def _load_member(
 ) -> None:
     """Replace one (set, vintage, sha) slice of a relation from a TSV file.
 
-    Slices align by column name, never by position: a vintage whose
-    member is wider adds its new columns to the relation, and a narrower
-    vintage leaves the wider columns NULL for its rows.
+    Slices align by column name, never by position: wider vintages add
+    columns to the relation; narrower ones leave them NULL.
     """
     staging = f"_stage_{relation}"
     con.execute(
@@ -207,7 +206,7 @@ def _load_member(
             if column not in target_columns:
                 con.execute(
                     f"ALTER TABLE {sql_identifier(relation)} "
-                    f"ADD COLUMN {_quoted(column)} VARCHAR"
+                    f"ADD COLUMN {sql_quoted_identifier(column)} VARCHAR"
                 )
                 target_columns.append(column)
     con.execute(
@@ -217,18 +216,19 @@ def _load_member(
     )
     data_columns = [c for c in target_columns if c not in _META_COLUMNS]
     select_list = ", ".join(
-        _quoted(column) if column in stage_columns else "NULL"
+        sql_quoted_identifier(column) if column in stage_columns else "NULL"
         for column in data_columns
     )
     insert_list = ", ".join(
-        [_quoted(column) for column in _META_COLUMNS]
-        + [_quoted(column) for column in data_columns]
+        [sql_quoted_identifier(column) for column in _META_COLUMNS]
+        + [sql_quoted_identifier(column) for column in data_columns]
     )
-    con.execute(
+    statement = (
         f"INSERT INTO {sql_identifier(relation)} ({insert_list}) "
         f"SELECT {sql_literal(spec.set_id)}, {sql_literal(vintage)}, "
         f"{sql_literal(archive_sha)}, {select_list} FROM {sql_identifier(staging)}"
     )
+    con.execute(statement)
     con.execute(f"DROP TABLE {sql_identifier(staging)}")
 
 
