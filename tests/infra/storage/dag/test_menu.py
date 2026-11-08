@@ -18,7 +18,22 @@ def test_render_dag_dashboard_runs(tmp_path: Path) -> None:
     config = DAGMenuConfig(snapshots_root=tmp_path, title="Test Console")
     out = render_dag_dashboard(config)
     assert "Test Console" in out
-    assert "HEAD: No active pointer" in out
+    assert "head" in out
+    assert "No active pointer" in out
+    assert "branches" in out
+    assert "=" * 72 not in out
+
+
+def _actions(menu):
+    from edgar_sec.foundation.runtime.interactive import MenuAction
+
+    return [entry for entry in menu if isinstance(entry, MenuAction)]
+
+
+def _separators(menu):
+    from edgar_sec.foundation.runtime.interactive import MenuSeparator
+
+    return [entry.title for entry in menu if isinstance(entry, MenuSeparator)]
 
 
 def test_create_dag_menu_includes_publish_action(tmp_path: Path) -> None:
@@ -29,16 +44,17 @@ def test_create_dag_menu_includes_publish_action(tmp_path: Path) -> None:
         publish_label="Custom Publish",
     )
     menu = create_dag_menu(config)
-    labels = [action.label for action in menu]
+    labels = [action.label for action in _actions(menu)]
     assert "Custom Publish" in labels
     assert any("swimlane" in label.lower() for label in labels)
     assert any("doctor" in label.lower() for label in labels)
+    assert _separators(menu) == ["Publish", "Inspect", "Branches & Tags", "Maintenance"]
 
 
 def test_create_dag_menu_omits_publish_when_none(tmp_path: Path) -> None:
     config = DAGMenuConfig(snapshots_root=tmp_path, publish_action=None)
     menu = create_dag_menu(config)
-    labels = [action.label for action in menu]
+    labels = [action.label for action in _actions(menu)]
     assert not any("Custom Publish" in label for label in labels)
 
 
@@ -48,7 +64,7 @@ def test_create_dag_menu_keys_are_contiguous_when_publish_is_none(
     config = DAGMenuConfig(snapshots_root=tmp_path, publish_action=None)
     menu = create_dag_menu(config)
     # Without specs, compact action is not included
-    assert [action.key for action in menu] == [
+    assert [action.key for action in _actions(menu)] == [
         "1",
         "2",
         "3",
@@ -70,7 +86,7 @@ def test_create_dag_menu_keys_are_contiguous_when_publish_is_present(
     )
     menu = create_dag_menu(config)
     # Without specs, compact action is not included
-    assert [action.key for action in menu] == [
+    assert [action.key for action in _actions(menu)] == [
         "1",
         "2",
         "3",
@@ -192,7 +208,47 @@ def test_create_dag_menu_includes_compact_when_specs_present(
         specs=specs,
     )
     menu = create_dag_menu(config)
-    labels = [action.label for action in menu]
+    labels = [action.label for action in _actions(menu)]
     assert any("Compact" in label for label in labels)
     assert any("SQL console" in label for label in labels)
-    assert len(menu) == 11
+    assert len(_actions(menu)) == 11
+    assert len(menu) == 15
+
+
+def test_action_branch_list_renders_grid(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture
+) -> None:
+    from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+    from edgar_sec.infra.storage.dag.menu import _action_branch
+
+    catalog = DAGCatalog(tmp_path)
+    catalog.write_pointer("current", "snap-1")
+    catalog.write_pointer("develop", "snap-2")
+
+    monkeypatch.setattr("builtins.input", lambda _: "1")
+    _action_branch(DAGMenuConfig(snapshots_root=tmp_path))
+
+    out = capsys.readouterr().out
+    assert "Branches" in out
+    assert "current" in out
+    assert "develop" in out
+    assert "snap-2" in out
+
+
+def test_action_tag_list_renders_grid(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture
+) -> None:
+    from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+    from edgar_sec.infra.storage.dag.menu import _action_tag
+
+    catalog = DAGCatalog(tmp_path)
+    catalog.create_tag("v1.0", "snap-1", message="release one")
+
+    monkeypatch.setattr("builtins.input", lambda _: "1")
+    _action_tag(DAGMenuConfig(snapshots_root=tmp_path))
+
+    out = capsys.readouterr().out
+    assert "Tags" in out
+    assert "v1.0" in out
+    assert "snap-1" in out
+    assert "release one" in out

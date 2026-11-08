@@ -54,7 +54,7 @@ class RecordingAdapter:
         return CaseDiff(case_id, "unchanged")
 
 
-def test_list_fixtures_runs_and_exits(tmp_path: Path, monkeypatch) -> None:
+def test_list_fixtures_runs_and_exits(tmp_path: Path, monkeypatch, capsys) -> None:
     adapter = RecordingAdapter()
     answers = iter(["3", "0"])
     monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
@@ -63,6 +63,15 @@ def test_list_fixtures_runs_and_exits(tmp_path: Path, monkeypatch) -> None:
     exit_code = run_review_menu(config)
     assert exit_code == 0
     assert adapter.calls == ["list"]
+
+    out = capsys.readouterr().out
+    assert "Discovered 2 fixture(s):" in out
+    assert "Fixture" in out
+    assert "Cases" in out
+    assert "fix-aaa" in out
+    assert "fix-bbb" in out
+    assert "── Fixtures" in out
+    assert "── Review Runs" in out
 
 
 def test_create_fixture_uses_the_provided_plan_and_proposes_fx_default(
@@ -98,6 +107,23 @@ def test_create_fixture_uses_the_provided_plan_and_proposes_fx_default(
     assert run_review_menu(config) == 0
     assert adapter.calls == ["create"]
     assert adapter.create_args[0][0] == "fix-94ea5ab5-v3"
+
+
+def test_create_result_renders_key_values(tmp_path: Path, monkeypatch, capsys) -> None:
+    adapter = RecordingAdapter()
+    answers = iter(["1", "", "", "0"])
+    monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
+
+    config = ReviewMenuConfig(
+        adapter=adapter, plan_id="plan-123456789", artifacts_root=tmp_path
+    )
+    assert run_review_menu(config) == 0
+    assert adapter.calls == ["create"]
+
+    out = capsys.readouterr().out
+    assert "Fixture Created" in out
+    assert "fix-plan-123" in out
+    assert "plan-123456789" in out
 
 
 def test_create_exits_cleanly_when_no_plans_are_available(

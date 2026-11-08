@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
+import contextlib
+import io
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
+    MenuSeparator,
     PickItem,
     build_menu,
     menu_action,
@@ -16,6 +19,11 @@ from edgar_sec.foundation.runtime.interactive import (
     prompt_text,
 )
 from edgar_sec.foundation.runtime.paths import distribution_root
+from edgar_sec.foundation.runtime.render import (
+    KeyValueRow,
+    RenderComponent,
+    render_output,
+)
 
 from .cli import cmd_commands, cmd_export, cmd_import, cmd_list, cmd_worker
 from .discovery import discover_bundles, resolve_bundle_choice
@@ -68,40 +76,43 @@ class DistribSession:
         return self.work_id
 
 
+def _rendered(components: list[RenderComponent], title: str = "") -> str:
+    buffer = io.StringIO()
+    with contextlib.redirect_stdout(buffer):
+        render_output(components, title=title)
+    return buffer.getvalue().removesuffix("\n")
+
+
 def render_distrib_dashboard(
     config: DistribMenuConfig, active_work_id: str | None = None
 ) -> str:
     root = config.resolve_root()
     work_id = active_work_id or config.work_id
     pipeline = config.adapter.pipeline_name
-    lines = [
-        "=" * 72,
-        f"   {config.title} ({pipeline})",
-        f"   Distribution Root: {root}",
-    ]
+    rows: list[RenderComponent] = [KeyValueRow("distribution_root", str(root))]
     if work_id:
         try:
             work = config.adapter.resolve_work(work_id, config.artifacts_root)
             summary = config.adapter.describe_work(work_id, work)
-            lines.append(
-                f"   Active Work: {summary.label} [{work_id}] "
-                f"({summary.chunk_count} chunks)"
-            )
+            rows.append(KeyValueRow("active_work", f"{summary.label} [{work_id}]"))
+            rows.append(KeyValueRow("chunks", str(summary.chunk_count)))
         except (OSError, ValueError, KeyError):
-            lines.append(f"   Active Work: {work_id} (unreadable)")
+            rows.append(KeyValueRow("active_work", f"{work_id} (unreadable)"))
     else:
-        lines.append("   Active Work: None selected")
+        rows.append(KeyValueRow("active_work", "None selected"))
 
     bundles = discover_bundles(root, pipeline=pipeline, work_id=work_id)
     completed = sum(bundle.state == "completed" for bundle in bundles)
     pending = sum(bundle.state == "pending" for bundle in bundles)
     corrupt = sum(bundle.state == "corrupt" for bundle in bundles)
-    lines.append(
-        f"   Discovered Bundles: {len(bundles)} "
-        f"({completed} completed, {pending} pending, {corrupt} corrupt)"
+    rows.append(
+        KeyValueRow(
+            "discovered_bundles",
+            f"{len(bundles)} "
+            f"({completed} completed, {pending} pending, {corrupt} corrupt)",
+        )
     )
-    lines.append("=" * 72)
-    return "\n".join(lines)
+    return _rendered(rows, title=f"{config.title} ({pipeline})")
 
 
 def _action_export(config: DistribMenuConfig, session: DistribSession) -> None:
@@ -222,15 +233,19 @@ def _action_switch_work(config: DistribMenuConfig, session: DistribSession) -> N
     )
     if chosen is not None:
         session.work_id = chosen.value.work_id
-        print(f"Active work switched to {session.work_id}")
+        render_output(
+            [KeyValueRow("active_work", session.work_id)],
+            title="Active Work Switched",
+        )
 
 
 def create_distrib_menu(
     config: DistribMenuConfig, session: DistribSession | None = None
-) -> tuple[MenuAction, ...]:
+) -> tuple[MenuAction | MenuSeparator, ...]:
     root = config.resolve_root()
     active_session = session or DistribSession(config.work_id)
     actions = [
+        MenuSeparator("Worker Bundles"),
         menu_action(
             "List discovered worker bundles",
             lambda: cmd_list(config.adapter, destination=root),
@@ -251,6 +266,7 @@ def create_distrib_menu(
             "Render distributed execution commands",
             lambda: _action_commands(config, active_session),
         ),
+        MenuSeparator("Session"),
         menu_action(
             "Switch active work item",
             lambda: _action_switch_work(config, active_session),
