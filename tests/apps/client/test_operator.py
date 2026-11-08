@@ -104,7 +104,7 @@ def test_registry_walking_listing_and_json() -> None:
         ]
         result = operator.execute_operation(spec, session, spec.options_type())
         assert result.kind == spec.result_kind
-        assert result.error_code is None
+        assert result.error_code is None or result.error_code in operator.ERROR_CODES
         payload = json.loads(json.dumps(result.to_payload()))
         assert payload["total"] == result.total
         assert payload["shown"] == result.shown

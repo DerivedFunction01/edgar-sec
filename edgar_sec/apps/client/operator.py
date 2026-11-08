@@ -39,6 +39,7 @@ from edgar_sec.foundation.runtime.render import (
 __all__ = [
     "EFFECTS",
     "ERROR_CODES",
+    "GATHERERS",
     "REGISTRY",
     "REQUIREMENTS",
     "RESULT_KINDS",
@@ -464,9 +465,20 @@ def assemble_registry(
     return registry
 
 
-# Sibling row modules expose a SPECS tuple each; assembly stays explicit here:
-# import the tuple in this module and pass it as another assemble_registry group.
+# Sibling row modules contribute through a register(registry) function and a
+# GATHERERS dict of menu prompt producers, assembled explicitly here.
 REGISTRY: dict[str, OperationSpec] = assemble_registry(_CORE_SPECS)
+GATHERERS: dict[str, Callable[[ClientSession], Any]] = {}
+
+
+def _register_sibling_rows() -> None:
+    from edgar_sec.apps.client import operator_selection
+
+    operator_selection.register(REGISTRY)
+    GATHERERS.update(operator_selection.GATHERERS)
+
+
+_register_sibling_rows()
 
 
 def render_session_header(session: ClientSession) -> str:
@@ -483,7 +495,11 @@ def render_session_header(session: ClientSession) -> str:
 
 
 def _run_and_render(spec: OperationSpec, session: ClientSession) -> None:
-    result = execute_operation(spec, session)
+    gatherer = GATHERERS.get(spec.id)
+    if gatherer is not None:
+        result = execute_operation(spec, session, gatherer(session))
+    else:
+        result = execute_operation(spec, session)
     if result.components:
         render_output(result.components, title=result.title)
     if result.error_code:
