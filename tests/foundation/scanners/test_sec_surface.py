@@ -138,6 +138,8 @@ def test_static_interpretation_agrees_with_the_runtime_classifier() -> None:
         "xbrl_package_url_for": sec_urls.xbrl_package_url_for(
             "320193", "0000320193-23-000106"
         ),
+        "full_index_url": sec_urls.full_index_url(2024, 1, "master"),
+        "daily_index_url": sec_urls.daily_index_url("2024-02-13", "master"),
         "current_filings_url": sec_urls.current_filings_url(),
         "structured_feed_url": sec_urls.structured_feed_url("all"),
         "structured_archive_url": sec_urls.structured_archive_url(2026, 3),
