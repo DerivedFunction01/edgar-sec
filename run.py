@@ -37,6 +37,12 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         module="edgar_sec.pipelines.feeds.operator",
     ),
     LauncherEntry(
+        id="datasets",
+        label="SEC Datasets",
+        description="Data-research dataset imports (BDC, N-MFP, MFRR oracles): import, population, verify, status",
+        module="edgar_sec.pipelines.datasets.operator",
+    ),
+    LauncherEntry(
         id="filing-catalog",
         label="Filing Catalog",
         description="Offline DuckDB catalog materialization and target planning",

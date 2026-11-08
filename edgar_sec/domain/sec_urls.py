@@ -171,6 +171,50 @@ def _coerce_index_day(day: date | str) -> date:
             continue
     raise ValueError(f"day must be a date or ISO/YYYYMMDD string, got {day!r}")
 
+SEC_DATASETS_BASE = "https://www.sec.gov/files"
+
+
+def _dataset_vintage(vintage: str) -> str:
+    """Return a dataset vintage label, refusing anything path-like."""
+    label = str(vintage).strip()
+    if not label or "/" in label or "\\" in label or label.startswith("."):
+        raise ValueError(f"invalid dataset vintage: {vintage!r}")
+    return label
+
+
+def bdc_dataset_url(vintage: str) -> str:
+    """Return the BDC data-set ZIP URL for one vintage label."""
+    return (
+        f"{SEC_DATASETS_BASE}/datastandardsinnovation/data/"
+        f"business-development-company-bdc-data-sets/{_dataset_vintage(vintage)}_bdc.zip"
+    )
+
+
+def nmfp_dataset_url(vintage: str) -> str:
+    """Return the Form N-MFP data-set ZIP URL for one vintage label."""
+    return (
+        f"{SEC_DATASETS_BASE}/dera/data/form-n-mfp-data-sets/"
+        f"{_dataset_vintage(vintage)}_nmfp.zip"
+    )
+
+
+def mfrr_dataset_url(vintage: str) -> str:
+    """Return the MFRR data-set ZIP URL for one vintage label."""
+    return (
+        f"{SEC_DATASETS_BASE}/dera/data/mutual-fund-prospectus-risk/"
+        f"return-summary-data-sets/{_dataset_vintage(vintage)}_rr1.zip"
+    )
+
+
+def bdc_report_url(year: int) -> str:
+    """Return the SEC BDC Report CSV URL for one report year."""
+    if not 2000 <= int(year) <= 2100:
+        raise ValueError(f"BDC report year out of range: {year!r}")
+    return (
+        f"{SEC_DATASETS_BASE}/investment/data/other/"
+        f"business-development-company-report/business-development-company-{int(year)}.csv"
+    )
+
 
 def companyconcept_url(cik: str | int, taxonomy: str, tag: str) -> str:
     """Return the companyconcept URL for one taxonomy tag of one CIK."""
@@ -523,6 +567,10 @@ SURFACE_CURRENT_FILINGS = "current_filings"
 SURFACE_STRUCTURED_DISCLOSURE_FEEDS = "structured_disclosure_feeds"
 SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES = "structured_disclosure_archives"
 SURFACE_EFTS = "efts"
+SURFACE_BDC_DATASETS = "bdc_datasets"
+SURFACE_NMFP_DATASETS = "nmfp_datasets"
+SURFACE_MFRR_DATASETS = "mfrr_datasets"
+SURFACE_BDC_REPORT = "bdc_report"
 
 SEC_SURFACES: tuple[str, ...] = (
     SURFACE_SUBMISSIONS,
@@ -548,6 +596,10 @@ SEC_SURFACES: tuple[str, ...] = (
     SURFACE_STRUCTURED_DISCLOSURE_FEEDS,
     SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES,
     SURFACE_EFTS,
+    SURFACE_BDC_DATASETS,
+    SURFACE_NMFP_DATASETS,
+    SURFACE_MFRR_DATASETS,
+    SURFACE_BDC_REPORT,
 )
 
 # Each builder names the surface its URLs belong to.
@@ -569,6 +621,10 @@ URL_BUILDER_SURFACES: dict[str, str] = {
     "structured_feed_url": SURFACE_STRUCTURED_DISCLOSURE_FEEDS,
     "structured_archive_url": SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES,
     "efts_search_url": SURFACE_EFTS,
+    "bdc_dataset_url": SURFACE_BDC_DATASETS,
+    "nmfp_dataset_url": SURFACE_NMFP_DATASETS,
+    "mfrr_dataset_url": SURFACE_MFRR_DATASETS,
+    "bdc_report_url": SURFACE_BDC_REPORT,
 }
 
 # Classification rules as data: (surface id, host, path pattern), first match
@@ -616,6 +672,26 @@ SEC_SURFACE_RULES: tuple[tuple[str, str, str], ...] = (
         SURFACE_CIK_LOOKUP,
         "www.sec.gov",
         r"^/Archives/edgar/cik-lookup-data\.txt$",
+    ),
+    (
+        SURFACE_BDC_DATASETS,
+        "www.sec.gov",
+        r"^/files/datastandardsinnovation/data/business-development-company-bdc-data-sets/[^/]+_bdc\.zip$",
+    ),
+    (
+        SURFACE_NMFP_DATASETS,
+        "www.sec.gov",
+        r"^/files/dera/data/form-n-mfp-data-sets/[^/]+_nmfp\.zip$",
+    ),
+    (
+        SURFACE_MFRR_DATASETS,
+        "www.sec.gov",
+        r"^/files/dera/data/mutual-fund-prospectus-risk/return-summary-data-sets/[^/]+_rr1\.zip$",
+    ),
+    (
+        SURFACE_BDC_REPORT,
+        "www.sec.gov",
+        r"^/files/investment/data/other/business-development-company-report/business-development-company-\d{4}\.csv$",
     ),
     (SURFACE_COMPANY_TICKERS, "www.sec.gov", r"^/files/company_tickers\.json$"),
     (
@@ -682,6 +758,7 @@ __all__ = [
     "EFTS_SEARCH_BASE",
     "SEC_ARCHIVE_BASE",
     "SEC_BROWSE_EDGAR_URL",
+    "SEC_DATASETS_BASE",
     "SEC_EDGAR_BASE",
     "SEC_SUBMISSIONS_BASE",
     "SEC_XBRL_API_BASE",
@@ -695,6 +772,10 @@ __all__ = [
     "SEC_SURFACE_RULES",
     "SURFACE_ARCHIVE_DOCUMENTS",
     "SURFACE_ARCHIVE_INDEX_JSON",
+    "SURFACE_BDC_DATASETS",
+    "SURFACE_BDC_REPORT",
+    "SURFACE_MFRR_DATASETS",
+    "SURFACE_NMFP_DATASETS",
     "SURFACE_ARCHIVE_INDEX_PAGES",
     "SURFACE_CIK_LOOKUP",
     "SURFACE_COMPANYCONCEPT",
@@ -721,6 +802,8 @@ __all__ = [
     "ArchiveUrlParts",
     "accession_hyphenated",
     "archives_url",
+    "bdc_dataset_url",
+    "bdc_report_url",
     "classify_sec_surface",
     "companyconcept_url",
     "companyfacts_url",
@@ -733,6 +816,8 @@ __all__ = [
     "historical_submissions_url",
     "index_json_url_for",
     "index_url_for",
+    "mfrr_dataset_url",
+    "nmfp_dataset_url",
     "normalize_accession",
     "normalize_cik",
     "parse_archive_url",

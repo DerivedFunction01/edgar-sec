@@ -229,3 +229,46 @@ def test_engine_builder_agrees_with_the_canonical_archive_shape() -> None:
         "0000320193", "0000320193-23-000106", "aapl-20230930.htm"
     )
     assert reason is None
+
+
+def test_dataset_builders_pin_their_shapes_and_surfaces() -> None:
+    from edgar_sec.domain.sec_urls import (
+        bdc_dataset_url,
+        bdc_report_url,
+        mfrr_dataset_url,
+        nmfp_dataset_url,
+    )
+
+    bdc = bdc_dataset_url("2025q1")
+    assert bdc == (
+        "https://www.sec.gov/files/datastandardsinnovation/data/"
+        "business-development-company-bdc-data-sets/2025q1_bdc.zip"
+    )
+    assert classify_sec_surface(bdc) == "bdc_datasets"
+    nmfp = nmfp_dataset_url("20220808-20220908")
+    assert nmfp == (
+        "https://www.sec.gov/files/dera/data/form-n-mfp-data-sets/"
+        "20220808-20220908_nmfp.zip"
+    )
+    assert classify_sec_surface(nmfp) == "nmfp_datasets"
+    mfrr = mfrr_dataset_url("2010q4")
+    assert mfrr == (
+        "https://www.sec.gov/files/dera/data/mutual-fund-prospectus-risk/"
+        "return-summary-data-sets/2010q4_rr1.zip"
+    )
+    assert classify_sec_surface(mfrr) == "mfrr_datasets"
+    report = bdc_report_url(2026)
+    assert report == (
+        "https://www.sec.gov/files/investment/data/other/"
+        "business-development-company-report/business-development-company-2026.csv"
+    )
+    assert classify_sec_surface(report) == "bdc_report"
+
+
+def test_dataset_builders_refuse_path_like_vintages() -> None:
+    from edgar_sec.domain.sec_urls import bdc_dataset_url, bdc_report_url
+
+    with pytest.raises(ValueError):
+        bdc_dataset_url("../2025q1")
+    with pytest.raises(ValueError):
+        bdc_report_url(1999)

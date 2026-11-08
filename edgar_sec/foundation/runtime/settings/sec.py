@@ -150,6 +150,26 @@ SURFACE_POLICIES: dict[str, SurfacePolicy] = {
             "daily refresh",
             "sec.ttl.daily_index",
         ),
+        SurfacePolicy(
+            "bdc_datasets",
+            SURFACE_KIND_STATIC,
+            "static per vintage; a re-posted vintage is a new content hash",
+        ),
+        SurfacePolicy(
+            "nmfp_datasets",
+            SURFACE_KIND_STATIC,
+            "static per vintage; a re-posted vintage is a new content hash",
+        ),
+        SurfacePolicy(
+            "mfrr_datasets",
+            SURFACE_KIND_STATIC,
+            "static per vintage; a re-posted vintage is a new content hash",
+        ),
+        SurfacePolicy(
+            "bdc_report",
+            SURFACE_KIND_STATIC,
+            "static per report year; a re-published year is a new content hash",
+        ),
     )
 }
 
