@@ -90,3 +90,38 @@ def test_bdc_population_normalizes_yearly_spellings(tmp_path: Path) -> None:
         ("0000012345", "EXAMPLE BDC"),
         ("0001287750", "ARES CAPITAL CORP"),
     ]
+
+
+class _ReportHttp:
+    """Offline double serving one BDC Report CSV per requested year."""
+
+    def get_bytes(self, url: str) -> bytes:
+        year = url.rsplit("-", 1)[-1].removesuffix(".csv")
+        return (
+            "File_No,CIK,Registrant_Name,City,State,Zip_Code,"
+            "Filing Date,Filing Type\n"
+            f"814-001,{year}001,EXAMPLE {year},Boston,MA,02110,04/01/26,10-K\n"
+        ).encode()
+
+
+def test_import_bdc_population_archives_csvs_and_loads(tmp_path: Path) -> None:
+    from edgar_sec.pipelines.datasets.ingest import import_bdc_population
+
+    paths = resolve_datasets_paths(tmp_path)
+    loaded = import_bdc_population(
+        paths,
+        (2026, 2025),
+        http=_ReportHttp(),  # type: ignore[arg-type]
+        loaded_at="2026-11-08T00:00:00+00:00",
+    )
+    assert loaded == 2
+    con = open_store(paths.store_file)
+    try:
+        rows = con.execute(
+            "SELECT cik, report_year FROM bdc_population ORDER BY report_year"
+        ).fetchall()
+    finally:
+        con.close()
+    assert rows == [("0002025001", 2025), ("0002026001", 2026)]
+    store = BulkArchiveStore(paths.bulk_archives_root)
+    assert store.open("bdc_report") is not None

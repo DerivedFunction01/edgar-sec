@@ -148,3 +148,18 @@ def test_read_member_inflates_a_deflated_member(tmp_path: Path) -> None:
     assert store.read_member(reference, "CIK0000000041.json") == (
         b'{"cik": "0000000041"}' * 50
     )
+
+
+def test_put_non_zip_payload_stores_with_empty_member_index(tmp_path: Path) -> None:
+    store = BulkArchiveStore(tmp_path / "store")
+    source = tmp_path / "report.csv"
+    source.write_bytes(b"CIK,Registrant_Name\n12345,EXAMPLE BDC\n")
+    reference = store.put_file(
+        "bdc_report",
+        source,
+        source_url="https://www.sec.gov/example.csv",
+        fetched_at="2026-11-08T00:00:00+00:00",
+    )
+    assert reference.path.is_file()
+    assert reference.manifest.member_count == 0
+    assert store.member_index(reference).num_rows == 0
