@@ -36,19 +36,28 @@ def build_bulk_client(store_root: str | Path) -> BulkSubmissionsClient:
 
 
 def build_bulk_client_from_store(
-    store_root: str | Path, source_id: str, sha256: str
+    store_root: str | Path,
+    source_id: str,
+    sha256: str,
+    *,
+    allow_download: bool = False,
 ) -> BulkSubmissionsClient:
-    """Build a bulk client over a stored archive, never downloading.
-
-    An archive plan binds one stored archive; absence is an operator error,
-    not a reason to fetch a different night's file.
-    """
+    """Build a bulk client over a stored archive, downloading if allowed."""
     store = BulkArchiveStore(store_root)
     reference = store.open(source_id, sha256)
-    if reference is None:
+    if reference is not None:
+        return BulkSubmissionsClient(
+            BulkSubmissionsArchive(reference.path, archive_sha256=reference.sha256)
+        )
+    if not allow_download:
         raise ValueError(
             f"stored archive not found for source {source_id!r} at {sha256}"
         )
-    return BulkSubmissionsClient(
-        BulkSubmissionsArchive(reference.path, archive_sha256=reference.sha256)
+    runtime = resolve_runtime_settings()
+    archive = BulkSubmissionsArchive.download(
+        build_client().http,
+        store,
+        max_bytes=runtime.sec.bulk_archive_max_bytes,
+        expected_sha256=sha256,
     )
+    return BulkSubmissionsClient(archive)

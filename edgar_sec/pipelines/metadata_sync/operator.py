@@ -17,6 +17,7 @@ from edgar_sec.foundation.runtime.interactive import (
     build_menu,
     menu_action,
     operator_entrypoint,
+    prompt_choice,
     prompt_confirm,
     prompt_paginated_choice,
     prompt_text,
@@ -44,12 +45,14 @@ from .options import (
     PlanOptions,
     RunOptions,
     derive_plan_id,
+    plan_options,
     read_bundle_plan_id,
     reconcile_options,
     refresh_options,
     run_options,
 )
 from .paths import resolve_metadata_paths
+from .planner import load_plan
 from .run_lock import RunLockError, read_lock_owner
 
 __all__ = [
@@ -280,12 +283,58 @@ def select_snapshot(state: WizardState) -> None:
     print(f"current snapshot is now {chosen}")
 
 
-def _ask_published_cohort(state: WizardState) -> PlanOptions | None:
-    """Choose the cohort a plan is built over.
+def _ask_archive_plan_options(state: WizardState) -> PlanOptions | None:
+    """Collect options for planning over the submissions bulk archive."""
+    from edgar_sec.infra.storage.bulk_archive import BulkArchiveStore
+    from .commands.client import build_bulk_client
+    from .sec_client import SUBMISSIONS_BULK_SOURCE_ID
 
-    The picker is shared with augmentation: the sources available are the same,
-    so a choice meaningful for planning is meaningful for augmenting.
-    """
+    metadata = state.metadata()
+    store = BulkArchiveStore(metadata.bulk_archives_root)
+    available = store.list(SUBMISSIONS_BULK_SOURCE_ID)
+    archive_sha = ""
+    if not available:
+        print("\nNo submissions bulk archive found in store.")
+        if not prompt_confirm(
+            "Download latest submissions bulk archive now?", default=False
+        ):
+            return None
+        print("Downloading submissions bulk archive from SEC...")
+        client = build_bulk_client(metadata.bulk_archives_root)
+        archive_sha = client.archive.archive_sha256
+        print(f"Downloaded and stored bulk archive: {archive_sha[:12]}")
+    else:
+        newest = available[0]
+        label = (
+            f"Use latest stored archive {newest.sha256[:12]} "
+            f"({newest.manifest.fetched_at})?"
+        )
+        if prompt_confirm(label, default=True):
+            archive_sha = newest.sha256
+        else:
+            chosen = prompt_text("Archive SHA-256 (blank = cancel)", "").strip()
+            if not chosen:
+                return None
+            archive_sha = chosen
+    return plan_options(
+        artifacts_root=state.artifacts_root or None,
+        from_archive=True,
+        archive_sha=archive_sha,
+    )
+
+
+def _ask_published_cohort(state: WizardState) -> PlanOptions | None:
+    """Choose the cohort or bulk archive a plan is built over."""
+    source = prompt_choice(
+        "Plan Source",
+        [
+            ("1", "Published cohort (universe, tickers, custom)"),
+            ("2", "Stored submissions bulk archive (all CIKs, offline)"),
+        ],
+        default="1",
+    )
+    if source == "2":
+        return _ask_archive_plan_options(state)
     from .augment_flow import ask_published_cohort
 
     return ask_published_cohort(state, purpose="Cohort to plan over")
@@ -303,6 +352,11 @@ def _ask_plan_options(
         "CIKs per chunk (blank = configured default)", settings.default_chunk_size
     )
     limit = _ask_int("Limit CIKs (blank = all)") if with_limit else None
+    return replace(
+        cohort,
+        chunk_size=chunk_size if chunk_size is not None else cohort.chunk_size,
+        limit=limit,
+    )
     return replace(
         cohort,
         chunk_size=chunk_size if chunk_size is not None else cohort.chunk_size,
@@ -356,12 +410,49 @@ def run(state: WizardState) -> None:
         options.chunk_ids = tuple(
             int(value) for value in chunks.replace(" ", "").split(",") if value
         )
-    decision = confirm_stale_lock(options.run_paths().lock_path())
+    run_paths = options.run_paths()
+    decision = confirm_stale_lock(run_paths.lock_path())
     if not decision.proceed:
         return
-    if not confirm_network():
-        print("cancelled; nothing was fetched")
-        return
+    plan = None
+    if run_paths.plan_file.is_file():
+        try:
+            plan = load_plan(run_paths)
+        except (OSError, ValueError):
+            plan = None
+    if plan is not None and plan.is_archive_plan:
+        print(
+            f"Plan is bound to bulk archive {plan.archive_sha256[:12]}; "
+            "execution is offline."
+        )
+        snapshots = list_snapshots(state.metadata())
+        if snapshots:
+            carry = prompt_text(
+                "Carry-forward from snapshot (blank = none)", ""
+            ).strip()
+            if carry:
+                options.carry_from_snapshot = carry
+    else:
+        if plan is not None:
+            mode = prompt_choice(
+                "Execution Source",
+                [
+                    ("1", "Live SEC HTTP fan-out (network requests per CIK)"),
+                    (
+                        "2",
+                        "Submissions bulk archive (offline extraction, downloads if missing)",
+                    ),
+                ],
+                default="1",
+            )
+            if mode == "2":
+                options.bulk = True
+            elif not confirm_network():
+                print("cancelled; nothing was fetched")
+                return
+        elif not confirm_network():
+            print("cancelled; nothing was fetched")
+            return
     options.stale_lock_confirmed = decision.confirmed
     cmd_run(options)
 

@@ -190,6 +190,7 @@ class BulkSubmissionsArchive:
         store: BulkArchiveStore,
         *,
         max_bytes: int,
+        expected_sha256: str | None = None,
     ) -> "BulkSubmissionsArchive":
         """Stream the bulk ZIP once, store it, and open the stored copy."""
         url = submissions_bulk_url()
@@ -211,6 +212,13 @@ class BulkSubmissionsArchive:
                 raise RuntimeError(
                     f"bulk archive download failed ({result.code}): {result.detail}"
                 )
+            if expected_sha256 is not None:
+                digest = file_sha256(staging)
+                if digest != expected_sha256:
+                    raise ValueError(
+                        f"downloaded archive SHA-256 {digest} does not match plan "
+                        f"archive SHA-256 {expected_sha256}; SEC published a new daily archive"
+                    )
             reference = store.put_file(
                 SUBMISSIONS_BULK_SOURCE_ID, staging, source_url=url
             )

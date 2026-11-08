@@ -130,3 +130,56 @@ def test_metadata_distribution_lifecycle_offline(tmp_path: Path) -> None:
     assert cmd_import(adapter, plan.plan_id, bundle) == 0
     assert resolve_run_paths(plan.plan_id, tmp_path).chunk_file(0).is_file()
     assert cmd_import(adapter, plan.plan_id, bundle) == 0
+
+
+def test_metadata_adapter_archive_plan_distribution_lifecycle(tmp_path: Path) -> None:
+    """Verifies end-to-end bundle distribution for an archive-backed plan."""
+    import json
+    import zipfile
+    from edgar_sec.infra.storage.bulk_archive import BulkArchiveStore
+    from edgar_sec.pipelines.metadata_sync.commands.plan import cmd_plan
+    from edgar_sec.pipelines.metadata_sync.discovery import list_plans
+    from edgar_sec.pipelines.metadata_sync.options import plan_options
+    from edgar_sec.pipelines.metadata_sync.paths import (
+        FINGERPRINTS_FILE_NAME,
+        resolve_metadata_paths,
+    )
+
+    metadata = resolve_metadata_paths(tmp_path)
+    store = BulkArchiveStore(metadata.bulk_archives_root)
+    zip_staging = tmp_path / "raw.zip"
+    payload = {
+        "name": "TEST CO",
+        "filings": {
+            "recent": {
+                "accessionNumber": ["0000000020-26-000001"],
+                "filingDate": ["2026-01-02"],
+                "form": ["10-K"],
+                "size": [1024],
+            },
+            "files": [],
+        },
+    }
+    with zipfile.ZipFile(zip_staging, "w") as zf:
+        zf.writestr("CIK0000000020.json", json.dumps(payload))
+    store.put_file(
+        "submissions_bulk",
+        zip_staging,
+        source_url="https://www.sec.gov/Archives/edgar/daily-index/bulkdata/submissions.zip",
+    )
+
+    options = plan_options(artifacts_root=tmp_path, from_archive=True, chunk_size=1)
+    assert cmd_plan(options) == 0
+    plans = list_plans(metadata)
+    assert len(plans) == 1
+    plan_id = plans[0]["plan_id"]
+
+    adapter = MetadataDistributionAdapter(artifacts_root=tmp_path)
+    destination = tmp_path / "bundles"
+    assert cmd_export(adapter, plan_id, worker_count=1, destination=destination) == 0
+    bundle = destination / "worker-00"
+    assert (bundle / FINGERPRINTS_FILE_NAME).is_file()
+
+    assert cmd_worker(adapter, bundle, workers=1) == 0
+    assert cmd_import(adapter, plan_id, bundle) == 0
+    assert resolve_run_paths(plan_id, tmp_path).chunk_file(0).is_file()

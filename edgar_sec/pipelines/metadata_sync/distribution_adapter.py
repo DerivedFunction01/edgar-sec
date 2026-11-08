@@ -26,12 +26,17 @@ from edgar_sec.infra.distribution.protocol import (
 from edgar_sec.infra.distribution.receipt import build_worker_receipt
 
 from .checkpoints import inspect_chunk
-from .commands.client import build_client
+from .commands.client import build_bulk_client_from_store, build_client
 from .discovery import list_plans
 from .distribution import copy_bundle
 from .options import BundleRunPaths
-from .paths import MetadataPaths, resolve_metadata_paths, resolve_run_paths
-from .planner import Plan, load_plan
+from .paths import (
+    CHUNKS_DIR,
+    MetadataPaths,
+    resolve_metadata_paths,
+    resolve_run_paths,
+)
+from .planner import Plan, load_plan, read_fingerprints
 from .worker import resolve_workers, run_chunk_ids
 
 
@@ -48,10 +53,11 @@ class MetadataDistributionAdapter:
         self,
         artifacts_root: Path | None = None,
         *,
-        client_factory: Callable[[], Any] = build_client,
+        client_factory: Callable[[], Any] | None = None,
     ) -> None:
         self.artifacts_root = artifacts_root
-        self.client_factory = client_factory
+        self._custom_client = client_factory is not None
+        self.client_factory = client_factory or build_client
 
     def list_work_items(
         self, artifacts_root: Path | None = None
@@ -97,7 +103,11 @@ class MetadataDistributionAdapter:
         assignment: WorkerAssignment,
         bundle_dir: Path,
     ) -> None:
-        bundle_paths = BundleRunPaths(bundle_root=bundle_dir, plan_id=work.plan.plan_id)
+        bundle_paths = BundleRunPaths(
+            bundle_root=bundle_dir,
+            plan_id=work.plan.plan_id,
+            artifacts_root=self.artifacts_root,
+        )
         shutil.rmtree(bundle_paths.chunk_dir, ignore_errors=True)
         source_paths = resolve_run_paths(
             work.plan.plan_id, work.metadata.artifacts_root
@@ -115,17 +125,38 @@ class MetadataDistributionAdapter:
         work_id = str(manifest["work_id"])
         chunk_ids = [int(chunk_id) for chunk_id in manifest["chunk_ids"]]
         effective_worker = worker_id or str(manifest["worker_id"])
-        bundle_paths = BundleRunPaths(bundle_root=bundle_dir, plan_id=work_id)
+        bundle_paths = BundleRunPaths(
+            bundle_root=bundle_dir,
+            plan_id=work_id,
+            artifacts_root=self.artifacts_root,
+        )
         plan = load_plan(bundle_paths)
         work_digest = self.describe_work(work_id, plan).work_digest
         assert_work_digest(manifest["work_digest"], work_digest)
+        if self._custom_client:
+            client = self.client_factory()
+        elif plan.is_archive_plan:
+            client = build_bulk_client_from_store(
+                bundle_paths.metadata.bulk_archives_root,
+                plan.archive_source_id,
+                plan.archive_sha256,
+                allow_download=True,
+            )
+        else:
+            client = self.client_factory()
+        fingerprints = (
+            read_fingerprints(bundle_paths.fingerprints_file)
+            if bundle_paths.fingerprints_file.is_file()
+            else None
+        )
         results = run_chunk_ids(
-            self.client_factory(),
+            client,
             plan,
             bundle_paths,
             chunk_ids,
             snapshot_id=None,
             workers=resolve_workers(workers),
+            fingerprints=fingerprints,
         )
         chunk_files = [Path(result.path) for result in results]
         completed = [result.chunk_id for result in results]
@@ -176,7 +207,7 @@ class MetadataDistributionAdapter:
             files_by_chunk[chunk_id] = (incoming, record.sha256)
         if set(files_by_chunk) != set(receipt.completed_chunks):
             raise ValueError("metadata receipt is missing a completed chunk file")
-        output_root = bundle_dir / "chunks"
+        output_root = bundle_dir / CHUNKS_DIR
         actual_files = {
             path.relative_to(bundle_dir).as_posix()
             for path in output_root.rglob("*")
@@ -190,6 +221,11 @@ class MetadataDistributionAdapter:
         adopted: list[int] = []
         ignored: list[int] = []
         pending: list[tuple[int, Path, Path]] = []
+        fingerprints = (
+            read_fingerprints(coordinator_paths.fingerprints_file)
+            if plan.is_archive_plan and coordinator_paths.fingerprints_file.is_file()
+            else None
+        )
         for chunk_id, (incoming, expected_digest) in sorted(files_by_chunk.items()):
             if (
                 inspect_chunk(
@@ -197,6 +233,7 @@ class MetadataDistributionAdapter:
                     incoming,
                     expected_ciks=plan.chunk_ciks(chunk_id),
                     expected_fingerprint=plan.input_fingerprint or None,
+                    expected_fingerprints=fingerprints,
                 )
                 is None
             ):
@@ -208,6 +245,7 @@ class MetadataDistributionAdapter:
                     target,
                     expected_ciks=plan.chunk_ciks(chunk_id),
                     expected_fingerprint=plan.input_fingerprint or None,
+                    expected_fingerprints=fingerprints,
                 )
                 if existing is not None and existing.file_sha256 == expected_digest:
                     ignored.append(chunk_id)

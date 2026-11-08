@@ -38,13 +38,11 @@ def cmd_run(
     if plan.is_archive_plan:
         fingerprints = FingerprintIndex(run_paths.fingerprints_file)
         if client is None:
-            metadata = getattr(run_paths, "metadata", None)
-            if metadata is None:
-                raise ValueError("archive plans execute from the artifacts tree")
             client = build_bulk_client_from_store(
-                metadata.bulk_archives_root,
+                run_paths.metadata.bulk_archives_root,
                 plan.archive_source_id,
                 plan.archive_sha256,
+                allow_download=bool(options.bundle_root),
             )
     elif client is None and options.bulk:
         client = build_bulk_client(run_paths.metadata.bulk_archives_root)
@@ -57,10 +55,7 @@ def cmd_run(
     if options.carry_from_snapshot:
         if fingerprints is None:
             raise ValueError("--carry-from requires an archive plan")
-        metadata = getattr(run_paths, "metadata", None)
-        if metadata is None:
-            raise ValueError("carry-forward executes from the artifacts tree")
-        prior = resolve_snapshot_parts(metadata, options.carry_from_snapshot)
+        prior = resolve_snapshot_parts(run_paths.metadata, options.carry_from_snapshot)
         carry_report = stage_carried_rows(
             plan,
             run_paths,

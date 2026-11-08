@@ -486,6 +486,96 @@ def test_action_run_leaves_the_selection_empty_when_blank(
     assert seen[0].chunk_ids == ()
 
 
+def test_action_run_archive_plan_bypasses_network_confirmation(
+    state: WizardState, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from dataclasses import dataclass
+
+    state.plan_id = "p-arch"
+
+    @dataclass
+    class FakePlan:
+        is_archive_plan: bool = True
+        archive_sha256: str = "a" * 64
+
+    monkeypatch.setattr(operator_module, "load_plan", lambda _paths: FakePlan())
+
+    def tripwire(*_args, **_kwargs):
+        raise AssertionError("confirm_network must not be called for archive plans")
+
+    monkeypatch.setattr(operator_module, "confirm_network", tripwire)
+    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
+
+    plan_file_path = Path(state.artifacts_root) / "plan.json"
+    plan_file_path.touch()
+
+    class FakeRunPaths:
+        def lock_path(self):
+            return Path(state.artifacts_root) / "nonexistent.lock"
+
+        @property
+        def plan_file(self):
+            return plan_file_path
+
+    class FakeOptions:
+        plan_id = "p-arch"
+        chunk_ids = ()
+        stale_lock_confirmed = False
+        bulk = False
+        carry_from_snapshot = ""
+
+        def run_paths(self):
+            return FakeRunPaths()
+
+    monkeypatch.setattr(state, "run_options", lambda *a, **k: FakeOptions())
+    seen: list[object] = []
+    monkeypatch.setattr(operator_module, "cmd_run", seen.append)
+    operator_module.run(state)
+    assert len(seen) == 1
+
+
+def test_ask_archive_plan_options_picks_latest_archive(
+    state: WizardState, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from edgar_sec.infra.storage.bulk_archive import (
+        ArchiveReference,
+        BulkArchiveManifest,
+    )
+
+    manifest = BulkArchiveManifest(
+        source_id="submissions_bulk",
+        source_url="https://sec.gov",
+        sha256="c" * 64,
+        byte_size=100,
+        member_count=5,
+        fetched_at="2026-01-01T00:00:00Z",
+    )
+    fake_ref = ArchiveReference(
+        source_id="submissions_bulk",
+        sha256="c" * 64,
+        path=Path("/dev/null"),
+        manifest=manifest,
+        member_index_path=Path("/dev/null"),
+    )
+
+    class FakeStore:
+        def __init__(self, _root):
+            pass
+
+        def list(self, _source_id):
+            return [fake_ref]
+
+    monkeypatch.setattr(
+        "edgar_sec.infra.storage.bulk_archive.BulkArchiveStore", FakeStore
+    )
+    monkeypatch.setattr(operator_module, "prompt_confirm", lambda *a, **k: True)
+    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
+    res = operator_module._ask_archive_plan_options(state)
+    assert res is not None
+    assert res.from_archive is True
+    assert res.archive_sha == "c" * 64
+
+
 def test_action_merge_delegates_to_cmd_merge(
     state: WizardState, monkeypatch: pytest.MonkeyPatch
 ) -> None:

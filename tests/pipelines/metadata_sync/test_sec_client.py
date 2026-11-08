@@ -426,3 +426,35 @@ def test_bulk_redirect_validator_rejects_leaving_the_bulkdata_directory() -> Non
         _validate_bulk_redirect("https://example.com/Archives/edgar/daily-index/x.zip")
     with pytest.raises(ValueError):
         _validate_bulk_redirect("https://www.sec.gov/Archives/edgar/data/1/x.zip")
+
+
+def test_bulk_download_expected_sha256_verification(tmp_path: Path) -> None:
+    """Verifies that expected SHA-256 enforces match and rejects drift."""
+    import io
+    import pytest
+    import zipfile as zipfile_module
+
+    from edgar_sec.foundation.hashing import sha256_bytes
+    from edgar_sec.infra.storage.bulk_archive import BulkArchiveStore
+    from edgar_sec.pipelines.metadata_sync.sec_client import BulkSubmissionsArchive
+
+    buffer = io.BytesIO()
+    with zipfile_module.ZipFile(buffer, "w") as archive:
+        for name, payload in _bulk_members().items():
+            archive.writestr(name, payload)
+    data = buffer.getvalue()
+    real_sha = sha256_bytes(data)
+
+    store = BulkArchiveStore(tmp_path / "store1")
+    http = _StreamingHttp(data)
+    archive = BulkSubmissionsArchive.download(
+        http, store, max_bytes=10_000_000, expected_sha256=real_sha
+    )
+    assert archive.archive_sha256 == real_sha
+
+    store2 = BulkArchiveStore(tmp_path / "store2")
+    http2 = _StreamingHttp(data)
+    with pytest.raises(ValueError, match="does not match plan archive"):
+        BulkSubmissionsArchive.download(
+            http2, store2, max_bytes=10_000_000, expected_sha256="0" * 64
+        )

@@ -55,6 +55,12 @@ class BundleRunPaths:
 
     bundle_root: Path
     plan_id: str
+    artifacts_root: Path | None = None
+
+    @property
+    def metadata(self) -> MetadataPaths:
+        """Metadata layout this invocation writes into."""
+        return resolve_metadata_paths(self.artifacts_root)
 
     @property
     def plan_file(self) -> Path:
@@ -196,7 +202,11 @@ class RunOptions:
     def run_paths(self) -> Any:
         """Plan-scoped paths; with ``bundle_root`` they point at a copied bundle."""
         if self.bundle_root is not None:
-            return BundleRunPaths(bundle_root=self.bundle_root, plan_id=self.plan_id)
+            return BundleRunPaths(
+                bundle_root=self.bundle_root,
+                plan_id=self.plan_id,
+                artifacts_root=self.artifacts_root,
+            )
         return resolve_run_paths(self.plan_id, self.artifacts_root)
 
     def effective_snapshot_id(self, plan: Plan) -> str:

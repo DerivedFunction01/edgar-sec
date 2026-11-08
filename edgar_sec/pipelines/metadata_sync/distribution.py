@@ -30,6 +30,7 @@ from .checkpoints import inspect_chunk
 from .options import BundleRunPaths, RunOptions
 from .paths import (
     ASSIGNMENTS_DIR,
+    FINGERPRINTS_FILE_NAME,
     INPUT_DIR,
     INPUT_MANIFEST_FILE,
     RECEIPT_FILE,
@@ -94,6 +95,8 @@ def copy_bundle(source: Any, bundle: Path) -> None:
     (bundle / ROSTER_DIR).mkdir(parents=True, exist_ok=True)
     shutil.copy2(source.plan_file, bundle / PLAN_FILE_NAME)
     shutil.copy2(source.roster_file, bundle / ROSTER_DIR / ROSTER_FILE_NAME)
+    if hasattr(source, "fingerprints_file") and source.fingerprints_file.is_file():
+        shutil.copy2(source.fingerprints_file, bundle / FINGERPRINTS_FILE_NAME)
     if source.input_manifest_file.is_file():
         (bundle / INPUT_DIR).mkdir(parents=True, exist_ok=True)
         shutil.copy2(

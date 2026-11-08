@@ -41,7 +41,7 @@ from edgar_sec.infra.storage.parquet import (
 )
 
 from .checkpoints import inspect_chunk
-from .paths import RunPaths
+from .paths import CHUNKS_DIR, RunPaths
 from .planner import Plan, utc_now_iso, write_fingerprints
 from .sec_client import (
     BulkSubmissionsArchive,
@@ -358,7 +358,7 @@ def stage_carried_rows(
     Carriage is decided by a DuckDB join on (cik, fingerprint); carried
     rows stream in bounded Arrow batches, re-stamped only in identity.
     """
-    staging_dir = run_paths.metadata.transient_dir(f"carry-{plan.plan_id}") / "chunks"
+    staging_dir = run_paths.metadata.transient_dir(f"carry-{plan.plan_id}") / CHUNKS_DIR
     staging_dir.mkdir(parents=True, exist_ok=True)
     if fingerprints_path is None:
         if fingerprints is None:
