@@ -16,7 +16,9 @@ from edgar_sec.domain.sec_urls import (
     companyfacts_url,
     frames_url,
     current_filings_url,
+    daily_index_url,
     efts_search_url,
+    full_index_url,
     historical_submissions_url,
     index_json_url_for,
     normalize_cik,
@@ -169,6 +171,51 @@ def test_submissions_bulk_url() -> None:
     assert submissions_bulk_url() == (
         "https://www.sec.gov/Archives/edgar/daily-index/bulkdata/submissions.zip"
     )
+    assert classify_sec_surface(submissions_bulk_url()) == "submissions_bulk"
+
+
+@pytest.mark.parametrize("flavour", ["master", "company", "form", "crawler", "xbrl"])
+def test_full_index_url_pins_the_quarterly_shape(flavour: str) -> None:
+    url = full_index_url(2024, 1, flavour)
+    assert (
+        url == f"https://www.sec.gov/Archives/edgar/full-index/2024/QTR1/{flavour}.idx"
+    )
+    assert classify_sec_surface(url) == "full_index"
+
+
+def test_full_index_url_names_a_compressed_variant() -> None:
+    url = full_index_url(2024, 1, "master", extension="gz")
+    assert url == "https://www.sec.gov/Archives/edgar/full-index/2024/QTR1/master.gz"
+    assert classify_sec_surface(url) == "full_index"
+
+
+def test_full_index_url_refuses_unserved_shapes() -> None:
+    with pytest.raises(ValueError):
+        full_index_url(2024, 5, "master")
+    with pytest.raises(ValueError):
+        full_index_url(2024, 1, "nope")
+    with pytest.raises(ValueError):
+        full_index_url(2024, 1, "crawler", extension="gz")
+
+
+@pytest.mark.parametrize("flavour", ["master", "company", "form", "crawler"])
+def test_daily_index_url_pins_the_per_day_shape(flavour: str) -> None:
+    url = daily_index_url("2026-11-06", flavour)
+    assert url == (
+        "https://www.sec.gov/Archives/edgar/daily-index/2026/QTR4/"
+        f"{flavour}.20261106.idx"
+    )
+    assert classify_sec_surface(url) == "daily_index"
+
+
+def test_daily_index_url_derives_the_quarter_from_the_day() -> None:
+    assert daily_index_url("2024-02-13", "master") == (
+        "https://www.sec.gov/Archives/edgar/daily-index/2024/QTR1/master.20240213.idx"
+    )
+    with pytest.raises(ValueError):
+        daily_index_url("2026-11-06", "xbrl")
+    with pytest.raises(ValueError):
+        daily_index_url("not-a-date", "master")
 
 
 def test_engine_builder_agrees_with_the_canonical_archive_shape() -> None:
