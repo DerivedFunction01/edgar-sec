@@ -125,6 +125,17 @@ def test_family_entry_owns_cover_selection(
     assert schema.report_period_transition == transition
 
 
+def test_6_k_entry_carries_its_own_taxonomy() -> None:
+    from edgar_sec.domain.forms.families.current.taxonomy import FORM_6K_ITEMS
+
+    entry = get_family_entry("6-K")
+    assert entry is not None
+    assert entry.taxonomy_items == FORM_6K_ITEMS
+    eight_k = get_family_entry("8-K")
+    assert eight_k is not None
+    assert entry.taxonomy_items != eight_k.taxonomy_items
+
+
 def test_family_entry_lookup_resolves_form_aliases() -> None:
     assert get_family_entry("10-K/A") is get_family_entry("10-K")
     assert get_family_profile("10-K/A") is get_family_profile("10-K")

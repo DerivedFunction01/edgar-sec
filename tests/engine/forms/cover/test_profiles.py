@@ -28,7 +28,11 @@ from edgar_sec.domain.forms.families.annual.taxonomy import (
     FORM_10K_DERIVED,
     FORM_20F_DERIVED,
 )
-from edgar_sec.domain.forms.families.current.taxonomy import FORM_8K_ITEMS
+from edgar_sec.domain.forms.families.current.taxonomy import (
+    FORM_6K_DERIVED,
+    FORM_6K_ITEMS,
+    FORM_8K_ITEMS,
+)
 from edgar_sec.domain.forms.families.quarterly.checkmarks import (
     QUARTERLY_CHECKBOX_SCHEMA,
 )
@@ -286,10 +290,11 @@ def test_current_report_body_anchors_on_the_eight_k_item_list() -> None:
     assert "item" in body.semantic_headings
 
 
-def test_6_k_body_evidence_drops_item_headings_for_foreign_ones() -> None:
+def test_6_k_body_evidence_carries_its_own_taxonomy_headings() -> None:
     eight_k = get_profile("8-K").body_evidence
     six_k = get_profile("6-K").body_evidence
-    assert six_k.structural_headings == ()
+    assert six_k.structural_headings == tuple(d.item for d in FORM_6K_ITEMS)
+    assert six_k.structural_headings != eight_k.structural_headings
     assert six_k.semantic_headings == (
         "signatures",
         "signature",
@@ -357,7 +362,7 @@ def test_lexical_pack_identity_per_family(family: str, expected: str) -> None:
         ("S-4", FORM_S4_DERIVED),
         ("S-8", FORM_S8_DERIVED),
         ("8-K", None),
-        ("6-K", None),
+        ("6-K", FORM_6K_DERIVED),
         ("GENERIC", None),
     ],
 )
