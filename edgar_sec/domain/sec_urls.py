@@ -30,6 +30,9 @@ STRUCTURED_FEED_FILES: dict[str, str] = {
 SUBMISSIONS_BULK_URL = (
     "https://www.sec.gov/Archives/edgar/daily-index/bulkdata/submissions.zip"
 )
+COMPANYFACTS_BULK_URL = (
+    "https://www.sec.gov/Archives/edgar/daily-index/xbrl/companyfacts.zip"
+)
 
 CIK_PADDED_WIDTH = 10
 
@@ -59,6 +62,27 @@ def historical_submissions_url(source_file: str) -> str:
 def submissions_bulk_url() -> str:
     """Return the nightly bulk submissions ZIP URL (all CIK documents)."""
     return SUBMISSIONS_BULK_URL
+
+
+def companyfacts_bulk_url() -> str:
+    """Return the nightly bulk companyfacts ZIP URL (all CIK documents)."""
+    return COMPANYFACTS_BULK_URL
+
+
+def _feed_quarter(year: int, quarter: int) -> str:
+    if not 1 <= int(quarter) <= 4:
+        raise ValueError(f"quarter must be in 1..4, got {quarter!r}")
+    return f"{int(year):04d}/QTR{int(quarter)}"
+
+
+def feed_archive_url(year: int, quarter: int, filename: str) -> str:
+    """Return the URL of one daily Feed tarball unit."""
+    return f"{SEC_EDGAR_BASE}/Feed/{_feed_quarter(year, quarter)}/{filename}"
+
+
+def feed_listing_url(year: int, quarter: int) -> str:
+    """Return the Feed directory listing URL the ingest enumerates."""
+    return f"{SEC_EDGAR_BASE}/Feed/{_feed_quarter(year, quarter)}/"
 
 
 def current_filings_url(
@@ -438,6 +462,8 @@ def xbrl_package_url_for(archive_cik: str, accession: str) -> str:
 SURFACE_SUBMISSIONS = "submissions"
 SURFACE_SUBMISSIONS_HISTORICAL_SHARDS = "submissions_historical_shards"
 SURFACE_SUBMISSIONS_BULK = "submissions_bulk"
+SURFACE_COMPANYFACTS_BULK = "companyfacts_bulk"
+SURFACE_FEED_ARCHIVES = "feed_archives"
 SURFACE_COMPANYCONCEPT = "companyconcept"
 SURFACE_COMPANYFACTS = "companyfacts"
 SURFACE_FRAMES = "frames"
@@ -461,12 +487,15 @@ SURFACE_EFTS = "efts"
 SURFACE_BDC_DATASETS = "bdc_datasets"
 SURFACE_NMFP_DATASETS = "nmfp_datasets"
 SURFACE_MFRR_DATASETS = "mfrr_datasets"
+SURFACE_FSDS_DATASETS = "fsds_datasets"
 SURFACE_BDC_REPORT = "bdc_report"
 
 SEC_SURFACES: tuple[str, ...] = (
     SURFACE_SUBMISSIONS,
     SURFACE_SUBMISSIONS_HISTORICAL_SHARDS,
     SURFACE_SUBMISSIONS_BULK,
+    SURFACE_COMPANYFACTS_BULK,
+    SURFACE_FEED_ARCHIVES,
     SURFACE_COMPANYCONCEPT,
     SURFACE_COMPANYFACTS,
     SURFACE_FRAMES,
@@ -490,6 +519,7 @@ SEC_SURFACES: tuple[str, ...] = (
     SURFACE_BDC_DATASETS,
     SURFACE_NMFP_DATASETS,
     SURFACE_MFRR_DATASETS,
+    SURFACE_FSDS_DATASETS,
     SURFACE_BDC_REPORT,
 )
 
@@ -498,6 +528,9 @@ URL_BUILDER_SURFACES: dict[str, str] = {
     "submissions_url": SURFACE_SUBMISSIONS,
     "historical_submissions_url": SURFACE_SUBMISSIONS_HISTORICAL_SHARDS,
     "submissions_bulk_url": SURFACE_SUBMISSIONS_BULK,
+    "companyfacts_bulk_url": SURFACE_COMPANYFACTS_BULK,
+    "feed_archive_url": SURFACE_FEED_ARCHIVES,
+    "feed_listing_url": SURFACE_FEED_ARCHIVES,
     "companyconcept_url": SURFACE_COMPANYCONCEPT,
     "companyfacts_url": SURFACE_COMPANYFACTS,
     "frames_url": SURFACE_FRAMES,
@@ -515,6 +548,7 @@ URL_BUILDER_SURFACES: dict[str, str] = {
     "bdc_dataset_url": SURFACE_BDC_DATASETS,
     "nmfp_dataset_url": SURFACE_NMFP_DATASETS,
     "mfrr_dataset_url": SURFACE_MFRR_DATASETS,
+    "fsds_dataset_url": SURFACE_FSDS_DATASETS,
     "bdc_report_url": SURFACE_BDC_REPORT,
 }
 
@@ -550,6 +584,16 @@ SEC_SURFACE_RULES: tuple[tuple[str, str, str], ...] = (
         r"^/Archives/edgar/daily-index/bulkdata/submissions\.zip$",
     ),
     (
+        SURFACE_COMPANYFACTS_BULK,
+        "www.sec.gov",
+        r"^/Archives/edgar/daily-index/xbrl/companyfacts\.zip$",
+    ),
+    (
+        SURFACE_FEED_ARCHIVES,
+        "www.sec.gov",
+        r"^/Archives/edgar/Feed/\d{4}/QTR[1-4](/|$)",
+    ),
+    (
         SURFACE_FULL_INDEX,
         "www.sec.gov",
         r"^/Archives/edgar/full-index/\d{4}/QTR[1-4]/[^/]+$",
@@ -578,6 +622,11 @@ SEC_SURFACE_RULES: tuple[tuple[str, str, str], ...] = (
         SURFACE_MFRR_DATASETS,
         "www.sec.gov",
         r"^/files/dera/data/mutual-fund-prospectus-risk/return-summary-data-sets/[^/]+_rr1\.zip$",
+    ),
+    (
+        SURFACE_FSDS_DATASETS,
+        "www.sec.gov",
+        r"^/files/dera/data/financial-statement-data-sets/\d{4}q[1-4]\.zip$",
     ),
     (
         SURFACE_BDC_REPORT,
@@ -657,6 +706,7 @@ __all__ = [
     "FULL_INDEX_FLAVOURS",
     "STRUCTURED_FEED_FILES",
     "SUBMISSIONS_BULK_URL",
+    "COMPANYFACTS_BULK_URL",
     "DEFAULT_ARCHIVE_URL_POLICY",
     "FILING_SUMMARY_DOCUMENT",
     "SEC_SURFACES",
@@ -667,10 +717,13 @@ __all__ = [
     "SURFACE_BDC_REPORT",
     "SURFACE_MFRR_DATASETS",
     "SURFACE_NMFP_DATASETS",
+    "SURFACE_FSDS_DATASETS",
     "SURFACE_ARCHIVE_INDEX_PAGES",
     "SURFACE_CIK_LOOKUP",
     "SURFACE_COMPANYCONCEPT",
     "SURFACE_COMPANYFACTS",
+    "SURFACE_COMPANYFACTS_BULK",
+    "SURFACE_FEED_ARCHIVES",
     "SURFACE_FRAMES",
     "SURFACE_DAILY_INDEX",
     "SURFACE_FULL_INDEX",
@@ -696,6 +749,9 @@ __all__ = [
     "classify_sec_surface",
     "companyconcept_url",
     "companyfacts_url",
+    "companyfacts_bulk_url",
+    "feed_archive_url",
+    "feed_listing_url",
     "frames_url",
     "current_filings_url",
     "efts_search_url",

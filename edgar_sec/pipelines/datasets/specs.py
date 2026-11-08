@@ -24,17 +24,18 @@ class DatasetSpec:
     member_prefix: str
     submission_member: str
     excluded_members: tuple[str, ...] = ()
+    member_suffix: str = ".tsv"
 
     def relation_for(self, member_name: str) -> str | None:
         """Store relation for one archive member, or None when not loaded."""
         base = member_name.rsplit("/", 1)[-1]
-        if not base.lower().endswith(".tsv"):
+        if not base.lower().endswith(self.member_suffix):
             return None
         if base in self.excluded_members:
             return None
         if self.member_prefix and not member_name.startswith(self.member_prefix):
             return None
-        stem = base[:-4].lower()
+        stem = base[: -len(self.member_suffix)].lower()
         if self.set_id == "nmfp":
             stem = stem.removeprefix("nmfp_")
         return f"{self.set_id}_{stem}"
@@ -66,9 +67,17 @@ MFRR_SPEC = DatasetSpec(
     member_prefix="",
     submission_member="sub.tsv",
 )
+FSDS_SPEC = DatasetSpec(
+    set_id="fsds",
+    source_id="fsds_datasets",
+    builder="fsds_dataset_url",
+    member_prefix="",
+    submission_member="sub.txt",
+    member_suffix=".txt",
+)
 
 DATASET_SPECS: dict[str, DatasetSpec] = {
-    spec.set_id: spec for spec in (BDC_SPEC, NMFP_SPEC, MFRR_SPEC)
+    spec.set_id: spec for spec in (BDC_SPEC, NMFP_SPEC, MFRR_SPEC, FSDS_SPEC)
 }
 
 BDC_POPULATION_SOURCE_ID = "bdc_report"
@@ -156,6 +165,7 @@ __all__ = [
     "DATASET_RELATION_SPECS",
     "DATASET_SPECS",
     "DatasetSpec",
+    "FSDS_SPEC",
     "MFRR_SPEC",
     "NMFP_SPEC",
     "spec_for",

@@ -3,6 +3,9 @@
 Plans SEC submissions work from a published cohort, fetches and checkpoints
 per-CIK results, then publishes immutable Parquet snapshots. Shared cohorts and
 official SEC source management are owned by the cohort pipeline and Layer 2 store.
+The package also carries a self-contained company-facts leg: the nightly
+companyfacts bulk archive is normalized into its own DuckDB facts store and
+published through the DAG as a cross-check corpus.
 
 ## Contracts
 
@@ -51,6 +54,31 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
   this host even when attested; a lock naming another host cannot be checked locally,
   so the attestation is the only evidence. A lock that cannot be read is not evidence
   of staleness and is refused.
+- The company-facts leg is a batch command, not a plan shape. `facts` downloads the
+  companyfacts bulk archive through `SecHttpClient.stream_to_file` (byte bound from
+  the bulk-archive setting) into the shared bulk-archive store under source id
+  `companyfacts_bulk`, or with `--from-store` ingests the newest stored archive
+  without downloading. It does not join the plan/run/merge machinery.
+- Facts normalization is member-level and never mass-extracts. Members are planned
+  from the store's member index and read per CIK through the memory-mapped index;
+  a warm spawn pool created once per ingest (worker count from `derive_resources()`)
+  maps the shared index in its children, and rows batch into DuckDB-side tables
+  keyed by (CIK, taxonomy, tag, unit, end, accession) — never a Python fact list.
+  Normalization is pipeline-local, mirroring the client company-facts mapping
+  field-for-field, because the layer boundary forbids importing the apps layer.
+- Re-ingest carries unchanged members forward by member CRC. A member whose CRC
+  fingerprint is unchanged keeps its stored rows untouched, including the archive
+  SHA that produced them; a changed member is replaced, and CIKs absent from the
+  new archive are removed.
+- The facts store publishes as a versioned DAG snapshot with archive lineage. The
+  DuckDB store (`company_facts`, `fact_members`, `fact_archives`) is published as
+  Parquet parts under a content-addressed snapshot id over the archive SHA, the
+  member fingerprint set, and the row count; the manifest carries `archive_sha256`
+  and `source_id`. Republishing identical content is a no-op.
+- Facts reads are local. `read_facts_for_cik` and `facts_for_concept` serve frozen
+  stored-fact rows from the store file with no HTTP, so the client cross-check can
+  run at corpus scale against the store. Fact values are stored as DuckDB DOUBLE,
+  matching the cross-check's float comparison.
 
 ## Command Surface
 
@@ -60,6 +88,7 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
 | `augment` | add new CIKs to a published snapshot | `--cohort`, `--base-snapshot-id`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--confirm-stale-lock]`, `[--new-snapshot-id]` |
 | `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
 | `distrib` | Distributed worker bundle lifecycle | — |
+| `facts` | ingest the companyfacts bulk archive into the facts store | `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--from-store]` |
 | `merge` | publish a snapshot | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--confirm-stale-lock]` |
 | `plan` | generate a deterministic plan | `[--cohort]`, `[--limit]`, `[--from-archive]`, `[--archive-sha]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]` |
 | `reconcile` | reconcile the tip against the daily index | `--start-date`, `--end-date`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--confirm-stale-lock]`, `[--new-snapshot-id]` |
@@ -97,6 +126,12 @@ python run.py metadata augment --cohort new-cohort --base-snapshot-id 2024-01-15
 
 # Reconcile the tip against the daily index over a date range
 python run.py metadata reconcile --start-date 2026-11-02 --end-date 2026-11-06
+
+# Ingest the companyfacts bulk archive into the facts store and publish it
+python run.py metadata facts
+
+# Re-ingest the newest stored companyfacts archive without downloading
+python run.py metadata facts --from-store
 ```
 
 ## Artifact layout
@@ -106,6 +141,10 @@ python run.py metadata reconcile --start-date 2026-11-02 --end-date 2026-11-06
 {artifacts_root}/
 ├── bulk_archives/  # Root of the shared bulk-archive store (all sources, all pipelines).
 ├── metadata/  # Root of the published metadata dataset.
+│   ├── facts/  # Root of the company-facts store and its published snapshots.
+│   │   ├── snapshots/  # Root of published facts snapshot directories, and of the pointer.
+│   │   │   └── catalog.sqlite  # SQLite DAG catalog database for published facts snapshots.
+│   │   └── companyfacts.duckdb  # The DuckDB company-facts store.
 │   ├── plans/  # Root of published metadata plan bundles.
 │   │   └── {plan_id}/  # Directory holding one immutable plan.
 │   │       ├── assignments/  # Directory holding one chunk-to-worker mapping per distribution.
@@ -125,6 +164,7 @@ python run.py metadata reconcile --start-date 2026-11-02 --end-date 2026-11-06
 │           └── run.lock  # Exclusive run lock for a published snapshot (used by augment).
 └── transient/
     └── metadata/
+        ├── facts-{run_id}/  # Staging directory for one facts run, never published.
         └── {plan_id}/  # Directory holding one plan's transient chunk checkpoints.
             └── chunk_{chunk_id}.parquet  # Checkpoint path for one chunk.
 ```
@@ -138,3 +178,7 @@ python run.py metadata reconcile --start-date 2026-11-02 --end-date 2026-11-06
   plan bundle preserves the selected roster for execution and distribution.
 - Augmentation is single-host. Its derived delta is executed and merged within the
   command rather than exported for distributed workers.
+- The facts leg has no operator menu entry; it is a batch command only, like the
+  datasets import.
+- The facts store is a cross-check corpus, not a serving source: no facade answer
+  reads it, and a facts serving posture would require a new ruling.

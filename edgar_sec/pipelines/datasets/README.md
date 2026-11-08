@@ -2,9 +2,9 @@
 
 Imports the SEC data-research dataset vintages this codebase adopted as
 cross-check oracles — the BDC, Form N-MFP, and mutual fund risk/return
-(MFRR) data sets — into a versioned DuckDB store, and publishes the
-store's index (vintage census plus the BDC population reference) through
-a DAG of its own.
+(MFRR) data sets, and the Financial Statement Data Sets (FSDS) — into a
+versioned DuckDB store, and publishes the store's index (vintage census
+plus the BDC population reference) through a DAG of its own.
 
 ## Purpose
 
@@ -20,10 +20,16 @@ datasets home later dataset items extend with their own specs.
   archive SHA identify a slice; a re-posted vintage (SEC refreshes
   published files in place) loads as a new slice and never mutates the
   earlier one.
-- **Loads are DuckDB-side**: TSV members are extracted to files and read
-  by DuckDB (`read_csv`, all columns text); no Python code materializes
-  a dataset row. The one exception is the BDC Report register (hundreds
-  of rows per year), normalized in Python.
+- **Loads are DuckDB-side**: Tab-delimited members are extracted to files
+  and read by DuckDB (`read_csv`, tab separator, all columns text); no
+  Python code materializes a dataset row. The one exception is the BDC
+  Report register (hundreds of rows per year), normalized in Python.
+- **Member suffix is per-spec**: `DatasetSpec.member_suffix` (default
+  `.tsv`) decides which archive members load and supplies the relation
+  stem. FSDS sets it to `.txt`, so its `sub` / `num` / `pre` / `tag`
+  members load as `fsds_sub` / `fsds_num` / `fsds_pre` / `fsds_tag` and
+  non-`.txt` members such as `readme.htm` never load; the landed sets'
+  `.tsv` behaviour is unchanged.
 - **Columns are stored as served**: the store keeps every member column
   as text under its served name, prefixed by set, vintage, and archive
   SHA; schema drift across vintages therefore loads without adapters,
@@ -42,16 +48,23 @@ datasets home later dataset items extend with their own specs.
 - **Verification reconciles two independent counts**: a loaded table
   passes only when its row count equals its source member's line count
   (tallied during extraction, before any load) minus its header.
+- **FSDS closure is verified per (vintage, archive_sha) slice**: For each
+  FSDS slice the verification pass reconciles num against sub and tag —
+  num accessions with no sub row (orphans) fail, and any divergence
+  between num's and tag's (tag, version) pair sets fails; sub rows with
+  no num rows are reported, not failed.
 
 ## Deliberate gaps
 
 - **No ingest of record for any set**: every adopted set duplicates
   content the XBRL engine or a structured form family already parses;
   serving dataset values as answers is not a posture this pipeline has.
-- **No fact-level XBRL oracle comparison**: the verification pass
-  reconciles row counts and population identity; comparing individual
-  facts against the solver's per-filing answers is the review pipeline's
-  pattern, adopted when a later dataset item wires it.
+- **Fact-level oracle comparison lives in the review pipeline**: This
+  pipeline's verification reconciles row counts, population identity,
+  and FSDS closure only. Comparing individual FSDS facts against the
+  solver's per-filing answers is the `xbrl_review` oracle pass; no
+  fact-level oracle is wired for the other adopted sets, and FSDS has
+  no serving leg here either.
 - **N-PORT and N-CEN are not adopted**: N-PORT's span is ~12 GB of
   quarterly ZIPs duplicating the N-PORT family for oracle-only value,
   and the N-CEN sets currently exclude schema-3.1 filings, so their
@@ -81,6 +94,9 @@ datasets home later dataset items extend with their own specs.
 # Import two BDC vintages and the BDC population register
 python run.py datasets import --set bdc --vintage 2025q1 --vintage 2026_08
 python run.py datasets population
+
+# Import FSDS vintages (quarterly labels, .txt members)
+python run.py datasets import --set fsds --vintage 2017q4 --vintage 2026q3
 
 # Reconcile the store against source line counts and the register
 python run.py datasets verify

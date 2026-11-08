@@ -251,6 +251,20 @@ DOCUMENT_NOTES_SCHEMA = pa.schema(
     ]
 )
 
+FEED_INVENTORY_SCHEMA = pa.schema(
+    [
+        pa.field("accession", pa.string(), nullable=False),
+        pa.field("cik", pa.string(), nullable=False),
+        pa.field("form", pa.string(), nullable=False),
+        pa.field("filing_date", pa.date32(), nullable=False),
+        pa.field("feed_date", pa.date32(), nullable=False),
+        pa.field("bundle_id", pa.string(), nullable=False),
+        pa.field("archive_sha256", pa.string(), nullable=False),
+        pa.field("snapshot_id", pa.string(), nullable=False),
+        pa.field("fetched_at", pa.string(), nullable=False),
+    ]
+)
+
 SNAPSHOT_RELATION_SCHEMAS = {
     "accession_ciks": ACCESSION_CIKS_SCHEMA,
     "source_assets": SOURCE_ASSETS_SCHEMA,
@@ -270,6 +284,7 @@ SNAPSHOT_RELATION_SCHEMAS = {
     "text_payloads": TEXT_PAYLOADS_SCHEMA,
     "document_sections": DOCUMENT_SECTIONS_SCHEMA,
     "document_notes": DOCUMENT_NOTES_SCHEMA,
+    "feed_inventory": FEED_INVENTORY_SCHEMA,
 }
 
 __all__ = [
@@ -279,6 +294,7 @@ __all__ = [
     "BINARY_PAYLOADS_SCHEMA",
     "DOCUMENT_NOTES_SCHEMA",
     "DOCUMENT_SECTIONS_SCHEMA",
+    "FEED_INVENTORY_SCHEMA",
     "LOGICAL_DOCUMENTS_SCHEMA",
     "OPERATION_ATTEMPTS_SCHEMA",
     "OPERATION_RESULTS_SCHEMA",

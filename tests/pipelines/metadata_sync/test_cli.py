@@ -41,6 +41,7 @@ COMMANDS = (
     "augment",
     "refresh",
     "reconcile",
+    "facts",
     "dag",
 )
 

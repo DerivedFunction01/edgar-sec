@@ -13,7 +13,10 @@ from edgar_sec.domain.sec_urls import (
     archives_url,
     classify_sec_surface,
     companyconcept_url,
+    companyfacts_bulk_url,
     companyfacts_url,
+    feed_archive_url,
+    feed_listing_url,
     frames_url,
     current_filings_url,
     efts_search_url,
@@ -173,6 +176,29 @@ def test_submissions_bulk_url() -> None:
     assert classify_sec_surface(submissions_bulk_url()) == "submissions_bulk"
 
 
+def test_companyfacts_bulk_url() -> None:
+    assert companyfacts_bulk_url() == (
+        "https://www.sec.gov/Archives/edgar/daily-index/xbrl/companyfacts.zip"
+    )
+    assert classify_sec_surface(companyfacts_bulk_url()) == "companyfacts_bulk"
+
+
+def test_feed_archive_and_listing_urls() -> None:
+    assert feed_archive_url(2024, 1, "20240102.nc.tar.gz") == (
+        "https://www.sec.gov/Archives/edgar/Feed/2024/QTR1/20240102.nc.tar.gz"
+    )
+    assert (
+        classify_sec_surface(feed_archive_url(2024, 1, "20240102.nc.tar.gz"))
+        == "feed_archives"
+    )
+    assert feed_listing_url(2024, 1) == (
+        "https://www.sec.gov/Archives/edgar/Feed/2024/QTR1/"
+    )
+    assert classify_sec_surface(feed_listing_url(2024, 1)) == "feed_archives"
+    with pytest.raises(ValueError):
+        feed_archive_url(2024, 5, "20240102.nc.tar.gz")
+
+
 @pytest.mark.parametrize("flavour", ["master", "company", "form", "crawler", "xbrl"])
 def test_full_index_url_pins_the_quarterly_shape(flavour: str) -> None:
     url = full_index_url(2024, 1, flavour)
@@ -262,6 +288,25 @@ def test_dataset_builders_pin_their_shapes_and_surfaces() -> None:
         "business-development-company-report/business-development-company-2026.csv"
     )
     assert classify_sec_surface(report) == "bdc_report"
+
+
+def test_fsds_dataset_builder_pins_its_shape_and_surface() -> None:
+    from edgar_sec.domain.dataset_urls import fsds_dataset_url
+
+    url = fsds_dataset_url("2026q3")
+    assert url == (
+        "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2026q3.zip"
+    )
+    assert classify_sec_surface(url) == "fsds_datasets"
+    bad_quarter = (
+        "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2026q5.zip"
+    )
+    assert classify_sec_surface(bad_quarter) != "fsds_datasets"
+    suffixed = (
+        "https://www.sec.gov/files/dera/data/"
+        "financial-statement-data-sets/2026q3_fs.zip"
+    )
+    assert classify_sec_surface(suffixed) != "fsds_datasets"
 
 
 def test_dataset_builders_refuse_path_like_vintages() -> None:

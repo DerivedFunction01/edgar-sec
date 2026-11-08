@@ -1,8 +1,8 @@
 """Oracle verification pass over the datasets store.
 
-Two checks, both store-side: loaded rows must equal source lines minus
-header, and each BDC vintage's population is compared against the
-published BDC Report population relation.
+Checks, all store-side: loaded rows equal source lines minus header; BDC
+populations compare against the BDC Report relation; FSDS num/sub/tag
+closure is reconciled (orphan accessions and tag-pair divergence fail).
 """
 
 from __future__ import annotations
@@ -49,16 +49,39 @@ class PopulationCheck:
 
 
 @dataclass(frozen=True, slots=True)
+class FsdsCheck:
+    """One FSDS vintage slice's num/sub/tag closure reconciliation."""
+
+    vintage: str
+    archive_sha: str
+    sub_rows: int
+    num_accessions: int
+    num_orphan_accessions: int
+    sub_without_num: int
+    num_tag_pairs: int
+    tag_pairs: int
+    tag_pair_divergence: int
+
+    @property
+    def ok(self) -> bool:
+        """Whether num closes exactly over sub and tag for this slice."""
+        return self.num_orphan_accessions == 0 and self.tag_pair_divergence == 0
+
+
+@dataclass(frozen=True, slots=True)
 class VerifyResult:
     """The full verification outcome for the store."""
 
     tables: tuple[TableCheck, ...]
     population: tuple[PopulationCheck, ...]
+    fsds: tuple[FsdsCheck, ...] = ()
 
     @property
     def ok(self) -> bool:
-        """Whether every table reconciled."""
-        return all(table.ok for table in self.tables)
+        """Whether every table and every FSDS slice reconciled."""
+        return all(table.ok for table in self.tables) and all(
+            check.ok for check in self.fsds
+        )
 
 
 def verify_store(store_file: Path) -> VerifyResult:
@@ -79,9 +102,65 @@ def verify_store(store_file: Path) -> VerifyResult:
             ).fetchall()
         )
         population = _population_checks(con)
+        fsds = _fsds_checks(con)
     finally:
         con.close()
-    return VerifyResult(tables=tables, population=population)
+    return VerifyResult(tables=tables, population=population, fsds=fsds)
+
+
+def _fsds_checks(con) -> tuple[FsdsCheck, ...]:
+    """Per-slice FSDS closure, when the FSDS relations are loaded."""
+    relations = {
+        str(row[0])
+        for row in con.execute(
+            "SELECT table_name FROM information_schema.tables"
+        ).fetchall()
+    }
+    if not {"fsds_sub", "fsds_num", "fsds_tag"} <= relations:
+        return ()
+    slices = con.execute(
+        f"SELECT DISTINCT vintage, archive_sha FROM {sql_identifier(VINTAGES_RELATION)} "
+        "WHERE set_id = 'fsds' ORDER BY vintage, archive_sha"
+    ).fetchall()
+    checks = []
+    for vintage, archive_sha in slices:
+        row = con.execute(
+            "WITH sub AS (SELECT DISTINCT adsh FROM fsds_sub "
+            "WHERE set_id = 'fsds' AND vintage = ? AND archive_sha = ?), "
+            "num AS (SELECT DISTINCT adsh FROM fsds_num "
+            "WHERE set_id = 'fsds' AND vintage = ? AND archive_sha = ?), "
+            "num_pairs AS (SELECT DISTINCT tag, version FROM fsds_num "
+            "WHERE set_id = 'fsds' AND vintage = ? AND archive_sha = ?), "
+            "tag_pairs AS (SELECT DISTINCT tag, version FROM fsds_tag "
+            "WHERE set_id = 'fsds' AND vintage = ? AND archive_sha = ?) "
+            "SELECT (SELECT count(*) FROM fsds_sub "
+            "WHERE set_id = 'fsds' AND vintage = ? AND archive_sha = ?), "
+            "(SELECT count(*) FROM num), "
+            "(SELECT count(*) FROM num n WHERE NOT EXISTS "
+            "(SELECT 1 FROM sub s WHERE s.adsh = n.adsh)), "
+            "(SELECT count(*) FROM sub s WHERE NOT EXISTS "
+            "(SELECT 1 FROM num n WHERE n.adsh = s.adsh)), "
+            "(SELECT count(*) FROM num_pairs), (SELECT count(*) FROM tag_pairs), "
+            "(SELECT count(*) FROM ("
+            "(SELECT * FROM num_pairs EXCEPT SELECT * FROM tag_pairs) "
+            "UNION ALL "
+            "(SELECT * FROM tag_pairs EXCEPT SELECT * FROM num_pairs)))",
+            [str(vintage), str(archive_sha)] * 5,
+        ).fetchone()
+        checks.append(
+            FsdsCheck(
+                vintage=str(vintage),
+                archive_sha=str(archive_sha),
+                sub_rows=int(row[0]),
+                num_accessions=int(row[1]),
+                num_orphan_accessions=int(row[2]),
+                sub_without_num=int(row[3]),
+                num_tag_pairs=int(row[4]),
+                tag_pairs=int(row[5]),
+                tag_pair_divergence=int(row[6]),
+            )
+        )
+    return tuple(checks)
 
 
 def _population_checks(con) -> tuple[PopulationCheck, ...]:
@@ -127,6 +206,7 @@ def _population_checks(con) -> tuple[PopulationCheck, ...]:
 
 
 __all__ = [
+    "FsdsCheck",
     "PopulationCheck",
     "TableCheck",
     "VerifyResult",

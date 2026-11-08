@@ -23,6 +23,7 @@ from edgar_sec.infra.distribution.cli import attach_distrib_subparser
 
 from .assignment import AssignmentError
 from .commands.augment import cmd_augment
+from .commands.facts import cmd_facts_ingest
 from .commands.merge import cmd_merge
 from .commands.plan import cmd_plan, cmd_status
 from .commands.reconcile import cmd_reconcile
@@ -307,6 +308,25 @@ def build_parser() -> argparse.ArgumentParser:
     )
     reconcile_parser.set_defaults(
         func=lambda args: cmd_reconcile(_reconcile_options(args))
+    )
+
+    facts_parser = subparsers.add_parser(
+        "facts", help="ingest the companyfacts bulk archive into the facts store"
+    )
+    _add_common(facts_parser)
+    _add_branch_guard(facts_parser)
+    facts_parser.add_argument(
+        "--from-store",
+        action="store_true",
+        help="ingest the newest stored companyfacts archive without downloading",
+    )
+    facts_parser.set_defaults(
+        func=lambda args: cmd_facts_ingest(
+            artifacts_root=args.artifacts or None,
+            branch=getattr(args, "branch", "main") or "main",
+            workers=args.workers,
+            from_store=getattr(args, "from_store", False),
+        )
     )
 
     dag_parser = attach_dag_subparser(

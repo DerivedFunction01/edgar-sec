@@ -124,6 +124,7 @@ def test_static_interpretation_agrees_with_the_runtime_classifier() -> None:
             "CIK0000320193-submissions-001.json"
         ),
         "submissions_bulk_url": sec_urls.submissions_bulk_url(),
+        "companyfacts_bulk_url": sec_urls.companyfacts_bulk_url(),
         "companyconcept_url": sec_urls.companyconcept_url(
             "320193", "us-gaap", "Assets"
         ),
@@ -143,12 +144,15 @@ def test_static_interpretation_agrees_with_the_runtime_classifier() -> None:
         "full_index_url": index_urls.full_index_url(2024, 1, "master"),
         "daily_index_url": index_urls.daily_index_url("2024-02-13", "master"),
         "current_filings_url": sec_urls.current_filings_url(),
+        "feed_listing_url": sec_urls.feed_listing_url(2024, 1),
+        "feed_archive_url": sec_urls.feed_archive_url(2024, 1, "20240102.nc.tar.gz"),
         "structured_feed_url": sec_urls.structured_feed_url("all"),
         "structured_archive_url": sec_urls.structured_archive_url(2026, 3),
         "efts_search_url": sec_urls.efts_search_url(),
         "bdc_dataset_url": dataset_urls.bdc_dataset_url("2025q1"),
         "nmfp_dataset_url": dataset_urls.nmfp_dataset_url("20220808-20220908"),
         "mfrr_dataset_url": dataset_urls.mfrr_dataset_url("2010q4"),
+        "fsds_dataset_url": dataset_urls.fsds_dataset_url("2009q2"),
         "bdc_report_url": dataset_urls.bdc_report_url(2026),
     }
     assert set(builders) == set(sec_urls.URL_BUILDER_SURFACES)

@@ -65,6 +65,13 @@ SURFACE_POLICIES: dict[str, SurfacePolicy] = {
             "sec.ttl.submissions_bulk",
         ),
         SurfacePolicy(
+            "companyfacts_bulk",
+            SURFACE_KIND_TRANSIENT,
+            "nightly rebuild; the TTL classifies only — the payload streams "
+            "to the bulk store and never enters the response cache",
+            "sec.ttl.companyfacts_bulk",
+        ),
+        SurfacePolicy(
             "companyfacts",
             SURFACE_KIND_TRANSIENT,
             "filing events",
@@ -137,6 +144,11 @@ SURFACE_POLICIES: dict[str, SurfacePolicy] = {
             SURFACE_KIND_STATIC,
             "immutable once the month completes",
         ),
+        SurfacePolicy(
+            "feed_archives",
+            SURFACE_KIND_STATIC,
+            "dated tarballs are immutable once published",
+        ),
         SurfacePolicy("efts", SURFACE_KIND_NO_STORE, "live index"),
         SurfacePolicy(
             "full_index",
@@ -162,6 +174,11 @@ SURFACE_POLICIES: dict[str, SurfacePolicy] = {
         ),
         SurfacePolicy(
             "mfrr_datasets",
+            SURFACE_KIND_STATIC,
+            "static per vintage; a re-posted vintage is a new content hash",
+        ),
+        SurfacePolicy(
+            "fsds_datasets",
             SURFACE_KIND_STATIC,
             "static per vintage; a re-posted vintage is a new content hash",
         ),
@@ -305,6 +322,9 @@ def _ttl_specs() -> dict[str, SettingSpec]:
         "submissions": _ttl_spec("freshness window for per-CIK submissions JSON"),
         "submissions_bulk": _ttl_spec(
             "freshness window for the submissions bulk archive"
+        ),
+        "companyfacts_bulk": _ttl_spec(
+            "freshness window for the companyfacts bulk archive"
         ),
         "companyconcept": _ttl_spec("freshness window for companyconcept JSON"),
         "companyfacts": _ttl_spec("freshness window for companyfacts JSON"),

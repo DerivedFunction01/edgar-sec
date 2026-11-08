@@ -19,6 +19,7 @@ from edgar_sec.pipelines.document_acquisition.commands.review import (
     cmd_review_holdout,
     cmd_review_label,
 )
+from edgar_sec.pipelines.document_acquisition.commands.feed import cmd_feed_ingest
 from edgar_sec.pipelines.document_acquisition.commands.project import cmd_project
 from edgar_sec.pipelines.document_acquisition.commands.publish import cmd_publish
 from edgar_sec.pipelines.document_acquisition.commands.run import cmd_run
@@ -28,6 +29,11 @@ from edgar_sec.pipelines.document_acquisition.commands.snapshot import (
     cmd_snapshot_status,
 )
 from edgar_sec.pipelines.document_acquisition.commands.status import cmd_status
+from edgar_sec.pipelines.document_acquisition.options import (
+    FEED_ARCHIVES_BRANCH,
+    feed_ingest_options,
+    parse_day,
+)
 
 __all__ = ["build_parser", "main"]
 
@@ -191,6 +197,27 @@ def build_parser() -> argparse.ArgumentParser:
     review_holdout.add_argument("--artifacts", default="")
     review_holdout.add_argument("--json", action="store_true")
     review_holdout.set_defaults(func=cmd_review_holdout)
+
+    feed = commands.add_parser("feed", help="Feed-archives source leg")
+    feed_commands = feed.add_subparsers(dest="feed_command", required=True)
+    feed_ingest = feed_commands.add_parser(
+        "ingest", help="store and inventory a date range of Feed tarballs"
+    )
+    feed_ingest.add_argument("--start", required=True, help="first day, YYYY-MM-DD")
+    feed_ingest.add_argument("--end", required=True, help="last day, YYYY-MM-DD")
+    feed_ingest.add_argument("--branch", default=None, help="DAG branch to publish")
+    _add_output_options(feed_ingest)
+    feed_ingest.set_defaults(
+        func=lambda args: cmd_feed_ingest(
+            feed_ingest_options(
+                start=parse_day(args.start),
+                end=parse_day(args.end),
+                artifacts_root=args.artifacts,
+                branch=args.branch or FEED_ARCHIVES_BRANCH,
+                json_output=args.json,
+            )
+        )
+    )
 
     snapshot = commands.add_parser("snapshot", help="inspect snapshot status")
     snapshot_commands = snapshot.add_subparsers(dest="snapshot_command", required=True)

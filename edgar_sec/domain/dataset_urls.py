@@ -33,6 +33,14 @@ def nmfp_dataset_url(vintage: str) -> str:
     )
 
 
+def fsds_dataset_url(vintage: str) -> str:
+    """Return the FSDS data-set ZIP URL for one vintage label."""
+    return (
+        f"{SEC_DATASETS_BASE}/dera/data/financial-statement-data-sets/"
+        f"{_dataset_vintage(vintage)}.zip"
+    )
+
+
 def mfrr_dataset_url(vintage: str) -> str:
     """Return the MFRR data-set ZIP URL for one vintage label."""
     return (
@@ -54,6 +62,7 @@ def bdc_report_url(year: int) -> str:
 __all__ = [
     "bdc_dataset_url",
     "bdc_report_url",
+    "fsds_dataset_url",
     "mfrr_dataset_url",
     "nmfp_dataset_url",
 ]
