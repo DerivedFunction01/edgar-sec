@@ -1,7 +1,8 @@
-"""Feed-ledger and search surfaces of the Edgar facade.
+"""Feed-ledger, search, and earnings surfaces of the Edgar facade.
 
 Thin delegations over the feeds ledger reader, the live EFTS client,
-and the local text index, composed into ``Edgar`` by inheritance.
+the local text index, and the earnings-exhibit extractor, composed
+into ``Edgar`` by inheritance.
 """
 
 from __future__ import annotations
@@ -14,6 +15,8 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from edgar_sec.apps.client.efts import EftsCapture, EftsQuery, EftsSearchResult
     from edgar_sec.apps.client.feeds import FeedEventsResult
+    from edgar_sec.domain.document.aggregate import FilingAggregate
+    from edgar_sec.engine.forms.earnings.models import EarningsExhibitResult
     from edgar_sec.infra.sec_http.client import SecHttpClient
 
 
@@ -158,3 +161,15 @@ class FeedSearchSurfaces:
             attachment_scope=attachment_scope,
             limit=limit,
         )
+
+    def earnings_exhibit(self, filing: "FilingAggregate") -> "EarningsExhibitResult":
+        """Extract one current-report filing's earnings exhibit.
+
+        Returns the exhibit identity, its structured tables, its headline
+        figures, and a review signal for everything not structured.
+        """
+        from edgar_sec.engine.forms.earnings.extraction import (
+            extract_earnings_exhibit,
+        )
+
+        return extract_earnings_exhibit(filing)
