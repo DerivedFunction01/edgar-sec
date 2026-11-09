@@ -394,7 +394,7 @@ def test_unmodelled_family_renders_to_txt_through_generic_handler() -> None:
 
     outcome = (
         AcquisitionProcessor()
-        .process(_request((operation,), (_input(body=body),), family="40-17G"))
+        .process(_request((operation,), (_input(body=body),), family="485"))
         .outcomes[0]
     )
 

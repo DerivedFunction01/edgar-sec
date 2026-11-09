@@ -34,7 +34,7 @@ def test_pdf_primary_resolves_the_text_pdf_capability() -> None:
 
 def test_unmodelled_family_pdf_resolves_generic_render() -> None:
     facts = DocumentPathFacts.from_archive_path("filing.pdf")
-    entry = resolve_acquisition_capability("40-17G", "primary", "render_to_txt", facts)
+    entry = resolve_acquisition_capability("485", "primary", "render_to_txt", facts)
     assert entry.status is CapabilityStatus.SUPPORTED
     assert entry.pins == ("text.pdf", "1", "normalize_pdf_document", "1", "text")
 
@@ -88,22 +88,22 @@ def test_sgml_filename_slashes_use_content_route() -> None:
 
 def test_unmodelled_family_resolves_generic_render_to_txt() -> None:
     facts = DocumentPathFacts.from_archive_path("filing.htm")
-    entry = resolve_acquisition_capability("40-17G", "primary", "render_to_txt", facts)
+    entry = resolve_acquisition_capability("485", "primary", "render_to_txt", facts)
     assert entry.status is CapabilityStatus.SUPPORTED
     assert entry.pins == ("text.markup", "1", "normalize_document", "1", "text")
 
 
 def test_unmodelled_family_resolves_plain_text_render() -> None:
     facts = DocumentPathFacts.from_archive_path("filing.txt")
-    entry = resolve_acquisition_capability("40-17G", "primary", "render_to_txt", facts)
+    entry = resolve_acquisition_capability("485", "primary", "render_to_txt", facts)
     assert entry.status is CapabilityStatus.SUPPORTED
     assert entry.pins == ("text.plain", "1", "normalize_document", "1", "text")
 
 
 def test_unmodelled_family_keeps_raw_and_denies_render_to_xml() -> None:
     facts = DocumentPathFacts.from_archive_path("filing.htm")
-    raw = resolve_acquisition_capability("40-17G", "primary", "raw", facts)
-    xml = resolve_acquisition_capability("40-17G", "primary", "render_to_xml", facts)
+    raw = resolve_acquisition_capability("485", "primary", "raw", facts)
+    xml = resolve_acquisition_capability("485", "primary", "render_to_xml", facts)
     assert raw.status is CapabilityStatus.SUPPORTED
     assert raw.pins == ("raw.selected_source", "v1", "raw_identity", "1", "raw_bytes")
     assert xml.status is CapabilityStatus.UNSUPPORTED

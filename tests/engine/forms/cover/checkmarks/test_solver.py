@@ -402,6 +402,9 @@ def test_checkmark_schema_cases_cover_registered_profile_scope() -> None:
         "N-CR",
         "18-K",
         "S-6",
+        "40-17G",
+        "40-17F1",
+        "40-17F2",
     }
 
 
