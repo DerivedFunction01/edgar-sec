@@ -204,6 +204,8 @@ def test_form_24f2_profile_resolves_with_taxonomy() -> None:
     assert form_24f2.has_sections is True
     assert form_24f2.body_evidence is not None
     assert "SIGNATURES" in form_24f2.body_evidence.structural_headings
+
+
 def test_form_n23c_profiles_resolve_with_taxonomies() -> None:
     cases = (
         ("N-23C-1/A", "N-23C-1", "PURCHASES STATEMENT"),
