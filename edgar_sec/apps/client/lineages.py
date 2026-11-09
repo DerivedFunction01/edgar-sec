@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 from edgar_sec.domain.document.aggregate import FilingAggregate
-from edgar_sec.engine.xbrl.solve.scoping import FilingRef, build_lineages
+from edgar_sec.engine.xbrl.solve.scoping import FilingRef, base_form, build_lineages
 
 if TYPE_CHECKING:
     from edgar_sec.apps.client.cache import DocumentCache
@@ -49,7 +49,7 @@ def lineage_group(
         if ref is None or ref.cik != target.cik:
             continue
         if (
-            ref.base_form != target.base_form
+            base_form(ref.form) != base_form(target.form)
             or ref.report_period != target.report_period
         ):
             continue
@@ -77,7 +77,8 @@ def discover_lineage_group(
         materialize_from_snapshot,
     )
 
-    forms = (target.base_form, f"{target.base_form}/A")
+    base = base_form(target.form)
+    forms = (base, f"{base}/A")
     covered = materialize_from_snapshot(
         [filing.primary_cik],
         forms,

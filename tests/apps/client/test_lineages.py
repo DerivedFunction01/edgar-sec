@@ -34,7 +34,7 @@ def test_filing_ref_needs_a_report_period() -> None:
     assert filing_ref(_aggregate(_ORIGINAL, report_date=None)) is None
     ref = filing_ref(_aggregate(_ORIGINAL))
     assert ref is not None
-    assert ref.base_form == "10-Q"
+    assert ref.form == "10-Q"
     assert ref.report_period == "2024-03-31"
 
 
