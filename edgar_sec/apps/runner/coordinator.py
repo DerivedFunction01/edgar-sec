@@ -218,9 +218,7 @@ class PipelineRunner:
         except ValueError as error:
             raise ProfileResolutionError(str(error)) from error
 
-    def _plan_shape(
-        self, profile_id: str
-    ) -> tuple[str, tuple[TargetIntent, ...]]:
+    def _plan_shape(self, profile_id: str) -> tuple[str, tuple[TargetIntent, ...]]:
         """Split a resolved profile into its published plan and run intents.
 
         Non-primary targets are not published into a plan: they ride the

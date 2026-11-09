@@ -96,8 +96,14 @@ def _accession_rows(
         ]
     return [
         _resolution_row(
-            run_id, accession_value, resolution, staging_root, run_root, accession,
-            policy, transport,
+            run_id,
+            accession_value,
+            resolution,
+            staging_root,
+            run_root,
+            accession,
+            policy,
+            transport,
         )
         for resolution in enumerate_index_targets(outcome, intents)
     ]

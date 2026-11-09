@@ -62,7 +62,9 @@ class _Transport:
         self.responses = responses
         self.calls: list[str] = []
 
-    def stream_to_file(self, url, destination, *, max_response_bytes, validate_redirect):
+    def stream_to_file(
+        self, url, destination, *, max_response_bytes, validate_redirect
+    ):
         self.calls.append(url)
         if url not in self.responses:
             return StreamFailure(
@@ -154,9 +156,7 @@ def _run_fetch(
     transport = _Transport(
         {
             _ARCHIVE_ROOT + "primary.htm": _PRIMARY_BODY,
-            _INDEX_URL: fixture_path(
-                "document_planning_index_page.html"
-            ).read_bytes(),
+            _INDEX_URL: fixture_path("document_planning_index_page.html").read_bytes(),
             _ARCHIVE_ROOT + "ex991.htm": _EXHIBIT_BODY,
         }
     )
@@ -173,7 +173,10 @@ def _run_fetch(
         run_id=projection.run_id,
         plan_id=plan.plan_id,
         target_parquet_glob=str(
-            planning_paths.plan_dir(plan.plan_id) / PLAN_TARGETS_DIR / "**" / "*.parquet"
+            planning_paths.plan_dir(plan.plan_id)
+            / PLAN_TARGETS_DIR
+            / "**"
+            / "*.parquet"
         ),
         run_state_sqlite_path=acquisition_paths.run_state_path(projection.run_id),
         artifacts_root=artifacts_root,

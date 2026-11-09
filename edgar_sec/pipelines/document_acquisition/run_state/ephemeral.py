@@ -54,9 +54,7 @@ _INSERT = (
 )
 
 
-def record_ephemeral_targets(
-    database_path: Path, rows: list[dict[str, Any]]
-) -> None:
+def record_ephemeral_targets(database_path: Path, rows: list[dict[str, Any]]) -> None:
     """Insert ephemeral resolutions into the run's own state store."""
     with sqlite3.connect(database_path) as connection:
         connection.execute(_SCHEMA)

@@ -53,9 +53,7 @@ def test_pipeline_runner_resolves_profile_id(tmp_path: Path) -> None:
 def _profile_targets(runner: PipelineRunner, profile_id: str) -> set[tuple[str, str]]:
     profile = load_profile(profile_id, runner.planning_paths.profiles_root)
     return {
-        (target.role, target.type)
-        for rule in profile.rules
-        for target in rule.targets
+        (target.role, target.type) for rule in profile.rules for target in rule.targets
     }
 
 

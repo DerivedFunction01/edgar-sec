@@ -26,7 +26,9 @@ class _Transport:
         self.responses = responses
         self.calls: list[str] = []
 
-    def stream_to_file(self, url, destination, *, max_response_bytes, validate_redirect):
+    def stream_to_file(
+        self, url, destination, *, max_response_bytes, validate_redirect
+    ):
         self.calls.append(url)
         if url not in self.responses:
             return StreamFailure(
@@ -80,9 +82,7 @@ def _run(tmp_path: Path, transport: _Transport, intents: tuple[TargetIntent, ...
 def test_matched_intent_is_acquired_and_recorded(tmp_path: Path) -> None:
     transport = _Transport(
         {
-            _INDEX_URL: fixture_path(
-                "document_planning_index_page.html"
-            ).read_bytes(),
+            _INDEX_URL: fixture_path("document_planning_index_page.html").read_bytes(),
             _ARCHIVE_ROOT + "ex991.htm": _EXHIBIT_BODY,
         }
     )
