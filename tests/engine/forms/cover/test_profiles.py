@@ -181,6 +181,21 @@ def test_form_n30d_profile_resolves_with_taxonomy() -> None:
     assert "FINANCIAL HIGHLIGHTS" in form_n30d.body_evidence.structural_headings
 
 
+def test_form_nvp_profile_resolves_with_taxonomy() -> None:
+    form_nvp = get_profile("N-VPFS/A")
+    assert form_nvp.family == "N-VP"
+    assert form_nvp.boundary is not None
+    assert form_nvp.checkbox_schema is None
+    assert form_nvp.has_sections is True
+    assert form_nvp.body_evidence is not None
+    assert "KEY INFORMATION" in form_nvp.body_evidence.structural_headings
+
+
+def test_variable_kin_have_no_cover_profile() -> None:
+    for form in ("N-4", "N-4/A", "N-6", "N-6/A"):
+        assert get_profile(form).family == "GENERIC"
+
+
 def test_annual_profiles_enable_incorporated_reference() -> None:
     annual_names = {rule.name for rule in get_profile("10-K").healing_rules}
     quarterly_names = {rule.name for rule in get_profile("10-Q").healing_rules}

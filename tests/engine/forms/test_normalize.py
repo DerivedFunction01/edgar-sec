@@ -625,3 +625,31 @@ def test_form_n30d_short_amendment_resolves_no_sections() -> None:
     assert res.family == "N-30D"
     assert res.sections is not None
     assert res.sections.sections == ()
+
+
+def test_form_nvp_specimen_resolves_sections() -> None:
+    """A notice document resolves its key-information sections."""
+    fixture = "0000806180-21-000025__completenoticedocument.htm"
+    path = fixture_path(f"document/form_nvp/{fixture}")
+    res = normalize_document(path.read_bytes(), form="N-VP", document_path=path.name)
+
+    assert res.family == "N-VP"
+    assert res.sections is not None
+    assert [s.item_identifier for s in res.sections.sections] == [
+        "ITEM UPDATED INFORMATION",
+        "ITEM KEY INFORMATION",
+        "ITEM FEES AND EXPENSES",
+        "ITEM RESTRICTIONS",
+        "ITEM CONFLICTS OF INTEREST",
+        "ITEM APPENDIX: PORTFOLIOS AVAILABLE",
+    ]
+
+
+def test_form_nvp_supplement_resolves_no_sections() -> None:
+    """A supplement restating no section resolves none, honestly."""
+    fixture = "0000912869-26-000009__a2026-04spinnadvzeroasset.htm"
+    path = fixture_path(f"document/form_nvp/{fixture}")
+    res = normalize_document(path.read_bytes(), form="N-VP/A", document_path=path.name)
+
+    assert res.family == "N-VP"
+    assert res.sections is None or not res.sections.sections

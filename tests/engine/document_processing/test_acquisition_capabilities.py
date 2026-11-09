@@ -39,6 +39,29 @@ def test_unmodelled_family_pdf_resolves_generic_render() -> None:
     assert entry.pins == ("text.pdf", "1", "normalize_pdf_document", "1", "text")
 
 
+def test_profile_less_variable_kin_match_unmodelled_posture() -> None:
+    for form, family in (
+        ("N-4", "N-4"),
+        ("N-4/A", "N-4"),
+        ("N-6", "N-6"),
+        ("N-6/A", "N-6"),
+    ):
+        for path, operation in (
+            ("filing.htm", "render_to_txt"),
+            ("filing.txt", "render_to_txt"),
+            ("filing.pdf", "render_to_txt"),
+            ("filing.htm", "raw"),
+        ):
+            facts = DocumentPathFacts.from_archive_path(path)
+            entry = resolve_acquisition_capability(form, "primary", operation, facts)
+            baseline = resolve_acquisition_capability(
+                "40-17G", "primary", operation, facts
+            )
+            assert entry.family == family
+            assert entry.status is baseline.status
+            assert entry.pins == baseline.pins
+
+
 def test_nsar_fil_primary_resolves_the_plain_text_capability() -> None:
     facts = DocumentPathFacts.from_archive_path("answer.fil")
     entry = resolve_acquisition_capability("NSAR", "primary", "render_to_txt", facts)

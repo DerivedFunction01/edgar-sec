@@ -1,5 +1,5 @@
 """Cover profiles for the investment-company families (N-CSR, N-Q,
-NSAR, 497, 40-17G, 40-17F1, 40-17F2, 40-APP, N-30D), composed from the shared kit
+NSAR, 497, 40-17G, 40-17F1, 40-17F2, 40-APP, N-30D, N-VP), composed from the shared kit
 in ``profiles``."""
 
 from __future__ import annotations
@@ -20,6 +20,7 @@ from edgar_sec.domain.forms.families.form_4017g.taxonomy import FORM_4017G_ITEMS
 from edgar_sec.domain.forms.families.form_40app.taxonomy import FORM_40APP_ITEMS
 from edgar_sec.domain.forms.families.form_497.taxonomy import FORM_497_ITEMS
 from edgar_sec.domain.forms.families.form_n30d.taxonomy import FORM_N30D_ITEMS
+from edgar_sec.domain.forms.families.form_nvp.taxonomy import FORM_NVP_ITEMS
 from edgar_sec.domain.forms.families.form_ncsr.taxonomy import FORM_NCSR_ITEMS
 from edgar_sec.domain.forms.families.form_nq.taxonomy import FORM_NQ_ITEMS
 from edgar_sec.domain.forms.families.form_nsar.taxonomy import FORM_NSAR_ITEMS
@@ -425,6 +426,57 @@ def build_form_n30d_profile(family: str = "N-30D") -> CoverProfile:
     )
 
 
+_FORM_NVP_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "form n-vp",
+    "notice document",
+    "summary prospectus",
+    "separate account",
+    "variable annuity",
+    "variable life insurance",
+    "investment company act file number",
+    "exact name of registrant",
+)
+
+
+def build_form_nvp_profile(family: str = "N-VP") -> CoverProfile:
+    """Cover profile for variable-product filings: the facing sheet
+    and notice header form the cover; the body is the key-information
+    sequence or the financial-statements block.
+    """
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_NVP_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(
+                *COMMON_COVER_LABELS,
+                *COVER_EVIDENCE_TERMS,
+                *_FORM_NVP_COVER_LABELS,
+            ),
+            labels=_FORM_NVP_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in FORM_NVP_ITEMS),
+            semantic_headings=(
+                "key information",
+                "fees and expenses",
+                "signatures",
+                "signature",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+    )
+
+
 __all__ = [
     "build_form_4017f1_profile",
     "build_form_4017f2_profile",
@@ -432,6 +484,7 @@ __all__ = [
     "build_form_40app_profile",
     "build_form_497_profile",
     "build_form_n30d_profile",
+    "build_form_nvp_profile",
     "build_form_ncsr_profile",
     "build_form_nq_profile",
     "build_form_nsar_profile",
