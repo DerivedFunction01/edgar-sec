@@ -11,7 +11,9 @@ from edgar_sec.engine.xbrl.solve.scoping import (
     build_lineages,
     covering_lineage,
     is_amendment_form,
+    resolve_precedence,
     supersede_facts,
+    supersede_facts_retained,
 )
 
 _ORIG = "0000007084-23-000028"
@@ -173,3 +175,96 @@ def test_covering_lineage_requires_one_group_for_all_accessions() -> None:
     assert covering_lineage([lineage], [_ORIG]) is lineage
     assert covering_lineage([lineage], [_ORIG, _OTHER]) is None
     assert covering_lineage([], [_ORIG]) is None
+
+
+_K_ORIG = "0000007084-23-000050"
+_K_NEXT = "0000007084-24-000060"
+_FY22 = {"start": "2022-01-01", "end": "2022-12-31"}
+
+
+def _marks(resolved) -> list[tuple[str, str | None]]:
+    """(source accession, superseding accession) per resolved fact, in order."""
+    return [(str(item.fact.accession), item.superseded_by) for item in resolved]
+
+
+def test_retained_supersession_names_the_winning_accession() -> None:
+    lineage = _lineage()
+    original = _fact(_ORIG, "us-gaap:NetIncomeLoss", 100.0)
+    restated = _fact(_AMEND, "us-gaap:NetIncomeLoss", 120.0)
+    standing = _fact(_ORIG, "us-gaap:Assets", 900.0, instant="2023-06-30")
+    resolved = supersede_facts_retained([original, restated, standing], [lineage])
+    assert _marks(resolved) == [(_ORIG, _AMEND), (_AMEND, None), (_ORIG, None)]
+    # The retained winners are exactly the dropping variant's survivors.
+    winners = tuple(item.fact for item in resolved if item.superseded_by is None)
+    assert winners == supersede_facts([original, restated, standing], [lineage])
+
+
+def test_precedence_later_rereport_supersedes_without_an_amendment() -> None:
+    refs = [
+        _ref(_K_ORIG, "10-K", "2022-12-31", "2023-03-01"),
+        _ref(_K_NEXT, "10-K", "2023-12-31", "2024-03-01"),
+    ]
+    first = _fact(_K_ORIG, "us-gaap:Revenues", 100.0, **_FY22)
+    rereported = _fact(_K_NEXT, "us-gaap:Revenues", 110.0, **_FY22)
+    resolved = resolve_precedence([first, rereported], refs)
+    assert _marks(resolved) == [(_K_ORIG, _K_NEXT), (_K_NEXT, None)]
+
+
+def test_precedence_ties_break_by_amendment_then_accession() -> None:
+    refs = [
+        _ref(_K_ORIG, "10-K", "2022-12-31", "2023-03-01"),
+        _ref(_AMEND, "10-K/A", "2022-12-31", "2023-03-01"),
+        _ref(_K_NEXT, "10-K", "2022-12-31", "2023-03-01"),
+    ]
+    base = _fact(_K_ORIG, "us-gaap:Revenues", 100.0, **_FY22)
+    amended = _fact(_AMEND, "us-gaap:Revenues", 120.0, **_FY22)
+    resolved = resolve_precedence([base, amended], refs)
+    assert _marks(resolved) == [(_K_ORIG, _AMEND), (_AMEND, None)]
+    # Same date, both base forms: the later accession string wins.
+    other = _fact(_K_NEXT, "us-gaap:Revenues", 105.0, **_FY22)
+    resolved = resolve_precedence([base, other], refs)
+    assert _marks(resolved) == [(_K_ORIG, _K_NEXT), (_K_NEXT, None)]
+
+
+def test_precedence_same_accession_disagreement_is_never_picked() -> None:
+    refs = [_ref(_K_ORIG, "10-K", "2022-12-31", "2023-03-01")]
+    low = _fact(_K_ORIG, "us-gaap:Revenues", 100.0, **_FY22)
+    high = _fact(_K_ORIG, "us-gaap:Revenues", 105.0, **_FY22)
+    resolved = resolve_precedence([low, high], refs)
+    assert [item.superseded_by for item in resolved] == [None, None]
+
+
+def test_precedence_chains_lineage_then_later_rereport() -> None:
+    refs = [
+        _ref(_ORIG, "10-Q", "2023-06-30", "2023-08-01"),
+        _ref(_AMEND, "10-Q/A", "2023-06-30", "2023-11-01"),
+        _ref(_K_NEXT, "10-K", "2023-12-31", "2024-03-01"),
+    ]
+    lineages = build_lineages(refs)
+    original = _fact(_ORIG, "us-gaap:NetIncomeLoss", 100.0)
+    restated = _fact(_AMEND, "us-gaap:NetIncomeLoss", 120.0)
+    rereported = _fact(_K_NEXT, "us-gaap:NetIncomeLoss", 115.0)
+    resolved = resolve_precedence([original, restated, rereported], refs, lineages)
+    assert _marks(resolved) == [
+        (_ORIG, _AMEND),
+        (_AMEND, _K_NEXT),
+        (_K_NEXT, None),
+    ]
+
+
+def test_precedence_within_a_lineage_matches_supersede_facts() -> None:
+    refs = [
+        _ref(_ORIG, "10-Q", "2023-06-30", "2023-08-01"),
+        _ref(_AMEND, "10-Q/A", "2023-06-30", "2023-11-01"),
+        _ref(_AMEND2, "10-Q/A", "2023-06-30", "2024-02-01"),
+    ]
+    lineages = build_lineages(refs)
+    facts = [
+        _fact(_ORIG, "us-gaap:NetIncomeLoss", 100.0),
+        _fact(_AMEND, "us-gaap:NetIncomeLoss", 120.0),
+        _fact(_AMEND2, "us-gaap:NetIncomeLoss", 130.0),
+        _fact(_ORIG, "us-gaap:Assets", 900.0, instant="2023-06-30"),
+    ]
+    resolved = resolve_precedence(facts, refs, lineages)
+    winners = tuple(item.fact for item in resolved if item.superseded_by is None)
+    assert winners == supersede_facts(facts, lineages)

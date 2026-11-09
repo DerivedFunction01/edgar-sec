@@ -121,25 +121,103 @@ def supersede_facts(
     A fact survives only when no later filing carries its key: restated
     keys answer from the amendment, non-overlapping original facts stand.
     """
+    return tuple(
+        item.fact
+        for item in supersede_facts_retained(facts, lineages)
+        if item.superseded_by is None
+    )
+
+
+@dataclass(frozen=True, slots=True)
+class ResolvedFact:
+    """One pooled fact; superseded_by names its replacement, when one won."""
+
+    fact: XbrlFact
+    superseded_by: str | None = None
+
+
+def supersede_facts_retained(
+    facts: Iterable[XbrlFact],
+    lineages: Iterable[AmendmentLineage],
+) -> tuple[ResolvedFact, ...]:
+    """Lineage supersession with the losers retained, pool order preserved.
+
+    A loser names the accession whose fact won its key; same-accession
+    duplicates share the winning rank and are never superseded.
+    """
     ranks: dict[str, tuple[int, int]] = {}
     for group, lineage in enumerate(lineages):
         for rank, accession in enumerate(lineage.accessions):
             ranks[accession] = (group, rank)
     pool = list(facts)
-    best: dict[tuple[object, ...], int] = {}
+    best: dict[tuple[object, ...], tuple[int, str]] = {}
     for fact in pool:
         found = ranks.get(str(fact.accession))
         if found is None:
             continue
         key = (found[0], fact_key(fact))
-        if key not in best or found[1] > best[key]:
-            best[key] = found[1]
-    return tuple(
-        fact
-        for fact in pool
-        if (found := ranks.get(str(fact.accession))) is None
-        or best[(found[0], fact_key(fact))] == found[1]
-    )
+        current = best.get(key)
+        if current is None or found[1] > current[0]:
+            best[key] = (found[1], str(fact.accession))
+    resolved = []
+    for fact in pool:
+        found = ranks.get(str(fact.accession))
+        if found is None:
+            resolved.append(ResolvedFact(fact))
+            continue
+        rank, winner = best[(found[0], fact_key(fact))]
+        if found[1] == rank:
+            resolved.append(ResolvedFact(fact))
+        else:
+            resolved.append(ResolvedFact(fact, superseded_by=winner))
+    return tuple(resolved)
+
+
+def _precedence_rank(ref: FilingRef) -> tuple[str, bool, str]:
+    """Cross-filing precedence of one filing: filed date, form, accession."""
+    return (ref.filed_date, is_amendment_form(ref.form), ref.accession)
+
+
+def resolve_precedence(
+    facts: Iterable[XbrlFact],
+    refs: Iterable[FilingRef],
+    lineages: Iterable[AmendmentLineage] = (),
+) -> tuple[ResolvedFact, ...]:
+    """Full restatement precedence over a pooled cross-filing population.
+
+    Lineage supersession runs first, unchanged; among its survivors the
+    latest reporter of a key wins, ties broken by the base-form rule
+    then accession. Same-accession duplicates never supersede each
+    other, so a same-vintage disagreement stays visible, never picked.
+    """
+    ranks = {ref.accession: _precedence_rank(ref) for ref in refs}
+
+    def rank_of(accession: str) -> tuple[str, bool, str]:
+        return ranks.get(accession, ("", False, accession))
+
+    resolved = supersede_facts_retained(facts, lineages)
+    best: dict[tuple[object, ...], tuple[tuple[str, bool, str], str]] = {}
+    for item in resolved:
+        if item.superseded_by is not None:
+            continue
+        accession = str(item.fact.accession)
+        rank = rank_of(accession)
+        key = fact_key(item.fact)
+        current = best.get(key)
+        if current is None or rank > current[0]:
+            best[key] = (rank, accession)
+    out = []
+    for item in resolved:
+        if item.superseded_by is not None:
+            out.append(item)
+            continue
+        accession = str(item.fact.accession)
+        _, winner = best[fact_key(item.fact)]
+        if winner == accession:
+            out.append(item)
+        else:
+            out.append(ResolvedFact(item.fact, superseded_by=winner))
+    return tuple(out)
 
 
 @dataclass(frozen=True, slots=True)
