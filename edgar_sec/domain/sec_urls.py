@@ -699,9 +699,8 @@ _COMPILED_SURFACE_RULES = tuple(
 def classify_sec_surface(url: str | None) -> str | None:
     """Classify a SEC URL into its governed surface id, or None.
 
-    Classification is by URL shape (host, path, and the query where a rule
-    names one), never by file suffix:
-    a transient ``.txt`` and a static ``index.json`` classify correctly.
+    Classification is by URL shape — host, path, and the query where a
+    rule names one — never by file suffix.
     """
     if not url:
         return None
