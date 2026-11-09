@@ -19,5 +19,5 @@ declarative processing profiles, body evidence, and structural taxonomies.
 
 ## Deliberate gaps
 
-- **No separate 6-K item taxonomy**: `current/` declares only the 8-K item table; 6-K rides the current-report evidence and checkbox schema and a processing profile with no taxonomy items of its own.
+- **The 6-K taxonomy holds one validated item**: `current/` declares the 6-K item table beside the 8-K table, and the 6-K profile is its own; only the press-release item cleared the adoption bar, so the other drafted structures (financial statements, governance notice, dividend / capital return, results announcement) are not modelled as items, and 6-K content beyond the press release rides the current-report evidence unnamed.
 - **`FORM_8K_DERIVED` has no parts**: Only item-level detection applies to an 8-K.

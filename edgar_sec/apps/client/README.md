@@ -13,6 +13,16 @@ The facade also exposes the SEC's pre-extracted company facts for one company
 (`Edgar.company_facts(cik)`), strictly as an oracle: SEC-reported values are
 compared against the parser's own output, never served as answers.
 
+The facade also exposes SEC frames (`Edgar.frames(taxonomy, tag, unit,
+period)`): cross-company aggregates for one concept and period, served with
+their frame identity as provenance and joined to parsed per-filing facts
+only as a comparison.
+
+One filing's earnings exhibit is extracted through
+`Edgar.earnings_exhibit(filing)`, serving the exhibit's typed tables and
+headline figures as printed, with unextractable structure accounted as
+review signals.
+
 One filing's attachments are served as an object collection
 (`Edgar.attachments(filing)`) with typed selectors, an acquisition-state
 accessor, and explicit payload accessors.
@@ -41,6 +51,7 @@ and the operator carries one fund row that refreshes that relation by command.
 - **Concept lookups serve reported values**: `Company.concept()` returns SEC-reported values exactly as reported, one row per data point with its provenance; it is a lookup and cross-check surface that never feeds the financial statements machinery.
 - **Company facts are cross-check only**: `Edgar.company_facts(cik)` fetches one CIK's companyfacts document through the shared `SecHttpClient` — rate limiter, identity, response cache, and failure ledger unchanged — and maps it to typed rows carrying taxonomy, tag, unit, value, period, accession, form, filed, and frame where served. The endpoint is an oracle against the parser's own output, not a serving source, and its rows are never re-shaped into a per-filing facts store at this layer.
 - **Facts comparison reports four outcome classes**: The cross-check consumer joins company-facts rows to instance-parsed values on (taxonomy, tag, unit, start, end), taking each key's facts side from its latest-filed point because amendment vintages coexist in the document, and reports agree / diverge / facts-only / parsed-only. A parsed absence is facts-only, never a divergence.
+- **Frames are SEC aggregates, never per-filing facts**: `Edgar.frames(...)` fetches one frame through the shared `SecHttpClient` and serves its rows as SEC aggregates whose provenance is the frame identity (taxonomy, tag, unit, period); the comparison to parsed facts is the only join, and a frame value is never served as a filing's fact.
 - **Operator session and registry**: `run.py fetch` fronts a session-and-registry operator (`operator.py` and its sibling row modules). One in-process `ClientSession` holds named working sets, a current-filing position, and a read context (mode, snapshot position). Every capability is a registry row with typed options, a closed effect / requires / result-kind vocabulary, and a closed error-code vocabulary; the hosts — the interactive menu, the `--op` argv host, the `--config` host — only gather, dispatch, and render, so a result is the same object in text and JSON (JSON is always offered, and an error result's JSON carries its message). Discovery is generated from the registry itself (`--list-operations`, per-operation help); this README deliberately does not enumerate the operations.
 - **Run records for external work only**: operations with external effect write one canonical JSON record per run under the artifacts root's operator-runs area, listed and inspected through the operator's own past-runs rows; read-only operations write nothing.
 - **Config files are the only persistence**: the non-interactive full flow is a versioned JSON config (`format_version` "1.0") declaring session defaults, named sets, and an operations sequence, validated whole before anything executes. Session-field precedence is host > config > session > settings, and every config run reports each field's source. Sessions themselves are never persisted.
@@ -50,6 +61,7 @@ and the operator carries one fund row that refreshes that relation by command.
 - **Explicit-accessor fetch**: Enumerating or selecting attachments never fetches, and the state accessor reports store presence (snapshot payload index; document-cache row) without retrieval. Calling `content()` or `rendered_text()` is the caller's explicit act and may fetch and cache.
 - **Two text semantics, distinctly named**: `text()` is the plain decode existing consumers observe; `rendered_text()` rides the injected renderer, with PDF payloads converted through the PDF text-layer route.
 - **Two role vocabularies, never merged**: The observed role (primary, exhibit, data_file, graphic, package) and the body-assessed role (primary, exhibit, schedule) are different facts about a document and are named distinctly at every surface they meet.
+- **Earnings exhibits serve values as printed**: `Edgar.earnings_exhibit(filing)` returns the engine extractor's result — the selected exhibit, its typed tables, and the headline figures those tables carry, values exactly as printed — and every table the extractor cannot structure rides the result as a named review signal rather than a best-effort parse; exhibit selection and extraction semantics are owned by `engine/forms/earnings`.
 - **Stitched series surface**: `Company.stitched_series()` and `Company.stitched_financials()` assemble one filer's filings — CIK + form family + date range, or an explicit accession list — into exact-period values with per-value provenance; the selected set is recorded on the result, and no value serves without a source accession.
 - **Derived quarters on the stitched surface**: `StitchedFinancials` adds derived discrete quarters to the reported winners only where the selected set reports no quarter for the span; each derived value is status DERIVED with its filed legs named, and a chain that cannot close surfaces as a recorded refusal with its reason, not a silent absence.
 - **TTM status is always DERIVED**: `XbrlFinancials.ttm(metric)`, its per-metric accessors, and `Company.ttm(...)` over the stitched series return a statused result carrying its legs and period end; a TTM is never REPORTED, however reported its legs are.
