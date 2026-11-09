@@ -159,6 +159,8 @@ def test_form_4017f_profiles_resolve_with_taxonomy() -> None:
     assert form_4017f2.has_sections is True
     assert form_4017f2.body_evidence is not None
     assert "MANAGEMENT STATEMENT" in form_4017f2.body_evidence.structural_headings
+
+
 def test_form_40app_profile_resolves_with_taxonomy() -> None:
     form_40app = get_profile("40-APP/A")
     assert form_40app.family == "40-APP"
