@@ -10,6 +10,7 @@ row geometry for downstream consumers.
 - **One rendered line equals one logical row**: `TableGeometry.rows` is the resolved grid, never re-parsed from the emitted text. That is what makes the geometry metadata worth retaining.
 - **Geometry is estimated**: The result carries confidence information for inferred dimensions.
 - **A cell's text appears in exactly one column**: `build_span_matrix` resolves `rowspan`/`colspan` ownership once; every later stage reads positions.
+- **Split parens are reunited in the geometry**: a value cell printed as `(digits` takes back its closing paren from the narrow column that carries it, so consumers read balanced accounting negatives.
 - **Rendered width respects the supplied budget**.
 - **A failed table substitution is reported, not silently omitted**.
 - **Empty tables produce no output or geometry**.

@@ -6,6 +6,8 @@ from collections.abc import Mapping
 from dataclasses import dataclass
 from typing import Literal
 
+from edgar_sec.domain.document.aggregate import AttachmentRole
+
 SourceOrigin = Literal["inventory_index", "catalog_direct"]
 RetrievalMode = Literal["direct_url", "bundle_sequence", "bundle_scan"]
 AcquisitionSource = Literal["live_sec", "fixture_replay"]
@@ -84,7 +86,7 @@ class TargetSlotResolution:
     resolution_id: str
     run_id: str
     target_id: str
-    target_role: Literal["primary", "exhibit", "data_file", "graphic", "package"]
+    target_role: AttachmentRole
     target_type: str
     selector: Literal[
         "submitted_primary", "exact_form_with_lazy_index", "sgml_bundle_scan"
@@ -195,6 +197,7 @@ class AcquisitionRunReport:
     processing_attempted_target_count: int
     processing_complete: bool
     processing_success: bool
+    ephemeral_counts: Mapping[str, int] | None = None
 
 
 __all__ = [

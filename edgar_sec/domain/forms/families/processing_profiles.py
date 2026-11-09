@@ -49,6 +49,8 @@ from edgar_sec.domain.forms.families.form_14a.taxonomy import FORM_14A_ITEMS
 from edgar_sec.domain.forms.families.form_15.processing import PROFILE_FORM_15
 from edgar_sec.domain.forms.families.form_18k.processing import PROFILE_FORM_18K
 from edgar_sec.domain.forms.families.form_18k.taxonomy import FORM_18K_ITEMS
+from edgar_sec.domain.forms.families.form_s6.processing import PROFILE_FORM_S6
+from edgar_sec.domain.forms.families.form_s6.taxonomy import FORM_S6_ITEMS
 from edgar_sec.domain.forms.families.form_424b.processing import PROFILE_FORM_424B
 from edgar_sec.domain.forms.families.form_424b.taxonomy import FORM_424B_ITEMS
 from edgar_sec.domain.forms.families.form_f1.checkmarks import (
@@ -557,6 +559,11 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         family="18-K",
         profile=PROFILE_FORM_18K,
         taxonomy_items=FORM_18K_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="S-6",
+        profile=PROFILE_FORM_S6,
+        taxonomy_items=FORM_S6_ITEMS,
     ),
     ProcessingCatalogEntry(
         family="1-A",

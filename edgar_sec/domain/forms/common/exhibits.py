@@ -35,11 +35,14 @@ class EvidenceSpan:
     end_char: int
 
 
+BodyAssessedRole = Literal["primary", "exhibit", "schedule"]
+
+
 @dataclass(frozen=True, slots=True)
 class DocumentRoleAssessment:
     """Role-assessment result for one document body."""
 
-    expected_role: Literal["primary", "exhibit", "schedule"]
+    expected_role: BodyAssessedRole
     expected_type: str
     filing_form: str
     expected_identity: str | ExhibitIdentity | ScheduleIdentity | None
@@ -187,6 +190,7 @@ __all__ = [
     "ExhibitIdentity",
     "ScheduleIdentity",
     "EvidenceSpan",
+    "BodyAssessedRole",
     "DocumentRoleAssessment",
     "SourceRef",
     "CoverageStatus",

@@ -14,10 +14,18 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.foundation.compression import compress_payload, decompress_payload
 from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
+
+
+def _decode_payload(content: bytes, codec: str) -> bytes:
+    """Return the raw document bytes for one stored payload row."""
+    if codec == "zstd":
+        return decompress_payload(bytes(content))
+    return bytes(content)
 
 
 class DocumentCache:
@@ -73,11 +81,22 @@ class DocumentCache:
                     sha256 TEXT NOT NULL,
                     byte_size INTEGER NOT NULL,
                     content BLOB NOT NULL,
+                    storage_codec TEXT NOT NULL DEFAULT 'raw'
+                        CHECK (storage_codec IN ('raw', 'zstd')),
                     cached_at TEXT NOT NULL,
                     PRIMARY KEY (accession, filename)
                 )
                 """
             )
+            columns = {
+                row[1] for row in conn.execute("PRAGMA table_info(cached_documents)")
+            }
+            if "storage_codec" not in columns:
+                conn.execute(
+                    "ALTER TABLE cached_documents ADD COLUMN storage_codec "
+                    "TEXT NOT NULL DEFAULT 'raw' "
+                    "CHECK (storage_codec IN ('raw', 'zstd'))"
+                )
             conn.execute(
                 "CREATE INDEX IF NOT EXISTS idx_cached_docs_cik "
                 "ON cached_documents (cik)"
@@ -91,12 +110,22 @@ class DocumentCache:
         """Retrieve cached document bytes by accession and filename."""
         with self._lock:
             cursor = self._connection().execute(
-                "SELECT content FROM cached_documents "
+                "SELECT content, storage_codec FROM cached_documents "
                 "WHERE accession = ? AND filename = ?",
                 (accession, filename),
             )
             row = cursor.fetchone()
-            return bytes(row[0]) if row is not None else None
+            return _decode_payload(row[0], row[1]) if row is not None else None
+
+    def has(self, accession: str, filename: str) -> bool:
+        """Report whether a payload row exists, without loading its content."""
+        with self._lock:
+            cursor = self._connection().execute(
+                "SELECT 1 FROM cached_documents "
+                "WHERE accession = ? AND filename = ? LIMIT 1",
+                (accession, filename),
+            )
+            return cursor.fetchone() is not None
 
     def put(
         self,
@@ -111,20 +140,22 @@ class DocumentCache:
         cik_int = int(cik)
         digest = sha256_bytes(content)
         byte_size = len(content)
+        stored = compress_payload(content)
         now_iso = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
         with self._lock:
             self._connection().execute(
                 """
                 INSERT INTO cached_documents (
                     accession, cik, form, filename, content_type,
-                    sha256, byte_size, content, cached_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    sha256, byte_size, content, storage_codec, cached_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'zstd', ?)
 
                 ON CONFLICT(accession, filename) DO UPDATE SET
                     content_type = excluded.content_type,
                     sha256 = excluded.sha256,
                     byte_size = excluded.byte_size,
                     content = excluded.content,
+                    storage_codec = excluded.storage_codec,
                     cached_at = excluded.cached_at
                 """,
                 (
@@ -135,7 +166,7 @@ class DocumentCache:
                     content_type,
                     digest,
                     byte_size,
-                    content,
+                    stored,
                     now_iso,
                 ),
             )
@@ -200,25 +231,26 @@ class DocumentCache:
             conn = self._connection()
             if accession is not None:
                 cursor = conn.execute(
-                    "SELECT accession, filename, content FROM cached_documents "
-                    "WHERE accession = ?",
+                    "SELECT accession, filename, content, storage_codec "
+                    "FROM cached_documents WHERE accession = ?",
                     (accession,),
                 )
             elif cik is not None:
                 cursor = conn.execute(
-                    "SELECT accession, filename, content FROM cached_documents "
-                    "WHERE cik = ?",
+                    "SELECT accession, filename, content, storage_codec "
+                    "FROM cached_documents WHERE cik = ?",
                     (int(cik),),
                 )
             else:
                 cursor = conn.execute(
-                    "SELECT accession, filename, content FROM cached_documents"
+                    "SELECT accession, filename, content, storage_codec "
+                    "FROM cached_documents"
                 )
             while rows := cursor.fetchmany(batch_size):
-                for acc, fname, content in rows:
+                for acc, fname, content, codec in rows:
                     out_path = dest_dir / acc / fname
                     out_path.parent.mkdir(parents=True, exist_ok=True)
-                    out_path.write_bytes(content)
+                    out_path.write_bytes(_decode_payload(content, codec))
                     written.append(out_path)
             return written
 
@@ -236,26 +268,29 @@ class DocumentCache:
             conn = self._connection()
             if accession is not None:
                 cursor = conn.execute(
-                    "SELECT accession, filename, content FROM cached_documents "
-                    "WHERE accession = ?",
+                    "SELECT accession, filename, content, storage_codec "
+                    "FROM cached_documents WHERE accession = ?",
                     (accession,),
                 )
             elif cik is not None:
                 cursor = conn.execute(
-                    "SELECT accession, filename, content FROM cached_documents "
-                    "WHERE cik = ?",
+                    "SELECT accession, filename, content, storage_codec "
+                    "FROM cached_documents WHERE cik = ?",
                     (int(cik),),
                 )
             else:
                 cursor = conn.execute(
-                    "SELECT accession, filename, content FROM cached_documents"
+                    "SELECT accession, filename, content, storage_codec "
+                    "FROM cached_documents"
                 )
             with zipfile.ZipFile(
                 target_zip, mode="w", compression=zipfile.ZIP_DEFLATED
             ) as archive:
                 while rows := cursor.fetchmany(batch_size):
-                    for acc, fname, content in rows:
-                        archive.writestr(f"{acc}/{fname}", content)
+                    for acc, fname, content, codec in rows:
+                        archive.writestr(
+                            f"{acc}/{fname}", _decode_payload(content, codec)
+                        )
             return target_zip
 
 

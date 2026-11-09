@@ -12,6 +12,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
 
+from edgar_sec.apps.client.attachments import Attachments
 from edgar_sec.apps.client.operator_drill import (
     DETAIL_LEVELS,
     _PATH_HELP,
@@ -149,7 +150,7 @@ def _read_exhibit(options: ReadExhibitOptions, session: Any):
     aggregate = _current_aggregate(session)
     if aggregate is None:
         return _absent("prose", title, "no filing aggregate is retained")
-    attachment = aggregate.exhibit(options.exhibit)
+    attachment = Attachments(aggregate.get_attachments()).exhibit(options.exhibit)
     if attachment is None:
         return _error(
             "prose", "not_found", title, f"exhibit not found: {options.exhibit}"

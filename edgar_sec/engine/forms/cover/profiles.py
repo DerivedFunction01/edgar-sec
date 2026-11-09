@@ -499,6 +499,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         build_form_424b_profile,
         build_form_425_profile,
         build_form_fwp_profile,
+        build_form_s6_profile,
     )
     from edgar_sec.engine.forms.cover.family_profiles.regulation_a import (
         build_form_rega_profile,
@@ -547,6 +548,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
     )
     schedule13d = build_beneficial_ownership_profile("13D")
     schedule13g = build_beneficial_ownership_profile("13G")
+    form_s6 = build_form_s6_profile("S-6")
     form_424b = build_form_424b_profile("424B")
     form_fwp = build_form_fwp_profile("FWP")
     form_425 = build_form_425_profile("425")
@@ -598,6 +600,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "SD": form_sd,
         "DRS": form_drs,
         "ABS": form_abs_reports,
+        "S-6": form_s6,
         "424B": form_424b,
         "FWP": form_fwp,
         "425": form_425,

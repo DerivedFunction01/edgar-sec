@@ -7,11 +7,16 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 
+from edgar_sec.apps.client.entity import Company
 from edgar_sec.apps.client.facade import Edgar
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.apps.runner.config import FilingQuery, PipelineConfig
+from edgar_sec.domain.document.aggregate import FilingAggregate
+from edgar_sec.domain.identity import AccessionNumber, Cik
+from edgar_sec.domain.submissions.models import EntityProfile
 from edgar_sec.engine.xbrl.normalize.filed_metadata import filed_metadata
+from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle, XbrlFact
 from edgar_sec.engine.xbrl.solve.scoping import (
     FilingRef,
     build_lineages,
@@ -473,3 +478,133 @@ def test_kd_pair_kernel_serves_the_superseded_set() -> None:
     )
     scoped = kernel.facts_for_accession(lineage.original)
     assert _fact_rows(scoped) == _fact_rows(original_facts)
+
+
+_PAIR_CIK = 320193
+_PAIR_ORIGINAL = "0000320193-24-000123"
+_PAIR_AMENDMENT = "0000320193-24-000130"
+
+
+def _pair_aggregate(accession: str, *, form: str, filing_date: str) -> FilingAggregate:
+    return FilingAggregate(
+        accession=AccessionNumber.from_any(accession),
+        primary_cik=Cik(_PAIR_CIK),
+        ciks=(Cik(_PAIR_CIK),),
+        form=form,
+        filing_date=filing_date,
+        report_date="2024-03-31",
+    )
+
+
+def _pair_fact(accession: str, value: float) -> XbrlFact:
+    return XbrlFact(
+        accession=AccessionNumber.from_any(accession),
+        concept_qname="us-gaap:Revenues",
+        value=value,
+        unit="USD",
+        period_type="duration",
+        start_date="2024-01-01",
+        end_date="2024-03-31",
+    )
+
+
+def _stub_pair(monkeypatch, tmp_path) -> Edgar:
+    """An Edgar whose parse and discovery seams serve one amended pair."""
+    original = _pair_aggregate(_PAIR_ORIGINAL, form="10-Q", filing_date="2024-05-01")
+    amendment = _pair_aggregate(
+        _PAIR_AMENDMENT, form="10-Q/A", filing_date="2024-06-15"
+    )
+    parsed = {
+        _PAIR_ORIGINAL: FilingXbrl(
+            accession=original.accession,
+            cik=original.primary_cik,
+            facts=(_pair_fact(_PAIR_ORIGINAL, 100.0),),
+            linkbases=LinkbaseBundle(),
+        ),
+        _PAIR_AMENDMENT: FilingXbrl(
+            accession=amendment.accession,
+            cik=amendment.primary_cik,
+            facts=(_pair_fact(_PAIR_AMENDMENT, 120.0),),
+            linkbases=LinkbaseBundle(),
+        ),
+    }
+    monkeypatch.setattr(
+        "edgar_sec.engine.xbrl.parsing.filing_parser.parse_filing_xbrl",
+        lambda filing: parsed[filing.accession.value],
+    )
+    monkeypatch.setattr(
+        "edgar_sec.apps.client.lineages.discover_lineage_group",
+        lambda filing, **kwargs: (original, amendment),
+    )
+    return Edgar(artifacts_root=tmp_path)
+
+
+def test_edgar_xbrl_answers_an_amended_pair_from_the_amendment(
+    monkeypatch, tmp_path
+) -> None:
+    edgar = _stub_pair(monkeypatch, tmp_path)
+    original = _pair_aggregate(_PAIR_ORIGINAL, form="10-Q", filing_date="2024-05-01")
+    amendment = _pair_aggregate(
+        _PAIR_AMENDMENT, form="10-Q/A", filing_date="2024-06-15"
+    )
+    for target in (original, amendment):
+        kernel = edgar.xbrl(target)._kernel
+        revenues = [
+            fact for fact in kernel.facts if fact.concept_qname == "us-gaap:Revenues"
+        ]
+        assert [(fact.value, str(fact.accession)) for fact in revenues] == [
+            (120.0, _PAIR_AMENDMENT)
+        ]
+        assert kernel.lineage is not None
+        assert kernel.lineage.accessions == (_PAIR_ORIGINAL, _PAIR_AMENDMENT)
+        as_filed = kernel.facts_for_accession(_PAIR_ORIGINAL)
+        assert [fact.value for fact in as_filed] == [100.0]
+
+
+def test_edgar_xbrl_without_a_group_is_the_single_filing_path(
+    monkeypatch, tmp_path
+) -> None:
+    parses: list[str] = []
+
+    def fake_parse(filing: FilingAggregate) -> FilingXbrl:
+        parses.append(filing.accession.value)
+        return FilingXbrl(
+            accession=filing.accession,
+            cik=filing.primary_cik,
+            facts=(_pair_fact(filing.accession.value, 100.0),),
+            linkbases=LinkbaseBundle(),
+        )
+
+    monkeypatch.setattr(
+        "edgar_sec.engine.xbrl.parsing.filing_parser.parse_filing_xbrl", fake_parse
+    )
+    monkeypatch.setattr(
+        "edgar_sec.apps.client.lineages.discover_lineage_group",
+        lambda filing, **kwargs: (),
+    )
+    edgar = Edgar(artifacts_root=tmp_path)
+    original = _pair_aggregate(_PAIR_ORIGINAL, form="10-Q", filing_date="2024-05-01")
+    xbrl = edgar.xbrl(original)
+    assert parses == [_PAIR_ORIGINAL]
+    assert xbrl._kernel.lineage is None
+    assert [fact.value for fact in xbrl._kernel.facts] == [100.0]
+
+
+def test_company_xbrl_rides_the_pooled_facade_path(monkeypatch, tmp_path) -> None:
+    edgar = _stub_pair(monkeypatch, tmp_path)
+    original = _pair_aggregate(_PAIR_ORIGINAL, form="10-Q", filing_date="2024-05-01")
+    result = FilingsResult(
+        run_id="test",
+        plan_id="test",
+        target_parquet_glob="",
+        run_state_sqlite_path=tmp_path / "state.sqlite",
+        artifacts_root=tmp_path,
+        items=(original,),
+    )
+    monkeypatch.setattr(Company, "filings", lambda self, **kwargs: result)
+    company = Company(
+        profile=EntityProfile(cik=Cik(_PAIR_CIK), name="Pair Co"), facade=edgar
+    )
+    kernel = company.xbrl("10-Q")._kernel
+    assert kernel.lineage is not None
+    assert [fact.value for fact in kernel.facts] == [120.0]

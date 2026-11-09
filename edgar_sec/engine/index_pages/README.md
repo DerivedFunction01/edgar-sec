@@ -7,6 +7,7 @@ Transform an SEC filing index response — the HTML index page or the directory 
 ## Contracts
 
 - **Parsing consumes explicit bytes and domain records**: Uses shared HTML-tree engine; no network or artifact access.
+- **Enumeration resolves non-primary intents only**: `enumerate_index_targets` matches exhibit, data-file, and graphic intents against a parsed page and reports matched/not-filed/required-missing/ambiguous/unresolved per intent; primary resolution stays with planning and the acquisition lazy-index leg.
 - **Unknown/malformed structure yields typed refusal/failure**: Never fabricates an empty success.
 - **Both vehicles return the same outcome types**: The JSON listing carries names and sizes only; sequence, type, and description stay absent on its entries rather than inferred.
 - **Engine imports are restricted to `infra`, `domain`, `foundation`**: No pipeline or frozen `document_storage` imports.

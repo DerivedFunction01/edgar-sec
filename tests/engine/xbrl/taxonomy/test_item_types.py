@@ -5,6 +5,7 @@ from edgar_sec.engine.xbrl.taxonomy.archive import current_table
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.engine.xbrl.taxonomy.item_types import (
     declaration_for,
+    is_non_additive_item_type,
     is_numeric_item_type,
     item_type_local,
     merge_declarations,
@@ -20,6 +21,18 @@ def test_item_type_local_strips_any_prefix() -> None:
     assert item_type_local("dtr-types:textBlockItemType") == "textBlockItemType"
     assert item_type_local("i:stringItemType") == "stringItemType"
     assert item_type_local(None) is None
+
+
+def test_is_non_additive_item_type_covers_span_averages_only() -> None:
+    """Per-share, share-count, and rate types average over their span."""
+    for item_type in (
+        "dtr-types:perShareItemType",
+        "xbrli:sharesItemType",
+        "dtr-types:percentItemType",
+    ):
+        assert is_non_additive_item_type(item_type)
+    for item_type in ("xbrli:monetaryItemType", "xbrli:pureItemType", None):
+        assert not is_non_additive_item_type(item_type)
 
 
 def test_is_numeric_item_type_covers_the_numeric_family() -> None:

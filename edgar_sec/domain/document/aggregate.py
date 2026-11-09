@@ -5,14 +5,31 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Literal
 import zipfile
 
+from edgar_sec.domain.filing_catalog.document_names import (
+    is_primary_exhibit_filename,
+)
 from edgar_sec.domain.identity import AccessionNumber, Cik
 
 if TYPE_CHECKING:
     from edgar_sec.domain.forms.common.processing import DocumentProcessingProfile
     from edgar_sec.domain.forms.reports import FormReport
+
+AttachmentRole = Literal["primary", "exhibit", "data_file", "graphic", "package"]
+ATTACHMENT_ROLES: frozenset[str] = frozenset(
+    {"primary", "exhibit", "data_file", "graphic", "package"}
+)
+
+AttachmentState = Literal["acquired", "not_acquired"]
+
+
+def is_exhibit_attachment(document_type: str, filename: str) -> bool:
+    """The one exhibit derivation: EX- type or statutory exhibit filename."""
+    return document_type.upper().startswith("EX-") or is_primary_exhibit_filename(
+        filename
+    )
 
 
 @dataclass(frozen=True, slots=True)
@@ -26,9 +43,14 @@ class FilingAttachment:
     size: int | None = None
     sha256: str | None = None
     description: str | None = None
+    entry_id: str | None = None
+    sequence: int | None = None
+    table_kind: str | None = None
+    role: AttachmentRole | None = None
     storage_path: Path | None = None
     fetcher: Callable[[FilingAttachment], bytes | None] | None = None
     renderer: Callable[[FilingAttachment], str | bytes | None] | None = None
+    presence: Callable[[FilingAttachment], bool] | None = None
 
     @property
     def is_graphic(self) -> bool:
@@ -94,6 +116,30 @@ class FilingAttachment:
             return self.raw()
         return self.text()
 
+    @property
+    def state(self) -> AttachmentState:
+        """Acquisition state from store presence alone; never retrieves."""
+        if self.storage_path is not None and self.storage_path.is_file():
+            return "acquired"
+        if self.presence is not None and self.presence(self):
+            return "acquired"
+        return "not_acquired"
+
+    def content(self) -> bytes | None:
+        """Return payload bytes; the call itself is the act that may fetch."""
+        return self.raw()
+
+    def rendered_text(self) -> str | None:
+        """Return rendered text via the injected renderer, not a plain decode."""
+        if self.is_graphic:
+            return None
+        rendered = self.render()
+        if isinstance(rendered, str):
+            return rendered
+        if isinstance(rendered, bytes):
+            return rendered.decode("utf-8", errors="replace")
+        return None
+
     def save(self, destination: Path | str) -> Path:
         """Save attachment bytes to destination path."""
         data = self.raw()
@@ -156,28 +202,8 @@ class FilingAggregate:
         return tuple(
             a
             for a in self.get_attachments()
-            if a.document_type.upper().startswith("EX-")
-            or a.filename.lower().startswith("ex")
-            or "_ex" in a.filename.lower()
+            if is_exhibit_attachment(a.document_type, a.filename)
         )
-
-    def exhibit(self, type_or_number: str | int) -> FilingAttachment | None:
-        """Safe exhibit retrieval by document type, number, or filename token."""
-        token = str(type_or_number).upper().strip()
-        canon_ex = f"EX-{token}" if not token.startswith("EX-") else token
-        for a in self.exhibits:
-            dt = a.document_type.upper()
-            if dt == canon_ex or dt == token:
-                return a
-        for a in self.exhibits:
-            dt = a.document_type.upper()
-            if dt.startswith(f"{canon_ex}.") or dt.startswith(f"{canon_ex}-"):
-                return a
-        for a in self.exhibits:
-            fn = a.filename.lower()
-            if token.lower() in fn or canon_ex.lower() in fn:
-                return a
-        return None
 
     def as_report(self) -> FormReport:
         from edgar_sec.domain.forms.reports import get_report_projection
@@ -397,4 +423,11 @@ class FilingAggregate:
         return self.raw()
 
 
-__all__ = ["FilingAggregate", "FilingAttachment"]
+__all__ = [
+    "ATTACHMENT_ROLES",
+    "AttachmentRole",
+    "AttachmentState",
+    "FilingAggregate",
+    "FilingAttachment",
+    "is_exhibit_attachment",
+]

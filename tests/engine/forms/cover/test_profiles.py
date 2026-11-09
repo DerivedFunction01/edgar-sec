@@ -120,6 +120,19 @@ def test_form_18k_profile_resolves_with_taxonomy() -> None:
     assert "EXHIBIT INDEX" in form_18k.body_evidence.structural_headings
 
 
+def test_form_s6_profile_resolves_with_taxonomy() -> None:
+    form_s6 = get_profile("487")
+    assert form_s6.family == "S-6"
+    assert form_s6.boundary is not None
+    assert form_s6.checkbox_schema is None
+    assert form_s6.has_sections is True
+    assert form_s6.body_evidence is not None
+    assert (
+        "SUMMARY OF ESSENTIAL INFORMATION" in form_s6.body_evidence.structural_headings
+    )
+    assert get_profile("S-6/A").family == "S-6"
+
+
 def test_annual_profiles_enable_incorporated_reference() -> None:
     annual_names = {rule.name for rule in get_profile("10-K").healing_rules}
     quarterly_names = {rule.name for rule in get_profile("10-Q").healing_rules}

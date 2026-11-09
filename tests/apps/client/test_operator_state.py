@@ -26,7 +26,7 @@ def _reference(source_id: str, tmp_path: Path):
 class _FakeFacade:
     """Facade stand-in over a fake bulk store with dataset-shaped ids."""
 
-    def __init__(self, tmp_path: Path) -> None:
+    def __init__(self, tmp_path: Path, extra_members: dict | None = None) -> None:
         self.artifacts_root = tmp_path
         self._tmp_path = tmp_path
         self.calls: list[str] = []
@@ -34,21 +34,26 @@ class _FakeFacade:
             "responses": {"entries": 3, "bytes": 42},
             "content_cache": {"hits": 2},
         }
+        self._members: dict[str, dict[str, bytes]] = {
+            source_id: {"sub.tsv": b"hello member"} for source_id in _DATASET_SOURCES
+        }
+        self._members.update(extra_members or {})
 
     def bulk_archive_sources(self):
-        return list(_DATASET_SOURCES)
+        return list(self._members)
 
     def bulk_archive(self, source_id, sha256=None):
-        if source_id in _DATASET_SOURCES:
+        if source_id in self._members:
             return _reference(source_id, self._tmp_path)
         return None
 
     def bulk_archive_member(self, source_id, member):
-        if source_id not in _DATASET_SOURCES:
+        if source_id not in self._members:
             return None
-        if member != "sub.tsv":
+        payload = self._members[source_id].get(member)
+        if payload is None:
             raise ValueError(f"member {member!r} is not in archive")
-        return b"hello member"
+        return payload
 
     def cache_stats(self):
         return self.stats
@@ -137,6 +142,39 @@ def test_bulk_archive_unstored_source_is_absent(tmp_path) -> None:
     result = operator.execute_by_id("bulk_archive", session, {"source_id": "nope"})
     assert result.error_code == "absent"
     assert result.data["present"] is False
+
+
+def _facts_session(tmp_path: Path) -> operator.ClientSession:
+    facade = _FakeFacade(
+        tmp_path,
+        extra_members={"companyfacts_bulk": {"CIK0000320193.json": b'{"cik": 320193}'}},
+    )
+    return operator.ClientSession(facade=facade)
+
+
+def test_bulk_archive_companyfacts_source_arrives_by_data(tmp_path) -> None:
+    session = _facts_session(tmp_path)
+    result = operator.execute_by_id("bulk_archive", session, {})
+    assert result.error_code is None
+    listed = [entry["source_id"] for entry in result.data["sources"]]
+    assert "companyfacts_bulk" in listed
+    assert listed == sorted([*_DATASET_SOURCES, "companyfacts_bulk"])
+
+    manifest = operator.execute_by_id(
+        "bulk_archive", session, {"source_id": "companyfacts_bulk"}
+    )
+    assert manifest.error_code is None
+    assert manifest.data["source_id"] == "companyfacts_bulk"
+    assert manifest.data["manifest"]["member_count"] == 2
+
+    member = operator.execute_by_id(
+        "bulk_archive_member",
+        session,
+        {"source_id": "companyfacts_bulk", "member": "CIK0000320193.json"},
+    )
+    assert member.error_code is None
+    assert member.data["bytes"] == len(b'{"cik": 320193}')
+    assert member.data["present"] is True
 
 
 def test_bulk_member_reads_bytes_through_dataset_source(tmp_path) -> None:

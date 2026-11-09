@@ -1,4 +1,4 @@
-"""Feed-ledger, search, and earnings surfaces of the Edgar facade.
+"""Feed-ledger, search, earnings, and attachment surfaces of the Edgar facade.
 
 Thin delegations over the feeds ledger reader, the live EFTS client,
 the local text index, and the earnings-exhibit extractor, composed
@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
+    from edgar_sec.apps.client.attachments import Attachments
     from edgar_sec.apps.client.companyfacts import CompanyFacts
     from edgar_sec.apps.client.efts import EftsCapture, EftsQuery, EftsSearchResult
     from edgar_sec.apps.client.feeds import FeedEventsResult
@@ -24,7 +25,7 @@ if TYPE_CHECKING:
 
 
 class FeedSearchSurfaces:
-    """Feed-ledger reads and search surfaces hosted by the ``Edgar`` facade."""
+    """Feed-ledger reads, search, and per-filing surfaces hosted by ``Edgar``."""
 
     artifacts_root: Path | None
     sec_client: SecHttpClient
@@ -202,3 +203,9 @@ class FeedSearchSurfaces:
         )
 
         return extract_earnings_exhibit(filing)
+
+    def attachments(self, filing: "FilingAggregate") -> "Attachments":
+        """Return one filing's attachment collection over its aggregate."""
+        from edgar_sec.apps.client.attachments import Attachments
+
+        return Attachments(filing.get_attachments())

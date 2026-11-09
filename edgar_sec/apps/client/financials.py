@@ -6,7 +6,6 @@ from collections.abc import Callable
 
 from edgar_sec.apps.client.catalog import build_catalog
 from edgar_sec.apps.client.comparison import DERIVED_MARGINS
-from edgar_sec.apps.client.financials_cash import CashFlowServing
 from edgar_sec.apps.client.financials_core import (
     OCF_EXCLUDED_MODS,
     REVENUE_EXCLUDED_MODS,
@@ -18,6 +17,7 @@ from edgar_sec.apps.client.fiscal import (
     node_length_class,
     transition_length_class,
 )
+from edgar_sec.apps.client.financials_ttm import TtmServing
 from edgar_sec.apps.client.kernel import FilingKernel
 from edgar_sec.apps.client.rollforwards import (
     build_fair_value_hierarchy,
@@ -61,7 +61,7 @@ _SERIES_ATTRIBUTES: dict[str, str] = {
 _SCALAR_ONLY_METRICS = ("free_cash_flow", "uncommenced_leases")
 
 
-class XbrlFinancials(CashFlowServing):
+class XbrlFinancials(TtmServing):
     """Algebraic financial aggregates, multi-year YoY series, and projections."""
 
     @property

@@ -509,6 +509,11 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "18-K",
         "18-K/A",
     ),
+    "S-6": (
+        "S-6",
+        "S-6/A",
+        "487",
+    ),
     "C": (
         "C",
         "C/A",
@@ -520,6 +525,18 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "C-AR-W",
         "C-TR-W",
     ),
+    "NRSRO-CE": ("NRSRO-CE",),
+    "N-54C": ("N-54C",),
+    "SF-1": ("SF-1",),
+    "U-12-IB": ("U-12-IB",),
+    "ANNLRPT": ("ANNLRPT",),
+    "S-B": ("S-B",),
+    "SB-1": ("SB-1",),
+    "35-APP": ("35-APP",),
+    "U-12-IA": ("U-12-IA",),
+    "U-33-S": ("U-33-S",),
+    "UNDER": ("UNDER",),
+    "2-E": ("2-E",),
 }
 
 # Suffixes stripped when collapsing a raw form string to its base family.

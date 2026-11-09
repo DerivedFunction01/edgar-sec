@@ -1,4 +1,4 @@
-"""Company rows and the frames cross-check for the client operator.
+"""Company rows and the frames and company-facts cross-checks.
 
 Name resolution is closed here, at the operation layer: scored candidates
 over the catalog's name data, an exact or clear winner resolving, a
@@ -39,10 +39,10 @@ def _f(default: Any, help_text: str):
 
 
 _ID_HELP = "Company identifier: a CIK or ticker resolves directly; a name resolves through scored candidates over the catalog's name data, and a near-tie refuses with the candidates listed rather than picking one."
-_INCLUDE_HELP = "Sections to include, drawn from the closed set (profile, recent_filings, financials). Any other value is refused. A section that fails is coded beside the sections that succeeded."
+_INCLUDE_HELP = "Sections to include, drawn from the closed set (profile, recent_filings, financials, facts_cross_check). Any other value is refused. A section that fails is coded beside the sections that succeeded."
 _LIMIT_HELP = "Maximum rows shown; total versus shown is declared. Refused below 1."
 
-INCLUDE_SECTIONS = ("profile", "recent_filings", "financials")
+INCLUDE_SECTIONS = ("profile", "recent_filings", "financials", "facts_cross_check")
 _SCORE_THRESHOLD = 0.6
 _SCORE_MARGIN = 0.15
 _EXACT_SCORE = 0.98
@@ -409,6 +409,7 @@ def _financials_section(company: Any) -> dict[str, Any]:
 
 def _execute_company(options: CompanyOptions, session: Any):
     from edgar_sec.apps.client.operator import OpResult
+    from edgar_sec.apps.client.operator_company_facts import facts_check_section
 
     title = "Company"
     unknown = [name for name in options.include if name not in INCLUDE_SECTIONS]
@@ -431,6 +432,9 @@ def _execute_company(options: CompanyOptions, session: Any):
         "profile": lambda: _profile_section(company),
         "recent_filings": lambda: _filings_section(company, options.filings_limit),
         "financials": lambda: _financials_section(company),
+        "facts_cross_check": lambda: facts_check_section(
+            company, session, _cik_text(company)
+        ),
     }
     sections: dict[str, Any] = {}
     for name in dict.fromkeys(options.include):
