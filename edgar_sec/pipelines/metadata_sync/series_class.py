@@ -376,10 +376,12 @@ def publish_series_class(
             f"SELECT cik, series_id, class_id, symbol FROM {TICKERED_RELATION} "
             "ORDER BY cik, series_id, class_id"
         ).fetchall()
+        browse_table = sql_identifier(BROWSE_RELATION)
+        browse_series_table = sql_identifier(BROWSE_SERIES_RELATION)
         browse_rows = (
             con.execute(
                 f"SELECT cik, series_id, series_name, class_id, class_name, "
-                f"symbol, source_url, page_sha256 FROM {BROWSE_RELATION} "
+                f"symbol, source_url, page_sha256 FROM {browse_table} "
                 "ORDER BY cik, series_id, class_id"
             ).fetchall()
             if BROWSE_RELATION in existing
@@ -388,7 +390,7 @@ def publish_series_class(
         browse_series_rows = (
             con.execute(
                 f"SELECT cik, series_id, series_name, source_url, "
-                f"page_sha256 FROM {BROWSE_SERIES_RELATION} "
+                f"page_sha256 FROM {browse_series_table} "
                 "ORDER BY cik, series_id"
             ).fetchall()
             if BROWSE_SERIES_RELATION in existing

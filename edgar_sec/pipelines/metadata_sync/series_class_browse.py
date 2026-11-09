@@ -234,14 +234,19 @@ def ingest_browse_page(
 
 
 def _stored_browse_rows(con, *, cik: str | None = None) -> list[BrowseRelationRow]:
-    clause = " WHERE cik = ?" if cik is not None else ""
-    params = [cik] if cik is not None else []
-    fetched = con.execute(
-        f"SELECT cik, series_id, series_name, class_id, class_name, symbol, "
-        f"source_url, page_sha256 FROM {BROWSE_RELATION}{clause} "
-        "ORDER BY cik, series_id, class_id",
-        params,
-    ).fetchall()
+    if cik is None:
+        fetched = con.execute(
+            f"SELECT cik, series_id, series_name, class_id, class_name, symbol, "
+            f"source_url, page_sha256 FROM {BROWSE_RELATION} "
+            "ORDER BY cik, series_id, class_id"
+        ).fetchall()
+    else:
+        fetched = con.execute(
+            f"SELECT cik, series_id, series_name, class_id, class_name, symbol, "
+            f"source_url, page_sha256 FROM {BROWSE_RELATION} "
+            "WHERE cik = ? ORDER BY cik, series_id, class_id",
+            [cik],
+        ).fetchall()
     return [
         BrowseRelationRow(
             cik=str(r[0]),
@@ -279,14 +284,19 @@ def read_browse_rows(paths: MetadataPaths) -> list[BrowseRelationRow]:
 def _stored_browse_series_rows(
     con, *, cik: str | None = None
 ) -> list[BrowseSeriesRelationRow]:
-    clause = " WHERE cik = ?" if cik is not None else ""
-    params = [cik] if cik is not None else []
-    fetched = con.execute(
-        f"SELECT cik, series_id, series_name, source_url, page_sha256 "
-        f"FROM {BROWSE_SERIES_RELATION}{clause} "
-        "ORDER BY cik, series_id",
-        params,
-    ).fetchall()
+    if cik is None:
+        fetched = con.execute(
+            f"SELECT cik, series_id, series_name, source_url, page_sha256 "
+            f"FROM {BROWSE_SERIES_RELATION} "
+            "ORDER BY cik, series_id"
+        ).fetchall()
+    else:
+        fetched = con.execute(
+            f"SELECT cik, series_id, series_name, source_url, page_sha256 "
+            f"FROM {BROWSE_SERIES_RELATION} "
+            "WHERE cik = ? ORDER BY cik, series_id",
+            [cik],
+        ).fetchall()
     return [
         BrowseSeriesRelationRow(
             cik=str(r[0]),
