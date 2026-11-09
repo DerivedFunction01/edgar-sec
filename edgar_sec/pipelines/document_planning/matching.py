@@ -8,8 +8,8 @@ from dataclasses import dataclass
 from typing import Any
 from urllib.parse import urlsplit, urlunsplit
 
+from edgar_sec.domain.document.canonical import attachment_role
 from edgar_sec.domain.document.path_facts import PLACEHOLDER_PRIMARY_FILENAMES
-from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.families.processing_profiles import (
     get_lazy_index_trigger,
 )
@@ -343,19 +343,15 @@ def inventory_rows(
 
 
 def _matches_target(entry: Mapping[str, Any], target: ProfileTarget, form: str) -> bool:
-    table_kind = str(entry.get("table_kind") or "")
+    table_kind = str(entry.get("table_kind") or "") or None
     document_type = str(entry.get("document_type") or "").strip().upper()
-    if target.role == "primary":
-        return table_kind == "document_format" and _normalize_form(
-            document_type
-        ) == _normalize_form(form)
+    if attachment_role(table_kind, document_type, form=form) != target.role:
+        return False
+    if target.role in ("primary", "graphic"):
+        return True
     if target.role == "exhibit":
-        return table_kind == "document_format" and _type_matches(
-            document_type, target.type
-        )
+        return _type_matches(document_type, target.type)
     if target.role == "data_file":
-        if table_kind != "data_file":
-            return False
         if target.type == "extracted_xbrl_instance":
             description = " ".join(str(entry.get("description") or "").split()).upper()
             return (
@@ -363,8 +359,6 @@ def _matches_target(entry: Mapping[str, Any], target: ProfileTarget, form: str) 
                 and document_type == "XML"
             )
         return _type_matches(document_type, target.type)
-    if target.role == "graphic":
-        return table_kind == "document_format" and document_type == "GRAPHIC"
     return False
 
 
@@ -374,11 +368,6 @@ def _type_matches(value: str, requested: str) -> bool:
     if requested.endswith("*"):
         return normalized.startswith(requested[:-1])
     return normalized == requested
-
-
-def _normalize_form(value: str) -> str:
-    normalized = " ".join(value.split()).upper()
-    return resolve_alias(normalized) or normalized
 
 
 def _entry_candidate(

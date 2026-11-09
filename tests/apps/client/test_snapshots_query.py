@@ -7,8 +7,11 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.apps.client.facade import Edgar
-from edgar_sec.apps.client.snapshots import query_filings_from_snapshot
+from edgar_sec.apps.client.snapshots import is_exhibit_sql, query_filings_from_snapshot
+from edgar_sec.domain.document.aggregate import is_exhibit_attachment
 from edgar_sec.domain.filing_catalog.filters import DateRange
+from edgar_sec.foundation.hashing import sha256_bytes
+from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 from edgar_sec.pipelines.document_acquisition.snapshot.writer import (
     publish_acquisition_run,
@@ -102,6 +105,64 @@ def test_facade_snapshot_access_and_tag(tmp_path: Path) -> None:
     res_tag = edgar.from_snapshot("prod-v1")
     assert len(res_tag) == 1
     assert res_tag[0].raw() == b"<html>Sample filing content</html>"
+
+
+def test_snapshot_views_exhibit_agreement(tmp_path: Path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    run_id, _ = _setup_run(tmp_path, "run-1")
+    publish_acquisition_run(paths, run_id, branch_name="main")
+
+    res = query_filings_from_snapshot(tmp_path, snapshot_id_or_tag="main")
+    idx = res.attachments_df()
+    exhibits = res.exhibits()
+    flagged = {(r.accession, r.filename) for r in idx.itertuples() if r.is_exhibit}
+    members = {(r.accession, r.filename) for r in exhibits.itertuples()}
+    assert members == flagged
+    for r in idx.itertuples():
+        assert is_exhibit_attachment(r.document_type, r.filename) == bool(r.is_exhibit)
+
+
+def test_is_exhibit_sql_matches_python() -> None:
+    pairs = [
+        ("EX-21", "doc.htm"),
+        ("ex-99.1", "press.htm"),
+        ("10-K", "ex99.htm"),
+        ("10-K", "aapl_ex21.htm"),
+        ("10-K", "report.htm"),
+        ("", "exhibit10.htm"),
+        ("GRAPHIC", "chart.png"),
+    ]
+    con = connect()
+    con.execute("CREATE TEMP TABLE pairs (document_type VARCHAR, filename VARCHAR)")
+    con.executemany("INSERT INTO pairs VALUES (?, ?)", pairs)
+    predicate = is_exhibit_sql("document_type", "filename")
+    rows = con.execute(
+        f"SELECT document_type, filename, {predicate} FROM pairs"
+    ).fetchall()
+    assert len(rows) == len(pairs)
+    for doc_type, filename, sql_flag in rows:
+        assert bool(sql_flag) == is_exhibit_attachment(doc_type, filename)
+
+
+def test_snapshot_attachments_hydrate_from_canonical_row(tmp_path: Path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    run_id, _ = _setup_run(tmp_path, "run-1")
+    pub = publish_acquisition_run(paths, run_id, branch_name="main")
+
+    from edgar_sec.apps.client.snapshots import SnapshotSession
+
+    session = SnapshotSession(tmp_path, pub.snapshot_id)
+    attachments = session.load_attachments("0000000001-24-000001")
+    assert len(attachments) == 1
+    att = attachments[0]
+    assert att.filename == "report.htm"
+    assert att.sequence == 0
+    assert isinstance(att.sequence, int)
+    assert att.entry_id is None
+    assert att.table_kind is None
+    assert att.description is None
+    assert att.size == len(b"<html>Sample filing content</html>")
+    assert att.sha256 == sha256_bytes(b"<html>Sample filing content</html>")
 
 
 def test_snapshot_session_caching(tmp_path: Path) -> None:

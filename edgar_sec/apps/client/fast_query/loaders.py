@@ -7,6 +7,7 @@ from pathlib import Path
 
 from edgar_sec.apps.client.cache import DocumentCache
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
+from edgar_sec.domain.document.canonical import CanonicalAttachmentRow
 from edgar_sec.domain.document.path_facts import mime_type_for_suffix
 from edgar_sec.domain.document_inventory.models import IndexPageInput, ParsedIndexPage
 from edgar_sec.domain.forms.common.processing import AcquisitionOperation
@@ -306,14 +307,10 @@ def make_attachment_loader(
             fname = entry.filename or ""
             a_url = entry.archive_url or ""
             dtype = entry.document_type or ""
+            row = CanonicalAttachmentRow.from_inventory_entry(entry)
             attachments.append(
-                FilingAttachment(
-                    attachment_id=str(entry.sequence or fname or ""),
-                    document_type=dtype,
-                    filename=fname,
-                    url=a_url,
-                    size=entry.byte_size,
-                    description=entry.description,
+                row.to_attachment(
+                    form=filing.form,
                     fetcher=_make_att_fetcher(a_url, fname) if a_url else None,
                     renderer=_make_att_renderer(dtype, fname),
                 )

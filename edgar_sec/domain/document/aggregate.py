@@ -5,14 +5,29 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Literal
 import zipfile
 
+from edgar_sec.domain.filing_catalog.document_names import (
+    is_primary_exhibit_filename,
+)
 from edgar_sec.domain.identity import AccessionNumber, Cik
 
 if TYPE_CHECKING:
     from edgar_sec.domain.forms.common.processing import DocumentProcessingProfile
     from edgar_sec.domain.forms.reports import FormReport
+
+AttachmentRole = Literal["primary", "exhibit", "data_file", "graphic", "package"]
+ATTACHMENT_ROLES: frozenset[str] = frozenset(
+    {"primary", "exhibit", "data_file", "graphic", "package"}
+)
+
+
+def is_exhibit_attachment(document_type: str, filename: str) -> bool:
+    """The one exhibit derivation: EX- type or statutory exhibit filename."""
+    return document_type.upper().startswith("EX-") or is_primary_exhibit_filename(
+        filename
+    )
 
 
 @dataclass(frozen=True, slots=True)
@@ -26,6 +41,10 @@ class FilingAttachment:
     size: int | None = None
     sha256: str | None = None
     description: str | None = None
+    entry_id: str | None = None
+    sequence: int | None = None
+    table_kind: str | None = None
+    role: AttachmentRole | None = None
     storage_path: Path | None = None
     fetcher: Callable[[FilingAttachment], bytes | None] | None = None
     renderer: Callable[[FilingAttachment], str | bytes | None] | None = None
@@ -156,9 +175,7 @@ class FilingAggregate:
         return tuple(
             a
             for a in self.get_attachments()
-            if a.document_type.upper().startswith("EX-")
-            or a.filename.lower().startswith("ex")
-            or "_ex" in a.filename.lower()
+            if is_exhibit_attachment(a.document_type, a.filename)
         )
 
     def exhibit(self, type_or_number: str | int) -> FilingAttachment | None:
@@ -397,4 +414,10 @@ class FilingAggregate:
         return self.raw()
 
 
-__all__ = ["FilingAggregate", "FilingAttachment"]
+__all__ = [
+    "ATTACHMENT_ROLES",
+    "AttachmentRole",
+    "FilingAggregate",
+    "FilingAttachment",
+    "is_exhibit_attachment",
+]

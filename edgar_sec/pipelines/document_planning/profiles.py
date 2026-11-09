@@ -12,6 +12,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.domain.document.aggregate import ATTACHMENT_ROLES
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.common.processing import AcquisitionOperation
 from edgar_sec.foundation.runtime.paths import resolve_paths
@@ -22,7 +23,7 @@ from edgar_sec.pipelines.document_planning.paths import (
 )
 from edgar_sec.pipelines.document_planning.schemas import PROFILE_SCHEMA_VERSION
 
-_ROLES = {"primary", "exhibit", "data_file", "graphic", "package"}
+_ROLES = ATTACHMENT_ROLES
 _CATALOG_DIRECT_SELECTIONS = ("submitted_primary", "exact_form_with_lazy_index")
 _CODE_TYPE_RE = re.compile(r"EX-[A-Z0-9]+(?:\.[A-Z0-9]+)*\Z", re.ASCII)
 _EXHIBIT_PREFIX_RE = re.compile(r"EX-(?:\*|10\.\*)\Z", re.ASCII)

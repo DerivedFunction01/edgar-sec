@@ -9,6 +9,7 @@ from typing import Any
 
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
+from edgar_sec.domain.document.canonical import CanonicalAttachmentRow
 from edgar_sec.apps.runner.config import DateFilterInput
 from edgar_sec.domain.filing_catalog.filters import (
     DateSelection,
@@ -162,6 +163,15 @@ def _snapshot_lineage(
     return snapshots_root, walk_lineage(snapshots_root, snapshot_id)
 
 
+def is_exhibit_sql(document_type_expr: str, filename_expr: str) -> str:
+    """SQL translation of ``is_exhibit_attachment`` over the given expressions."""
+    pattern = sql_literal(PRIMARY_EXHIBIT_FILENAME_PATTERN)
+    return (
+        f"(upper({document_type_expr}) LIKE 'EX-%' OR "
+        f"regexp_full_match({filename_expr}, {pattern}))"
+    )
+
+
 def register_snapshot_views(
     con: Any,
     artifacts_root: Path,
@@ -234,14 +244,16 @@ def register_snapshot_views(
         f"AS primary_document, target_url AS primary_doc_url FROM {selected_view}"
     )
     con.execute("CREATE OR REPLACE TEMP VIEW filings AS SELECT * FROM catalog")
+    filename_expr = (
+        "regexp_extract(COALESCE(sa.canonical_path, s.locator), '([^/]+)$', 1)"
+    )
+    exhibit_predicate = is_exhibit_sql("COALESCE(st.statutory_type, '')", filename_expr)
     con.execute(
         f"CREATE OR REPLACE TEMP VIEW index AS SELECT s.accession, s.sequence, "
         f"COALESCE(st.statutory_type, '') AS document_type, "
-        f"regexp_extract(COALESCE(sa.canonical_path, s.locator), '([^/]+)$', 1) AS filename, "
+        f"{filename_expr} AS filename, "
         f"'' AS description, 0::BIGINT AS size, s.locator AS url, "
-        f"(upper(COALESCE(st.statutory_type, '')) LIKE 'EX-%' OR "
-        f"regexp_full_match(regexp_extract(COALESCE(sa.canonical_path, s.locator), "
-        f"'([^/]+)$', 1), {sql_literal(PRIMARY_EXHIBIT_FILENAME_PATTERN)})) AS is_exhibit "
+        f"{exhibit_predicate} AS is_exhibit "
         f"FROM {slots} s JOIN (SELECT DISTINCT accession FROM {selected_view}) chosen "
         f"USING (accession) LEFT JOIN {assets} sa ON s.source_asset_id = sa.source_asset_id "
         f"LEFT JOIN {slot_types} st ON s.accession = st.accession AND s.sequence = st.sequence"
@@ -251,8 +263,7 @@ def register_snapshot_views(
         "CREATE OR REPLACE TEMP VIEW exhibits AS SELECT accession, "
         "(SELECT form FROM selected_targets t WHERE t.accession = i.accession LIMIT 1) AS form, "
         "document_type, description, filename, size, url FROM index i "
-        "WHERE upper(document_type) LIKE 'EX-%' OR lower(filename) LIKE 'ex%' "
-        "OR contains(lower(filename), '_ex')"
+        "WHERE i.is_exhibit"
     )
     con.execute(
         "CREATE OR REPLACE TEMP VIEW linkbases AS SELECT accession, "
@@ -360,23 +371,43 @@ def _snapshot_attachments(
     slots = sql_identifier(views["acquisition_slots"])
     assets = sql_identifier(views["source_assets"])
     types = sql_identifier(views["slot_types"])
+    payloads = sql_identifier(views["source_payloads"])
+    payload_index = sql_identifier(views["payload_index"])
+    targets = sql_identifier(views["target_results"])
+    form_row = con.execute(
+        f"SELECT form FROM {targets} WHERE accession = ? LIMIT 1",
+        [accession],
+    ).fetchone()
+    form = str(form_row[0]) if form_row and form_row[0] else ""
     rows = con.execute(
-        f"SELECT s.sequence, COALESCE(st.statutory_type, ''), "
-        f"COALESCE(sa.canonical_path, s.locator), s.locator "
+        f"SELECT s.sequence, st.statutory_type, "
+        f"COALESCE(sa.canonical_path, s.locator), s.locator, "
+        f"sp.payload_sha256, pi.byte_size "
         f"FROM {slots} s LEFT JOIN {assets} sa ON s.source_asset_id = sa.source_asset_id "
         f"LEFT JOIN {types} st ON s.accession = st.accession AND s.sequence = st.sequence "
+        f"LEFT JOIN {payloads} sp ON sp.source_asset_id = s.source_asset_id "
+        f"LEFT JOIN {payload_index} pi ON pi.payload_sha256 = sp.payload_sha256 "
         "WHERE s.accession = ? ORDER BY s.sequence",
         [accession],
     ).fetchall()
-    return tuple(
-        FilingAttachment(
-            attachment_id=str(seq),
-            document_type=str(doc_type or ""),
-            filename=Path(str(filename or "")).name,
-            url=str(url or ""),
+    attachments = []
+    for seq, doc_type, path, url, sha, byte_size in rows:
+        row = CanonicalAttachmentRow(
+            entry_id=None,
+            accession=accession,
+            table_kind=None,
+            sequence=int(seq) if seq is not None else None,
+            document_type=str(doc_type) if doc_type else None,
+            document_label=None,
+            description=None,
+            filename=Path(str(path or "")).name or None,
+            href=None,
+            archive_url=str(url) if url else None,
+            byte_size=int(byte_size) if byte_size is not None else None,
+            payload_sha256=str(sha) if sha else None,
         )
-        for seq, doc_type, filename, url in rows
-    )
+        attachments.append(row.to_attachment(form=form))
+    return tuple(attachments)
 
 
 def _make_snapshot_filing(

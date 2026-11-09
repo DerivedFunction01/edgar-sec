@@ -10,16 +10,12 @@ from typing import Any
 
 import pyarrow as pa
 
-from edgar_sec.domain.document.aggregate import FilingAggregate
-from edgar_sec.domain.filing_catalog.document_names import is_primary_exhibit_filename
+from edgar_sec.domain.document.aggregate import (
+    FilingAggregate,
+    is_exhibit_attachment,
+)
 from edgar_sec.engine.xbrl.discovery.discovery import classify_linkbase
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_READ_BATCH_SIZE
-
-
-def is_exhibit_attachment(doc_type: str, filename: str) -> bool:
-    """Classify whether document represents an SEC exhibit."""
-    dt = doc_type.upper()
-    return dt.startswith("EX-") or is_primary_exhibit_filename(filename)
 
 
 CATALOG_SCHEMA = pa.schema(
@@ -164,12 +160,7 @@ def build_index_table(filings: Iterable[FilingAggregate]) -> pa.Table:
     for f in filings:
         atts = f.get_attachments()
         for idx, a in enumerate(atts, 1):
-            seq_val = idx
-            try:
-                if a.attachment_id and a.attachment_id.isdigit():
-                    seq_val = int(a.attachment_id)
-            except Exception:
-                pass
+            seq_val = a.sequence if a.sequence is not None else idx
             chunk.append(
                 {
                     "accession": f.accession.value,
@@ -511,5 +502,4 @@ __all__ = [
     "build_notes_table",
     "build_payload_table",
     "build_sections_table",
-    "is_exhibit_attachment",
 ]

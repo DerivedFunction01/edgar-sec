@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
 
+from edgar_sec.domain.document.aggregate import AttachmentRole
 from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.domain.forms.common.exhibits import DocumentRoleAssessment
 from edgar_sec.domain.identity import AccessionNumber
@@ -39,7 +40,7 @@ class ProcessingRequest:
     target_id: str
     accession: AccessionNumber
     form: str
-    target_role: Literal["primary", "exhibit", "data_file", "graphic", "package"]
+    target_role: AttachmentRole
     target_type: str
     document_path: str | None
     selected_filename: str | None
