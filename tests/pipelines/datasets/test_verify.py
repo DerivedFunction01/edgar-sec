@@ -30,108 +30,26 @@ def test_verify_passes_for_a_reconciled_specimen(tmp_path: Path) -> None:
     assert result.population == ()
 
 
-_SUB_HEADER = [
-    "adsh",
-    "cik",
-    "name",
-    "sic",
-    "countryba",
-    "stprba",
-    "cityba",
-    "zipba",
-    "bas1",
-    "bas2",
-    "baph",
-    "countryma",
-    "stprma",
-    "cityma",
-    "zipma",
-    "mas1",
-    "mas2",
-    "countryinc",
-    "stprinc",
-    "ein",
-    "former",
-    "changed",
-    "afs",
-    "wksi",
-    "fye",
-    "form",
-    "period",
-    "fy",
-    "fp",
-    "filed",
-    "accepted",
-    "prevrpt",
-    "detail",
-    "instance",
-    "nciks",
-    "aciks",
-]
-_PRE_HEADER = [
-    "adsh",
-    "report",
-    "line",
-    "stmt",
-    "inpth",
-    "rfile",
-    "tag",
-    "version",
-    "plabel",
-    "negating",
-]
-_NUM_HEADER = [
-    "adsh",
-    "tag",
-    "version",
-    "ddate",
-    "qtrs",
-    "uom",
-    "segments",
-    "coreg",
-    "value",
-    "footnote",
-]
-_TAG_HEADER = [
-    "tag",
-    "version",
-    "custom",
-    "abstract",
-    "datatype",
-    "iord",
-    "crdr",
-    "tlabel",
-    "doc",
-]
-_A = "0000320193-23-000106"
-_B = "0000789019-23-000001"
+_FSDS_SPECIMEN = "datasets/fsds_2009q2_specimen.zip"
 
 
-def _member(header: list[str], rows: list[dict[str, str]]) -> str:
-    lines = ["\t".join(header)]
-    lines += ["\t".join(row.get(column, "") for column in header) for row in rows]
-    return "\n".join(lines) + "\n"
+def _specimen_member(name: str) -> str:
+    with zipfile.ZipFile(fixture_path(_FSDS_SPECIMEN)) as archive:
+        return archive.read(name).decode("utf-8")
 
 
-def _fsds_zip(
-    path: Path,
-    sub_adshs: list[str],
-    num_rows: list[dict[str, str]],
-    tag_rows: list[dict[str, str]],
-) -> Path:
-    # Synthetic subset on the probed headers; the real specimen is pending.
-    with zipfile.ZipFile(path, "w") as archive:
-        archive.writestr(
-            "sub.txt",
-            _member(
-                _SUB_HEADER, [{"adsh": adsh, "cik": "320193"} for adsh in sub_adshs]
-            ),
-        )
-        archive.writestr("num.txt", _member(_NUM_HEADER, num_rows))
-        archive.writestr("pre.txt", _member(_PRE_HEADER, []))
-        archive.writestr("tag.txt", _member(_TAG_HEADER, tag_rows))
-        archive.writestr("readme.htm", "<html></html>")
-    return path
+def _rewrite_specimen(tmp_path: Path, members: dict[str, str]) -> Path:
+    target = tmp_path / "fsds.zip"
+    with (
+        zipfile.ZipFile(fixture_path(_FSDS_SPECIMEN)) as source,
+        zipfile.ZipFile(target, "w") as archive,
+    ):
+        for info in source.infolist():
+            data = source.read(info.filename)
+            if info.filename in members:
+                data = members[info.filename].encode("utf-8")
+            archive.writestr(info.filename, data)
+    return target
 
 
 def _import_fsds(tmp_path: Path, archive: Path) -> object:
@@ -147,47 +65,47 @@ def _import_fsds(tmp_path: Path, archive: Path) -> object:
     return verify_store(paths.store_file)
 
 
+# Specimen closure, counted from its own members: 22 sub rows over 22
+# accessions, 21 num accessions, 1 sub without num, 649 tag pairs a side.
 def test_verify_fsds_closure_reconciles(tmp_path: Path) -> None:
-    num_rows = [
-        {"adsh": _A, "tag": "Assets", "version": "us-gaap/2023", "value": "1"},
-        {"adsh": _B, "tag": "Assets", "version": "us-gaap/2023", "value": "2"},
-    ]
-    tag_rows = [{"tag": "Assets", "version": "us-gaap/2023", "custom": "0"}]
-    archive = _fsds_zip(tmp_path / "fsds.zip", [_A, _B], num_rows, tag_rows)
-    result = _import_fsds(tmp_path, archive)
+    result = _import_fsds(tmp_path, fixture_path(_FSDS_SPECIMEN))
     assert result.ok
     assert len(result.fsds) == 1
     check = result.fsds[0]
-    assert check.sub_rows == 2
-    assert check.num_accessions == 2
+    assert check.sub_rows == 22
+    assert check.num_accessions == 21
     assert check.num_orphan_accessions == 0
-    assert check.sub_without_num == 0
-    assert check.num_tag_pairs == check.tag_pairs == 1
+    assert check.sub_without_num == 1
+    assert check.num_tag_pairs == check.tag_pairs == 649
     assert check.tag_pair_divergence == 0
 
 
 def test_verify_fsds_closure_reports_orphans_and_pair_divergence(
     tmp_path: Path,
 ) -> None:
-    orphan = "0000000000-23-999999"
-    num_rows = [
-        {"adsh": _A, "tag": "Assets", "version": "us-gaap/2023", "value": "1"},
-        {"adsh": orphan, "tag": "Ghost", "version": "us-gaap/2023", "value": "2"},
-    ]
-    tag_rows = [{"tag": "Assets", "version": "us-gaap/2023", "custom": "0"}]
-    archive = _fsds_zip(tmp_path / "fsds.zip", [_A], num_rows, tag_rows)
+    num_text = _specimen_member("num.txt")
+    lines = num_text.splitlines()
+    header = lines[0].split("\t")
+    row = lines[1].split("\t")
+    row[header.index("adsh")] = "0000000000-09-999999"
+    row[header.index("tag")] = "RepointInjectedTag"
+    archive = _rewrite_specimen(tmp_path, {"num.txt": num_text + "\t".join(row) + "\n"})
     result = _import_fsds(tmp_path, archive)
     assert not result.ok
     check = result.fsds[0]
+    assert check.num_accessions == 22
     assert check.num_orphan_accessions == 1
-    assert check.num_tag_pairs == 2
-    assert check.tag_pairs == 1
+    assert check.num_tag_pairs == 650
+    assert check.tag_pairs == 649
     assert check.tag_pair_divergence == 1
 
 
 def test_verify_fsds_empty_vintage_reconciles(tmp_path: Path) -> None:
-    archive = _fsds_zip(tmp_path / "fsds.zip", [], [], [])
-    result = _import_fsds(tmp_path, archive)
+    members = {
+        name: _specimen_member(name).splitlines()[0] + "\n"
+        for name in ("sub.txt", "num.txt", "pre.txt", "tag.txt")
+    }
+    result = _import_fsds(tmp_path, _rewrite_specimen(tmp_path, members))
     assert result.ok
     assert result.fsds[0].sub_rows == 0
     assert result.fsds[0].num_accessions == 0
