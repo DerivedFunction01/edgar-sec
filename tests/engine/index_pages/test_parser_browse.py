@@ -158,5 +158,61 @@ def test_invalid_input_cik_raises() -> None:
         )
 
 
+def test_cross_listed_class_page_parses_exactly() -> None:
+    page = _parsed("0001281790")
+
+    assert page.registrant_name == "FRANK FUNDS"
+    assert page.declared_item_count == 10
+    assert page.series == (
+        BrowseSeriesRow("S000004757", "Frank Value Fund"),
+        BrowseSeriesRow("S000022879", "West Hills Tactical Core Fund"),
+        BrowseSeriesRow("S000061828", "Camelot Event Driven Fund"),
+    )
+    assert page.classes == (
+        BrowseClassRow("S000004757", "C000012947", "INVESTOR CLASS", "FRNKX"),
+        BrowseClassRow("S000004757", "C000093501", "CLASS C", "FNKCX"),
+        BrowseClassRow("S000004757", "C000093502", "INSTITUTIONAL CLASS", "FNKIX"),
+        BrowseClassRow(
+            "S000022879", "C000066369", "West Hills Tactical Core Fund", "LEBOX"
+        ),
+        BrowseClassRow("S000061828", "C000093502", "INSTITUTIONAL CLASS", "FNKIX"),
+        BrowseClassRow("S000061828", "C000200195", "Class A Shares", None),
+        BrowseClassRow("S000061828", "C000200196", "Institutional Class Shares", None),
+    )
+    assert page.diagnostics.items == ()
+
+
+def test_same_series_repeat_still_refuses() -> None:
+    raw = fixture_path("browse_edgar_series_0001281790.html").read_bytes()
+    anchor = raw.find(b"C000093501")
+    start = raw.rfind(b"<tr", 0, anchor)
+    end = raw.find(b"</tr>", anchor) + len(b"</tr>")
+    row = raw[start:end]
+    drifted = raw.replace(row, row + b"\n" + row, 1)
+    assert drifted != raw
+
+    outcome = parse_browse_series_page(
+        BrowsePageInput("0001281790", browse_series_url(1281790), drifted)
+    )
+
+    assert isinstance(outcome, BrowseParseFailure)
+    assert [d.code for d in outcome.diagnostics.items] == ["duplicate_class_id"]
+
+
+def test_cross_listed_disagreement_still_refuses() -> None:
+    raw = fixture_path("browse_edgar_series_0001281790.html").read_bytes()
+    assert raw.count(b"FNKIX") == 2
+    head, sep, tail = raw.rpartition(b"FNKIX")
+    drifted = head + b"FNKIZ" + tail
+    assert drifted != raw
+
+    outcome = parse_browse_series_page(
+        BrowsePageInput("0001281790", browse_series_url(1281790), drifted)
+    )
+
+    assert isinstance(outcome, BrowseParseFailure)
+    assert "duplicate_class_id" in [d.code for d in outcome.diagnostics.items]
+
+
 def test_fingerprint_is_versioned() -> None:
-    assert PARSER_FINGERPRINT == "browse-series-v1"
+    assert PARSER_FINGERPRINT == "browse-series-v2"
