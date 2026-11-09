@@ -185,8 +185,7 @@ class Company:
         """TTM over this company's stitched series; None without a facade.
 
         The selection matches stitched_series; the window runs over
-        the stitched quarters, so period ends no single filing
-        co-reports can close.
+        the stitched quarters, closing ends no single filing co-reports.
         """
         series = self.stitched_series(forms, dates=dates, accessions=accessions)
         if series is None:

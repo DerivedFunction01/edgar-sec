@@ -1,9 +1,8 @@
 """Cross-filing TTM over the stitched series.
 
 The within-filing window runs unchanged over legs adapted from the
-stitched series: reported legs mirror the served-series span
-selection, and derived quarters enter only where un-accumulation
-derived them from the selected legs themselves.
+stitched series; derived quarters enter only where un-accumulation
+derived them from legs the span selection itself picked.
 """
 
 from __future__ import annotations
@@ -93,9 +92,8 @@ def _legs_for_filter(
 ) -> dict[tuple[str, str], SpanLeg]:
     """Span legs under one atom filter, the served-series winner per span.
 
-    Mirrors the within-filing selection over series values: the span
-    pool competes under the same winner rule, bare preferred or the
-    largest magnitude, with the absolute-value adjustment applied.
+    Mirrors the within-filing selection: bare preferred or the largest
+    magnitude, with the absolute-value adjustment applied.
     """
     grouped: dict[tuple[str, str], list[StitchedValue]] = {}
     for value in values:
@@ -196,9 +194,8 @@ def _flow_leg_set(
 ) -> QuarterLegSet:
     """A flow metric's stitched leg set: reported legs, quarters, breaks.
 
-    A derived quarter enters only when both of its derivation inputs
-    are legs the span selection itself picked, so an unselected
-    concept's chain never reaches the window.
+    A derived quarter enters only when both derivation inputs are legs
+    the span selection itself picked.
     """
     reported = _reported_legs(metric, _candidates(series), atoms)
     quarters: dict[tuple[str, str], SpanLeg] = {
@@ -251,9 +248,8 @@ def _share_leg_set(
 ) -> QuarterLegSet:
     """Weighted-share legs from reported spans, quarters day-differenced.
 
-    Un-accumulation never feeds a share leg: the quarters difference
-    the reported cumulative spans by day counts, exactly as the
-    within-filing surface derives them (the Step 6 proof narrowing).
+    Un-accumulation never feeds a share leg (the Step 6 narrowing):
+    quarters difference the reported cumulative spans by day counts.
     """
     target = _SHARES_ATOMS[diluted]
     by_span: dict[tuple[str, str], list[StitchedValue]] = {}
@@ -380,8 +376,7 @@ def stitched_quarter_legs(
     """A metric's leg set over the stitched series, provenance intact.
 
     Instant and per-share metrics have no quarter legs, as on the
-    filing surface: instant metrics serve their instant value, EPS
-    serves as a ratio of the two stitched TTM legs.
+    filing surface: EPS serves as a ratio of the two stitched TTM legs.
     """
     if metric in _INSTANT_METRICS or metric == "uncommenced_leases":
         raise ValueError(
@@ -409,9 +404,8 @@ def stitched_ttm(
 ) -> TtmResult:
     """The trailing twelve months over the stitched series, statused.
 
-    DERIVED however reported its legs are; an end whose four quarters
-    are not all accounted for within its calendar segment is
-    UNAVAILABLE naming the missing quarter.
+    An end whose four quarters are not all accounted for within its
+    calendar segment is UNAVAILABLE naming the missing quarter.
     """
     if metric in _INSTANT_METRICS or metric == "uncommenced_leases":
         return TtmResult(
