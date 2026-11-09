@@ -1,19 +1,17 @@
-# `edgar_sec/domain/taxonomy/schedules/` — Supplementary Note Schedules and Statutory Exhibits
+# `edgar_sec/domain/taxonomy/schedules/` — Compensation Tail Terms and Statutory Exhibit Index Concepts
 
 ## Purpose
 
-Vocabulary, term sets, and `TableFamilySpec` definitions for the supplementary schedules
-embedded in SEC filing notes (ASC 220/260/330/350/360/470/715/718/740/815/820/842) plus the
-statutory exhibit index concepts of Regulation S-K Item 601. Each schedule declares its
-terms, its exclusions, and its 2D shape; the family specs are assembled into
-`FAMILY_SPECS` by `tables/families.py`.
+Two vocabularies: the ASC 718 compensation term tuples in `compensation/stock_comp.py`,
+consumed by the statement tail predicates in `domain/taxonomy/statements/predicates.py`,
+and the statutory exhibit index concepts of Regulation S-K Item 601 in
+`statutory/exhibits.py`, consumed by the reflow context features.
 
 ## Contracts
 
 - **Deterministic patterns**: Every alternation is compiled by `foundation.regex.builder` (longest-first ordering).
-- **Compensation terms have one owner**: `compensation/stock_comp.py` holds ASC 718 term tuples; `stock_comp.py` builds specs from those same terms.
-- **Exclusions are advisory**: Whether veto terms reach evidence packs is a per-module question; orthogonality is best-effort.
+- **Compensation terms have one owner**: `compensation/stock_comp.py` holds the ASC 718 term tuples and the tail pattern built from them; consumers import from there rather than restating terms.
 
 ## Deliberate gaps
 
-- **Legal proceedings and exhibit indexes are vocabularies without a family**: `legal.py` and `statutory/exhibits.py` publish terms but no `TableFamilySpec`.
+- **Exhibit indexes are a vocabulary without a family**: `statutory/exhibits.py` publishes terms and patterns but no `TableFamilySpec`.
