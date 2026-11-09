@@ -546,6 +546,8 @@ def test_24f2_entry_registered_with_section_taxonomy() -> None:
     assert entry.taxonomy_items == FORM_24F2_ITEMS
     for code in ("24F-2NT/A", "24F-2TM", "24F-2EL", "24F-2EL/A", "24F-1"):
         assert get_family_entry(code) is entry
+
+
 def test_n23c_entries_registered_with_section_taxonomies() -> None:
     from edgar_sec.domain.forms.families.form_n23c.processing import (
         PROFILE_FORM_N23C1,
