@@ -33,6 +33,7 @@ from edgar_sec.pipelines.metadata_sync.series_class import (
     publish_series_class,
     read_tickered_rows,
     reconcile_series_class,
+    series_class_part_paths,
     series_class_tip,
 )
 from edgar_sec.pipelines.metadata_sync.series_class_browse import (
@@ -429,3 +430,21 @@ def test_specimen_page_reconciles_against_the_file_layer(
         "Class S2",
         "Class ADV",
     }
+
+
+def test_part_paths_name_the_tip_snapshots_own_parts(tmp_path: Path) -> None:
+    paths = resolve_metadata_paths(tmp_path)
+    ingest_mf_ticker_payload(_payload(), paths)
+    published = publish_series_class(paths)
+    assert published.snapshot_id is not None
+
+    assert series_class_part_paths(paths, "series-class-absent") == {}
+    parts = series_class_part_paths(paths, published.snapshot_id)
+
+    assert set(parts) == {TICKERED_RELATION, SOURCES_RELATION}
+    for relation, relation_parts in parts.items():
+        assert relation_parts == (
+            paths.series_class_snapshots_root
+            / published.snapshot_id
+            / f"{relation}.parquet",
+        )

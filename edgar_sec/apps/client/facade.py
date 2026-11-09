@@ -22,6 +22,7 @@ from edgar_sec.apps.client.sequence_codec import (
     encode_sections,
 )
 from edgar_sec.apps.client.surfaces import FeedSearchSurfaces
+from edgar_sec.apps.client.series_class import SeriesClassSurfaces
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.apps.runner.config import DateFilterInput, FilingQuery, PipelineConfig
 from edgar_sec.apps.runner.coordinator import PipelineRunner
@@ -151,7 +152,7 @@ class FacadeCache:
             self._build_locks.clear()
 
 
-class Edgar(FeedSearchSurfaces):
+class Edgar(FeedSearchSurfaces, SeriesClassSurfaces):
     """Convenience client for querying, acquiring, and analyzing SEC filings."""
 
     def __init__(

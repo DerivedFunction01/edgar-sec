@@ -12,6 +12,7 @@ import json
 import shutil
 from dataclasses import dataclass
 from datetime import UTC, datetime
+from pathlib import Path
 
 import pyarrow as pa
 
@@ -53,6 +54,7 @@ __all__ = [
     "publish_series_class",
     "read_tickered_rows",
     "reconcile_series_class",
+    "series_class_part_paths",
     "series_class_tip",
 ]
 
@@ -338,6 +340,22 @@ def series_class_tip(paths: MetadataPaths, branch: str = "main") -> str | None:
         return None
     pointer = read_pointer(paths.series_class_snapshots_root, branch)
     return str(pointer["snapshot_id"]) if pointer else None
+
+
+def series_class_part_paths(
+    paths: MetadataPaths, snapshot_id: str
+) -> dict[str, tuple[Path, ...]]:
+    """One snapshot's own published part paths, keyed by relation name."""
+    catalog = DAGCatalog(paths.series_class_snapshots_root, read_only=True)
+    manifest = catalog.get_manifest(snapshot_id)
+    if manifest is None:
+        return {}
+    return {
+        relation: catalog.resolve_relation(
+            snapshot_id, relation, relative_to=paths.series_class_snapshots_root
+        )
+        for relation in sorted(manifest.relations)
+    }
 
 
 def publish_series_class(
