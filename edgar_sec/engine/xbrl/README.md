@@ -16,11 +16,18 @@ By decomposing taxonomy linkbases into explicit typed relational structures and 
 - **Atomic Parquet Persistence**: Linkbase tables are written through the infra storage layer's Parquet writer, using its governed compression and row-group sizing without pipeline-local overrides.
 - **Streaming XML Parsing**: Calculation, presentation, label, and instance XML documents are parsed in bounded memory with defensive entity handling.
 - **Declared-Type Fact Typing**: Instance facts are typed by declared item type only (extension declarations over the archive table for the instance's own namespace vintages); a fact declared outside the closed numeric item-type family parses as a string, and undeclared concepts keep the float-sniff fallback.
+- **Stitched Precedence**: A stitched series pools one selected filing set; lineage supersession applies first, then the latest reporter by filed date wins an identical period key (ties: amendment form, then accession), and every superseded value is retained naming its superseder, never dropped.
+- **Exact Period Identity**: Stitched values are keyed by exact (start, end) or instant plus concept, unit, and dimensions; a quarter and a year-to-date span ending the same day are distinct values, never merged by year.
+- **Derived-Quarter Honesty**: A derived discrete quarter exists only where no reported quarter serves the span, carries status DERIVED with both filed legs named as inputs, and a chain that cannot close exactly records a refusal with its reason — never an interpolated or partial difference.
+- **Non-Additive Types Refuse Derivation**: Concepts declared with per-share, share-count, or rate item types are span averages, not accumulations; un-accumulation refuses them by declared type, never by concept name.
+- **Calendar Breaks**: A transition period or a fiscal-year-end change splits the series; values on both sides serve, and no stitch or derivation crosses a break.
 
 ## Deliberate gaps
 
 - **Dynamic Taxonomy Resolution**: Fetching remote external taxonomies (such as FASB or IFRS standard schemas) is deferred to the taxonomy archive: `tools/xbrl_discovery` builds per-vintage slices from the official releases, and this engine reads slices only.
 - **Baked Seed Bundle Dei Facts**: The seed bundles' baked `facts.parquet` rows still carry mis-typed dei cover facts as numeric (their original strings are unrecoverable from the bundles), so the parse-time typing fix corrects them only on regeneration from live SEC instance documents, which has no offline source path.
+- **Stitched Statements**: Only the stitched financials series is served; which filing's calculation and presentation arcs would govern a stitched statement is undecided, so no stitched statement surface exists.
+- **Residual Non-Additive Monetary Concepts**: A small class of monetary concepts is keyed to an opening balance or a period-vesting measurement rather than accumulated over sub-periods (contract-liability revenue recognized; vested-in-period fair value); no taxonomy coordinate separates them from additive monetary flows, so their derived quarters serve as DERIVED with inputs named and this class is the recorded exception to the derivation narrowing.
 
 ## Artifact layout
 
