@@ -98,6 +98,16 @@ class DocumentCache:
             row = cursor.fetchone()
             return bytes(row[0]) if row is not None else None
 
+    def has(self, accession: str, filename: str) -> bool:
+        """Report whether a payload row exists, without loading its content."""
+        with self._lock:
+            cursor = self._connection().execute(
+                "SELECT 1 FROM cached_documents "
+                "WHERE accession = ? AND filename = ? LIMIT 1",
+                (accession, filename),
+            )
+            return cursor.fetchone() is not None
+
     def put(
         self,
         accession: str,
