@@ -6,6 +6,9 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
 The package also carries a self-contained company-facts leg: the nightly
 companyfacts bulk archive is normalized into its own DuckDB facts store and
 published through the DAG as a cross-check corpus.
+The package also carries a fund series/class reference leg: the mutual-fund
+ticker file's full rows and the browse-edgar series pages publish as one
+two-layer DAG relation beside the metadata snapshots.
 
 ## Contracts
 
@@ -79,6 +82,23 @@ published through the DAG as a cross-check corpus.
   stored-fact rows from the store file with no HTTP, so the client cross-check can
   run at corpus scale against the store. Fact values are stored as DuckDB DOUBLE,
   matching the cross-check's float comparison.
+- Two series/class layers publish as one relation. The tickered layer republishes
+  the MF ticker file's rows field-for-field (CIK, series id, class id, symbol);
+  the browse layer adds series and class names and un-tickered classes (a null
+  symbol), every row carrying its source page's URL and digest. Both layers
+  publish together through the DAG in the family's own snapshots root; the
+  cohort publication and its canonical schema are untouched.
+- Series/class refresh is a command, never a schedule. `series-class` (and the
+  client operator's `fund_series_class` row) fetches the MF payload and one
+  series page per population CIK through the shared client, ingests, publishes,
+  and prints the two layers' reconciliation; a repeat refresh over unchanged
+  inputs publishes no new snapshot.
+- A series page that does not parse exactly contributes nothing. Its registrant
+  is accounted in the drive's per-CIK accounting as a parse failure (or
+  unrecognized / fetch failure), never as partial rows.
+- The browse drive's population is the ticker file's CIK set: the distinct CIKs
+  of the current MF ticker payload, so a registrant with zero tickered classes
+  is outside it by construction.
 
 ## Command Surface
 
@@ -94,6 +114,7 @@ published through the DAG as a cross-check corpus.
 | `reconcile` | reconcile the tip against the daily index | `--start-date`, `--end-date`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--confirm-stale-lock]`, `[--new-snapshot-id]` |
 | `refresh` | refresh stale CIKs from the current-filings feed | `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--confirm-stale-lock]`, `[--new-snapshot-id]` |
 | `run` | execute resumable chunks | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--chunks]`, `[--chunk]`, `[--confirm-stale-lock]`, `[--bulk]`, `[--carry-from]` |
+| `series-class` | refresh the fund series/class reference relation | `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--cik]`, `[--force-refresh]` |
 | `status` | report plan progress | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]` |
 <!-- AUTOGEN:COMMANDS:END -->
 
@@ -132,6 +153,9 @@ python run.py metadata facts
 
 # Re-ingest the newest stored companyfacts archive without downloading
 python run.py metadata facts --from-store
+
+# Refresh the fund series/class reference relation and publish it
+python run.py metadata series-class
 ```
 
 ## Artifact layout
@@ -156,6 +180,10 @@ python run.py metadata facts --from-store
 │   │       ├── fingerprints.parquet  # Per-CIK member-CRC fingerprints for an archive plan.
 │   │       ├── plan.json  # Small execution manifest for this plan.
 │   │       └── run.lock  # Exclusive run lock for this plan.
+│   ├── series_class/  # Root of the series/class reference store and its snapshots.
+│   │   ├── snapshots/  # Root of published series/class snapshot directories.
+│   │   │   └── catalog.sqlite  # SQLite DAG catalog database for published series/class snapshots.
+│   │   └── series_class.duckdb  # The DuckDB series/class reference store.
 │   └── snapshots/  # Root of published snapshot directories.
 │       └── {snapshot_id}/  # Directory holding one published snapshot.
 │           ├── parts/  # Directory holding the Parquet parts of a multipart snapshot.
@@ -165,6 +193,7 @@ python run.py metadata facts --from-store
 └── transient/
     └── metadata/
         ├── facts-{run_id}/  # Staging directory for one facts run, never published.
+        ├── series-class-{run_id}/  # Staging directory for one series/class run, never published.
         └── {plan_id}/  # Directory holding one plan's transient chunk checkpoints.
             └── chunk_{chunk_id}.parquet  # Checkpoint path for one chunk.
 ```
@@ -182,3 +211,12 @@ python run.py metadata facts --from-store
   datasets import.
 - The facts store is a cross-check corpus, not a serving source: no facade answer
   reads it, and a facts serving posture would require a new ruling.
+- Zero-tickered-class registrants are unserved by the series/class leg: a
+  registrant whose classes all lack tickers never enters the drive population,
+  so its series and class names stay absent from the relation until a population
+  source beyond the ticker file is ruled.
+- Neither series/class layer carries an LEI — the ticker file and the series
+  pages do not serve one — so the relation cannot verify an N-MFP document's
+  series LEI.
+- Nothing polls browse-edgar for the series/class leg; between refreshes the
+  published layer stands as of its last refresh, named by its snapshot.
