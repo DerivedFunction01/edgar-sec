@@ -62,9 +62,7 @@ def derive_discrete_quarters(
     """Derive the discrete quarters a stitched series does not report.
 
     Each derivation is one cumulative span minus the previous rung of
-    the same fiscal-year chain, segment, unit, and dimensions. A chain
-    whose concept's declared item type is a span average (per-share,
-    share-count, or rate) is refused, never differenced.
+    the same chain; a span-average item type is refused, never differenced.
     """
     types = dict(item_types) if item_types is not None else {}
     groups: dict[tuple[object, ...], list[StitchedValue]] = {}
