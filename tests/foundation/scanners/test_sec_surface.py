@@ -114,8 +114,39 @@ def test_flags_a_no_store_policy_that_names_a_ttl(
     assert any("synthetic_no_store" in f.message for f in findings)
 
 
+_URL_MODULE_WITH_QUERY_RULE = """
+SURFACE_FEED = "feed_surface"
+SURFACE_PAGES = "page_surface"
+
+SEC_SURFACE_RULES: tuple[tuple[str, ...], ...] = (
+    (SURFACE_PAGES, "www.sec.gov", r"^/cgi-bin/browse-edgar",
+     r"(^|&)action=getcompany(&|$)"),
+    (SURFACE_FEED, "www.sec.gov", r"^/cgi-bin/browse-edgar",
+     r"(^|&)action=getcurrent(&|$)"),
+)
+
+URL_BUILDER_SURFACES: dict[str, str] = {}
+"""
+
+
+def test_query_component_rules_discriminate_by_action(
+    synthetic_repo: Path,
+) -> None:
+    _build_repo(
+        synthetic_repo,
+        {"edgar_sec/domain/sec_urls.py": _URL_MODULE_WITH_QUERY_RULE},
+    )
+    book = sec_surface._load_rule_book()
+    base = "https://www.sec.gov/cgi-bin/browse-edgar"
+    assert sec_surface._classify(book, f"{base}?action=getcompany&CIK=1") == (
+        "page_surface"
+    )
+    assert sec_surface._classify(book, f"{base}?action=getcurrent") == "feed_surface"
+    assert sec_surface._classify(book, base) is None
+
+
 def test_static_interpretation_agrees_with_the_runtime_classifier() -> None:
-    from edgar_sec.domain import dataset_urls, index_urls, sec_urls
+    from edgar_sec.domain import browse_urls, dataset_urls, index_urls, sec_urls
 
     book = sec_surface._load_rule_book()
     builders = {
@@ -144,6 +175,8 @@ def test_static_interpretation_agrees_with_the_runtime_classifier() -> None:
         "full_index_url": index_urls.full_index_url(2024, 1, "master"),
         "daily_index_url": index_urls.daily_index_url("2024-02-13", "master"),
         "current_filings_url": sec_urls.current_filings_url(),
+        "browse_company_url": browse_urls.browse_company_url(3521),
+        "browse_series_url": browse_urls.browse_series_url(3521),
         "feed_listing_url": sec_urls.feed_listing_url(2024, 1),
         "feed_archive_url": sec_urls.feed_archive_url(2024, 1, "20240102.nc.tar.gz"),
         "structured_feed_url": sec_urls.structured_feed_url("all"),

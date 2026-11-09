@@ -493,6 +493,7 @@ def _register_sibling_rows() -> None:
         operator_drill,
         operator_drill_exhibits,
         operator_fetch,
+        operator_fund,
         operator_run_records,
         operator_selection,
         operator_state,
@@ -513,6 +514,8 @@ def _register_sibling_rows() -> None:
     GATHERERS.update(operator_tools.GATHERERS)
     operator_company.register(REGISTRY)
     GATHERERS.update(operator_company.GATHERERS)
+    operator_fund.register(REGISTRY)
+    GATHERERS.update(operator_fund.GATHERERS)
     operator_state.register(REGISTRY)
     GATHERERS.update(operator_state.GATHERERS)
     operator_config.register(REGISTRY)

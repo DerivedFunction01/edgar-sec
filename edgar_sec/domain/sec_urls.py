@@ -481,6 +481,7 @@ SURFACE_CIK_LOOKUP = "cik_lookup"
 SURFACE_FULL_INDEX = "full_index"
 SURFACE_DAILY_INDEX = "daily_index"
 SURFACE_CURRENT_FILINGS = "current_filings"
+SURFACE_BROWSE_EDGAR = "browse_edgar"
 SURFACE_STRUCTURED_DISCLOSURE_FEEDS = "structured_disclosure_feeds"
 SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES = "structured_disclosure_archives"
 SURFACE_EFTS = "efts"
@@ -513,6 +514,7 @@ SEC_SURFACES: tuple[str, ...] = (
     SURFACE_FULL_INDEX,
     SURFACE_DAILY_INDEX,
     SURFACE_CURRENT_FILINGS,
+    SURFACE_BROWSE_EDGAR,
     SURFACE_STRUCTURED_DISCLOSURE_FEEDS,
     SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES,
     SURFACE_EFTS,
@@ -542,6 +544,8 @@ URL_BUILDER_SURFACES: dict[str, str] = {
     "full_index_url": SURFACE_FULL_INDEX,
     "daily_index_url": SURFACE_DAILY_INDEX,
     "current_filings_url": SURFACE_CURRENT_FILINGS,
+    "browse_company_url": SURFACE_BROWSE_EDGAR,
+    "browse_series_url": SURFACE_BROWSE_EDGAR,
     "structured_feed_url": SURFACE_STRUCTURED_DISCLOSURE_FEEDS,
     "structured_archive_url": SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES,
     "efts_search_url": SURFACE_EFTS,
@@ -552,10 +556,10 @@ URL_BUILDER_SURFACES: dict[str, str] = {
     "bdc_report_url": SURFACE_BDC_REPORT,
 }
 
-# Classification rules as data: (surface id, host, path pattern), first match
-# wins. The sec-surface scanner reads this same table statically, so runtime
-# classification and the gate cannot drift apart.
-SEC_SURFACE_RULES: tuple[tuple[str, str, str], ...] = (
+# Classification rules as data: (surface id, host, path pattern, optional
+# query pattern), first match wins. The sec-surface scanner reads this same
+# table statically, so runtime classification and the gate cannot drift apart.
+SEC_SURFACE_RULES: tuple[tuple[str, ...], ...] = (
     (
         SURFACE_SUBMISSIONS_HISTORICAL_SHARDS,
         "data.sec.gov",
@@ -565,7 +569,18 @@ SEC_SURFACE_RULES: tuple[tuple[str, str, str], ...] = (
     (SURFACE_COMPANYCONCEPT, "data.sec.gov", r"^/api/xbrl/companyconcept(/|$)"),
     (SURFACE_COMPANYFACTS, "data.sec.gov", r"^/api/xbrl/companyfacts(/|$)"),
     (SURFACE_FRAMES, "data.sec.gov", r"^/api/xbrl/frames(/|$)"),
-    (SURFACE_CURRENT_FILINGS, "www.sec.gov", r"^/cgi-bin/browse-edgar"),
+    (
+        SURFACE_BROWSE_EDGAR,
+        "www.sec.gov",
+        r"^/cgi-bin/browse-edgar",
+        r"(^|&)action=getcompany(&|$)",
+    ),
+    (
+        SURFACE_CURRENT_FILINGS,
+        "www.sec.gov",
+        r"^/cgi-bin/browse-edgar",
+        r"(^|&)action=getcurrent(&|$)",
+    ),
     (SURFACE_EFTS, "efts.sec.gov", r"^/LATEST/search-index$"),
     (
         SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES,
@@ -671,25 +686,34 @@ SEC_SURFACE_RULES: tuple[tuple[str, str, str], ...] = (
 )
 
 _COMPILED_SURFACE_RULES = tuple(
-    (surface_id, host, re.compile(pattern))
-    for surface_id, host, pattern in SEC_SURFACE_RULES
+    (
+        rule[0],
+        rule[1],
+        re.compile(rule[2]),
+        re.compile(rule[3]) if len(rule) > 3 and rule[3] else None,
+    )
+    for rule in SEC_SURFACE_RULES
 )
 
 
 def classify_sec_surface(url: str | None) -> str | None:
     """Classify a SEC URL into its governed surface id, or None.
 
-    Classification is by URL shape (host and path), never by file suffix:
-    a transient ``.txt`` and a static ``index.json`` classify correctly.
+    Classification is by URL shape — host, path, and the query where a
+    rule names one — never by file suffix.
     """
     if not url:
         return None
     parts = urlsplit(str(url).strip())
     host = (parts.hostname or "").casefold()
     path = parts.path or ""
-    for surface_id, rule_host, pattern in _COMPILED_SURFACE_RULES:
-        if host == rule_host and pattern.search(path):
-            return surface_id
+    query = parts.query or ""
+    for surface_id, rule_host, pattern, query_pattern in _COMPILED_SURFACE_RULES:
+        if host != rule_host or not pattern.search(path):
+            continue
+        if query_pattern is not None and not query_pattern.search(query):
+            continue
+        return surface_id
     return None
 
 
@@ -715,6 +739,7 @@ __all__ = [
     "SURFACE_ARCHIVE_INDEX_JSON",
     "SURFACE_BDC_DATASETS",
     "SURFACE_BDC_REPORT",
+    "SURFACE_BROWSE_EDGAR",
     "SURFACE_MFRR_DATASETS",
     "SURFACE_NMFP_DATASETS",
     "SURFACE_FSDS_DATASETS",

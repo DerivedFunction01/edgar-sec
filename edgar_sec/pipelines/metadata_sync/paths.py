@@ -24,6 +24,8 @@ from .roster import ROSTER_FILE_NAME
 METADATA_DIR = "metadata"
 FACTS_DIR = "facts"
 FACTS_STORE_FILE = "companyfacts.duckdb"
+SERIES_CLASS_DIR = "series_class"
+SERIES_CLASS_STORE_FILE = "series_class.duckdb"
 BULK_ARCHIVES_DIR = "bulk_archives"
 PARTS_DIR = "parts"
 ROSTER_DIR = "roster"
@@ -81,6 +83,32 @@ class MetadataPaths:
     def facts_transient_dir(self, run_id: str) -> Path:
         """Staging directory for one facts run, never published."""
         return transient_dir(self.artifacts_root, METADATA_DIR, f"facts-{run_id}")
+
+    @property
+    def series_class_root(self) -> Path:
+        """Root of the series/class reference store and its snapshots."""
+        return self.metadata_root / SERIES_CLASS_DIR
+
+    @property
+    def series_class_store_file(self) -> Path:
+        """The DuckDB series/class reference store."""
+        return self.series_class_root / SERIES_CLASS_STORE_FILE
+
+    @property
+    def series_class_snapshots_root(self) -> Path:
+        """Root of published series/class snapshot directories."""
+        return self.series_class_root / foundation_paths.SNAPSHOTS_DIR
+
+    @property
+    def series_class_catalog_file(self) -> Path:
+        """SQLite DAG catalog database for published series/class snapshots."""
+        return DAGPaths(self.series_class_snapshots_root).catalog_file
+
+    def series_class_transient_dir(self, run_id: str) -> Path:
+        """Staging directory for one series/class run, never published."""
+        return transient_dir(
+            self.artifacts_root, METADATA_DIR, f"series-class-{run_id}"
+        )
 
     @property
     def plans_root(self) -> Path:
