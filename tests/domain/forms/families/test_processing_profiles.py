@@ -546,6 +546,37 @@ def test_24f2_entry_registered_with_section_taxonomy() -> None:
     assert entry.taxonomy_items == FORM_24F2_ITEMS
     for code in ("24F-2NT/A", "24F-2TM", "24F-2EL", "24F-2EL/A", "24F-1"):
         assert get_family_entry(code) is entry
+def test_n23c_entries_registered_with_section_taxonomies() -> None:
+    from edgar_sec.domain.forms.families.form_n23c.processing import (
+        PROFILE_FORM_N23C1,
+        PROFILE_FORM_N23C2,
+        PROFILE_FORM_N23C3,
+    )
+    from edgar_sec.domain.forms.families.form_n23c.taxonomy import (
+        FORM_N23C1_ITEMS,
+        FORM_N23C2_ITEMS,
+        FORM_N23C3_ITEMS,
+    )
+
+    cases = (
+        ("N-23C-1", PROFILE_FORM_N23C1, FORM_N23C1_ITEMS, ("N-23C-1/A",)),
+        ("N-23C-2", PROFILE_FORM_N23C2, FORM_N23C2_ITEMS, ("N-23C-2/A",)),
+        (
+            "N-23C-3",
+            PROFILE_FORM_N23C3,
+            FORM_N23C3_ITEMS,
+            ("N-23C3A", "N-23C3A/A", "N-23C3B", "N-23C3B/A", "N-23C3C", "N-23C3C/A"),
+        ),
+    )
+    for family, profile, items, strings in cases:
+        entry = get_family_entry(family)
+        assert entry is not None
+        assert entry.family == family
+        assert entry.profile is profile
+        assert entry.cover_checkbox_schema is None
+        assert entry.taxonomy_items == items
+        for form in strings:
+            assert get_family_entry(form) is entry
 
 
 @pytest.mark.parametrize(

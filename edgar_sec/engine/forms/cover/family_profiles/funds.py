@@ -1,5 +1,5 @@
 """Cover profiles for the investment-company families (N-CSR, N-Q,
-NSAR, 497, 40-17G, 40-17F1, 40-17F2, 40-APP, N-30D, N-VP, 24F-2), composed from the shared kit
+NSAR, 497, 40-17G, 40-17F1, 40-17F2, 40-APP, N-30D, N-VP, 24F-2, N-23C notices), composed from the shared kit
 in ``profiles``."""
 
 from __future__ import annotations
@@ -20,6 +20,11 @@ from edgar_sec.domain.forms.families.form_4017f2.taxonomy import FORM_4017F2_ITE
 from edgar_sec.domain.forms.families.form_4017g.taxonomy import FORM_4017G_ITEMS
 from edgar_sec.domain.forms.families.form_40app.taxonomy import FORM_40APP_ITEMS
 from edgar_sec.domain.forms.families.form_497.taxonomy import FORM_497_ITEMS
+from edgar_sec.domain.forms.families.form_n23c.taxonomy import (
+    FORM_N23C1_ITEMS,
+    FORM_N23C2_ITEMS,
+    FORM_N23C3_ITEMS,
+)
 from edgar_sec.domain.forms.families.form_n30d.taxonomy import FORM_N30D_ITEMS
 from edgar_sec.domain.forms.families.form_nvp.taxonomy import FORM_NVP_ITEMS
 from edgar_sec.domain.forms.families.form_ncsr.taxonomy import FORM_NCSR_ITEMS
@@ -520,6 +525,139 @@ def build_form_24f2_profile(family: str = "24F-2NT") -> CoverProfile:
     )
 
 
+_FORM_N23C1_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "form n-23c-1",
+    "statement by registered closed-end investment company",
+    "report for calendar month ending",
+)
+
+
+def build_form_n23c1_profile(family: str = "N-23C-1") -> CoverProfile:
+    """Cover profile for Rule 23c-1 purchase statements: the face sheet
+    is the cover; the statement and its transaction table are the body.
+    """
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_N23C1_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(
+                *COMMON_COVER_LABELS,
+                *COVER_EVIDENCE_TERMS,
+                *_FORM_N23C1_COVER_LABELS,
+            ),
+            labels=_FORM_N23C1_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in FORM_N23C1_ITEMS),
+            semantic_headings=(
+                "remarks",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+    )
+
+
+_FORM_N23C2_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "rule 23c-2 notice of intention to redeem securities",
+    "notice of intention to redeem securities",
+    "under the investment company act of 1940",
+    "investment company act file no.",
+)
+
+
+def build_form_n23c2_profile(family: str = "N-23C-2") -> CoverProfile:
+    """Cover profile for Rule 23c-2 redemption notices: the notice
+    heading block is the cover; the numbered statements are the body.
+    """
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_N23C2_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(
+                *COMMON_COVER_LABELS,
+                *COVER_EVIDENCE_TERMS,
+                *_FORM_N23C2_COVER_LABELS,
+            ),
+            labels=_FORM_N23C2_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in FORM_N23C2_ITEMS),
+            semantic_headings=(
+                "signature",
+                "signatures",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+    )
+
+
+_FORM_N23C3_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "form n-23c-3",
+    "notification of repurchase offer",
+    "pursuant to rule 23c-3",
+    "investment company act file number",
+    "exact name of registrant",
+)
+
+
+def build_form_n23c3_profile(family: str = "N-23C-3") -> CoverProfile:
+    """Cover profile for Rule 23c-3 repurchase offers: the notification
+    face is the cover; the offer terms and request form are the body.
+    """
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_N23C3_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(
+                *COMMON_COVER_LABELS,
+                *COVER_EVIDENCE_TERMS,
+                *_FORM_N23C3_COVER_LABELS,
+            ),
+            labels=_FORM_N23C3_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in FORM_N23C3_ITEMS),
+            semantic_headings=(
+                "repurchase offer terms",
+                "repurchase request form",
+                "signatures",
+                "signature",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+    )
+
+
 __all__ = [
     "build_form_24f2_profile",
     "build_form_4017f1_profile",
@@ -527,6 +665,9 @@ __all__ = [
     "build_form_4017g_profile",
     "build_form_40app_profile",
     "build_form_497_profile",
+    "build_form_n23c1_profile",
+    "build_form_n23c2_profile",
+    "build_form_n23c3_profile",
     "build_form_n30d_profile",
     "build_form_nvp_profile",
     "build_form_ncsr_profile",

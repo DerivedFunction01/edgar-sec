@@ -135,6 +135,16 @@ from edgar_sec.domain.forms.families.form_425.processing import PROFILE_FORM_425
 from edgar_sec.domain.forms.families.form_fwp.processing import PROFILE_FORM_FWP
 from edgar_sec.domain.forms.families.form_fwp.taxonomy import FORM_FWP_ITEMS
 from edgar_sec.domain.forms.families.form_d.processing import PROFILE_FORM_D
+from edgar_sec.domain.forms.families.form_n23c.processing import (
+    PROFILE_FORM_N23C1,
+    PROFILE_FORM_N23C2,
+    PROFILE_FORM_N23C3,
+)
+from edgar_sec.domain.forms.families.form_n23c.taxonomy import (
+    FORM_N23C1_ITEMS,
+    FORM_N23C2_ITEMS,
+    FORM_N23C3_ITEMS,
+)
 from edgar_sec.domain.forms.families.form_ncen.processing import PROFILE_N_CEN
 from edgar_sec.domain.forms.families.form_nmfp.processing import PROFILE_N_MFP
 from edgar_sec.domain.forms.families.form_nport.processing import PROFILE_NPORT
@@ -650,6 +660,21 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
     ProcessingCatalogEntry(
         family="ARS",
         profile=PROFILE_ARS,
+    ),
+    ProcessingCatalogEntry(
+        family="N-23C-1",
+        profile=PROFILE_FORM_N23C1,
+        taxonomy_items=FORM_N23C1_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="N-23C-2",
+        profile=PROFILE_FORM_N23C2,
+        taxonomy_items=FORM_N23C2_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="N-23C-3",
+        profile=PROFILE_FORM_N23C3,
+        taxonomy_items=FORM_N23C3_ITEMS,
     ),
     ProcessingCatalogEntry(
         family="N-CR",
