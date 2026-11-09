@@ -493,6 +493,18 @@ def test_4024b2_entry_registered_operations_only() -> None:
     assert entry.taxonomy_items == ()
     assert entry.profile.has_sections is False
     assert get_family_entry("40-24B2/A") is entry
+def test_n30d_entry_registered_with_section_taxonomy() -> None:
+    from edgar_sec.domain.forms.families.form_n30d.processing import PROFILE_FORM_N30D
+    from edgar_sec.domain.forms.families.form_n30d.taxonomy import FORM_N30D_ITEMS
+
+    entry = get_family_entry("N-30D")
+    assert entry is not None
+    assert entry.family == "N-30D"
+    assert entry.profile is PROFILE_FORM_N30D
+    assert entry.cover_checkbox_schema is None
+    assert entry.taxonomy_items == FORM_N30D_ITEMS
+    assert get_family_entry("N-30D/A") is entry
+    assert get_family_entry("N-30B-2") is entry
 
 
 @pytest.mark.parametrize(
