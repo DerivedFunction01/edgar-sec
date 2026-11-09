@@ -87,6 +87,20 @@ def is_numeric_item_type(item_type: str | None) -> bool:
     return item_type_local(item_type) in NUMERIC_ITEM_TYPES
 
 
+NON_ADDITIVE_ITEM_TYPES: frozenset[str] = frozenset(
+    {"perShareItemType", "sharesItemType", "percentItemType"}
+)
+
+
+def is_non_additive_item_type(item_type: str | None) -> bool:
+    """Whether a declared item type denotes a span average, not an accumulation.
+
+    Per-share, share-count, and rate types average over their span, so
+    differencing two cumulative spans cannot recover a sub-period.
+    """
+    return item_type_local(item_type) in NON_ADDITIVE_ITEM_TYPES
+
+
 def merge_declarations(
     declarations: Iterable[ConceptDeclaration],
     table: Mapping[str, str],

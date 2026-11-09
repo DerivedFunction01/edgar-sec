@@ -12,6 +12,7 @@ from edgar_sec.engine.xbrl.solve.unaccumulate import (
     AMBIGUOUS_LEG,
     CROSSES_SERIES_BREAK,
     MISSING_PRIOR_LEG,
+    NON_ADDITIVE_ITEM_TYPE,
     derive_discrete_quarters,
 )
 
@@ -186,3 +187,68 @@ def test_duplicate_leg_is_ambiguous_and_refused() -> None:
     assert _Q2_SPAN not in _by_span(result)
     assert _Q3_SPAN not in _by_span(result)
     assert {item.reason for item in result.refusals} == {AMBIGUOUS_LEG}
+
+
+_EPS = "us-gaap:EarningsPerShareBasic"
+_SHARES = "us-gaap:WeightedAverageNumberOfSharesOutstandingBasic"
+_RATE = "us-gaap:DebtInstrumentInterestRateStatedPercentage"
+
+
+def _average_facts(qname: str, unit: str) -> list[XbrlFact]:
+    return [
+        _fact(_Q1, qname, 1.0, span=_Q1_SPAN, unit=unit),
+        _fact(_Q2, qname, 2.1, span=_YTD2_SPAN, unit=unit),
+        _fact(_Q3, qname, 3.0, span=_YTD3_SPAN, unit=unit),
+        _fact(_K, qname, 4.2, span=_FY_SPAN, unit=unit),
+    ]
+
+
+def test_non_additive_item_types_are_refused_not_differenced() -> None:
+    facts = (
+        _average_facts(_EPS, "USD/shares")
+        + _average_facts(_SHARES, "shares")
+        + _average_facts(_RATE, "pure")
+    )
+    series = assemble_series(_CIK, facts, _ytd_refs())
+    result = derive_discrete_quarters(
+        series,
+        {
+            _EPS: "dtr-types:perShareItemType",
+            _SHARES: "xbrli:sharesItemType",
+            _RATE: "dtr-types:percentItemType",
+        },
+    )
+    assert result.derived == ()
+    assert len(result.refusals) == 9
+    assert {item.reason for item in result.refusals} == {NON_ADDITIVE_ITEM_TYPE}
+    assert {item.concept_qname for item in result.refusals} == {_EPS, _SHARES, _RATE}
+
+
+def test_monetary_chain_still_derives_beside_a_refused_average() -> None:
+    facts = _ytd_facts() + _average_facts(_EPS, "USD/shares")
+    series = assemble_series(_CIK, facts, _ytd_refs())
+    result = derive_discrete_quarters(
+        series,
+        {_REV: "xbrli:monetaryItemType", _EPS: "dtr-types:perShareItemType"},
+    )
+    assert set(_by_span(result)) == {_Q2_SPAN, _Q3_SPAN, _Q4_SPAN}
+    assert {item.concept_qname for item in result.derived} == {_REV}
+    assert {item.reason for item in result.refusals} == {NON_ADDITIVE_ITEM_TYPE}
+
+
+def test_undeclared_item_type_derives_without_an_assertion() -> None:
+    series = assemble_series(_CIK, _average_facts(_EPS, "USD/shares"), _ytd_refs())
+    result = derive_discrete_quarters(series, {})
+    assert set(_by_span(result)) == {_Q2_SPAN, _Q3_SPAN, _Q4_SPAN}
+    assert result.refusals == ()
+
+
+def test_reported_quarter_silences_the_non_additive_refusal() -> None:
+    facts = _average_facts(_EPS, "USD/shares") + [
+        _fact(_Q2, _EPS, 1.05, span=_Q2_SPAN, unit="USD/shares")
+    ]
+    series = assemble_series(_CIK, facts, _ytd_refs())
+    result = derive_discrete_quarters(series, {_EPS: "dtr-types:perShareItemType"})
+    assert result.derived == ()
+    refused_spans = {(item.start_date, item.end_date) for item in result.refusals}
+    assert refused_spans == {_YTD3_SPAN, _FY_SPAN}

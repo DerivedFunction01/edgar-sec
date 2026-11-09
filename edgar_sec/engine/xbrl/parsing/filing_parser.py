@@ -14,6 +14,22 @@ from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle, Xbrl
 from edgar_sec.engine.xbrl.taxonomy.archive import table_for_namespaces
 
 
+def _item_type_map(
+    prefix_namespaces: dict[str, str], bundle: LinkbaseBundle
+) -> dict[str, str]:
+    """Item types for one instance: archive table under extension declarations."""
+    item_types = table_for_namespaces(prefix_namespaces)
+    for declaration in bundle.declarations:
+        if declaration.item_type is not None:
+            item_types[declaration.concept_qname] = declaration.item_type
+    return item_types
+
+
+def filing_item_types(parsed: FilingXbrl) -> dict[str, str]:
+    """The effective item-type map a parsed filing's facts were typed by."""
+    return _item_type_map(dict(parsed.namespaces), parsed.linkbases)
+
+
 def _parse_candidate(
     ins_bytes: bytes,
     filing: FilingAggregate,
@@ -21,10 +37,7 @@ def _parse_candidate(
 ) -> tuple[tuple[XbrlFact, ...], dict[str, str]]:
     """Parse one instance candidate: its facts and prefix namespaces."""
     prefix_namespaces = extract_prefix_namespaces(ins_bytes)
-    item_types = table_for_namespaces(prefix_namespaces)
-    for declaration in bundle.declarations:
-        if declaration.item_type is not None:
-            item_types[declaration.concept_qname] = declaration.item_type
+    item_types = _item_type_map(prefix_namespaces, bundle)
     facts = parse_instance_facts(ins_bytes, filing.accession, item_types)
     return facts, prefix_namespaces
 
