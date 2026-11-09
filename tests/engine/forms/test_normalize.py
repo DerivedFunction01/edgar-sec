@@ -515,7 +515,11 @@ def test_form_4017f1_paper_stub_resolves_no_sections() -> None:
         (
             "0001047469-03-041537__a2125145z40-17f2a.txt",
             "40-17F2/A",
-            ["ITEM INSTRUCTIONS", "ITEM REPORT OF INDEPENDENT ACCOUNTANTS"],
+            [
+                "ITEM INSTRUCTIONS",
+                "ITEM REPORT OF INDEPENDENT ACCOUNTANTS",
+                "ITEM MANAGEMENT STATEMENT",
+            ],
         ),
     ],
 )
@@ -639,7 +643,9 @@ def test_form_nvp_specimen_resolves_sections() -> None:
         "ITEM UPDATED INFORMATION",
         "ITEM KEY INFORMATION",
         "ITEM FEES AND EXPENSES",
+        "ITEM RISKS",
         "ITEM RESTRICTIONS",
+        "ITEM TAXES",
         "ITEM CONFLICTS OF INTEREST",
         "ITEM APPENDIX: PORTFOLIOS AVAILABLE",
     ]
@@ -655,6 +661,37 @@ def test_form_nvp_supplement_resolves_no_sections() -> None:
     assert res.sections is None or not res.sections.sections
 
 
+@pytest.mark.parametrize(
+    ("fixture", "expected"),
+    [
+        (
+            "0000355348-01-000008__0001.txt",
+            [
+                "ITEM NAME AND ADDRESS OF ISSUER",
+                "ITEM FILE NUMBERS",
+                "ITEM CALCULATION OF REGISTRATION FEE",
+                "ITEM PREPAID SHARES",
+                "ITEM SIGNATURES",
+            ],
+        ),
+        (
+            "0001386929-21-000001__stockdivtwenty42020.txt",
+            [
+                "ITEM CALCULATION OF REGISTRATION FEE",
+                "ITEM TOTAL AMOUNT DUE",
+                "ITEM SIGNATURES",
+            ],
+        ),
+        (
+            "0001116679-04-000921__file01.htm",
+            [
+                "ITEM NAME AND ADDRESS OF ISSUER",
+                "ITEM CALCULATION OF REGISTRATION FEE",
+                "ITEM SIGNATURES",
+            ],
+        ),
+    ],
+)
 def test_form_24f2_specimens_resolve_sections(
     fixture: str, expected: list[str]
 ) -> None:
@@ -667,6 +704,13 @@ def test_form_24f2_specimens_resolve_sections(
     assert [s.item_identifier for s in res.sections.sections] == expected
 
 
+@pytest.mark.parametrize(
+    ("fixture", "form"),
+    [
+        ("0000858581-22-000065__primary_doc.xml", "24F-2NT"),
+        ("0000950162-94-000092__24f-2tm.txt", "24F-2TM"),
+    ],
+)
 def test_form_24f2_unheaded_specimens_resolve_no_sections(
     fixture: str, form: str
 ) -> None:
@@ -679,6 +723,51 @@ def test_form_24f2_unheaded_specimens_resolve_no_sections(
     assert res.sections.sections == ()
 
 
+@pytest.mark.parametrize(
+    ("fixture", "form", "family", "expected"),
+    [
+        (
+            "0000896717-95-000007__0000896717-95-000007.txt",
+            "N-23C-1",
+            "N-23C-1",
+            ["ITEM PURCHASES STATEMENT"],
+        ),
+        (
+            "000091384909000258__n23c2_032009.htm",
+            "N-23C-2",
+            "N-23C-2",
+            ["ITEM SIGNATURES"],
+        ),
+        (
+            "000110465922098710__tm2225392d1_n23c3a.htm",
+            "N-23C3A",
+            "N-23C-3",
+            [
+                "ITEM NOTIFICATION OF REPURCHASE OFFER",
+                "ITEM INVESTMENT COMPANY ACT FILE NUMBER",
+                "ITEM EXACT NAME OF INVESTMENT COMPANY",
+                "ITEM ADDRESS OF PRINCIPAL EXECUTIVE OFFICE",
+                "ITEM OFFER TYPE ELECTION",
+                "ITEM REPURCHASE REQUEST DEADLINE",
+                "ITEM REPURCHASE REQUEST FORM",
+                "ITEM PAYMENT AND DELIVERY INSTRUCTIONS",
+            ],
+        ),
+        (
+            "0001515001-19-000018__vcmixformn23c3-9132019final.htm",
+            "N-23C3C",
+            "N-23C-3",
+            [
+                "ITEM NOTIFICATION OF REPURCHASE OFFER",
+                "ITEM INVESTMENT COMPANY ACT FILE NUMBER",
+                "ITEM EXACT NAME OF INVESTMENT COMPANY",
+                "ITEM ADDRESS OF PRINCIPAL EXECUTIVE OFFICE",
+                "ITEM OFFER TYPE ELECTION",
+                "ITEM REPURCHASE OFFER TERMS",
+            ],
+        ),
+    ],
+)
 def test_form_n23c_specimens_resolve_sections(
     fixture: str, form: str, family: str, expected: list[str]
 ) -> None:

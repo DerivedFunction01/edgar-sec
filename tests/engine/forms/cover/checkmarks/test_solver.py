@@ -409,6 +409,10 @@ def test_checkmark_schema_cases_cover_registered_profile_scope() -> None:
         "40-24B2",
         "N-30D",
         "N-VP",
+        "24F-2NT",
+        "N-23C-1",
+        "N-23C-2",
+        "N-23C-3",
     }
 
 
