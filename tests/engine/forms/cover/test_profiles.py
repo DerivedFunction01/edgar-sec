@@ -120,6 +120,16 @@ def test_form_18k_profile_resolves_with_taxonomy() -> None:
     assert "EXHIBIT INDEX" in form_18k.body_evidence.structural_headings
 
 
+def test_form_40app_profile_resolves_with_taxonomy() -> None:
+    form_40app = get_profile("40-APP/A")
+    assert form_40app.family == "40-APP"
+    assert form_40app.boundary is not None
+    assert form_40app.checkbox_schema is None
+    assert form_40app.has_sections is True
+    assert form_40app.body_evidence is not None
+    assert "PROCEDURAL MATTERS" in form_40app.body_evidence.structural_headings
+
+
 def test_annual_profiles_enable_incorporated_reference() -> None:
     annual_names = {rule.name for rule in get_profile("10-K").healing_rules}
     quarterly_names = {rule.name for rule in get_profile("10-Q").healing_rules}

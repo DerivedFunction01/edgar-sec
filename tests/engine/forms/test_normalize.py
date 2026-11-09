@@ -336,3 +336,88 @@ def test_form_18k_paper_stub_resolves_no_sections() -> None:
 
     assert res.family == "18-K"
     assert res.sections is None
+
+
+@pytest.mark.parametrize(
+    ("fixture", "form", "expected"),
+    [
+        (
+            "0000899681-11-000293__dreyfus-40appa_081711.htm",
+            "40-APP/A",
+            [
+                "ITEM BACKGROUND",
+                "ITEM STATEMENT IN SUPPORT OF RELIEF REQUESTED",
+                "ITEM PRECEDENTS",
+                "ITEM CONDITIONS",
+                "ITEM CONCLUSION",
+                "ITEM PROCEDURAL MATTERS",
+                "ITEM EXHIBIT INDEX",
+                "ITEM VERIFICATION",
+            ],
+        ),
+        (
+            "0000051931-14-001181__crmc40-app.htm",
+            "40-APP",
+            [
+                "ITEM INTRODUCTION",
+                "ITEM BACKGROUND",
+                "ITEM REQUEST FOR ORDER",
+                "ITEM STATEMENT IN SUPPORT OF RELIEF REQUESTED",
+                "ITEM CONCLUSION",
+                "ITEM PROCEDURAL MATTERS",
+                "ITEM SIGNATURES",
+                "ITEM EXHIBIT INDEX",
+            ],
+        ),
+        (
+            "0001193125-14-427194__d823951d40appa.htm",
+            "40-APP/A",
+            [
+                "ITEM INTRODUCTION",
+                "ITEM APPLICANTS",
+                "ITEM REQUEST FOR ORDER",
+                "ITEM STATEMENT IN SUPPORT OF RELIEF REQUESTED",
+                "ITEM CONDITIONS",
+                "ITEM PROCEDURAL MATTERS",
+            ],
+        ),
+    ],
+)
+def test_form_40app_specimens_resolve_sections(
+    fixture: str, form: str, expected: list[str]
+) -> None:
+    """Draw specimens resolve the sections their bodies carry."""
+    path = fixture_path(f"document/form_40app/{fixture}")
+    res = normalize_document(path.read_bytes(), form=form, document_path=path.name)
+
+    assert res.family == "40-APP"
+    assert res.sections is not None
+    assert [s.item_identifier for s in res.sections.sections] == expected
+
+
+def test_form_40app_paper_stub_resolves_no_sections() -> None:
+    """A .paper primary has no body: sections stay honestly absent."""
+    fixture = "9999999997-02-025153__9999999997-02-025153.paper"
+    path = fixture_path(f"document/form_40app/{fixture}")
+    res = normalize_document(
+        path.read_bytes(), form="40-APP/A", document_path=path.name
+    )
+
+    assert res.family == "40-APP"
+    assert res.sections is None
+
+
+@pytest.mark.parametrize(
+    ("fixture", "form"),
+    [
+        ("0000356787-08-000034__e726-728.htm", "40-24B2"),
+        ("0000894189-11-003926__rbc_4024b2-a.htm", "40-24B2/A"),
+    ],
+)
+def test_form_4024b2_specimens_resolve_no_sections(fixture: str, form: str) -> None:
+    """Sales-literature bodies carry no sections: absence stays honest."""
+    path = fixture_path(f"document/form_4024b2/{fixture}")
+    res = normalize_document(path.read_bytes(), form=form, document_path=path.name)
+
+    assert res.family == "40-24B2"
+    assert res.sections is None

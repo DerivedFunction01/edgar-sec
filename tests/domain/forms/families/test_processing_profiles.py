@@ -409,6 +409,34 @@ def test_18k_entry_registered_with_section_taxonomy() -> None:
     assert get_family_entry("18-K/A") is entry
 
 
+def test_40app_entry_registered_with_section_taxonomy() -> None:
+    from edgar_sec.domain.forms.families.form_40app.processing import PROFILE_FORM_40APP
+    from edgar_sec.domain.forms.families.form_40app.taxonomy import FORM_40APP_ITEMS
+
+    entry = get_family_entry("40-APP")
+    assert entry is not None
+    assert entry.family == "40-APP"
+    assert entry.profile is PROFILE_FORM_40APP
+    assert entry.cover_checkbox_schema is None
+    assert entry.taxonomy_items == FORM_40APP_ITEMS
+    assert get_family_entry("40-APP/A") is entry
+
+
+def test_4024b2_entry_registered_operations_only() -> None:
+    from edgar_sec.domain.forms.families.form_4024b2.processing import (
+        PROFILE_FORM_4024B2,
+    )
+
+    entry = get_family_entry("40-24B2")
+    assert entry is not None
+    assert entry.family == "40-24B2"
+    assert entry.profile is PROFILE_FORM_4024B2
+    assert entry.cover_checkbox_schema is None
+    assert entry.taxonomy_items == ()
+    assert entry.profile.has_sections is False
+    assert get_family_entry("40-24B2/A") is entry
+
+
 @pytest.mark.parametrize(
     "family,variant",
     [
