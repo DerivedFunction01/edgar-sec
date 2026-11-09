@@ -569,10 +569,18 @@ SEC_SURFACE_RULES: tuple[tuple[str, ...], ...] = (
     (SURFACE_COMPANYCONCEPT, "data.sec.gov", r"^/api/xbrl/companyconcept(/|$)"),
     (SURFACE_COMPANYFACTS, "data.sec.gov", r"^/api/xbrl/companyfacts(/|$)"),
     (SURFACE_FRAMES, "data.sec.gov", r"^/api/xbrl/frames(/|$)"),
-    (SURFACE_BROWSE_EDGAR, "www.sec.gov", r"^/cgi-bin/browse-edgar",
-     r"(^|&)action=getcompany(&|$)"),
-    (SURFACE_CURRENT_FILINGS, "www.sec.gov", r"^/cgi-bin/browse-edgar",
-     r"(^|&)action=getcurrent(&|$)"),
+    (
+        SURFACE_BROWSE_EDGAR,
+        "www.sec.gov",
+        r"^/cgi-bin/browse-edgar",
+        r"(^|&)action=getcompany(&|$)",
+    ),
+    (
+        SURFACE_CURRENT_FILINGS,
+        "www.sec.gov",
+        r"^/cgi-bin/browse-edgar",
+        r"(^|&)action=getcurrent(&|$)",
+    ),
     (SURFACE_EFTS, "efts.sec.gov", r"^/LATEST/search-index$"),
     (
         SURFACE_STRUCTURED_DISCLOSURE_ARCHIVES,
