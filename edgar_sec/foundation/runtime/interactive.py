@@ -73,13 +73,15 @@ def build_menu(
     return assign_menu_keys(actions, exit_key=exit_key)
 
 
-def prompt_text(prompt: str, default: str = "") -> str:
+def prompt_text(prompt: str, default: str = "", *, eof_raises: bool = False) -> str:
     """Prompt user for terminal input with an optional default value."""
     p_str = f"{prompt} [{default}]: " if default else f"{prompt}: "
     try:
         raw = input(p_str).strip()
         return raw or default
     except EOFError:
+        if eof_raises:
+            raise
         return default
 
 
@@ -117,7 +119,10 @@ def prompt_choice(
         print(f"  {key}. {label}")
 
     while True:
-        res = prompt_text("Choice", default).strip().lower()
+        try:
+            res = prompt_text("Choice", default, eof_raises=True).strip().lower()
+        except EOFError:
+            return default
         if res in valid_keys:
             return res
         print(
@@ -263,9 +268,13 @@ def prompt_paginated_choice(
         offset = 0
 
 
+MenuItems = tuple[MenuAction | MenuSeparator, ...] | list[MenuAction | MenuSeparator]
+MenuSource = MenuItems | Callable[[], MenuItems]
+
+
 def run_interactive_menu(
     title: str,
-    actions: tuple[MenuAction | MenuSeparator, ...] | list[MenuAction | MenuSeparator],
+    actions: MenuSource,
     exit_key: str = "0",
     *,
     interrupted_message: str | None = None,
@@ -274,11 +283,11 @@ def run_interactive_menu(
     """Run an interactive action loop until the user selects exit.
 
     A blank answer re-renders rather than defaulting to the first action, which may mutate;
-    ``before_menu`` runs per render and a failure inside it still draws the menu.
+    a callable ``actions`` is evaluated at each render, a tuple/list as given.
     """
-    action_map = {a.key.lower(): a for a in actions if isinstance(a, MenuAction)}
-
     while True:
+        current = actions() if callable(actions) else actions
+        action_map = {a.key.lower(): a for a in current if isinstance(a, MenuAction)}
         if before_menu is not None:
             try:
                 header = before_menu()
@@ -288,7 +297,7 @@ def run_interactive_menu(
                 print(f"\nCould not resolve session state: {exc!r}")
 
         print(f"\n{title}")
-        for a in actions:
+        for a in current:
             if isinstance(a, MenuSeparator):
                 if a.title:
                     prefix = f"── {a.title} "
@@ -299,7 +308,10 @@ def run_interactive_menu(
                 print(f"  {a.key}. {a.label}")
         print(f"  {exit_key}. Exit")
 
-        raw = prompt_text("\nChoice", "").strip()
+        try:
+            raw = prompt_text("\nChoice", "", eof_raises=True).strip()
+        except EOFError:
+            return 0
         if raw == exit_key:
             return 0
         if not raw:
@@ -320,7 +332,7 @@ def run_interactive_menu(
 
 def operator_entrypoint(
     title: str,
-    menu: tuple[MenuAction | MenuSeparator, ...] | list[MenuAction | MenuSeparator],
+    menu: MenuSource,
     cli_main: Callable[[list[str]], int],
     argv: list[str] | None = None,
     *,
@@ -346,7 +358,9 @@ def operator_entrypoint(
 
 __all__ = [
     "MenuAction",
+    "MenuItems",
     "MenuSeparator",
+    "MenuSource",
     "PickItem",
     "assign_menu_keys",
     "build_menu",

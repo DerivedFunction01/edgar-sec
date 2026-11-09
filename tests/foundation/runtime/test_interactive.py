@@ -4,6 +4,8 @@ action keeps the session alive, and a pick-list filters before numbering.
 
 from __future__ import annotations
 
+import pytest
+
 from edgar_sec.foundation.runtime.interactive import (
     DEFAULT_PAGE_SIZE,
     MenuAction,
@@ -128,6 +130,38 @@ def test_a_failing_header_still_draws_the_menu(monkeypatch, capsys) -> None:
     assert "Title" in out
 
 
+def test_callable_menu_is_reevaluated_at_each_render(monkeypatch, capsys) -> None:
+    state = {"enabled": False}
+    snapshots: list[tuple[str, ...]] = []
+    ran: list[str] = []
+
+    def factory():
+        actions = [MenuAction("1", "Flip", lambda: state.update(enabled=True))]
+        if state["enabled"]:
+            actions.append(MenuAction("2", "Late", lambda: ran.append("late")))
+        snapshots.append(tuple(a.label for a in actions))
+        return actions
+
+    _answers(monkeypatch, ["", "1", "2", "0"])
+    assert run_interactive_menu("Title", factory) == 0
+    assert snapshots[0] == ("Flip",)
+    assert snapshots[1] == ("Flip",)
+    assert snapshots[2] == ("Flip", "Late")
+    assert ran == ["late"]
+    assert "Late" in capsys.readouterr().out
+
+
+def test_plain_tuple_menu_behaves_as_before(monkeypatch, capsys) -> None:
+    ran: list[str] = []
+    menu = (MenuAction("1", "Work", lambda: ran.append("1")),)
+    _answers(monkeypatch, ["1", "0"])
+    assert run_interactive_menu("Title", menu) == 0
+    assert ran == ["1"]
+    out = capsys.readouterr().out
+    assert out.count("Title") == 2
+    assert "  1. Work" in out
+
+
 def test_prompt_text_returns_the_default_on_a_blank_answer(monkeypatch) -> None:
     _answers(monkeypatch, [""])
     assert prompt_text("Anything", "fallback") == "fallback"
@@ -141,6 +175,42 @@ def test_prompt_text_returns_the_default_on_end_of_input(monkeypatch) -> None:
         "edgar_sec.foundation.runtime.interactive.input", raise_eof, raising=False
     )
     assert prompt_text("Anything", "fallback") == "fallback"
+
+
+def test_prompt_text_reraises_end_of_input_when_asked(monkeypatch) -> None:
+    def raise_eof(_prompt: str = "") -> str:
+        raise EOFError
+
+    monkeypatch.setattr(
+        "edgar_sec.foundation.runtime.interactive.input", raise_eof, raising=False
+    )
+    with pytest.raises(EOFError):
+        prompt_text("Anything", "fallback", eof_raises=True)
+
+
+def test_prompt_choice_returns_the_default_on_end_of_input(monkeypatch) -> None:
+    def raise_eof(_prompt: str = "") -> str:
+        raise EOFError
+
+    monkeypatch.setattr(
+        "edgar_sec.foundation.runtime.interactive.input", raise_eof, raising=False
+    )
+    assert prompt_choice("Pick", [("a", "Alpha"), ("b", "Beta")], "a") == "a"
+
+
+def test_run_interactive_menu_exits_on_end_of_input(monkeypatch) -> None:
+    def raise_eof(_prompt: str = "") -> str:
+        raise EOFError
+
+    monkeypatch.setattr(
+        "edgar_sec.foundation.runtime.interactive.input", raise_eof, raising=False
+    )
+    ran: list[str] = []
+    result = run_interactive_menu(
+        "Title", [MenuAction("1", "Work", lambda: ran.append("1"))]
+    )
+    assert result == 0
+    assert ran == []
 
 
 def test_prompt_choice_keeps_asking_until_a_valid_key(monkeypatch, capsys) -> None:

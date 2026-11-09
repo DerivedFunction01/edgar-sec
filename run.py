@@ -95,7 +95,7 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         id="fetch",
         label="Filing Runner & Fetch",
         description="Unified end-to-end filing acquisition and DataFrame extraction",
-        module="edgar_sec.apps.client.cli",
+        module="edgar_sec.apps.client.operator",
         group="Apps & Consoles",
     ),
     LauncherEntry(
