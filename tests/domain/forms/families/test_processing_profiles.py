@@ -423,6 +423,50 @@ def test_s6_entry_registered_with_section_taxonomy() -> None:
     assert get_family_entry("487") is entry
 
 
+def test_4017g_entry_registered_with_section_taxonomy() -> None:
+    from edgar_sec.domain.forms.families.form_4017g.processing import PROFILE_FORM_4017G
+    from edgar_sec.domain.forms.families.form_4017g.taxonomy import FORM_4017G_ITEMS
+
+    entry = get_family_entry("40-17G")
+    assert entry is not None
+    assert entry.family == "40-17G"
+    assert entry.profile is PROFILE_FORM_4017G
+    assert entry.cover_checkbox_schema is None
+    assert entry.taxonomy_items == FORM_4017G_ITEMS
+    assert get_family_entry("40-17G/A") is entry
+    assert get_family_entry("40-17GCS") is entry
+
+
+def test_4017f1_entry_registered_with_section_taxonomy() -> None:
+    from edgar_sec.domain.forms.families.form_4017f1.processing import (
+        PROFILE_FORM_4017F1,
+    )
+    from edgar_sec.domain.forms.families.form_4017f1.taxonomy import FORM_4017F1_ITEMS
+
+    entry = get_family_entry("40-17F1")
+    assert entry is not None
+    assert entry.family == "40-17F1"
+    assert entry.profile is PROFILE_FORM_4017F1
+    assert entry.cover_checkbox_schema is None
+    assert entry.taxonomy_items == FORM_4017F1_ITEMS
+    assert get_family_entry("40-17F1/A") is entry
+
+
+def test_4017f2_entry_registered_with_section_taxonomy() -> None:
+    from edgar_sec.domain.forms.families.form_4017f2.processing import (
+        PROFILE_FORM_4017F2,
+    )
+    from edgar_sec.domain.forms.families.form_4017f2.taxonomy import FORM_4017F2_ITEMS
+
+    entry = get_family_entry("40-17F2")
+    assert entry is not None
+    assert entry.family == "40-17F2"
+    assert entry.profile is PROFILE_FORM_4017F2
+    assert entry.cover_checkbox_schema is None
+    assert entry.taxonomy_items == FORM_4017F2_ITEMS
+    assert get_family_entry("40-17F2/A") is entry
+
+
 @pytest.mark.parametrize(
     "family,variant",
     [

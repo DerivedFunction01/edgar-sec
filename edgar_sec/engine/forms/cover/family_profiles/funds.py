@@ -1,5 +1,6 @@
 """Cover profiles for the investment-company families (N-CSR, N-Q,
-NSAR, 497), composed from the shared kit in ``profiles``."""
+NSAR, 497, 40-17G, 40-17F1, 40-17F2), composed from the shared kit
+in ``profiles``."""
 
 from __future__ import annotations
 
@@ -7,11 +8,15 @@ from edgar_sec.domain.forms.common.forward_looking import FORWARD_LOOKING_PHRASE
 from edgar_sec.domain.forms.common.models import (
     BodyEvidencePack,
     CoverEvidencePack,
+    ItemDefinition,
 )
 from edgar_sec.domain.forms.common.vocabulary import (
     COVER_EVIDENCE_TERMS,
     COVER_START_IDENTITY_TERMS,
 )
+from edgar_sec.domain.forms.families.form_4017f1.taxonomy import FORM_4017F1_ITEMS
+from edgar_sec.domain.forms.families.form_4017f2.taxonomy import FORM_4017F2_ITEMS
+from edgar_sec.domain.forms.families.form_4017g.taxonomy import FORM_4017G_ITEMS
 from edgar_sec.domain.forms.families.form_497.taxonomy import FORM_497_ITEMS
 from edgar_sec.domain.forms.families.form_ncsr.taxonomy import FORM_NCSR_ITEMS
 from edgar_sec.domain.forms.families.form_nq.taxonomy import FORM_NQ_ITEMS
@@ -206,7 +211,125 @@ def build_form_497_profile(family: str = "497") -> CoverProfile:
     )
 
 
+_FORM_4017G_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "investment company blanket bond",
+    "fidelity bond",
+    "rule 17g-1",
+)
+
+
+def build_form_4017g_profile(family: str = "40-17G") -> CoverProfile:
+    """Cover profile for fidelity-bond filings: the transmittal letter
+    and bond face form the cover; the instrument blocks are the body.
+    """
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_4017G_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=_FORM_4017G_COVER_LABELS,
+            labels=_FORM_4017G_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in FORM_4017G_ITEMS),
+            semantic_headings=(
+                "declarations",
+                "insuring agreements",
+                "signatures",
+                "signature",
+            ),
+        ),
+    )
+
+
+_FORM_4017F_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "certificate of accounting of securities and similar investments",
+    "investment company act file number",
+    "date examination completed",
+)
+
+_FORM_4017F1_COVER_LABELS: tuple[str, ...] = (
+    *_FORM_4017F_COVER_LABELS,
+    "form n-17f-1",
+    "pursuant to rule 17f-1",
+)
+
+_FORM_4017F2_COVER_LABELS: tuple[str, ...] = (
+    *_FORM_4017F_COVER_LABELS,
+    "form n-17f-2",
+    "pursuant to rule 17f-2",
+)
+
+
+def _build_form_4017f_profile(
+    family: str, labels: tuple[str, ...], items: tuple[ItemDefinition, ...]
+) -> CoverProfile:
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=labels,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(
+                *COMMON_COVER_LABELS,
+                *COVER_EVIDENCE_TERMS,
+                *labels,
+            ),
+            labels=labels,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in items),
+            semantic_headings=(
+                "instructions",
+                "management statement",
+                "report of independent",
+                "signatures",
+                "signature",
+            ),
+        ),
+    )
+
+
+def build_form_4017f1_profile(family: str = "40-17F1") -> CoverProfile:
+    """Cover profile for N-17f-1 certificates: the certificate face is
+    the cover; the statements and accountant's report are the body.
+    """
+    return _build_form_4017f_profile(
+        family, _FORM_4017F1_COVER_LABELS, FORM_4017F1_ITEMS
+    )
+
+
+def build_form_4017f2_profile(family: str = "40-17F2") -> CoverProfile:
+    """Cover profile for N-17f-2 certificates: the certificate face is
+    the cover; the statements and accountant's report are the body.
+    """
+    return _build_form_4017f_profile(
+        family, _FORM_4017F2_COVER_LABELS, FORM_4017F2_ITEMS
+    )
+
+
 __all__ = [
+    "build_form_4017f1_profile",
+    "build_form_4017f2_profile",
+    "build_form_4017g_profile",
     "build_form_497_profile",
     "build_form_ncsr_profile",
     "build_form_nq_profile",

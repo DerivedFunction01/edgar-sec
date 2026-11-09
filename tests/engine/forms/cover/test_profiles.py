@@ -133,6 +133,34 @@ def test_form_s6_profile_resolves_with_taxonomy() -> None:
     assert get_profile("S-6/A").family == "S-6"
 
 
+def test_form_4017g_profile_resolves_with_taxonomy() -> None:
+    form_4017g = get_profile("40-17GCS")
+    assert form_4017g.family == "40-17G"
+    assert form_4017g.boundary is not None
+    assert form_4017g.checkbox_schema is None
+    assert form_4017g.has_sections is True
+    assert form_4017g.body_evidence is not None
+    assert "DECLARATIONS" in form_4017g.body_evidence.structural_headings
+
+
+def test_form_4017f_profiles_resolve_with_taxonomy() -> None:
+    form_4017f1 = get_profile("40-17F1/A")
+    assert form_4017f1.family == "40-17F1"
+    assert form_4017f1.boundary is not None
+    assert form_4017f1.checkbox_schema is None
+    assert form_4017f1.has_sections is True
+    assert form_4017f1.body_evidence is not None
+    assert "MANAGEMENT STATEMENT" in form_4017f1.body_evidence.structural_headings
+
+    form_4017f2 = get_profile("40-17F2/A")
+    assert form_4017f2.family == "40-17F2"
+    assert form_4017f2.boundary is not None
+    assert form_4017f2.checkbox_schema is None
+    assert form_4017f2.has_sections is True
+    assert form_4017f2.body_evidence is not None
+    assert "MANAGEMENT STATEMENT" in form_4017f2.body_evidence.structural_headings
+
+
 def test_annual_profiles_enable_incorporated_reference() -> None:
     annual_names = {rule.name for rule in get_profile("10-K").healing_rules}
     quarterly_names = {rule.name for rule in get_profile("10-Q").healing_rules}
