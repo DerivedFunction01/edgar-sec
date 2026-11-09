@@ -13,6 +13,10 @@ The facade also exposes the SEC's pre-extracted company facts for one company
 (`Edgar.company_facts(cik)`), strictly as an oracle: SEC-reported values are
 compared against the parser's own output, never served as answers.
 
+One filing's attachments are served as an object collection
+(`Edgar.attachments(filing)`) with typed selectors, an acquisition-state
+accessor, and explicit payload accessors.
+
 ## Contracts
 
 - **Relational by default**: Filings cohorts are queried and exported as DataFrames rather than eager object graphs.
@@ -26,9 +30,18 @@ compared against the parser's own output, never served as answers.
 - **Concept lookups serve reported values**: `Company.concept()` returns SEC-reported values exactly as reported, one row per data point with its provenance; it is a lookup and cross-check surface that never feeds the financial statements machinery.
 - **Company facts are cross-check only**: `Edgar.company_facts(cik)` fetches one CIK's companyfacts document through the shared `SecHttpClient` — rate limiter, identity, response cache, and failure ledger unchanged — and maps it to typed rows carrying taxonomy, tag, unit, value, period, accession, form, filed, and frame where served. The endpoint is an oracle against the parser's own output, not a serving source, and its rows are never re-shaped into a per-filing facts store at this layer.
 - **Facts comparison reports four outcome classes**: The cross-check consumer joins company-facts rows to instance-parsed values on (taxonomy, tag, unit, start, end), taking each key's facts side from its latest-filed point because amendment vintages coexist in the document, and reports agree / diverge / facts-only / parsed-only. A parsed absence is facts-only, never a divergence.
+- **One canonical attachment row**: Both loaders' attachment objects, the cross-filing index/exhibits/linkbases tables, and the snapshot SQL views all project from the canonical attachment row; identity is the inventory `entry_id` end to end and sequence is a typed field, never recovered from a string. Role and is-exhibit each have exactly one Python derivation, and their SQL translations are pinned against the Python forms by tests.
+- **Attachment storage tiers**: Per-filing object graphs live in memory only and hold no payload bytes beyond a single accessor call; cross-filing attachment facts are DuckDB/PyArrow projections over the published DAG relations; payload bytes stay content-addressed by sha256 in the acquisition snapshot, and the SQLite document cache is a mutable fetch cache, never a query surface.
+- **Explicit-accessor fetch**: Enumerating or selecting attachments never fetches, and the state accessor reports store presence (snapshot payload index; document-cache row) without retrieval. Calling `content()` or `rendered_text()` is the caller's explicit act and may fetch and cache.
+- **Two text semantics, distinctly named**: `text()` is the plain decode existing consumers observe; `rendered_text()` rides the injected renderer, with PDF payloads converted through the PDF text-layer route.
+- **Two role vocabularies, never merged**: The observed role (primary, exhibit, data_file, graphic, package) and the body-assessed role (primary, exhibit, schedule) are different facts about a document and are named distinctly at every surface they meet.
 
 ## Deliberate gaps
 
 - **No result-side state caching**: `FilingsResult` pointers reference published pipeline artifacts rather than client memory; caching lives in the bounded facade LRU and the SQLite document cache, not in the result model.
 - **No network code in data models**: `FilingsResult` and `FilingAggregate` issue no requests themselves; the fetch closures injected into an aggregate fetch live, lazily, when its payload is read.
 - **No company-facts serving leg**: Company facts have no answer path in this package; corpus-scale cross-check reads come from the bulk facts store published by `metadata_sync`, and a serving posture would require a new ruling.
+- **Snapshot attachment identity is honestly absent**: No published acquisition relation carries `entry_id`, `table_kind`, or `description`, so snapshot-hydrated attachments serve those fields as `None`; closing the gap needs a published-relation change, not a client-side derivation.
+- **Snapshot role never fires data_file**: The snapshot views have no `table_kind` source, so the data_file branch of the single role derivation never fires there; a selector or matcher rule depending on a sometimes-absent field names that dependence rather than matching differently per vehicle in silence.
+- **Payload duration is unrecorded**: Neither mode's store records fetch duration for attachment payloads, so payload tables serve `duration_ms` 0 (none recorded); fast-mode attempt counts are likewise 0 because that mode keeps no attempt records.
+- **Attachments are single-filing only**: `Edgar.attachments(filing)` serves one filing's collection; an object-level counterpart over a `FilingsResult` is deferred until a consumer appears. The attachment surface has no markdown accessor, no query DSL, and no HTTP serve.
