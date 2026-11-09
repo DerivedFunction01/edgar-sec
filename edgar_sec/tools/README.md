@@ -16,6 +16,7 @@ evaluate grounded XBRL populations.
 - **packaging**: Installed-form verification battery (build, clean installs, installed checks).
 - **workers**: Pytest worker calibration and timing-profile storage.
 - **fixtures**: Fixture-gathering planning and candidate scoring.
+- **section_corpus**: Banking for the section detector's fixture corpus.
 - **xbrl_discovery**: XBRL linkbase seeding and taxonomy archive construction.
 - **xbrl_eval**: XBRL census, screening, and benchmark verification.
 
@@ -35,7 +36,7 @@ evaluate grounded XBRL populations.
   observed per-case call work is sufficient to reject it against a direct result.
 - **One pytest invocation per probe**: Mixed selections retain their original
   selectors and shared session-fixture behavior.
-- **Offline generation and calibration**: `docgen` and `workers` perform zero network I/O. The gathering tools are the exception by design: `fixtures` scoring and `xbrl_discovery` seeding fetch from SEC and taxonomy hosts.
+- **Offline generation and calibration**: `docgen` and `workers` perform zero network I/O. The gathering tools are the exception by design: `fixtures` scoring, `xbrl_discovery` seeding, and `section_corpus` banking fetch from SEC and taxonomy hosts.
 
 ## Deliberate gaps
 

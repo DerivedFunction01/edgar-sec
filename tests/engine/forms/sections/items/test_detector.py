@@ -309,3 +309,62 @@ def test_6_k_text_without_press_release_names_no_item() -> None:
     text = "Report of foreign private issuer.\nThe registrant furnished a report.\n"
     seq = detect_section_sequence(text, family="6-K", taxonomy_items=FORM_6K_ITEMS)
     assert seq.sections == ()
+
+
+def _statement_taxonomy():
+    from edgar_sec.domain.forms.common.models import ItemDefinition
+
+    def item(name: str) -> ItemDefinition:
+        return ItemDefinition(
+            item=f"ITEM {name.upper()}", part=1, names=(name,), optional=True
+        )
+
+    return (
+        item("alpha report"),
+        item("beta statement"),
+        item("gamma statement"),
+        item("omega report"),
+    )
+
+
+def test_disordered_stream_keeps_the_canonical_spine() -> None:
+    text = "\n".join(
+        [
+            "Omega Report",
+            "The omega report opens this filing body here.",
+            "Beta Statement",
+            "Beta figures follow in this statement section here.",
+            "Gamma Statement",
+            "Gamma figures follow in this statement section here.",
+            "Alpha Report",
+            "The alpha report closes the filing body here.",
+        ]
+    )
+    seq = detect_section_sequence(
+        text, family="TEST", taxonomy_items=_statement_taxonomy()
+    )
+    assert _labels(seq) == ["ITEM BETA STATEMENT", "ITEM GAMMA STATEMENT"]
+    assert seq.disordered is True
+    assert seq.anachronistic_rejections == 2
+
+
+def test_dense_face_captions_without_later_recurrence_are_kept() -> None:
+    text = "\n".join(
+        [
+            "1. Alpha report:",
+            "",
+            "2. Beta statement:",
+            "",
+            "3. Gamma statement:",
+            "",
+            "Body text follows here.",
+        ]
+    )
+    seq = detect_section_sequence(
+        text, family="TEST", taxonomy_items=_statement_taxonomy()
+    )
+    assert _labels(seq) == [
+        "ITEM ALPHA REPORT",
+        "ITEM BETA STATEMENT",
+        "ITEM GAMMA STATEMENT",
+    ]

@@ -66,12 +66,18 @@ def _filter_pseudo_toc_candidates(
             cluster.append(candidates[j])
             j += 1
         if len(cluster) >= _MIN_PSEUDO_TOC_CLUSTER_SIZE:
-            for c in cluster:
-                toc_lines.add(c.line_number)
-            i = j
-        else:
-            filtered.append(candidates[i])
-            i += 1
+            # A navigation cluster previews headings that recur later in
+            # the body; a dense caption cluster nothing repeats is a form
+            # face carrying its content inline, not a table of contents.
+            cluster_ids = {item for c in cluster for item in c.identifiers}
+            later_ids = {item for c in candidates[j:] for item in c.identifiers}
+            if cluster_ids & later_ids:
+                for c in cluster:
+                    toc_lines.add(c.line_number)
+                i = j
+                continue
+        filtered.append(candidates[i])
+        i += 1
     return filtered, toc_lines
 
 
@@ -120,6 +126,7 @@ def detect_section_sequence(
     payload_sha256: str | None = None,
     representation_id: str | None = None,
     renderer_version: str | None = None,
+    run_in_titles: bool = False,
 ) -> SectionSequence:
     """Detect statutory Part/Item sections across a document, in document order."""
     lines = text.splitlines()
@@ -130,7 +137,10 @@ def detect_section_sequence(
     )
 
     raw_candidates = extract_section_candidates(
-        lines, taxonomy_items=taxonomy_items, toc_lines=toc_line_set
+        lines,
+        taxonomy_items=taxonomy_items,
+        toc_lines=toc_line_set,
+        run_in_titles=run_in_titles,
     )
     candidates, _ = _filter_pseudo_toc_candidates(raw_candidates, lines)
     refined_candidates: list[SectionCandidate] = []
@@ -172,46 +182,31 @@ def detect_section_sequence(
         eligible.append(cand)
 
     # Assembly keeps the canonical spine plus genuine candidates whose
-    # exclusion is one local fault; a stream whose faults do not
-    # decompose falls back to first-fit selection, unchanged.
+    # exclusion is one local fault; on a stream whose faults do not
+    # decompose, the spine alone is kept and the rest rejected.
     assembly = tracker.assemble_sequence([cand.identifiers for cand in eligible])
     resolved: list[ResolvedSection] = []
     anachronisms = 0
     missing_labels: tuple[str, ...]
-    if assembly.disordered:
-        greedy = MonotonicSequenceTracker[str](canonical_order)
-        for cand in eligible:
-            if cand.kind == CandidateKind.GROUPED:
-                if not greedy.accept_group(cand.identifiers):
-                    anachronisms += 1
-                    continue
-            elif not greedy.accept(cand.identifiers[0]):
-                anachronisms += 1
-                continue
-            resolved.extend(_event_sections(cand, displaced=False))
-        missing_labels = tuple(
-            f"ITEM {m}" for m in greedy.missing_items(canonical_order)
-        )
-    else:
-        displaced_at = set(assembly.displaced)
-        chosen = set(assembly.spine) | displaced_at
-        resolved_ids: set[str] = set()
-        current_idx = -1
-        for pos, cand in enumerate(eligible):
-            if pos not in chosen:
-                anachronisms += 1
-                continue
-            resolved.extend(_event_sections(cand, displaced=pos in displaced_at))
-            for item_id in cand.identifiers:
-                resolved_ids.add(item_id)
-                ordn = tracker.get_ordinal(item_id)
-                if ordn is not None and ordn > current_idx:
-                    current_idx = ordn
-        missing_labels = tuple(
-            f"ITEM {item}"
-            for idx, item in enumerate(canonical_order)
-            if idx <= current_idx and item not in resolved_ids
-        )
+    displaced_at = set(assembly.displaced)
+    chosen = set(assembly.spine) | displaced_at
+    resolved_ids: set[str] = set()
+    current_idx = -1
+    for pos, cand in enumerate(eligible):
+        if pos not in chosen:
+            anachronisms += 1
+            continue
+        resolved.extend(_event_sections(cand, displaced=pos in displaced_at))
+        for item_id in cand.identifiers:
+            resolved_ids.add(item_id)
+            ordn = tracker.get_ordinal(item_id)
+            if ordn is not None and ordn > current_idx:
+                current_idx = ordn
+    missing_labels = tuple(
+        f"ITEM {item}"
+        for idx, item in enumerate(canonical_order)
+        if idx <= current_idx and item not in resolved_ids
+    )
 
     # Compute bounding spans between consecutive distinct start lines
     bounded_sections: list[ResolvedSection] = []
