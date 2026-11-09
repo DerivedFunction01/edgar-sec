@@ -29,6 +29,7 @@ from .commands.plan import cmd_plan, cmd_status
 from .commands.reconcile import cmd_reconcile
 from .commands.refresh import cmd_refresh
 from .commands.run import cmd_run
+from .commands.series_class import cmd_series_class_refresh
 from .distribution_adapter import MetadataDistributionAdapter
 from .options import (
     PlanOptions,
@@ -326,6 +327,33 @@ def build_parser() -> argparse.ArgumentParser:
             branch=getattr(args, "branch", "main") or "main",
             workers=args.workers,
             from_store=getattr(args, "from_store", False),
+        )
+    )
+
+    series_class_parser = subparsers.add_parser(
+        "series-class", help="refresh the fund series/class reference relation"
+    )
+    _add_common(series_class_parser)
+    _add_branch_guard(series_class_parser)
+    series_class_parser.add_argument(
+        "--cik",
+        action="append",
+        default=[],
+        help="scope the drive to one CIK; repeatable; empty means the full "
+        "ticker-file population",
+    )
+    series_class_parser.add_argument(
+        "--force-refresh",
+        action="store_true",
+        help="bypass the response cache on every fetch",
+    )
+    series_class_parser.set_defaults(
+        func=lambda args: cmd_series_class_refresh(
+            artifacts_root=args.artifacts or None,
+            branch=getattr(args, "branch", "main") or "main",
+            ciks=tuple(args.cik),
+            force_refresh=getattr(args, "force_refresh", False),
+            workers=args.workers,
         )
     )
 

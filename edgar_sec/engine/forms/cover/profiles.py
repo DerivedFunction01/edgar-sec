@@ -493,6 +493,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         build_form_4017f1_profile,
         build_form_4017f2_profile,
         build_form_4017g_profile,
+        build_form_40app_profile,
         build_form_497_profile,
         build_form_ncsr_profile,
         build_form_nq_profile,
@@ -560,6 +561,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
     form_4017g = build_form_4017g_profile("40-17G")
     form_4017f1 = build_form_4017f1_profile("40-17F1")
     form_4017f2 = build_form_4017f2_profile("40-17F2")
+    form_40app = build_form_40app_profile("40-APP")
     form_12b25 = build_form_12b25_profile("12B-25")
     form_25 = build_form_12reg_profile("25")
     form_8a = build_form_12reg_profile("8-A")
@@ -615,6 +617,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "40-17G": form_4017g,
         "40-17F1": form_4017f1,
         "40-17F2": form_4017f2,
+        "40-APP": form_40app,
         "12B-25": form_12b25,
         "25": form_25,
         "8-A": form_8a,

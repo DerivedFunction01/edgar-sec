@@ -135,6 +135,21 @@ def test_current_filings_url_pins_the_getcurrent_atom_shape() -> None:
     assert classify_sec_surface(current_filings_url()) == "current_filings"
 
 
+def test_browse_edgar_actions_classify_to_different_surfaces() -> None:
+    base = "https://www.sec.gov/cgi-bin/browse-edgar"
+    assert classify_sec_surface(f"{base}?action=getcompany&CIK=0000003521") == (
+        "browse_edgar"
+    )
+    assert classify_sec_surface(
+        f"{base}?action=getcompany&CIK=0000003521&scd=series"
+    ) == ("browse_edgar")
+    assert classify_sec_surface(f"{base}?action=getcurrent&output=atom") == (
+        "current_filings"
+    )
+    assert classify_sec_surface(base) is None
+    assert classify_sec_surface(f"{base}?CIK=0000003521") is None
+
+
 @pytest.mark.parametrize(
     ("feed", "filename"),
     [

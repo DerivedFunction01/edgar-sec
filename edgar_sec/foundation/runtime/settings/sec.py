@@ -134,6 +134,12 @@ SURFACE_POLICIES: dict[str, SurfacePolicy] = {
         ),
         SurfacePolicy("current_filings", SURFACE_KIND_NO_STORE, "filing events"),
         SurfacePolicy(
+            "browse_edgar",
+            SURFACE_KIND_TRANSIENT,
+            "daily refresh",
+            "sec.ttl.browse_edgar",
+        ),
+        SurfacePolicy(
             "structured_disclosure_feeds",
             SURFACE_KIND_TRANSIENT,
             "10-minute publication cycle",
@@ -341,6 +347,9 @@ def _ttl_specs() -> dict[str, SettingSpec]:
             "completed quarters are immutable once published"
         ),
         "daily_index": _ttl_spec("freshness window for daily index files"),
+        "browse_edgar": _ttl_spec(
+            "freshness window for browse-edgar company and series pages"
+        ),
         "structured_disclosure_feeds": _ttl_spec(
             "freshness window for structured-disclosure feeds; strictly below "
             "the 600-second publication cycle",

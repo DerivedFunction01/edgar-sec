@@ -1,5 +1,5 @@
 """Cover profiles for the investment-company families (N-CSR, N-Q,
-NSAR, 497, 40-17G, 40-17F1, 40-17F2), composed from the shared kit
+NSAR, 497, 40-17G, 40-17F1, 40-17F2, 40-APP), composed from the shared kit
 in ``profiles``."""
 
 from __future__ import annotations
@@ -17,6 +17,7 @@ from edgar_sec.domain.forms.common.vocabulary import (
 from edgar_sec.domain.forms.families.form_4017f1.taxonomy import FORM_4017F1_ITEMS
 from edgar_sec.domain.forms.families.form_4017f2.taxonomy import FORM_4017F2_ITEMS
 from edgar_sec.domain.forms.families.form_4017g.taxonomy import FORM_4017G_ITEMS
+from edgar_sec.domain.forms.families.form_40app.taxonomy import FORM_40APP_ITEMS
 from edgar_sec.domain.forms.families.form_497.taxonomy import FORM_497_ITEMS
 from edgar_sec.domain.forms.families.form_ncsr.taxonomy import FORM_NCSR_ITEMS
 from edgar_sec.domain.forms.families.form_nq.taxonomy import FORM_NQ_ITEMS
@@ -326,10 +327,60 @@ def build_form_4017f2_profile(family: str = "40-17F2") -> CoverProfile:
     )
 
 
+_FORM_40APP_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "form 40-app",
+    "application for an order",
+    "exemptive application",
+    "investment company act of 1940",
+    "file no. 812-",
+)
+
+
+def build_form_40app_profile(family: str = "40-APP") -> CoverProfile:
+    """Cover profile for exemptive applications: the face sheet naming
+    the applicants and the order sought is the cover; the application
+    body follows it.
+    """
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.TOC_TRANSITION,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_40APP_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(
+                *COMMON_COVER_LABELS,
+                *COVER_EVIDENCE_TERMS,
+                *_FORM_40APP_COVER_LABELS,
+            ),
+            labels=_FORM_40APP_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in FORM_40APP_ITEMS),
+            semantic_headings=(
+                "introduction",
+                "summary of application",
+                "procedural matters",
+                "verification",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+    )
+
+
 __all__ = [
     "build_form_4017f1_profile",
     "build_form_4017f2_profile",
     "build_form_4017g_profile",
+    "build_form_40app_profile",
     "build_form_497_profile",
     "build_form_ncsr_profile",
     "build_form_nq_profile",

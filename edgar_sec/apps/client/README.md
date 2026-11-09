@@ -22,6 +22,11 @@ flow metrics it serves — within one filing, and across filings over the stitch
 series — and composes the same derivation from company-facts points strictly as
 a comparison leg.
 
+The facade also resolves fund series and classes from the published
+series/class reference relation — series and class lookups, classes of a
+series, series of a registrant, class by ticker, and N-MFP series resolution —
+and the operator carries one fund row that refreshes that relation by command.
+
 ## Contracts
 
 - **Relational by default**: Filings cohorts are queried and exported as DataFrames rather than eager object graphs.
@@ -51,6 +56,10 @@ a comparison leg.
 - **Four quarters, completely accounted**: A TTM value exists only when all four quarters of its window are accounted for — reported quarters stand as filed, and a missing quarter is derived only from exact cumulative-span chaining with its inputs named. A window that cannot close serves UNAVAILABLE naming the missing quarter(s), never a partial sum, and where two closing routes exist they must agree or the result is UNAVAILABLE naming the disagreement.
 - **Per-share TTM is a derived ratio, never a sum**: EPS TTM is the same run's TTM net income divided by its TTM weighted-average shares at the same period end; weighted shares are a day-weighted derivation from cumulative spans, and filed EPS is never served as a TTM value.
 - **Duration flows only, breaks respected**: Instant concepts gain no TTM variant and a stitched series has no instant read at all; CUMULATIVE spans never serve as legs; a cross-filing window may not cross a recorded series break and is refused with the break named.
+- **Series/class reads are local, absence honest**: The series/class lookups and the N-MFP resolution read only the published relation's snapshot tip; a miss — an unknown id, a missing tip — answers with absence (None, empty, or `found=False`), and no read path ever fetches a browse page live.
+- **Merged layers, one row per class**: Lookup answers merge the relation's two layers — names come from the browse layer only, and the ticker file's symbol wins where both layers carry the class — so one class id yields exactly one answer.
+- **N-MFP conflicts are reported, not resolved**: `resolve_nmfp_series` cross-checks the document's series name and registrant CIK against the relation and reports disagreements as named conflicts; neither side is overridden.
+- **Fund refresh is one operator row**: `fund_series_class` carries an action discriminator (refresh / reconcile / status) rather than one row per action; only refresh writes a run record, matching the registry's external-only record scope.
 
 ## Deliberate gaps
 
@@ -70,3 +79,6 @@ a comparison leg.
 - **Cross-filing scope bounded by the stitched series**: Stitched TTM serves exactly the metric classes the stitched series serves, inheriting its breaks and per-leg provenance; no stitching is built or widened at this layer.
 - **No calc-ancestor yield over a series**: Net income over a stitched series reads its filter ladder directly; the within-filing calc-ancestor yield has no series analogue, so a concept reachable only through that yield is absent cross-filing.
 - **No unit adjudication over a series**: Same-concept spans reported in multiple units keep the first series-ordered value rather than an adjudicated one.
+- **Series LEI is unverified**: Neither relation layer carries an LEI, so an N-MFP document's `series_lei` rides its resolution unverified; adding LEI to the relation is a schema decision, not a client derivation.
+- **Relation coverage is the refresh's, not the lookup's**: Until a refresh covers a registrant, its series and classes are absent from lookup answers; class counts are not cross-checked against documents, because coverage is partial by design.
+- **No other funds family joins**: N-PORT, N-CEN, and N-PX carry no series or class ID to join on, so they gain no resolution here.
