@@ -53,4 +53,10 @@ path = "edgar_sec/__init__.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["edgar_sec"]
-exclude = ["/edgar_sec/tools"]
+exclude = [
+    "/edgar_sec/tools",
+    "/edgar_sec/engine/xbrl/discovery/seed/**",
+    "/edgar_sec/engine/xbrl/discovery/vintage/**",
+    "/edgar_sec/engine/xbrl/discovery/sp100/**",
+    "/edgar_sec/engine/xbrl/discovery/probe/**",
+]

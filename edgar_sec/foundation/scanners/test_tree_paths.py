@@ -19,9 +19,6 @@ _EXEMPT_PREFIXES = (
 _EXEMPT_FILES = {
     "check.py",
     "run.py",
-    # Owns the fixture-corpus anchor: the review pipeline's bundle corpora
-    # are fixture data in the checkout tree, named by registry stem there.
-    "edgar_sec/pipelines/xbrl_review/bundles.py",
 }
 _NEEDLES = (
     '"tests"',

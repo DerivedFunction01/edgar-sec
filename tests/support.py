@@ -41,12 +41,29 @@ FIXTURES = TESTS_ROOT / "fixtures"
 CATALOG_FIXTURES = FIXTURES / "catalog"
 
 
+_CORPUS_DIRS = ("seed", "vintage", "sp100", "probe")
+
+
+def corpus_dir(corpus: str) -> Path:
+    """A cohort bundle corpus: package data beside the canonical registries."""
+    from edgar_sec.engine.xbrl.discovery.cohort import DISCOVERY_DIR
+
+    return DISCOVERY_DIR / corpus
+
+
+def _resolve_fixture(name: str) -> Path:
+    parts = name.split("/")
+    if len(parts) >= 2 and parts[0] == "xbrl" and parts[1] in _CORPUS_DIRS:
+        return corpus_dir(parts[1]).joinpath(*parts[2:])
+    return FIXTURES / name
+
+
 def load_fixture(name: str) -> Any:
-    return json.loads((FIXTURES / name).read_text(encoding="utf-8"))
+    return json.loads(_resolve_fixture(name).read_text(encoding="utf-8"))
 
 
 def fixture_path(name: str) -> Path:
-    return FIXTURES / name
+    return _resolve_fixture(name)
 
 
 def cohort_registry_path(name: str) -> Path:
@@ -66,9 +83,9 @@ _CORPUS_NAMES = ("seed", "vintage", "sp100")
 def bundle_dir(folder: str) -> Path:
     """A corpus bundle folder; it must exist in exactly one corpus root."""
     hits = [
-        FIXTURES / "xbrl" / corpus / folder
+        corpus_dir(corpus) / folder
         for corpus in _CORPUS_NAMES
-        if (FIXTURES / "xbrl" / corpus / folder).is_dir()
+        if (corpus_dir(corpus) / folder).is_dir()
     ]
     if len(hits) != 1:
         raise ValueError(f"bundle folder {folder} in {len(hits)} corpus roots")
@@ -95,7 +112,7 @@ def corpus_source_bundles() -> list[dict[str, Any]]:
     bundles: list[dict[str, Any]] = []
     for corpus in _CORPUS_NAMES:
         payload = json.loads(
-            (FIXTURES / "xbrl" / corpus / "fixture_source_registry.json").read_text(
+            (corpus_dir(corpus) / "fixture_source_registry.json").read_text(
                 encoding="utf-8"
             )
         )

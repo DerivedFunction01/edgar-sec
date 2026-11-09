@@ -138,7 +138,7 @@ Before submitting any turn or completing work, run the unified quality gate:
 Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected via `ALL_SCANNERS`:
 - `environment-access`: Bans direct `os.environ` / `os.getenv` outside `edgar_sec.foundation.runtime.env`.
 - `artifact-paths`: Bans hardcoded `".artifacts"` path literals outside path resolvers.
-- `test-tree-paths`: Bans `tests` path components and `tests` imports in layers 0–5, exempting the gate machinery that owns the test tree (`foundation/checks`, the scanners), the tools layer, and `pipelines/xbrl_review/bundles.py` (owns the fixture-corpus anchor: bundle corpora are fixture data in the checkout tree).
+- `test-tree-paths`: Bans `tests` path components and `tests` imports in layers 0–5, exempting only the gate machinery that owns the test tree (`foundation/checks`, the scanners) and the tools layer. No file exemptions: production-consumed data lives in the package or the workspace, never under `tests/`.
 - `secrets-leakage`: Bans committed API keys, tokens, or credentials.
 - `clean-exit`: Bans `sys.exit()` in library modules (only allowed in `run.py`, `check.py`, and CLI entrypoints).
 - `file-length`: **Fails the gate** on files exceeding the line limit (800) to prevent monolithic growth. Any finding from any scanner returns a nonzero exit code, so "advisory" is not how it behaves.
@@ -273,7 +273,7 @@ Net comment and docstring volume should not grow with a feature.
 ## Testing & Fixtures
 
 - Default unit tests must be offline, deterministic, and fast (< 1s total).
-- Committed fixtures live under `tests/fixtures/`: sanitized, minimal golden reference JSON and CSVs.
+- Committed fixtures live under `tests/fixtures/`: sanitized, minimal golden reference JSON and CSVs. Data a production module consumes is not a fixture: it lives beside its owning module in the package (the cohort bundle corpora under `engine/xbrl/discovery/` are the standing case, wheel-excluded in `pyproject.toml`).
 - Generated test outputs must use pytest's `tmp_path` fixture or transient paths, never dirtying the repository tree.
 
 ### Test Tree Mirrors the Source Tree

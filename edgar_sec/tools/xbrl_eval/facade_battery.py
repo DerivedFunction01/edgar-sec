@@ -21,12 +21,12 @@ from edgar_sec.apps.client.fiscal import duration_length_class
 from edgar_sec.apps.client.presentation import PresentationView, period_key_class
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
+from edgar_sec.engine.xbrl.discovery.cohort import DISCOVERY_DIR
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
-REPO = Path(__file__).resolve().parents[3]
-XBRL_FIXTURES = REPO / "tests" / "fixtures" / "xbrl"
+XBRL_FIXTURES = DISCOVERY_DIR
 COHORT_NAMES = ("seed", "vintage", "sp100", "probe")
 MODES = ("standard", "detailed", "summary")
 TOLERANCE = 0.5

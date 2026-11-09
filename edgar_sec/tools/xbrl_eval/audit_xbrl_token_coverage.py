@@ -12,6 +12,7 @@ import sys
 import pyarrow.parquet as pq
 
 from edgar_sec.engine.xbrl.discovery.cohort import (
+    DISCOVERY_DIR,
     canonical_seed_cohort_path,
     load_seed_cohort,
 )
@@ -100,9 +101,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     if not cohort_source.exists():
         sys.stderr.write(f"Cohort file not found: {cohort_source}\n")
         return 1
-    fixtures_dir = args.fixtures_dir or (
-        paths.repo_root / "tests" / "fixtures" / "xbrl" / "seed"
-    )
+    fixtures_dir = args.fixtures_dir or (DISCOVERY_DIR / "seed")
     if not fixtures_dir.exists():
         sys.stderr.write(f"Fixtures directory not found: {fixtures_dir}\n")
         return 1

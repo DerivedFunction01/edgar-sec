@@ -48,7 +48,7 @@ def test_flags_a_tests_import(synthetic_repo: Path) -> None:
     assert test_tree_paths.scan_test_tree_paths()
 
 
-def test_allows_the_fixture_corpus_anchor_owner(synthetic_repo: Path) -> None:
+def test_no_file_exemptions_for_production_modules(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,
         {
@@ -62,7 +62,8 @@ def test_allows_the_fixture_corpus_anchor_owner(synthetic_repo: Path) -> None:
     )
     findings = test_tree_paths.scan_test_tree_paths()
     assert [(f.path, f.line) for f in findings] == [
-        ("edgar_sec/pipelines/xbrl_review/other.py", 1)
+        ("edgar_sec/pipelines/xbrl_review/bundles.py", 1),
+        ("edgar_sec/pipelines/xbrl_review/other.py", 1),
     ]
 
 

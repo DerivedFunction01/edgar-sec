@@ -35,18 +35,12 @@ from edgar_sec.engine.xbrl.storage.storage import (
     presentation_arcs_from_arrow_table,
     read_declarations_parquet,
 )
-from edgar_sec.foundation.runtime.paths import resolve_paths
 
 _FACTS_FILE = "facts.parquet"
 _CALC_FILE = "calculation_arcs.parquet"
 _PRES_FILE = "presentation_arcs.parquet"
 _DECLARATIONS_FILE = "declarations.parquet"
 _SOURCE_REGISTRY_FILE = "fixture_source_registry.json"
-
-# The bundle corpora are fixture data in the checkout's fixture tree, named
-# by registry stem, while the canonical registries ship inside the package.
-# This module owns that anchor (a named test-tree-paths scanner exemption).
-_FIXTURE_TREE_SEGMENTS = ("tests", "fixtures", "xbrl")
 
 
 class BundleNotFoundError(ValueError):
@@ -80,15 +74,10 @@ class LoadedFiling:
 
 
 def bundle_root(registry_path: Path) -> Path:
-    """The corpus root holding a cohort registry's bundles.
-    Beside the registry when a corpus sits there (<name>_cohort.json ->
-    <name>/); otherwise the checkout's fixture tree for the registry's stem.
+    """The corpus root holding a cohort registry's bundles: beside the
+    registry itself (<name>_cohort.json -> <name>/), nowhere else.
     """
-    beside = registry_path.parent / registry_path.stem.removesuffix("_cohort")
-    if (beside / _SOURCE_REGISTRY_FILE).is_file():
-        return beside
-    stem = registry_path.stem.removesuffix("_cohort")
-    return resolve_paths().repo_root.joinpath(*_FIXTURE_TREE_SEGMENTS) / stem
+    return registry_path.parent / registry_path.stem.removesuffix("_cohort")
 
 
 def _folder_by_accession(registry_path: Path) -> dict[str, str]:

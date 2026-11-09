@@ -39,6 +39,11 @@ def test_wheel_payload_matches_the_runtime_surface(tmp_path: Path) -> None:
     assert any(name.endswith(".parquet") for name in names)
     assert any("/taxonomy/" in name and name.endswith(".json") for name in names)
     assert "edgar_sec/engine/xbrl/discovery/seed_cohort.json" in names
+    for corpus in ("seed", "vintage", "sp100", "probe"):
+        assert not any(
+            name.startswith(f"edgar_sec/engine/xbrl/discovery/{corpus}/")
+            for name in names
+        )
     assert not any(name.startswith("edgar_sec/tools/") for name in names)
     assert not any(name.endswith(".pyc") or "__pycache__" in name for name in names)
     assert any("/viewer/ui/" in name for name in names)

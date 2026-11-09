@@ -401,3 +401,15 @@ tests/fixtures/**/__pycache__/
 # rebuilt by edgar_sec/tools/build_taxonomy_archive.py.
 !edgar_sec/engine/xbrl/taxonomy/archive/
 !edgar_sec/engine/xbrl/taxonomy/archive/**
+# edgar_sec/engine/xbrl/discovery/<stem>/ holds the cohort bundle corpora:
+# production-consumed reference data beside the canonical registries, a
+# fresh clone needs them for the review pipeline and its replays. They are
+# excluded from the wheel in pyproject.toml, not from the repository.
+!edgar_sec/engine/xbrl/discovery/seed/
+!edgar_sec/engine/xbrl/discovery/seed/**
+!edgar_sec/engine/xbrl/discovery/vintage/
+!edgar_sec/engine/xbrl/discovery/vintage/**
+!edgar_sec/engine/xbrl/discovery/sp100/
+!edgar_sec/engine/xbrl/discovery/sp100/**
+!edgar_sec/engine/xbrl/discovery/probe/
+!edgar_sec/engine/xbrl/discovery/probe/**

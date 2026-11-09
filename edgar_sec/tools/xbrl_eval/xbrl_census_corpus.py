@@ -11,6 +11,7 @@ import pyarrow.parquet as pq
 
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
+from edgar_sec.engine.xbrl.discovery.cohort import DISCOVERY_DIR
 from edgar_sec.engine.xbrl.schema.models import (
     CalculationArc,
     FilingXbrl,
@@ -19,8 +20,7 @@ from edgar_sec.engine.xbrl.schema.models import (
 )
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
 
-REPO = Path(__file__).resolve().parents[3]
-XBRL_FIXTURES = REPO / "tests" / "fixtures" / "xbrl"
+XBRL_FIXTURES = DISCOVERY_DIR
 CORPUS_NAMES = ("seed", "vintage")
 
 

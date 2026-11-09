@@ -38,7 +38,7 @@ def _sp100_bundles(fixtures_root: Path) -> list[dict[str, Any]]:
 
     cohort = json.loads(canonical_sp100_cohort_path().read_text(encoding="utf-8"))
     registry = json.loads(
-        (fixtures_root / "xbrl" / "sp100" / "fixture_source_registry.json").read_text(
+        (fixtures_root / "sp100" / "fixture_source_registry.json").read_text(
             encoding="utf-8"
         )
     )
@@ -127,7 +127,7 @@ def run_screen(
         if firms is None or row["firm"] in firms
     ]
     facades = {
-        row["firm"]: _facade(fixtures_root / "xbrl" / "sp100" / row["folder"], taxonomy)
+        row["firm"]: _facade(fixtures_root / "sp100" / row["folder"], taxonomy)
         for row in bundles
     }
     report: dict[str, Any] = {
@@ -199,10 +199,12 @@ def run_screen(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
+    from edgar_sec.engine.xbrl.discovery.cohort import DISCOVERY_DIR
+
     parser.add_argument(
         "--fixtures",
         type=Path,
-        default=Path(__file__).resolve().parents[3] / "tests" / "fixtures",
+        default=DISCOVERY_DIR,
     )
     parser.add_argument("--out", type=Path, default=None)
     parser.add_argument("--policy", default="horizon_totals")
