@@ -1,7 +1,8 @@
-"""Series/class reference relation: the MF ticker file's tickered layer.
+"""Series/class reference relation: the tickered layer and publication.
 
-The full rows — CIK, series id, class id, symbol — publish here as DAG
-reference data; the cohort publication and its schema are untouched.
+The MF file's full rows publish here as DAG reference data beside the
+browse layer in `series_class_browse`; the cohort publication and its
+schema are untouched.
 """
 
 from __future__ import annotations
@@ -29,6 +30,12 @@ from edgar_sec.infra.storage.dag.spec import RelationSpec
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_literal
 
 from .paths import MetadataPaths
+from .series_class_browse import (
+    BROWSE_RELATION,
+    BROWSE_SERIES_RELATION,
+    read_browse_rows,
+    read_browse_series_rows,
+)
 
 __all__ = [
     "FUND_SERIES_CLASS_SPEC",
@@ -38,12 +45,14 @@ __all__ = [
     "TICKERED_RELATION",
     "SeriesClassIngestOutcome",
     "SeriesClassPublishOutcome",
+    "SeriesClassReconciliation",
     "TickerCounts",
     "TickeredRow",
     "ingest_mf_ticker_payload",
     "parse_mf_ticker_payload",
     "publish_series_class",
     "read_tickered_rows",
+    "reconcile_series_class",
     "series_class_tip",
 ]
 
@@ -112,6 +121,21 @@ class SeriesClassPublishOutcome:
     published: bool
     snapshot_id: str | None
     tip_before: str | None
+
+
+@dataclass(frozen=True, slots=True)
+class SeriesClassReconciliation:
+    """The two relation layers counted against each other."""
+
+    series_in_both: int
+    series_browse_only: int
+    series_file_only: int
+    classes_in_both: int
+    classes_browse_only: int
+    classes_file_only: int
+    symbol_agreements: int
+    symbol_disagreements: int
+    shared_classes_browse_untickered: int
 
 
 def _table_cik(value: object) -> str:
@@ -274,6 +298,40 @@ def read_tickered_rows(paths: MetadataPaths) -> list[TickeredRow]:
     ]
 
 
+def reconcile_series_class(paths: MetadataPaths) -> SeriesClassReconciliation:
+    """Count the browse layer against the tickered layer, class by class."""
+    tickered = read_tickered_rows(paths)
+    browse = read_browse_rows(paths)
+    browse_series_rows = read_browse_series_rows(paths)
+    file_series = {row.series_id for row in tickered}
+    browse_series = {row.series_id for row in browse_series_rows}
+    file_classes = {row.class_id: row.symbol for row in tickered}
+    browse_classes = {row.class_id: row.symbol for row in browse}
+    shared = file_classes.keys() & browse_classes.keys()
+    agreements = 0
+    disagreements = 0
+    untickered = 0
+    for class_id in shared:
+        browse_symbol = browse_classes[class_id]
+        if browse_symbol is None:
+            untickered += 1
+        elif browse_symbol == file_classes[class_id]:
+            agreements += 1
+        else:
+            disagreements += 1
+    return SeriesClassReconciliation(
+        series_in_both=len(file_series & browse_series),
+        series_browse_only=len(browse_series - file_series),
+        series_file_only=len(file_series - browse_series),
+        classes_in_both=len(shared),
+        classes_browse_only=len(browse_classes.keys() - file_classes.keys()),
+        classes_file_only=len(file_classes.keys() - browse_classes.keys()),
+        symbol_agreements=agreements,
+        symbol_disagreements=disagreements,
+        shared_classes_browse_untickered=untickered,
+    )
+
+
 def series_class_tip(paths: MetadataPaths, branch: str = "main") -> str | None:
     """The current series/class snapshot id on a branch, or None."""
     if not paths.series_class_catalog_file.is_file():
@@ -318,6 +376,24 @@ def publish_series_class(
             f"SELECT cik, series_id, class_id, symbol FROM {TICKERED_RELATION} "
             "ORDER BY cik, series_id, class_id"
         ).fetchall()
+        browse_rows = (
+            con.execute(
+                f"SELECT cik, series_id, series_name, class_id, class_name, "
+                f"symbol, source_url, page_sha256 FROM {BROWSE_RELATION} "
+                "ORDER BY cik, series_id, class_id"
+            ).fetchall()
+            if BROWSE_RELATION in existing
+            else []
+        )
+        browse_series_rows = (
+            con.execute(
+                f"SELECT cik, series_id, series_name, source_url, "
+                f"page_sha256 FROM {BROWSE_SERIES_RELATION} "
+                "ORDER BY cik, series_id"
+            ).fetchall()
+            if BROWSE_SERIES_RELATION in existing
+            else []
+        )
     finally:
         con.close()
     source_snapshot_id = str(source_rows[0][0])
@@ -328,11 +404,23 @@ def publish_series_class(
         distinct_class_count=int(source_rows[0][4]),
         distinct_cik_count=int(source_rows[0][5]),
     )
-    snapshot_id = _snapshot_id(source_snapshot_id, raw_sha256, counts, tickered_rows)
+    snapshot_id = _snapshot_id(
+        source_snapshot_id,
+        raw_sha256,
+        counts,
+        tickered_rows,
+        browse_rows,
+        browse_series_rows,
+    )
     if snapshot_id == tip:
         return SeriesClassPublishOutcome(
             published=False, snapshot_id=None, tip_before=tip
         )
+    publish_relations = PUBLISH_RELATIONS + tuple(
+        relation
+        for relation in (BROWSE_SERIES_RELATION, BROWSE_RELATION)
+        if relation in existing
+    )
     staging = paths.series_class_transient_dir(snapshot_id) / "snapshot"
     if staging.exists():
         shutil.rmtree(staging)
@@ -344,7 +432,7 @@ def publish_series_class(
             f"ATTACH {sql_literal(str(paths.series_class_store_file))} "
             "AS store (READ_ONLY)"
         )
-        for relation in PUBLISH_RELATIONS:
+        for relation in publish_relations:
             part = staging / f"{relation}.parquet"
             writer.execute(
                 f"COPY {sql_identifier('store.' + relation)} "
@@ -384,7 +472,14 @@ def publish_series_class(
     )
 
 
-def _snapshot_id(source_snapshot_id, raw_sha256, counts, tickered_rows) -> str:
+def _snapshot_id(
+    source_snapshot_id,
+    raw_sha256,
+    counts,
+    tickered_rows,
+    browse_rows,
+    browse_series_rows,
+) -> str:
     """Content identity for a series/class publish."""
     fingerprint = sha256_text(
         canonical_json(
@@ -395,6 +490,8 @@ def _snapshot_id(source_snapshot_id, raw_sha256, counts, tickered_rows) -> str:
                 "distinct_series_count": counts.distinct_series_count,
                 "distinct_class_count": counts.distinct_class_count,
                 "rows": [list(row) for row in tickered_rows],
+                "browse_rows": [list(row) for row in browse_rows],
+                "browse_series_rows": [list(row) for row in browse_series_rows],
             }
         )
     )
