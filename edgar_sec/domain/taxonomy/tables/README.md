@@ -1,21 +1,20 @@
-# `edgar_sec/domain/taxonomy/tables/` — Declarative Table Taxonomy Specifications
+# `edgar_sec/domain/taxonomy/tables/` — Table Family Specification Types
 
-Pure declarative models, 2D geometric constraints, and the master registry of table family
-specifications for financial statements, regulatory schedules, and cover layouts.
+Pure declarative models and 2D geometric constraints: the type layer that the statement
+vocabulary modules in `domain/taxonomy/statements/` build their family specifications
+from.
 
 ## Purpose
 
-Declares what each table family *looks like* — its vocabulary evidence, its geometric
-bounds, its repair policy, and its scope — and nothing about how a candidate table is
-scored against those declarations. That scoring is `engine/tables/taxonomy/classifier.py`.
+Declares the specification types — vocabulary evidence, geometric bounds, repair
+policy, and scope — as data. Nothing in this package assembles the per-family
+specifications into a registry, and nothing scores a candidate table against them.
 
 ## Contracts
 
-- **Immutability**: Spec, match, classification, and evidence types are frozen slotted dataclasses; scope and repair-policy types are string enums.
+- **Immutability**: Spec, match, and evidence types are frozen slotted dataclasses; scope and repair-policy types are string enums.
 - **Exclusion terms are advisory**: Orthogonality is best-effort; read the owning module's pack rather than assuming families are mutually exclusive.
-- **One ordering source**: A family becomes real when listed in `FAMILY_SPECS`; the classifier iterates the registry rather than a second list.
 
 ## Deliberate gaps
 
-- **No classification probe**: Nothing exposes a command to report how a candidate table scores; call the engine classifier in-process.
-- **`FAMILY_SPECS` is a mutable dict**: Treat the registry as read-only; specs are frozen but callers can add or remove families.
+- **No registry**: Family specifications are declared in their owning statement modules and consumed directly; no module collects them into a master list.

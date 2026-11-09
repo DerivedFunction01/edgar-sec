@@ -1,0 +1,196 @@
+{
+ "filings": 409,
+ "counts": {
+  "aoci|ixbrl|derivation": 8,
+  "aoci|ixbrl|heldout": 6,
+  "aoci|y2010s|heldout": 1,
+  "balance_sheet|ixbrl|derivation": 70,
+  "balance_sheet|ixbrl|heldout": 61,
+  "balance_sheet|pre2010|derivation": 24,
+  "balance_sheet|pre2010|heldout": 16,
+  "balance_sheet|y2010s|derivation": 23,
+  "balance_sheet|y2010s|heldout": 17,
+  "cash_flow|ixbrl|derivation": 97,
+  "cash_flow|ixbrl|heldout": 98,
+  "cash_flow|pre2010|derivation": 31,
+  "cash_flow|pre2010|heldout": 14,
+  "cash_flow|y2010s|derivation": 23,
+  "cash_flow|y2010s|heldout": 22,
+  "cover_layout|ixbrl|derivation": 1,
+  "debt_maturity|ixbrl|derivation": 6,
+  "debt_maturity|ixbrl|heldout": 4,
+  "deferred_tax|ixbrl|derivation": 42,
+  "deferred_tax|ixbrl|heldout": 49,
+  "deferred_tax|y2010s|derivation": 2,
+  "derivatives_hedging|ixbrl|derivation": 2,
+  "derivatives_hedging|ixbrl|heldout": 7,
+  "derivatives_hedging|y2010s|heldout": 2,
+  "eps_reconciliation|ixbrl|derivation": 22,
+  "eps_reconciliation|ixbrl|heldout": 33,
+  "eps_reconciliation|y2010s|derivation": 2,
+  "eps_reconciliation|y2010s|heldout": 3,
+  "equity_statement|ixbrl|derivation": 8,
+  "equity_statement|ixbrl|heldout": 10,
+  "equity_statement|y2010s|derivation": 1,
+  "equity_statement|y2010s|heldout": 1,
+  "fair_value|ixbrl|derivation": 17,
+  "fair_value|ixbrl|heldout": 12,
+  "fair_value|y2010s|derivation": 1,
+  "fair_value|y2010s|heldout": 1,
+  "income_statement|ixbrl|derivation": 99,
+  "income_statement|ixbrl|heldout": 113,
+  "income_statement|pre2010|derivation": 38,
+  "income_statement|pre2010|heldout": 14,
+  "income_statement|y2010s|derivation": 17,
+  "income_statement|y2010s|heldout": 19,
+  "intangibles|ixbrl|derivation": 4,
+  "intangibles|ixbrl|heldout": 10,
+  "inventory|ixbrl|derivation": 17,
+  "inventory|ixbrl|heldout": 13,
+  "inventory|y2010s|derivation": 1,
+  "lease_maturity|ixbrl|derivation": 17,
+  "lease_maturity|ixbrl|heldout": 18,
+  "lease_maturity|y2010s|heldout": 1,
+  "other|ixbrl|derivation": 2835,
+  "other|ixbrl|heldout": 3408,
+  "other|pre2010|derivation": 31,
+  "other|pre2010|heldout": 12,
+  "other|y2010s|derivation": 3547,
+  "other|y2010s|heldout": 3218,
+  "pension|ixbrl|derivation": 3,
+  "pension|ixbrl|heldout": 10,
+  "pension|y2010s|derivation": 1,
+  "pension|y2010s|heldout": 1,
+  "ppe|ixbrl|derivation": 3,
+  "ppe|ixbrl|heldout": 2,
+  "shares_purchased|ixbrl|derivation": 2,
+  "stock_comp_rollforward|ixbrl|derivation": 8,
+  "stock_comp_rollforward|ixbrl|heldout": 9,
+  "stock_comp_rollforward|y2010s|heldout": 1,
+  "tax_reconciliation|ixbrl|derivation": 22,
+  "tax_reconciliation|ixbrl|heldout": 33,
+  "unlabelled|ixbrl|derivation": 864,
+  "unlabelled|ixbrl|heldout": 1062,
+  "unlabelled|pre2010|derivation": 942,
+  "unlabelled|pre2010|heldout": 439,
+  "unlabelled|y2010s|derivation": 736,
+  "unlabelled|y2010s|heldout": 595
+ },
+ "audit": {
+  "aoci": {
+   "sampled": 2,
+   "agree": 2,
+   "disagreement_rate": 0.0,
+   "full_adjudication_required": false
+  },
+  "balance_sheet": {
+   "sampled": 20,
+   "disagree": 9,
+   "agree": 11,
+   "disagreement_rate": 0.45,
+   "full_adjudication_required": true
+  },
+  "cash_flow": {
+   "sampled": 24,
+   "agree": 20,
+   "disagree": 4,
+   "disagreement_rate": 0.1667,
+   "full_adjudication_required": true
+  },
+  "debt_maturity": {
+   "sampled": 5,
+   "agree": 5,
+   "disagreement_rate": 0.0,
+   "full_adjudication_required": false
+  },
+  "deferred_tax": {
+   "sampled": 10,
+   "agree": 7,
+   "disagree": 3,
+   "disagreement_rate": 0.3,
+   "full_adjudication_required": false
+  },
+  "derivatives_hedging": {
+   "sampled": 4,
+   "agree": 4,
+   "disagreement_rate": 0.0,
+   "full_adjudication_required": false
+  },
+  "eps_reconciliation": {
+   "sampled": 1,
+   "agree": 1,
+   "disagreement_rate": 0.0,
+   "full_adjudication_required": false
+  },
+  "equity_statement": {
+   "sampled": 5,
+   "disagree": 4,
+   "agree": 1,
+   "disagreement_rate": 0.8,
+   "full_adjudication_required": true
+  },
+  "fair_value": {
+   "sampled": 5,
+   "agree": 5,
+   "disagreement_rate": 0.0,
+   "full_adjudication_required": false
+  },
+  "income_statement": {
+   "sampled": 31,
+   "disagree": 7,
+   "agree": 24,
+   "disagreement_rate": 0.2258,
+   "full_adjudication_required": true
+  },
+  "intangibles": {
+   "sampled": 5,
+   "disagree": 2,
+   "agree": 3,
+   "disagreement_rate": 0.4,
+   "full_adjudication_required": false
+  },
+  "inventory": {
+   "sampled": 5,
+   "agree": 5,
+   "disagreement_rate": 0.0,
+   "full_adjudication_required": false
+  },
+  "lease_maturity": {
+   "sampled": 5,
+   "agree": 5,
+   "disagreement_rate": 0.0,
+   "full_adjudication_required": false
+  },
+  "other": {
+   "sampled": 40,
+   "agree": 34,
+   "disagree": 6,
+   "disagreement_rate": 0.15,
+   "full_adjudication_required": false
+  },
+  "pension": {
+   "sampled": 5,
+   "agree": 5,
+   "disagreement_rate": 0.0,
+   "full_adjudication_required": false
+  },
+  "ppe": {
+   "sampled": 3,
+   "agree": 3,
+   "disagreement_rate": 0.0,
+   "full_adjudication_required": false
+  },
+  "stock_comp_rollforward": {
+   "sampled": 5,
+   "agree": 5,
+   "disagreement_rate": 0.0,
+   "full_adjudication_required": false
+  },
+  "tax_reconciliation": {
+   "sampled": 5,
+   "agree": 5,
+   "disagreement_rate": 0.0,
+   "full_adjudication_required": false
+  }
+ }
+}
