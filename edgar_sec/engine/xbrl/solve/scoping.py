@@ -183,12 +183,10 @@ def resolve_precedence(
     refs: Iterable[FilingRef],
     lineages: Iterable[AmendmentLineage] = (),
 ) -> tuple[ResolvedFact, ...]:
-    """Full restatement precedence over a pooled cross-filing population.
+    """Latest-filed-wins precedence over a pooled cross-filing population.
 
-    Lineage supersession runs first, unchanged; among its survivors the
-    latest reporter of a key wins, ties broken by the base-form rule
-    then accession. Same-accession duplicates never supersede each
-    other, so a same-vintage disagreement stays visible, never picked.
+    Lineage supersession runs first, unchanged; ties break by the
+    base-form rule then accession, and same-vintage duplicates stay.
     """
     ranks = {ref.accession: _precedence_rank(ref) for ref in refs}
 
