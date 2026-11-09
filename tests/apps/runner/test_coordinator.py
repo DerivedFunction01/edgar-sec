@@ -6,8 +6,9 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.apps.runner.config import FilingQuery, PipelineConfig
-from edgar_sec.apps.runner.coordinator import PipelineRunner
+from edgar_sec.apps.runner.coordinator import PipelineRunner, ProfileResolutionError
 from edgar_sec.domain.filing_catalog.filters import DateInterval, DateRange
+from edgar_sec.pipelines.document_planning.profiles import load_profile
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.duckdb import connect
 
@@ -47,6 +48,85 @@ def test_pipeline_runner_resolves_profile_id(tmp_path: Path) -> None:
     runner = PipelineRunner(PipelineConfig(artifacts_root=tmp_path))
     assert runner._resolve_profile_id(("primary",)) == "primary-only"
     assert runner._resolve_profile_id(("primary", "EX-21")) == "exhibit-ex-21"
+
+
+def _profile_targets(runner: PipelineRunner, profile_id: str) -> set[tuple[str, str]]:
+    profile = load_profile(profile_id, runner.planning_paths.profiles_root)
+    return {
+        (target.role, target.type)
+        for rule in profile.rules
+        for target in rule.targets
+    }
+
+
+def test_pipeline_runner_resolves_generic_exhibit_role(tmp_path: Path) -> None:
+    runner = PipelineRunner(PipelineConfig(artifacts_root=tmp_path))
+    profile_id = runner._resolve_profile_id(("primary", "exhibits"))
+    assert profile_id.startswith("roles-")
+    assert _profile_targets(runner, profile_id) == {
+        ("primary", "primary"),
+        ("exhibit", "EX-*"),
+    }
+
+
+def test_pipeline_runner_resolves_multiple_exhibit_types(tmp_path: Path) -> None:
+    runner = PipelineRunner(PipelineConfig(artifacts_root=tmp_path))
+    first = runner._resolve_profile_id(("EX-99.2", "primary", "EX-99.1"))
+    second = runner._resolve_profile_id(("primary", "EX-99.1", "EX-99.2"))
+    assert first == second
+    assert _profile_targets(runner, first) == {
+        ("primary", "primary"),
+        ("exhibit", "EX-99.1"),
+        ("exhibit", "EX-99.2"),
+    }
+
+
+def test_pipeline_runner_generic_exhibit_subsumes_concrete(tmp_path: Path) -> None:
+    runner = PipelineRunner(PipelineConfig(artifacts_root=tmp_path))
+    profile_id = runner._resolve_profile_id(("exhibit", "EX-99.1"))
+    assert _profile_targets(runner, profile_id) == {
+        ("primary", "primary"),
+        ("exhibit", "EX-*"),
+    }
+
+
+def test_pipeline_runner_resolves_linkbase_role(tmp_path: Path) -> None:
+    runner = PipelineRunner(PipelineConfig(artifacts_root=tmp_path))
+    profile_id = runner._resolve_profile_id(("linkbases",))
+    assert _profile_targets(runner, profile_id) == {
+        ("primary", "primary"),
+        ("data_file", "EX-101.*"),
+    }
+
+
+def test_pipeline_runner_refuses_unknown_role(tmp_path: Path) -> None:
+    runner = PipelineRunner(PipelineConfig(artifacts_root=tmp_path))
+    with pytest.raises(ProfileResolutionError, match="banana"):
+        runner._resolve_profile_id(("primary", "banana"))
+
+
+def test_pipeline_runner_refuses_unplannable_exhibit_type(tmp_path: Path) -> None:
+    runner = PipelineRunner(PipelineConfig(artifacts_root=tmp_path))
+    with pytest.raises(ProfileResolutionError):
+        runner._resolve_profile_id(("EX-101.*",))
+
+
+def test_pipeline_runner_plan_shape_splits_run_intents(tmp_path: Path) -> None:
+    runner = PipelineRunner(PipelineConfig(artifacts_root=tmp_path))
+    profile_id = runner._resolve_profile_id(("primary", "exhibits"))
+    plan_profile_id, intents = runner._plan_shape(profile_id)
+    assert plan_profile_id == "primary-only"
+    assert [(intent.role, intent.type, intent.optional) for intent in intents] == [
+        ("exhibit", "EX-*", True)
+    ]
+    concrete_id = runner._resolve_profile_id(("primary", "EX-99.1", "EX-99.2"))
+    plan_profile_id, intents = runner._plan_shape(concrete_id)
+    assert plan_profile_id == "primary-only"
+    assert [(intent.role, intent.type) for intent in intents] == [
+        ("exhibit", "EX-99.1"),
+        ("exhibit", "EX-99.2"),
+    ]
+    assert runner._plan_shape("primary-only") == ("primary-only", ())
 
 
 def test_pipeline_runner_raises_when_no_catalog_discovered(tmp_path: Path) -> None:

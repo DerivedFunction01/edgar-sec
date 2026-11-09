@@ -577,6 +577,61 @@ def get_or_create_exhibit_profile(
     return load_profile(safe_id, root)
 
 
+def get_or_create_roles_profile(
+    targets: tuple[tuple[str, str, bool], ...],
+    profiles_root: str | Path | None = None,
+) -> ResolvedProfile:
+    """Return a profile for an explicit target set, creating it once."""
+    spec = [
+        {"role": role, "type": target_type, "optional": optional}
+        for role, target_type, optional in targets
+    ]
+    digest = hashlib.sha256(canonical_json(spec).encode("utf-8")).hexdigest()[:16]
+    safe_id = validate_profile_id(f"roles-{digest}")
+    root = (
+        Path(profiles_root).resolve()
+        if profiles_root is not None
+        else resolve_document_planning_paths().profiles_root
+    )
+    root.mkdir(parents=True, exist_ok=True)
+    path = root / f"{safe_id}.json"
+
+    if path.exists():
+        try:
+            return load_profile(safe_id, root)
+        except (OSError, ValueError):
+            pass
+
+    profile_targets: list[dict[str, Any]] = []
+    for target in spec:
+        written = dict(target)
+        if target["role"] == "primary":
+            written["catalog_direct_selection"] = "submitted_primary"
+        profile_targets.append(written)
+    profile_dict = {
+        "profile_id": safe_id,
+        "schema_version": PROFILE_SCHEMA_VERSION,
+        "version": "1.0.0",
+        "rules": [{"form_selector": "*", "targets": profile_targets}],
+    }
+
+    temp_fd, temp_path = tempfile.mkstemp(
+        suffix=".json", prefix=f"{safe_id}.", dir=root
+    )
+    try:
+        with os.fdopen(temp_fd, "w", encoding="utf-8") as f:
+            f.write(json.dumps(profile_dict, indent=2, ensure_ascii=False) + "\n")
+        os.chmod(temp_path, stat.S_IRUSR | stat.S_IWUSR)
+        os.replace(temp_path, path)
+    except Exception:
+        try:
+            os.unlink(temp_path)
+        except OSError:
+            pass
+        raise
+    return load_profile(safe_id, root)
+
+
 __all__ = [
     "DiscoveredProfile",
     "ProfileRule",
@@ -586,6 +641,7 @@ __all__ = [
     "discover_profiles",
     "get_or_create_baseline_profile",
     "get_or_create_exhibit_profile",
+    "get_or_create_roles_profile",
     "load_profile",
     "profile_digest",
     "targets_for_form",

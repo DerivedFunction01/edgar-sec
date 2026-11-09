@@ -8,6 +8,8 @@ import sys
 
 from edgar_sec.apps.client.facade import Edgar
 from edgar_sec.apps.client.models import FilingsResult
+from edgar_sec.apps.runner.coordinator import ProfileResolutionError
+from edgar_sec.pipelines.document_planning.planner import DocumentPlanningError
 
 _MAX_GRID_ROWS = 10
 
@@ -146,10 +148,14 @@ def main(argv: list[str] | None = None) -> int:
     """Run the fetch CLI and return its exit code."""
     args = build_parser().parse_args(argv)
     edgar = Edgar()
-    if args.file:
-        results = edgar.fetch_from_file(**_file_kwargs(args))
-    else:
-        results = edgar.fetch(**_fetch_kwargs(args))
+    try:
+        if args.file:
+            results = edgar.fetch_from_file(**_file_kwargs(args))
+        else:
+            results = edgar.fetch(**_fetch_kwargs(args))
+    except (DocumentPlanningError, ProfileResolutionError) as error:
+        print(f"error: {error}", file=sys.stderr)
+        return 2
     if args.json_output:
         print(json.dumps(_summary_payload(results, args), indent=2))
     else:

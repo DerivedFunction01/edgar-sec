@@ -195,6 +195,7 @@ class AcquisitionRunReport:
     processing_attempted_target_count: int
     processing_complete: bool
     processing_success: bool
+    ephemeral_counts: Mapping[str, int] | None = None
 
 
 __all__ = [
