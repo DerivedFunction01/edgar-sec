@@ -12,8 +12,11 @@ from edgar_sec.domain.submissions.models import Address, EntityProfile
 if TYPE_CHECKING:
     from edgar_sec.apps.client.concept import ConceptResult
     from edgar_sec.apps.client.facade import Edgar
+    from edgar_sec.apps.client.financials_stitched import StitchedFinancials
     from edgar_sec.apps.client.models import FilingsResult
     from edgar_sec.apps.client.xbrl import Xbrl
+    from edgar_sec.domain.document.aggregate import FilingAggregate
+    from edgar_sec.engine.xbrl.solve.assembly import StitchedSeries
 
 
 @dataclass(frozen=True, slots=True)
@@ -140,6 +143,64 @@ class Company:
         if latest is None:
             return None
         return self.facade.xbrl(latest)
+
+    def _selected_filings(
+        self,
+        forms: str | Sequence[str] | None,
+        dates: str | None,
+        accessions: Sequence[str] | None,
+    ) -> list[FilingAggregate]:
+        """The filing set a stitched surface assembles over.
+
+        Auto-selection is CIK + form family + date range; an explicit
+        accession list overrides it.
+        """
+        from edgar_sec.apps.client.stitched import expand_form_families
+
+        if accessions is not None:
+            wanted = {str(item) for item in accessions}
+            return [
+                filing for filing in self.filings() if filing.accession.value in wanted
+            ]
+        return list(self.filings(forms=expand_form_families(forms), dates=dates))
+
+    def stitched_series(
+        self,
+        forms: str | Sequence[str] | None = None,
+        *,
+        dates: str | None = None,
+        accessions: Sequence[str] | None = None,
+    ) -> StitchedSeries | None:
+        """Stitched series over this company's filings, keyed by exact period.
+
+        Auto-selection is CIK + form family + date range; an explicit
+        accession list overrides it. None without a facade.
+        """
+        if self.facade is None:
+            return None
+        from edgar_sec.apps.client.stitched import build_filing_series
+
+        selected = self._selected_filings(forms, dates, accessions)
+        return build_filing_series(selected, cik=self.cik.to_10digit())
+
+    def stitched_financials(
+        self,
+        forms: str | Sequence[str] | None = None,
+        *,
+        dates: str | None = None,
+        accessions: Sequence[str] | None = None,
+    ) -> StitchedFinancials | None:
+        """Stitched series plus its derived quarters, at exact periods.
+
+        Selection matches stitched_series; derived quarters serve only
+        where no reported quarter exists. None without a facade.
+        """
+        if self.facade is None:
+            return None
+        from edgar_sec.apps.client.stitched import build_stitched_financials
+
+        selected = self._selected_filings(forms, dates, accessions)
+        return build_stitched_financials(selected, cik=self.cik.to_10digit())
 
 
 __all__ = ["Company"]

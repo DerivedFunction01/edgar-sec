@@ -40,6 +40,8 @@ accessor, and explicit payload accessors.
 - **Explicit-accessor fetch**: Enumerating or selecting attachments never fetches, and the state accessor reports store presence (snapshot payload index; document-cache row) without retrieval. Calling `content()` or `rendered_text()` is the caller's explicit act and may fetch and cache.
 - **Two text semantics, distinctly named**: `text()` is the plain decode existing consumers observe; `rendered_text()` rides the injected renderer, with PDF payloads converted through the PDF text-layer route.
 - **Two role vocabularies, never merged**: The observed role (primary, exhibit, data_file, graphic, package) and the body-assessed role (primary, exhibit, schedule) are different facts about a document and are named distinctly at every surface they meet.
+- **Stitched series surface**: `Company.stitched_series()` and `Company.stitched_financials()` assemble one filer's filings — CIK + form family + date range, or an explicit accession list — into exact-period values with per-value provenance; the selected set is recorded on the result, and no value serves without a source accession.
+- **Derived quarters on the stitched surface**: `StitchedFinancials` adds derived discrete quarters to the reported winners only where the selected set reports no quarter for the span; each derived value is status DERIVED with its filed legs named, and a chain that cannot close surfaces as a recorded refusal with its reason, not a silent absence.
 
 ## Deliberate gaps
 
@@ -53,3 +55,4 @@ accessor, and explicit payload accessors.
 - **Snapshot role never fires data_file**: The snapshot views have no `table_kind` source, so the data_file branch of the single role derivation never fires there; a selector or matcher rule depending on a sometimes-absent field names that dependence rather than matching differently per vehicle in silence.
 - **Payload duration is unrecorded**: Neither mode's store records fetch duration for attachment payloads, so payload tables serve `duration_ms` 0 (none recorded); fast-mode attempt counts are likewise 0 because that mode keeps no attempt records.
 - **Attachments are single-filing only**: `Edgar.attachments(filing)` serves one filing's collection; an object-level counterpart over a `FilingsResult` is deferred until a consumer appears. The attachment surface has no markdown accessor, no query DSL, and no HTTP serve.
+- **No stitched statements**: The client serves the stitched financials series only; statement rendering stays per-filing until the question of which filing's arcs govern a stitched statement is ruled.

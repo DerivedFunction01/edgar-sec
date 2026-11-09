@@ -6,7 +6,15 @@ from edgar_sec.domain.document.aggregate import (
     FilingAttachment,
 )
 from edgar_sec.domain.identity import AccessionNumber, Cik
-from edgar_sec.engine.xbrl.parsing.filing_parser import parse_filing_xbrl
+from edgar_sec.engine.xbrl.parsing.filing_parser import (
+    filing_item_types,
+    parse_filing_xbrl,
+)
+from edgar_sec.engine.xbrl.schema.models import (
+    ConceptDeclaration,
+    FilingXbrl,
+    LinkbaseBundle,
+)
 
 
 def test_parse_filing_xbrl_from_attachments() -> None:
@@ -304,3 +312,27 @@ def test_extension_declaration_overrides_archive_item_type() -> None:
     xbrl = parse_filing_xbrl(filing)
     assert len(xbrl.facts) == 1
     assert xbrl.facts[0].value == "12345"
+
+
+def test_filing_item_types_merges_archive_under_declarations() -> None:
+    """The map facts were typed by: vintage table, declarations on top."""
+    parsed = FilingXbrl(
+        accession=AccessionNumber("0000320193-24-000123"),
+        cik=Cik.from_raw(320193),
+        facts=(),
+        linkbases=LinkbaseBundle(
+            declarations=(
+                ConceptDeclaration(
+                    concept_qname="dei:EntityCommonStockSharesOutstanding",
+                    name="EntityCommonStockSharesOutstanding",
+                    item_type="xbrli:stringItemType",
+                ),
+            )
+        ),
+        namespaces=(("dei", "http://xbrl.sec.gov/dei/2024"),),
+    )
+    item_types = filing_item_types(parsed)
+    assert (
+        item_types["dei:EntityCommonStockSharesOutstanding"] == "xbrli:stringItemType"
+    )
+    assert item_types["dei:EntityRegistrantName"] == "xbrli:normalizedStringItemType"
