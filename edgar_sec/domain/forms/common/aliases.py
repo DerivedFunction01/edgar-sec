@@ -278,6 +278,22 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "N-CR",
         "N-CR/A",
     ),
+    "N-23C-1": (
+        "N-23C-1",
+        "N-23C-1/A",
+    ),
+    "N-23C-2": (
+        "N-23C-2",
+        "N-23C-2/A",
+    ),
+    "N-23C-3": (
+        "N-23C3A",
+        "N-23C3A/A",
+        "N-23C3B",
+        "N-23C3B/A",
+        "N-23C3C",
+        "N-23C3C/A",
+    ),
     "N-CSR": (
         "N-CSR",
         "N-CSR/A",

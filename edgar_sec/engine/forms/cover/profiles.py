@@ -496,6 +496,9 @@ def _build_profiles() -> dict[str, CoverProfile]:
         build_form_4017g_profile,
         build_form_40app_profile,
         build_form_497_profile,
+        build_form_n23c1_profile,
+        build_form_n23c2_profile,
+        build_form_n23c3_profile,
         build_form_n30d_profile,
         build_form_ncsr_profile,
         build_form_nq_profile,
@@ -573,6 +576,9 @@ def _build_profiles() -> dict[str, CoverProfile]:
     form_14a = build_form_14a_profile("14A")
     form_11k = build_form_11k_profile("11-K")
     form_ncsr = build_form_ncsr_profile("N-CSR")
+    form_n23c1 = build_form_n23c1_profile("N-23C-1")
+    form_n23c2 = build_form_n23c2_profile("N-23C-2")
+    form_n23c3 = build_form_n23c3_profile("N-23C-3")
     form_n30d = build_form_n30d_profile("N-30D")
     form_nq = build_form_nq_profile("N-Q")
     form_nsar = build_form_nsar_profile("NSAR")
@@ -632,6 +638,9 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "14A": form_14a,
         "11-K": form_11k,
         "N-CSR": form_ncsr,
+        "N-23C-1": form_n23c1,
+        "N-23C-2": form_n23c2,
+        "N-23C-3": form_n23c3,
         "N-30D": form_n30d,
         "N-Q": form_nq,
         "NSAR": form_nsar,

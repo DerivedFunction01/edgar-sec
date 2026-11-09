@@ -677,3 +677,25 @@ def test_form_24f2_unheaded_specimens_resolve_no_sections(
     assert res.family == "24F-2NT"
     assert res.sections is not None
     assert res.sections.sections == ()
+
+
+def test_form_n23c_specimens_resolve_sections(
+    fixture: str, form: str, family: str, expected: list[str]
+) -> None:
+    """Census specimens resolve the sections their bodies carry."""
+    path = fixture_path(f"document/form_n23c/{fixture}")
+    res = normalize_document(path.read_bytes(), form=form, document_path=path.name)
+
+    assert res.family == family
+    assert res.sections is not None
+    assert [s.item_identifier for s in res.sections.sections] == expected
+
+
+def test_form_n23c_paper_stub_resolves_no_sections() -> None:
+    """A .paper primary has no body: sections stay honestly absent."""
+    fixture = "9999999997-03-043480__9999999997-03-043480.paper"
+    path = fixture_path(f"document/form_n23c/{fixture}")
+    res = normalize_document(path.read_bytes(), form="N-23C3B", document_path=path.name)
+
+    assert res.family == "N-23C-3"
+    assert res.sections is None

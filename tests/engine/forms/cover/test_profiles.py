@@ -204,6 +204,21 @@ def test_form_24f2_profile_resolves_with_taxonomy() -> None:
     assert form_24f2.has_sections is True
     assert form_24f2.body_evidence is not None
     assert "SIGNATURES" in form_24f2.body_evidence.structural_headings
+def test_form_n23c_profiles_resolve_with_taxonomies() -> None:
+    cases = (
+        ("N-23C-1/A", "N-23C-1", "PURCHASES STATEMENT"),
+        ("N-23C-2/A", "N-23C-2", "SIGNATURES"),
+        ("N-23C3B/A", "N-23C-3", "NOTIFICATION OF REPURCHASE OFFER"),
+        ("N-23C3C/A", "N-23C-3", "NOTIFICATION OF REPURCHASE OFFER"),
+    )
+    for form, family, heading in cases:
+        profile = get_profile(form)
+        assert profile.family == family
+        assert profile.boundary is not None
+        assert profile.checkbox_schema is None
+        assert profile.has_sections is True
+        assert profile.body_evidence is not None
+        assert heading in profile.body_evidence.structural_headings
 
 
 def test_annual_profiles_enable_incorporated_reference() -> None:
