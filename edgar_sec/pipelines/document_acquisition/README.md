@@ -19,6 +19,7 @@ without acquiring any payload.
 ## Contracts
 
 - **Pinned selection policy**: Catalog-direct selection is exactly `submitted_primary` or `exact_form_with_lazy_index`; acquisition cannot replace or upgrade it.
+- **Ephemeral run intents are run-scoped**: A run may carry non-primary target intents; the runner then fetches each filing's index page through the transport, enumerates the intents against it inside the run's worker pool, and acquires the matches. Resolutions live only in the run's state store (`ephemeral_targets`) and die with the run; no plan, manifest, or inventory record is created for them, and the complete-submission bundle is never fetched to obtain them.
 - **Pinned retrieval mode**: acquisition executes the source and sequence selected by planning.
   It does not compare advertised sizes, group targets into a shared bundle fetch,
   or fall back from an ordinary failed direct request to the accession bundle.

@@ -14,6 +14,7 @@ It delivers relational DataFrame results; SEC rate pacing is owned by the transp
 - **Transport lifecycle**: The SEC transport is wrapped lazily for the run and closed on exit; this package owns no socket daemon or broker.
 - **Resource bounds**: Worker counts pass through as `requested_workers`; the acquisition pipeline's resource derivation bounds them against cgroup limits.
 - **Relational output**: Emits `FilingsResult` instances holding pointers to DuckDB-readable target relations.
+- **Roles resolve or refuse**: Every requested role maps into the run — `primary`, generic `exhibit`/`exhibits`, generic `linkbase`/`linkbases`, and concrete `EX-` types — or the run refuses with a coded `ProfileResolutionError`. The published plan stays primary-only; non-primary targets ride the run as ephemeral acquisition intents.
 
 ## Deliberate gaps
 
