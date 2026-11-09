@@ -200,10 +200,8 @@ class TtmServing(CashFlowServing):
 
     def ttm(self, metric: str, *, period_end: str | None = None) -> TtmResult:
         """The trailing twelve months ending at a period end, statused.
-
-        The end defaults to the latest period end the filing's legs
-        reach. A TTM is DERIVED however reported its legs are; an end
-        whose four quarters cannot be accounted for is UNAVAILABLE.
+        DERIVED however reported its legs are; an end missing one of its
+        four quarters is UNAVAILABLE. The end defaults to the latest reached.
         """
         if metric in _INSTANT_METRICS or metric == "uncommenced_leases":
             return TtmResult(
@@ -359,11 +357,9 @@ class TtmServing(CashFlowServing):
         return {}
 
     def _legs_for_filter(self, flt: _AtomFilter) -> dict[tuple[str, str], SpanLeg]:
-        """Span legs under one atom filter, served-series selection per span.
-
-        Per concept the longest-span/finest-decimals fact stands, as in
-        the kernel's best-ranked scan; per span the winner mirrors the
-        served series' rule, with the revenue ancestor yield applied.
+        """Span legs under one atom filter, served-series selection per span:
+        the longest-span/finest-decimals fact stands per concept, and the
+        per-span winner mirrors the served series, revenue ancestor yielding.
         """
         grouped: dict[tuple[str, str], list[XbrlFact]] = {}
         for fact in self._facts:
@@ -701,11 +697,9 @@ def _ttm_window(
 def _discrete_quarters(
     reported: dict[tuple[str, str], SpanLeg], *, weighted: bool
 ) -> tuple[dict[tuple[str, str], SpanLeg], list[str]]:
-    """Discrete quarters from reported spans, with chain breaks named.
-
-    Reported quarters stand as filed; a later cumulative span in a
-    chain yields its quarter as the difference of consecutive legs.
-    Weighted legs difference their day-weighted totals instead.
+    """Discrete quarters from reported spans, with chain breaks named:
+    reported quarters stand as filed, and a later cumulative span yields
+    its quarter by differencing consecutive legs (day-weighted if weighted).
     """
     quarters: dict[tuple[str, str], SpanLeg] = {}
     breaks: list[str] = []
