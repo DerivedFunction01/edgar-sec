@@ -26,6 +26,7 @@ PROFILE_FORM_N23C1 = DocumentProcessingProfile(
     report_class=FormN23C1Report,
     preferred_operation=AcquisitionOperation.RENDER_TO_TXT,
     has_sections=True,
+    section_run_in_titles=True,
 )
 
 PROFILE_FORM_N23C2 = DocumentProcessingProfile(
@@ -35,6 +36,7 @@ PROFILE_FORM_N23C2 = DocumentProcessingProfile(
     report_class=FormN23C2Report,
     preferred_operation=AcquisitionOperation.RENDER_TO_TXT,
     has_sections=True,
+    section_run_in_titles=True,
 )
 
 PROFILE_FORM_N23C3 = DocumentProcessingProfile(
@@ -44,6 +46,7 @@ PROFILE_FORM_N23C3 = DocumentProcessingProfile(
     report_class=FormN23C3Report,
     preferred_operation=AcquisitionOperation.RENDER_TO_TXT,
     has_sections=True,
+    section_run_in_titles=True,
 )
 
 __all__ = [
