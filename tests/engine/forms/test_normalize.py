@@ -336,3 +336,23 @@ def test_form_18k_paper_stub_resolves_no_sections() -> None:
 
     assert res.family == "18-K"
     assert res.sections is None
+
+
+@pytest.mark.parametrize(
+    ("fixture", "form"),
+    [
+        ("0001445546-13-000978__s-6.txt", "S-6"),
+        ("0000875626-03-001585__s487.txt", "487"),
+    ],
+)
+def test_form_s6_specimens_resolve_sections(fixture: str, form: str) -> None:
+    """S-6 and Rule 487 specimens resolve their prospectus sections."""
+    path = fixture_path(f"document/form_s6/{fixture}")
+    res = normalize_document(path.read_bytes(), form=form, document_path=path.name)
+
+    assert res.family == "S-6"
+    assert res.sections is not None
+    assert [s.item_identifier for s in res.sections.sections] == [
+        "ITEM SUMMARY OF ESSENTIAL INFORMATION",
+        "ITEM FEE TABLE",
+    ]
