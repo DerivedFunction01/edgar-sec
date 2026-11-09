@@ -3,7 +3,11 @@
 from pathlib import Path
 
 from edgar_sec.apps.client.attachments import Attachments
-from edgar_sec.domain.document.aggregate import FilingAttachment
+from edgar_sec.apps.client.cache import DocumentCache
+from edgar_sec.apps.client.facade import Edgar
+from edgar_sec.apps.client.fast_query.loaders import make_attachment_loader
+from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
+from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.engine.forms.earnings.selection import select_exhibit_candidates
 
 
@@ -203,3 +207,70 @@ def test_content_and_rendered_text_accessors() -> None:
     )
     assert bare.content() is None
     assert bare.rendered_text() is None
+
+
+def _hand_built_filing() -> FilingAggregate:
+    return FilingAggregate(
+        accession=AccessionNumber.from_any("0000320193-23-000106"),
+        primary_cik=Cik(320193),
+        ciks=(Cik(320193),),
+        form="10-K",
+        filing_date="2023-11-03",
+        primary_document_path="aapl-20230930.htm",
+        attachments=_attachments(),
+    )
+
+
+def test_facade_attachments_matches_direct_construction() -> None:
+    filing = _hand_built_filing()
+    via_facade = Edgar().attachments(filing)
+    direct = Attachments(filing.get_attachments())
+    assert isinstance(via_facade, Attachments)
+    assert list(via_facade) == list(direct)
+    for picked, original in zip(via_facade, filing.attachments):
+        assert picked is original
+    assert _ids(via_facade.exhibits()) == ["a2", "a3", "a6", "a7", "a8"]
+
+
+def test_facade_attachments_over_fast_path_filing(tmp_path: Path) -> None:
+    accession = AccessionNumber.from_any("0000320193-23-000106")
+    cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
+    index_html = b"""
+<html>
+<body>
+<table summary="Document Format Files">
+<tr><th>Seq</th><th>Description</th><th>Document</th><th>Type</th><th>Size</th></tr>
+<tr><td>1</td><td>10-K</td><td><a href="aapl-20230930.htm">aapl-20230930.htm</a></td><td>10-K</td><td>1000</td></tr>
+<tr><td>2</td><td>SUBSIDIARIES</td><td><a href="ex21.htm">ex21.htm</a></td><td>EX-21.1</td><td>200</td></tr>
+</table>
+</body>
+</html>
+"""
+    cache.put(
+        accession=accession.raw,
+        cik="320193",
+        form="10-K",
+        filename=f"{accession.raw}-index.html",
+        content=index_html,
+        content_type="text/html",
+    )
+    filing = FilingAggregate(
+        accession=accession,
+        primary_cik=Cik(320193),
+        ciks=(Cik(320193),),
+        form="10-K",
+        filing_date="2023-11-03",
+        primary_document_path="aapl-20230930.htm",
+        attachment_loader=make_attachment_loader(cache),
+    )
+
+    def projection(collection: Attachments) -> list[tuple]:
+        return [(a.filename, a.sequence, a.role, a.state) for a in collection]
+
+    via_facade = Edgar().attachments(filing)
+    direct = Attachments(filing.get_attachments())
+    assert projection(via_facade) == projection(direct)
+    assert projection(via_facade) == [
+        ("aapl-20230930.htm", 1, "primary", "not_acquired"),
+        ("ex21.htm", 2, "exhibit", "not_acquired"),
+    ]

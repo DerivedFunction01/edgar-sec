@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 
+from edgar_sec.apps.client.attachments import Attachments
 from edgar_sec.apps.client.facade import Edgar
 from edgar_sec.apps.client.snapshots import (
     attachment_role_sql,
@@ -360,3 +361,21 @@ def test_snapshot_attachment_not_acquired_is_explicit(tmp_path: Path) -> None:
     assert att.state == "not_acquired"
     assert att.content() is None
     assert att.rendered_text() is None
+
+
+def test_facade_attachments_over_snapshot_filing(tmp_path: Path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    run_id, _ = _setup_run(tmp_path, "run-1")
+    publish_acquisition_run(paths, run_id, branch_name="main")
+
+    res = query_filings_from_snapshot(tmp_path, snapshot_id_or_tag="main")
+    filing = res[0]
+    via_facade = Edgar(artifacts_root=tmp_path).attachments(filing)
+    direct = Attachments(filing.get_attachments())
+
+    def projection(collection: Attachments) -> list[tuple]:
+        return [(a.filename, a.sequence, a.sha256, a.state) for a in collection]
+
+    assert projection(via_facade) == projection(direct)
+    assert [a.filename for a in via_facade] == ["report.htm"]
+    assert via_facade.items[0].state == "acquired"
