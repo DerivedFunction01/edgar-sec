@@ -12,8 +12,11 @@ from edgar_sec.apps.client.companyfacts import (
     FactKey,
     compare_company_facts_to_parsed,
     fetch_company_facts,
+    parsed_values_by_key,
 )
+from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import companyfacts_url
+from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.infra.sec_http.errors import PermanentHttpError
 from tests.support import load_fixture
 
@@ -137,6 +140,39 @@ def test_compare_concepts_restricts_both_sides() -> None:
 
     assert {row.key.tag for row in comparison.rows} == {"Assets"}
     assert comparison.agreement_rate is None
+
+
+def test_parsed_values_by_key_shapes_the_join_keys() -> None:
+    accession = AccessionNumber.from_any("0000320193-24-000123")
+    instant = {
+        "accession": accession,
+        "concept_qname": "us-gaap:Assets",
+        "unit": "USD",
+        "period_type": "instant",
+        "instant_date": "2024-09-28",
+    }
+    facts = (
+        XbrlFact(value=10.0, **instant),
+        XbrlFact(value=99.0, **instant),
+        XbrlFact(value=1.0, dimensions={"axis": "member"}, **instant),
+        XbrlFact(value="n/a", **instant),
+        XbrlFact(
+            accession=accession,
+            concept_qname="us-gaap:NetIncomeLoss",
+            value=3.5,
+            unit="USD",
+            period_type="duration",
+            start_date="2023-10-01",
+            end_date="2024-09-28",
+        ),
+    )
+
+    parsed = parsed_values_by_key(facts)
+
+    assert parsed == {
+        FactKey("us-gaap", "Assets", "USD", "", "2024-09-28"): 10.0,
+        FactKey("us-gaap", "NetIncomeLoss", "USD", "2023-10-01", "2024-09-28"): 3.5,
+    }
 
 
 def test_facade_company_facts_uses_the_facade_sec_client() -> None:

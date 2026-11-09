@@ -6,11 +6,55 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from edgar_sec.apps.client import operator, operator_company, operator_run_records
+from edgar_sec.apps.client.companyfacts import fetch_company_facts
 from edgar_sec.apps.client.concept import ConceptResult
 from edgar_sec.apps.client.frames import FrameIdentity, FrameResult, FrameRow
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.identity import AccessionNumber, Cik
+from edgar_sec.engine.xbrl.schema.models import XbrlFact
+from tests.support import load_fixture
+
+
+class _StaticHttp:
+    """One canned JSON payload, whatever URL is asked for."""
+
+    def __init__(self, payload) -> None:
+        self.payload = payload
+
+    def get_json(self, url: str):
+        return self.payload
+
+
+def _parsed_facts() -> tuple[XbrlFact, ...]:
+    accession = AccessionNumber.from_any("0000320193-24-000123")
+    return (
+        XbrlFact(
+            accession=accession,
+            concept_qname="us-gaap:Assets",
+            value=364980000000.0,
+            unit="USD",
+            period_type="instant",
+            instant_date="2024-09-28",
+        ),
+        XbrlFact(
+            accession=accession,
+            concept_qname="us-gaap:NetIncomeLoss",
+            value=1.0,
+            unit="USD",
+            period_type="duration",
+            start_date="2023-10-01",
+            end_date="2024-09-28",
+        ),
+        XbrlFact(
+            accession=accession,
+            concept_qname="us-gaap:StockholdersEquity",
+            value=74101000000.0,
+            unit="USD",
+            period_type="instant",
+            instant_date="2024-09-28",
+        ),
+    )
 
 
 def _acc(number: int) -> str:
@@ -54,6 +98,7 @@ class _FakeCompany:
         self.fiscal_year_end = "1231"
         self._tmp_path = tmp_path
         self._fail_filings = fail_filings
+        self.parsed_facts: tuple[XbrlFact, ...] = ()
         self.concept_values = (
             ConceptResult(
                 value=100,
@@ -81,7 +126,7 @@ class _FakeCompany:
         return self.concept_values
 
     def xbrl(self, form=None):
-        return SimpleNamespace(financials=object())
+        return SimpleNamespace(financials=object(), facts=self.parsed_facts)
 
 
 class _FakeFacade:
@@ -92,6 +137,7 @@ class _FakeFacade:
         self.calls: list[str] = []
         self.acme = _FakeCompany(tmp_path, "Acme Anvils Inc", 111)
         self.apple = _FakeCompany(tmp_path, "Apple Inc", 320193)
+        self.apple.parsed_facts = _parsed_facts()
         self.broken = _FakeCompany(tmp_path, "Broken Co", 999, fail_filings=True)
         self.companies = {
             "111": self.acme,
@@ -137,6 +183,12 @@ class _FakeFacade:
     def frames(self, taxonomy, tag, unit, period):
         self.calls.append(f"frames:{taxonomy}:{tag}")
         return self.frame_result
+
+    def company_facts(self, cik):
+        self.calls.append(f"company_facts:{cik}")
+        return fetch_company_facts(
+            cik, client=_StaticHttp(load_fixture("companyfacts_multi.json"))
+        )
 
     def cache_stats(self):
         return {"responses": {"entries": 3}}
@@ -369,6 +421,39 @@ def test_company_include_is_a_closed_set(tmp_path) -> None:
     options = {"identifier": "AAPL", "include": ["bogus"]}
     result = operator.execute_by_id("company", session, options)
     assert result.error_code == "invalid_options"
+
+
+def test_company_facts_cross_check_renders_four_outcome_classes(tmp_path) -> None:
+    session, facade = _session(tmp_path)
+    options = {"identifier": "AAPL", "include": ["facts_cross_check"]}
+    result = operator.execute_by_id("company", session, options)
+    assert result.error_code is None
+    assert "company_facts:0000320193" in facade.calls
+    section = result.data["sections"]["facts_cross_check"]
+    assert section["status"] == "ok"
+    assert section["cross_check"] is True
+    assert section["counts"] == {
+        "agree": 1,
+        "diverge": 1,
+        "facts_only": 2,
+        "parsed_only": 1,
+    }
+    assert section["agreement_rate"] == 0.5
+    outcomes = {row["outcome"] for row in section["rows"]}
+    assert outcomes == {"agree", "diverge", "facts_only", "parsed_only"}
+    diverge = next(row for row in section["rows"] if row["outcome"] == "diverge")
+    assert diverge["tag"] == "NetIncomeLoss"
+    assert diverge["facts_value"] == 93736000000
+    assert diverge["parsed_value"] == 1.0
+
+
+def test_company_default_sections_include_facts_cross_check(tmp_path) -> None:
+    session, _ = _session(tmp_path)
+    result = operator.execute_by_id("company", session, {"identifier": "AAPL"})
+    assert result.error_code is None
+    section = result.data["sections"]["facts_cross_check"]
+    assert section["status"] == "ok"
+    assert section["counts"]["agree"] == 1
 
 
 def test_company_filings_row_seeds_a_named_set(tmp_path) -> None:
