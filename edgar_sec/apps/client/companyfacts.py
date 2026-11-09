@@ -7,13 +7,17 @@ machinery. The join to parsed facts exists only as the comparison below.
 
 from __future__ import annotations
 
-from collections.abc import Collection, Iterator, Mapping
+from collections.abc import Collection, Iterable, Iterator, Mapping
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 from edgar_sec.domain.identity import Cik
 from edgar_sec.domain.sec_urls import companyfacts_url
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.errors import PermanentHttpError, RetryExhausted
+
+if TYPE_CHECKING:
+    from edgar_sec.engine.xbrl.schema.models import XbrlFact
 
 __all__ = [
     "AGREE",
@@ -28,6 +32,7 @@ __all__ = [
     "compare_company_facts_to_parsed",
     "fetch_company_facts",
     "iter_company_facts",
+    "parsed_values_by_key",
 ]
 
 
@@ -263,3 +268,29 @@ def compare_company_facts_to_parsed(
             )
         )
     return FactsComparison(cik=facts.cik, rows=tuple(rows))
+
+
+def parsed_values_by_key(facts: Iterable[XbrlFact]) -> dict[FactKey, float | None]:
+    """Key one filing's parsed facts for the cross-check join.
+
+    No-dimension numeric facts only; the first value at a key wins.
+    """
+    parsed: dict[FactKey, float | None] = {}
+    for fact in facts:
+        if fact.dimensions:
+            continue
+        value = fact.value
+        if not isinstance(value, (int, float)) or isinstance(value, bool):
+            continue
+        qname = str(fact.concept_qname)
+        if ":" not in qname:
+            continue
+        taxonomy, tag = qname.split(":", 1)
+        if fact.period_type == "instant":
+            start, end = "", str(fact.instant_date or "")
+        else:
+            start = str(fact.start_date or "")
+            end = str(fact.end_date or "")
+        key = FactKey(taxonomy, tag, str(fact.unit or ""), start, end)
+        parsed.setdefault(key, float(value))
+    return parsed
