@@ -13,6 +13,7 @@ evaluate grounded XBRL populations.
 ## Packages
 
 - **docgen**: CLI reflection and Markdown sentinel synchronization.
+- **packaging**: Installed-form verification battery (build, clean installs, installed checks).
 - **workers**: Pytest worker calibration and timing-profile storage.
 - **fixtures**: Fixture-gathering planning and candidate scoring.
 - **xbrl_discovery**: XBRL linkbase seeding and taxonomy archive construction.

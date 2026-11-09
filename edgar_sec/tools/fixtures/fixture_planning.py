@@ -16,8 +16,9 @@ from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.foundation.runtime.settings.sec import DEFAULT_RATE_LIMIT_RPS
 from edgar_sec.infra.storage.duckdb import connect, sql_literal, sql_path_list
 
-REPO = Path(__file__).resolve().parents[3]
-SEED_COHORT = REPO / "tests" / "fixtures" / "xbrl" / "seed_cohort.json"
+from edgar_sec.engine.xbrl.discovery.cohort import canonical_seed_cohort_path
+
+SEED_COHORT = canonical_seed_cohort_path()
 
 # Only filings at or above this us-gaap fact count enter the registry;
 # every scored row keeps its counts, so picks can re-threshold from the

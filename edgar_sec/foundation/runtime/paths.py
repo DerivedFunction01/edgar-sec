@@ -12,6 +12,14 @@ from .settings.paths import DEFAULT_DISTRIBUTION_ROOT
 # Cross-pipeline artifact layout: an immutable dataset under a dataset root, a
 # tip naming what is published, and resumable work under a transient root.
 TRANSIENT_DIR = "transient"
+UPLOADS_DIR = "uploads"
+
+# Package layout segments under PACKAGE_ROOT: the segments of the shipped
+# taxonomy data tree, owned here so every layer composes the same path.
+ENGINE_DIR = "engine"
+XBRL_DIR = "xbrl"
+TAXONOMY_DIR = "taxonomy"
+TAXONOMY_ARCHIVE_DIR = "archive"
 CURRENT_DIR = "current"
 PLAN_FILE_NAME = "plan.json"
 SNAPSHOTS_DIR = "snapshots"
@@ -164,21 +172,65 @@ def _resolve_artifacts_root(root: Path) -> Path:
     return (root / configured).resolve()
 
 
+def _configured_workspace_root() -> Path | None:
+    """The registered ``workspace.root``, or None when it is unset (empty)."""
+    configured = resolve_settings().get("workspace.root", "")
+    text = str(configured).strip() if configured is not None else ""
+    return Path(text) if text else None
+
+
+def package_taxonomy_dir() -> Path:
+    """The shipped taxonomy data tree, anchored inside the package itself."""
+    return PACKAGE_ROOT / ENGINE_DIR / XBRL_DIR / TAXONOMY_DIR
+
+
+@dataclass(frozen=True, slots=True)
+class PackageDataStatus:
+    """Presence of the shipped package data at its self-located anchor."""
+
+    taxonomy_dir: Path
+    taxonomy_dir_present: bool
+    archive_dir: Path
+    archive_dir_present: bool
+
+    @property
+    def present(self) -> bool:
+        """True when the whole package data tree is in place."""
+        return self.taxonomy_dir_present and self.archive_dir_present
+
+
+def package_data_status(taxonomy_dir: Path | None = None) -> PackageDataStatus:
+    """Report package-data presence, distinct from any one slice's absence.
+
+    A missing tree means a broken install; a missing slice inside a present
+    tree is ordinary honest absence and is not this probe's concern.
+    """
+    root = taxonomy_dir if taxonomy_dir is not None else package_taxonomy_dir()
+    archive_dir = root / TAXONOMY_ARCHIVE_DIR
+    return PackageDataStatus(
+        taxonomy_dir=root,
+        taxonomy_dir_present=root.is_dir(),
+        archive_dir=archive_dir,
+        archive_dir_present=archive_dir.is_dir(),
+    )
+
+
 def resolve_paths(repo_root: Path | str | None = None) -> ProjectPaths:
     """Resolve standard project layout from the current working directory.
-
-    The CWD *is* the project root, so the CLI must run from the repository root.
+    The CWD *is* the project root (a registered ``workspace.root`` names it instead);
     ``artifacts.root`` is the single authority for the artifacts root.
     """
     if repo_root is not None:
         root = Path(repo_root)
+    elif (workspace := _configured_workspace_root()) is not None:
+        root = workspace
     else:
         root = Path.cwd()
         _reject_package_working_directory(root)
 
     artifacts_root = _resolve_artifacts_root(root)
 
-    uploads_root = root / "uploads"
+    uploads_root = root / UPLOADS_DIR
 
     return ProjectPaths(
         repo_root=root,
@@ -207,11 +259,19 @@ __all__ = [
     "RUNS_DIR",
     "RUNTIME_DIR",
     "SNAPSHOTS_DIR",
+    "ENGINE_DIR",
+    "PackageDataStatus",
+    "TAXONOMY_ARCHIVE_DIR",
+    "TAXONOMY_DIR",
     "TRANSIENT_DIR",
+    "UPLOADS_DIR",
+    "XBRL_DIR",
     "ProjectPaths",
     "ProjectRootError",
     "dataset_root",
     "distribution_root",
+    "package_data_status",
+    "package_taxonomy_dir",
     "resolve_paths",
     "runtime_root",
     "snapshots_root",

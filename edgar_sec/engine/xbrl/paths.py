@@ -5,11 +5,15 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from edgar_sec.foundation.runtime.paths import ProjectPaths, resolve_paths
+from edgar_sec.foundation.runtime.paths import (
+    TAXONOMY_ARCHIVE_DIR,
+    XBRL_DIR,
+    ProjectPaths,
+    package_taxonomy_dir,
+    resolve_paths,
+)
 
-XBRL_DIR = "xbrl"
 XML_CACHE_DIR = "xml"
-TAXONOMY_DIR = "taxonomy"
 DEFAULT_PRIME_HEADS_FILE = "prime_heads.json"
 DEFAULT_SUBATOMIC_MODIFIERS_FILE = "subatomic_modifiers.json"
 DEFAULT_SIBLING_GROUPS_FILE = "sibling_groups.json"
@@ -31,7 +35,6 @@ DEFAULT_INSTRUMENTS_DAG_FILE = "instruments_dag.json"
 DEFAULT_VALUATION_RULES_FILE = "valuation_rules.json"
 DEFAULT_SUBSPACE_INVARIANTS_FILE = "subspace_invariants.json"
 DEFAULT_DEFAULT_COORDINATES_FILE = "default_coordinates.json"
-DEFAULT_TAXONOMY_ARCHIVE_DIR = "archive"
 
 
 @dataclass(frozen=True, slots=True)
@@ -68,7 +71,7 @@ class XbrlPaths:
     @property
     def default_taxonomy_dir(self) -> Path:
         """Directory housing accounting domain taxonomy files."""
-        return self.repo_root / "edgar_sec" / "engine" / XBRL_DIR / TAXONOMY_DIR
+        return package_taxonomy_dir()
 
     @property
     def default_prime_heads_path(self) -> Path:
@@ -178,7 +181,7 @@ class XbrlPaths:
     @property
     def default_taxonomy_archive_dir(self) -> Path:
         """Default directory of the per-vintage taxonomy archive slices."""
-        return self.default_taxonomy_dir / DEFAULT_TAXONOMY_ARCHIVE_DIR
+        return self.default_taxonomy_dir / TAXONOMY_ARCHIVE_DIR
 
     def ensure_directories(self) -> None:
         """Create artifact directories if they do not exist."""

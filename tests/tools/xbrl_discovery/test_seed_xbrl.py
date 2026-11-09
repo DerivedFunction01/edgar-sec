@@ -6,7 +6,7 @@ import pytest
 
 from edgar_sec.engine.xbrl.storage.storage import read_linkbase_parquet
 from edgar_sec.tools.xbrl_discovery.seed_xbrl import main
-from tests.support import fixture_path
+from tests.support import cohort_registry_path, fixture_path
 
 
 def test_seed_xbrl_requires_output() -> None:
@@ -21,7 +21,7 @@ def test_seed_xbrl_cli_with_fixtures(tmp_path: Path) -> None:
     out_parquet = tmp_path / "linkbases.parquet"
     artifacts_root = tmp_path / "artifacts"
     fix_html = fixture_path("xbrl/msft_index_page.html")
-    cohort_json = fixture_path("xbrl/seed_cohort.json")
+    cohort_json = cohort_registry_path("seed_cohort.json")
     ret = main(
         [
             "--output",

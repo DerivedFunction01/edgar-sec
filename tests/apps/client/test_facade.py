@@ -20,7 +20,7 @@ from edgar_sec.engine.xbrl.solve.scoping import (
 )
 from edgar_sec.engine.xbrl.storage.storage import facts_from_arrow_table
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
-from tests.support import fixture_path, load_fixture
+from tests.support import fixture_path, load_cohort_registry, load_fixture
 
 
 def test_edgar_facade_builds_specs_and_delegates(monkeypatch, tmp_path) -> None:
@@ -363,7 +363,7 @@ def test_edgar_facade_fetch_operation_forwarding(monkeypatch, tmp_path) -> None:
 
 def _probe_refs(folders: tuple[str, ...]) -> tuple[FilingRef, ...]:
     """Lineage refs for probe bundles: cohort rows plus filed period ends."""
-    rows = {row["accession"]: row for row in load_fixture("xbrl/probe_cohort.json")}
+    rows = {row["accession"]: row for row in load_cohort_registry("probe_cohort.json")}
     refs = []
     for folder in folders:
         facts = facts_from_arrow_table(

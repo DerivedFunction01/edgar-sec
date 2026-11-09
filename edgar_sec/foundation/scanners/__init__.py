@@ -22,6 +22,7 @@ from .secrets import SCANNER as SECRETS_SCANNER
 from .sha256_validation import SCANNER as SHA256_VALIDATION_SCANNER
 from .sql_interpolation import SCANNER as SQL_INTERPOLATION_SCANNER
 from .string_lookup import SCANNER as STRING_LOOKUP_SCANNER
+from .test_tree_paths import SCANNER as TEST_TREE_PATHS_SCANNER
 from .uncompiled_regex import SCANNER as UNCOMPILED_REGEX_SCANNER
 from .whole_file_read import SCANNER as WHOLE_FILE_READ_SCANNER
 
@@ -47,6 +48,7 @@ ALL_SCANNERS: tuple[Scanner, ...] = (
     FORM_ISOLATION_SCANNER,
     FORM_VOCABULARY_SCANNER,
     SEC_SURFACE_SCANNER,
+    TEST_TREE_PATHS_SCANNER,
 )
 
 __all__ = [
@@ -70,6 +72,7 @@ __all__ = [
     "SHA256_VALIDATION_SCANNER",
     "SQL_INTERPOLATION_SCANNER",
     "STRING_LOOKUP_SCANNER",
+    "TEST_TREE_PATHS_SCANNER",
     "WHOLE_FILE_READ_SCANNER",
     "UNCOMPILED_REGEX_SCANNER",
     "Scanner",

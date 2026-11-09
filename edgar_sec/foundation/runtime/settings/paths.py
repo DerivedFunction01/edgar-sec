@@ -1,7 +1,7 @@
 """Artifact and cache path settings.
 
 Logical paths are chosen so the derived environment names read conventionally:
-``artifacts.root`` -> ``ARTIFACTS_ROOT``, ``cache.root`` -> ``CACHE_ROOT``.
+``artifacts.root`` -> ``ARTIFACTS_ROOT``, ``workspace.root`` -> ``WORKSPACE_ROOT``.
 
 :no-path-tree:
 """
@@ -30,6 +30,15 @@ def get_paths_specs() -> dict[str, dict[str, SettingSpec]]:
     from . import SettingSpec
 
     return {
+        "workspace": {
+            "root": SettingSpec(
+                value_type=Path,
+                default="",
+                env=True,
+                machine_local=True,
+                description="installed-mode workspace root; empty means the working directory",
+            ),
+        },
         "artifacts": {
             "root": SettingSpec(
                 value_type=Path,

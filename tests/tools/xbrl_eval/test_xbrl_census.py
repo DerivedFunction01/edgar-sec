@@ -158,10 +158,10 @@ def test_corpus_registries_partition_the_grounded_corpus() -> None:
     """Seed and vintage registries partition the 65 grounded bundles."""
     import json
 
-    from tests.support import fixture_path
+    from tests.support import cohort_registry_path, fixture_path
 
     def rows(name: str) -> list[dict]:
-        return json.loads(fixture_path(f"xbrl/{name}").read_text(encoding="utf-8"))
+        return json.loads(cohort_registry_path(name).read_text(encoding="utf-8"))
 
     def sources(corpus: str) -> list[dict]:
         payload = json.loads(
@@ -199,10 +199,10 @@ def test_sp100_registry_partitions_its_corpus() -> None:
     """SP100 registry, source rows, and bundle folders are in bijection."""
     import json
 
-    from tests.support import fixture_path
+    from tests.support import cohort_registry_path, fixture_path
 
     def rows(name: str) -> list[dict]:
-        return json.loads(fixture_path(f"xbrl/{name}").read_text(encoding="utf-8"))
+        return json.loads(cohort_registry_path(name).read_text(encoding="utf-8"))
 
     payload = json.loads(
         fixture_path("xbrl/sp100/fixture_source_registry.json").read_text(

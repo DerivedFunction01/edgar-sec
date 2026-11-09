@@ -20,12 +20,12 @@ from edgar_sec.engine.xbrl.discovery.cohort import load_seed_cohort
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
-from tests.support import fixture_path
+from tests.support import cohort_registry_path, fixture_path
 
 
 def test_run_benchmark_seed_cohort() -> None:
     """Verify run_benchmark returns 100% accuracy on seed cohort."""
-    cohort = load_seed_cohort(fixture_path("xbrl/seed_cohort.json"))
+    cohort = load_seed_cohort(cohort_registry_path("seed_cohort.json"))
     tax = load_domain_taxonomy(fixture_path("xbrl/taxonomy"))
     kb = EvidenceKnowledgeBase(taxonomy=tax)
     solver = XbrlConstraintSolver(kb)
@@ -40,7 +40,7 @@ def test_execute_cohort_benchmark(tmp_path: Path) -> None:
     """Verify execute_cohort_benchmark writes JSON report to disk."""
     out_file = tmp_path / "report.json"
     report = execute_cohort_benchmark(
-        cohort_source=fixture_path("xbrl/seed_cohort.json"),
+        cohort_source=cohort_registry_path("seed_cohort.json"),
         taxonomy_dir=fixture_path("xbrl/taxonomy"),
         output_path=out_file,
     )

@@ -138,6 +138,7 @@ Before submitting any turn or completing work, run the unified quality gate:
 Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected via `ALL_SCANNERS`:
 - `environment-access`: Bans direct `os.environ` / `os.getenv` outside `edgar_sec.foundation.runtime.env`.
 - `artifact-paths`: Bans hardcoded `".artifacts"` path literals outside path resolvers.
+- `test-tree-paths`: Bans `tests` path components and `tests` imports in layers 0–5, exempting the gate machinery that owns the test tree (`foundation/checks`, the scanners), the tools layer, and `pipelines/xbrl_review/bundles.py` (owns the fixture-corpus anchor: bundle corpora are fixture data in the checkout tree).
 - `secrets-leakage`: Bans committed API keys, tokens, or credentials.
 - `clean-exit`: Bans `sys.exit()` in library modules (only allowed in `run.py`, `check.py`, and CLI entrypoints).
 - `file-length`: **Fails the gate** on files exceeding the line limit (800) to prevent monolithic growth. Any finding from any scanner returns a nonzero exit code, so "advisory" is not how it behaves.

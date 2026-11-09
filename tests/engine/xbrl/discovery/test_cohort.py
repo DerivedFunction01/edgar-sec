@@ -12,12 +12,12 @@ from edgar_sec.engine.xbrl.discovery.cohort import (
     load_canonical_vintage_cohort,
     load_seed_cohort,
 )
-from tests.support import fixture_path
+from tests.support import cohort_registry_path, fixture_path
 
 
 def test_canonical_seed_cohort_is_the_registry() -> None:
     """Verify the canonical resolver names the maintained registry file."""
-    assert canonical_seed_cohort_path() == fixture_path("xbrl/seed_cohort.json")
+    assert canonical_seed_cohort_path() == cohort_registry_path("seed_cohort.json")
     cohort = load_canonical_seed_cohort()
     assert len(cohort) == 49
     assert len({filing.firm for filing in cohort}) == 49
@@ -25,7 +25,9 @@ def test_canonical_seed_cohort_is_the_registry() -> None:
 
 def test_canonical_vintage_cohort_is_the_registry() -> None:
     """Verify the vintage resolver names the measurement-corpus registry."""
-    assert canonical_vintage_cohort_path() == fixture_path("xbrl/vintage_cohort.json")
+    assert canonical_vintage_cohort_path() == cohort_registry_path(
+        "vintage_cohort.json"
+    )
     cohort = load_canonical_vintage_cohort()
     assert len(cohort) == 16
     assert {filing.firm for filing in cohort} == {
@@ -40,7 +42,7 @@ def test_canonical_vintage_cohort_is_the_registry() -> None:
 
 def test_canonical_sp100_cohort_is_the_registry() -> None:
     """Verify the SP100 resolver names the scale-corpus registry."""
-    assert canonical_sp100_cohort_path() == fixture_path("xbrl/sp100_cohort.json")
+    assert canonical_sp100_cohort_path() == cohort_registry_path("sp100_cohort.json")
     cohort = load_canonical_sp100_cohort()
     assert len(cohort) == 60
     assert len({filing.firm for filing in cohort}) == 60
@@ -48,7 +50,7 @@ def test_canonical_sp100_cohort_is_the_registry() -> None:
 
 def test_canonical_probe_cohort_is_the_registry() -> None:
     """Verify the probe resolver names the form-probe corpus registry."""
-    assert canonical_probe_cohort_path() == fixture_path("xbrl/probe_cohort.json")
+    assert canonical_probe_cohort_path() == cohort_registry_path("probe_cohort.json")
     cohort = load_canonical_probe_cohort()
     assert len(cohort) == 445
     forms = [f.form for f in cohort]
@@ -103,7 +105,7 @@ def test_canonical_union_cohort_covers_all_registries() -> None:
 
 def test_load_seed_cohort_from_fixture() -> None:
     """Verify loading from explicit fixture path and field constraints."""
-    cohort = load_seed_cohort(fixture_path("xbrl/seed_cohort.json"))
+    cohort = load_seed_cohort(cohort_registry_path("seed_cohort.json"))
     assert len(cohort) == 49
     assert cohort[0].firm == "MSFT"
     assert cohort[1].firm == "AAPL"
@@ -121,7 +123,7 @@ def test_load_seed_cohort_from_fixture() -> None:
 
 def test_load_vintage_cohort_from_fixture() -> None:
     """Verify the vintage registry holds the longitudinal stacks and panel."""
-    cohort = load_seed_cohort(fixture_path("xbrl/vintage_cohort.json"))
+    cohort = load_seed_cohort(cohort_registry_path("vintage_cohort.json"))
     assert len(cohort) == 16
     bac = [filing for filing in cohort if filing.firm == "BAC"]
     assert [(filing.fy, str(filing.accession)) for filing in bac] == [

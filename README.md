@@ -39,6 +39,28 @@ Layer 0: foundation/   # Shared primitives, runtime/fixture paths, resource budg
 > **Run every command from the repository root.** The artifacts, uploads, and
 > cache roots all derive from the current working directory.
 
+### Install as a Package
+
+Requires Python 3.12 or newer (the `requires-python` floor in `pyproject.toml`;
+the repo's `.venv311` tree is legacy and unsupported). Install into any venv
+with uv, from a built wheel, from a local checkout, or straight from git:
+
+```bash
+uv pip install edgar_sec-2.0.0-py3-none-any.whl
+uv pip install /path/to/edgar-sec
+uv pip install "git+https://github.com/DerivedFunction01/edgar-sec"
+```
+
+Installing provides the `edgar-sec` command (the client operator:
+`edgar_sec.apps.client.operator:main`, declared under `[project.scripts]` in
+`pyproject.toml`). The shipped package data — the XBRL taxonomy tree and the
+canonical cohort registries — locates itself inside the installation, from
+any working directory. Mutable workspace data (artifacts, uploads, caches)
+roots at the working directory by default; name a different workspace with
+the `workspace.root` setting (environment name `WORKSPACE_ROOT`, registered
+in `edgar_sec/foundation/runtime/settings/paths.py`). The tools layer
+(`edgar_sec/tools`) is repo-side machinery and is not in the wheel.
+
 ### Environment Setup
 ```bash
 # Build the venv from pyproject.toml (uses uv when found, falls back to pip):

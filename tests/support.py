@@ -49,6 +49,17 @@ def fixture_path(name: str) -> Path:
     return FIXTURES / name
 
 
+def cohort_registry_path(name: str) -> Path:
+    """Canonical cohort registries are package data, beside their loaders."""
+    from edgar_sec.engine.xbrl.discovery.cohort import DISCOVERY_DIR
+
+    return DISCOVERY_DIR / name
+
+
+def load_cohort_registry(name: str) -> Any:
+    return json.loads(cohort_registry_path(name).read_text(encoding="utf-8"))
+
+
 _CORPUS_NAMES = ("seed", "vintage", "sp100")
 
 
@@ -75,7 +86,7 @@ def corpus_cohort_rows() -> list[dict[str, Any]]:
     """All canonical cohort registry rows: seed, vintage, then SP100."""
     rows: list[dict[str, Any]] = []
     for name in ("seed_cohort.json", "vintage_cohort.json", "sp100_cohort.json"):
-        rows.extend(json.loads((FIXTURES / "xbrl" / name).read_text(encoding="utf-8")))
+        rows.extend(load_cohort_registry(name))
     return rows
 
 

@@ -9,12 +9,17 @@ from edgar_sec.engine.xbrl.discovery.acquisition import (
 from edgar_sec.engine.xbrl.discovery.cohort import load_seed_cohort
 from edgar_sec.engine.xbrl.discovery.discovery import LinkbaseType
 from edgar_sec.engine.xbrl.storage.storage import read_linkbase_parquet
-from tests.support import FakeSession, build_test_http, fixture_path
+from tests.support import (
+    FakeSession,
+    build_test_http,
+    cohort_registry_path,
+    fixture_path,
+)
 
 
 def test_acquire_filing_offline(tmp_path: Path) -> None:
     """Verify single filing acquisition and XML download using FakeSession."""
-    cohort = load_seed_cohort(fixture_path("xbrl/seed_cohort.json"))
+    cohort = load_seed_cohort(cohort_registry_path("seed_cohort.json"))
     filing = cohort[0]
     expected_url = index_url_for(filing.accession, filing.cik)
     html_bytes = fixture_path("xbrl/msft_index_page.html").read_bytes()
@@ -44,7 +49,7 @@ def test_acquire_filing_offline(tmp_path: Path) -> None:
 
 def test_acquire_cohort_offline_to_parquet(tmp_path: Path) -> None:
     """Verify cohort acquisition writing linkbase inventory to Parquet."""
-    cohort = load_seed_cohort(fixture_path("xbrl/seed_cohort.json"))
+    cohort = load_seed_cohort(cohort_registry_path("seed_cohort.json"))
     filings = cohort[:2]
     html_bytes = fixture_path("xbrl/msft_index_page.html").read_bytes()
 
@@ -68,7 +73,7 @@ def test_acquire_cohort_offline_to_parquet(tmp_path: Path) -> None:
 
 def test_acquire_filing_error_handling() -> None:
     """Verify clean handling of HTTP error during filing acquisition."""
-    cohort = load_seed_cohort(fixture_path("xbrl/seed_cohort.json"))
+    cohort = load_seed_cohort(cohort_registry_path("seed_cohort.json"))
     filing = cohort[0]
 
     session = FakeSession()  # No registered URLs will 404/raise

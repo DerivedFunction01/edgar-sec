@@ -6,6 +6,7 @@ Modes:
   python check.py --fast       # Fast pre-commit check (format, lint, scanners; skips tests)
   python check.py --fix        # Apply formatting and safe lint fixes only (< 0.5s)
   python check.py --scan       # Run only repository policy scanners
+  python check.py --package    # Run the opt-in install battery (builds and installs; needs uv)
   python check.py --test       # Run targeted pytest (or full suite with --all)
   python check.py --explain    # Diagnostic mode: explain detected changes and test lineage
   python check.py <test_path>  # Run gate with explicit test path(s) passed to pytest
@@ -335,6 +336,11 @@ def main() -> None:
         action="store_true",
         help="run only the pytest suite (targeted by default, full with --all)",
     )
+    mode_group.add_argument(
+        "--package",
+        action="store_true",
+        help="run the opt-in install battery (build + clean installs; never part of the default gate)",
+    )
 
     parser.add_argument(
         "--all",
@@ -391,6 +397,15 @@ def main() -> None:
     if args.scan:
         run_scanners()
         return
+
+    # Mode 2b: --package (opt-in install battery; builds and installs, so it
+    # stays out of the default offline gate entirely)
+    if args.package:
+        completed = subprocess.run(
+            [python, "-m", "edgar_sec.tools.packaging.install_battery"],
+            check=False,
+        )
+        sys.exit(completed.returncode)
 
     # Mode 3: --test (pytest only)
     if args.test:

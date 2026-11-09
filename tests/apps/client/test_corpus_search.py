@@ -20,7 +20,7 @@ from edgar_sec.apps.client.search import (
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.infra.storage.corpus_index import CorpusIndex
-from tests.support import fixture_path, load_fixture
+from tests.support import fixture_path, load_cohort_registry, load_fixture
 
 _TERMS = (
     "revenue",
@@ -40,7 +40,7 @@ _TERMS = (
 
 def _seed_bundles() -> tuple[tuple[Path, str, str], ...]:
     """(bundle_dir, cik, accession) for the seed registry, in registry order."""
-    registry = load_fixture("xbrl/seed_cohort.json")
+    registry = load_cohort_registry("seed_cohort.json")
     sources = load_fixture("xbrl/seed/fixture_source_registry.json")["bundles"]
     folder_by_accession = {s["cohort_accession"]: s["folder"] for s in sources}
     root = fixture_path("xbrl/seed")

@@ -7,12 +7,17 @@ from edgar_sec.engine.xbrl.discovery.fetcher import (
     fetch_cohort_linkbases,
     fetch_filing_linkbases,
 )
-from tests.support import FakeSession, build_test_http, fixture_path
+from tests.support import (
+    FakeSession,
+    build_test_http,
+    cohort_registry_path,
+    fixture_path,
+)
 
 
 def test_fetch_filing_linkbases_offline() -> None:
     """Verify linkbase fetch with mock SEC index page response."""
-    cohort = load_seed_cohort(fixture_path("xbrl/seed_cohort.json"))
+    cohort = load_seed_cohort(cohort_registry_path("seed_cohort.json"))
     filing = cohort[0]
     expected_url = index_url_for(filing.accession, filing.cik)
     html_bytes = fixture_path("xbrl/msft_index_page.html").read_bytes()
@@ -29,7 +34,7 @@ def test_fetch_filing_linkbases_offline() -> None:
 
 def test_fetch_cohort_linkbases_offline() -> None:
     """Verify batch cohort linkbase fetching with mock session."""
-    cohort = load_seed_cohort(fixture_path("xbrl/seed_cohort.json"))
+    cohort = load_seed_cohort(cohort_registry_path("seed_cohort.json"))
     filings = cohort[:2]
     html_bytes = fixture_path("xbrl/msft_index_page.html").read_bytes()
 

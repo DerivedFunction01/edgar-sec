@@ -5,7 +5,7 @@ from pathlib import Path
 import shutil
 
 from edgar_sec.tools.xbrl_eval.audit_xbrl_token_coverage import main
-from tests.support import fixture_path
+from tests.support import cohort_registry_path, fixture_path
 
 
 def test_audit_cli_over_one_bundle(tmp_path: Path) -> None:
@@ -21,7 +21,7 @@ def test_audit_cli_over_one_bundle(tmp_path: Path) -> None:
             "--output",
             str(out_json),
             "--cohort-file",
-            str(fixture_path("xbrl/seed_cohort.json")),
+            str(cohort_registry_path("seed_cohort.json")),
             "--fixtures-dir",
             str(fixtures_dir),
         ]

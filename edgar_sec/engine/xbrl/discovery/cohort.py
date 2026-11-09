@@ -9,6 +9,13 @@ from typing import Any
 
 from edgar_sec.domain.identity import AccessionNumber, Cik
 
+# The canonical registries are package data and live beside this module.
+DISCOVERY_DIR = Path(__file__).resolve().parent
+SEED_COHORT_FILE = "seed_cohort.json"
+VINTAGE_COHORT_FILE = "vintage_cohort.json"
+SP100_COHORT_FILE = "sp100_cohort.json"
+PROBE_COHORT_FILE = "probe_cohort.json"
+
 
 @dataclass(frozen=True, slots=True)
 class SeedFiling:
@@ -48,8 +55,7 @@ def load_seed_cohort(source: Path) -> tuple[SeedFiling, ...]:
 
 def canonical_seed_cohort_path() -> Path:
     """Path of the canonical seed cohort registry, the single cohort source."""
-    repo_root = Path(__file__).resolve().parents[4]
-    return repo_root / "tests" / "fixtures" / "xbrl" / "seed_cohort.json"
+    return DISCOVERY_DIR / SEED_COHORT_FILE
 
 
 def load_canonical_seed_cohort() -> tuple[SeedFiling, ...]:
@@ -59,8 +65,7 @@ def load_canonical_seed_cohort() -> tuple[SeedFiling, ...]:
 
 def canonical_vintage_cohort_path() -> Path:
     """Path of the canonical vintage cohort registry, the measurement corpus."""
-    repo_root = Path(__file__).resolve().parents[4]
-    return repo_root / "tests" / "fixtures" / "xbrl" / "vintage_cohort.json"
+    return DISCOVERY_DIR / VINTAGE_COHORT_FILE
 
 
 def load_canonical_vintage_cohort() -> tuple[SeedFiling, ...]:
@@ -70,8 +75,7 @@ def load_canonical_vintage_cohort() -> tuple[SeedFiling, ...]:
 
 def canonical_sp100_cohort_path() -> Path:
     """Path of the canonical SP100 cohort registry, the scale corpus."""
-    repo_root = Path(__file__).resolve().parents[4]
-    return repo_root / "tests" / "fixtures" / "xbrl" / "sp100_cohort.json"
+    return DISCOVERY_DIR / SP100_COHORT_FILE
 
 
 def load_canonical_sp100_cohort() -> tuple[SeedFiling, ...]:
@@ -81,8 +85,7 @@ def load_canonical_sp100_cohort() -> tuple[SeedFiling, ...]:
 
 def canonical_probe_cohort_path() -> Path:
     """Path of the canonical probe cohort registry, the form-probe corpus."""
-    repo_root = Path(__file__).resolve().parents[4]
-    return repo_root / "tests" / "fixtures" / "xbrl" / "probe_cohort.json"
+    return DISCOVERY_DIR / PROBE_COHORT_FILE
 
 
 def load_canonical_probe_cohort() -> tuple[SeedFiling, ...]:

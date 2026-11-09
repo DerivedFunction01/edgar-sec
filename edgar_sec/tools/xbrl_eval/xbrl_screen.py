@@ -34,9 +34,9 @@ _SPECIMEN_FIRMS = ("HON", "ORCL")
 
 def _sp100_bundles(fixtures_root: Path) -> list[dict[str, Any]]:
     """SP100 cohort rows joined to their fixture bundle folders."""
-    cohort = json.loads(
-        (fixtures_root / "xbrl" / "sp100_cohort.json").read_text(encoding="utf-8")
-    )
+    from edgar_sec.engine.xbrl.discovery.cohort import canonical_sp100_cohort_path
+
+    cohort = json.loads(canonical_sp100_cohort_path().read_text(encoding="utf-8"))
     registry = json.loads(
         (fixtures_root / "xbrl" / "sp100" / "fixture_source_registry.json").read_text(
             encoding="utf-8"

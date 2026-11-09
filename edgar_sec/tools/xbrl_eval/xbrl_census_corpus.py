@@ -38,9 +38,14 @@ def bundle_dir(folder: str) -> Path:
 
 def corpus_cohort_rows() -> list[dict]:
     """All canonical cohort registry rows, seed first, then vintage."""
+    from edgar_sec.engine.xbrl.discovery.cohort import (
+        canonical_seed_cohort_path,
+        canonical_vintage_cohort_path,
+    )
+
     rows: list[dict] = []
-    for name in ("seed_cohort.json", "vintage_cohort.json"):
-        rows.extend(json.loads((XBRL_FIXTURES / name).read_text(encoding="utf-8")))
+    for path in (canonical_seed_cohort_path(), canonical_vintage_cohort_path()):
+        rows.extend(json.loads(path.read_text(encoding="utf-8")))
     return rows
 
 

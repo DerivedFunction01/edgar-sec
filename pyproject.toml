@@ -34,6 +34,9 @@ dependencies = [
     "zstandard",
 ]
 
+[project.scripts]
+edgar-sec = "edgar_sec.apps.client.operator:main"
+
 [project.optional-dependencies]
 # Test/gate tooling. httpx2 is never imported directly: the FastAPI/Starlette
 # TestClient used by the viewer tests requires it as its transport.
@@ -50,3 +53,4 @@ path = "edgar_sec/__init__.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["edgar_sec"]
+exclude = ["/edgar_sec/tools"]

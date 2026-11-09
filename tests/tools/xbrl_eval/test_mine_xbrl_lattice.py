@@ -4,13 +4,13 @@ import json
 from pathlib import Path
 
 from edgar_sec.tools.xbrl_eval.mine_xbrl_lattice import main
-from tests.support import fixture_path
+from tests.support import cohort_registry_path, fixture_path
 
 
 def test_mine_xbrl_lattice_cli(tmp_path: Path) -> None:
     """Verify lattice candidate mining CLI with local fixtures."""
     out_json = tmp_path / "mined.json"
-    cohort_json = fixture_path("xbrl/seed_cohort.json")
+    cohort_json = cohort_registry_path("seed_cohort.json")
     fixtures_dir = fixture_path("xbrl")
     ret = main(
         [

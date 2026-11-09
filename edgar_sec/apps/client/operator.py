@@ -680,8 +680,39 @@ def _argv_dispatch(argv: list[str], session: ClientSession) -> int:
     return cli.main(args)
 
 
+def _startup_error() -> str | None:
+    """One clear startup refusal, or None when the run may proceed.
+    The workspace must resolve and the shipped package data must be present
+    at its self-located anchor; either failure is reported once, here.
+    """
+    from edgar_sec.foundation.runtime.paths import (
+        ProjectRootError,
+        package_data_status,
+        resolve_paths,
+    )
+
+    try:
+        resolve_paths()
+    except ProjectRootError as exc:
+        return (
+            f"{exc} Name the workspace with the workspace.root setting "
+            "(WORKSPACE_ROOT) or run from a directory outside the package."
+        )
+    status = package_data_status()
+    if not status.present:
+        return (
+            "package data is missing: no taxonomy tree at "
+            f"{status.taxonomy_dir} (archive present: {status.archive_dir_present}). "
+            "This install is broken; reinstall the package."
+        )
+    return None
+
+
 def main(argv: list[str] | None = None, *, session: ClientSession | None = None) -> int:
     """Operator entrypoint: menu with no arguments, argv host otherwise."""
+    if (error := _startup_error()) is not None:
+        print(error, file=sys.stderr)
+        return 2
     held = session or ClientSession()
     return operator_entrypoint(
         MENU_TITLE,

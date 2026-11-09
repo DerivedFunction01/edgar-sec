@@ -4,13 +4,13 @@ import json
 from pathlib import Path
 
 from edgar_sec.tools.xbrl_eval.validate_xbrl_benchmark import main
-from tests.support import fixture_path
+from tests.support import cohort_registry_path, fixture_path
 
 
 def test_validate_xbrl_benchmark_cli(tmp_path: Path) -> None:
     """Verify multi-firm robustness benchmark CLI passes 100% on seed cohort."""
     out_json = tmp_path / "benchmark.json"
-    cohort_json = fixture_path("xbrl/seed_cohort.json")
+    cohort_json = cohort_registry_path("seed_cohort.json")
     tax_dir = fixture_path("xbrl/taxonomy")
     ret = main(
         [
@@ -80,7 +80,7 @@ def test_validate_xbrl_benchmark_census_gate(tmp_path: Path, monkeypatch) -> Non
         "--output",
         str(out_json),
         "--cohort-file",
-        str(fixture_path("xbrl/seed_cohort.json")),
+        str(cohort_registry_path("seed_cohort.json")),
         "--taxonomy-dir",
         str(fixture_path("xbrl/taxonomy")),
         "--census",
@@ -109,7 +109,7 @@ def test_validate_xbrl_benchmark_pairs_gate(tmp_path: Path, monkeypatch) -> None
         "--output",
         str(out_json),
         "--cohort-file",
-        str(fixture_path("xbrl/seed_cohort.json")),
+        str(cohort_registry_path("seed_cohort.json")),
         "--taxonomy-dir",
         str(fixture_path("xbrl/taxonomy")),
         "--pairs",
@@ -152,7 +152,7 @@ def test_validate_xbrl_benchmark_k1_gate(tmp_path: Path, monkeypatch) -> None:
         "--output",
         str(out_json),
         "--cohort-file",
-        str(fixture_path("xbrl/seed_cohort.json")),
+        str(cohort_registry_path("seed_cohort.json")),
         "--taxonomy-dir",
         str(fixture_path("xbrl/taxonomy")),
         "--k1",
@@ -214,7 +214,7 @@ def test_validate_xbrl_benchmark_all_gates(tmp_path: Path, monkeypatch) -> None:
         "--output",
         str(out_json),
         "--cohort-file",
-        str(fixture_path("xbrl/seed_cohort.json")),
+        str(cohort_registry_path("seed_cohort.json")),
         "--taxonomy-dir",
         str(fixture_path("xbrl/taxonomy")),
         "--all",

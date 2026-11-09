@@ -14,7 +14,7 @@ from edgar_sec.apps.client.corpus_index import (
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.infra.storage.corpus_index import CorpusIndex
-from tests.support import bundle_dir, load_fixture
+from tests.support import bundle_dir, load_cohort_registry, load_fixture
 
 _FOLDERS = ("msft_2024_10k", "aapl_2024_10k", "jpm_2024_10k")
 
@@ -28,7 +28,7 @@ def _identity(folder: str) -> tuple[str, str]:
     """(cik, accession) a seed folder's registry rows assign it."""
     sources = load_fixture("xbrl/seed/fixture_source_registry.json")["bundles"]
     accession = next(s["cohort_accession"] for s in sources if s["folder"] == folder)
-    rows = load_fixture("xbrl/seed_cohort.json")
+    rows = load_cohort_registry("seed_cohort.json")
     cik = next(r["cik"] for r in rows if r["accession"] == accession)
     return cik, accession
 

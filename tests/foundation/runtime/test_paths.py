@@ -9,6 +9,7 @@ import pytest
 
 from edgar_sec.foundation.runtime.paths import (
     PACKAGE_ROOT,
+    UPLOADS_DIR,
     ProjectPaths,
     ProjectRootError,
     dataset_root,
@@ -23,6 +24,7 @@ def test_resolve_paths_derives_artifacts_root(tmp_path: Path) -> None:
     assert paths.repo_root == tmp_path
     assert paths.artifacts_root == tmp_path / ".artifacts"
     assert paths.runtime_root == tmp_path / ".artifacts" / "runtime"
+    assert paths.uploads_root == tmp_path / UPLOADS_DIR
 
 
 def test_dataset_roots_share_validated_layout(tmp_path: Path) -> None:
@@ -144,6 +146,75 @@ def test_an_absolute_artifacts_root_is_taken_as_given(
     target = tmp_path / "side-by-side"
     monkeypatch.setenv("ARTIFACTS_ROOT", str(target))
     assert resolve_paths(repo_root=Path("/somewhere/else")).artifacts_root == target
+
+
+def test_a_registered_workspace_root_replaces_the_working_directory(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Installed mode: ``workspace.root`` (WORKSPACE_ROOT) names the root."""
+    workspace = tmp_path / "workspace"
+    monkeypatch.setenv("WORKSPACE_ROOT", str(workspace))
+    monkeypatch.chdir(tmp_path)
+    paths = resolve_paths()
+    assert paths.repo_root == workspace
+    assert paths.artifacts_root == workspace / ".artifacts"
+    assert paths.uploads_root == workspace / UPLOADS_DIR
+
+
+def test_an_unset_workspace_root_keeps_the_working_directory_contract(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.delenv("WORKSPACE_ROOT", raising=False)
+    monkeypatch.chdir(tmp_path)
+    assert resolve_paths().repo_root == tmp_path
+
+
+def test_the_package_rejection_still_fires_with_no_workspace_root(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.delenv("WORKSPACE_ROOT", raising=False)
+    monkeypatch.chdir(PACKAGE_ROOT)
+    with pytest.raises(ProjectRootError, match="inside the edgar_sec package"):
+        resolve_paths()
+
+
+def test_package_data_status_reports_the_shipped_tree() -> None:
+    from edgar_sec.foundation.runtime.paths import package_data_status
+
+    status = package_data_status()
+    assert status.taxonomy_dir.is_dir()
+    assert status.present
+
+
+def test_package_data_status_distinguishes_a_missing_tree(
+    tmp_path: Path,
+) -> None:
+    from edgar_sec.foundation.runtime.paths import package_data_status
+
+    status = package_data_status(tmp_path / "taxonomy")
+    assert not status.taxonomy_dir_present
+    assert not status.archive_dir_present
+    assert not status.present
+
+
+def test_package_data_status_distinguishes_a_missing_archive(
+    tmp_path: Path,
+) -> None:
+    from edgar_sec.foundation.runtime.paths import package_data_status
+
+    taxonomy_dir = tmp_path / "taxonomy"
+    taxonomy_dir.mkdir()
+    status = package_data_status(taxonomy_dir)
+    assert status.taxonomy_dir_present
+    assert not status.archive_dir_present
+    assert not status.present
+
+
+def test_a_missing_slice_is_absence_not_a_broken_install() -> None:
+    """The probe judges the tree; per-vintage absence stays the loaders' call."""
+    from edgar_sec.engine.xbrl.taxonomy.archive import load_slice
+
+    assert load_slice("us-gaap", "1900") == ()
 
 
 def test_edgar_artifacts_dir_is_no_longer_read(
