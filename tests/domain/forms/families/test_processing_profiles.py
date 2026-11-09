@@ -509,6 +509,31 @@ def test_n30d_entry_registered_with_section_taxonomy() -> None:
     assert get_family_entry("N-30B-2") is entry
 
 
+def test_nvp_entry_registered_with_section_taxonomy() -> None:
+    from edgar_sec.domain.forms.families.form_nvp.processing import PROFILE_FORM_NVP
+    from edgar_sec.domain.forms.families.form_nvp.taxonomy import FORM_NVP_ITEMS
+
+    entry = get_family_entry("N-VP")
+    assert entry is not None
+    assert entry.family == "N-VP"
+    assert entry.profile is PROFILE_FORM_NVP
+    assert entry.cover_checkbox_schema is None
+    assert entry.taxonomy_items == FORM_NVP_ITEMS
+    assert get_family_entry("N-VP/A") is entry
+    assert get_family_entry("N-VPFS") is entry
+    assert get_family_entry("N-VPFS/A") is entry
+
+
+@pytest.mark.parametrize("family", ["N-4", "N-6"])
+def test_variable_kin_registered_profile_less(family: str) -> None:
+    from edgar_sec.domain.forms.common.aliases import resolve_alias
+
+    assert resolve_alias(family) == family
+    assert resolve_alias(f"{family}/A") == family
+    assert get_family_entry(family) is None
+    assert get_family_profile(family) is None
+
+
 @pytest.mark.parametrize(
     "family,variant",
     [
