@@ -72,11 +72,13 @@ def _is_furniture_word(word: str, *, all_caps: bool = False) -> bool:
         return True
     if MONTH_NAME_RE.match(core):
         return True
+    if core.lower() in _FURNITURE_WORDS:
+        return True
     if all_caps:
         return False
     if core[0].isupper():
         return True
-    return core.lower() in _FURNITURE_WORDS
+    return False
 
 
 def _is_signal_word(
@@ -192,9 +194,46 @@ _RE_ITEM_GROUPED = re.compile(
     re.IGNORECASE,
 )
 
+_RE_PAREN_LABEL = re.compile(r"^\((\d{1,2})\)\s*(.+)$")
+_RE_NUMERIC_RUN_IN = re.compile(r"^\s*(?:[\|+•\t-]\s*)?(\d{1,2}[A-Z]?)\.\s+(.+)$")
 _RE_NUMERIC_LABEL = re.compile(
     r"^\s*(?:[\|+•\t-]\s*)?(\d{1,2}[A-Z]?)\.\s+([A-Z][A-Za-z0-9\s,&'-]+)$"
 )
+
+
+def _extend_wrapped_title(
+    lines: list[str],
+    index: int,
+    title: str,
+    title_to_item: dict[str, str],
+) -> tuple[str, int] | None:
+    """Join following lines until the title matches the taxonomy exactly."""
+    joined = title
+    for extra in (1, 2):
+        if index + extra >= len(lines):
+            return None
+        fragment = lines[index + extra].strip()
+        if not fragment or is_page_marker_line(fragment):
+            return None
+        joined = f"{joined} {fragment}"
+        candidate = joined[:-1].rstrip() if joined.endswith(":") else joined
+        if len(candidate) > 200:
+            return None
+        if " ".join(candidate.lower().split()) in title_to_item:
+            return candidate, index + extra
+    return None
+
+
+def _match_run_in_title(norm_title: str, title_to_item: dict[str, str]) -> str | None:
+    """Longest taxonomy title the line opens with, closed by a delimiter."""
+    best: str | None = None
+    for key in title_to_item:
+        if not norm_title.startswith(key):
+            continue
+        rest = norm_title[len(key) :]
+        if rest and rest[0] in ".;:" and (best is None or len(key) > len(best)):
+            best = key
+    return best
 
 
 def extract_section_candidates(
@@ -202,9 +241,11 @@ def extract_section_candidates(
     *,
     taxonomy_items: tuple[ItemDefinition, ...] = (),
     toc_lines: set[int] | None = None,
+    run_in_titles: bool = False,
 ) -> list[SectionCandidate]:
     """Scan lines and collect candidate Part/Item structural headings."""
     candidates: list[SectionCandidate] = []
+    consumed: set[int] = set()
     title_to_item: dict[str, str] = {}
     for item_def in taxonomy_items:
         for name in item_def.names:
@@ -233,6 +274,8 @@ def extract_section_candidates(
     for line_no, raw_line in enumerate(lines):
         if toc_lines and line_no in toc_lines:
             continue
+        if line_no in consumed:
+            continue
         stripped = raw_line.strip()
         if (
             not stripped
@@ -241,6 +284,10 @@ def extract_section_candidates(
             or is_page_marker_line(stripped)
         ):
             continue
+        # A caption's trailing colon is punctuation, not title text:
+        # prescribed captions (fee tables, notice statements) end in one.
+        if stripped.endswith(":"):
+            stripped = stripped[:-1].rstrip()
 
         prev_line = lines[line_no - 1] if line_no > 0 else ""
         preceded = is_preceding_continuation(prev_line)
@@ -319,11 +366,79 @@ def extract_section_candidates(
                     )
                 )
                 continue
+            extended = _extend_wrapped_title(lines, line_no, raw_title, title_to_item)
+            if extended is not None:
+                joined_title, end_line = extended
+                norm_joined = " ".join(joined_title.lower().split())
+                candidates.append(
+                    SectionCandidate(
+                        line_number=line_no,
+                        raw_text=raw_line,
+                        kind=CandidateKind.NUMERIC,
+                        identifiers=(resolve_identifier(num_id, norm_joined),),
+                        title=joined_title,
+                        is_omitted=False,
+                        preceded_by_continuation=preceded,
+                    )
+                )
+                consumed.update(range(line_no + 1, end_line + 1))
+                continue
+
+        # Check run-in numbered terms: the title opens the line and a
+        # sentence delimiter hands over to the term's own body text.
+        if run_in_titles:
+            run_in_match = _RE_NUMERIC_RUN_IN.match(stripped)
+            if run_in_match:
+                raw_title = run_in_match.group(2).strip()
+                norm_title = " ".join(raw_title.lower().split())
+                run_in_key = _match_run_in_title(norm_title, title_to_item)
+                if run_in_key is not None:
+                    word_count = len(run_in_key.split())
+                    candidates.append(
+                        SectionCandidate(
+                            line_number=line_no,
+                            raw_text=raw_line,
+                            kind=CandidateKind.NUMERIC,
+                            identifiers=(
+                                resolve_identifier(
+                                    run_in_match.group(1).upper(), run_in_key
+                                ),
+                            ),
+                            title=" ".join(raw_title.split()[:word_count]).rstrip(
+                                ".;:"
+                            ),
+                            is_omitted=False,
+                            preceded_by_continuation=preceded,
+                        )
+                    )
+                    continue
+
+        # Check parenthesized captions: (1)Titles of the classes ...
+        paren_match = _RE_PAREN_LABEL.match(stripped)
+        if paren_match and paren_match.group(2)[0].isupper():
+            num_id = paren_match.group(1).upper()
+            raw_title = paren_match.group(2).strip()
+            norm_title = " ".join(raw_title.lower().split())
+            if norm_title.rstrip(" .") in title_to_item or any(
+                norm_title.startswith(k) for k in title_to_item
+            ):
+                candidates.append(
+                    SectionCandidate(
+                        line_number=line_no,
+                        raw_text=raw_line,
+                        kind=CandidateKind.NUMERIC,
+                        identifiers=(resolve_identifier(num_id, norm_title),),
+                        title=raw_title,
+                        is_omitted=False,
+                        preceded_by_continuation=preceded,
+                    )
+                )
+                continue
 
         # Check substantive title only (PROSPECTUS SUMMARY, USE OF PROCEEDS)
         norm_line = " ".join(stripped.lower().split())
         matched_item = title_to_item.get(norm_line)
-        if matched_item and len(norm_line) > 5 and not preceded:
+        if matched_item and len(norm_line) >= 5 and not preceded:
             canon_num = matched_item.replace("ITEM", "").strip()
             candidates.append(
                 SectionCandidate(
@@ -337,6 +452,28 @@ def extract_section_candidates(
                 )
             )
             continue
+
+        # A heading wrapped over following lines matches no single line;
+        # the joined lines must equal a taxonomy title exactly.
+        if not preceded:
+            extended = _extend_wrapped_title(lines, line_no, stripped, title_to_item)
+            if extended is not None:
+                joined_title, end_line = extended
+                norm_joined = " ".join(joined_title.lower().split())
+                wrapped_item = title_to_item[norm_joined]
+                candidates.append(
+                    SectionCandidate(
+                        line_number=line_no,
+                        raw_text=raw_line,
+                        kind=CandidateKind.TITLE_ONLY,
+                        identifiers=(wrapped_item.replace("ITEM", "").strip(),),
+                        title=joined_title,
+                        is_omitted=False,
+                        preceded_by_continuation=False,
+                    )
+                )
+                consumed.update(range(line_no + 1, end_line + 1))
+                continue
 
         # Check composite headings: the title carried by page furniture
         if not preceded:

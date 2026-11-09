@@ -115,6 +115,14 @@ class CoverProfile:
         return self.processing_profile.has_notes if self.processing_profile else False
 
     @property
+    def section_run_in_titles(self) -> bool:
+        return (
+            self.processing_profile.section_run_in_titles
+            if self.processing_profile
+            else False
+        )
+
+    @property
     def has_xbrl(self) -> bool:
         return self.processing_profile.has_xbrl if self.processing_profile else False
 

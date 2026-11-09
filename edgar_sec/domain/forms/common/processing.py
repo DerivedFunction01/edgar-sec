@@ -37,6 +37,7 @@ class DocumentProcessingProfile:
     review_analyzer: str | None = None
     has_toc: bool = False
     has_sections: bool = False
+    section_run_in_titles: bool = False
     has_notes: bool = False
     has_xbrl: bool = False
 

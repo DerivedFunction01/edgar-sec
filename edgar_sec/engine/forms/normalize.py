@@ -391,6 +391,7 @@ def normalize_document(
                 toc_span=raw_toc,
                 payload_sha256=text_sha,
                 renderer_version=profile.version,
+                run_in_titles=profile.section_run_in_titles,
             )
 
     if profile.has_notes:

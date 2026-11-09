@@ -146,3 +146,74 @@ def test_composite_bare_toc_row_is_not_a_heading() -> None:
 
     cands = extract_section_candidates(lines, taxonomy_items=FORM_NCSR_ITEMS)
     assert cands == []
+
+
+def _caption_taxonomy():
+    from edgar_sec.domain.forms.common.models import ItemDefinition
+
+    def item(name: str) -> ItemDefinition:
+        return ItemDefinition(
+            item=f"ITEM {name.upper()}", part=1, names=(name,), optional=True
+        )
+
+    return (
+        item("calculation of registration fee"),
+        item("payment for shares repurchased"),
+        item("titles of the classes of securities to be redeemed"),
+        item("management statement regarding compliance with certain provisions"),
+        item("risks"),
+    )
+
+
+def test_numeric_caption_with_trailing_colon() -> None:
+    lines = ["5. Calculation of registration fee:", "The fee table follows."]
+    cands = extract_section_candidates(lines, taxonomy_items=_caption_taxonomy())
+    assert len(cands) == 1
+    assert cands[0].kind == CandidateKind.NUMERIC
+    assert cands[0].identifiers == ("CALCULATION OF REGISTRATION FEE",)
+
+
+def test_wrapped_title_joins_following_lines() -> None:
+    lines = [
+        "Management Statement Regarding Compliance With",
+        "Certain Provisions",
+        "The compliance statement follows here.",
+    ]
+    cands = extract_section_candidates(lines, taxonomy_items=_caption_taxonomy())
+    assert len(cands) == 1
+    assert cands[0].kind == CandidateKind.TITLE_ONLY
+    assert cands[0].line_number == 0
+    assert cands[0].identifiers == (
+        "MANAGEMENT STATEMENT REGARDING COMPLIANCE WITH CERTAIN PROVISIONS",
+    )
+
+
+def test_parenthesized_caption_resolves_by_title() -> None:
+    lines = ["(1)Titles of the classes of securities to be redeemed"]
+    cands = extract_section_candidates(lines, taxonomy_items=_caption_taxonomy())
+    assert len(cands) == 1
+    assert cands[0].kind == CandidateKind.NUMERIC
+    assert cands[0].identifiers == (
+        "TITLES OF THE CLASSES OF SECURITIES TO BE REDEEMED",
+    )
+
+
+def test_run_in_title_requires_the_flag() -> None:
+    lines = ["5. Payment for Shares Repurchased. The fund will pay proceeds."]
+    taxonomy = _caption_taxonomy()
+    assert extract_section_candidates(lines, taxonomy_items=taxonomy) == []
+    cands = extract_section_candidates(
+        lines, taxonomy_items=taxonomy, run_in_titles=True
+    )
+    assert len(cands) == 1
+    assert cands[0].kind == CandidateKind.NUMERIC
+    assert cands[0].identifiers == ("PAYMENT FOR SHARES REPURCHASED",)
+    assert cands[0].title == "Payment for Shares Repurchased"
+
+
+def test_five_character_title_only_heading() -> None:
+    lines = ["RISKS", "The risks of the program are described here."]
+    cands = extract_section_candidates(lines, taxonomy_items=_caption_taxonomy())
+    assert len(cands) == 1
+    assert cands[0].kind == CandidateKind.TITLE_ONLY
+    assert cands[0].identifiers == ("RISKS",)

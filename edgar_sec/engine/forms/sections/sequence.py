@@ -12,8 +12,8 @@ T = TypeVar("T")
 class SequenceAssembly(Generic[T]):
     """Spine / displaced / rejected partition of an event stream.
 
-    Indices address the assemble_sequence input; a disordered
-    assembly's caller falls back to first-fit selection.
+    Indices address the assemble_sequence input; on a disordered
+    assembly the caller keeps the spine and rejects the rest.
     """
 
     spine: tuple[int, ...]
