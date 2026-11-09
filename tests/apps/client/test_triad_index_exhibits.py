@@ -137,6 +137,7 @@ def test_six_dataframe_shapes_and_sql(tmp_path: Path) -> None:
         "size",
         "url",
         "is_exhibit",
+        "role",
     ]
     assert len(df_idx) == 3
 
@@ -149,6 +150,7 @@ def test_six_dataframe_shapes_and_sql(tmp_path: Path) -> None:
         "filename",
         "size",
         "url",
+        "role",
     ]
     assert len(df_ex) >= 1
 

@@ -14,6 +14,7 @@ from edgar_sec.domain.document.aggregate import (
     FilingAggregate,
     is_exhibit_attachment,
 )
+from edgar_sec.domain.document.canonical import CanonicalAttachmentRow
 from edgar_sec.engine.xbrl.discovery.discovery import classify_linkbase
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_READ_BATCH_SIZE
 
@@ -39,6 +40,7 @@ INDEX_SCHEMA = pa.schema(
         ("size", pa.int64()),
         ("url", pa.string()),
         ("is_exhibit", pa.bool_()),
+        ("role", pa.string()),
     ]
 )
 
@@ -51,6 +53,7 @@ EXHIBITS_SCHEMA = pa.schema(
         ("filename", pa.string()),
         ("size", pa.int64()),
         ("url", pa.string()),
+        ("role", pa.string()),
     ]
 )
 
@@ -152,25 +155,37 @@ def build_catalog_table(filings: Iterable[FilingAggregate]) -> pa.Table:
     return pa.Table.from_batches(batches, schema=CATALOG_SCHEMA)
 
 
+def _canonical_rows(
+    filings: Iterable[FilingAggregate],
+) -> Iterable[tuple[FilingAggregate, CanonicalAttachmentRow]]:
+    for filing in filings:
+        accession = filing.accession.value
+        for attachment in filing.get_attachments():
+            yield filing, CanonicalAttachmentRow.from_attachment(accession, attachment)
+
+
 def build_index_table(filings: Iterable[FilingAggregate]) -> pa.Table:
     """Build Arrow index/attachments table from filing aggregates."""
     batches: list[pa.RecordBatch] = []
     chunk: list[dict[str, Any]] = []
 
-    for f in filings:
-        atts = f.get_attachments()
-        for idx, a in enumerate(atts, 1):
-            seq_val = a.sequence if a.sequence is not None else idx
+    for filing in filings:
+        accession = filing.accession.value
+        for idx, attachment in enumerate(filing.get_attachments(), 1):
+            row = CanonicalAttachmentRow.from_attachment(accession, attachment)
             chunk.append(
                 {
-                    "accession": f.accession.value,
-                    "sequence": seq_val,
-                    "document_type": a.document_type,
-                    "filename": a.filename,
-                    "description": a.description or "",
-                    "size": a.size or 0,
-                    "url": a.url,
-                    "is_exhibit": is_exhibit_attachment(a.document_type, a.filename),
+                    "accession": accession,
+                    "sequence": row.sequence if row.sequence is not None else idx,
+                    "document_type": row.document_type or "",
+                    "filename": row.filename or "",
+                    "description": row.description or "",
+                    "size": row.byte_size or 0,
+                    "url": row.archive_url or "",
+                    "is_exhibit": is_exhibit_attachment(
+                        row.document_type or "", row.filename or ""
+                    ),
+                    "role": row.role(form=filing.form),
                 }
             )
             if len(chunk) >= DEFAULT_READ_BATCH_SIZE:
@@ -199,39 +214,39 @@ def build_exhibits_table(
     batches: list[pa.RecordBatch] = []
     chunk: list[dict[str, Any]] = []
 
-    for f in filings:
-        for ex in f.exhibits:
-            dt = ex.document_type
-            if filter_types is not None:
-                matched = False
-                canon_dt = dt.upper()
-                for ft in filter_types:
-                    canon_ft = f"EX-{ft}" if not ft.startswith("EX-") else ft
-                    if (
-                        canon_dt == canon_ft
-                        or canon_dt == ft
-                        or canon_dt.startswith(f"{canon_ft}.")
-                    ):
-                        matched = True
-                        break
-                if not matched:
-                    continue
-            chunk.append(
-                {
-                    "accession": f.accession.value,
-                    "form": f.form,
-                    "document_type": dt,
-                    "description": ex.description or "",
-                    "filename": ex.filename,
-                    "size": ex.size or 0,
-                    "url": ex.url,
-                }
-            )
-            if len(chunk) >= DEFAULT_READ_BATCH_SIZE:
-                batches.append(
-                    pa.RecordBatch.from_pylist(chunk, schema=EXHIBITS_SCHEMA)
-                )
-                chunk.clear()
+    for filing, row in _canonical_rows(filings):
+        if not is_exhibit_attachment(row.document_type or "", row.filename or ""):
+            continue
+        dt = row.document_type or ""
+        if filter_types is not None:
+            matched = False
+            canon_dt = dt.upper()
+            for ft in filter_types:
+                canon_ft = f"EX-{ft}" if not ft.startswith("EX-") else ft
+                if (
+                    canon_dt == canon_ft
+                    or canon_dt == ft
+                    or canon_dt.startswith(f"{canon_ft}.")
+                ):
+                    matched = True
+                    break
+            if not matched:
+                continue
+        chunk.append(
+            {
+                "accession": filing.accession.value,
+                "form": filing.form,
+                "document_type": dt,
+                "description": row.description or "",
+                "filename": row.filename or "",
+                "size": row.byte_size or 0,
+                "url": row.archive_url or "",
+                "role": row.role(form=filing.form),
+            }
+        )
+        if len(chunk) >= DEFAULT_READ_BATCH_SIZE:
+            batches.append(pa.RecordBatch.from_pylist(chunk, schema=EXHIBITS_SCHEMA))
+            chunk.clear()
 
     if chunk:
         batches.append(pa.RecordBatch.from_pylist(chunk, schema=EXHIBITS_SCHEMA))
@@ -246,28 +261,27 @@ def build_linkbases_table(filings: Iterable[FilingAggregate]) -> pa.Table:
     batches: list[pa.RecordBatch] = []
     chunk: list[dict[str, Any]] = []
 
-    for f in filings:
-        for lb in f.linkbases:
-            lb_type = classify_linkbase(
-                lb.document_type or "",
-                lb.filename or "",
-                lb.description or "",
-            )
-            chunk.append(
-                {
-                    "accession": f.accession.value,
-                    "form": f.form,
-                    "linkbase_type": lb_type.value if lb_type is not None else "",
-                    "document_type": lb.document_type,
-                    "filename": lb.filename,
-                    "url": lb.url,
-                }
-            )
-            if len(chunk) >= DEFAULT_READ_BATCH_SIZE:
-                batches.append(
-                    pa.RecordBatch.from_pylist(chunk, schema=LINKBASES_SCHEMA)
-                )
-                chunk.clear()
+    for filing, row in _canonical_rows(filings):
+        lb_type = classify_linkbase(
+            row.document_type or "",
+            row.filename or "",
+            row.description or "",
+        )
+        if lb_type is None:
+            continue
+        chunk.append(
+            {
+                "accession": filing.accession.value,
+                "form": filing.form,
+                "linkbase_type": lb_type.value,
+                "document_type": row.document_type or "",
+                "filename": row.filename or "",
+                "url": row.archive_url or "",
+            }
+        )
+        if len(chunk) >= DEFAULT_READ_BATCH_SIZE:
+            batches.append(pa.RecordBatch.from_pylist(chunk, schema=LINKBASES_SCHEMA))
+            chunk.clear()
 
     if chunk:
         batches.append(pa.RecordBatch.from_pylist(chunk, schema=LINKBASES_SCHEMA))
@@ -277,15 +291,22 @@ def build_linkbases_table(filings: Iterable[FilingAggregate]) -> pa.Table:
     return pa.Table.from_batches(batches, schema=LINKBASES_SCHEMA)
 
 
+def _payload_held(filing: FilingAggregate) -> bool:
+    """Store presence for the primary payload: on-disk body or a recorded sha."""
+    if (
+        filing.primary_storage_path is not None
+        and filing.primary_storage_path.is_file()
+    ):
+        return True
+    return filing.primary_sha256 is not None
+
+
 def build_payload_table(filings: Iterable[FilingAggregate]) -> pa.Table:
     """Build Arrow payload/staged table from filing aggregates."""
     batches: list[pa.RecordBatch] = []
     chunk: list[dict[str, Any]] = []
 
-    for idx, f in enumerate(filings, 1):
-        has_body = (
-            f.primary_storage_path is not None and f.primary_storage_path.is_file()
-        ) or f.fetcher is not None
+    for f in filings:
         b_size = 0
         if f.primary_storage_path and f.primary_storage_path.is_file():
             try:
@@ -294,10 +315,10 @@ def build_payload_table(filings: Iterable[FilingAggregate]) -> pa.Table:
                 b_size = 0
         chunk.append(
             {
-                "target_id": f"tgt_{idx:03d}",
+                "target_id": "",
                 "accession": f.accession.value,
-                "outcome": "acquired" if has_body else "planned",
-                "attempt_count": 1,
+                "outcome": "acquired" if _payload_held(f) else "planned",
+                "attempt_count": 0,
                 "duration_ms": 0,
                 "body_sha256": f.primary_sha256 or "",
                 "body_byte_size": b_size,
@@ -327,9 +348,7 @@ def build_joined_table(filings: Iterable[FilingAggregate]) -> pa.Table:
         pdoc = f.primary_document_path or (
             f.primary_document_url.split("/")[-1] if f.primary_document_url else ""
         )
-        has_body = (
-            f.primary_storage_path is not None and f.primary_storage_path.is_file()
-        ) or f.fetcher is not None
+        has_body = _payload_held(f)
         b_size = None
         if f.primary_storage_path and f.primary_storage_path.is_file():
             try:

@@ -19,6 +19,10 @@ from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.domain.filing_catalog.document_names import (
     PRIMARY_EXHIBIT_FILENAME_PATTERN,
 )
+from edgar_sec.domain.forms.common.aliases import (
+    FORM_FAMILY_ALIASES,
+    FORM_FAMILY_SUFFIXES,
+)
 from edgar_sec.engine.forms.render import render_filing
 from edgar_sec.engine.selection.predicates import date_selection_sql
 from edgar_sec.foundation.runtime.paths import resolve_paths
@@ -172,6 +176,114 @@ def is_exhibit_sql(document_type_expr: str, filename_expr: str) -> str:
     )
 
 
+_FORM_ALIAS_MAP: dict[str, str] = {
+    alias.upper(): family
+    for family, aliases in FORM_FAMILY_ALIASES.items()
+    for alias in aliases
+} | {family: family for family in FORM_FAMILY_ALIASES}
+
+
+def register_form_alias_map(con: Any) -> None:
+    """Register the alias lookup table the role translation reads from."""
+    rows = ", ".join(
+        f"({sql_literal(raw)}, {sql_literal(family)})"
+        for raw, family in sorted(_FORM_ALIAS_MAP.items())
+    )
+    con.execute(
+        "CREATE OR REPLACE TEMP TABLE form_alias_map (raw VARCHAR, family VARCHAR)"
+    )
+    con.execute(f"INSERT INTO form_alias_map VALUES {rows}")
+
+
+def _sql_trim(expr: str) -> str:
+    return (
+        f"regexp_replace(regexp_replace(COALESCE({expr}, ''), "
+        f"'^\\s+', ''), '\\s+$', '')"
+    )
+
+
+def _sql_upper_trim(expr: str) -> str:
+    return f"upper({_sql_trim(expr)})"
+
+
+def _sql_lower_trim(expr: str) -> str:
+    return f"lower({_sql_trim(expr)})"
+
+
+def _sql_collapse(expr: str) -> str:
+    return f"regexp_replace({_sql_upper_trim(expr)}, '\\s+', ' ', 'g')"
+
+
+def _sql_form_family(collapsed_expr: str) -> str:
+    result = collapsed_expr
+    for suffix in FORM_FAMILY_SUFFIXES:
+        result = f"regexp_replace({result}, {sql_literal(suffix + '$')}, '')"
+    result = f"trim({result}, '_-')"
+    return f"CASE WHEN {result} = '' THEN {collapsed_expr} ELSE {result} END"
+
+
+def _sql_normalize_form(expr: str) -> str:
+    collapsed = _sql_collapse(expr)
+    family = _sql_form_family(collapsed)
+    return (
+        "coalesce("
+        f"(SELECT family FROM form_alias_map WHERE raw = {collapsed}), "
+        f"(SELECT family FROM form_alias_map WHERE raw = {family}), "
+        f"{collapsed})"
+    )
+
+
+def attachment_role_sql(
+    table_kind_expr: str, document_type_expr: str, form_expr: str
+) -> str:
+    """SQL translation of ``attachment_role``; needs ``register_form_alias_map``."""
+    doc_type = _sql_upper_trim(document_type_expr)
+    primary = (
+        f"COALESCE({form_expr}, '') <> '' AND {doc_type} <> '' AND "
+        f"{_sql_normalize_form(document_type_expr)} = "
+        f"{_sql_normalize_form(form_expr)}"
+    )
+    return (
+        "CASE "
+        f"WHEN {table_kind_expr} = 'data_file' THEN 'data_file' "
+        f"WHEN {doc_type} = 'GRAPHIC' AND "
+        f"{table_kind_expr} IS DISTINCT FROM 'data_file' THEN 'graphic' "
+        f"WHEN {primary} THEN 'primary' "
+        f"WHEN starts_with({doc_type}, 'EX-') THEN 'exhibit' "
+        "ELSE NULL END"
+    )
+
+
+def classify_linkbase_sql(
+    document_type_expr: str, filename_expr: str, description_expr: str
+) -> str:
+    """SQL translation of ``classify_linkbase`` over the given expressions."""
+    dt = _sql_upper_trim(document_type_expr)
+    fn = _sql_lower_trim(filename_expr)
+    desc = _sql_upper_trim(description_expr)
+    return (
+        "CASE "
+        f"WHEN {dt} = 'EX-101.CAL' OR ends_with({fn}, '_cal.xml') OR "
+        f"contains({desc}, 'CALCULATION LINKBASE') THEN 'calculation' "
+        f"WHEN {dt} = 'EX-101.PRE' OR ends_with({fn}, '_pre.xml') OR "
+        f"contains({desc}, 'PRESENTATION LINKBASE') THEN 'presentation' "
+        f"WHEN {dt} = 'EX-101.DEF' OR ends_with({fn}, '_def.xml') OR "
+        f"contains({desc}, 'DEFINITION LINKBASE') THEN 'definition' "
+        f"WHEN {dt} = 'EX-101.LAB' OR ends_with({fn}, '_lab.xml') OR "
+        f"contains({desc}, 'LABEL LINKBASE') THEN 'label' "
+        f"WHEN {dt} = 'EX-101.SCH' OR ends_with({fn}, '.xsd') OR "
+        f"contains({desc}, 'TAXONOMY EXTENSION SCHEMA') THEN 'schema' "
+        f"WHEN {dt} = 'EX-101.INS' OR "
+        f"(starts_with({dt}, 'EX-') AND ends_with({dt}, '.INS')) OR "
+        f"ends_with({fn}, '_htm.xml') OR "
+        f"contains({desc}, 'EXTRACTED XBRL INSTANCE') OR "
+        f"contains({desc}, 'XBRL INSTANCE DOCUMENT') THEN 'instance' "
+        f"WHEN ends_with({fn}, '-xbrl.zip') OR ends_with({fn}, '_xbrl.zip') "
+        "THEN 'package' "
+        "ELSE NULL END"
+    )
+
+
 def register_snapshot_views(
     con: Any,
     artifacts_root: Path,
@@ -238,6 +350,10 @@ def register_snapshot_views(
     slots = sql_identifier(views["acquisition_slots"])
     assets = sql_identifier(views["source_assets"])
     slot_types = sql_identifier(views["slot_types"])
+    source_payloads = sql_identifier(views["source_payloads"])
+    payload_index = sql_identifier(views["payload_index"])
+    attempts = sql_identifier(views["acquisition_attempts"])
+    register_form_alias_map(con)
     con.execute(
         f"CREATE OR REPLACE TEMP VIEW catalog AS SELECT DISTINCT accession, form, "
         f"filing_date, '' AS report_date, regexp_extract(target_url, '([^/]+)$', 1) "
@@ -248,44 +364,48 @@ def register_snapshot_views(
         "regexp_extract(COALESCE(sa.canonical_path, s.locator), '([^/]+)$', 1)"
     )
     exhibit_predicate = is_exhibit_sql("COALESCE(st.statutory_type, '')", filename_expr)
+    form_expr = (
+        f"(SELECT form FROM {selected_view} t WHERE t.accession = s.accession LIMIT 1)"
+    )
+    role_expr = attachment_role_sql("NULL", "st.statutory_type", form_expr)
     con.execute(
         f"CREATE OR REPLACE TEMP VIEW index AS SELECT s.accession, s.sequence, "
         f"COALESCE(st.statutory_type, '') AS document_type, "
         f"{filename_expr} AS filename, "
-        f"'' AS description, 0::BIGINT AS size, s.locator AS url, "
-        f"{exhibit_predicate} AS is_exhibit "
+        f"'' AS description, COALESCE(pi.byte_size, 0) AS size, s.locator AS url, "
+        f"{exhibit_predicate} AS is_exhibit, {role_expr} AS role "
         f"FROM {slots} s JOIN (SELECT DISTINCT accession FROM {selected_view}) chosen "
         f"USING (accession) LEFT JOIN {assets} sa ON s.source_asset_id = sa.source_asset_id "
-        f"LEFT JOIN {slot_types} st ON s.accession = st.accession AND s.sequence = st.sequence"
+        f"LEFT JOIN {slot_types} st ON s.accession = st.accession AND s.sequence = st.sequence "
+        f"LEFT JOIN {source_payloads} sp ON sp.source_asset_id = s.source_asset_id "
+        f"LEFT JOIN {payload_index} pi ON pi.payload_sha256 = sp.payload_sha256"
     )
     con.execute("CREATE OR REPLACE TEMP VIEW attachments AS SELECT * FROM index")
     con.execute(
         "CREATE OR REPLACE TEMP VIEW exhibits AS SELECT accession, "
         "(SELECT form FROM selected_targets t WHERE t.accession = i.accession LIMIT 1) AS form, "
-        "document_type, description, filename, size, url FROM index i "
+        "document_type, description, filename, size, url, role FROM index i "
         "WHERE i.is_exhibit"
     )
+    linkbase_expr = classify_linkbase_sql("document_type", "filename", "description")
     con.execute(
         "CREATE OR REPLACE TEMP VIEW linkbases AS SELECT accession, "
         "(SELECT form FROM selected_targets t WHERE t.accession = i.accession LIMIT 1) AS form, "
-        "CASE WHEN upper(document_type) = 'EX-101.CAL' OR lower(filename) LIKE '%_cal.xml' "
-        "THEN 'calculation' WHEN upper(document_type) = 'EX-101.PRE' OR lower(filename) LIKE '%_pre.xml' "
-        "THEN 'presentation' WHEN upper(document_type) = 'EX-101.DEF' OR lower(filename) LIKE '%_def.xml' "
-        "THEN 'definition' WHEN upper(document_type) = 'EX-101.LAB' OR lower(filename) LIKE '%_lab.xml' "
-        "THEN 'label' WHEN upper(document_type) = 'EX-101.SCH' OR lower(filename) LIKE '%.xsd' "
-        "THEN 'schema' WHEN upper(document_type) = 'EX-101.INS' OR lower(filename) LIKE '%_htm.xml' "
-        "THEN 'instance' WHEN lower(filename) LIKE '%-xbrl.zip' OR lower(filename) LIKE '%_xbrl.zip' "
-        "THEN 'package' END AS linkbase_type, document_type, filename, url "
+        f"{linkbase_expr} AS linkbase_type, document_type, filename, url "
         "FROM index i WHERE linkbase_type IS NOT NULL"
     )
     con.execute(
-        "CREATE OR REPLACE TEMP VIEW payload AS SELECT printf('tgt_%03d', "
-        "row_number() OVER (ORDER BY accession)) AS target_id, accession, "
-        "CASE WHEN selected_sha256 IS NULL THEN 'planned' ELSE 'acquired' END AS outcome, "
-        "1::INTEGER AS attempt_count, 0::BIGINT AS duration_ms, "
-        "COALESCE(selected_sha256, '') AS body_sha256, "
-        "0::BIGINT AS body_byte_size, '' AS body_storage_path "
-        f"FROM {selected_view}"
+        f"CREATE OR REPLACE TEMP VIEW payload AS SELECT st.target_id, st.accession, "
+        "CASE WHEN pi.payload_sha256 IS NOT NULL THEN 'acquired' ELSE 'planned' "
+        "END AS outcome, "
+        "COALESCE(ac.attempt_count, 0)::INTEGER AS attempt_count, "
+        "0::BIGINT AS duration_ms, "
+        "COALESCE(st.selected_sha256, '') AS body_sha256, "
+        "COALESCE(pi.byte_size, 0) AS body_byte_size, '' AS body_storage_path "
+        f"FROM {selected_view} st "
+        f"LEFT JOIN {payload_index} pi ON pi.payload_sha256 = st.selected_sha256 "
+        f"LEFT JOIN (SELECT target_id, count(*) AS attempt_count FROM {attempts} "
+        "GROUP BY target_id) ac ON ac.target_id = st.target_id"
     )
     con.execute("CREATE OR REPLACE TEMP VIEW staged AS SELECT * FROM payload")
     con.execute(

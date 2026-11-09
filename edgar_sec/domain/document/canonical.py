@@ -73,6 +73,26 @@ class CanonicalAttachmentRow:
             byte_size=entry.byte_size,
         )
 
+    @classmethod
+    def from_attachment(
+        cls, accession: str, attachment: FilingAttachment
+    ) -> CanonicalAttachmentRow:
+        """Rebuild the row a hydrated attachment was projected from."""
+        return cls(
+            entry_id=attachment.entry_id,
+            accession=accession,
+            table_kind=attachment.table_kind,
+            sequence=attachment.sequence,
+            document_type=attachment.document_type or None,
+            document_label=None,
+            description=attachment.description,
+            filename=attachment.filename or None,
+            href=None,
+            archive_url=attachment.url or None,
+            byte_size=attachment.size,
+            payload_sha256=attachment.sha256,
+        )
+
     def role(self, *, form: str) -> AttachmentRole | None:
         """Return this row's observed role within a filing of ``form``."""
         return attachment_role(self.table_kind, self.document_type, form=form)
