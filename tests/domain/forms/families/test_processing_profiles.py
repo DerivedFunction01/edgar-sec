@@ -465,6 +465,8 @@ def test_4017f2_entry_registered_with_section_taxonomy() -> None:
     assert entry.cover_checkbox_schema is None
     assert entry.taxonomy_items == FORM_4017F2_ITEMS
     assert get_family_entry("40-17F2/A") is entry
+
+
 def test_40app_entry_registered_with_section_taxonomy() -> None:
     from edgar_sec.domain.forms.families.form_40app.processing import PROFILE_FORM_40APP
     from edgar_sec.domain.forms.families.form_40app.taxonomy import FORM_40APP_ITEMS
