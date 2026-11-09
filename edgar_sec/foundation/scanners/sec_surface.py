@@ -41,7 +41,9 @@ _EXEMPT_PATHS = {
 
 @dataclass
 class _RuleBook:
-    rules: list[tuple[str, str, re.Pattern[str]]] = field(default_factory=list)
+    rules: list[tuple[str, str, re.Pattern[str], re.Pattern[str] | None]] = field(
+        default_factory=list
+    )
     surfaces: dict[str, int] = field(default_factory=dict)
 
 
@@ -80,14 +82,31 @@ def _load_rule_book() -> _RuleBook:
                 constants[name] = value
         elif name == "SEC_SURFACE_RULES" and isinstance(assigned, ast.Tuple):
             for element in assigned.elts:
-                if not (isinstance(element, ast.Tuple) and len(element.elts) == 3):
+                if not (isinstance(element, ast.Tuple) and len(element.elts) in (3, 4)):
                     continue
                 surface = _constant_string(element.elts[0], constants)
                 host = _constant_string(element.elts[1], constants)
                 pattern = _constant_string(element.elts[2], constants)
                 if surface is None or host is None or pattern is None:
                     continue
-                book.rules.append((surface, host, re.compile(pattern)))
+                query: str | None = None
+                if len(element.elts) == 4:
+                    query_node = element.elts[3]
+                    if not (
+                        isinstance(query_node, ast.Constant)
+                        and query_node.value is None
+                    ):
+                        query = _constant_string(query_node, constants)
+                        if query is None:
+                            continue
+                book.rules.append(
+                    (
+                        surface,
+                        host,
+                        re.compile(pattern),
+                        re.compile(query) if query else None,
+                    )
+                )
                 book.surfaces.setdefault(surface, element.lineno)
         elif name == "URL_BUILDER_SURFACES" and isinstance(assigned, ast.Dict):
             for value_node in assigned.values:
@@ -101,9 +120,13 @@ def _classify(book: _RuleBook, url: str) -> str | None:
     parts = urlsplit(url)
     host = (parts.hostname or "").casefold()
     path = parts.path or ""
-    for surface, rule_host, pattern in book.rules:
-        if host == rule_host and pattern.search(path):
-            return surface
+    query = parts.query or ""
+    for surface, rule_host, pattern, query_pattern in book.rules:
+        if host != rule_host or not pattern.search(path):
+            continue
+        if query_pattern is not None and not query_pattern.search(query):
+            continue
+        return surface
     return None
 
 
