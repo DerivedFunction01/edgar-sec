@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from edgar_sec.apps.client.concept import ConceptResult
     from edgar_sec.apps.client.facade import Edgar
     from edgar_sec.apps.client.financials_stitched import StitchedFinancials
+    from edgar_sec.apps.client.financials_ttm import TtmResult
     from edgar_sec.apps.client.models import FilingsResult
     from edgar_sec.apps.client.xbrl import Xbrl
     from edgar_sec.domain.document.aggregate import FilingAggregate
@@ -201,6 +202,27 @@ class Company:
 
         selected = self._selected_filings(forms, dates, accessions)
         return build_stitched_financials(selected, cik=self.cik.to_10digit())
+
+    def ttm(
+        self,
+        metric: str,
+        forms: str | Sequence[str] | None = None,
+        *,
+        dates: str | None = None,
+        accessions: Sequence[str] | None = None,
+        period_end: str | None = None,
+    ) -> TtmResult | None:
+        """TTM over this company's stitched series; None without a facade.
+
+        The selection matches stitched_series; the window runs over
+        the stitched quarters, closing ends no single filing co-reports.
+        """
+        series = self.stitched_series(forms, dates=dates, accessions=accessions)
+        if series is None:
+            return None
+        from edgar_sec.apps.client.financials_ttm_stitched import stitched_ttm
+
+        return stitched_ttm(series, metric, period_end=period_end)
 
 
 __all__ = ["Company"]

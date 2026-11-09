@@ -17,6 +17,11 @@ One filing's attachments are served as an object collection
 (`Edgar.attachments(filing)`) with typed selectors, an acquisition-state
 accessor, and explicit payload accessors.
 
+The financials surface also derives trailing-twelve-month (TTM) values for the
+flow metrics it serves — within one filing, and across filings over the stitched
+series — and composes the same derivation from company-facts points strictly as
+a comparison leg.
+
 ## Contracts
 
 - **Relational by default**: Filings cohorts are queried and exported as DataFrames rather than eager object graphs.
@@ -42,6 +47,10 @@ accessor, and explicit payload accessors.
 - **Two role vocabularies, never merged**: The observed role (primary, exhibit, data_file, graphic, package) and the body-assessed role (primary, exhibit, schedule) are different facts about a document and are named distinctly at every surface they meet.
 - **Stitched series surface**: `Company.stitched_series()` and `Company.stitched_financials()` assemble one filer's filings — CIK + form family + date range, or an explicit accession list — into exact-period values with per-value provenance; the selected set is recorded on the result, and no value serves without a source accession.
 - **Derived quarters on the stitched surface**: `StitchedFinancials` adds derived discrete quarters to the reported winners only where the selected set reports no quarter for the span; each derived value is status DERIVED with its filed legs named, and a chain that cannot close surfaces as a recorded refusal with its reason, not a silent absence.
+- **TTM status is always DERIVED**: `XbrlFinancials.ttm(metric)`, its per-metric accessors, and `Company.ttm(...)` over the stitched series return a statused result carrying its legs and period end; a TTM is never REPORTED, however reported its legs are.
+- **Four quarters, completely accounted**: A TTM value exists only when all four quarters of its window are accounted for — reported quarters stand as filed, and a missing quarter is derived only from exact cumulative-span chaining with its inputs named. A window that cannot close serves UNAVAILABLE naming the missing quarter(s), never a partial sum, and where two closing routes exist they must agree or the result is UNAVAILABLE naming the disagreement.
+- **Per-share TTM is a derived ratio, never a sum**: EPS TTM is the same run's TTM net income divided by its TTM weighted-average shares at the same period end; weighted shares are a day-weighted derivation from cumulative spans, and filed EPS is never served as a TTM value.
+- **Duration flows only, breaks respected**: Instant concepts gain no TTM variant and a stitched series has no instant read at all; CUMULATIVE spans never serve as legs; a cross-filing window may not cross a recorded series break and is refused with the break named.
 
 ## Deliberate gaps
 
@@ -56,3 +65,8 @@ accessor, and explicit payload accessors.
 - **Payload duration is unrecorded**: Neither mode's store records fetch duration for attachment payloads, so payload tables serve `duration_ms` 0 (none recorded); fast-mode attempt counts are likewise 0 because that mode keeps no attempt records.
 - **Attachments are single-filing only**: `Edgar.attachments(filing)` serves one filing's collection; an object-level counterpart over a `FilingsResult` is deferred until a consumer appears. The attachment surface has no markdown accessor, no query DSL, and no HTTP serve.
 - **No stitched statements**: The client serves the stitched financials series only; statement rendering stays per-filing until the question of which filing's arcs govern a stitched statement is ruled.
+- **No split adjustment**: TTM values are served on the as-reported basis, named on every result; no split-detection or adjustment machinery exists, monetary flows are unaffected by splits, and building that machinery is a separate item if ever wanted.
+- **Facts-side TTM serves nothing**: The TTM composed from company-facts points exists only as the comparison leg beside the parsed-side result, under the same four outcome classes; no facts-derived TTM is an answer anywhere.
+- **Cross-filing scope bounded by the stitched series**: Stitched TTM serves exactly the metric classes the stitched series serves, inheriting its breaks and per-leg provenance; no stitching is built or widened at this layer.
+- **No calc-ancestor yield over a series**: Net income over a stitched series reads its filter ladder directly; the within-filing calc-ancestor yield has no series analogue, so a concept reachable only through that yield is absent cross-filing.
+- **No unit adjudication over a series**: Same-concept spans reported in multiple units keep the first series-ordered value rather than an adjudicated one.
