@@ -10,6 +10,7 @@ from typing import Any
 
 import pyarrow as pa
 
+from edgar_sec.apps.client.attachments import Attachments
 from edgar_sec.domain.document.aggregate import (
     FilingAggregate,
     is_exhibit_attachment,
@@ -204,49 +205,31 @@ def build_exhibits_table(
     filings: Iterable[FilingAggregate], types: Sequence[str] | str = ()
 ) -> pa.Table:
     """Build Arrow exhibits table from filing aggregates."""
-    filter_types = (
-        {types.upper()}
-        if isinstance(types, str) and types
-        else {t.upper() for t in types}
-        if types
-        else None
-    )
     batches: list[pa.RecordBatch] = []
     chunk: list[dict[str, Any]] = []
 
-    for filing, row in _canonical_rows(filings):
-        if not is_exhibit_attachment(row.document_type or "", row.filename or ""):
-            continue
-        dt = row.document_type or ""
-        if filter_types is not None:
-            matched = False
-            canon_dt = dt.upper()
-            for ft in filter_types:
-                canon_ft = f"EX-{ft}" if not ft.startswith("EX-") else ft
-                if (
-                    canon_dt == canon_ft
-                    or canon_dt == ft
-                    or canon_dt.startswith(f"{canon_ft}.")
-                ):
-                    matched = True
-                    break
-            if not matched:
-                continue
-        chunk.append(
-            {
-                "accession": filing.accession.value,
-                "form": filing.form,
-                "document_type": dt,
-                "description": row.description or "",
-                "filename": row.filename or "",
-                "size": row.byte_size or 0,
-                "url": row.archive_url or "",
-                "role": row.role(form=filing.form),
-            }
-        )
-        if len(chunk) >= DEFAULT_READ_BATCH_SIZE:
-            batches.append(pa.RecordBatch.from_pylist(chunk, schema=EXHIBITS_SCHEMA))
-            chunk.clear()
+    for filing in filings:
+        accession = filing.accession.value
+        selected = Attachments(filing.get_attachments()).exhibits(types)
+        for attachment in selected:
+            row = CanonicalAttachmentRow.from_attachment(accession, attachment)
+            chunk.append(
+                {
+                    "accession": accession,
+                    "form": filing.form,
+                    "document_type": row.document_type or "",
+                    "description": row.description or "",
+                    "filename": row.filename or "",
+                    "size": row.byte_size or 0,
+                    "url": row.archive_url or "",
+                    "role": row.role(form=filing.form),
+                }
+            )
+            if len(chunk) >= DEFAULT_READ_BATCH_SIZE:
+                batches.append(
+                    pa.RecordBatch.from_pylist(chunk, schema=EXHIBITS_SCHEMA)
+                )
+                chunk.clear()
 
     if chunk:
         batches.append(pa.RecordBatch.from_pylist(chunk, schema=EXHIBITS_SCHEMA))
