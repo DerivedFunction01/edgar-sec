@@ -196,6 +196,16 @@ def test_variable_kin_have_no_cover_profile() -> None:
         assert get_profile(form).family == "GENERIC"
 
 
+def test_form_24f2_profile_resolves_with_taxonomy() -> None:
+    form_24f2 = get_profile("24F-2TM")
+    assert form_24f2.family == "24F-2NT"
+    assert form_24f2.boundary is not None
+    assert form_24f2.checkbox_schema is None
+    assert form_24f2.has_sections is True
+    assert form_24f2.body_evidence is not None
+    assert "SIGNATURES" in form_24f2.body_evidence.structural_headings
+
+
 def test_annual_profiles_enable_incorporated_reference() -> None:
     annual_names = {rule.name for rule in get_profile("10-K").healing_rules}
     quarterly_names = {rule.name for rule in get_profile("10-Q").healing_rules}

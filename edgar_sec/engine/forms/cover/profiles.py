@@ -490,6 +490,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         build_form_suppl_profile,
     )
     from edgar_sec.engine.forms.cover.family_profiles.funds import (
+        build_form_24f2_profile,
         build_form_4017f1_profile,
         build_form_4017f2_profile,
         build_form_4017g_profile,
@@ -560,6 +561,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
     form_425 = build_form_425_profile("425")
     form_15 = build_form_15_profile("15")
     form_18k = build_form_18k_profile("18-K")
+    form_24f2 = build_form_24f2_profile("24F-2NT")
     form_4017g = build_form_4017g_profile("40-17G")
     form_4017f1 = build_form_4017f1_profile("40-17F1")
     form_4017f2 = build_form_4017f2_profile("40-17F2")
@@ -618,6 +620,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "425": form_425,
         "15": form_15,
         "18-K": form_18k,
+        "24F-2NT": form_24f2,
         "40-17G": form_4017g,
         "40-17F1": form_4017f1,
         "40-17F2": form_4017f2,

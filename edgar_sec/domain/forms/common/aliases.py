@@ -555,6 +555,14 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "N-30B-2",
         "N-30B-2/A",
     ),
+    "24F-2NT": (
+        "24F-2NT",
+        "24F-2NT/A",
+        "24F-2TM",
+        "24F-2EL",
+        "24F-2EL/A",
+        "24F-1",
+    ),
     "C": (
         "C",
         "C/A",
