@@ -114,18 +114,33 @@ class NMfpSeriesResolution:
     conflicts: tuple[str, ...]
 
 
-def _relation_rows(parts: dict, relation: str, columns: str) -> list[tuple]:
+def _relation_rows(parts: dict, relation: str) -> list[tuple]:
     """Rows of one published relation, or none when it was not published."""
     from edgar_sec.infra.storage.duckdb import connect, sql_path_list
+    from edgar_sec.pipelines.metadata_sync.series_class import TICKERED_RELATION
+    from edgar_sec.pipelines.metadata_sync.series_class_browse import (
+        BROWSE_RELATION,
+        BROWSE_SERIES_RELATION,
+    )
 
     paths = parts.get(relation)
     if not paths:
         return []
+    table = f"read_parquet({sql_path_list(paths)})"
+    if relation == TICKERED_RELATION:
+        sql = f"SELECT cik, series_id, class_id, symbol FROM {table}"
+    elif relation == BROWSE_RELATION:
+        sql = (
+            "SELECT cik, series_id, series_name, class_id, class_name, symbol "
+            f"FROM {table}"
+        )
+    elif relation == BROWSE_SERIES_RELATION:
+        sql = f"SELECT cik, series_id, series_name FROM {table}"
+    else:
+        return []
     con = connect()
     try:
-        return con.execute(
-            f"SELECT {columns} FROM read_parquet({sql_path_list(paths)})"
-        ).fetchall()
+        return con.execute(sql).fetchall()
     finally:
         con.close()
 
@@ -150,17 +165,9 @@ def _merged_view(
     if tip is None:
         return None, {}, {}
     parts = series_class_part_paths(paths, tip)
-    tickered = _relation_rows(
-        parts, TICKERED_RELATION, "cik, series_id, class_id, symbol"
-    )
-    browse = _relation_rows(
-        parts,
-        BROWSE_RELATION,
-        "cik, series_id, series_name, class_id, class_name, symbol",
-    )
-    browse_series = _relation_rows(
-        parts, BROWSE_SERIES_RELATION, "cik, series_id, series_name"
-    )
+    tickered = _relation_rows(parts, TICKERED_RELATION)
+    browse = _relation_rows(parts, BROWSE_RELATION)
+    browse_series = _relation_rows(parts, BROWSE_SERIES_RELATION)
     series: dict[str, FundSeries] = {}
     ciks: dict[str, str] = {}
     names: dict[str, str] = {}
@@ -323,9 +330,8 @@ def resolve_nmfp_series(
 ) -> NMfpSeriesResolution:
     """Resolve one N-MFP document's series id against the relation.
 
-    The document's own series name and registrant are cross-checked, and
-    a disagreement is reported as a conflict. The relation carries no
-    LEI, so the document's series LEI is returned unverified.
+    Name and registrant disagreements are reported as conflicts; the
+    relation carries no LEI, so the document's LEI returns unverified.
     """
     tip, series_map, classes = _merged_view(artifacts_root)
     series = series_map.get(document.series_id) if document.series_id else None
