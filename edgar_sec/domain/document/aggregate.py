@@ -22,6 +22,8 @@ ATTACHMENT_ROLES: frozenset[str] = frozenset(
     {"primary", "exhibit", "data_file", "graphic", "package"}
 )
 
+AttachmentState = Literal["acquired", "not_acquired"]
+
 
 def is_exhibit_attachment(document_type: str, filename: str) -> bool:
     """The one exhibit derivation: EX- type or statutory exhibit filename."""
@@ -48,6 +50,7 @@ class FilingAttachment:
     storage_path: Path | None = None
     fetcher: Callable[[FilingAttachment], bytes | None] | None = None
     renderer: Callable[[FilingAttachment], str | bytes | None] | None = None
+    presence: Callable[[FilingAttachment], bool] | None = None
 
     @property
     def is_graphic(self) -> bool:
@@ -112,6 +115,30 @@ class FilingAttachment:
         if self.is_graphic:
             return self.raw()
         return self.text()
+
+    @property
+    def state(self) -> AttachmentState:
+        """Acquisition state from store presence alone; never retrieves."""
+        if self.storage_path is not None and self.storage_path.is_file():
+            return "acquired"
+        if self.presence is not None and self.presence(self):
+            return "acquired"
+        return "not_acquired"
+
+    def content(self) -> bytes | None:
+        """Return payload bytes; the call itself is the act that may fetch."""
+        return self.raw()
+
+    def rendered_text(self) -> str | None:
+        """Return rendered text via the injected renderer, not a plain decode."""
+        if self.is_graphic:
+            return None
+        rendered = self.render()
+        if isinstance(rendered, str):
+            return rendered
+        if isinstance(rendered, bytes):
+            return rendered.decode("utf-8", errors="replace")
+        return None
 
     def save(self, destination: Path | str) -> Path:
         """Save attachment bytes to destination path."""
@@ -399,6 +426,7 @@ class FilingAggregate:
 __all__ = [
     "ATTACHMENT_ROLES",
     "AttachmentRole",
+    "AttachmentState",
     "FilingAggregate",
     "FilingAttachment",
     "is_exhibit_attachment",

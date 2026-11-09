@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterator, Sequence
+from collections.abc import Callable, Iterator, Sequence
 from pathlib import Path
 import threading
 from typing import Any
 
+from edgar_sec.apps.client.fast_query.loaders import make_attachment_renderer
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
 from edgar_sec.domain.document.canonical import CanonicalAttachmentRow
@@ -484,6 +485,29 @@ def _load_snapshot_payload(
     raise FileNotFoundError(f"snapshot payload {sha256!r} is missing")
 
 
+def _make_snapshot_fetcher(
+    artifacts_root: Path, snapshot_id: str, sha: str | None
+) -> Callable[[FilingAttachment], bytes | None]:
+    def _fetch(_att: FilingAttachment) -> bytes | None:
+        if sha is None:
+            return None
+        try:
+            return _load_snapshot_payload(artifacts_root, snapshot_id, sha)
+        except FileNotFoundError:
+            return None
+
+    return _fetch
+
+
+def _make_snapshot_presence(
+    held: bool,
+) -> Callable[[FilingAttachment], bool]:
+    def _present(_att: FilingAttachment) -> bool:
+        return held
+
+    return _present
+
+
 def _snapshot_attachments(
     artifacts_root: Path, snapshot_id: str, accession: str
 ) -> tuple[FilingAttachment, ...]:
@@ -502,7 +526,8 @@ def _snapshot_attachments(
     rows = con.execute(
         f"SELECT s.sequence, st.statutory_type, "
         f"COALESCE(sa.canonical_path, s.locator), s.locator, "
-        f"sp.payload_sha256, pi.byte_size "
+        f"sp.payload_sha256, pi.byte_size, "
+        f"(pi.payload_sha256 IS NOT NULL) "
         f"FROM {slots} s LEFT JOIN {assets} sa ON s.source_asset_id = sa.source_asset_id "
         f"LEFT JOIN {types} st ON s.accession = st.accession AND s.sequence = st.sequence "
         f"LEFT JOIN {payloads} sp ON sp.source_asset_id = s.source_asset_id "
@@ -511,22 +536,32 @@ def _snapshot_attachments(
         [accession],
     ).fetchall()
     attachments = []
-    for seq, doc_type, path, url, sha, byte_size in rows:
+    for seq, doc_type, path, url, sha, byte_size, held in rows:
+        sha_str = str(sha) if sha else None
+        filename = Path(str(path or "")).name or None
+        dtype = str(doc_type) if doc_type else None
         row = CanonicalAttachmentRow(
             entry_id=None,
             accession=accession,
             table_kind=None,
             sequence=int(seq) if seq is not None else None,
-            document_type=str(doc_type) if doc_type else None,
+            document_type=dtype,
             document_label=None,
             description=None,
-            filename=Path(str(path or "")).name or None,
+            filename=filename,
             href=None,
             archive_url=str(url) if url else None,
             byte_size=int(byte_size) if byte_size is not None else None,
-            payload_sha256=str(sha) if sha else None,
+            payload_sha256=sha_str,
         )
-        attachments.append(row.to_attachment(form=form))
+        attachments.append(
+            row.to_attachment(
+                form=form,
+                fetcher=_make_snapshot_fetcher(artifacts_root, snapshot_id, sha_str),
+                renderer=make_attachment_renderer(dtype or "", filename or ""),
+                presence=_make_snapshot_presence(bool(held)),
+            )
+        )
     return tuple(attachments)
 
 

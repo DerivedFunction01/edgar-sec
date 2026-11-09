@@ -204,6 +204,39 @@ def make_document_fetcher(
     return _fetch
 
 
+def make_attachment_renderer(
+    document_type: str, filename: str
+) -> Callable[[FilingAttachment], str | bytes | None]:
+    """Create the attachment renderer both loaders inject; PDFs ride the text-layer route."""
+
+    def _render(att: FilingAttachment) -> str | bytes | None:
+        raw_b = att.raw()
+        if raw_b is None:
+            return None
+        if att.is_graphic:
+            return raw_b
+        if att.filename.lower().endswith(".pdf"):
+            from edgar_sec.engine.document_processing.pdf import (
+                PdfConversionError,
+                convert_pdf_to_text,
+            )
+
+            try:
+                return convert_pdf_to_text(raw_b).text
+            except PdfConversionError:
+                return None
+        from edgar_sec.engine.forms.render import render_document
+
+        return render_document(
+            raw_b,
+            form=document_type or att.document_type,
+            filename=filename or att.filename,
+            operation=AcquisitionOperation.RENDER_TO_TXT,
+        )
+
+    return _render
+
+
 def make_attachment_loader(
     doc_cache: DocumentCache,
     http_client_factory: Callable[[], SecHttpClient] | None = None,
@@ -282,25 +315,13 @@ def make_attachment_loader(
 
             return _fetch_att
 
-        def _make_att_renderer(
-            entry_type: str, fname: str
-        ) -> Callable[[FilingAttachment], str | bytes | None]:
-            def _render_att(att: FilingAttachment) -> str | bytes | None:
-                raw_b = att.raw()
-                if raw_b is None:
-                    return None
-                if att.is_graphic:
-                    return raw_b
-                from edgar_sec.engine.forms.render import render_document
+        def _make_att_presence(
+            fname: str,
+        ) -> Callable[[FilingAttachment], bool]:
+            def _present(_att: FilingAttachment) -> bool:
+                return doc_cache.has(filing.accession.raw, fname)
 
-                return render_document(
-                    raw_b,
-                    form=entry_type or att.document_type,
-                    filename=fname or att.filename,
-                    operation=AcquisitionOperation.RENDER_TO_TXT,
-                )
-
-            return _render_att
+            return _present
 
         attachments: list[FilingAttachment] = []
         for entry in outcome.entries:
@@ -312,7 +333,8 @@ def make_attachment_loader(
                 row.to_attachment(
                     form=filing.form,
                     fetcher=_make_att_fetcher(a_url, fname) if a_url else None,
-                    renderer=_make_att_renderer(dtype, fname),
+                    renderer=make_attachment_renderer(dtype, fname),
+                    presence=_make_att_presence(fname),
                 )
             )
         return tuple(attachments)

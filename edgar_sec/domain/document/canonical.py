@@ -103,6 +103,7 @@ class CanonicalAttachmentRow:
         form: str,
         fetcher: Callable[[FilingAttachment], bytes | None] | None = None,
         renderer: Callable[[FilingAttachment], str | bytes | None] | None = None,
+        presence: Callable[[FilingAttachment], bool] | None = None,
         storage_path: Path | None = None,
     ) -> FilingAttachment:
         """Hydrate the in-memory attachment object from this row."""
@@ -117,6 +118,7 @@ class CanonicalAttachmentRow:
             storage_path=storage_path,
             fetcher=fetcher,
             renderer=renderer,
+            presence=presence,
             entry_id=self.entry_id,
             sequence=self.sequence,
             table_kind=self.table_kind,

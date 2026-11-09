@@ -323,3 +323,40 @@ def test_snapshot_staged_uses_real_target_id(tmp_path: Path) -> None:
         ).fetchall()
     }
     assert row["target_id"] in target_ids
+
+
+def test_snapshot_attachment_state_and_content(tmp_path: Path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    run_id, _ = _setup_run(tmp_path, "run-1")
+    pub = publish_acquisition_run(paths, run_id, branch_name="main")
+
+    from edgar_sec.apps.client.snapshots import SnapshotSession
+
+    session = SnapshotSession(tmp_path, pub.snapshot_id)
+    attachments = session.load_attachments("0000000001-24-000001")
+    assert len(attachments) == 1
+    att = attachments[0]
+    assert att.state == "acquired"
+    assert att.content() == b"<html>Sample filing content</html>"
+    assert att.raw() == b"<html>Sample filing content</html>"
+    rendered = att.rendered_text()
+    assert rendered is not None
+    assert "Sample filing content" in rendered
+
+
+def test_snapshot_attachment_not_acquired_is_explicit(tmp_path: Path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    run_id, _ = _setup_run(
+        tmp_path, "run-1", target_outcome="failed", with_payload=False
+    )
+    pub = publish_acquisition_run(paths, run_id, branch_name="main", allow_errors=True)
+
+    from edgar_sec.apps.client.snapshots import SnapshotSession
+
+    session = SnapshotSession(tmp_path, pub.snapshot_id)
+    attachments = session.load_attachments("0000000001-24-000001")
+    assert len(attachments) == 1
+    att = attachments[0]
+    assert att.state == "not_acquired"
+    assert att.content() is None
+    assert att.rendered_text() is None

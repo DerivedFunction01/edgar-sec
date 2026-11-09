@@ -1,4 +1,6 @@
-"""Tests for the per-filing Attachments collection and its selectors."""
+"""Tests for the Attachments collection, its selectors, and attachment accessors."""
+
+from pathlib import Path
 
 from edgar_sec.apps.client.attachments import Attachments
 from edgar_sec.domain.document.aggregate import FilingAttachment
@@ -136,3 +138,68 @@ def test_exhibit_selection_agrees_with_earnings_surface() -> None:
     assert picked.filename in earnings_picked
     typed = collection.exhibits("99")
     assert {a.filename for a in typed} >= earnings_picked
+
+
+def test_state_from_storage_path_and_presence(tmp_path: Path) -> None:
+    stored = tmp_path / "held.htm"
+    stored.write_bytes(b"<html>held</html>")
+    local = FilingAttachment(
+        attachment_id="s1",
+        document_type="10-K",
+        filename="held.htm",
+        url="",
+        storage_path=stored,
+    )
+    assert local.state == "acquired"
+    assert local.content() == b"<html>held</html>"
+
+    held = FilingAttachment(
+        attachment_id="s2",
+        document_type="10-K",
+        filename="x.htm",
+        url="",
+        presence=lambda _a: True,
+    )
+    assert held.state == "acquired"
+    missing = FilingAttachment(
+        attachment_id="s3",
+        document_type="10-K",
+        filename="x.htm",
+        url="",
+        presence=lambda _a: False,
+    )
+    assert missing.state == "not_acquired"
+    bare = FilingAttachment(
+        attachment_id="s4", document_type="10-K", filename="x.htm", url=""
+    )
+    assert bare.state == "not_acquired"
+
+
+def test_content_and_rendered_text_accessors() -> None:
+    att = FilingAttachment(
+        attachment_id="c1",
+        document_type="EX-99.1",
+        filename="ex99.htm",
+        url="",
+        fetcher=lambda _a: b"<html><body>Press release</body></html>",
+        renderer=lambda _a: "Press release",
+    )
+    assert att.content() == b"<html><body>Press release</body></html>"
+    # text() keeps its plain decode; rendered_text rides the renderer.
+    assert att.text() == "<html><body>Press release</body></html>"
+    assert att.rendered_text() == "Press release"
+
+    graphic = FilingAttachment(
+        attachment_id="c2",
+        document_type="GRAPHIC",
+        filename="chart.jpg",
+        url="",
+        fetcher=lambda _a: b"\xff\xd8",
+    )
+    assert graphic.rendered_text() is None
+
+    bare = FilingAttachment(
+        attachment_id="c3", document_type="10-K", filename="none.htm", url=""
+    )
+    assert bare.content() is None
+    assert bare.rendered_text() is None
