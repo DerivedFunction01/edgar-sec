@@ -8,14 +8,16 @@ from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.engine.xbrl.solve.assembly import StitchedSeries, assemble_series
 from edgar_sec.engine.xbrl.solve.scoping import base_form
 
-_DEFAULT_FAMILIES = ("10-K", "10-Q")
-
 
 def expand_form_families(forms: str | Sequence[str] | None) -> tuple[str, ...]:
-    """Requested forms expanded to each base form plus its amendment form."""
+    """Requested forms expanded to each base form plus its amendment form.
+
+    None means no form filter: the empty tuple the fetch layer reads
+    as unfiltered, never a hardcoded family list.
+    """
     if forms is None:
-        requested: tuple[str, ...] = _DEFAULT_FAMILIES
-    elif isinstance(forms, str):
+        return ()
+    if isinstance(forms, str):
         requested = (forms,)
     else:
         requested = tuple(forms)

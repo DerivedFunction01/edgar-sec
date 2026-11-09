@@ -116,6 +116,6 @@ def test_company_series_without_a_facade_is_none() -> None:
 
 
 def test_expand_form_families() -> None:
-    assert expand_form_families(None) == ("10-K", "10-K/A", "10-Q", "10-Q/A")
+    assert expand_form_families(None) == ()
     assert expand_form_families("10-Q/A") == ("10-Q", "10-Q/A")
     assert expand_form_families(["10-K", "10-K/A"]) == ("10-K", "10-K/A")
