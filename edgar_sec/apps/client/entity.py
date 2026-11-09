@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from edgar_sec.apps.client.facade import Edgar
     from edgar_sec.apps.client.models import FilingsResult
     from edgar_sec.apps.client.xbrl import Xbrl
+    from edgar_sec.engine.xbrl.solve.assembly import StitchedSeries
 
 
 @dataclass(frozen=True, slots=True)
@@ -140,6 +141,36 @@ class Company:
         if latest is None:
             return None
         return self.facade.xbrl(latest)
+
+    def stitched_series(
+        self,
+        forms: str | Sequence[str] | None = None,
+        *,
+        dates: str | None = None,
+        accessions: Sequence[str] | None = None,
+    ) -> StitchedSeries | None:
+        """Stitched series over this company's filings, keyed by exact period.
+
+        Auto-selection is CIK + form family + date range; an explicit
+        accession list overrides it. None without a facade.
+        """
+        if self.facade is None:
+            return None
+        from edgar_sec.apps.client.stitched import (
+            build_filing_series,
+            expand_form_families,
+        )
+
+        if accessions is not None:
+            wanted = {str(item) for item in accessions}
+            selected = [
+                filing for filing in self.filings() if filing.accession.value in wanted
+            ]
+        else:
+            selected = list(
+                self.filings(forms=expand_form_families(forms), dates=dates)
+            )
+        return build_filing_series(selected, cik=self.cik.to_10digit())
 
 
 __all__ = ["Company"]
