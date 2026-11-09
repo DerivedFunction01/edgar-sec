@@ -178,24 +178,6 @@ class FilingAggregate:
             if is_exhibit_attachment(a.document_type, a.filename)
         )
 
-    def exhibit(self, type_or_number: str | int) -> FilingAttachment | None:
-        """Safe exhibit retrieval by document type, number, or filename token."""
-        token = str(type_or_number).upper().strip()
-        canon_ex = f"EX-{token}" if not token.startswith("EX-") else token
-        for a in self.exhibits:
-            dt = a.document_type.upper()
-            if dt == canon_ex or dt == token:
-                return a
-        for a in self.exhibits:
-            dt = a.document_type.upper()
-            if dt.startswith(f"{canon_ex}.") or dt.startswith(f"{canon_ex}-"):
-                return a
-        for a in self.exhibits:
-            fn = a.filename.lower()
-            if token.lower() in fn or canon_ex.lower() in fn:
-                return a
-        return None
-
     def as_report(self) -> FormReport:
         from edgar_sec.domain.forms.reports import get_report_projection
 
