@@ -48,6 +48,7 @@ from .model import (
     TableRenderResult,
     VerticalAlign,
 )
+from .parens import merge_split_paren_cells
 from .spans import (
     build_span_matrix,
     distribute_multi_row_span_lines,
@@ -145,6 +146,7 @@ def render_source_table(
         grid_matrix, active_cols
     )
     raw_grid, single_col_grid = normalize_grid_indents(raw_grid, single_col_grid)
+    raw_grid = merge_split_paren_cells(raw_grid)
 
     # Some filings place several caption rows before the real column subheaders, so the border-based
     # header score can stop too early: detect only text-only rows right before the first numeric row.

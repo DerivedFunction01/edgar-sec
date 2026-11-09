@@ -228,7 +228,12 @@ def test_a_value_block_keeps_its_right_edge_across_populated_and_empty_rows() ->
     revenue = next(line for line in lines if "67,030" in line)
     loss = next(line for line in lines if "(127,110)" in line)
     dash = next(line for line in lines if "$ -" in line)
-    assert len(revenue.rstrip()) == len(loss.rstrip()) == len(dash.rstrip())
+    value_ends = {
+        revenue.index("67,030") + len("67,030"),
+        loss.index("(127,110)") + len("(127,110)"),
+        dash.index("-") + len("-"),
+    }
+    assert len(value_ends) == 1
 
 
 def test_the_output_has_no_blank_row_between_a_row_and_its_divider() -> None:
