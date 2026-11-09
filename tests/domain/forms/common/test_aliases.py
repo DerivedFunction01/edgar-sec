@@ -10,6 +10,11 @@ from edgar_sec.domain.forms.common.aliases import (
     form_family,
     resolve_alias,
 )
+from edgar_sec.domain.forms.common.processing import (
+    DEFAULT_OPERATIONS,
+    allowed_operations_of,
+)
+from edgar_sec.domain.forms.families.processing_profiles import get_family_profile
 
 
 @pytest.mark.parametrize(
@@ -183,6 +188,64 @@ def test_resolve_alias(raw: str, expected: str) -> None:
 )
 def test_resolve_alias_universe_audit_additions(raw: str, expected: str) -> None:
     assert resolve_alias(raw) == expected
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        ("NRSRO-CE", "NRSRO-CE"),
+        ("NRSRO-CE/A", "NRSRO-CE"),
+        ("N-54C", "N-54C"),
+        ("N-54C/A", "N-54C"),
+        ("SF-1", "SF-1"),
+        ("SF-1MEF", "SF-1"),
+        ("SF-1/A", "SF-1"),
+        ("U-12-IB", "U-12-IB"),
+        ("U-12-IB/A", "U-12-IB"),
+        ("ANNLRPT", "ANNLRPT"),
+        ("ANNLRPT/A", "ANNLRPT"),
+        ("S-B", "S-B"),
+        ("S-BMEF", "S-B"),
+        ("S-B/A", "S-B"),
+        ("SB-1", "SB-1"),
+        ("SB-1MEF", "SB-1"),
+        ("SB-1/A", "SB-1"),
+        ("35-APP", "35-APP"),
+        ("35-APP/A", "35-APP"),
+        ("U-12-IA", "U-12-IA"),
+        ("U-12-IA/A", "U-12-IA"),
+        ("U-33-S", "U-33-S"),
+        ("U-33-S/A", "U-33-S"),
+        ("UNDER", "UNDER"),
+        ("UNDER/A", "UNDER"),
+        ("2-E", "2-E"),
+        ("2-E/A", "2-E"),
+    ],
+)
+def test_resolve_alias_tail_registration_additions(raw: str, expected: str) -> None:
+    assert resolve_alias(raw) == expected
+
+
+@pytest.mark.parametrize(
+    "family",
+    [
+        "NRSRO-CE",
+        "N-54C",
+        "SF-1",
+        "U-12-IB",
+        "ANNLRPT",
+        "S-B",
+        "SB-1",
+        "35-APP",
+        "U-12-IA",
+        "U-33-S",
+        "UNDER",
+        "2-E",
+    ],
+)
+def test_tail_registration_families_stay_profile_less(family: str) -> None:
+    assert get_family_profile(family) is None
+    assert allowed_operations_of(get_family_profile(family)) == DEFAULT_OPERATIONS
 
 
 @pytest.mark.parametrize(

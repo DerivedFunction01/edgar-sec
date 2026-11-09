@@ -110,6 +110,41 @@ def test_unmodelled_family_keeps_raw_and_denies_render_to_xml() -> None:
     assert xml.pins is None
 
 
+def test_profile_less_tail_family_pdf_resolves_generic_pdf_render() -> None:
+    facts = DocumentPathFacts.from_archive_path("filing.pdf")
+    entry = resolve_acquisition_capability(
+        "NRSRO-CE", "primary", "render_to_txt", facts
+    )
+    assert entry.status is CapabilityStatus.SUPPORTED
+    assert entry.family == "NRSRO-CE"
+    assert entry.pins == ("text.pdf", "1", "normalize_pdf_document", "1", "text")
+
+
+def test_profile_less_tail_member_canonicalizes_to_base_family() -> None:
+    facts = DocumentPathFacts.from_archive_path("filing.htm")
+    entry = resolve_acquisition_capability("SF-1MEF", "primary", "render_to_txt", facts)
+    assert entry.status is CapabilityStatus.SUPPORTED
+    assert entry.family == "SF-1"
+    assert entry.pins == ("text.markup", "1", "normalize_document", "1", "text")
+
+
+def test_profile_less_tail_paper_primary_keeps_raw_only_posture() -> None:
+    facts = DocumentPathFacts.from_archive_path("filing.paper")
+    raw = resolve_acquisition_capability("2-E", "primary", "raw", facts)
+    text = resolve_acquisition_capability("2-E", "primary", "render_to_txt", facts)
+    assert raw.status is CapabilityStatus.SUPPORTED
+    assert raw.pins == ("raw.selected_source", "v1", "raw_identity", "1", "raw_bytes")
+    assert text.status is CapabilityStatus.UNSUPPORTED
+    assert text.pins is None
+
+
+def test_profile_less_tail_flat_xml_render_to_txt_is_not_applicable() -> None:
+    facts = DocumentPathFacts.from_archive_path("primary_doc.xml")
+    entry = resolve_acquisition_capability("2-E", "primary", "render_to_txt", facts)
+    assert entry.status is CapabilityStatus.NOT_APPLICABLE
+    assert entry.pins is None
+
+
 def test_unmodelled_family_flat_xml_render_to_txt_is_not_applicable() -> None:
     facts = DocumentPathFacts.from_archive_path("primary_doc.xml")
     entry = resolve_acquisition_capability("F-X", "primary", "render_to_txt", facts)
