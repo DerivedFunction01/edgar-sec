@@ -409,6 +409,20 @@ def test_18k_entry_registered_with_section_taxonomy() -> None:
     assert get_family_entry("18-K/A") is entry
 
 
+def test_s6_entry_registered_with_section_taxonomy() -> None:
+    from edgar_sec.domain.forms.families.form_s6.processing import PROFILE_FORM_S6
+    from edgar_sec.domain.forms.families.form_s6.taxonomy import FORM_S6_ITEMS
+
+    entry = get_family_entry("S-6")
+    assert entry is not None
+    assert entry.family == "S-6"
+    assert entry.profile is PROFILE_FORM_S6
+    assert entry.cover_checkbox_schema is None
+    assert entry.taxonomy_items == FORM_S6_ITEMS
+    assert get_family_entry("S-6/A") is entry
+    assert get_family_entry("487") is entry
+
+
 @pytest.mark.parametrize(
     "family,variant",
     [
