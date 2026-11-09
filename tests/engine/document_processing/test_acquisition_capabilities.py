@@ -55,7 +55,7 @@ def test_profile_less_variable_kin_match_unmodelled_posture() -> None:
             facts = DocumentPathFacts.from_archive_path(path)
             entry = resolve_acquisition_capability(form, "primary", operation, facts)
             baseline = resolve_acquisition_capability(
-                "40-17G", "primary", operation, facts
+                "485", "primary", operation, facts
             )
             assert entry.family == family
             assert entry.status is baseline.status

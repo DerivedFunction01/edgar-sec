@@ -408,6 +408,7 @@ def test_checkmark_schema_cases_cover_registered_profile_scope() -> None:
         "40-APP",
         "40-24B2",
         "N-30D",
+        "N-VP",
     }
 
 
