@@ -20,16 +20,15 @@ from edgar_sec.engine.xbrl.schema.models import (
 )
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
 
-XBRL_FIXTURES = DISCOVERY_DIR
 CORPUS_NAMES = ("seed", "vintage")
 
 
 def bundle_dir(folder: str) -> Path:
     """A corpus bundle folder; it must exist in exactly one corpus root."""
     hits = [
-        XBRL_FIXTURES / name / folder
+        DISCOVERY_DIR / name / folder
         for name in CORPUS_NAMES
-        if (XBRL_FIXTURES / name / folder).is_dir()
+        if (DISCOVERY_DIR / name / folder).is_dir()
     ]
     if len(hits) != 1:
         raise ValueError(f"bundle folder {folder} in {len(hits)} corpus roots")
@@ -54,7 +53,7 @@ def corpus_source_bundles() -> list[dict]:
     bundles: list[dict] = []
     for name in CORPUS_NAMES:
         payload = json.loads(
-            (XBRL_FIXTURES / name / "fixture_source_registry.json").read_text(
+            (DISCOVERY_DIR / name / "fixture_source_registry.json").read_text(
                 encoding="utf-8"
             )
         )
@@ -223,7 +222,7 @@ def corpus_folders() -> list[str]:
     return sorted(
         p.name
         for name in CORPUS_NAMES
-        for p in (XBRL_FIXTURES / name).iterdir()
+        for p in (DISCOVERY_DIR / name).iterdir()
         if p.is_dir()
     )
 

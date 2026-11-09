@@ -26,7 +26,6 @@ from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_ta
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
-XBRL_FIXTURES = DISCOVERY_DIR
 COHORT_NAMES = ("seed", "vintage", "sp100", "probe")
 MODES = ("standard", "detailed", "summary")
 TOLERANCE = 0.5
@@ -118,7 +117,7 @@ def _guard(fn: Callable[[], Any]) -> tuple[Any, str | None]:
 
 def cohort_folders(cohort: str, subset: Sequence[str] | None = None) -> list[str]:
     """Bundle folders of one cohort, in name order, optionally subset."""
-    root = XBRL_FIXTURES / cohort
+    root = DISCOVERY_DIR / cohort
     folders = sorted(
         path.name
         for path in root.iterdir()
@@ -456,7 +455,7 @@ def _filing_work(item: tuple[str, str, str | None]) -> tuple[str, str, dict[str,
     record: dict[str, Any] = {}
     peer_seconds = 0.0
     xbrl, error = _guard(
-        lambda: Xbrl.from_bundle(XBRL_FIXTURES / cohort / folder, _worker_taxonomy())
+        lambda: Xbrl.from_bundle(DISCOVERY_DIR / cohort / folder, _worker_taxonomy())
     )
     if error is not None:
         record["load_error"] = error
@@ -473,7 +472,7 @@ def _filing_work(item: tuple[str, str, str | None]) -> tuple[str, str, dict[str,
             else:
                 peer, peer_error = _guard(
                     lambda target=peer_folder: Xbrl.from_bundle(
-                        XBRL_FIXTURES / "seed" / str(target), _worker_taxonomy()
+                        DISCOVERY_DIR / "seed" / str(target), _worker_taxonomy()
                     )
                 )
                 if peer_error is not None:
@@ -676,7 +675,7 @@ def main(argv: list[str] | None = None) -> int:
     """CLI entrypoint: run the battery, write the JSON report, print a summary."""
     args = _build_parser().parse_args(argv)
     for cohort in args.cohorts:
-        if not (XBRL_FIXTURES / cohort).is_dir():
+        if not (DISCOVERY_DIR / cohort).is_dir():
             sys.stderr.write(f"cohort fixtures not found: {cohort}\n")
             return 2
     try:
