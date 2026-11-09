@@ -23,5 +23,5 @@ counter belongs above this layer.
 
 ## Deliberate gaps
 
-- **Endpoint coverage stops at submissions and the archive**: `sec_urls.py` builds submissions, historical submissions, archive document, index, full-submission, and XBRL package URLs; XBRL APIs and `company_tickers.json` are not included; callers assemble those URLs themselves.
+- **A few registered surfaces have no domain builder**: the ticker files and the CIK lookup file are governed surfaces in the rule table, but their fetch URLs live as literals in the cohort pipeline's source catalog; every other fetched SEC shape is built in this layer.
 - **The `layer-boundary` scanner does not check for cycles**: It flags only upward layer-rank dependencies; same-layer import cycles remain a review responsibility.

@@ -22,11 +22,12 @@ own the domain vocabulary or schemas it consumes (that is `edgar_sec/domain`).
 - **reflow/**: conservative ASCII reflow, untagged-table tagging, line-coordinate mapping
 - **forms/**: stage order, result record, cover decision chain, family profiles
 - **forms/plugins/**: bounded exhibit-header probe
+- **forms/earnings/**: earnings-exhibit selection and table/headline extraction for current reports
 - **document_processing/**: acquisition operation resolution and runtime handlers
 - **selection/**: Phase 2 target-plan selection: features, policy, selector, source
 - **company_family/**: name normalization, universe-scale family assignment, and bounded cohort sampling
 - **submissions/**: submission unrolling, profiling, building
-- **index_pages/**: pure SEC filing index-page HTML parser
+- **index_pages/**: pure SEC filing index-page HTML parser, and the full/daily `.idx` index-file parsers whose streamed rows feed catalog reconciliation
 - **filing_summary/**: pure SEC FilingSummary and XBRL-package enumerator
 - **feeds/**: shared SEC feed client and Atom/RSS parsers producing domain feed events
 - **xbrl/**: taxonomy linkbase discovery, classification, and Parquet storage

@@ -9,6 +9,9 @@ published through the DAG as a cross-check corpus.
 The package also carries a fund series/class reference leg: the mutual-fund
 ticker file's full rows and the browse-edgar series pages publish as one
 two-layer DAG relation beside the metadata snapshots.
+The package also carries a daily-index reconciliation leg: `reconcile`
+diffs the daily index for a date range against the branch tip and publishes
+exactly the accessions the index proves the tip lacks.
 
 ## Contracts
 
@@ -57,6 +60,12 @@ two-layer DAG relation beside the metadata snapshots.
   this host even when attested; a lock naming another host cannot be checked locally,
   so the attestation is the only evidence. A lock that cannot be read is not evidence
   of staleness and is refused.
+- The daily index is a discovery trigger, never a metadata source. `reconcile`
+  stages the daily index for a date range and diffs its accession set against
+  the branch tip store-side; it publishes a child snapshot for exactly the
+  accessions the tip lacks and the index proves exist, their rows produced by
+  the existing per-CIK fetch and normalize machinery, with everything else
+  carried forward. A zero-diff range publishes nothing.
 - The company-facts leg is a batch command, not a plan shape. `facts` downloads the
   companyfacts bulk archive through `SecHttpClient.stream_to_file` (byte bound from
   the bulk-archive setting) into the shared bulk-archive store under source id
