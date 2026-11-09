@@ -383,6 +383,60 @@ def test_form_4017g_specimens_resolve_sections(
     assert [s.item_identifier for s in res.sections.sections] == expected
 
 
+@pytest.mark.parametrize(
+    ("fixture", "form", "expected"),
+    [
+        (
+            "0001086144-00-000101__0001.txt",
+            "N-30D",
+            [
+                "ITEM LETTER TO SHAREHOLDERS",
+                "ITEM FUND PERFORMANCE",
+                "ITEM STATEMENT OF ASSETS AND LIABILITIES",
+                "ITEM STATEMENT OF OPERATIONS",
+                "ITEM STATEMENTS OF CHANGES IN NET ASSETS",
+                "ITEM FINANCIAL HIGHLIGHTS",
+                "ITEM NOTES TO FINANCIAL STATEMENTS",
+                "ITEM REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM",
+            ],
+        ),
+        (
+            "0001005477-01-501237__d01-34714.txt",
+            "N-30D/A",
+            [
+                "ITEM LETTER TO SHAREHOLDERS",
+                "ITEM STATEMENT OF ASSETS AND LIABILITIES",
+                "ITEM STATEMENT OF OPERATIONS",
+                "ITEM STATEMENTS OF CHANGES IN NET ASSETS",
+                "ITEM FINANCIAL HIGHLIGHTS",
+                "ITEM NOTES TO FINANCIAL STATEMENTS",
+                "ITEM REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM",
+                "ITEM PORTFOLIO OF INVESTMENTS",
+            ],
+        ),
+        (
+            "0000950137-05-013155__c99520a1nv30bv2.htm",
+            "N-30B-2",
+            [
+                "ITEM STATEMENTS OF CHANGES IN NET ASSETS",
+                "ITEM FINANCIAL HIGHLIGHTS",
+                "ITEM NOTES TO FINANCIAL STATEMENTS",
+            ],
+        ),
+    ],
+)
+def test_form_n30d_specimens_resolve_sections(
+    fixture: str, form: str, expected: list[str]
+) -> None:
+    """Census specimens resolve the sections their bodies carry."""
+    path = fixture_path(f"document/form_n30d/{fixture}")
+    res = normalize_document(path.read_bytes(), form=form, document_path=path.name)
+
+    assert res.family == "N-30D"
+    assert res.sections is not None
+    assert [s.item_identifier for s in res.sections.sections] == expected
+
+
 def test_form_4017g_letter_resolves_no_sections() -> None:
     """A transmittal letter carries no instrument blocks to resolve."""
     fixture = "000089710104001897__faf044428_40-17g.htm"
@@ -560,3 +614,12 @@ def test_form_4024b2_specimens_resolve_no_sections(fixture: str, form: str) -> N
 
     assert res.family == "40-24B2"
     assert res.sections is None
+def test_form_n30d_short_amendment_resolves_no_sections() -> None:
+    """A short amendment body carries no report structure."""
+    fixture = "0001193125-11-244302__dn30da.htm"
+    path = fixture_path(f"document/form_n30d/{fixture}")
+    res = normalize_document(path.read_bytes(), form="N-30D/A", document_path=path.name)
+
+    assert res.family == "N-30D"
+    assert res.sections is not None
+    assert res.sections.sections == ()
