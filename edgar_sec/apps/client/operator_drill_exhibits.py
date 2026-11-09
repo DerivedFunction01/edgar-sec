@@ -6,6 +6,7 @@ drill helpers live in ``operator_drill``.
 
 from __future__ import annotations
 
+import zipfile
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
@@ -329,26 +330,19 @@ def _saves_root(session: Any) -> Path:
     return resolve_paths().artifacts_root / "operator-saves"
 
 
-def _save(options: Any, session: Any, *, bundle: bool):
-    title = "Save bundle" if bundle else "Save payload"
+def _save_payload(options: SavePayloadOptions, session: Any):
+    title = "Save payload"
     aggregate = _current_aggregate(session)
     if aggregate is None:
         return _absent("key_value", title, "no filing aggregate is retained")
     accession = _accession_text(aggregate)
     if str(options.path) in ("", "."):
-        if bundle:
-            destination = _saves_root(session) / f"{accession}-bundle.txt"
-        else:
-            suffix = Path(str(aggregate.primary_document_path or "")).suffix or ".txt"
-            destination = _saves_root(session) / f"{accession}-primary{suffix}"
+        suffix = Path(str(aggregate.primary_document_path or "")).suffix or ".txt"
+        destination = _saves_root(session) / f"{accession}-primary{suffix}"
     else:
         destination = Path(options.path)
     try:
-        written = (
-            aggregate.save_bundle(destination)
-            if bundle
-            else aggregate.save(destination)
-        )
+        written = aggregate.save(destination)
     except FileNotFoundError as exc:
         return _absent("key_value", title, str(exc), {"accession": accession})
     path = Path(written)
@@ -358,12 +352,77 @@ def _save(options: Any, session: Any, *, bundle: bool):
     return _key_value(title, data, rows, hints=("back",))
 
 
-def _save_payload(options: SavePayloadOptions, session: Any):
-    return _save(options, session, bundle=False)
+def _bundle_result(title: str, accession: str, path: Path, extra: dict) -> Any:
+    size = path.stat().st_size
+    data = {
+        "accession": accession,
+        "path": str(path),
+        "size": size,
+        "present": True,
+        **extra,
+    }
+    rows = [("path", str(path)), ("bytes", str(size))]
+    rows.extend((key, str(value)) for key, value in extra.items())
+    return _key_value(title, data, tuple(rows), hints=("back",))
+
+
+def _save_bundle_documents(
+    options: SaveBundleOptions, session: Any, aggregate: Any, accession: str
+):
+    """Zip the filing's documents from its attachment graph via content();
+    the save act is the only fetch — enumerating the collection fetches nothing."""
+    title = "Save bundle"
+    attachments = Attachments(aggregate.get_attachments())
+    entries: list[tuple[str, bytes]] = []
+    missing = 0
+    primary_name = Path(str(aggregate.primary_document_path or "")).name
+    if primary_name and all(a.filename != primary_name for a in attachments):
+        primary = aggregate.raw()
+        if primary is not None:
+            entries.append((primary_name, primary))
+    for attachment in attachments:
+        payload = attachment.content()
+        if payload is None:
+            missing += 1
+            continue
+        entries.append((attachment.filename, payload))
+    if not entries:
+        return _absent(
+            "key_value",
+            title,
+            "no bundle vehicle and no document payload is held",
+            {"accession": accession},
+        )
+    if str(options.path) in ("", "."):
+        destination = _saves_root(session) / f"{accession}-bundle.zip"
+    else:
+        destination = Path(options.path)
+    target = destination.resolve()
+    target.parent.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(target, mode="w", compression=zipfile.ZIP_DEFLATED) as archive:
+        for name, payload in entries:
+            archive.writestr(name, payload)
+    extra = {"documents": len(entries)}
+    if missing:
+        extra["missing"] = missing
+    return _bundle_result(title, accession, target, extra)
 
 
 def _save_bundle(options: SaveBundleOptions, session: Any):
-    return _save(options, session, bundle=True)
+    title = "Save bundle"
+    aggregate = _current_aggregate(session)
+    if aggregate is None:
+        return _absent("key_value", title, "no filing aggregate is retained")
+    accession = _accession_text(aggregate)
+    if str(options.path) in ("", "."):
+        destination = _saves_root(session) / f"{accession}-bundle.txt"
+    else:
+        destination = Path(options.path)
+    try:
+        written = aggregate.save_bundle(destination)
+    except FileNotFoundError:
+        return _save_bundle_documents(options, session, aggregate, accession)
+    return _bundle_result(title, accession, Path(written), {})
 
 
 _LABELS = {

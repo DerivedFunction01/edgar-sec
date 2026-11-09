@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import zipfile
 from pathlib import Path
 
 from edgar_sec.apps.client import operator, operator_drill, operator_drill_exhibits
@@ -550,7 +551,7 @@ def test_save_payload_explicit_and_default(tmp_path: Path) -> None:
     assert defaulted.data["size"] == expected.stat().st_size
 
 
-def test_save_bundle_and_bundle_absence(tmp_path: Path) -> None:
+def test_save_bundle_edgar_vehicle(tmp_path: Path) -> None:
     filing = _filing(tmp_path)
     session = _session(tmp_path, filing)
     result = _run("save_bundle", session)
@@ -559,10 +560,92 @@ def test_save_bundle_and_bundle_absence(tmp_path: Path) -> None:
     assert path.parent.name == "operator-saves"
     assert path.read_bytes() == BUNDLE_BYTES
     assert result.data["size"] == len(BUNDLE_BYTES)
-    no_bundle = _session(tmp_path, _filing(tmp_path, number=113, bundle=False))
-    result = _run("save_bundle", no_bundle)
+
+
+def test_save_bundle_fallback_saves_documents(tmp_path: Path) -> None:
+    filing = _filing(tmp_path, bundle=False)
+    session = _session(tmp_path, filing)
+    result = _run("save_bundle", session)
+    assert result.error_code is None
+    path = Path(result.data["path"])
+    assert path.parent.name == "operator-saves"
+    assert path.name == f"{filing.accession.value}-bundle.zip"
+    assert result.data["documents"] == 3
+    assert result.data["missing"] == 1
+    with zipfile.ZipFile(path) as archive:
+        assert archive.namelist() == ["primary.txt", "ex99-1.htm", "ex31-1.htm"]
+        assert archive.read("primary.txt") == PRIMARY_TEXT.encode()
+        assert archive.read("ex99-1.htm") == EXHIBIT_TEXT.encode()
+        assert archive.read("ex31-1.htm") == b"Certification text."
+
+
+def test_save_bundle_absent_when_nothing_held(tmp_path: Path) -> None:
+    attachments = (
+        FilingAttachment(
+            attachment_id="ex99",
+            document_type="EX-99.1",
+            filename="ex99-1.htm",
+            url="",
+        ),
+    )
+    filing = FilingAggregate(
+        accession=AccessionNumber.from_any("0000320193-23-000113"),
+        primary_cik=_CIK,
+        ciks=(_CIK,),
+        form="8-K",
+        filing_date="2023-11-03",
+        primary_document_path="primary.txt",
+        attachments=attachments,
+    )
+    result = _run("save_bundle", _session(tmp_path, filing))
     assert result.error_code == "absent"
     assert result.data["present"] is False
+
+
+def test_save_bundle_fallback_fetch_posture(tmp_path: Path) -> None:
+    calls = {"ex99": 0, "ex31": 0}
+
+    def counted(key: str, payload: bytes):
+        def _fetch(_attachment):
+            calls[key] += 1
+            return payload
+
+        return _fetch
+
+    attachments = (
+        FilingAttachment(
+            attachment_id="ex99",
+            document_type="EX-99.1",
+            filename="ex99-1.htm",
+            url="",
+            fetcher=counted("ex99", b"ex99-bytes"),
+        ),
+        FilingAttachment(
+            attachment_id="ex31",
+            document_type="EX-31.1",
+            filename="ex31-1.htm",
+            url="",
+            fetcher=counted("ex31", b"ex31-bytes"),
+        ),
+    )
+    filing = FilingAggregate(
+        accession=AccessionNumber.from_any("0000320193-23-000777"),
+        primary_cik=_CIK,
+        ciks=(_CIK,),
+        form="8-K",
+        filing_date="2023-11-03",
+        primary_document_path="primary.txt",
+        attachments=attachments,
+    )
+    session = _session(tmp_path, filing)
+    listed = _run("exhibits_list", session)
+    assert listed.error_code is None
+    assert calls == {"ex99": 0, "ex31": 0}
+    result = _run("save_bundle", session)
+    assert result.error_code is None
+    assert result.data["documents"] == 2
+    assert "missing" not in result.data
+    assert calls == {"ex99": 1, "ex31": 1}
 
 
 def test_gatherers_pick_from_live_lists(tmp_path: Path, monkeypatch) -> None:
