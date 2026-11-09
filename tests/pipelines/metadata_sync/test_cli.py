@@ -42,6 +42,7 @@ COMMANDS = (
     "refresh",
     "reconcile",
     "facts",
+    "series-class",
     "dag",
 )
 
