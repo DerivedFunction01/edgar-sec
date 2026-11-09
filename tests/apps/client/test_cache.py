@@ -29,6 +29,17 @@ def test_document_cache_put_get_and_count(tmp_path: Path) -> None:
     assert cache.count(cik=999999) == 0
 
 
+def test_document_cache_has_reports_presence(tmp_path: Path) -> None:
+    cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
+    assert not cache.has("acc-1", "doc1.txt")
+    cache.put("acc-1", 100, "10-K", "doc1.txt", b"doc 1")
+    assert cache.has("acc-1", "doc1.txt")
+    assert not cache.has("acc-1", "doc2.txt")
+    assert not cache.has("acc-2", "doc1.txt")
+    cache.clear(accession="acc-1")
+    assert not cache.has("acc-1", "doc1.txt")
+
+
 def test_document_cache_selective_clear(tmp_path: Path) -> None:
     db_file = tmp_path / "cache.sqlite"
     cache = DocumentCache(db_path=db_file)

@@ -8,9 +8,11 @@ from collections.abc import Callable
 from concurrent.futures import FIRST_COMPLETED, Future, ThreadPoolExecutor, wait
 from datetime import datetime
 from pathlib import Path
+from edgar_sec.engine.index_pages.enumeration import TargetIntent
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.foundation.runtime.resources import derive_resources
+from edgar_sec.pipelines.document_acquisition.ephemeral import run_ephemeral_pass
 from edgar_sec.pipelines.document_acquisition.models import (
     AcquisitionAttempt,
     AcquisitionOutcome,
@@ -106,11 +108,23 @@ def _cleanup_unreferenced_staging(paths: AcquisitionPaths, run_id: str) -> None:
     with sqlite3.connect(
         f"file:{paths.run_state_path(run_id).resolve()}?mode=ro", uri=True
     ) as connection:
-        for query in (
+        queries = [
             "SELECT source_body_relative_path, selected_body_relative_path "
             "FROM target_state WHERE outcome = 'acquired'",
             "SELECT source_body_relative_path, selected_body_relative_path FROM attempts",
-        ):
+        ]
+        tables = {
+            row[0]
+            for row in connection.execute(
+                "SELECT name FROM sqlite_master WHERE type = 'table'"
+            )
+        }
+        if "ephemeral_targets" in tables:
+            queries.append(
+                "SELECT body_relative_path FROM ephemeral_targets "
+                "WHERE outcome = 'acquired'"
+            )
+        for query in queries:
             for row in connection.execute(query):
                 for relative in row:
                     if relative is not None:
@@ -134,6 +148,7 @@ def execute_acquisition_run(
     clock: Callable[[], datetime],
     confirm_stale_lock: bool = False,
     progress_callback: ProgressCallback = None,
+    ephemeral_intents: tuple[TargetIntent, ...] = (),
 ) -> AcquisitionRunReport:
     parts = load_validated_work_order(paths, run_id)
     resources = derive_resources()
@@ -147,6 +162,7 @@ def execute_acquisition_run(
     attempted = 0
     processed = 0
     cancelled = False
+    ephemeral_counts: dict[str, int] = {}
     processing_counts: Counter[str] = Counter()
     processing_complete = False
     try:
@@ -206,10 +222,17 @@ def execute_acquisition_run(
                         {"status": status, "count": 1},
                     )
 
-                pairs_iter = iter_target_state_pairs(
-                    paths.run_state_path(run_id),
-                    iter_work_order_rows(parts),
-                )
+                seen_accessions: set[str] = set()
+
+                def _tracked_pairs():
+                    for pair in iter_target_state_pairs(
+                        paths.run_state_path(run_id),
+                        iter_work_order_rows(parts),
+                    ):
+                        seen_accessions.add(str(pair[0]["accession"]))
+                        yield pair
+
+                pairs_iter = _tracked_pairs()
                 if bounded_workers <= 1:
                     for row, state in pairs_iter:
                         _validate_target(row, state)
@@ -301,6 +324,16 @@ def execute_acquisition_run(
                             _drain_one()
                     finally:
                         pool.shutdown(wait=False, cancel_futures=True)
+                if ephemeral_intents and seen_accessions:
+                    ephemeral_counts = run_ephemeral_pass(
+                        run_id=run_id,
+                        accessions=tuple(sorted(seen_accessions)),
+                        intents=ephemeral_intents,
+                        paths=paths,
+                        policy=policy,
+                        transport=transport,
+                        workers=bounded_workers,
+                    )
                 for operation_state in iter_operation_states(
                     paths.run_state_path(run_id)
                 ):
@@ -338,6 +371,7 @@ def execute_acquisition_run(
         cancelled=cancelled,
         processing_operation_counts=dict(sorted(processing_counts.items())),
         processing_attempted_target_count=processed,
+        ephemeral_counts=ephemeral_counts or None,
         processing_complete=processing_complete,
         processing_success=(
             processing_complete

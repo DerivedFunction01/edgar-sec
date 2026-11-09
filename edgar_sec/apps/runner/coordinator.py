@@ -13,6 +13,7 @@ from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.apps.client.resolver import resolve_entity_profile
 from edgar_sec.apps.runner.config import FilingQuery, PipelineConfig
 from edgar_sec.domain.identity import Cik
+from edgar_sec.engine.index_pages.enumeration import TargetIntent
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.paths import CohortPaths, resolve_cohort_paths
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier
@@ -31,6 +32,13 @@ from edgar_sec.pipelines.document_acquisition.plan_projection.project import (
 from edgar_sec.pipelines.document_acquisition.runner import execute_acquisition_run
 from edgar_sec.pipelines.document_planning.paths import resolve_document_planning_paths
 from edgar_sec.pipelines.document_planning.planner import create_document_plan
+from edgar_sec.pipelines.document_planning.profiles import (
+    compatible_with_catalog_only,
+    get_or_create_baseline_profile,
+    get_or_create_exhibit_profile,
+    get_or_create_roles_profile,
+    load_profile,
+)
 from edgar_sec.pipelines.filing_catalog.discovery import current_catalog_id
 from edgar_sec.pipelines.filing_catalog.paths import (
     PLAN_TARGETS_DIR,
@@ -40,6 +48,10 @@ from edgar_sec.pipelines.filing_catalog.paths import (
 from edgar_sec.pipelines.filing_catalog.planning.deterministic import (
     plan as build_catalog_plan,
 )
+
+
+class ProfileResolutionError(ValueError):
+    """Requested document roles cannot be resolved into a target profile."""
 
 
 class PipelineRunner:
@@ -165,17 +177,78 @@ class PipelineRunner:
                             add_cik(profile.cik.value)
 
     def _resolve_profile_id(self, roles: tuple[str, ...]) -> str:
-        for role in roles:
-            if role.upper().startswith("EX-"):
-                from edgar_sec.pipelines.document_planning.profiles import (
-                    get_or_create_exhibit_profile,
+        generic_exhibit = False
+        generic_linkbase = False
+        concrete_exhibits: set[str] = set()
+        for raw_role in roles:
+            role = raw_role.strip().lower()
+            if not role or role == "primary":
+                continue
+            if role in {"exhibit", "exhibits", "ex-*"}:
+                generic_exhibit = True
+            elif role in {"linkbase", "linkbases"}:
+                generic_linkbase = True
+            elif role.upper().startswith("EX-"):
+                concrete_exhibits.add(role.upper())
+            else:
+                raise ProfileResolutionError(
+                    f"unsupported document role {raw_role!r}: expected primary, "
+                    "exhibit(s), linkbase(s), or an EX- exhibit type"
                 )
+        targets: list[tuple[str, str, bool]] = [("primary", "primary", False)]
+        # A generic exhibit request subsumes concrete EX- types: profiles
+        # refuse overlapping targets, and the pattern matches them all.
+        if generic_exhibit:
+            targets.append(("exhibit", "EX-*", True))
+        else:
+            for exhibit_type in sorted(concrete_exhibits):
+                targets.append(("exhibit", exhibit_type, True))
+        if generic_linkbase:
+            targets.append(("data_file", "EX-101.*", True))
+        if len(targets) == 1:
+            return "primary-only"
+        try:
+            if len(targets) == 2 and targets[1][0] == "exhibit" and not generic_exhibit:
+                return get_or_create_exhibit_profile(
+                    targets[1][1], profiles_root=self.planning_paths.profiles_root
+                ).profile_id
+            return get_or_create_roles_profile(
+                tuple(targets), profiles_root=self.planning_paths.profiles_root
+            ).profile_id
+        except ValueError as error:
+            raise ProfileResolutionError(str(error)) from error
 
-                profile = get_or_create_exhibit_profile(
-                    role, profiles_root=self.planning_paths.profiles_root
+    def _plan_shape(self, profile_id: str) -> tuple[str, tuple[TargetIntent, ...]]:
+        """Split a resolved profile into its published plan and run intents.
+
+        Non-primary targets are not published into a plan: they ride the
+        run as acquisition intents and are enumerated per filing there.
+        """
+        if profile_id == "primary-only":
+            return profile_id, ()
+        profile = load_profile(profile_id, self.planning_paths.profiles_root)
+        if compatible_with_catalog_only(profile):
+            return profile_id, ()
+        intents: list[TargetIntent] = []
+        seen: set[str] = set()
+        for rule in profile.rules:
+            for target in rule.targets:
+                if target.role == "primary" and target.type == "primary":
+                    continue
+                if target.request_id in seen:
+                    continue
+                seen.add(target.request_id)
+                intents.append(
+                    TargetIntent(
+                        role=target.role,
+                        type=target.type,
+                        optional=target.optional,
+                        request_id=target.request_id,
+                    )
                 )
-                return profile.profile_id
-        return "primary-only"
+        if not intents:
+            return profile_id, ()
+        return "primary-only", tuple(intents)
 
     def _resolve_catalog_plan(
         self, config: PipelineConfig, cohort_id: str | None
@@ -219,10 +292,13 @@ class PipelineRunner:
         cohort_id = self._resolve_target_cohort(cfg)
         catalog_plan_id = self._resolve_catalog_plan(cfg, cohort_id)
         profile_id = self._resolve_profile_id(cfg.roles)
+        plan_profile_id, ephemeral_intents = self._plan_shape(profile_id)
+        if plan_profile_id == "primary-only":
+            get_or_create_baseline_profile(self.planning_paths.profiles_root)
 
         doc_plan = create_document_plan(
             catalog_plan_id,
-            profile_id,
+            plan_profile_id,
             paths=self.planning_paths,
         )
         doc_plan_id = doc_plan.plan_id
@@ -250,6 +326,7 @@ class PipelineRunner:
                 ),
                 transport=transport,
                 clock=lambda: datetime.now(UTC),
+                ephemeral_intents=ephemeral_intents,
             )
         finally:
             transport.close()
@@ -317,4 +394,4 @@ class PipelineRunner:
         return result
 
 
-__all__ = ["PipelineRunner"]
+__all__ = ["PipelineRunner", "ProfileResolutionError"]

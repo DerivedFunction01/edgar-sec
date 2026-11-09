@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 import pytest
 
+from edgar_sec.apps.client.attachments import Attachments
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
 from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -63,9 +64,10 @@ def test_10k_exhibit_and_linkbase_discovery() -> None:
 
     assert filing.has_xbrl is True
     assert len(filing.exhibits) >= 1
-    assert filing.exhibit("21") == att2
-    assert filing.exhibit("EX-21.1") == att2
-    assert filing.exhibit("99") is None
+    attachments = Attachments(filing.get_attachments())
+    assert attachments.exhibit("21") == att2
+    assert attachments.exhibit("EX-21.1") == att2
+    assert attachments.exhibit("99") is None
 
     assert len(filing.linkbases) == 1
     assert filing.linkbases[0] == att3
@@ -137,6 +139,7 @@ def test_six_dataframe_shapes_and_sql(tmp_path: Path) -> None:
         "size",
         "url",
         "is_exhibit",
+        "role",
     ]
     assert len(df_idx) == 3
 
@@ -149,6 +152,7 @@ def test_six_dataframe_shapes_and_sql(tmp_path: Path) -> None:
         "filename",
         "size",
         "url",
+        "role",
     ]
     assert len(df_ex) >= 1
 

@@ -55,6 +55,32 @@ def test_filing_attachment_exhibits_filtering() -> None:
     assert filing.exhibits[0].document_type == "EX-21"
 
 
+def test_filing_aggregate_exhibits_use_canonical_derivation() -> None:
+    accession = AccessionNumber.from_any("0000320193-23-000106")
+    by_filename = FilingAttachment(
+        attachment_id="att-1",
+        document_type="10-K",
+        filename="ex99.htm",
+        url="https://sec.gov/ex99.htm",
+    )
+    embedded_suffix = FilingAttachment(
+        attachment_id="att-2",
+        document_type="10-K",
+        filename="aapl_ex21.htm",
+        url="https://sec.gov/aapl_ex21.htm",
+    )
+    filing = FilingAggregate(
+        accession=accession,
+        primary_cik=Cik(320193),
+        ciks=(Cik(320193),),
+        form="10-K",
+        filing_date="2023-11-03",
+        attachments=(by_filename, embedded_suffix),
+    )
+
+    assert [a.attachment_id for a in filing.exhibits] == ["att-1"]
+
+
 def test_filing_attachment_graphics_and_fetcher(tmp_path: Path) -> None:
     graphic = FilingAttachment(
         attachment_id="img-1",
