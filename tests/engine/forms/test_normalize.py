@@ -653,3 +653,27 @@ def test_form_nvp_supplement_resolves_no_sections() -> None:
 
     assert res.family == "N-VP"
     assert res.sections is None or not res.sections.sections
+
+
+def test_form_24f2_specimens_resolve_sections(
+    fixture: str, expected: list[str]
+) -> None:
+    """Census specimens resolve the sections their bodies carry."""
+    path = fixture_path(f"document/form_24f2/{fixture}")
+    res = normalize_document(path.read_bytes(), form="24F-2NT", document_path=path.name)
+
+    assert res.family == "24F-2NT"
+    assert res.sections is not None
+    assert [s.item_identifier for s in res.sections.sections] == expected
+
+
+def test_form_24f2_unheaded_specimens_resolve_no_sections(
+    fixture: str, form: str
+) -> None:
+    """Structured XML and free-form letters carry no caption structure."""
+    path = fixture_path(f"document/form_24f2/{fixture}")
+    res = normalize_document(path.read_bytes(), form=form, document_path=path.name)
+
+    assert res.family == "24F-2NT"
+    assert res.sections is not None
+    assert res.sections.sections == ()

@@ -534,6 +534,20 @@ def test_variable_kin_registered_profile_less(family: str) -> None:
     assert get_family_profile(family) is None
 
 
+def test_24f2_entry_registered_with_section_taxonomy() -> None:
+    from edgar_sec.domain.forms.families.form_24f2.processing import PROFILE_FORM_24F2
+    from edgar_sec.domain.forms.families.form_24f2.taxonomy import FORM_24F2_ITEMS
+
+    entry = get_family_entry("24F-2NT")
+    assert entry is not None
+    assert entry.family == "24F-2NT"
+    assert entry.profile is PROFILE_FORM_24F2
+    assert entry.cover_checkbox_schema is None
+    assert entry.taxonomy_items == FORM_24F2_ITEMS
+    for code in ("24F-2NT/A", "24F-2TM", "24F-2EL", "24F-2EL/A", "24F-1"):
+        assert get_family_entry(code) is entry
+
+
 @pytest.mark.parametrize(
     "family,variant",
     [
