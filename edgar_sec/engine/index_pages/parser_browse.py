@@ -29,7 +29,7 @@ __all__ = [
     "parse_browse_series_page",
 ]
 
-PARSER_FINGERPRINT = "browse-series-v1"
+PARSER_FINGERPRINT = "browse-series-v2"
 
 _DIAGNOSTIC_LIMIT = 32
 _DETAIL_LIMIT = 256
@@ -279,7 +279,8 @@ class _RowWalker:
         "series",
         "classes",
         "_series_ids",
-        "_class_ids",
+        "_class_keys",
+        "_class_first",
         "_current_series",
     )
 
@@ -290,7 +291,8 @@ class _RowWalker:
         self.series: list[BrowseSeriesRow] = []
         self.classes: list[BrowseClassRow] = []
         self._series_ids: set[str] = set()
-        self._class_ids: set[str] = set()
+        self._class_keys: set[tuple[str, str]] = set()
+        self._class_first: dict[str, tuple[str, str, str | None]] = {}
         self._current_series: str | None = None
 
     def walk(self, row: FastHtmlNode) -> None:
@@ -399,10 +401,25 @@ class _RowWalker:
                 "unexpected_cells", f"{class_id} row has trailing cells"
             )
             return
-        if class_id in self._class_ids:
+        key = (self._current_series, class_id)
+        if key in self._class_keys:
             self.diagnostics.add("duplicate_class_id", class_id)
             return
-        self._class_ids.add(class_id)
+        first = self._class_first.get(class_id)
+        if first is not None and (first[1], first[2]) != (class_name, symbol):
+            self.diagnostics.add(
+                "duplicate_class_id",
+                f"{class_id} listed under {first[0]} and "
+                f"{self._current_series} with a differing name or symbol",
+            )
+            return
+        self._class_keys.add(key)
+        if first is None:
+            self._class_first[class_id] = (
+                self._current_series,
+                class_name,
+                symbol,
+            )
         self.classes.append(
             BrowseClassRow(self._current_series, class_id, class_name, symbol)
         )

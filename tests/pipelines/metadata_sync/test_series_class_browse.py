@@ -44,7 +44,7 @@ def _page(
 
 def test_browse_specs_declare_the_browse_contract() -> None:
     assert FUND_SERIES_CLASS_BROWSE_SPEC.name == BROWSE_RELATION
-    assert FUND_SERIES_CLASS_BROWSE_SPEC.primary_key == ("class_id",)
+    assert FUND_SERIES_CLASS_BROWSE_SPEC.primary_key == ("series_id", "class_id")
     assert FUND_SERIES_CLASS_BROWSE_SPEC.merge_strategy == "upsert"
     assert FUND_SERIES_CLASS_BROWSE_SPEC.entity_key == "cik"
     assert FUND_SERIES_CLASS_BROWSE_SPEC.schema.names == [
@@ -110,4 +110,36 @@ def test_browse_ingest_replaces_only_its_registrant(tmp_path: Path) -> None:
         BrowseSeriesRelationRow(
             "0000003100", "S000000002", "Fund Two", browse_series_url(3100), "b" * 64
         ),
+    ]
+
+
+def test_browse_ingest_stores_a_cross_listed_class_under_both_series(
+    tmp_path: Path,
+) -> None:
+    paths = resolve_metadata_paths(tmp_path)
+    page = _page(
+        "0001281790",
+        "e" * 64,
+        (
+            BrowseSeriesRow("S000004757", "Frank Value Fund"),
+            BrowseSeriesRow("S000061828", "Camelot Event Driven Fund"),
+        ),
+        (
+            BrowseClassRow("S000004757", "C000093502", "INSTITUTIONAL CLASS", "FNKIX"),
+            BrowseClassRow("S000061828", "C000093502", "INSTITUTIONAL CLASS", "FNKIX"),
+        ),
+    )
+
+    outcome = ingest_browse_page(page, paths)
+
+    assert outcome.class_count == 2
+    assert ingest_browse_page(page, paths).already_current is True
+    rows = read_browse_rows(paths)
+    assert [(row.series_id, row.class_id) for row in rows] == [
+        ("S000004757", "C000093502"),
+        ("S000061828", "C000093502"),
+    ]
+    assert [row.series_name for row in rows] == [
+        "Frank Value Fund",
+        "Camelot Event Driven Fund",
     ]
