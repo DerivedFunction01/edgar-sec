@@ -110,7 +110,7 @@ def test_unmodelled_form_text_operation_renders_generically(tmp_path) -> None:
         b"<html><body><h1>Annual Report</h1>"
         b"<p>Acme Corp reported results for the fiscal year.</p></body></html>"
     )
-    filing = _filing("40-17G", "form4017g.htm", content)
+    filing = _filing("S-11", "s11.htm", content)
     cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
 
     result = make_filing_renderer(cache, operation="render_to_txt")(filing)
@@ -121,7 +121,7 @@ def test_unmodelled_form_text_operation_renders_generically(tmp_path) -> None:
 
 def test_unmodelled_form_xml_operation_returns_raw(tmp_path) -> None:
     content = b"<html><body><h1>Annual Report</h1></body></html>"
-    filing = _filing("40-17G", "form4017g.htm", content)
+    filing = _filing("S-11", "s11.htm", content)
     cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
 
     result = make_filing_renderer(cache, operation="render_to_xml")(filing)
@@ -131,7 +131,7 @@ def test_unmodelled_form_xml_operation_returns_raw(tmp_path) -> None:
 
 def test_unmodelled_form_default_operation_returns_raw(tmp_path) -> None:
     content = b"<html><body><h1>Annual Report</h1></body></html>"
-    filing = _filing("40-17G", "form4017g.htm", content)
+    filing = _filing("S-11", "s11.htm", content)
     cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
 
     result = make_filing_renderer(cache)(filing)
