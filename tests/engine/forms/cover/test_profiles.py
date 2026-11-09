@@ -169,6 +169,8 @@ def test_form_40app_profile_resolves_with_taxonomy() -> None:
     assert form_40app.has_sections is True
     assert form_40app.body_evidence is not None
     assert "PROCEDURAL MATTERS" in form_40app.body_evidence.structural_headings
+
+
 def test_form_n30d_profile_resolves_with_taxonomy() -> None:
     form_n30d = get_profile("N-30B-2")
     assert form_n30d.family == "N-30D"

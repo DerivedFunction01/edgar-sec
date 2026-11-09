@@ -614,6 +614,8 @@ def test_form_4024b2_specimens_resolve_no_sections(fixture: str, form: str) -> N
 
     assert res.family == "40-24B2"
     assert res.sections is None
+
+
 def test_form_n30d_short_amendment_resolves_no_sections() -> None:
     """A short amendment body carries no report structure."""
     fixture = "0001193125-11-244302__dn30da.htm"
