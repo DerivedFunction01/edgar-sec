@@ -6,13 +6,13 @@ from typing import Any
 
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.discovery.cohort import (
+    DISCOVERY_DIR,
     canonical_probe_cohort_path,
     load_seed_cohort,
 )
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.pipelines.xbrl_review.bundles import bundle_dir_for
 from edgar_sec.tools.xbrl_eval.facade_battery import (
-    XBRL_FIXTURES,
     _catalog_entries,
     _face_value_check,
     _mode_violation,
@@ -32,7 +32,7 @@ def test_cohort_folders_subset_and_order() -> None:
 
 def test_face_value_check_msft_revenue() -> None:
     """MSFT revenue is a face value at the latest period; a wrong sum is not."""
-    xbrl = Xbrl.from_bundle(XBRL_FIXTURES / "seed" / _MSFT, load_domain_taxonomy())
+    xbrl = Xbrl.from_bundle(DISCOVERY_DIR / "seed" / _MSFT, load_domain_taxonomy())
     entry = next(
         entry
         for entry in _catalog_entries(xbrl)

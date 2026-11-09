@@ -1,9 +1,9 @@
 """Corpus screen smoke specimens over two SP100 bundles."""
 
+from edgar_sec.engine.xbrl.discovery.cohort import DISCOVERY_DIR
 from edgar_sec.tools.xbrl_eval.xbrl_screen import run_screen
-from tests.support import fixture_path
 
-_FIXTURES = fixture_path("")
+_FIXTURES = DISCOVERY_DIR
 
 
 def test_screen_two_filers_rows_and_census() -> None:
