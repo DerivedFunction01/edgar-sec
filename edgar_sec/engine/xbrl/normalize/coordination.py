@@ -5,10 +5,12 @@ from __future__ import annotations
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.normalize.flat import (
     _decompose_flat_tokens,
-    _finish_resolution,
-    _head_rank,
+    _first_head_match,
     _pick_head,
     _split_regions,
+    _tail_assembly,
+    _uncovered_tokens,
+    _window_values,
 )
 from edgar_sec.engine.xbrl.normalize.lexicon import (
     EvidenceContext,
@@ -16,11 +18,7 @@ from edgar_sec.engine.xbrl.normalize.lexicon import (
     TokenLexicon,
 )
 from edgar_sec.engine.xbrl.normalize.numbers import number_indexicals
-from edgar_sec.engine.xbrl.normalize.temporal import (
-    TemporalInterval,
-    derive_horizon,
-    extract_temporal,
-)
+from edgar_sec.engine.xbrl.normalize.temporal import TemporalInterval
 
 CoordinatedParts = tuple[
     Atom,
@@ -43,15 +41,12 @@ def decompose_coordinated(
     number_values: dict[int, int],
     ordinal_values: dict[int, int],
     evidence: EvidenceContext | None,
-    candidates: list[LexiconMatch],
-    cover: list[LexiconMatch],
-    cover_residuals: list[str],
+    resolved: list[LexiconMatch],
 ) -> CoordinatedParts | None:
     """Assemble per-conjunct atoms, or None when coordination does not engage."""
     frame = lexicon.match_grammatical_frame(tokens)
     if frame is not None and frame.head is not None:
         return None
-    resolved, _ = _finish_resolution(tokens, candidates, cover, cover_residuals)
     operators = [m for m in resolved if m.entry.relation == "COORDINATION"]
     if not operators:
         return None
@@ -73,22 +68,11 @@ def decompose_coordinated(
             for m in others
             if seg_start <= m.start and m.end <= seg_end
         ]
-        covered = [(m.start, m.end) for m in seg_matches]
-        seg_residuals = [
-            token
-            for i, token in enumerate(seg_tokens)
-            if not any(s <= i < e for s, e in covered)
-        ]
-        values = {
-            i - seg_start: v
-            for i, v in number_values.items()
-            if seg_start <= i < seg_end
-        }
-        ordinals = {
-            i - seg_start: v
-            for i, v in ordinal_values.items()
-            if seg_start <= i < seg_end
-        }
+        seg_residuals = _uncovered_tokens(
+            seg_tokens, [(m.start, m.end) for m in seg_matches]
+        )
+        values = _window_values(number_values, seg_start, seg_end)
+        ordinals = _window_values(ordinal_values, seg_start, seg_end)
         atom, residuals, _, _, _, relations, _, _ = _decompose_flat_tokens(
             seg_tokens,
             lexicon,
@@ -106,14 +90,7 @@ def decompose_coordinated(
     if head_idx is not None:
         winner = primary[head_idx]
     else:
-        winner = next(
-            (
-                m
-                for m in subordinate
-                if m.entry.claim == "head" and m.entry.head and _head_rank(m) > 0
-            ),
-            None,
-        )
+        winner = _first_head_match(subordinate)
         if winner is None:
             return None
         head = winner.entry.head or head
@@ -140,22 +117,19 @@ def decompose_coordinated(
             operands.append(atom)
             relations.append(("COORDINATION", atom))
     headline = Atom(head, frozenset(mods))
-    direction = 1.0
-    for m in resolved:
-        if m.entry.direction is not None:
-            direction = m.entry.direction
-            break
-    indexicals = list(number_indexicals(tokens, number_values, ordinal_values))
-    for m in resolved:
-        if m.entry.claim == "indexical" and m.entry.indexical:
-            indexicals.append(m.entry.indexical)
-    temporal = extract_temporal(tokens, number_values, ordinal_values)
+    direction, indexicals, derived, temporal = _tail_assembly(
+        tokens,
+        resolved,
+        number_indexicals(tokens, number_values, ordinal_values),
+        number_values,
+        ordinal_values,
+    )
     residuals = tuple(r for _, seg_residuals, _ in segments for r in seg_residuals)
     parts = (
         residuals,
         direction,
-        tuple(indexicals),
-        derive_horizon(temporal),
+        indexicals,
+        derived,
         tuple(relations),
         temporal,
         tuple(resolved),
