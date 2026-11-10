@@ -147,8 +147,12 @@ def _relation_rows(parts: dict, relation: str) -> list[tuple]:
 
 def _merged_view(
     artifacts_root: str | Path | None,
-) -> tuple[str | None, dict[str, FundSeries], dict[str, FundClass]]:
-    """The published tip merged across layers: (snapshot, series, classes)."""
+) -> tuple[str | None, dict[str, FundSeries], dict[tuple[str, str], FundClass]]:
+    """The published tip merged across layers: (snapshot, series, classes).
+
+    Classes are keyed by (series_id, class_id) listing, the relation's
+    primary key, so a cross-listed class keeps every listing.
+    """
     from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
     from edgar_sec.pipelines.metadata_sync.series_class import (
         TICKERED_RELATION,
@@ -194,9 +198,9 @@ def _merged_view(
                 if layer in layers[series_id]
             ),
         )
-    classes: dict[str, FundClass] = {}
+    classes: dict[tuple[str, str], FundClass] = {}
     for cik, series_id, series_name, class_id, class_name, symbol in browse:
-        classes[str(class_id)] = FundClass(
+        classes[(str(series_id), str(class_id))] = FundClass(
             cik=str(cik),
             series_id=str(series_id),
             series_name=str(series_name),
@@ -206,9 +210,10 @@ def _merged_view(
             layers=(BROWSE_LAYER,),
         )
     for cik, series_id, class_id, symbol in tickered:
-        held = classes.get(str(class_id))
+        key = (str(series_id), str(class_id))
+        held = classes.get(key)
         if held is None:
-            classes[str(class_id)] = FundClass(
+            classes[key] = FundClass(
                 cik=str(cik),
                 series_id=str(series_id),
                 series_name=names.get(str(series_id)),
@@ -220,7 +225,7 @@ def _merged_view(
         else:
             # The ticker file is the ticker registry of record: its symbol
             # wins over the browse layer's, agreements included.
-            classes[str(class_id)] = FundClass(
+            classes[key] = FundClass(
                 cik=held.cik,
                 series_id=held.series_id,
                 series_name=held.series_name,
@@ -247,10 +252,11 @@ def read_fund_series(
 def read_fund_class(
     artifacts_root: str | Path | None, class_id: str
 ) -> FundClassResult:
-    """The relation's record for one class id; None on a miss."""
+    """One class id's record; a cross-listed class serves its first listing."""
     tip, _series, classes = _merged_view(artifacts_root)
+    listings = [classes[key] for key in sorted(classes) if key[1] == class_id]
     return FundClassResult(
-        fund_class=classes.get(class_id),
+        fund_class=listings[0] if listings else None,
         snapshot_id=tip,
         relation_present=tip is not None,
     )
@@ -262,11 +268,7 @@ def read_series_classes(
     """Every class the relation carries for one series, by class id."""
     tip, _series, classes = _merged_view(artifacts_root)
     return FundClassesResult(
-        classes=tuple(
-            classes[class_id]
-            for class_id in sorted(classes)
-            if classes[class_id].series_id == series_id
-        ),
+        classes=tuple(classes[key] for key in sorted(classes) if key[0] == series_id),
         snapshot_id=tip,
         relation_present=tip is not None,
     )
@@ -294,19 +296,17 @@ def read_registrant_series(
 def read_ticker_classes(
     artifacts_root: str | Path | None, symbol: str
 ) -> FundClassesResult:
-    """Every class the relation tickers under one symbol, by class id."""
+    """Every listing the relation tickers under one symbol, by class id."""
     wanted = symbol.strip()
     tip, _series, classes = _merged_view(artifacts_root)
     if not wanted:
         return FundClassesResult(
             classes=(), snapshot_id=tip, relation_present=tip is not None
         )
+    listings = [row for row in classes.values() if row.symbol == wanted]
+    listings.sort(key=lambda row: (row.class_id, row.series_id))
     return FundClassesResult(
-        classes=tuple(
-            classes[class_id]
-            for class_id in sorted(classes)
-            if classes[class_id].symbol == wanted
-        ),
+        classes=tuple(listings),
         snapshot_id=tip,
         relation_present=tip is not None,
     )
@@ -353,9 +353,7 @@ def resolve_nmfp_series(
                 f"relation serves {series.cik}"
             )
         resolved_classes = tuple(
-            classes[class_id]
-            for class_id in sorted(classes)
-            if classes[class_id].series_id == series.series_id
+            classes[key] for key in sorted(classes) if key[0] == series.series_id
         )
     else:
         resolved_classes = ()
