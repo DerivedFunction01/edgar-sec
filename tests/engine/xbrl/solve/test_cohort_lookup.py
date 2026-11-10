@@ -81,7 +81,7 @@ def synthetic_lookup(taxonomy: DomainTaxonomy, tmp_path: Path) -> CohortLookup:
             ),
             _fact(
                 _ACC_B,
-                "us-gaap:OtherLiabilitiesCurrent",
+                "us-gaap:SundryLiabilitiesCurrent",
                 700.0,
                 "USD",
                 period_type="duration",
@@ -137,7 +137,7 @@ def test_equivalent_facts_flag_each_incompatibility(
     assert aligned.compatible and aligned.fact.value == 200.0
     euros = by_pair[(_ACC_B, "us-gaap:AccountsPayableCurrent", "EUR")]
     assert not euros.compatible and euros.incompatibility == "unit"
-    flow = by_pair[(_ACC_B, "us-gaap:OtherLiabilitiesCurrent", "USD")]
+    flow = by_pair[(_ACC_B, "us-gaap:SundryLiabilitiesCurrent", "USD")]
     assert not flow.compatible and flow.incompatibility == "period_kind"
     prior = by_pair[(_ACC_B, "us-gaap:LiabilitiesCurrent", "USD")]
     assert not prior.compatible and prior.incompatibility == "fiscal_period"
@@ -400,7 +400,11 @@ def test_bare_head_crowding_demoted_on_seed_cohort(
     exact = [item for item in candidates if item.tier == "exact"]
     assert exact and all(item.qname == "us-gaap:Assets" for item in exact)
     assert all(item.rule == "equality" for item in exact)
-    crowded = [item for item in candidates if item.qname == "us-gaap:OtherReceivables"]
+    crowded = [
+        item
+        for item in candidates
+        if item.qname == "us-gaap:GovernmentContractReceivable"
+    ]
     assert crowded
     assert all(
         item.tier == "near" and item.rule == "bare_head_equality" for item in crowded

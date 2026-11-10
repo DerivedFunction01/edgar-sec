@@ -804,7 +804,8 @@
    "direction": 1.0,
    "head": "H_CASH",
    "modifiers": [
-    "M_COLLECTION"
+    "M_COLLECTION",
+    "M_RECEIVABLE"
    ],
    "name": "ext:ProceedsFromCollectionOfTradeReceivables",
    "note": "Collection proceeds carry the act, not the bare payments coordinate."
@@ -1168,7 +1169,9 @@
    "act": "receipts",
    "direction": 1.0,
    "head": "H_CASH",
-   "modifiers": [],
+   "modifiers": [
+    "M_OTHER"
+   ],
    "name": "ext:ReceiptsFromRoyaltiesFeesCommissionsAndOtherRevenue",
    "note": "The attested defect's twin: the frame claims H_CASH before the revenue phrase competes."
   },

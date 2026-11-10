@@ -128,12 +128,14 @@ def test_bare_head_equality_is_near_not_exact() -> None:
     assert atom_ranked[0].tier == EXACT and atom_ranked[0].rule == "equality"
 
 
-def test_related_party_transactions_exact_across_firms() -> None:
-    """Ford and Coca-Cola name the same related-party receivable differently."""
+def test_related_party_financing_distinction_is_near_across_firms() -> None:
+    """Ford's finance-receivable carriage distinguishes its related-party line."""
     ford = _atom("f:RelatedPartyTransactionFinanceReceivablesNet")
     coke = _atom("ko:RelatedPartyTransactionNetReceivablesDueFromRelatedParty")
     assert "M_RELATED_PARTY" in ford.modifiers
-    assert classify_pair(ford, coke) == EXACT
+    assert "M_FINANCING_RECEIVABLE" in ford.modifiers
+    assert "M_FINANCING_RECEIVABLE" not in coke.modifiers
+    assert classify_pair(ford, coke) == NEAR
 
 
 def test_ordinal_obligation_siblings_are_exact() -> None:
@@ -1789,7 +1791,7 @@ def test_collection_and_sale_proceeds_carry_their_own_markers() -> None:
     tax = load_domain_taxonomy()
     collection = _atom("us-gaap:ProceedsFromCollectionOfFinanceReceivables")
     sale = _atom("us-gaap:PremiumsReceivableProceedsFromSaleOfReceivables")
-    assert collection.modifiers == {"M_COLLECTION"}
+    assert collection.modifiers == {"M_COLLECTION", "M_FINANCING_RECEIVABLE"}
     assert sale.modifiers == {"M_SALE"}
     for target, candidate in ((collection, sale), (sale, collection)):
         result = classify_ladder_pair(

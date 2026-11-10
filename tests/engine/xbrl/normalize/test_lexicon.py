@@ -1,5 +1,8 @@
 """Unit tests for TokenLexicon greedy phrase matching and claims."""
 
+import json
+from pathlib import Path
+
 import pytest
 
 from edgar_sec.engine.xbrl.normalize.lexicon import LexiconEntry, TokenLexicon
@@ -168,6 +171,235 @@ def test_loaded_lexicon_wordform_twins_share_payloads() -> None:
     assert payload(("borrowing",)) == payload(("borrowings",))
     assert borrowing.scope_next == ("under", "from")
     assert borrowings.scope_next == ()
+
+    repayment = by_phrase[("repayment",)]
+    repayments = by_phrase[("repayments",)]
+    assert payload(("repayment",)) == payload(("repayments",))
+    assert repayment.scope_next == ("of",)
+    assert repayments.scope_next == ()
+
+
+def test_inflection_expansion_generates_surface_twins(tmp_path: Path) -> None:
+    """Canonical-only authored data loads every declared surface form."""
+    lexicon_path = tmp_path / "token_lexicon.json"
+    lexicon_path.write_text(
+        json.dumps(
+            [
+                {
+                    "phrase": ["Bond"],
+                    "claim": "head",
+                    "head": "H_LIABILITY",
+                    "claim_class": "PRIMARY",
+                    "carriage": ["M_DEBT"],
+                },
+                {
+                    "phrase": ["Repayment"],
+                    "claim": "head",
+                    "head": "H_CASH",
+                    "claim_class": "PRIMARY",
+                    "scope_next": ["Of"],
+                },
+            ]
+        ),
+        encoding="utf-8",
+    )
+    (tmp_path / "inflections.json").write_text(
+        json.dumps(
+            {
+                "forms": {
+                    "bond": ["bond", "bonds"],
+                    "repayment": ["repayment", "repayments"],
+                },
+                "overrides": {
+                    "repayment": {"scope_next": ["Of"]},
+                    "repayments": {"scope_next": []},
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    lex = TokenLexicon.load_json(lexicon_path)
+    by_phrase = {entry.phrase: entry for entry in lex.entries}
+    assert by_phrase[("bonds",)].head == "H_LIABILITY"
+    assert by_phrase[("bonds",)].carriage == ("M_DEBT",)
+    assert by_phrase[("repayment",)].scope_next == ("of",)
+    assert by_phrase[("repayments",)].scope_next == ()
+
+
+def test_inflection_expansion_refuses_authored_conflict(tmp_path: Path) -> None:
+    """A generated surface authored with another payload is a loader error."""
+    lexicon_path = tmp_path / "token_lexicon.json"
+    lexicon_path.write_text(
+        json.dumps(
+            [
+                {
+                    "phrase": ["Repayment"],
+                    "claim": "head",
+                    "head": "H_CASH",
+                    "claim_class": "PRIMARY",
+                    "scope_next": ["Of"],
+                },
+                {
+                    "phrase": ["Repayments"],
+                    "claim": "head",
+                    "head": "H_CASH",
+                    "claim_class": "PRIMARY",
+                    "scope_next": ["From"],
+                },
+            ]
+        ),
+        encoding="utf-8",
+    )
+    (tmp_path / "inflections.json").write_text(
+        json.dumps(
+            {
+                "forms": {"repayment": ["repayment", "repayments"]},
+                "overrides": {
+                    "repayment": {"scope_next": ["Of"]},
+                    "repayments": {"scope_next": []},
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError):
+        TokenLexicon.load_json(lexicon_path)
+
+
+def test_loaded_lexicon_expansion_never_loses_authored_entries() -> None:
+    """Every authored entry survives expansion; gains are generated twins."""
+    from collections import Counter
+
+    from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+    from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+
+    paths = resolve_xbrl_paths()
+    raw = json.loads(paths.default_token_lexicon_path.read_text(encoding="utf-8"))
+    authored = Counter(LexiconEntry.from_dict(item) for item in raw)
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    expanded = Counter(tax.token_lexicon.entries)
+    assert authored - expanded == Counter()
+    by_phrase = {entry.phrase: entry for entry in tax.token_lexicon.entries}
+    loan_payable = by_phrase[("loan", "payable")]
+    assert loan_payable.head == "H_LIABILITY"
+    assert loan_payable.carriage == ("M_DEBT",)
+    loans_payable = by_phrase[("loans", "payable")]
+    assert loans_payable.head == "H_LIABILITY"
+    assert loans_payable.carriage == ("M_DEBT",)
+    note = by_phrase[("note",)]
+    assert note.head == "H_LIABILITY"
+    assert note.carriage == ("M_DEBT",)
+    assert note.scope_next == ("payable", "payables", "issued")
+    assert by_phrase[("notes",)].scope_next == ("payable", "payables", "issued")
+    assert ("note", "payable") not in by_phrase
+    assert by_phrase[("note", "receivable")].head == "H_ASSET"
+    assert ("payment",) in by_phrase and ("payments",) in by_phrase
+    assert ("employees",) in by_phrase and ("employee",) not in by_phrase
+    assert ("equipment", "disposals") in by_phrase
+    assert ("equipment", "disposal") not in by_phrase
+    assert ("income", "tax") in by_phrase and ("income", "taxes") not in by_phrase
+    assert ("collection",) in by_phrase and ("collections",) not in by_phrase
+    assert ("number", "of", "employees") in by_phrase
+    assert ("number", "of", "employee") not in by_phrase
+    assert ("purchase",) not in by_phrase and ("purchases",) in by_phrase
+
+
+def test_loaded_lexicon_rp_partner_admissions() -> None:
+    """R/P partner admissions and the one deliberate absence are pinned."""
+    from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    by_phrase = {entry.phrase: entry for entry in tax.token_lexicon.entries}
+    other = by_phrase[("other",)]
+    assert other.claim == "modifier" and other.atom == "M_OTHER"
+    assert ("others",) not in by_phrase
+    trade_rec = by_phrase[("trade", "receivable")]
+    assert trade_rec.head == "H_ASSET" and trade_rec.carriage == ("M_RECEIVABLE",)
+    assert by_phrase[("trade", "receivables")].carriage == ("M_RECEIVABLE",)
+    trade_pay = by_phrase[("trade", "payable")]
+    assert trade_pay.head == "H_LIABILITY"
+    assert trade_pay.carriage == ("M_ACCOUNTS_PAYABLE",)
+    assert by_phrase[("trade", "payables")].carriage == ("M_ACCOUNTS_PAYABLE",)
+    fin_rec = by_phrase[("finance", "receivable")]
+    assert fin_rec.head == "H_ASSET"
+    assert fin_rec.carriage == ("M_FINANCING_RECEIVABLE",)
+    assert by_phrase[("finance", "receivables")].carriage == ("M_FINANCING_RECEIVABLE",)
+    fee_pay = by_phrase[("fee", "payable")]
+    assert fee_pay.head == "H_LIABILITY" and fee_pay.carriage == ()
+    assert by_phrase[("fees", "payables")].head == "H_LIABILITY"
+    assert by_phrase[("fee", "receivables")].carriage == ("M_RECEIVABLE",)
+    assert by_phrase[("installments", "payable")].head == "H_LIABILITY"
+    assert by_phrase[("installment", "receivables")].carriage == ("M_RECEIVABLE",)
+    assert by_phrase[("amounts", "receivable")].carriage == ("M_RECEIVABLE",)
+    assert by_phrase[("amount", "payables")].head == "H_LIABILITY"
+    notional = by_phrase[("notional", "amounts")]
+    assert notional.head == "H_COMMITMENT"
+    assert notional.carriage == ("M_NOTIONAL_AMOUNT",)
+    assert by_phrase[("carrying", "amounts")].atom == "M_CARRYING_AMOUNT"
+
+
+def test_coordination_relation_kind_loads() -> None:
+    """The COORDINATION relation kind parses; unknown kinds are refused."""
+    entry = LexiconEntry.from_dict(
+        {"phrase": ["And"], "claim": "relation", "relation": "COORDINATION"}
+    )
+    assert entry.relation == "COORDINATION"
+    assert entry.payload_mods() == ()
+    with pytest.raises(ValueError):
+        LexiconEntry.from_dict(
+            {"phrase": ["And"], "claim": "relation", "relation": "BESIDE"}
+        )
+
+
+def test_loaded_lexicon_carries_and_coordination_entry() -> None:
+    """The loaded lexicon carries exactly one bare `and` coordination entry."""
+    from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    matches = [entry for entry in tax.token_lexicon.entries if entry.phrase == ("and",)]
+    assert len(matches) == 1
+    assert matches[0].claim == "relation"
+    assert matches[0].relation == "COORDINATION"
+
+
+def test_inflection_verbatim_phrase_loads_ungenerated(tmp_path: Path) -> None:
+    """A verbatim phrase generates no twins; its other forms stay absent."""
+    lexicon_path = tmp_path / "token_lexicon.json"
+    lexicon_path.write_text(
+        json.dumps(
+            [
+                {
+                    "phrase": ["Sale", "Of", "Properties"],
+                    "claim": "modifier",
+                    "atom": "M_DISPOSAL_GAIN",
+                },
+                {
+                    "phrase": ["Property"],
+                    "claim": "head",
+                    "head": "H_ASSET",
+                    "claim_class": "PRIMARY",
+                },
+            ]
+        ),
+        encoding="utf-8",
+    )
+    (tmp_path / "inflections.json").write_text(
+        json.dumps(
+            {
+                "forms": {"property": ["property", "properties"]},
+                "verbatim": [["sale", "of", "properties"]],
+            }
+        ),
+        encoding="utf-8",
+    )
+    lex = TokenLexicon.load_json(lexicon_path)
+    phrases = {entry.phrase for entry in lex.entries}
+    assert ("sale", "of", "properties") in phrases
+    assert ("sale", "of", "property") not in phrases
+    assert ("properties",) in phrases
 
 
 def test_grammatical_frame_record_parses_head() -> None:

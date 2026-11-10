@@ -456,9 +456,14 @@ CENSUS_EXPECTATIONS: dict[str, CensusExpectation] = {
     # solved for any term, so fabricated VERIFY conflicts (single-edge
     # atom sums) became genuine VERIFIED reconciliations or honest
     # REPORTED rows; every mover has facade == faithful, adjudicated in
-    # .artifacts/run-logs/2026-11-01-derivation-direction-fix.md.
-    "probe": CensusExpectation(n=168, correct=110, honest=58, surfaced_conflicts=8),
-    "span": CensusExpectation(n=189, correct=161, honest=28, surfaced_conflicts=4),
+    # .artifacts/run-logs/2026-11-01-derivation-direction-fix.md. The R/P
+    # partner build then moved probe -> 112/56/6 and span -> 162/27/3:
+    # PLD's bare-head split identities dissolve under M_OTHER — Assets
+    # loses a fabricated conflict, Liabilities verifies on its true
+    # components; adjudicated in
+    # .artifacts/run-logs/2026-11-09-rp-partner-coverage-impl.md.
+    "probe": CensusExpectation(n=168, correct=112, honest=56, surfaced_conflicts=6),
+    "span": CensusExpectation(n=189, correct=162, honest=27, surfaced_conflicts=3),
     "span-supplement": CensusExpectation(
         n=5, correct=0, honest=5, surfaced_conflicts=0
     ),

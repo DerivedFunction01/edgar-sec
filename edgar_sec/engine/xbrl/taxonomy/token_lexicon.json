@@ -24,14 +24,6 @@
   },
   {
     "phrase": [
-      "Revenues"
-    ],
-    "claim": "head",
-    "head": "H_REVENUE",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
       "Premiums",
       "Earned"
     ],
@@ -89,23 +81,7 @@
   },
   {
     "phrase": [
-      "Costs"
-    ],
-    "claim": "head",
-    "head": "H_COST",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
       "Expense"
-    ],
-    "claim": "head",
-    "head": "H_EXPENSE",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
-      "Expenses"
     ],
     "claim": "head",
     "head": "H_EXPENSE",
@@ -121,14 +97,6 @@
   },
   {
     "phrase": [
-      "Assets"
-    ],
-    "claim": "head",
-    "head": "H_ASSET",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
       "Receivable"
     ],
     "claim": "head",
@@ -137,23 +105,7 @@
   },
   {
     "phrase": [
-      "Receivables"
-    ],
-    "claim": "head",
-    "head": "H_ASSET",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
       "Inventory"
-    ],
-    "claim": "head",
-    "head": "H_ASSET",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
-      "Inventories"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -172,7 +124,7 @@
   },
   {
     "phrase": [
-      "Properties"
+      "Property"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -196,23 +148,7 @@
   },
   {
     "phrase": [
-      "Liabilities"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
       "Obligation"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
-      "Obligations"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -239,23 +175,7 @@
   },
   {
     "phrase": [
-      "Payables"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
       "Reserve"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
-      "Reserves"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -332,23 +252,7 @@
   },
   {
     "phrase": [
-      "Shares"
-    ],
-    "claim": "head",
-    "head": "H_SHARE",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
       "Warrant"
-    ],
-    "claim": "head",
-    "head": "H_SHARE",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
-      "Warrants"
     ],
     "claim": "head",
     "head": "H_SHARE",
@@ -366,14 +270,6 @@
   {
     "phrase": [
       "Commitment"
-    ],
-    "claim": "head",
-    "head": "H_COMMITMENT",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
-      "Commitments"
     ],
     "claim": "head",
     "head": "H_COMMITMENT",
@@ -425,7 +321,7 @@
     "phrase": [
       "Exercise",
       "Of",
-      "Options"
+      "Option"
     ],
     "claim": "head",
     "head": "H_EQUITY",
@@ -566,6 +462,13 @@
   },
   {
     "phrase": [
+      "And"
+    ],
+    "claim": "relation",
+    "relation": "COORDINATION"
+  },
+  {
+    "phrase": [
       "To",
       "Acquire"
     ],
@@ -615,7 +518,7 @@
   },
   {
     "phrase": [
-      "Payments",
+      "Payment",
       "To"
     ],
     "claim": "head",
@@ -625,7 +528,7 @@
   },
   {
     "phrase": [
-      "Payments",
+      "Payment",
       "For"
     ],
     "claim": "head",
@@ -635,16 +538,7 @@
   },
   {
     "phrase": [
-      "Payments"
-    ],
-    "claim": "head",
-    "head": "H_CASH",
-    "claim_class": "PRIMARY",
-    "direction": -1.0
-  },
-  {
-    "phrase": [
-      "Repayments"
+      "Payment"
     ],
     "claim": "head",
     "head": "H_CASH",
@@ -672,7 +566,7 @@
   },
   {
     "phrase": [
-      "Receipts",
+      "Receipt",
       "From"
     ],
     "claim": "head",
@@ -759,13 +653,6 @@
   },
   {
     "phrase": [
-      "Services"
-    ],
-    "claim": "modifier",
-    "atom": "M_SERVICE"
-  },
-  {
-    "phrase": [
       "Cloud"
     ],
     "claim": "modifier",
@@ -815,7 +702,7 @@
   },
   {
     "phrase": [
-      "Operations"
+      "Operation"
     ],
     "claim": "modifier",
     "atom": "M_OPERATING"
@@ -908,7 +795,7 @@
   },
   {
     "phrase": [
-      "Liabilities",
+      "Liability",
       "And",
       "Stockholders",
       "Equity"
@@ -1063,13 +950,6 @@
   },
   {
     "phrase": [
-      "Taxes"
-    ],
-    "claim": "modifier",
-    "atom": "M_TAX"
-  },
-  {
-    "phrase": [
       "Medical",
       "Claims"
     ],
@@ -1078,7 +958,7 @@
   },
   {
     "phrase": [
-      "Accounts",
+      "Account",
       "Receivable"
     ],
     "claim": "head",
@@ -1087,6 +967,93 @@
     "carriage": [
       "M_RECEIVABLE"
     ]
+  },
+  {
+    "phrase": [
+      "Trade",
+      "Receivable"
+    ],
+    "claim": "head",
+    "head": "H_ASSET",
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_RECEIVABLE"
+    ]
+  },
+  {
+    "phrase": [
+      "Trade",
+      "Payable"
+    ],
+    "claim": "head",
+    "head": "H_LIABILITY",
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_ACCOUNTS_PAYABLE"
+    ]
+  },
+  {
+    "phrase": [
+      "Fee",
+      "Receivable"
+    ],
+    "claim": "head",
+    "head": "H_ASSET",
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_RECEIVABLE"
+    ]
+  },
+  {
+    "phrase": [
+      "Fee",
+      "Payable"
+    ],
+    "claim": "head",
+    "head": "H_LIABILITY",
+    "claim_class": "PRIMARY"
+  },
+  {
+    "phrase": [
+      "Installment",
+      "Receivable"
+    ],
+    "claim": "head",
+    "head": "H_ASSET",
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_RECEIVABLE"
+    ]
+  },
+  {
+    "phrase": [
+      "Installment",
+      "Payable"
+    ],
+    "claim": "head",
+    "head": "H_LIABILITY",
+    "claim_class": "PRIMARY"
+  },
+  {
+    "phrase": [
+      "Amount",
+      "Receivable"
+    ],
+    "claim": "head",
+    "head": "H_ASSET",
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_RECEIVABLE"
+    ]
+  },
+  {
+    "phrase": [
+      "Amount",
+      "Payable"
+    ],
+    "claim": "head",
+    "head": "H_LIABILITY",
+    "claim_class": "PRIMARY"
   },
   {
     "phrase": [
@@ -1280,7 +1247,7 @@
       "Allowance",
       "For",
       "Doubtful",
-      "Accounts"
+      "Account"
     ],
     "claim": "modifier",
     "atom": "M_CONTRA_ALLOWANCE"
@@ -1372,36 +1339,7 @@
   },
   {
     "phrase": [
-      "Gains",
-      "Losses",
-      "On",
-      "Disposal"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
-      "On",
-      "Disposal"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
       "On",
       "Disposal"
     ],
@@ -1429,123 +1367,8 @@
   },
   {
     "phrase": [
-      "Losses",
-      "On",
-      "Disposal"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
       "Loss",
-      "On",
-      "Disposals"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
-      "Losses",
-      "On",
-      "Disposals"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Gain",
-      "On",
-      "Disposals"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
-      "On",
-      "Disposals"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Loss",
-      "On",
-      "Disposals"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Losses",
-      "On",
-      "Disposals"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Gain",
-      "Loss",
-      "On",
-      "Derecognition"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
-      "Losses",
       "On",
       "Derecognition"
     ],
@@ -1573,35 +1396,7 @@
   },
   {
     "phrase": [
-      "Gains",
-      "On",
-      "Derecognition"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
       "Loss",
-      "On",
-      "Derecognition"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Losses",
       "On",
       "Derecognition"
     ],
@@ -1630,21 +1425,6 @@
   },
   {
     "phrase": [
-      "Gains",
-      "Losses",
-      "On",
-      "Disposition"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
       "On",
       "Disposition"
@@ -1659,35 +1439,7 @@
   },
   {
     "phrase": [
-      "Gains",
-      "On",
-      "Disposition"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
       "Loss",
-      "On",
-      "Disposition"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Losses",
       "On",
       "Disposition"
     ],
@@ -1716,21 +1468,6 @@
   },
   {
     "phrase": [
-      "Gains",
-      "Losses",
-      "On",
-      "Sale"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
       "On",
       "Sale"
@@ -1745,35 +1482,7 @@
   },
   {
     "phrase": [
-      "Gains",
-      "On",
-      "Sale"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
       "Loss",
-      "On",
-      "Sale"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
-      "Losses",
       "On",
       "Sale"
     ],
@@ -1802,21 +1511,6 @@
   },
   {
     "phrase": [
-      "Gains",
-      "Losses",
-      "On",
-      "Sales"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
       "On",
       "Sales"
@@ -1831,35 +1525,7 @@
   },
   {
     "phrase": [
-      "Gains",
-      "On",
-      "Sales"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
       "Loss",
-      "On",
-      "Sales"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
-      "Losses",
       "On",
       "Sales"
     ],
@@ -1887,20 +1553,6 @@
   },
   {
     "phrase": [
-      "Gains",
-      "Losses",
-      "On",
-      "Extinguishment"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
       "On",
       "Extinguishment"
@@ -1914,33 +1566,7 @@
   },
   {
     "phrase": [
-      "Gains",
-      "On",
-      "Extinguishment"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN"
-    ]
-  },
-  {
-    "phrase": [
       "Loss",
-      "On",
-      "Extinguishment"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN"
-    ]
-  },
-  {
-    "phrase": [
-      "Losses",
       "On",
       "Extinguishment"
     ],
@@ -2000,7 +1626,7 @@
       "Derecognition",
       "Of",
       "Financial",
-      "Assets"
+      "Asset"
     ],
     "claim": "modifier",
     "atom": "M_DISPOSAL_GAIN",
@@ -2015,7 +1641,7 @@
       "Of",
       "Derecognised",
       "Financial",
-      "Assets"
+      "Asset"
     ],
     "claim": "head",
     "head": "H_INCOME",
@@ -2072,20 +1698,6 @@
   },
   {
     "phrase": [
-      "Gains",
-      "From",
-      "Disposal"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
       "Loss",
       "From",
       "Disposal"
@@ -2100,35 +1712,7 @@
   },
   {
     "phrase": [
-      "Losses",
-      "From",
-      "Disposal"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
-      "From",
-      "Disposition"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
       "From",
       "Disposition"
     ],
@@ -2156,35 +1740,7 @@
   },
   {
     "phrase": [
-      "Losses",
-      "From",
-      "Disposition"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
-      "From",
-      "Sale"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
       "From",
       "Sale"
     ],
@@ -2212,35 +1768,7 @@
   },
   {
     "phrase": [
-      "Losses",
-      "From",
-      "Sale"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
-      "From",
-      "Sales"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
       "From",
       "Sales"
     ],
@@ -2268,34 +1796,7 @@
   },
   {
     "phrase": [
-      "Losses",
-      "From",
-      "Sales"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
-      "From",
-      "Extinguishment"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
       "From",
       "Extinguishment"
     ],
@@ -2321,66 +1822,8 @@
   },
   {
     "phrase": [
-      "Losses",
-      "From",
-      "Extinguishment"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
-      "Losses",
-      "From",
-      "Disposal"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
-      "Losses",
-      "From",
-      "Disposition"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
       "Loss",
-      "From",
-      "Sale"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
-      "Losses",
       "From",
       "Sale"
     ],
@@ -2409,21 +1852,6 @@
   },
   {
     "phrase": [
-      "Gains",
-      "Losses",
-      "From",
-      "Sales"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
       "Loss",
       "From",
@@ -2438,36 +1866,7 @@
   },
   {
     "phrase": [
-      "Gains",
-      "Losses",
-      "From",
-      "Extinguishment"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
-      "Arising",
-      "From",
-      "Sale"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
       "Arising",
       "From",
       "Sale"
@@ -2497,39 +1896,8 @@
   },
   {
     "phrase": [
-      "Losses",
-      "Arising",
-      "From",
-      "Sale"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
       "Loss",
-      "Arising",
-      "From",
-      "Sale"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_SALE"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
-      "Losses",
       "Arising",
       "From",
       "Sale"
@@ -2825,13 +2193,6 @@
   },
   {
     "phrase": [
-      "Metals"
-    ],
-    "claim": "modifier",
-    "atom": "M_RISK_COMMODITY"
-  },
-  {
-    "phrase": [
       "Agriculture"
     ],
     "claim": "modifier",
@@ -2946,13 +2307,6 @@
   },
   {
     "phrase": [
-      "Swaps"
-    ],
-    "claim": "modifier",
-    "atom": "M_SWAP"
-  },
-  {
-    "phrase": [
       "Option"
     ],
     "claim": "modifier",
@@ -2960,21 +2314,7 @@
   },
   {
     "phrase": [
-      "Options"
-    ],
-    "claim": "modifier",
-    "atom": "M_OPTION"
-  },
-  {
-    "phrase": [
       "Forward"
-    ],
-    "claim": "modifier",
-    "atom": "M_FORWARD"
-  },
-  {
-    "phrase": [
-      "Forwards"
     ],
     "claim": "modifier",
     "atom": "M_FORWARD"
@@ -3071,8 +2411,8 @@
   },
   {
     "phrase": [
-      "Financing",
-      "Receivables"
+      "Finance",
+      "Receivable"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -3086,7 +2426,7 @@
       "Provision",
       "For",
       "Credit",
-      "Losses"
+      "Loss"
     ],
     "claim": "head",
     "head": "H_EXPENSE",
@@ -3321,9 +2661,9 @@
   },
   {
     "phrase": [
-      "Costs",
+      "Cost",
       "And",
-      "Expenses"
+      "Expense"
     ],
     "claim": "head",
     "head": "H_COST",
@@ -3435,28 +2775,6 @@
   },
   {
     "phrase": [
-      "Bonds"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DEBT"
-    ]
-  },
-  {
-    "phrase": [
-      "Borrowings"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DEBT"
-    ]
-  },
-  {
-    "phrase": [
       "Borrowing"
     ],
     "claim": "head",
@@ -3515,21 +2833,6 @@
   },
   {
     "phrase": [
-      "Maturities"
-    ],
-    "claim": "modifier",
-    "atom": "M_MATURITY"
-  },
-  {
-    "phrase": [
-      "Discontinued",
-      "Operations"
-    ],
-    "claim": "modifier",
-    "atom": "M_DISCONTINUED"
-  },
-  {
-    "phrase": [
       "Discontinued",
       "Operation"
     ],
@@ -3542,14 +2845,6 @@
     ],
     "claim": "modifier",
     "atom": "M_DISCONTINUED"
-  },
-  {
-    "phrase": [
-      "Continuing",
-      "Operations"
-    ],
-    "claim": "modifier",
-    "atom": "M_CONTINUING"
   },
   {
     "phrase": [
@@ -3569,26 +2864,10 @@
   {
     "phrase": [
       "Operating",
-      "Activities"
-    ],
-    "claim": "modifier",
-    "atom": "M_OPERATING"
-  },
-  {
-    "phrase": [
-      "Operating",
       "Activity"
     ],
     "claim": "modifier",
     "atom": "M_OPERATING"
-  },
-  {
-    "phrase": [
-      "Investing",
-      "Activities"
-    ],
-    "claim": "modifier",
-    "atom": "M_INVESTING"
   },
   {
     "phrase": [
@@ -3601,14 +2880,6 @@
   {
     "phrase": [
       "Financing",
-      "Activities"
-    ],
-    "claim": "modifier",
-    "atom": "M_FINANCING"
-  },
-  {
-    "phrase": [
-      "Financing",
       "Activity"
     ],
     "claim": "modifier",
@@ -3616,7 +2887,7 @@
   },
   {
     "phrase": [
-      "Notes",
+      "Note",
       "Receivable"
     ],
     "claim": "head",
@@ -3657,25 +2928,13 @@
     "phrase": [
       "Unrecognized",
       "Tax",
-      "Benefits"
+      "Benefit"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
     "claim_class": "PRIMARY",
     "carriage": [
       "M_TAX_INCOME"
-    ]
-  },
-  {
-    "phrase": [
-      "Time",
-      "Deposits"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DEBT_BORROWING"
     ]
   },
   {
@@ -3717,7 +2976,7 @@
   {
     "phrase": [
       "Intangible",
-      "Assets"
+      "Asset"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -3834,14 +3093,6 @@
   },
   {
     "phrase": [
-      "Gains"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
       "Weighted",
       "Average"
     ],
@@ -3896,14 +3147,6 @@
   },
   {
     "phrase": [
-      "Business",
-      "Combinations"
-    ],
-    "claim": "modifier",
-    "atom": "M_BUSINESS_COMBINATION"
-  },
-  {
-    "phrase": [
       "Finance",
       "Lease"
     ],
@@ -3933,21 +3176,7 @@
   },
   {
     "phrase": [
-      "Dividends"
-    ],
-    "claim": "modifier",
-    "atom": "M_DIVIDEND"
-  },
-  {
-    "phrase": [
       "Dividend"
-    ],
-    "claim": "modifier",
-    "atom": "M_DIVIDEND"
-  },
-  {
-    "phrase": [
-      "Distributions"
     ],
     "claim": "modifier",
     "atom": "M_DIVIDEND"
@@ -4012,15 +3241,8 @@
   },
   {
     "phrase": [
-      "Instruments"
-    ],
-    "claim": "modifier",
-    "atom": "M_FINANCIAL_INSTRUMENT"
-  },
-  {
-    "phrase": [
       "Financial",
-      "Assets"
+      "Asset"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -4075,20 +3297,6 @@
     "phrase": [
       "Equity",
       "Method",
-      "Investments"
-    ],
-    "claim": "head",
-    "head": "H_ASSET",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_EQUITY_METHOD",
-      "M_INVESTMENT"
-    ]
-  },
-  {
-    "phrase": [
-      "Equity",
-      "Method",
       "Investment"
     ],
     "claim": "head",
@@ -4106,7 +3314,7 @@
       "From",
       "Equity",
       "Method",
-      "Investments"
+      "Investment"
     ],
     "claim": "head",
     "head": "H_INCOME",
@@ -4217,7 +3425,7 @@
     "phrase": [
       "Long",
       "Term",
-      "Investments"
+      "Investment"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -4231,7 +3439,7 @@
     "phrase": [
       "Short",
       "Term",
-      "Investments"
+      "Investment"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -4246,7 +3454,7 @@
       "Provision",
       "For",
       "Doubtful",
-      "Accounts"
+      "Account"
     ],
     "claim": "head",
     "head": "H_EXPENSE",
@@ -4257,7 +3465,7 @@
       "Provision",
       "For",
       "Loan",
-      "Losses"
+      "Loss"
     ],
     "claim": "head",
     "head": "H_EXPENSE",
@@ -4272,15 +3480,6 @@
     "claim": "head",
     "head": "H_COMMITMENT",
     "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
-      "Discount",
-      "Rates"
-    ],
-    "claim": "head",
-    "head": "H_UNIT_RATE",
-    "claim_class": "TAIL"
   },
   {
     "phrase": [
@@ -4409,23 +3608,7 @@
   {
     "phrase": [
       "Num",
-      "Years"
-    ],
-    "claim": "modifier",
-    "atom": "M_MATURITY"
-  },
-  {
-    "phrase": [
-      "Num",
       "Month"
-    ],
-    "claim": "modifier",
-    "atom": "M_MATURITY"
-  },
-  {
-    "phrase": [
-      "Num",
-      "Months"
     ],
     "claim": "modifier",
     "atom": "M_MATURITY"
@@ -4489,24 +3672,7 @@
   },
   {
     "phrase": [
-      "Disposals"
-    ],
-    "claim": "modifier",
-    "atom": "M_DISPOSAL",
-    "coexists_with": [
-      "equipment disposals"
-    ]
-  },
-  {
-    "phrase": [
       "Disposition"
-    ],
-    "claim": "modifier",
-    "atom": "M_DISPOSAL"
-  },
-  {
-    "phrase": [
-      "Dispositions"
     ],
     "claim": "modifier",
     "atom": "M_DISPOSAL"
@@ -4567,7 +3733,7 @@
   {
     "phrase": [
       "Benefit",
-      "Plans"
+      "Plan"
     ],
     "claim": "modifier",
     "atom": "M_PENSION_DEFINED_BENEFIT"
@@ -4614,23 +3780,7 @@
   },
   {
     "phrase": [
-      "Years",
-      "Num"
-    ],
-    "claim": "modifier",
-    "atom": "M_MATURITY"
-  },
-  {
-    "phrase": [
       "Month",
-      "Num"
-    ],
-    "claim": "modifier",
-    "atom": "M_MATURITY"
-  },
-  {
-    "phrase": [
-      "Months",
       "Num"
     ],
     "claim": "modifier",
@@ -4657,7 +3807,7 @@
       "Amortization",
       "Of",
       "Intangible",
-      "Assets"
+      "Asset"
     ],
     "claim": "head",
     "head": "H_EXPENSE",
@@ -4672,7 +3822,7 @@
       "Amortisation",
       "Of",
       "Intangible",
-      "Assets"
+      "Asset"
     ],
     "claim": "head",
     "head": "H_EXPENSE",
@@ -4719,7 +3869,7 @@
       "Impairment",
       "Of",
       "Intangible",
-      "Assets"
+      "Asset"
     ],
     "claim": "head",
     "head": "H_INCOME",
@@ -4734,7 +3884,7 @@
     "phrase": [
       "Accrued",
       "Income",
-      "Taxes"
+      "Tax"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -4759,7 +3909,7 @@
     "phrase": [
       "Environmental",
       "Loss",
-      "Contingencies"
+      "Contingency"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -4836,25 +3986,11 @@
   },
   {
     "phrase": [
-      "Intangible",
-      "Assets",
-      "Impairment"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_INTANGIBLE_GOODWILL",
-      "M_IMPAIRMENT"
-    ]
-  },
-  {
-    "phrase": [
       "Impairment",
       "Of",
       "Long",
       "Lived",
-      "Assets"
+      "Asset"
     ],
     "claim": "head",
     "head": "H_INCOME",
@@ -4871,7 +4007,7 @@
       "Oil",
       "And",
       "Gas",
-      "Properties"
+      "Property"
     ],
     "claim": "head",
     "head": "H_INCOME",
@@ -4886,7 +4022,7 @@
       "Impairment",
       "Of",
       "Equity",
-      "Investments"
+      "Investment"
     ],
     "claim": "head",
     "head": "H_INCOME",
@@ -4968,7 +4104,7 @@
   {
     "phrase": [
       "Impairment",
-      "Provisions"
+      "Provision"
     ],
     "claim": "head",
     "head": "H_INCOME",
@@ -4980,13 +4116,6 @@
   {
     "phrase": [
       "Impairment"
-    ],
-    "claim": "modifier",
-    "atom": "M_IMPAIRMENT"
-  },
-  {
-    "phrase": [
-      "Impairments"
     ],
     "claim": "modifier",
     "atom": "M_IMPAIRMENT"
@@ -5009,7 +4138,7 @@
     "phrase": [
       "Acquire",
       "Productive",
-      "Assets"
+      "Asset"
     ],
     "claim": "modifier",
     "atom": "M_PPE_CAPEX"
@@ -5019,7 +4148,7 @@
       "Acquire",
       "Other",
       "Productive",
-      "Assets"
+      "Asset"
     ],
     "claim": "modifier",
     "atom": "M_PPE_CAPEX"
@@ -5029,7 +4158,7 @@
       "Acquire",
       "Short",
       "Term",
-      "Investments"
+      "Investment"
     ],
     "claim": "modifier",
     "atom": "M_INVESTMENT",
@@ -5042,7 +4171,7 @@
       "Acquire",
       "Equity",
       "Method",
-      "Investments"
+      "Investment"
     ],
     "claim": "modifier",
     "atom": "M_EQUITY_METHOD",
@@ -5054,7 +4183,7 @@
     "phrase": [
       "Acquire",
       "Intangible",
-      "Assets"
+      "Asset"
     ],
     "claim": "modifier",
     "atom": "M_INTANGIBLE_GOODWILL"
@@ -5063,7 +4192,7 @@
     "phrase": [
       "Acquire",
       "Finance",
-      "Receivables"
+      "Receivable"
     ],
     "claim": "modifier",
     "atom": "M_FINANCING_RECEIVABLE"
@@ -5083,7 +4212,7 @@
       "Develop",
       "Real",
       "Estate",
-      "Assets"
+      "Asset"
     ],
     "claim": "modifier",
     "atom": "M_REAL_ESTATE"
@@ -5094,7 +4223,7 @@
       "From",
       "Short",
       "Term",
-      "Investments"
+      "Investment"
     ],
     "claim": "modifier",
     "atom": "M_INVESTMENT",
@@ -5255,7 +4384,7 @@
   },
   {
     "phrase": [
-      "Payments",
+      "Payment",
       "For",
       "Flight",
       "Equipment"
@@ -5310,7 +4439,7 @@
     "phrase": [
       "Securities",
       "Debt",
-      "Maturities"
+      "Maturity"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -5324,7 +4453,7 @@
       "Securities",
       "Sold",
       "Under",
-      "Agreements",
+      "Agreement",
       "To",
       "Repurchase"
     ],
@@ -5340,7 +4469,7 @@
       "Securities",
       "Purchased",
       "Under",
-      "Agreements",
+      "Agreement",
       "To",
       "Resell"
     ],
@@ -5471,7 +4600,7 @@
       "Or",
       "Sold",
       "Under",
-      "Agreements",
+      "Agreement",
       "To",
       "Repurchase"
     ],
@@ -5501,7 +4630,7 @@
     "phrase": [
       "Number",
       "Of",
-      "Shares",
+      "Share",
       "Authorized",
       "To",
       "Be",
@@ -5657,7 +4786,7 @@
   {
     "phrase": [
       "Capital",
-      "Expenditures",
+      "Expenditure",
       "Incurred",
       "But",
       "Not",
@@ -5741,7 +4870,7 @@
   {
     "phrase": [
       "Professional",
-      "Fees"
+      "Fee"
     ],
     "claim": "head",
     "head": "H_EXPENSE",
@@ -5831,9 +4960,9 @@
   },
   {
     "phrase": [
-      "Investments",
+      "Investment",
       "In",
-      "Affiliates",
+      "Affiliate",
       "Subsidiaries",
       "Associates",
       "And",
@@ -5851,7 +4980,7 @@
   {
     "phrase": [
       "Other",
-      "Investments"
+      "Investment"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -5865,7 +4994,7 @@
       "Increase",
       "Decrease",
       "In",
-      "Deposits"
+      "Deposit"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -5876,7 +5005,7 @@
   },
   {
     "phrase": [
-      "Deposits",
+      "Deposit",
       "Domestic"
     ],
     "claim": "head",
@@ -5888,7 +5017,7 @@
   },
   {
     "phrase": [
-      "Deposits",
+      "Deposit",
       "Foreign"
     ],
     "claim": "head",
@@ -5901,7 +5030,7 @@
   {
     "phrase": [
       "Contract",
-      "Deposits"
+      "Deposit"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -5910,7 +5039,7 @@
   {
     "phrase": [
       "Customer",
-      "Deposits"
+      "Deposit"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -5923,7 +5052,7 @@
     "phrase": [
       "Acquire",
       "Other",
-      "Investments"
+      "Investment"
     ],
     "claim": "modifier",
     "atom": "M_INVESTMENT"
@@ -5958,7 +5087,7 @@
   {
     "phrase": [
       "Prepaid",
-      "Taxes"
+      "Tax"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -6039,7 +5168,7 @@
       "Lease",
       "And",
       "Other",
-      "Losses"
+      "Loss"
     ],
     "claim": "head",
     "head": "H_EXPENSE",
@@ -6055,7 +5184,7 @@
       "Other",
       "Postretirement",
       "Benefit",
-      "Contributions"
+      "Contribution"
     ],
     "claim": "head",
     "head": "H_CASH",
@@ -6067,7 +5196,7 @@
   {
     "phrase": [
       "Restricted",
-      "Investments"
+      "Investment"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -6093,7 +5222,7 @@
       "Prescription",
       "Drug",
       "Subsidy",
-      "Receipts"
+      "Receipt"
     ],
     "claim": "head",
     "head": "H_INCOME",
@@ -6101,7 +5230,7 @@
   },
   {
     "phrase": [
-      "Investments",
+      "Investment",
       "Fair",
       "Value",
       "Disclosure"
@@ -6162,7 +5291,7 @@
     "phrase": [
       "Acquire",
       "Restricted",
-      "Investments"
+      "Investment"
     ],
     "claim": "modifier",
     "atom": "M_INVESTMENT"
@@ -6194,9 +5323,9 @@
   },
   {
     "phrase": [
-      "Fees",
+      "Fee",
       "And",
-      "Commissions",
+      "Commission",
       "Other"
     ],
     "claim": "head",
@@ -6209,9 +5338,9 @@
   },
   {
     "phrase": [
-      "Fees",
+      "Fee",
       "And",
-      "Commissions"
+      "Commission"
     ],
     "claim": "head",
     "head": "H_REVENUE",
@@ -6223,7 +5352,7 @@
   {
     "phrase": [
       "Depositor",
-      "Accounts"
+      "Account"
     ],
     "claim": "modifier",
     "atom": "M_DEPOSITOR_ACCOUNTS"
@@ -6231,7 +5360,7 @@
   {
     "phrase": [
       "Lending",
-      "Activities"
+      "Activity"
     ],
     "claim": "modifier",
     "atom": "M_LENDING_ACTIVITIES"
@@ -6239,7 +5368,7 @@
   {
     "phrase": [
       "Brokerage",
-      "Commissions"
+      "Commission"
     ],
     "claim": "modifier",
     "atom": "M_BROKERAGE_COMMISSIONS"
@@ -6247,7 +5376,7 @@
   {
     "phrase": [
       "Principal",
-      "Transactions"
+      "Transaction"
     ],
     "claim": "modifier",
     "atom": "M_PRINCIPAL_TRANSACTIONS"
@@ -6259,19 +5388,6 @@
     ],
     "claim": "modifier",
     "atom": "M_MORTGAGE_PRODUCTION"
-  },
-  {
-    "phrase": [
-      "Management",
-      "Fees",
-      "Revenue"
-    ],
-    "claim": "head",
-    "head": "H_REVENUE",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_MANAGEMENT_FEES"
-    ]
   },
   {
     "phrase": [
@@ -6291,7 +5407,7 @@
       "Lending",
       "Related",
       "Financial",
-      "Instruments"
+      "Instrument"
     ],
     "claim": "head",
     "head": "H_COMMITMENT",
@@ -6304,7 +5420,7 @@
   {
     "phrase": [
       "Structured",
-      "Notes"
+      "Note"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -6358,7 +5474,7 @@
       "To",
       "Total",
       "Retained",
-      "Loans"
+      "Loan"
     ],
     "claim": "head",
     "head": "H_UNIT_RATE",
@@ -6370,7 +5486,7 @@
   },
   {
     "phrase": [
-      "Dividends",
+      "Dividend",
       "From",
       "Subsidiaries"
     ],
@@ -6393,7 +5509,7 @@
   },
   {
     "phrase": [
-      "Investments",
+      "Investment",
       "In",
       "Subsidiaries"
     ],
@@ -6407,7 +5523,7 @@
   {
     "phrase": [
       "Performing",
-      "Loans"
+      "Loan"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -6445,7 +5561,7 @@
   {
     "phrase": [
       "Cash",
-      "Dividends",
+      "Dividend",
       "From",
       "Subsidiaries"
     ],
@@ -6458,7 +5574,7 @@
   },
   {
     "phrase": [
-      "Loans",
+      "Loan",
       "And",
       "Securities"
     ],
@@ -6486,21 +5602,9 @@
   },
   {
     "phrase": [
-      "Capital",
-      "Expenditures"
-    ],
-    "claim": "head",
-    "head": "H_CASH",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_PPE_CAPEX"
-    ]
-  },
-  {
-    "phrase": [
       "Special",
       "Use",
-      "Funds"
+      "Fund"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -6520,7 +5624,7 @@
       "Reinsurance",
       "And",
       "Indemnification",
-      "Recoverables"
+      "Recoverable"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -6544,24 +5648,11 @@
   {
     "phrase": [
       "Contractholder",
-      "Funds"
+      "Fund"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
     "claim_class": "PRIMARY"
-  },
-  {
-    "phrase": [
-      "Accrued",
-      "Capital",
-      "Expenditures"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_PPE_CAPEX"
-    ]
   },
   {
     "phrase": [
@@ -6798,7 +5889,7 @@
   },
   {
     "phrase": [
-      "Accounts",
+      "Account",
       "Payable"
     ],
     "claim": "head",
@@ -6811,7 +5902,7 @@
   {
     "phrase": [
       "Accrued",
-      "Liabilities"
+      "Liability"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -6822,32 +5913,8 @@
   },
   {
     "phrase": [
-      "Notes",
-      "Payable"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DEBT"
-    ]
-  },
-  {
-    "phrase": [
       "Lease",
       "Liability"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_LEASE_ROU"
-    ]
-  },
-  {
-    "phrase": [
-      "Lease",
-      "Liabilities"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -6873,7 +5940,7 @@
   {
     "phrase": [
       "Postemployment",
-      "Benefits"
+      "Benefit"
     ],
     "claim": "modifier",
     "atom": "M_PENSION_DEFINED_BENEFIT"
@@ -6882,7 +5949,7 @@
     "phrase": [
       "Employee",
       "Related",
-      "Liabilities"
+      "Liability"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -6910,18 +5977,6 @@
   },
   {
     "phrase": [
-      "Loss",
-      "Contingencies"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_LOSS_CONTINGENCY"
-    ]
-  },
-  {
-    "phrase": [
       "Restructuring",
       "Reserve"
     ],
@@ -6935,7 +5990,7 @@
   {
     "phrase": [
       "Guarantee",
-      "Obligations"
+      "Obligation"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -6959,7 +6014,7 @@
   {
     "phrase": [
       "Hedging",
-      "Liabilities"
+      "Liability"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -6977,7 +6032,7 @@
   },
   {
     "phrase": [
-      "Shares",
+      "Share",
       "Issued"
     ],
     "claim": "head",
@@ -6989,7 +6044,7 @@
   },
   {
     "phrase": [
-      "Shares",
+      "Share",
       "Outstanding"
     ],
     "claim": "head",
@@ -7001,7 +6056,7 @@
   },
   {
     "phrase": [
-      "Shares",
+      "Share",
       "Authorized"
     ],
     "claim": "head",
@@ -7027,7 +6082,7 @@
   },
   {
     "phrase": [
-      "Payments",
+      "Payment",
       "For",
       "Repurchase"
     ],
@@ -7086,7 +6141,7 @@
   },
   {
     "phrase": [
-      "Loans",
+      "Loan",
       "Payable"
     ],
     "claim": "head",
@@ -7244,7 +6299,7 @@
   {
     "phrase": [
       "Senior",
-      "Notes"
+      "Note"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -7259,7 +6314,7 @@
       "Senior",
       "Long",
       "Term",
-      "Notes"
+      "Note"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -7273,7 +6328,7 @@
   {
     "phrase": [
       "Mediumterm",
-      "Notes"
+      "Note"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -7286,9 +6341,9 @@
     "phrase": [
       "Interest",
       "Bearing",
-      "Deposits",
+      "Deposit",
       "In",
-      "Banks"
+      "Bank"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -7301,7 +6356,7 @@
     "phrase": [
       "Demand",
       "Deposit",
-      "Accounts"
+      "Account"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -7313,7 +6368,7 @@
   {
     "phrase": [
       "Federal",
-      "Funds",
+      "Fund",
       "Sold"
     ],
     "claim": "head",
@@ -7337,7 +6392,7 @@
   },
   {
     "phrase": [
-      "Deposits",
+      "Deposit",
       "Fair",
       "Value",
       "Disclosure"
@@ -7362,18 +6417,6 @@
     "claim_class": "PRIMARY",
     "carriage": [
       "M_INTEREST"
-    ]
-  },
-  {
-    "phrase": [
-      "Reinsurance",
-      "Recoverables"
-    ],
-    "claim": "head",
-    "head": "H_ASSET",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_CLAIM_RESERVE"
     ]
   },
   {
@@ -7414,7 +6457,7 @@
   {
     "phrase": [
       "Legal",
-      "Fees"
+      "Fee"
     ],
     "claim": "head",
     "head": "H_EXPENSE",
@@ -7431,7 +6474,7 @@
   {
     "phrase": [
       "Policyholder",
-      "Benefits",
+      "Benefit",
       "And",
       "Claims"
     ],
@@ -7445,9 +6488,9 @@
   {
     "phrase": [
       "Insurance",
-      "Commissions",
+      "Commission",
       "And",
-      "Fees"
+      "Fee"
     ],
     "claim": "head",
     "head": "H_REVENUE",
@@ -7469,7 +6512,7 @@
     "phrase": [
       "Money",
       "Market",
-      "Funds"
+      "Fund"
     ],
     "claim": "head",
     "head": "H_CASH",
@@ -7554,7 +6597,7 @@
   },
   {
     "phrase": [
-      "Notes",
+      "Note",
       "Issued"
     ],
     "claim": "head",
@@ -7593,7 +6636,7 @@
     "phrase": [
       "Accrued",
       "Employee",
-      "Benefits"
+      "Benefit"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -7663,7 +6706,7 @@
       "Plant",
       "And",
       "Equipment",
-      "Transfers"
+      "Transfer"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -7723,7 +6766,7 @@
     "phrase": [
       "Real",
       "Estate",
-      "Investments"
+      "Investment"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -7750,7 +6793,7 @@
   },
   {
     "phrase": [
-      "Loans",
+      "Loan",
       "Held",
       "For",
       "Sale"
@@ -7794,7 +6837,7 @@
     "phrase": [
       "Undistributed",
       "Earnings",
-      "Losses",
+      "Loss",
       "Ratio"
     ],
     "claim": "head",
@@ -7811,7 +6854,7 @@
   {
     "phrase": [
       "Equity",
-      "Investments"
+      "Investment"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -7823,7 +6866,7 @@
   {
     "phrase": [
       "Termination",
-      "Loans"
+      "Loan"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -7864,7 +6907,7 @@
       "Conversion",
       "Of",
       "Stock",
-      "Shares",
+      "Share",
       "Converted"
     ],
     "claim": "head",
@@ -7930,7 +6973,7 @@
   {
     "phrase": [
       "Pension",
-      "Contributions"
+      "Contribution"
     ],
     "claim": "head",
     "head": "H_CASH",
@@ -7942,9 +6985,9 @@
   {
     "phrase": [
       "Valuation",
-      "Allowances",
+      "Allowance",
       "And",
-      "Reserves"
+      "Reserve"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -7963,8 +7006,8 @@
   {
     "phrase": [
       "Trading",
-      "Gains",
-      "Losses"
+      "Gain",
+      "Loss"
     ],
     "claim": "head",
     "head": "H_INCOME",
@@ -7977,7 +7020,7 @@
     "phrase": [
       "Long",
       "Lived",
-      "Assets"
+      "Asset"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -8036,7 +7079,7 @@
   {
     "phrase": [
       "Plan",
-      "Assets"
+      "Asset"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -8096,10 +7139,10 @@
   {
     "phrase": [
       "Landing",
-      "Fees",
+      "Fee",
       "And",
       "Other",
-      "Rentals"
+      "Rental"
     ],
     "claim": "head",
     "head": "H_EXPENSE",
@@ -8120,7 +7163,7 @@
     "phrase": [
       "Aircraft",
       "Maintenance",
-      "Deposits"
+      "Deposit"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -8130,7 +7173,7 @@
     "phrase": [
       "Shortduration",
       "Insurance",
-      "Contracts"
+      "Contract"
     ],
     "claim": "head",
     "head": "H_UNIT_RATE",
@@ -8143,7 +7186,7 @@
     "phrase": [
       "Shortduration",
       "Insurance",
-      "Contracts",
+      "Contract",
       "Historical",
       "Claims",
       "Duration"
@@ -8176,7 +7219,7 @@
     "phrase": [
       "Custodial",
       "Cash",
-      "Liabilities"
+      "Liability"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -8201,7 +7244,7 @@
     "phrase": [
       "Accrued",
       "Payroll",
-      "Taxes"
+      "Tax"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -8266,7 +7309,7 @@
   {
     "phrase": [
       "Accrued",
-      "Utilities"
+      "Utility"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -8333,7 +7376,7 @@
   {
     "phrase": [
       "Federal",
-      "Funds",
+      "Fund",
       "Purchased"
     ],
     "claim": "head",
@@ -8361,7 +7404,7 @@
     "phrase": [
       "Long",
       "Term",
-      "Notes"
+      "Note"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -8375,7 +7418,7 @@
     "phrase": [
       "Long",
       "Term",
-      "Borrowings"
+      "Borrowing"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -8389,7 +7432,7 @@
     "phrase": [
       "Long",
       "Term",
-      "Receivables"
+      "Receivable"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -8402,7 +7445,7 @@
     "phrase": [
       "Long",
       "Term",
-      "Liabilities"
+      "Liability"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -8415,7 +7458,7 @@
     "phrase": [
       "Long",
       "Term",
-      "Obligations"
+      "Obligation"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -8428,7 +7471,7 @@
     "phrase": [
       "Long",
       "Term",
-      "Loans",
+      "Loan",
       "Payable"
     ],
     "claim": "head",
@@ -8441,7 +7484,7 @@
   },
   {
     "phrase": [
-      "Loans",
+      "Loan",
       "Payable",
       "Long",
       "Term"
@@ -8513,7 +7556,7 @@
       "In",
       "Next",
       "Num",
-      "Months"
+      "Month"
     ],
     "claim": "modifier",
     "atom": "M_MATURITY",
@@ -8532,7 +7575,7 @@
   {
     "phrase": [
       "Shortterm",
-      "Investments"
+      "Investment"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -8545,7 +7588,7 @@
   {
     "phrase": [
       "Longterm",
-      "Investments"
+      "Investment"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -8557,7 +7600,7 @@
   },
   {
     "phrase": [
-      "Accounts",
+      "Account",
       "Payable",
       "Long",
       "Term"
@@ -8572,9 +7615,9 @@
   },
   {
     "phrase": [
-      "Accounts",
+      "Account",
       "Payable",
-      "Liabilities",
+      "Liability",
       "Long",
       "Term"
     ],
@@ -8627,18 +7670,6 @@
   },
   {
     "phrase": [
-      "Prepaid",
-      "Expenses"
-    ],
-    "claim": "head",
-    "head": "H_ASSET",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_PREPAID"
-    ]
-  },
-  {
-    "phrase": [
       "Before",
       "Tax"
     ],
@@ -8651,31 +7682,8 @@
   {
     "phrase": [
       "Before",
-      "Taxes"
-    ],
-    "claim": "modifier",
-    "atom": "M_PRETAX",
-    "also_asserts": [
-      "M_TAX"
-    ]
-  },
-  {
-    "phrase": [
-      "Before",
       "Income",
       "Tax"
-    ],
-    "claim": "modifier",
-    "atom": "M_PRETAX",
-    "also_asserts": [
-      "M_TAX"
-    ]
-  },
-  {
-    "phrase": [
-      "Before",
-      "Income",
-      "Taxes"
     ],
     "claim": "modifier",
     "atom": "M_PRETAX",
@@ -8697,31 +7705,8 @@
   {
     "phrase": [
       "After",
-      "Taxes"
-    ],
-    "claim": "modifier",
-    "atom": "M_POST_TAX",
-    "also_asserts": [
-      "M_TAX"
-    ]
-  },
-  {
-    "phrase": [
-      "After",
       "Income",
       "Tax"
-    ],
-    "claim": "modifier",
-    "atom": "M_POST_TAX",
-    "also_asserts": [
-      "M_TAX"
-    ]
-  },
-  {
-    "phrase": [
-      "After",
-      "Income",
-      "Taxes"
     ],
     "claim": "modifier",
     "atom": "M_POST_TAX",
@@ -8932,13 +7917,6 @@
   },
   {
     "phrase": [
-      "Soybeans"
-    ],
-    "claim": "modifier",
-    "atom": "M_COMMODITY_SOYBEANS"
-  },
-  {
-    "phrase": [
       "Wheat"
     ],
     "claim": "modifier",
@@ -9063,7 +8041,7 @@
   },
   {
     "phrase": [
-      "Deposits",
+      "Deposit",
       "And",
       "Guaranty"
     ],
@@ -9127,7 +8105,7 @@
     "phrase": [
       "Insurance",
       "Contract",
-      "Benefits"
+      "Benefit"
     ],
     "claim": "head",
     "head": "H_EXPENSE",
@@ -9173,7 +8151,14 @@
   },
   {
     "phrase": [
-      "Losses",
+      "Other"
+    ],
+    "claim": "modifier",
+    "atom": "M_OTHER"
+  },
+  {
+    "phrase": [
+      "Loss",
       "On"
     ],
     "claim": "boundary"
@@ -9188,13 +8173,6 @@
   {
     "phrase": [
       "Deferral"
-    ],
-    "claim": "modifier",
-    "atom": "M_DEFERRED"
-  },
-  {
-    "phrase": [
-      "Deferrals"
     ],
     "claim": "modifier",
     "atom": "M_DEFERRED"
@@ -9229,24 +8207,10 @@
   },
   {
     "phrase": [
-      "Leases"
-    ],
-    "claim": "modifier",
-    "atom": "M_LEASE"
-  },
-  {
-    "phrase": [
       "Lease"
     ],
     "claim": "modifier",
     "atom": "M_LEASE"
-  },
-  {
-    "phrase": [
-      "Loans"
-    ],
-    "claim": "modifier",
-    "atom": "M_LOAN"
   },
   {
     "phrase": [
@@ -9280,30 +8244,11 @@
   },
   {
     "phrase": [
-      "Provisions"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "TAIL"
-  },
-  {
-    "phrase": [
       "Provision"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
     "claim_class": "TAIL"
-  },
-  {
-    "phrase": [
-      "Accruals"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "TAIL",
-    "carriage": [
-      "M_ACCRUED_LIABILITY"
-    ]
   },
   {
     "phrase": [
@@ -9340,20 +8285,6 @@
   },
   {
     "phrase": [
-      "Commercial",
-      "Papers"
-    ],
-    "claim": "head",
-    "head": "H_LIABILITY",
-    "claim_class": "TAIL",
-    "carriage": [
-      "M_DEBT",
-      "M_COMMERCIAL_PAPER",
-      "M_CURRENT"
-    ]
-  },
-  {
-    "phrase": [
       "Prepayments"
     ],
     "claim": "head",
@@ -9371,7 +8302,7 @@
   },
   {
     "phrase": [
-      "Dividends",
+      "Dividend",
       "Paid"
     ],
     "claim": "head",
@@ -9383,7 +8314,7 @@
   },
   {
     "phrase": [
-      "Dividends",
+      "Dividend",
       "Received"
     ],
     "claim": "head",
@@ -9417,7 +8348,7 @@
   },
   {
     "phrase": [
-      "Investments",
+      "Investment",
       "In",
       "Associates"
     ],
@@ -9431,7 +8362,7 @@
   },
   {
     "phrase": [
-      "Investments",
+      "Investment",
       "In",
       "Joint",
       "Ventures"
@@ -9513,19 +8444,10 @@
   },
   {
     "phrase": [
-      "Actuarial",
-      "Assumptions"
-    ],
-    "claim": "head",
-    "head": "H_UNIT_RATE",
-    "claim_class": "TAIL"
-  },
-  {
-    "phrase": [
       "Petroleum",
       "And",
       "Petrochemical",
-      "Products"
+      "Product"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -9552,7 +8474,7 @@
   {
     "phrase": [
       "Employer",
-      "Contributions"
+      "Contribution"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -9565,7 +8487,7 @@
     "phrase": [
       "Social",
       "Security",
-      "Contributions"
+      "Contribution"
     ],
     "claim": "head",
     "head": "H_EXPENSE",
@@ -9604,7 +8526,7 @@
   {
     "phrase": [
       "Mortgage",
-      "Loans",
+      "Loan",
       "On",
       "Real",
       "Estate"
@@ -9621,13 +8543,13 @@
     "phrase": [
       "Summary",
       "Of",
-      "Investments",
+      "Investment",
       "Other",
       "Than",
-      "Investments",
+      "Investment",
       "In",
       "Related",
-      "Parties"
+      "Party"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -9667,7 +8589,7 @@
       "Investment",
       "In",
       "Physical",
-      "Commodities"
+      "Commodity"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -9678,7 +8600,7 @@
   },
   {
     "phrase": [
-      "Mortgages",
+      "Mortgage",
       "Held",
       "For",
       "Sale"
@@ -9697,7 +8619,7 @@
       "Amount",
       "Outstanding",
       "On",
-      "Loans",
+      "Loan",
       "Managed",
       "And",
       "Securitized"
@@ -9762,7 +8684,7 @@
   {
     "phrase": [
       "Financial",
-      "Instruments",
+      "Instrument",
       "Owned",
       "At",
       "Fair",
@@ -9779,9 +8701,9 @@
   {
     "phrase": [
       "Financial",
-      "Instruments",
+      "Instrument",
       "Owned",
-      "Derivatives"
+      "Derivative"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -9796,7 +8718,7 @@
       "For",
       "Reverse",
       "Repurchase",
-      "Agreements"
+      "Agreement"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -9809,7 +8731,7 @@
     "phrase": [
       "New",
       "Mortgage",
-      "Loans"
+      "Loan"
     ],
     "claim": "head",
     "head": "H_ASSET",
@@ -9822,7 +8744,7 @@
     "phrase": [
       "Junior",
       "Subordinated",
-      "Notes"
+      "Note"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -9834,7 +8756,7 @@
   },
   {
     "phrase": [
-      "Lines",
+      "Line",
       "Of",
       "Credit",
       "Current"
@@ -9863,7 +8785,7 @@
     "phrase": [
       "Secured",
       "Bank",
-      "Loans",
+      "Loan",
       "Received"
     ],
     "claim": "head",
@@ -9896,7 +8818,7 @@
       "Deposit",
       "Certificates",
       "Of",
-      "Deposits"
+      "Deposit"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -9919,7 +8841,7 @@
   {
     "phrase": [
       "Policyholder",
-      "Funds"
+      "Fund"
     ],
     "claim": "head",
     "head": "H_LIABILITY",
@@ -9979,7 +8901,7 @@
     "phrase": [
       "Number",
       "Of",
-      "Businesses",
+      "Business",
       "Acquired"
     ],
     "claim": "head",
@@ -10295,35 +9217,18 @@
   {
     "phrase": [
       "Business",
-      "Acquisitions"
+      "Acquisition"
     ],
     "claim": "modifier",
     "atom": "M_BUSINESS_COMBINATION"
   },
   {
     "phrase": [
-      "Transfers",
-      "Into"
-    ],
-    "claim": "modifier",
-    "atom": "M_TRANSFER_IN"
-  },
-  {
-    "phrase": [
       "Transfer",
       "Into"
     ],
     "claim": "modifier",
     "atom": "M_TRANSFER_IN"
-  },
-  {
-    "phrase": [
-      "Transfers",
-      "Out",
-      "Of"
-    ],
-    "claim": "modifier",
-    "atom": "M_TRANSFER_OUT"
   },
   {
     "phrase": [
@@ -10336,26 +9241,11 @@
   },
   {
     "phrase": [
-      "Transfers",
-      "Out"
-    ],
-    "claim": "modifier",
-    "atom": "M_TRANSFER_OUT"
-  },
-  {
-    "phrase": [
       "Transfer",
       "Out"
     ],
     "claim": "modifier",
     "atom": "M_TRANSFER_OUT"
-  },
-  {
-    "phrase": [
-      "Transfers"
-    ],
-    "claim": "modifier",
-    "atom": "M_TRANSFER"
   },
   {
     "phrase": [
@@ -10384,13 +9274,6 @@
   },
   {
     "phrase": [
-      "Settlements"
-    ],
-    "claim": "modifier",
-    "atom": "M_SETTLEMENT"
-  },
-  {
-    "phrase": [
       "Settlement"
     ],
     "claim": "modifier",
@@ -10402,13 +9285,6 @@
     ],
     "claim": "modifier",
     "atom": "M_PURCHASE"
-  },
-  {
-    "phrase": [
-      "Issuances"
-    ],
-    "claim": "modifier",
-    "atom": "M_ISSUANCE"
   },
   {
     "phrase": [
@@ -10456,7 +9332,7 @@
   },
   {
     "phrase": [
-      "Contributions",
+      "Contribution",
       "By",
       "Employer"
     ],
@@ -10465,17 +9341,7 @@
   },
   {
     "phrase": [
-      "Contributions",
-      "By",
-      "Plan",
-      "Participants"
-    ],
-    "claim": "modifier",
-    "atom": "M_PARTICIPANT_CONTRIBUTION"
-  },
-  {
-    "phrase": [
-      "Contributions",
+      "Contribution",
       "By",
       "Plan",
       "Participant"
@@ -10485,7 +9351,7 @@
   },
   {
     "phrase": [
-      "Benefits",
+      "Benefit",
       "Paid"
     ],
     "claim": "modifier",
@@ -10498,14 +9364,6 @@
     ],
     "claim": "modifier",
     "atom": "M_ACTUAL_RETURN"
-  },
-  {
-    "phrase": [
-      "Termination",
-      "Benefits"
-    ],
-    "claim": "modifier",
-    "atom": "M_TERMINATION_BENEFIT"
   },
   {
     "phrase": [
@@ -10572,23 +9430,16 @@
   },
   {
     "phrase": [
-      "Reclassifications"
+      "Reclassification"
     ],
     "claim": "modifier",
     "atom": "M_RECLASSIFIED_OCI"
   },
   {
     "phrase": [
-      "Reconciliations"
-    ],
-    "claim": "modifier",
-    "atom": "M_RECONCILIATION"
-  },
-  {
-    "phrase": [
       "Special",
       "Termination",
-      "Benefits"
+      "Benefit"
     ],
     "claim": "modifier",
     "atom": "M_TERMINATION_BENEFIT"
@@ -10644,7 +9495,7 @@
   },
   {
     "phrase": [
-      "Payments",
+      "Payment",
       "For",
       "Origination"
     ],
@@ -10674,21 +9525,7 @@
   },
   {
     "phrase": [
-      "Originations"
-    ],
-    "claim": "modifier",
-    "atom": "M_ORIGINATION"
-  },
-  {
-    "phrase": [
       "Writeoff"
-    ],
-    "claim": "modifier",
-    "atom": "M_WRITE_OFF"
-  },
-  {
-    "phrase": [
-      "Writeoffs"
     ],
     "claim": "modifier",
     "atom": "M_WRITE_OFF"
@@ -10704,13 +9541,6 @@
   {
     "phrase": [
       "Writedown"
-    ],
-    "claim": "modifier",
-    "atom": "M_WRITE_OFF"
-  },
-  {
-    "phrase": [
-      "Writedowns"
     ],
     "claim": "modifier",
     "atom": "M_WRITE_OFF"
@@ -10744,7 +9574,7 @@
   },
   {
     "phrase": [
-      "Collections",
+      "Collection",
       "Of"
     ],
     "claim": "modifier",
@@ -10752,7 +9582,7 @@
   },
   {
     "phrase": [
-      "Collections",
+      "Collection",
       "Reinvested"
     ],
     "claim": "modifier",
@@ -10761,7 +9591,7 @@
   {
     "phrase": [
       "Principal",
-      "Collections"
+      "Collection"
     ],
     "claim": "modifier",
     "atom": "M_COLLECTION"
@@ -10778,18 +9608,8 @@
   },
   {
     "phrase": [
-      "Reversals"
-    ],
-    "claim": "modifier",
-    "atom": "M_REVERSAL",
-    "scope_next": [
-      "Of"
-    ]
-  },
-  {
-    "phrase": [
-      "Writedowns",
-      "Reversals"
+      "Writedown",
+      "Reversal"
     ],
     "claim": "modifier",
     "atom": "M_REVERSAL",
@@ -10806,13 +9626,6 @@
   },
   {
     "phrase": [
-      "Revaluations"
-    ],
-    "claim": "modifier",
-    "atom": "M_REMEASUREMENT"
-  },
-  {
-    "phrase": [
       "Remeasurement"
     ],
     "claim": "modifier",
@@ -10820,22 +9633,7 @@
   },
   {
     "phrase": [
-      "Remeasurements"
-    ],
-    "claim": "modifier",
-    "atom": "M_REMEASUREMENT"
-  },
-  {
-    "phrase": [
       "Redemption",
-      "Of"
-    ],
-    "claim": "modifier",
-    "atom": "M_REDEMPTION"
-  },
-  {
-    "phrase": [
-      "Redemptions",
       "Of"
     ],
     "claim": "modifier",
@@ -10851,14 +9649,6 @@
   },
   {
     "phrase": [
-      "From",
-      "Redemptions"
-    ],
-    "claim": "modifier",
-    "atom": "M_REDEMPTION"
-  },
-  {
-    "phrase": [
       "Redeem"
     ],
     "claim": "modifier",
@@ -10866,7 +9656,7 @@
   },
   {
     "phrase": [
-      "Shares",
+      "Share",
       "Redeemed"
     ],
     "claim": "head",
@@ -10895,7 +9685,7 @@
   {
     "phrase": [
       "Account",
-      "Redemptions"
+      "Redemption"
     ],
     "claim": "modifier",
     "atom": "M_REDEMPTION"
@@ -10940,7 +9730,7 @@
   },
   {
     "phrase": [
-      "Distributions",
+      "Distribution",
       "Declared"
     ],
     "claim": "modifier",
@@ -10949,17 +9739,6 @@
   {
     "phrase": [
       "Dividend",
-      "Declared"
-    ],
-    "claim": "modifier",
-    "atom": "M_DECLARATION",
-    "also_asserts": [
-      "M_DIVIDEND"
-    ]
-  },
-  {
-    "phrase": [
-      "Dividends",
       "Declared"
     ],
     "claim": "modifier",
@@ -11033,13 +9812,6 @@
   },
   {
     "phrase": [
-      "Exercises"
-    ],
-    "claim": "modifier",
-    "atom": "M_EXERCISE"
-  },
-  {
-    "phrase": [
       "Expirations"
     ],
     "claim": "modifier",
@@ -11106,8 +9878,8 @@
   {
     "phrase": [
       "Actuarial",
-      "Gains",
-      "Losses"
+      "Gain",
+      "Loss"
     ],
     "claim": "head",
     "head": "H_INCOME",
@@ -11132,49 +9904,8 @@
   },
   {
     "phrase": [
-      "Disposal",
-      "Gains"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Disposal",
-      "Losses"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
       "Gain",
       "Loss",
-      "From",
-      "Derecognition"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
-      "Losses",
       "From",
       "Derecognition"
     ],
@@ -11202,20 +9933,6 @@
   },
   {
     "phrase": [
-      "Gains",
-      "From",
-      "Derecognition"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
       "Loss",
       "From",
       "Derecognition"
@@ -11230,102 +9947,18 @@
   },
   {
     "phrase": [
-      "Losses",
-      "From",
-      "Derecognition"
+      "Note"
     ],
     "claim": "head",
-    "head": "H_INCOME",
+    "head": "H_LIABILITY",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Gain",
-      "Loss",
-      "From",
-      "Disposals"
+      "M_DEBT"
     ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
-      "Losses",
-      "From",
-      "Disposals"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Gain",
-      "From",
-      "Disposals"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Gains",
-      "From",
-      "Disposals"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Loss",
-      "From",
-      "Disposals"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
-    ]
-  },
-  {
-    "phrase": [
-      "Losses",
-      "From",
-      "Disposals"
-    ],
-    "claim": "head",
-    "head": "H_INCOME",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_DISPOSAL_GAIN",
-      "M_DISPOSAL"
+    "scope_next": [
+      "Payable",
+      "Payables",
+      "Issued"
     ]
   }
 ]
