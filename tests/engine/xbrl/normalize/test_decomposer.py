@@ -382,13 +382,17 @@ def test_mined_phrase_merges() -> None:
         tax.token_lexicon,
     )
     assert "M_OFF_BALANCE_SHEET" in off_bs.modifiers
-    afs_htm, _, _, _ = decompose_concept(
+    afs_htm = decompose_concept_expression(
         "jpm:DebtSecuritiesAvailableForSaleAndHeldToMaturityAccruedInterest"
         "AfterAllowanceForCreditLoss",
         tax.token_lexicon,
     )
-    assert "M_AVAILABLE_FOR_SALE" in afs_htm.modifiers
-    assert "M_HELD_TO_MATURITY" in afs_htm.modifiers
+    assert "M_HELD_TO_MATURITY" in afs_htm.atom.modifiers
+    assert "M_AVAILABLE_FOR_SALE" not in afs_htm.atom.modifiers
+    assert any(
+        operand.head == "H_ASSET" and "M_AVAILABLE_FOR_SALE" in operand.modifiers
+        for operand in afs_htm.operands[1:]
+    )
 
 
 def test_fiscal_year_is_an_indexical_not_a_modifier() -> None:
@@ -2122,7 +2126,7 @@ def test_absent_acts_carry_dedicated_markers() -> None:
     atom, _, _, _ = decompose_concept(
         "us-gaap:ProceedsFromSaleAndCollectionOfFinanceReceivables", lex
     )
-    assert atom.modifiers == {"M_COLLECTION", "M_SALE"}
+    assert atom.modifiers == {"M_COLLECTION", "M_FINANCING_RECEIVABLE", "M_SALE"}
 
 
 def test_absent_act_attribute_guards_stay_byte_identical() -> None:
@@ -2242,7 +2246,7 @@ def test_receipts_frame_guarantees_the_cash_head() -> None:
         "ifrs-full:ReceiptsFromRoyaltiesFeesCommissionsAndOtherRevenue", lex
     )
     assert atom.head == "H_CASH"
-    assert atom.modifiers == set()
+    assert atom.modifiers == {"M_OTHER"}
     assert direction == 1.0
 
     atom, _, direction, _ = decompose_concept("acme:ReceiptsRoyaltiesAndFees", lex)
@@ -2344,3 +2348,97 @@ def test_trailing_sale_proceeds_carry_the_sale_act() -> None:
     atom, _, _, _ = decompose_concept("acme:SolarGenerationEquipmentSaleProceeds", lex)
     assert atom.head == "H_CASH"
     assert atom.modifiers == {"M_SALE"}
+
+
+def test_notes_debt_class_admission_and_guards() -> None:
+    """Notes decomposes as a debt-class head; receivable/disclosure stay put."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    lex = tax.token_lexicon
+
+    atom, residuals, _, _ = decompose_concept("us-gaap:NotePayable", lex)
+    assert atom.head == "H_LIABILITY"
+    assert atom.modifiers == {"M_DEBT"}
+    assert residuals == ()
+
+    atom, residuals, _, _ = decompose_concept(
+        "us-gaap:AccountsAndNotesReceivableNet", lex
+    )
+    assert atom.head == "H_ASSET"
+    assert atom.modifiers == {"M_RECEIVABLE", "V_NET"}
+    assert residuals == ("Accounts",)
+
+    atom, residuals, _, _ = decompose_concept("us-gaap:NotesToFinancialStatements", lex)
+    assert atom.head == "H_UNKNOWN"
+    assert atom.modifiers == frozenset()
+    assert residuals == ("Notes", "To", "Financial", "Statements")
+
+    leak = decompose_concept_expression("acme:NotePayableAndNotesReceivable", lex)
+    assert leak.atom.head == "H_ASSET"
+    assert leak.atom.modifiers == {"M_RECEIVABLE"}
+    assert leak.operands[1].head == "H_LIABILITY"
+    assert leak.operands[1].modifiers == {"M_DEBT"}
+
+
+def test_rp_partner_compound_admissions() -> None:
+    """R/P partner compounds decompose with their class identity asserted."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    lex = tax.token_lexicon
+
+    atom, residuals, _, _ = decompose_concept("ifrs-full:TradeReceivables", lex)
+    assert atom.head == "H_ASSET"
+    assert atom.modifiers == {"M_RECEIVABLE"}
+    assert residuals == ()
+
+    atom, residuals, _, _ = decompose_concept("ITMSF:TradePayables", lex)
+    assert atom.head == "H_LIABILITY"
+    assert atom.modifiers == {"M_ACCOUNTS_PAYABLE"}
+    assert residuals == ()
+
+    atom, residuals, _, _ = decompose_concept("cat:FinanceReceivablesNet", lex)
+    assert atom.head == "H_ASSET"
+    assert atom.modifiers == {"M_FINANCING_RECEIVABLE", "V_NET"}
+    assert residuals == ()
+
+    atom, residuals, _, _ = decompose_concept("us-gaap:OtherReceivables", lex)
+    assert atom.head == "H_ASSET"
+    assert atom.modifiers == {"M_OTHER"}
+    assert residuals == ()
+
+    atom, residuals, _, _ = decompose_concept("us-gaap:OtherIncome", lex)
+    assert atom.head == "H_INCOME"
+    assert atom.modifiers == {"M_OTHER"}
+    assert residuals == ()
+
+    atom, residuals, _, _ = decompose_concept("ifrs-full:TradeAndOtherReceivables", lex)
+    assert atom.head == "H_ASSET"
+    assert atom.modifiers == {"M_OTHER"}
+    assert residuals == ("Trade",)
+
+    atom, residuals, _, _ = decompose_concept("us-gaap:ManagementFeePayable", lex)
+    assert atom.head == "H_LIABILITY"
+    assert atom.modifiers == frozenset()
+    assert residuals == ("Management",)
+
+    atom, residuals, _, _ = decompose_concept(
+        "hmr:BusinessAcquisitionInstallmentsPayable", lex
+    )
+    assert atom.head == "H_LIABILITY"
+    assert atom.modifiers == {"M_BUSINESS_COMBINATION"}
+    assert residuals == ()
+
+    atom, residuals, _, _ = decompose_concept("ipa:AmountsReceivableNet", lex)
+    assert atom.head == "H_ASSET"
+    assert atom.modifiers == {"M_RECEIVABLE", "V_NET"}
+    assert residuals == ()
+
+    atom, residuals, _, _ = decompose_concept("ry:NotionalAmounts", lex)
+    assert atom.head == "H_COMMITMENT"
+    assert atom.modifiers == {"M_NOTIONAL_AMOUNT"}
+    assert residuals == ()
+
+    atom, residuals, _, _ = decompose_concept("chnr:TotalOthersPayables", lex)
+    assert atom.head == "H_LIABILITY"
+    assert atom.modifiers == frozenset()
+    assert residuals == ("Total", "Others")

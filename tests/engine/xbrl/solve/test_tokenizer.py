@@ -55,6 +55,27 @@ def test_tokenizer_net_of_tax_record() -> None:
     assert record.operands[1] == Atom("H_UNKNOWN", frozenset({"M_TAX"}))
 
 
+def test_tokenizer_coordination_record() -> None:
+    """Coordination: operator, operands, and relation forward in shape."""
+    record = _tokenizer().tokenize("x:BondsAndNotesReceivable")
+    assert record.operator == "COORDINATION"
+    assert record.atom == Atom("H_ASSET", frozenset({"M_RECEIVABLE"}))
+    assert len(record.operands) == 2
+    assert record.operands[1] == Atom("H_LIABILITY", frozenset({"M_DEBT"}))
+    assert record.relations == (("COORDINATION", record.operands[1]),)
+    assert record.residuals == ()
+
+
+def test_tokenizer_equivalents_rank_coordination_on_headline() -> None:
+    """Equivalence ranks a coordination fact on its headline atom alone."""
+    tokenizer = _tokenizer()
+    ranked = tokenizer.equivalents(
+        "x:BondsAndNotesReceivable", ("x:NotesReceivable", "x:BondsPayable")
+    )
+    assert [item.qname for item in ranked] == ["x:NotesReceivable"]
+    assert ranked[0].tier == EXACT
+
+
 def test_tokenizer_maturity_bucket_record() -> None:
     """A maturity bucket carries its number indexical and temporal facet."""
     record = _tokenizer().tokenize(

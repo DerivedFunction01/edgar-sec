@@ -18,6 +18,7 @@ DEFAULT_PRIME_HEADS_FILE = "prime_heads.json"
 DEFAULT_SUBATOMIC_MODIFIERS_FILE = "subatomic_modifiers.json"
 DEFAULT_SIBLING_GROUPS_FILE = "sibling_groups.json"
 DEFAULT_TOKEN_LEXICON_FILE = "token_lexicon.json"
+DEFAULT_INFLECTIONS_FILE = "inflections.json"
 DEFAULT_ATOM_RELATIONS_FILE = "atom_relations.json"
 DEFAULT_STATEMENT_ROOTS_FILE = "statement_roots.json"
 DEFAULT_COMMODITY_GRAPH_FILE = "commodity_graph.json"
@@ -92,6 +93,11 @@ class XbrlPaths:
     def default_token_lexicon_path(self) -> Path:
         """Default path to token lexicon taxonomy file."""
         return self.default_taxonomy_dir / DEFAULT_TOKEN_LEXICON_FILE
+
+    @property
+    def default_inflections_path(self) -> Path:
+        """Default path to lexicon inflection table file."""
+        return self.default_taxonomy_dir / DEFAULT_INFLECTIONS_FILE
 
     @property
     def default_atom_relations_path(self) -> Path:

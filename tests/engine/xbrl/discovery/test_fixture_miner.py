@@ -182,7 +182,7 @@ def test_report_rebases_residuals_into_noise_and_intent() -> None:
     """Stopword/digit-only residuals split from intent-bearing ones."""
     lexicon = TokenLexicon.load_json(resolve_xbrl_paths().default_token_lexicon_path)
     shared = [
-        "us-gaap:CashCashEquivalentsAndShortTermInvestments",
+        "us-gaap:CashAndCashEquivalentsAtCarryingValue",
         "us-gaap:IncreaseDecreaseInDeferredCompensation",
         "acme:CustomThing",
     ]
@@ -194,7 +194,7 @@ def test_report_rebases_residuals_into_noise_and_intent() -> None:
     report = build_modelledness_report(bundles, lexicon)
 
     classes = {r.qname: r.residual_class for r in report.concepts}
-    assert classes["us-gaap:CashCashEquivalentsAndShortTermInvestments"] == "noise_only"
+    assert classes["us-gaap:CashAndCashEquivalentsAtCarryingValue"] == "noise_only"
     assert classes["us-gaap:IncreaseDecreaseInDeferredCompensation"] == "noise_only"
     assert classes["acme:CustomThing"] == "intent_bearing"
     assert report.us_gaap_unknown_noise_only == 1
@@ -271,16 +271,19 @@ def test_report_buckets_all_text_concepts_as_textblock() -> None:
 def test_adequacy_identity_missing_for_structural_only_atom() -> None:
     """A head plus M_CURRENT alone carries no identity; a receivable atom does."""
     lexicon = TokenLexicon.load_json(resolve_xbrl_paths().default_token_lexicon_path)
-    qnames = ["us-gaap:OtherLiabilitiesCurrent", "us-gaap:AccountsReceivableNetCurrent"]
+    qnames = [
+        "us-gaap:SundryLiabilitiesCurrent",
+        "us-gaap:AccountsReceivableNetCurrent",
+    ]
     bundles = [BundleFacts(firm="AAA", sic_code="1000", facts=_facts_table(qnames))]
 
     report = build_modelledness_report(bundles, lexicon)
 
     records = {r.qname: r for r in report.concepts}
-    other = records["us-gaap:OtherLiabilitiesCurrent"]
-    assert other.has_identity is False
-    assert other.adequacy == "identity_missing"
-    assert other.explained_share < 1.0
+    plain = records["us-gaap:SundryLiabilitiesCurrent"]
+    assert plain.has_identity is False
+    assert plain.adequacy == "identity_missing"
+    assert plain.explained_share < 1.0
     receivable = records["us-gaap:AccountsReceivableNetCurrent"]
     assert receivable.has_identity is True
     assert receivable.adequacy == "proper"
@@ -294,8 +297,8 @@ def test_identity_collisions_list_shared_atom_members() -> None:
         "us-gaap:OtherLiabilitiesCurrent",
         "us-gaap:OtherSundryLiabilitiesCurrent",
         "tsla:AccruedAndOtherCurrentLiabilities",
-        "tsla:AccruedWarrantyReserveCurrentPortion",
-        "us-gaap:LiabilitiesCurrent",
+        "us-gaap:OtherCurrentLiabilities",
+        "us-gaap:SundryAndOtherLiabilitiesCurrent",
     ]
     bundles = [BundleFacts(firm="AAA", sic_code="1000", facts=_facts_table(qnames))]
 
@@ -305,8 +308,8 @@ def test_identity_collisions_list_shared_atom_members() -> None:
     collision = report.identity_collisions[0]
     assert collision.concept_count == 5
     members = dict(collision.members)
-    assert members["us-gaap:OtherLiabilitiesCurrent"] == ("Other",)
-    assert members["us-gaap:LiabilitiesCurrent"] == ()
+    assert members["us-gaap:OtherLiabilitiesCurrent"] == ()
+    assert members["us-gaap:OtherSundryLiabilitiesCurrent"] == ("Sundry",)
 
 
 def test_pattern_groups_merge_namespaces_by_signature() -> None:

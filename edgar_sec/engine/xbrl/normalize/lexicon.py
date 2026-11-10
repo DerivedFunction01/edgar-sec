@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from itertools import product
 import json
 from pathlib import Path
 from typing import Any
@@ -11,7 +12,7 @@ from edgar_sec.engine.xbrl.taxonomy.records import GrammaticalFrame
 
 CLAIM_KINDS = ("head", "modifier", "boundary", "relation", "indexical")
 HEAD_CLAIM_CLASSES = ("PRIMARY", "INSTRUMENT", "TAIL", "COMPOUND_QUALIFIER")
-RELATION_KINDS = ("NET_OF", "EXCLUDING", "INCLUDING")
+RELATION_KINDS = ("NET_OF", "EXCLUDING", "INCLUDING", "COORDINATION")
 
 
 @dataclass(frozen=True, slots=True)
@@ -123,6 +124,159 @@ class LexiconEntry:
         return frozenset(ids)
 
 
+_LIST_FIELDS = (
+    "carriage",
+    "also_asserts",
+    "operand_mods",
+    "projection",
+    "scope_next",
+    "coexists_with",
+    "sub_suppress",
+)
+_SCALAR_FIELDS = (
+    "head",
+    "claim_class",
+    "atom",
+    "relation",
+    "direction",
+    "indexical",
+    "temporal_pattern",
+)
+
+
+def _entry_to_dict(entry: LexiconEntry) -> dict[str, Any]:
+    """The v2 dictionary form of an entry, default-valued fields omitted."""
+    data: dict[str, Any] = {
+        "phrase": list(entry.phrase),
+        "claim": entry.claim,
+    }
+    for key in _LIST_FIELDS:
+        value = getattr(entry, key)
+        if value:
+            data[key] = list(value)
+    for key in _SCALAR_FIELDS:
+        value = getattr(entry, key)
+        if value is not None:
+            data[key] = value
+    if entry.requires_evidence:
+        data["requires_evidence"] = True
+    if not entry.sub_identity:
+        data["sub_identity"] = False
+    if entry.protect_far_head:
+        data["protect_far_head"] = True
+    return data
+
+
+@dataclass(frozen=True, slots=True)
+class InflectionTable:
+    """Declared surface forms per canonical token, with split pairs refused."""
+
+    forms: dict[str, tuple[str, ...]]
+    overrides: dict[tuple[str, ...], dict[str, Any]]
+    split: tuple[tuple[str, str], ...]
+    verbatim: tuple[tuple[str, ...], ...] = ()
+
+    def family(self, token: str) -> tuple[str, ...] | None:
+        """The declared surface forms of the family containing token, if any."""
+        for canonical, surfaces in self.forms.items():
+            if token in surfaces:
+                return surfaces
+        return None
+
+    def canonical(self, token: str) -> str:
+        """The canonical form of token under this table (itself if undeclared)."""
+        for canonical, surfaces in self.forms.items():
+            if token in surfaces:
+                return canonical
+        return token
+
+
+def load_inflection_table(path: Path | str) -> InflectionTable:
+    """Load and validate an inflection table from JSON."""
+    with open(path, encoding="utf-8") as f:
+        data = json.load(f)
+    forms: dict[str, tuple[str, ...]] = {}
+    seen: dict[str, str] = {}
+    for canonical, surfaces in data.get("forms", {}).items():
+        canon = str(canonical).lower()
+        forms_tuple = tuple(str(s).lower() for s in surfaces)
+        if canon not in forms_tuple:
+            raise ValueError(f"inflection family {canon} omits its canonical form")
+        for surface in forms_tuple:
+            if surface in seen:
+                raise ValueError(f"token {surface} declared in two inflection families")
+            seen[surface] = canon
+        forms[canon] = forms_tuple
+    split = tuple(tuple(str(t).lower() for t in pair) for pair in data.get("split", ()))
+    for pair in split:
+        for token in pair:
+            if token in seen:
+                raise ValueError(f"split token {token} is also a declared form")
+    overrides = {
+        tuple(str(t).lower() for t in key.split()): dict(fields)
+        for key, fields in data.get("overrides", {}).items()
+    }
+    verbatim = tuple(
+        tuple(str(t).lower() for t in phrase) for phrase in data.get("verbatim", ())
+    )
+    return InflectionTable(
+        forms=forms, overrides=overrides, split=split, verbatim=verbatim
+    )
+
+
+def expand_lexicon_entries(
+    entries: tuple[LexiconEntry, ...], table: InflectionTable
+) -> tuple[LexiconEntry, ...]:
+    """Expand authored entries over the declared surface forms.
+
+    A generated phrase meeting a differently-payloaded authored entry is
+    a loader error; verbatim phrases load ungenerated, exactly as authored.
+    """
+    authored: dict[tuple[str, ...], set[LexiconEntry]] = {}
+    for entry in entries:
+        authored.setdefault(entry.phrase, set()).add(entry)
+    out: list[LexiconEntry] = []
+    emitted: set[LexiconEntry] = set()
+    by_surface: dict[tuple[str, ...], dict[tuple[str, ...], set[LexiconEntry]]] = {}
+    used_overrides: set[tuple[str, ...]] = set()
+    for entry in entries:
+        if entry.phrase in table.verbatim:
+            if entry not in emitted:
+                emitted.add(entry)
+                out.append(entry)
+            continue
+        source = tuple(table.canonical(t) for t in entry.phrase)
+        variants = [table.family(t) or (t,) for t in entry.phrase]
+        for combo in product(*variants):
+            data = _entry_to_dict(entry)
+            data["phrase"] = list(combo)
+            override = table.overrides.get(combo)
+            if override is not None:
+                data.update(override)
+                used_overrides.add(combo)
+            generated = LexiconEntry.from_dict(data)
+            payloads = by_surface.setdefault(combo, {}).setdefault(source, set())
+            payloads.add(generated)
+            if generated in emitted:
+                continue
+            if combo in authored and generated not in authored[combo]:
+                raise ValueError(
+                    f"inflection expansion generates {combo} against its authored entry"
+                )
+            emitted.add(generated)
+            out.append(generated)
+    for combo, sources in by_surface.items():
+        payload_sets = list(sources.values())
+        if len(sources) > 1 and any(s != payload_sets[0] for s in payload_sets[1:]):
+            raise ValueError(
+                f"inflection expansion of several phrases generates {combo}"
+            )
+    stale = set(table.overrides) - used_overrides
+    if stale:
+        raise ValueError(f"inflection overrides never applied: {sorted(stale)}")
+    return tuple(out)
+
+
 @dataclass(frozen=True, slots=True)
 class EvidenceContext:
     """Per-decomposition evidence satisfaction for one (accession, qname)."""
@@ -194,11 +348,23 @@ class TokenLexicon:
         return None
 
     @classmethod
-    def load_json(cls, path: Path | str) -> TokenLexicon:
-        """Load TokenLexicon from a JSON file."""
+    def load_json(
+        cls, path: Path | str, inflections_path: Path | str | None = None
+    ) -> TokenLexicon:
+        """Load TokenLexicon from JSON, expanding declared inflections.
+
+        The table defaults to an `inflections.json` beside the lexicon file.
+        """
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
         entries = tuple(LexiconEntry.from_dict(item) for item in data)
+        table_path = (
+            Path(inflections_path)
+            if inflections_path is not None
+            else Path(path).parent / "inflections.json"
+        )
+        if table_path.is_file():
+            entries = expand_lexicon_entries(entries, load_inflection_table(table_path))
         return cls(entries)
 
     def candidates(

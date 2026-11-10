@@ -585,6 +585,7 @@ def load_domain_taxonomy(
     heads_p = base_dir / x_paths.default_prime_heads_path.name
     mods_p = base_dir / x_paths.default_subatomic_modifiers_path.name
     lexicon_p = base_dir / x_paths.default_token_lexicon_path.name
+    inflections_p = base_dir / x_paths.default_inflections_path.name
     rels_p = base_dir / x_paths.default_atom_relations_path.name
     types_p = base_dir / x_paths.default_relation_types_path.name
     geo_p = base_dir / x_paths.default_geography_path.name
@@ -606,7 +607,12 @@ def load_domain_taxonomy(
     if not mods_p.is_file():
         raise FileNotFoundError(f"missing subatomic_modifiers in {base_dir}")
 
-    token_lexicon = TokenLexicon.load_json(lexicon_p) if lexicon_p.is_file() else None
+    if lexicon_p.is_file() and inflections_p.is_file():
+        token_lexicon = TokenLexicon.load_json(lexicon_p, inflections_p)
+    elif lexicon_p.is_file():
+        token_lexicon = TokenLexicon.load_json(lexicon_p)
+    else:
+        token_lexicon = None
     atom_relations = (
         AtomRelationGraph.load_json(rels_p, types_p) if rels_p.is_file() else None
     )
