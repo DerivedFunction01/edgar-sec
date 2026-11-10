@@ -130,6 +130,70 @@ def test_lookups_answer_from_the_published_snapshot(tmp_path: Path) -> None:
     assert edgar.fund_ticker_classes("").classes == ()
 
 
+_CROSS_LISTED_PAYLOAD = json.dumps(
+    {
+        "fields": ["cik", "seriesId", "classId", "symbol"],
+        "data": [
+            [1281790, "S000004757", "C000093502", "FNKIX"],
+            [1281790, "S000061828", "C000093502", "FNKIX"],
+        ],
+    }
+).encode()
+
+
+def _published_cross_listed_root(tmp_path: Path) -> str:
+    """A published relation whose one class is listed under two series."""
+    paths = resolve_metadata_paths(tmp_path)
+    ingest_mf_ticker_payload(_CROSS_LISTED_PAYLOAD, paths)
+    page = parse_browse_series_page(
+        BrowsePageInput(
+            "0001281790",
+            browse_series_url(1281790),
+            fixture_path("browse_edgar_series_0001281790.html").read_bytes(),
+        )
+    )
+    assert isinstance(page, ParsedBrowseSeriesPage)
+    ingest_browse_page(page, paths)
+    published = publish_series_class(paths)
+    assert published.snapshot_id is not None
+    paths.series_class_store_file.unlink()
+    return published.snapshot_id
+
+
+def test_cross_listed_class_keeps_every_listing(tmp_path: Path) -> None:
+    _published_cross_listed_root(tmp_path)
+    edgar = _edgar(tmp_path)
+
+    frank = edgar.fund_series_classes("S000004757")
+    assert [row.class_id for row in frank.classes] == [
+        "C000012947",
+        "C000093501",
+        "C000093502",
+    ]
+    camelot = edgar.fund_series_classes("S000061828")
+    assert [row.class_id for row in camelot.classes] == [
+        "C000093502",
+        "C000200195",
+        "C000200196",
+    ]
+
+    by_ticker = edgar.fund_ticker_classes("FNKIX")
+    assert [(row.class_id, row.series_id) for row in by_ticker.classes] == [
+        ("C000093502", "S000004757"),
+        ("C000093502", "S000061828"),
+    ]
+    for row in by_ticker.classes:
+        assert row.class_name == "INSTITUTIONAL CLASS"
+        assert row.layers == ("browse", "tickered")
+
+    single = edgar.fund_class("C000093502")
+    assert single.fund_class is not None
+    assert single.fund_class.series_id == "S000004757"
+    assert single.fund_class.series_name == "Frank Value Fund"
+    assert single.fund_class.symbol == "FNKIX"
+    assert single.fund_class.layers == ("browse", "tickered")
+
+
 def test_misses_are_honest_absence(tmp_path: Path) -> None:
     _published_root(tmp_path)
     edgar = _edgar(tmp_path)
