@@ -10,8 +10,16 @@ from edgar_sec.engine.xbrl.normalize.decomposer import (
     residual_counts,
     split_camel_case,
 )
+from edgar_sec.engine.xbrl.normalize.flat import (
+    _fallback_head,
+    _first_head_match,
+    _tail_assembly,
+    _uncovered_tokens,
+    _window_values,
+)
+from edgar_sec.engine.xbrl.normalize.lexicon import LexiconEntry, LexiconMatch
 from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
-from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 
 
 def test_residual_counts_split_intent_from_noise() -> None:
@@ -46,21 +54,20 @@ def test_split_camel_case() -> None:
     assert split_camel_case("GrossProfit") == ("Gross", "Profit")
 
 
-def test_decompose_concept_expression_is_cached() -> None:
+def test_decompose_concept_expression_is_cached(tax: DomainTaxonomy) -> None:
     """Verify identical decomposition inputs return the cached expression."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     first = decompose_concept_expression("us-gaap:Revenues", tax.token_lexicon)
     assert decompose_concept_expression("us-gaap:Revenues", tax.token_lexicon) is first
 
 
 def test_plain_decomposition_computes_one_cover(
+    tax: DomainTaxonomy,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """A plain-path decomposition computes candidates and cover exactly once."""
     from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
 
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     counts = {"candidates": 0, "select_cover": 0}
     real_candidates = TokenLexicon.candidates
@@ -84,9 +91,8 @@ def test_plain_decomposition_computes_one_cover(
     assert counts == {"candidates": 1, "select_cover": 1}
 
 
-def test_subordinator_clause_boundary_splitting() -> None:
+def test_subordinator_clause_boundary_splitting(tax: DomainTaxonomy) -> None:
     """Verify subordinate clause heads are demoted to modifiers."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     # Sale in HeldForDevelopmentAndSale is in subordinate clause; primary head is Asset
@@ -107,9 +113,8 @@ def test_subordinator_clause_boundary_splitting() -> None:
     assert "M_SALES_GOODS" in cost_atom.modifiers
 
 
-def test_scoped_modifier_claims_and_bounds_head_region() -> None:
+def test_scoped_modifier_claims_and_bounds_head_region(tax: DomainTaxonomy) -> None:
     """A scope-marker phrase claims its coordinate yet bounds the head region."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     atom, _, _, _ = decompose_concept(
@@ -122,9 +127,8 @@ def test_scoped_modifier_claims_and_bounds_head_region() -> None:
     assert "M_INTEREST" in atom.modifiers
 
 
-def test_archetype_decomposes_compositionally() -> None:
+def test_archetype_decomposes_compositionally(tax: DomainTaxonomy) -> None:
     """The ASC-606 name decomposes token-by-token, with no whole-phrase entry."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     atom, residuals, _, _ = decompose_concept(
@@ -136,8 +140,7 @@ def test_archetype_decomposes_compositionally() -> None:
     assert residuals == ()
 
 
-def test_net_of_expression_preserves_both_operand_atoms() -> None:
-    tax = load_domain_taxonomy()
+def test_net_of_expression_preserves_both_operand_atoms(tax: DomainTaxonomy) -> None:
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -163,9 +166,8 @@ def test_net_of_expression_preserves_both_operand_atoms() -> None:
         assert expression.operator is None
 
 
-def test_expression_matches_name_the_entries_that_fired() -> None:
+def test_expression_matches_name_the_entries_that_fired(tax: DomainTaxonomy) -> None:
     """Provenance: the archetype's matches are its head and relation entries."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -188,9 +190,8 @@ def test_expression_matches_name_the_entries_that_fired() -> None:
     assert relation_match.entry.relation == "EXCLUDING"
 
 
-def test_net_of_expression_matches_carry_both_operands() -> None:
+def test_net_of_expression_matches_carry_both_operands(tax: DomainTaxonomy) -> None:
     """NET_OF provenance spans both sides, in full-token coordinates."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -215,9 +216,8 @@ def test_net_of_expression_matches_carry_both_operands() -> None:
     )
 
 
-def test_multi_operator_rejection_has_empty_provenance() -> None:
+def test_multi_operator_rejection_has_empty_provenance(tax: DomainTaxonomy) -> None:
     """A rejected multi-operator name carries no matches."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -227,8 +227,9 @@ def test_multi_operator_rejection_has_empty_provenance() -> None:
     assert expression.matches == ()
 
 
-def test_long_derivative_qnames_keep_instrument_and_offset_factors() -> None:
-    tax = load_domain_taxonomy()
+def test_long_derivative_qnames_keep_instrument_and_offset_factors(
+    tax: DomainTaxonomy,
+) -> None:
     assert tax.token_lexicon is not None
     concepts = {
         "us-gaap:DerivativeLiabilityFairValueGrossLiabilityIncludingNotSubjectToMasterNettingArrangement": {
@@ -258,9 +259,8 @@ def test_long_derivative_qnames_keep_instrument_and_offset_factors() -> None:
         assert residuals == ()
 
 
-def test_infer_semantic_frame_canonical_and_unseen() -> None:
+def test_infer_semantic_frame_canonical_and_unseen(tax: DomainTaxonomy) -> None:
     """Verify semantic frame extraction for canonical and unseen tags."""
-    tax = load_domain_taxonomy()
 
     rev_frame = infer_semantic_frame(
         "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", tax
@@ -282,9 +282,8 @@ def test_infer_semantic_frame_canonical_and_unseen() -> None:
     assert unseen_frame.residual_tokens == ("Foo", "Bar")
 
 
-def test_number_words_become_indexicals_not_residuals() -> None:
+def test_number_words_become_indexicals_not_residuals(tax: DomainTaxonomy) -> None:
     """Maturity siblings share one atom and differ only in num indexical."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     five_atom, five_res, _, five_idx = decompose_concept(
@@ -300,9 +299,8 @@ def test_number_words_become_indexicals_not_residuals() -> None:
     assert "Three" not in three_res
 
 
-def test_number_range_merges_into_one_indexical() -> None:
+def test_number_range_merges_into_one_indexical(tax: DomainTaxonomy) -> None:
     """After Five Through Ten Years yields a single num=5..10 indexical."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     _, _, _, indexicals = decompose_concept(
@@ -312,9 +310,8 @@ def test_number_range_merges_into_one_indexical() -> None:
     assert indexicals == ("num=5..10",)
 
 
-def test_net_of_keeps_left_side_number_indexical() -> None:
+def test_net_of_keeps_left_side_number_indexical(tax: DomainTaxonomy) -> None:
     """A number left of a NET_OF operator survives in the indexicals."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -324,9 +321,8 @@ def test_net_of_keeps_left_side_number_indexical() -> None:
     assert expression.indexicals == ("num=5",)
 
 
-def test_ordinals_share_atom_and_differ_as_indexicals() -> None:
+def test_ordinals_share_atom_and_differ_as_indexicals(tax: DomainTaxonomy) -> None:
     """Ordinal maturity siblings: same atom, ord= indexicals carry the slot."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     second = decompose_concept_expression(
         "us-gaap:ContractualObligationDueInSecondYear", tax.token_lexicon
@@ -340,9 +336,8 @@ def test_ordinals_share_atom_and_differ_as_indexicals() -> None:
     assert "NUM" not in second.residuals
 
 
-def test_counterparty_and_past_due_phrase_merges() -> None:
+def test_counterparty_and_past_due_phrase_merges(tax: DomainTaxonomy) -> None:
     """Third/Related Party and Past Due decompose as single modifiers."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     third, _, _, _ = decompose_concept(
         "f:CreditFacilityGuaranteeByThirdPartyAmount", tax.token_lexicon
@@ -367,9 +362,8 @@ def test_counterparty_and_past_due_phrase_merges() -> None:
     assert maturity.indexicals == ("num=5",)
 
 
-def test_mined_phrase_merges() -> None:
+def test_mined_phrase_merges(tax: DomainTaxonomy) -> None:
     """Disposal group, off-balance-sheet, AFS/HTM phrases claim as units."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     disposal, _, _, _ = decompose_concept(
         "apd:DisposalGroupIncludingDiscontinuedOperationApproximateAnnualSales",
@@ -395,9 +389,8 @@ def test_mined_phrase_merges() -> None:
     )
 
 
-def test_fiscal_year_is_an_indexical_not_a_modifier() -> None:
+def test_fiscal_year_is_an_indexical_not_a_modifier(tax: DomainTaxonomy) -> None:
     """Fiscal Year scopes a concept (indexical) instead of qualifying it."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     expr = decompose_concept_expression(
         "cat:DefinedBenefitPlanHealthCareCostTrendRateAssumedForCurrentFiscalYear",
@@ -407,9 +400,8 @@ def test_fiscal_year_is_an_indexical_not_a_modifier() -> None:
     assert "M_MATURITY" not in expr.atom.modifiers
 
 
-def test_fair_value_level_rides_the_number_grammar() -> None:
+def test_fair_value_level_rides_the_number_grammar(tax: DomainTaxonomy) -> None:
     """Level 3 decomposes as M_FAIR_VALUE with the level as num= indexical."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     expr = decompose_concept_expression(
         "us-gaap:DefinedBenefitPlanPlanAssetsLevel3ReconciliationDecreaseForSale",
@@ -420,9 +412,8 @@ def test_fair_value_level_rides_the_number_grammar() -> None:
     assert expr.indexicals == ("num=3",)
 
 
-def test_fused_longterm_spelling_keeps_the_stated_override() -> None:
+def test_fused_longterm_spelling_keeps_the_stated_override(tax: DomainTaxonomy) -> None:
     """The fused Longterm spelling states the same override as Long Term."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     fused, _, _, _ = decompose_concept(
         "us-gaap:AccountsPayableLongterm", tax.token_lexicon
@@ -434,9 +425,10 @@ def test_fused_longterm_spelling_keeps_the_stated_override() -> None:
     assert fused.modifiers == frozenset({"M_ACCOUNTS_PAYABLE", "M_NONCURRENT"})
 
 
-def test_anticipated_liabilities_infix_variants_share_attested_atoms() -> None:
+def test_anticipated_liabilities_infix_variants_share_attested_atoms(
+    tax: DomainTaxonomy,
+) -> None:
     """Unattested Liabilities-infix payable names land on attested atoms."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     infix, res, _, _ = decompose_concept(
         "us-gaap:AccountsPayableLiabilitiesLongTerm", tax.token_lexicon
@@ -463,9 +455,10 @@ def test_anticipated_liabilities_infix_variants_share_attested_atoms() -> None:
     assert bare_infix == bare
 
 
-def test_leading_long_term_on_payable_liabilities_is_tenor_not_horizon() -> None:
+def test_leading_long_term_on_payable_liabilities_is_tenor_not_horizon(
+    tax: DomainTaxonomy,
+) -> None:
     """A leading Long Term is tenor (D8/B2): it states no horizon bucket."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     atom, res, _, _ = decompose_concept(
         "us-gaap:LongTermAccountsPayableLiabilities", tax.token_lexicon
@@ -476,9 +469,8 @@ def test_leading_long_term_on_payable_liabilities_is_tenor_not_horizon() -> None
     assert "M_CURRENT" not in atom.modifiers
 
 
-def test_repayment_of_deposits_decomposes_from_pieces() -> None:
+def test_repayment_of_deposits_decomposes_from_pieces(tax: DomainTaxonomy) -> None:
     """Repayment + Of + the deposit phrase compose the cash-flow atom."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     atom, res, _, _ = decompose_concept(
         "jpm:RepaymentOfInterestBearingDepositsInBanks", tax.token_lexicon
@@ -492,9 +484,10 @@ def test_repayment_of_deposits_decomposes_from_pieces() -> None:
     assert reordered == atom
 
 
-def test_beneficial_interest_share_datum_decomposes_from_pieces() -> None:
+def test_beneficial_interest_share_datum_decomposes_from_pieces(
+    tax: DomainTaxonomy,
+) -> None:
     """Scoped Beneficial Interest + Shares compose the share datum."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     atom, _, _, _ = decompose_concept(
         "pld:BeneficialInterestOfOutstandingSharesBySinglePersonOrPersonsActingAsGroup",
@@ -509,9 +502,10 @@ def test_beneficial_interest_share_datum_decomposes_from_pieces() -> None:
     assert reordered == atom
 
 
-def test_maximum_percentage_of_beneficial_interest_decomposes() -> None:
+def test_maximum_percentage_of_beneficial_interest_decomposes(
+    tax: DomainTaxonomy,
+) -> None:
     """Maximum Percentage claims the rate head over the scoped subject."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     atom, res, _, _ = decompose_concept(
         "pld:MaximumPercentageOfBeneficialInterestOfOutstandingShares",
@@ -522,9 +516,8 @@ def test_maximum_percentage_of_beneficial_interest_decomposes() -> None:
     assert atom.modifiers == frozenset({"M_PERCENT"})
 
 
-def test_stock_conversion_rate_decomposes_from_pieces() -> None:
+def test_stock_conversion_rate_decomposes_from_pieces(tax: DomainTaxonomy) -> None:
     """Conversion Of Stock + Conversion Rate compose the rate datum."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     atom, res, _, _ = decompose_concept(
         "jpm:ConversionOfStockConversionRate", tax.token_lexicon
@@ -536,9 +529,10 @@ def test_stock_conversion_rate_decomposes_from_pieces() -> None:
     assert reordered == atom
 
 
-def test_conversion_rate_adjustment_amounts_keep_their_heads() -> None:
+def test_conversion_rate_adjustment_amounts_keep_their_heads(
+    tax: DomainTaxonomy,
+) -> None:
     """A Conversion Rate Adjustment names an amount, not the rate."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     adjustment, _, _, _ = decompose_concept(
         "bmy:BusinessCombinationConsiderationTransferredConversionRateAdjustment",
@@ -547,9 +541,10 @@ def test_conversion_rate_adjustment_amounts_keep_their_heads() -> None:
     assert adjustment.head == "H_CASH"
 
 
-def test_decommissioning_fund_payments_decompose_from_pieces() -> None:
+def test_decommissioning_fund_payments_decompose_from_pieces(
+    tax: DomainTaxonomy,
+) -> None:
     """Payments To + the scoped ARO-purpose clause compose the atom."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     atom, res, _, _ = decompose_concept(
         "us-gaap:PaymentsToInvestInDecommissioningFund", tax.token_lexicon
@@ -563,9 +558,8 @@ def test_decommissioning_fund_payments_decompose_from_pieces() -> None:
     assert fronted == atom
 
 
-def test_insurance_contract_benefits_decompose_from_pieces() -> None:
+def test_insurance_contract_benefits_decompose_from_pieces(tax: DomainTaxonomy) -> None:
     """The insurance-benefits head composes under the NET_OF tail."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     atom, _, _, _ = decompose_concept(
         "all:AccidentAndHealthInsuranceContractBenefitsNetOfReinsuranceRecoveries",
@@ -580,9 +574,10 @@ def test_insurance_contract_benefits_decompose_from_pieces() -> None:
     assert swapped == atom
 
 
-def test_area_of_real_estate_property_decomposes_from_pieces() -> None:
+def test_area_of_real_estate_property_decomposes_from_pieces(
+    tax: DomainTaxonomy,
+) -> None:
     """Area before Of claims the measure head; Real Estate the domain."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     atom, _, _, _ = decompose_concept(
         "us-gaap:AreaOfRealEstateProperty", tax.token_lexicon
@@ -595,17 +590,15 @@ def test_area_of_real_estate_property_decomposes_from_pieces() -> None:
     assert reordered == atom
 
 
-def test_area_head_claim_is_scoped_to_of_phrasings() -> None:
+def test_area_head_claim_is_scoped_to_of_phrasings(tax: DomainTaxonomy) -> None:
     """A bare Area token without Of stays unclaimed (no head capture)."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     code, _, _, _ = decompose_concept("dei:CityAreaCode", tax.token_lexicon)
     assert code.head == "H_UNKNOWN"
 
 
-def test_nuclear_fuel_amortization_decomposes_from_pieces() -> None:
+def test_nuclear_fuel_amortization_decomposes_from_pieces(tax: DomainTaxonomy) -> None:
     """Other Amortization claims the expense head over the subject."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     atom, _, _, _ = decompose_concept(
         "nee:NuclearFuelAndOtherAmortization", tax.token_lexicon
@@ -618,9 +611,8 @@ def test_nuclear_fuel_amortization_decomposes_from_pieces() -> None:
     assert fronted == atom
 
 
-def test_gains_losses_on_loans_held_for_sale_decomposes() -> None:
+def test_gains_losses_on_loans_held_for_sale_decomposes(tax: DomainTaxonomy) -> None:
     """Gains + Losses On boundary + the loan phrase compose the atom."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     atom, res, _, _ = decompose_concept(
         "bac:GainsLossesOnLoansHeldForSale", tax.token_lexicon
@@ -634,9 +626,8 @@ def test_gains_losses_on_loans_held_for_sale_decomposes() -> None:
     assert fronted == atom
 
 
-def test_repayment_head_claim_is_scoped_to_of_captions() -> None:
+def test_repayment_head_claim_is_scoped_to_of_captions(tax: DomainTaxonomy) -> None:
     """Schedule nouns named Repayment keep their balance-sheet heads."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     installments, _, _, _ = decompose_concept(
         "alb:DebtInstrumentRepaymentInstallments", tax.token_lexicon
@@ -648,9 +639,8 @@ def test_repayment_head_claim_is_scoped_to_of_captions() -> None:
     assert early.head == "H_CASH"
 
 
-def test_due_windows_derive_bucket_horizons() -> None:
+def test_due_windows_derive_bucket_horizons(tax: DomainTaxonomy) -> None:
     """Due-in and due-within windows derive the bucket horizon arithmetically."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     cases = {
         "us-gaap:LongTermDebtMaturitiesDueInFiveYears": "M_NONCURRENT",
@@ -662,9 +652,10 @@ def test_due_windows_derive_bucket_horizons() -> None:
         assert expression.derived_horizon == expected, qname
 
 
-def test_schedule_pair_shares_atom_but_derives_opposite_horizons() -> None:
+def test_schedule_pair_shares_atom_but_derives_opposite_horizons(
+    tax: DomainTaxonomy,
+) -> None:
     """NextTwelveMonths vs AfterYearFive: one atom, opposite derivations."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     soon = decompose_concept_expression(
         "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths",
@@ -679,9 +670,10 @@ def test_schedule_pair_shares_atom_but_derives_opposite_horizons() -> None:
     assert later.derived_horizon == "M_NONCURRENT"
 
 
-def test_tenor_and_classification_compose_without_derivation() -> None:
+def test_tenor_and_classification_compose_without_derivation(
+    tax: DomainTaxonomy,
+) -> None:
     """Tenor alone derives nothing; an explicit classification word stands."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     composed = decompose_concept_expression(
         "us-gaap:FiveYearLoanCurrent", tax.token_lexicon
@@ -697,9 +689,10 @@ def test_tenor_and_classification_compose_without_derivation() -> None:
     assert "M_CURRENT" in borrowings.atom.modifiers
 
 
-def test_head_class_arbitration_prefers_primary_over_instrument() -> None:
+def test_head_class_arbitration_prefers_primary_over_instrument(
+    taxonomy: DomainTaxonomy,
+) -> None:
     """A PRIMARY flow head beats an INSTRUMENT head in the same region (B2)."""
-    taxonomy = load_domain_taxonomy()
     assert taxonomy.token_lexicon is not None
     atom, _, _, _ = decompose_concept(
         "us-gaap:InterestExpenseFederalFundsPurchased", taxonomy.token_lexicon
@@ -708,9 +701,8 @@ def test_head_class_arbitration_prefers_primary_over_instrument() -> None:
     assert atom.modifiers == frozenset({"M_DEBT", "M_INTEREST"})
 
 
-def test_expression_records_relation_claims() -> None:
+def test_expression_records_relation_claims(taxonomy: DomainTaxonomy) -> None:
     """EXCLUDING joins the expression's relations with its operand atom."""
-    taxonomy = load_domain_taxonomy()
     assert taxonomy.token_lexicon is not None
     expr = decompose_concept_expression(
         "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
@@ -720,9 +712,10 @@ def test_expression_records_relation_claims() -> None:
     assert expr.relations[0][1].modifiers == frozenset({"M_TAX"})
 
 
-def test_expression_carries_temporal_facet_and_derived_horizon() -> None:
+def test_expression_carries_temporal_facet_and_derived_horizon(
+    taxonomy: DomainTaxonomy,
+) -> None:
     """The interval lives on the expression; the horizon derives from it."""
-    taxonomy = load_domain_taxonomy()
     assert taxonomy.token_lexicon is not None
     expr = decompose_concept_expression(
         "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths",
@@ -733,9 +726,8 @@ def test_expression_carries_temporal_facet_and_derived_horizon() -> None:
     assert expr.derived_horizon == "M_CURRENT"
 
 
-def test_frame_carries_indexicals_and_temporal() -> None:
+def test_frame_carries_indexicals_and_temporal(taxonomy: DomainTaxonomy) -> None:
     """The semantic frame no longer discards indexicals or the interval."""
-    taxonomy = load_domain_taxonomy()
     frame = infer_semantic_frame(
         "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths",
         taxonomy,
@@ -817,13 +809,14 @@ def test_requires_evidence_claim_fires_when_satisfied() -> None:
     assert atom.head == "H_UNKNOWN"
 
 
-def test_impairment_descriptive_tag_spans_heads_without_moving_them() -> None:
+def test_impairment_descriptive_tag_spans_heads_without_moving_them(
+    tax: DomainTaxonomy,
+) -> None:
     """The impairment tag filters across heads; heads and family EXACT hold."""
     from edgar_sec.engine.xbrl.solve.equivalence import EXACT, UNRELATED, classify_pair
 
     from edgar_sec.engine.xbrl.normalize.lexicon import EvidenceContext
 
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -859,9 +852,8 @@ def test_impairment_descriptive_tag_spans_heads_without_moving_them() -> None:
     assert classify_pair(loss, population) == UNRELATED
 
 
-def test_descriptive_tags_ride_across_heads_part2() -> None:
+def test_descriptive_tags_ride_across_heads_part2(tax: DomainTaxonomy) -> None:
     """Accumulated/cumulative/litigation/environmental tags cross heads."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
     contra, _, _, _ = decompose_concept(
@@ -887,9 +879,10 @@ def test_descriptive_tags_ride_across_heads_part2() -> None:
     assert remediation.head == "H_EXPENSE"
 
 
-def test_revenue_components_carry_identity_off_the_bare_atom() -> None:
+def test_revenue_components_carry_identity_off_the_bare_atom(
+    tax: DomainTaxonomy,
+) -> None:
     """Fee/commission components decompose distinctly from headline Revenues."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -945,9 +938,8 @@ def test_revenue_components_carry_identity_off_the_bare_atom() -> None:
     assert xva.modifiers == frozenset({"M_DERIVATIVE", "M_VALUATION_ADJUSTMENT"})
 
 
-def test_adjustment_coordinates_claim_only_their_terms() -> None:
+def test_adjustment_coordinates_claim_only_their_terms(tax: DomainTaxonomy) -> None:
     """Valuation/reclassification adjustments claim; other senses stay residual."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -986,10 +978,10 @@ def test_adjustment_coordinates_claim_only_their_terms() -> None:
         assert "M_VALUATION_ADJUSTMENT" not in atom_of(qname).modifiers
 
 
-def _text_rule():
+def _text_rule(taxonomy: DomainTaxonomy):
     from edgar_sec.engine.xbrl.taxonomy.item_types import text_coordinate_rule
 
-    return text_coordinate_rule(load_domain_taxonomy())
+    return text_coordinate_rule(taxonomy)
 
 
 def _declaration(qname: str, item_type: str) -> ConceptDeclaration:
@@ -998,41 +990,42 @@ def _declaration(qname: str, item_type: str) -> ConceptDeclaration:
     )
 
 
-def test_text_coordinate_asserted_from_declared_string_type() -> None:
+def test_text_coordinate_asserted_from_declared_string_type(
+    tax: DomainTaxonomy,
+) -> None:
     """A string-typed narrative gains the coordinate its name never claims."""
-    tax = load_domain_taxonomy()
     lex = tax.token_lexicon
     assert lex is not None
     qname = "us-gaap:RelatedPartyTransactionDescriptionOfTransaction"
     plain = decompose_concept_expression(qname, lex).atom
     assert "M_TEXT_NODE" not in plain.modifiers
     typed = decompose_concept_expression(
-        qname, lex, _declaration(qname, "xbrli:stringItemType"), _text_rule()
+        qname, lex, _declaration(qname, "xbrli:stringItemType"), _text_rule(tax)
     ).atom
     assert "M_TEXT_NODE" in typed.modifiers
     assert typed.head == plain.head
     assert typed.modifiers == plain.modifiers | {"M_TEXT_NODE"}
 
 
-def test_text_coordinate_follows_type_not_name() -> None:
+def test_text_coordinate_follows_type_not_name(tax: DomainTaxonomy) -> None:
     """A TextBlock name with a numeric declared type gets no coordinate."""
-    tax = load_domain_taxonomy()
     lex = tax.token_lexicon
     assert lex is not None
     qname = "us-gaap:SignificantAccountingPoliciesTextBlock"
     typed = decompose_concept_expression(
-        qname, lex, _declaration(qname, "xbrli:monetaryItemType"), _text_rule()
+        qname, lex, _declaration(qname, "xbrli:monetaryItemType"), _text_rule(tax)
     ).atom
     assert "M_TEXT_NODE" not in typed.modifiers
     block = decompose_concept_expression(
-        qname, lex, _declaration(qname, "dtr-types:textBlockItemType"), _text_rule()
+        qname, lex, _declaration(qname, "dtr-types:textBlockItemType"), _text_rule(tax)
     ).atom
     assert "M_TEXT_NODE" in block.modifiers
 
 
-def test_text_coordinate_absent_declaration_is_byte_identical() -> None:
+def test_text_coordinate_absent_declaration_is_byte_identical(
+    tax: DomainTaxonomy,
+) -> None:
     """No declaration (or no rule) reproduces today's atoms exactly."""
-    tax = load_domain_taxonomy()
     lex = tax.token_lexicon
     assert lex is not None
     specimens = (
@@ -1043,7 +1036,9 @@ def test_text_coordinate_absent_declaration_is_byte_identical() -> None:
     )
     for qname in specimens:
         baseline = decompose_concept_expression(qname, lex)
-        assert decompose_concept_expression(qname, lex, None, _text_rule()) == baseline
+        assert (
+            decompose_concept_expression(qname, lex, None, _text_rule(tax)) == baseline
+        )
         assert (
             decompose_concept_expression(
                 qname, lex, _declaration(qname, "dtr-types:textBlockItemType"), None
@@ -1052,15 +1047,16 @@ def test_text_coordinate_absent_declaration_is_byte_identical() -> None:
         )
 
 
-def _percent_rule():
+def _percent_rule(taxonomy: DomainTaxonomy):
     from edgar_sec.engine.xbrl.taxonomy.item_types import percent_coordinate_rule
 
-    return percent_coordinate_rule(load_domain_taxonomy())
+    return percent_coordinate_rule(taxonomy)
 
 
-def test_percent_coordinate_asserted_from_declared_percent_type() -> None:
+def test_percent_coordinate_asserted_from_declared_percent_type(
+    tax: DomainTaxonomy,
+) -> None:
     """A percent-typed extension gains the coordinate from its declared type."""
-    tax = load_domain_taxonomy()
     lex = tax.token_lexicon
     assert lex is not None
     qname = "hon:RevenueFromContractWithCustomerPercentage"
@@ -1070,16 +1066,15 @@ def test_percent_coordinate_asserted_from_declared_percent_type() -> None:
         qname,
         lex,
         _declaration(qname, "dtr-types1:percentItemType"),
-        percent_rule=_percent_rule(),
+        percent_rule=_percent_rule(tax),
     ).atom
     assert "M_PERCENT_TYPED" in typed.modifiers
     assert typed.head == plain.head
     assert typed.modifiers == plain.modifiers | {"M_PERCENT_TYPED"}
 
 
-def test_percent_coordinate_follows_type_not_name() -> None:
+def test_percent_coordinate_follows_type_not_name(tax: DomainTaxonomy) -> None:
     """A Percentage name with a monetary declared type gets no coordinate."""
-    tax = load_domain_taxonomy()
     lex = tax.token_lexicon
     assert lex is not None
     qname = "hon:RevenueFromContractWithCustomerPercentage"
@@ -1087,7 +1082,7 @@ def test_percent_coordinate_follows_type_not_name() -> None:
         qname,
         lex,
         _declaration(qname, "xbrli:monetaryItemType"),
-        percent_rule=_percent_rule(),
+        percent_rule=_percent_rule(tax),
     ).atom
     assert "M_PERCENT_TYPED" not in typed.modifiers
     rate = "us-gaap:OperatingLeaseWeightedAverageDiscountRate"
@@ -1095,20 +1090,21 @@ def test_percent_coordinate_follows_type_not_name() -> None:
         rate,
         lex,
         _declaration(rate, "dtr-types:percentItemType"),
-        percent_rule=_percent_rule(),
+        percent_rule=_percent_rule(tax),
     ).atom
     assert "M_PERCENT_TYPED" in rated.modifiers
 
 
-def test_percent_coordinate_absent_declaration_is_byte_identical() -> None:
+def test_percent_coordinate_absent_declaration_is_byte_identical(
+    tax: DomainTaxonomy,
+) -> None:
     """No declaration (or no rule) reproduces today's atoms exactly."""
-    tax = load_domain_taxonomy()
     lex = tax.token_lexicon
     assert lex is not None
     qname = "hon:RevenueFromContractWithCustomerPercentage"
     baseline = decompose_concept_expression(qname, lex)
     assert (
-        decompose_concept_expression(qname, lex, None, percent_rule=_percent_rule())
+        decompose_concept_expression(qname, lex, None, percent_rule=_percent_rule(tax))
         == baseline
     )
     assert (
@@ -1119,22 +1115,22 @@ def test_percent_coordinate_absent_declaration_is_byte_identical() -> None:
     )
 
 
-def test_text_coordinate_net_of_headline_only() -> None:
+def test_text_coordinate_net_of_headline_only(tax: DomainTaxonomy) -> None:
     """NET_OF: the headline atom gains the coordinate; operands stay name-derived."""
-    tax = load_domain_taxonomy()
     lex = tax.token_lexicon
     assert lex is not None
     qname = "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax"
     typed = decompose_concept_expression(
-        qname, lex, _declaration(qname, "dtr-types:textBlockItemType"), _text_rule()
+        qname, lex, _declaration(qname, "dtr-types:textBlockItemType"), _text_rule(tax)
     )
     assert "M_TEXT_NODE" in typed.atom.modifiers
     assert all("M_TEXT_NODE" not in operand.modifiers for operand in typed.operands)
 
 
-def test_step4_batch1_admitted_families_decompose_to_their_heads() -> None:
+def test_step4_batch1_admitted_families_decompose_to_their_heads(
+    tax: DomainTaxonomy,
+) -> None:
     """Step 4 batch 1: general H_UNKNOWN families gain their archive-evidenced heads."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
     expected = {
@@ -1281,9 +1277,10 @@ def test_step4_batch1_admitted_families_decompose_to_their_heads() -> None:
         assert mods <= atom.modifiers, qname
 
 
-def test_step4_batch1_scoped_phrases_do_not_steal_host_heads() -> None:
+def test_step4_batch1_scoped_phrases_do_not_steal_host_heads(
+    tax: DomainTaxonomy,
+) -> None:
     """Batch 1 refusals: host-instrument, cash-flow, and ratio heads stay put."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
     hosts = {
@@ -1304,9 +1301,10 @@ def test_step4_batch1_scoped_phrases_do_not_steal_host_heads() -> None:
     assert schw.head == "H_ASSET"
 
 
-def test_step4_batch2_basis_modifiers_separate_bottomline_variants() -> None:
+def test_step4_batch2_basis_modifiers_separate_bottomline_variants(
+    tax: DomainTaxonomy,
+) -> None:
     """Step 4 batch 2: pro-forma and statutory bases discriminate their atoms."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
     expected = {
@@ -1341,9 +1339,8 @@ def test_step4_batch2_basis_modifiers_separate_bottomline_variants() -> None:
         assert atom != target, qname
 
 
-def test_step4_batch2_scoped_phrases_do_not_overclaim() -> None:
+def test_step4_batch2_scoped_phrases_do_not_overclaim(tax: DomainTaxonomy) -> None:
     """Batch 2 refusals: bare statutory, redeemable, parent-alone stay unmarked."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
     tax_rate, _, _, _ = decompose_concept(
@@ -1367,12 +1364,13 @@ def test_step4_batch2_scoped_phrases_do_not_overclaim() -> None:
     assert "M_TEMPORARY_MEZZANINE" not in not_redeemable.modifiers
 
 
-def test_string_lookup_step2_rollforward_movement_modifiers() -> None:
+def test_string_lookup_step2_rollforward_movement_modifiers(
+    tax: DomainTaxonomy,
+) -> None:
     """Step 2: view-consumed residual tokens are now declared modifiers.
 
     The specimen concepts decompose with no intent-bearing residuals.
     """
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
     expected = {
@@ -1449,11 +1447,12 @@ def test_string_lookup_step2_rollforward_movement_modifiers() -> None:
         assert intent == 0, (qname, residuals)
 
 
-def test_string_lookup_step3_other_change_and_post_tax_phrases() -> None:
+def test_string_lookup_step3_other_change_and_post_tax_phrases(
+    tax: DomainTaxonomy,
+) -> None:
     """Step 3: other-change name shapes and the after-reclassification
     phrasing decompose to their declared modifiers.
     """
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
     atom, residuals, _, _ = decompose_concept(
@@ -1470,11 +1469,12 @@ def test_string_lookup_step3_other_change_and_post_tax_phrases() -> None:
     assert "M_OCI" in atom.modifiers
 
 
-def test_facade_view_specimens_decompose_to_gate_coordinates() -> None:
+def test_facade_view_specimens_decompose_to_gate_coordinates(
+    tax: DomainTaxonomy,
+) -> None:
     """Facade Step 3: long names the views gate on decompose as pinned,
     with residuals pinned exactly as the vocabulary-gap record.
     """
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
     expected = {
@@ -1524,9 +1524,8 @@ def test_facade_view_specimens_decompose_to_gate_coordinates() -> None:
         assert res == residuals, qname
 
 
-def test_purchase_frame_attaches_act_and_outflow_direction() -> None:
+def test_purchase_frame_attaches_act_and_outflow_direction(tax: DomainTaxonomy) -> None:
     """Purchase-led flow lines carry the purchase act at direction -1.0."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1549,9 +1548,8 @@ def test_purchase_frame_attaches_act_and_outflow_direction() -> None:
     assert "Purchase" not in residuals
 
 
-def test_purchase_frame_plural_flow_forms_carry_the_act() -> None:
+def test_purchase_frame_plural_flow_forms_carry_the_act(tax: DomainTaxonomy) -> None:
     """Plural-led flow lines take the frame direction alongside the act."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1569,9 +1567,10 @@ def test_purchase_frame_plural_flow_forms_carry_the_act() -> None:
     assert direction == -1.0
 
 
-def test_purchase_frame_guards_hold_stock_and_rollforward_shapes() -> None:
+def test_purchase_frame_guards_hold_stock_and_rollforward_shapes(
+    tax: DomainTaxonomy,
+) -> None:
     """Stock, obligation, member, and rollforward shapes keep base atoms."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
     expected = {
@@ -1601,9 +1600,10 @@ def test_purchase_frame_guards_hold_stock_and_rollforward_shapes() -> None:
         assert found_direction == direction, qname
 
 
-def test_purchase_frame_declaration_vetoes_instant_and_text() -> None:
+def test_purchase_frame_declaration_vetoes_instant_and_text(
+    tax: DomainTaxonomy,
+) -> None:
     """An instant or text declaration refuses the act for stock shapes."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
     from edgar_sec.engine.xbrl.taxonomy.item_types import text_coordinate_rule
@@ -1636,12 +1636,11 @@ def test_purchase_frame_declaration_vetoes_instant_and_text() -> None:
     assert direction == 1.0
 
 
-def test_purchase_frame_constructed_extension_forms() -> None:
+def test_purchase_frame_constructed_extension_forms(tax: DomainTaxonomy) -> None:
     """Synthetic extension names: flow forms take the act, guards refuse.
 
     Unattested in the corpus: categorization by construction.
     """
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1687,9 +1686,10 @@ def test_purchase_frame_constructed_extension_forms() -> None:
     assert direction == 1.0
 
 
-def test_purchase_frame_leaves_payments_and_proceeds_untouched() -> None:
+def test_purchase_frame_leaves_payments_and_proceeds_untouched(
+    tax: DomainTaxonomy,
+) -> None:
     """The payments and proceeds coordinates keep their own directions."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1708,9 +1708,8 @@ def test_purchase_frame_leaves_payments_and_proceeds_untouched() -> None:
     assert direction == 1.0
 
 
-def test_disposal_claims_assert_the_exit_identity() -> None:
+def test_disposal_claims_assert_the_exit_identity(tax: DomainTaxonomy) -> None:
     """Disposal and derecognition forms carry M_DISPOSAL in every dialect."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1736,9 +1735,8 @@ def test_disposal_claims_assert_the_exit_identity() -> None:
     assert atom.modifiers == {"M_DISPOSAL", "M_DISPOSAL_GROUP", "M_PPE_CAPEX"}
 
 
-def test_sale_act_separated_from_purpose_and_goods() -> None:
+def test_sale_act_separated_from_purpose_and_goods(tax: DomainTaxonomy) -> None:
     """Sale-as-act carries M_SALE; purpose and goods senses keep their markers."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1767,9 +1765,8 @@ def test_sale_act_separated_from_purpose_and_goods() -> None:
     assert "M_SALE" not in atom.modifiers
 
 
-def test_gain_family_carries_the_disposal_gain_identity() -> None:
+def test_gain_family_carries_the_disposal_gain_identity(tax: DomainTaxonomy) -> None:
     """Gain/loss on disposal, sale, or extinguishment carries M_DISPOSAL_GAIN."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1789,9 +1786,8 @@ def test_gain_family_carries_the_disposal_gain_identity() -> None:
     assert atom.modifiers == {"M_DISPOSAL", "M_DISPOSAL_GAIN"}
 
 
-def test_gain_family_from_postfix_and_arising_forms() -> None:
+def test_gain_family_from_postfix_and_arising_forms(tax: DomainTaxonomy) -> None:
     """From, postfix, and arising-from gain forms carry the gain identity."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1825,9 +1821,8 @@ def test_gain_family_from_postfix_and_arising_forms() -> None:
     assert "M_DISPOSAL_GAIN" in atom.modifiers
 
 
-def test_gross_unrealized_positions_carry_side_markers() -> None:
+def test_gross_unrealized_positions_carry_side_markers(tax: DomainTaxonomy) -> None:
     """Gross unrealized gain and loss positions carry distinct side markers."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1863,9 +1858,8 @@ def test_gross_unrealized_positions_carry_side_markers() -> None:
     assert "V_LOSS_SIDE" in atom.modifiers
 
 
-def test_financial_assets_object_claim() -> None:
+def test_financial_assets_object_claim(tax: DomainTaxonomy) -> None:
     """Financial-asset phrases assert the instrument object on purchase lines."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1888,9 +1882,10 @@ def test_financial_assets_object_claim() -> None:
     assert "M_PURCHASE" in atom.modifiers
 
 
-def test_wordform_issuance_and_settlement_nouns_carry_their_acts() -> None:
+def test_wordform_issuance_and_settlement_nouns_carry_their_acts(
+    tax: DomainTaxonomy,
+) -> None:
     """The singular nouns assert the carrier their plural forms assert."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1917,9 +1912,10 @@ def test_wordform_issuance_and_settlement_nouns_carry_their_acts() -> None:
     assert "M_SETTLEMENT" in atom.modifiers
 
 
-def test_wordform_distribution_and_transfer_singulars_match_plurals() -> None:
+def test_wordform_distribution_and_transfer_singulars_match_plurals(
+    tax: DomainTaxonomy,
+) -> None:
     """Singular distribution and transfer forms land the plural atoms."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1944,9 +1940,8 @@ def test_wordform_distribution_and_transfer_singulars_match_plurals() -> None:
     assert "M_TRANSFER_OUT" in singular.modifiers
 
 
-def test_wordform_transfer_level_niche_accepts_to_and_from() -> None:
+def test_wordform_transfer_level_niche_accepts_to_and_from(tax: DomainTaxonomy) -> None:
     """The benefit-plan dialect states Level-3 direction with To and From."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1962,9 +1957,10 @@ def test_wordform_transfer_level_niche_accepts_to_and_from() -> None:
     assert "M_TRANSFER_OUT" in atom.modifiers
 
 
-def test_wordform_deferral_and_accrual_nouns_carry_the_stock_identity() -> None:
+def test_wordform_deferral_and_accrual_nouns_carry_the_stock_identity(
+    tax: DomainTaxonomy,
+) -> None:
     """Deferral nouns assert M_DEFERRED; Accrual mirrors the Accruals claim."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -1990,9 +1986,10 @@ def test_wordform_deferral_and_accrual_nouns_carry_the_stock_identity() -> None:
     assert "M_ACCRUED_LIABILITY" in atom.modifiers
 
 
-def test_wordform_repayment_singular_holds_its_scoped_claim() -> None:
+def test_wordform_repayment_singular_holds_its_scoped_claim(
+    tax: DomainTaxonomy,
+) -> None:
     """Repayment twins already agree; schedule attributes stay unclaimed."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2009,9 +2006,10 @@ def test_wordform_repayment_singular_holds_its_scoped_claim() -> None:
     assert direction == 1.0
 
 
-def test_wordform_borrowing_gerund_is_scoped_to_draw_shapes() -> None:
+def test_wordform_borrowing_gerund_is_scoped_to_draw_shapes(
+    tax: DomainTaxonomy,
+) -> None:
     """Borrowing under a facility mirrors Borrowings; cost topics refuse."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2032,9 +2030,8 @@ def test_wordform_borrowing_gerund_is_scoped_to_draw_shapes() -> None:
     assert "Borrowing" in res
 
 
-def test_wordform_impaired_participial_carries_the_tag() -> None:
+def test_wordform_impaired_participial_carries_the_tag(tax: DomainTaxonomy) -> None:
     """Impaired asserts the same descriptive tag as the Impairment noun."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2050,9 +2047,10 @@ def test_wordform_impaired_participial_carries_the_tag() -> None:
     assert "Impaired" not in res
 
 
-def test_wordform_amortisation_spelling_matches_us_spelling() -> None:
+def test_wordform_amortisation_spelling_matches_us_spelling(
+    tax: DomainTaxonomy,
+) -> None:
     """Amortisation twins land the Amortization atoms, heads included."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2072,9 +2070,10 @@ def test_wordform_amortisation_spelling_matches_us_spelling() -> None:
     assert british == american
 
 
-def test_wordform_availableforsale_fused_token_carries_the_classification() -> None:
+def test_wordform_availableforsale_fused_token_carries_the_classification(
+    tax: DomainTaxonomy,
+) -> None:
     """The fused IFRS spelling asserts M_AVAILABLE_FOR_SALE like the phrase."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2098,9 +2097,8 @@ def test_wordform_availableforsale_fused_token_carries_the_classification() -> N
     assert fused == spelled
 
 
-def test_absent_acts_carry_dedicated_markers() -> None:
+def test_absent_acts_carry_dedicated_markers(tax: DomainTaxonomy) -> None:
     """Each formerly absent act asserts its carrier on attested names."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2129,9 +2127,8 @@ def test_absent_acts_carry_dedicated_markers() -> None:
     assert atom.modifiers == {"M_COLLECTION", "M_FINANCING_RECEIVABLE", "M_SALE"}
 
 
-def test_absent_act_attribute_guards_stay_byte_identical() -> None:
+def test_absent_act_attribute_guards_stay_byte_identical(tax: DomainTaxonomy) -> None:
     """Attribute senses of the new acts' words keep their base atoms."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2153,9 +2150,8 @@ def test_absent_act_attribute_guards_stay_byte_identical() -> None:
         assert atom.modifiers == modifiers, qname
 
 
-def test_payments_for_origination_keeps_outflow_direction() -> None:
+def test_payments_for_origination_keeps_outflow_direction(tax: DomainTaxonomy) -> None:
     """The payments-for-origination anchor asserts the act, direction held."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2169,9 +2165,8 @@ def test_payments_for_origination_keeps_outflow_direction() -> None:
         assert direction == -1.0
 
 
-def test_declaration_keeps_dividend_identity_and_rate_head() -> None:
+def test_declaration_keeps_dividend_identity_and_rate_head(tax: DomainTaxonomy) -> None:
     """Per-share declared lines gain the act; dividend and head stand."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2182,9 +2177,8 @@ def test_declaration_keeps_dividend_identity_and_rate_head() -> None:
     assert atom.modifiers == {"M_COMMON", "M_DECLARATION", "M_DIVIDEND"}
 
 
-def test_step5_wordform_twins_land_the_same_atom() -> None:
+def test_step5_wordform_twins_land_the_same_atom(tax: DomainTaxonomy) -> None:
     """Dialect and synonym twins of the new acts land identical atoms."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2204,9 +2198,8 @@ def test_step5_wordform_twins_land_the_same_atom() -> None:
     assert "M_HELD_TO_MATURITY" in fused.modifiers
 
 
-def test_proceeds_frame_guarantees_the_cash_head() -> None:
+def test_proceeds_frame_guarantees_the_cash_head(tax: DomainTaxonomy) -> None:
     """Proceeds-led names land H_CASH; only the head moves."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2236,9 +2229,8 @@ def test_proceeds_frame_guarantees_the_cash_head() -> None:
     assert direction == 1.0
 
 
-def test_receipts_frame_guarantees_the_cash_head() -> None:
+def test_receipts_frame_guarantees_the_cash_head(tax: DomainTaxonomy) -> None:
     """Receipts-led names land H_CASH; only the head moves."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2255,9 +2247,10 @@ def test_receipts_frame_guarantees_the_cash_head() -> None:
     assert direction == 1.0
 
 
-def test_proceeds_head_guarantee_leaves_other_names_untouched() -> None:
+def test_proceeds_head_guarantee_leaves_other_names_untouched(
+    tax: DomainTaxonomy,
+) -> None:
     """No proceeds prefix, no frame: stocks and NET_OF names stand."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2271,9 +2264,8 @@ def test_proceeds_head_guarantee_leaves_other_names_untouched() -> None:
     assert direction == 1.0
 
 
-def test_proceeds_debt_phrases_claim_their_direction() -> None:
+def test_proceeds_debt_phrases_claim_their_direction(tax: DomainTaxonomy) -> None:
     """The specific-debt proceeds names bear direction; none is a default."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2294,9 +2286,8 @@ def test_proceeds_debt_phrases_claim_their_direction() -> None:
         assert any(m.entry.direction is not None for m in expr.matches), name
 
 
-def test_proceeds_census_claims_carry_the_source_acts() -> None:
+def test_proceeds_census_claims_carry_the_source_acts(tax: DomainTaxonomy) -> None:
     """Issue-form and annuities proceeds carry M_ISSUANCE; guards unchanged."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2332,9 +2323,8 @@ def test_proceeds_census_claims_carry_the_source_acts() -> None:
     assert "M_ISSUANCE" not in atom.modifiers
 
 
-def test_trailing_sale_proceeds_carry_the_sale_act() -> None:
+def test_trailing_sale_proceeds_carry_the_sale_act(tax: DomainTaxonomy) -> None:
     """The trailing Sale Proceeds form asserts M_SALE on the cash head."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2350,9 +2340,8 @@ def test_trailing_sale_proceeds_carry_the_sale_act() -> None:
     assert atom.modifiers == {"M_SALE"}
 
 
-def test_notes_debt_class_admission_and_guards() -> None:
+def test_notes_debt_class_admission_and_guards(tax: DomainTaxonomy) -> None:
     """Notes decomposes as a debt-class head; receivable/disclosure stay put."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2380,9 +2369,8 @@ def test_notes_debt_class_admission_and_guards() -> None:
     assert leak.operands[1].modifiers == {"M_DEBT"}
 
 
-def test_rp_partner_compound_admissions() -> None:
+def test_rp_partner_compound_admissions(tax: DomainTaxonomy) -> None:
     """R/P partner compounds decompose with their class identity asserted."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
 
@@ -2442,3 +2430,70 @@ def test_rp_partner_compound_admissions() -> None:
     assert atom.head == "H_LIABILITY"
     assert atom.modifiers == frozenset()
     assert residuals == ("Total", "Others")
+
+
+def _match(entry: LexiconEntry, start: int = 0) -> LexiconMatch:
+    return LexiconMatch(start, start + len(entry.phrase), entry)
+
+
+def test_window_values_edges() -> None:
+    """Windows re-base to their start; the end is exclusive, absence is open."""
+    values = {0: 5, 2: 7, 4: 9}
+    assert _window_values(values, 2, 4) == {0: 7}
+    assert _window_values(values, 2) == {0: 7, 2: 9}
+    assert _window_values(values, 0) == values
+    assert _window_values(values, 6) == {}
+    assert _window_values({}, 0, 3) == {}
+
+
+def test_uncovered_tokens_span_shapes() -> None:
+    """No spans leaves every token; a full cover leaves none."""
+    tokens = ("Alpha", "Beta", "Gamma")
+    assert _uncovered_tokens(tokens, []) == ["Alpha", "Beta", "Gamma"]
+    assert _uncovered_tokens(tokens, [(0, 3)]) == []
+    assert _uncovered_tokens(tokens, [(0, 1), (2, 3)]) == ["Beta"]
+    assert _uncovered_tokens((), [(0, 1)]) == []
+
+
+def test_first_head_match_and_fallback_shapes() -> None:
+    """The fallback takes the first positional positive-rank head claim."""
+    qualifier = _match(
+        LexiconEntry(
+            phrase=("q",), claim="head", head="H_UNIT", claim_class="COMPOUND_QUALIFIER"
+        )
+    )
+    modifier = _match(LexiconEntry(phrase=("m",), claim="modifier", atom="M_X"))
+    primary = _match(
+        LexiconEntry(
+            phrase=("p",), claim="head", head="H_ASSET", claim_class="PRIMARY"
+        ),
+        start=2,
+    )
+    tail = _match(
+        LexiconEntry(phrase=("t",), claim="head", head="H_CASH", claim_class="TAIL"),
+        start=3,
+    )
+    assert _first_head_match([qualifier, modifier, primary, tail]) is primary
+    assert _first_head_match([qualifier, modifier]) is None
+    assert _fallback_head([qualifier, tail, primary]) == "H_CASH"
+    assert _fallback_head([]) == "UNKNOWN"
+
+
+def test_tail_assembly_direction_and_indexicals() -> None:
+    """Direction is the first directed claim; indexicals extend the base."""
+    directed = _match(LexiconEntry(phrase=("d",), claim="modifier", direction=-1.0))
+    later = _match(
+        LexiconEntry(phrase=("e",), claim="modifier", direction=1.0), start=1
+    )
+    indexical = _match(
+        LexiconEntry(phrase=("i",), claim="indexical", indexical="IX_PER_SHARE"),
+        start=2,
+    )
+    direction, indexicals, derived, temporal = _tail_assembly(
+        ("D", "E", "I"), [directed, later, indexical], ("IX_BASE",), {}, {}
+    )
+    assert direction == -1.0
+    assert indexicals == ("IX_BASE", "IX_PER_SHARE")
+    assert derived is None and temporal is None
+    direction, indexicals, _, _ = _tail_assembly(("D",), [later], (), {}, {})
+    assert direction == 1.0 and indexicals == ()

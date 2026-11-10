@@ -4,12 +4,13 @@ from edgar_sec.engine.xbrl.normalize.decomposer import (
     decompose_concept,
     decompose_concept_expression,
 )
-from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 
 
-def test_coordination_expression_preserves_both_operand_atoms() -> None:
+def test_coordination_expression_preserves_both_operand_atoms(
+    tax: DomainTaxonomy,
+) -> None:
     """A cross-side coordination headlines today's pick; the rest are operands."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -26,9 +27,10 @@ def test_coordination_expression_preserves_both_operand_atoms() -> None:
     assert expression.relations == (("COORDINATION", expression.operands[1]),)
 
 
-def test_coordination_expression_matches_carry_both_operands() -> None:
+def test_coordination_expression_matches_carry_both_operands(
+    tax: DomainTaxonomy,
+) -> None:
     """Coordination provenance spans both conjuncts, in full-token coordinates."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -44,9 +46,8 @@ def test_coordination_expression_matches_carry_both_operands() -> None:
     )
 
 
-def test_coordination_chains_multiple_operators() -> None:
+def test_coordination_chains_multiple_operators(tax: DomainTaxonomy) -> None:
     """Two unspanned `and`s chain into a headline plus two operands."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -66,9 +67,10 @@ def test_coordination_chains_multiple_operators() -> None:
     ]
 
 
-def test_coordination_agreeing_segments_fold_without_operands() -> None:
+def test_coordination_agreeing_segments_fold_without_operands(
+    tax: DomainTaxonomy,
+) -> None:
     """Same-head conjuncts fold into the headline atom, as the flat path did."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -84,9 +86,8 @@ def test_coordination_agreeing_segments_fold_without_operands() -> None:
     assert residuals == ()
 
 
-def test_coordination_authored_phrase_keeps_flat_reading() -> None:
+def test_coordination_authored_phrase_keeps_flat_reading(tax: DomainTaxonomy) -> None:
     """An authored and-phrase spans the coordination; no operator engages."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -97,9 +98,10 @@ def test_coordination_authored_phrase_keeps_flat_reading() -> None:
     assert expression.atom.modifiers == frozenset({"M_CARRYING_AMOUNT"})
 
 
-def test_coordination_trailing_shared_modifier_stays_in_headline() -> None:
+def test_coordination_trailing_shared_modifier_stays_in_headline(
+    tax: DomainTaxonomy,
+) -> None:
     """The trailing Current of a same-head coordination stays in the headline."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -111,9 +113,8 @@ def test_coordination_trailing_shared_modifier_stays_in_headline() -> None:
     assert expression.operands[1].head == "H_EXPENSE"
 
 
-def test_coordination_battery_cross_side_specimens() -> None:
+def test_coordination_battery_cross_side_specimens(tax: DomainTaxonomy) -> None:
     """Battery D2 specimens: foreign carriage purged, conjuncts as operands."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     notes_payable = decompose_concept_expression(
@@ -134,9 +135,8 @@ def test_coordination_battery_cross_side_specimens() -> None:
     assert net_mirror.operands[1].modifiers == frozenset({"M_RECEIVABLE"})
 
 
-def test_coordination_battery_leak_shape_resolves() -> None:
+def test_coordination_battery_leak_shape_resolves(tax: DomainTaxonomy) -> None:
     """The NotePayableAndNotesReceivable leak shape loses its headline M_DEBT."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -149,9 +149,8 @@ def test_coordination_battery_leak_shape_resolves() -> None:
     assert expression.operands[1].modifiers == frozenset({"M_DEBT"})
 
 
-def test_coordination_battery_nary_fold_keeps_headline() -> None:
+def test_coordination_battery_nary_fold_keeps_headline(tax: DomainTaxonomy) -> None:
     """Battery #20: agreeing headed segments fold; the headless one records D1."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -165,9 +164,8 @@ def test_coordination_battery_nary_fold_keeps_headline() -> None:
     assert expression.residuals == ("Notes",)
 
 
-def test_coordination_net_of_name_keeps_net_of_operator() -> None:
+def test_coordination_net_of_name_keeps_net_of_operator(tax: DomainTaxonomy) -> None:
     """A NET_OF name carrying an `and` decomposes exactly as the NET_OF path."""
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
 
     expression = decompose_concept_expression(
@@ -181,3 +179,24 @@ def test_coordination_net_of_name_keeps_net_of_operator() -> None:
     assert expression.operands[1].head == "H_SHARE"
     assert expression.operands[1].modifiers == frozenset({"M_ISSUANCE"})
     assert expression.weights == (1.0, -1.0)
+
+
+def test_first_head_match_skips_qualifier_for_winner() -> None:
+    """The coordination winner scan ignores rank-zero qualifier head claims."""
+    from edgar_sec.engine.xbrl.normalize.flat import _first_head_match
+    from edgar_sec.engine.xbrl.normalize.lexicon import LexiconEntry, LexiconMatch
+
+    def match(entry: LexiconEntry, start: int) -> LexiconMatch:
+        return LexiconMatch(start, start + len(entry.phrase), entry)
+
+    qualifier = match(
+        LexiconEntry(
+            phrase=("q",), claim="head", head="H_UNIT", claim_class="COMPOUND_QUALIFIER"
+        ),
+        0,
+    )
+    winner = match(
+        LexiconEntry(phrase=("w",), claim="head", head="H_DEBT", claim_class="TAIL"), 1
+    )
+    assert _first_head_match([qualifier, winner]) is winner
+    assert _first_head_match([qualifier]) is None

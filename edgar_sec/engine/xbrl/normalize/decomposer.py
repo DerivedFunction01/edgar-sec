@@ -24,6 +24,7 @@ from edgar_sec.engine.xbrl.normalize.coordination import decompose_coordinated
 from edgar_sec.engine.xbrl.normalize.flat import (
     _decompose_flat_tokens,
     _finish_resolution,
+    _window_values,
 )
 from edgar_sec.engine.xbrl.normalize.numbers import (
     collapse_number_phrases,
@@ -235,8 +236,8 @@ def decompose_concept_expression(
     if operators:
         operator = operators[0]
         left_tokens = tokens[: operator.start]
-        left_values = {i: v for i, v in number_values.items() if i < operator.start}
-        left_ordinals = {i: v for i, v in ordinal_values.items() if i < operator.start}
+        left_values = _window_values(number_values, 0, operator.start)
+        left_ordinals = _window_values(ordinal_values, 0, operator.start)
         (
             left,
             left_residuals,
@@ -254,12 +255,8 @@ def decompose_concept_expression(
             left_ordinals,
             evidence,
         )
-        right_values = {
-            i - operator.end: v for i, v in number_values.items() if i >= operator.end
-        }
-        right_ordinals = {
-            i - operator.end: v for i, v in ordinal_values.items() if i >= operator.end
-        }
+        right_values = _window_values(number_values, operator.end)
+        right_ordinals = _window_values(ordinal_values, operator.end)
         (
             right,
             right_residuals,
@@ -326,15 +323,14 @@ def decompose_concept_expression(
             matches,
         ) = framed
     else:
+        resolved = _finish_resolution(tokens, candidates, cover, cover_residuals)
         coordinated = decompose_coordinated(
             tokens,
             lexicon,
             number_values,
             ordinal_values,
             evidence,
-            candidates,
-            cover,
-            cover_residuals,
+            resolved[0],
         )
         if coordinated is not None:
             (
@@ -384,7 +380,7 @@ def decompose_concept_expression(
             number_values,
             ordinal_values,
             evidence,
-            resolved=_finish_resolution(tokens, candidates, cover, cover_residuals),
+            resolved=resolved,
         )
         atom = _apply_frame_head_precedence(
             tokens, lexicon, atom, declaration, text_rule
@@ -452,8 +448,8 @@ def _apply_grammatical_frame(
     remainder_candidates = lexicon.candidates(remainder, evidence)
     if any(match.entry.direction is not None for match in remainder_candidates):
         return None
-    values = {i - prefix: v for i, v in number_values.items() if i >= prefix}
-    ordinals = {i - prefix: v for i, v in ordinal_values.items() if i >= prefix}
+    values = _window_values(number_values, prefix)
+    ordinals = _window_values(ordinal_values, prefix)
     atom, residuals, _, indexicals, derived, relations, temporal, matches = (
         _decompose_flat_tokens(
             remainder,

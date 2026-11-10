@@ -17,6 +17,28 @@ from edgar_sec.engine.xbrl.normalize.temporal import (
 _CLASS_RANK = {"PRIMARY": 3, "TAIL": 2, "INSTRUMENT": 1, "COMPOUND_QUALIFIER": 0}
 
 
+def _uncovered_tokens(
+    tokens: tuple[str, ...], spans: list[tuple[int, int]]
+) -> list[str]:
+    """The tokens no span covers, in stream order."""
+    return [
+        token
+        for i, token in enumerate(tokens)
+        if not any(start <= i < end for start, end in spans)
+    ]
+
+
+def _window_values(
+    values: dict[int, int], start: int, end: int | None = None
+) -> dict[int, int]:
+    """The values inside [start, end), re-based to start; no end runs open."""
+    return {
+        i - start: v
+        for i, v in values.items()
+        if start <= i and (end is None or i < end)
+    }
+
+
 def _admit_coexisting(
     candidates: list[LexiconMatch], cover: list[LexiconMatch]
 ) -> list[LexiconMatch]:
@@ -79,18 +101,21 @@ def _finish_resolution(
     admitted = _admit_coexisting(candidates, cover)
     if not admitted:
         return cover, residuals
-    spans = [(m.start, m.end) for m in cover + admitted]
-    remaining = [
-        token
-        for i, token in enumerate(tokens)
-        if not any(start <= i < end for start, end in spans)
-    ]
+    remaining = _uncovered_tokens(tokens, [(m.start, m.end) for m in cover + admitted])
     resolved = sorted(cover + admitted, key=lambda m: (m.start, -(m.end - m.start)))
     return resolved, remaining
 
 
 def _head_rank(match: LexiconMatch) -> int:
     return _CLASS_RANK.get(match.entry.claim_class or "", 0)
+
+
+def _first_head_match(matches: list[LexiconMatch]) -> LexiconMatch | None:
+    """The first positional head claim with a positive class rank, if any."""
+    for m in matches:
+        if m.entry.claim == "head" and m.entry.head and _head_rank(m) > 0:
+            return m
+    return None
 
 
 def _pick_head(matches: list[LexiconMatch]) -> tuple[str, int | None]:
@@ -117,10 +142,29 @@ def _fallback_head(matches: list[LexiconMatch]) -> str:
     The subordinate region is a specifier chain; its first head claim
     is the primary specifier, so position dominates class there.
     """
+    match = _first_head_match(matches)
+    return match.entry.head if match is not None and match.entry.head else "UNKNOWN"
+
+
+def _tail_assembly(
+    tokens: tuple[str, ...],
+    matches: list[LexiconMatch],
+    base_indexicals: tuple[str, ...],
+    number_values: dict[int, int],
+    ordinal_values: dict[int, int],
+) -> tuple[float, tuple[str, ...], str | None, TemporalInterval | None]:
+    """Direction, indexicals, horizon, and interval over one match list."""
+    direction = 1.0
     for m in matches:
-        if m.entry.claim == "head" and m.entry.head and _head_rank(m) > 0:
-            return m.entry.head
-    return "UNKNOWN"
+        if m.entry.direction is not None:
+            direction = m.entry.direction
+            break
+    indexicals: list[str] = list(base_indexicals)
+    for m in matches:
+        if m.entry.claim == "indexical" and m.entry.indexical:
+            indexicals.append(m.entry.indexical)
+    temporal = extract_temporal(tokens, number_values, ordinal_values)
+    return direction, tuple(indexicals), derive_horizon(temporal), temporal
 
 
 def _split_regions(
@@ -178,8 +222,9 @@ def _decompose_flat_tokens(
         matches, residuals = resolved
     else:
         matches, residuals = _resolve_matches(tokens, lexicon, evidence, candidates)
-    temporal = extract_temporal(tokens, number_values or {}, ordinal_values or {})
-    derived = derive_horizon(temporal)
+    direction, indexicals, derived, temporal = _tail_assembly(
+        tokens, matches, num_indexicals, number_values or {}, ordinal_values or {}
+    )
 
     primary_matches, subord_matches, boundary_match = _split_regions(matches)
 
@@ -221,17 +266,6 @@ def _decompose_flat_tokens(
             mods.add(principal)
         mods.update(boundary_match.entry.payload_mods())
 
-    direction = 1.0
-    for m in matches:
-        if m.entry.direction is not None:
-            direction = m.entry.direction
-            break
-
-    indexicals: list[str] = list(num_indexicals)
-    for m in matches:
-        if m.entry.claim == "indexical" and m.entry.indexical:
-            indexicals.append(m.entry.indexical)
-
     relations: list[tuple[str, Atom]] = []
     for m in matches:
         if m.entry.claim == "relation" and m.entry.relation in (
@@ -247,7 +281,7 @@ def _decompose_flat_tokens(
         atom,
         tuple(residuals),
         direction,
-        tuple(indexicals),
+        indexicals,
         derived,
         tuple(relations),
         temporal,

@@ -22,6 +22,9 @@ By decomposing taxonomy linkbases into explicit typed relational structures and 
 - **Derived-Quarter Honesty**: A derived discrete quarter exists only where no reported quarter serves the span, carries status DERIVED with both filed legs named as inputs, and a chain that cannot close exactly records a refusal with its reason — never an interpolated or partial difference.
 - **Non-Additive Types Refuse Derivation**: Concepts declared with per-share, share-count, or rate item types are span averages, not accumulations; un-accumulation refuses them by declared type, never by concept name.
 - **Calendar Breaks**: A transition period or a fiscal-year-end change splits the series; values on both sides serve, and no stitch or derivation crosses a break.
+- **Coordination Ranks on the Headline Only**: An unspanned `and` coordination decomposes per conjunct; the headline atom is the single ranking coordinate, disagreeing headed conjuncts are preserved as operands under the coordination relation, never merged into the headline, and equivalence ranks on the headline only.
+- **Inflection Expansion Is Loader-Declared**: Authored lexicon entries are canonical; the loader generates the surface forms declared in the inflection table at load, a generated phrase colliding with a differently-payloaded authored entry is a loader error, declared split pairs are refused as families, and verbatim phrases load ungenerated.
+- **Lexicon Surface Presence Is Adjudicated**: Which surface forms the loaded lexicon carries is pinned by `tests/engine/xbrl/normalize/test_lexicon.py`; an absent form can be deliberate act-layer design, so expansion changes land only against that pin set.
 
 ## Deliberate gaps
 
@@ -29,6 +32,7 @@ By decomposing taxonomy linkbases into explicit typed relational structures and 
 - **Baked Seed Bundle Dei Facts**: The seed bundles' baked `facts.parquet` rows still carry mis-typed dei cover facts as numeric (their original strings are unrecoverable from the bundles), so the parse-time typing fix corrects them only on regeneration from live SEC instance documents, which has no offline source path.
 - **Stitched Statements**: Only the stitched financials series is served; which filing's calculation and presentation arcs would govern a stitched statement is undecided, so no stitched statement surface exists.
 - **Residual Non-Additive Monetary Concepts**: A small class of monetary concepts is keyed to an opening balance or a period-vesting measurement rather than accumulated over sub-periods (contract-liability revenue recognized; vested-in-period fair value); no taxonomy coordinate separates them from additive monetary flows, so their derived quarters serve as DERIVED with inputs named and this class is the recorded exception to the derivation narrowing.
+- **Coordination Carriage Recovery**: Carriage a conjunct loses to phrase adjacency across an `and` is recorded as operand identity, not recovered; recovering it is lexicon admission work, not decomposer work.
 
 ## Artifact layout
 

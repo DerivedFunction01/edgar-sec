@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field, replace
 from itertools import product
 import json
 from pathlib import Path
@@ -133,38 +133,59 @@ _LIST_FIELDS = (
     "coexists_with",
     "sub_suppress",
 )
-_SCALAR_FIELDS = (
-    "head",
-    "claim_class",
-    "atom",
-    "relation",
-    "direction",
-    "indexical",
-    "temporal_pattern",
-)
+_LOWERED_LIST_FIELDS = ("scope_next", "coexists_with")
+_BOOL_FIELDS = ("requires_evidence", "sub_identity", "protect_far_head")
 
 
-def _entry_to_dict(entry: LexiconEntry) -> dict[str, Any]:
-    """The v2 dictionary form of an entry, default-valued fields omitted."""
-    data: dict[str, Any] = {
-        "phrase": list(entry.phrase),
-        "claim": entry.claim,
-    }
-    for key in _LIST_FIELDS:
-        value = getattr(entry, key)
-        if value:
-            data[key] = list(value)
-    for key in _SCALAR_FIELDS:
-        value = getattr(entry, key)
-        if value is not None:
-            data[key] = value
-    if entry.requires_evidence:
-        data["requires_evidence"] = True
-    if not entry.sub_identity:
-        data["sub_identity"] = False
-    if entry.protect_far_head:
-        data["protect_far_head"] = True
-    return data
+def _apply_override(
+    entry: LexiconEntry, combo: tuple[str, ...], override: dict[str, Any]
+) -> LexiconEntry:
+    """A generated entry carrying its declared per-form override.
+
+    Field conversion mirrors LexiconEntry.from_dict exactly, and the
+    merged entry passes the same claim validations from_dict runs.
+    """
+    fields: dict[str, Any] = {"phrase": combo}
+    for key, raw in override.items():
+        if key == "phrase":
+            fields[key] = (
+                tuple(p.lower() for p in raw.split())
+                if isinstance(raw, str)
+                else tuple(str(p).lower() for p in raw)
+            )
+        elif key in _LOWERED_LIST_FIELDS:
+            fields[key] = tuple(str(t).lower() for t in raw)
+        elif key in _LIST_FIELDS:
+            fields[key] = (
+                tuple(str(m) for m in raw) if isinstance(raw, (list, tuple)) else ()
+            )
+        elif key == "claim":
+            fields[key] = str(raw).lower()
+        elif key == "direction":
+            fields[key] = float(raw)
+        elif key in _BOOL_FIELDS:
+            fields[key] = bool(raw)
+        else:
+            fields[key] = raw
+    generated = replace(entry, **fields)
+    phrase = generated.phrase
+    if generated.claim not in CLAIM_KINDS:
+        raise ValueError(
+            f"lexicon entry {phrase} has unknown claim {generated.claim!r}"
+        )
+    if generated.claim == "head":
+        if not generated.head:
+            raise ValueError(f"head claim {phrase} names no head")
+        if generated.claim_class not in HEAD_CLAIM_CLASSES:
+            raise ValueError(
+                f"head claim {phrase} must declare a claim class"
+                f" (one of {HEAD_CLAIM_CLASSES})"
+            )
+    if generated.claim == "relation" and generated.relation not in RELATION_KINDS:
+        raise ValueError(
+            f"relation claim {phrase} has unknown kind {generated.relation!r}"
+        )
+    return generated
 
 
 @dataclass(frozen=True, slots=True)
@@ -175,20 +196,27 @@ class InflectionTable:
     overrides: dict[tuple[str, ...], dict[str, Any]]
     split: tuple[tuple[str, str], ...]
     verbatim: tuple[tuple[str, ...], ...] = ()
+    _index: dict[str, tuple[str, tuple[str, ...]]] = field(
+        default_factory=dict, repr=False, compare=False
+    )
+
+    def __post_init__(self) -> None:
+        if not self._index:
+            index: dict[str, tuple[str, tuple[str, ...]]] = {}
+            for canonical, surfaces in self.forms.items():
+                for surface in surfaces:
+                    index.setdefault(surface, (canonical, surfaces))
+            object.__setattr__(self, "_index", index)
 
     def family(self, token: str) -> tuple[str, ...] | None:
         """The declared surface forms of the family containing token, if any."""
-        for canonical, surfaces in self.forms.items():
-            if token in surfaces:
-                return surfaces
-        return None
+        hit = self._index.get(token)
+        return hit[1] if hit is not None else None
 
     def canonical(self, token: str) -> str:
         """The canonical form of token under this table (itself if undeclared)."""
-        for canonical, surfaces in self.forms.items():
-            if token in surfaces:
-                return canonical
-        return token
+        hit = self._index.get(token)
+        return hit[0] if hit is not None else token
 
 
 def load_inflection_table(path: Path | str) -> InflectionTable:
@@ -248,13 +276,12 @@ def expand_lexicon_entries(
         source = tuple(table.canonical(t) for t in entry.phrase)
         variants = [table.family(t) or (t,) for t in entry.phrase]
         for combo in product(*variants):
-            data = _entry_to_dict(entry)
-            data["phrase"] = list(combo)
             override = table.overrides.get(combo)
-            if override is not None:
-                data.update(override)
+            if override is None:
+                generated = replace(entry, phrase=combo)
+            else:
                 used_overrides.add(combo)
-            generated = LexiconEntry.from_dict(data)
+                generated = _apply_override(entry, combo, override)
             payloads = by_surface.setdefault(combo, {}).setdefault(source, set())
             payloads.add(generated)
             if generated in emitted:

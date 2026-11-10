@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.engine.xbrl.normalize.lexicon import LexiconEntry, TokenLexicon
+from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 
 
 def test_lexicon_longest_phrase_matching() -> None:
@@ -117,11 +118,10 @@ def test_lexicon_frame_attachment_and_matching() -> None:
     assert lex.match_grammatical_frame(("Sale", "Of", "Assets")) is None
 
 
-def test_loaded_taxonomy_attaches_purchase_frames_to_lexicon() -> None:
+def test_loaded_taxonomy_attaches_purchase_frames_to_lexicon(
+    tax: DomainTaxonomy,
+) -> None:
     """The shipped purchase frames reach the lexicon with their act."""
-    from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
-
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     frame = tax.token_lexicon.match_grammatical_frame(("Purchases", "Of", "Debt"))
     assert frame is not None
@@ -129,11 +129,8 @@ def test_loaded_taxonomy_attaches_purchase_frames_to_lexicon() -> None:
     assert frame.direction == -1.0
 
 
-def test_loaded_lexicon_wordform_twins_share_payloads() -> None:
+def test_loaded_lexicon_wordform_twins_share_payloads(tax: DomainTaxonomy) -> None:
     """Each completed word form carries its wired twin's claim payload."""
-    from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
-
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     by_phrase = {entry.phrase: entry for entry in tax.token_lexicon.entries}
 
@@ -266,17 +263,17 @@ def test_inflection_expansion_refuses_authored_conflict(tmp_path: Path) -> None:
         TokenLexicon.load_json(lexicon_path)
 
 
-def test_loaded_lexicon_expansion_never_loses_authored_entries() -> None:
+def test_loaded_lexicon_expansion_never_loses_authored_entries(
+    tax: DomainTaxonomy,
+) -> None:
     """Every authored entry survives expansion; gains are generated twins."""
     from collections import Counter
 
     from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
-    from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 
     paths = resolve_xbrl_paths()
     raw = json.loads(paths.default_token_lexicon_path.read_text(encoding="utf-8"))
     authored = Counter(LexiconEntry.from_dict(item) for item in raw)
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     expanded = Counter(tax.token_lexicon.entries)
     assert authored - expanded == Counter()
@@ -305,11 +302,8 @@ def test_loaded_lexicon_expansion_never_loses_authored_entries() -> None:
     assert ("purchase",) not in by_phrase and ("purchases",) in by_phrase
 
 
-def test_loaded_lexicon_rp_partner_admissions() -> None:
+def test_loaded_lexicon_rp_partner_admissions(tax: DomainTaxonomy) -> None:
     """R/P partner admissions and the one deliberate absence are pinned."""
-    from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
-
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     by_phrase = {entry.phrase: entry for entry in tax.token_lexicon.entries}
     other = by_phrase[("other",)]
@@ -353,11 +347,8 @@ def test_coordination_relation_kind_loads() -> None:
         )
 
 
-def test_loaded_lexicon_carries_and_coordination_entry() -> None:
+def test_loaded_lexicon_carries_and_coordination_entry(tax: DomainTaxonomy) -> None:
     """The loaded lexicon carries exactly one bare `and` coordination entry."""
-    from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
-
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     matches = [entry for entry in tax.token_lexicon.entries if entry.phrase == ("and",)]
     assert len(matches) == 1
@@ -420,11 +411,10 @@ def test_grammatical_frame_record_parses_head() -> None:
     assert plain.head is None
 
 
-def test_loaded_taxonomy_attaches_proceeds_frames_with_heads() -> None:
+def test_loaded_taxonomy_attaches_proceeds_frames_with_heads(
+    tax: DomainTaxonomy,
+) -> None:
     """The shipped proceeds frames reach the lexicon with H_CASH declared."""
-    from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
-
-    tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     led = tax.token_lexicon.match_grammatical_frame(("Proceeds", "From", "Borrowings"))
     assert led is not None
@@ -436,3 +426,46 @@ def test_loaded_taxonomy_attaches_proceeds_frames_with_heads() -> None:
     assert elided is not None
     assert elided.frame_id == "FRAME_INFLOW_PROCEEDS"
     assert elided.head == "H_CASH"
+
+
+def test_inflection_override_applies_and_validates(tmp_path: Path) -> None:
+    """An override lands as field values; an invalid one stays a loader error."""
+    lexicon_path = tmp_path / "token_lexicon.json"
+    lexicon_path.write_text(
+        json.dumps(
+            [
+                {
+                    "phrase": ["Commercial", "Paper"],
+                    "claim": "head",
+                    "head": "H_LIABILITY",
+                    "claim_class": "PRIMARY",
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    inflections_path = tmp_path / "inflections.json"
+    inflections_path.write_text(
+        json.dumps(
+            {
+                "forms": {"paper": ["paper", "papers"]},
+                "overrides": {"commercial papers": {"claim_class": "TAIL"}},
+            }
+        ),
+        encoding="utf-8",
+    )
+    lex = TokenLexicon.load_json(lexicon_path)
+    by_phrase = {entry.phrase: entry for entry in lex.entries}
+    assert by_phrase[("commercial", "papers")].claim_class == "TAIL"
+    assert by_phrase[("commercial", "paper")].claim_class == "PRIMARY"
+    inflections_path.write_text(
+        json.dumps(
+            {
+                "forms": {"paper": ["paper", "papers"]},
+                "overrides": {"commercial papers": {"claim_class": "BOGUS"}},
+            }
+        ),
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="must declare a claim class"):
+        TokenLexicon.load_json(lexicon_path)
