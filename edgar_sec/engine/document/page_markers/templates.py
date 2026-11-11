@@ -41,6 +41,7 @@ _ITEM_HEADING_ALT = build_alternation(
     compact=True,
 )
 _ITEM_HEADING_RE = re.compile(rf"(?i)^\s*(?:{_ITEM_HEADING_ALT})\s+[a-z]")
+_NOTE_CAPTION_RE = re.compile(r"(?i)^\s*note\s+\d{1,3}(?:\s*[\.\):\-]\s*|\s+)[a-z]")
 _RE_BARE_PERCENT = re.compile(r"^[+-]?\d+(?:\.\d+)?%$")
 _RE_CHECKBOX_LINE = re.compile(r"\[[ xX_]\]")
 
@@ -110,6 +111,8 @@ def eligible_line(
     if unit_kind == "table" and not allow_table:
         return False
     if looks_like_prose(stripped):
+        return False
+    if _NOTE_CAPTION_RE.match(stripped):
         return False
     if _ITEM_HEADING_RE.search(stripped):
         return False

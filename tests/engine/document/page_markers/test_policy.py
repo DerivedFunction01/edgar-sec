@@ -169,6 +169,25 @@ def test_a_removal_overlapping_a_compact_table_widens_to_the_whole_table() -> No
     assert result.count("</TABLE>") == result.count("<TABLE>")
 
 
+def test_a_compact_table_with_undecided_content_is_not_widened_into() -> None:
+    # Only the page-of-total line carries a decision; the data lines beside
+    # it are content, so the removal stays on the marker's own line.
+    text = (
+        "Intro\n"
+        "<TABLE>\n"
+        "Category A          100\n"
+        "Page 1 of 2\n"
+        "Category B          200\n"
+        "</TABLE>\n"
+        "Outro\n"
+    )
+    result, _artifacts, _templates, _next_id = apply_page_markers(text)
+    assert "Category A          100" in result
+    assert "Category B          200" in result
+    assert "<TABLE>" in result
+    assert "Page 1 of 2" not in result
+
+
 def test_artifact_ids_are_assigned_in_source_order() -> None:
     text = _paged(4, header="ABC CORP")
     _result, artifacts, _templates, _next_id = apply_page_markers(text)
