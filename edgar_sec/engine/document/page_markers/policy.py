@@ -15,6 +15,8 @@ from edgar_sec.foundation.text.healing import NEGATIVE_BOUNDARY_RE
 from edgar_sec.foundation.text.patterns import RE_TERMINAL_BOUNDARY
 
 from .artifacts import note_template, render_page_artifact, token_kind_for
+from .candidates import line_for_offset
+from .candidates import line_offsets as compute_line_offsets
 from .detector import analyze_page_markers
 from .models import (
     PageArtifactPolicy,
@@ -68,6 +70,27 @@ def _expand_table_range(
         if t_start < end and t_end > start:
             return t_start, t_end
     return start, end
+
+
+def _table_fully_decided(
+    document_lines: list[str],
+    offsets: list[int],
+    decided_lines: set[int],
+    start: int,
+    end: int,
+) -> bool:
+    """Return whether every content line of a table carries a removal decision.
+    Tag and blank lines are structure, not content: they neither earn nor block widening.
+    """
+    first = line_for_offset(offsets, start)
+    last = line_for_offset(offsets, max(start, end - 1))
+    for index in range(first, last + 1):
+        stripped = document_lines[index].strip()
+        if not stripped or stripped.casefold() in {"<table>", "</table>"}:
+            continue
+        if index not in decided_lines:
+            return False
+    return True
 
 
 def _removal_range(
@@ -171,10 +194,26 @@ def apply_page_markers(
     # Overlapping decisions merge into one range so artifact ids stay sequential.
     ranges: list[list] = []  # [start, end, [artifact, ...]]
     all_tables = _find_table_ranges(document)
+    document_lines = document.splitlines()
+    offsets = compute_line_offsets(document_lines)
+    decided_lines: set[int] = set()
+    for decision in analysis.decisions:
+        if decision.action not in {
+            PageMarkerAction.REMOVE,
+            PageMarkerAction.NORMALIZE,
+        }:
+            continue
+        marker = decision.marker
+        if marker.coordinate_frame != "text":
+            continue
+        first = line_for_offset(offsets, marker.start)
+        last = line_for_offset(offsets, max(marker.start, marker.end - 1))
+        decided_lines.update(range(first, last + 1))
     table_ranges = [
         (start, end)
         for start, end, lines in all_tables
         if lines <= _MAX_COMPACT_TABLE_LINES
+        and _table_fully_decided(document_lines, offsets, decided_lines, start, end)
     ]
     oversized_tables = [
         (start, end)

@@ -266,6 +266,37 @@ def test_a_validated_anchored_run_admits_its_members_with_evidence() -> None:
     assert rejections == ()
 
 
+def test_a_lone_heading_digit_is_not_admitted_without_a_repeated_line_shape() -> None:
+    lines = [
+        "1 Nature of Business",
+        "2 Basis of Presentation",
+        "3 Summary of Significant Accounting Policies",
+    ]
+    candidates = [c for c in (_cand(line, i * 2) for i, line in enumerate(lines)) if c]
+    assert [c.family for c in candidates] == [PageMarkerKind.NUMBER_FIRST] * 3
+    markers, runs, accepted, rejections = promote_groups(candidates, anchored=True)
+    assert markers == []
+    assert runs == []
+    assert accepted == []
+    assert "uncorroborated_sub_span_template" in rejections
+
+
+def test_a_repeated_running_head_admits_its_trailing_numbers() -> None:
+    lines = [f"ACME Corp Annual Report  {value}" for value in (1, 2, 3, 4)]
+    candidates = [c for c in (_cand(line, i * 2) for i, line in enumerate(lines)) if c]
+    assert candidates and all(
+        c.family == PageMarkerKind.TRAILING_NUMBER for c in candidates
+    )
+    markers, _runs, _accepted, rejections = promote_groups(candidates, anchored=True)
+    assert [marker.page_number for marker in markers] == [1, 2, 3, 4]
+    assert "uncorroborated_sub_span_template" not in rejections
+
+
+def test_the_incorporation_cover_line_is_prose_under_the_guard() -> None:
+    line = "(State or other jurisdiction of incorporation or organization)"
+    assert looks_like_prose(line)
+
+
 def test_marker_for_candidate_carries_the_candidate_identity_forward() -> None:
     candidate = _cand("- 3 -", 4)
     assert candidate is not None

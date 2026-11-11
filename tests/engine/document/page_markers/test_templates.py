@@ -119,6 +119,22 @@ def test_item_and_numbered_form_headings_are_never_furniture() -> None:
     )
 
 
+def test_a_note_caption_line_is_never_furniture() -> None:
+    assert (
+        eligible_line("Note 1. Nature of Business", set(), 0, None, allow_table=False)
+        is False
+    )
+    assert (
+        eligible_line(
+            "Note 2. Basis of Presentation", set(), 0, "table", allow_table=True
+        )
+        is False
+    )
+    # A bare note label carries no caption text: like the bare item label
+    # it stays eligible, and the repeat machinery decides its fate.
+    assert eligible_line("Note 12", set(), 0, "table", allow_table=True) is True
+
+
 def test_a_tag_carrying_a_spaced_attribute_is_a_furniture_candidate() -> None:
     # The standalone-tag test admits only an attribute-free tag name, so `<font size=2>`
     # is neither refused as a tag nor treated as prose.

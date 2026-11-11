@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import bisect
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 from collections.abc import Callable
 from itertools import pairwise
 from statistics import median
@@ -608,6 +608,17 @@ def marker_for_candidate(
     )
 
 
+def _is_sub_span(candidate: PageCandidate) -> bool:
+    """Return whether a candidate cuts a number out of a longer line.
+    The candidate's span is the number's own offsets; a whole-line label's span covers its text.
+    """
+    return candidate.family in {
+        PageMarkerKind.NUMBER_FIRST,
+        PageMarkerKind.TRAILING_NUMBER,
+        PageMarkerKind.INLINE_PAGE_NUMBER,
+    } and candidate.end - candidate.start < len(candidate.text.strip())
+
+
 def promote_groups(
     candidates: list[PageCandidate],
     *,
@@ -634,6 +645,21 @@ def promote_groups(
     accepted: list[PageCandidate] = []
     rejections: list[str] = []
     for members in groups.values():
+        # A sub-span number is corroborated only when its line shape repeats inside the
+        # group: a running head recurs, a numbered heading's digit stands alone.
+        template_counts = Counter(
+            candidate.template for candidate in members if _is_sub_span(candidate)
+        )
+        kept = [
+            candidate
+            for candidate in members
+            if not _is_sub_span(candidate) or template_counts[candidate.template] >= 2
+        ]
+        if len(kept) < len(members):
+            rejections.append("uncorroborated_sub_span_template")
+        members = kept
+        if not members:
+            continue
         if not anchored and cluster_is_table_like(members):
             rejections.append("table_like_cluster")
             continue
