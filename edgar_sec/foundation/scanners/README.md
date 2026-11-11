@@ -6,7 +6,7 @@ text scanners that run on every `check.py` invocation, so a violation fails the
 build instead of being noticed later. It is not a linter and not a formatter: ruff
 handles style, and this package handles architecture.
 
-`AGENTS.md` §5 lists the registered rules and what each one enforces. Each scanner
+`docs/scanners.md` lists the registered rules and what each one enforces. Each scanner
 carries its own exemptions inline, so the rule a scanner enforces and the files it
 cannot apply to stay one edit in one place. There is no configuration file here: a
 line that trips a scanner can only be silenced by changing the scanner.
@@ -39,7 +39,7 @@ shim is usually announced in prose rather than in code.
 - Run the gate from the repository root, because discovery is cwd-anchored.
 - A new scanner means: a module in this package, an entry in `ALL_SCANNERS`, a
   mirrored `tests/foundation/scanners/test_<name>.py`, and a line in the
-  `AGENTS.md` §5 list.
+  `docs/scanners.md` catalog.
 - Do not raise a finding from a comment when the rule is about code. Turn off
   comment skipping only when the prose is the point.
 - Do not add an exemption broad enough to neuter a rule. A rule that is only
@@ -70,7 +70,7 @@ and findings, and exits non-zero when any scanner reported:
 ## Deliberate gaps
 
 - **No auto-fix.** Every scanner reports and stops; `check.py --fix` runs ruff only.
-- **No severity model.** `file-length` reads as advice in `AGENTS.md` §5 and its
+- **No severity model.** `file-length` reads as advice in `docs/scanners.md` and its
   hint says "consider refactoring", but in practice it blocks the gate exactly as a
   hard violation does. Either the rule or the wording should change.
 - **No suppression mechanism.** No `noqa` equivalent, no allowlist file, no
