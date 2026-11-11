@@ -21,7 +21,10 @@ from edgar_sec.domain.taxonomy.statements.predicates import (
     is_financial_table_tail_line,
 )
 from edgar_sec.engine.document.page_markers.detector import is_page_marker_line
-from edgar_sec.engine.document.page_markers.models import PageMarkerAnalysis
+from edgar_sec.engine.document.page_markers.models import (
+    PageArtifactPolicy,
+    PageMarkerAnalysis,
+)
 from edgar_sec.engine.document.page_markers.policy import (
     apply_fast_html_page_policy,
     apply_text_policy,
@@ -167,6 +170,7 @@ def normalize_document(
     form: str | None = None,
     document_path: str | None = None,
     content_route: DocumentRoute | None = None,
+    page_policy: PageArtifactPolicy = PageArtifactPolicy.STRIP,
 ) -> NormalizationResult:
     """Normalize one raw filing payload."""
     route = (
@@ -197,10 +201,12 @@ def normalize_document(
             _next_id,
             table_geometries,
         ) = apply_fast_html_page_policy(
-            text, unwrap_false_tables=profile.unwrap_false_tables
+            text, policy=page_policy, unwrap_false_tables=profile.unwrap_false_tables
         )
     else:
-        text, analysis, _artifacts, _templates, _next_id = apply_text_policy(text)
+        text, analysis, _artifacts, _templates, _next_id = apply_text_policy(
+            text, policy=page_policy
+        )
 
     boundary = find_cover_boundary_for_profile(
         BoundaryInput(
