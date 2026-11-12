@@ -10,20 +10,22 @@ from edgar_sec.engine.document.page_markers.models import (
     PageMarkerAction,
     PageMarkerKind,
 )
-from edgar_sec.engine.document.page_markers.templates import (
-    LOCAL_DENSITY,
+from edgar_sec.engine.document.page_markers.eligibility import eligible_line
+from edgar_sec.engine.document.page_markers.observations import (
     MAX_FURNITURE_CHARS,
     MAX_FURNITURE_LINES,
-    PERSISTENT_MIN_ANCHORS,
-    PERSISTENT_MIN_CLUSTERS,
     Observation,
-    analyze_repeating_headers,
-    clean_template,
     clusters,
     collect_window,
-    eligible_line,
     is_table_tag,
     merge_observations,
+)
+from edgar_sec.engine.document.page_markers.templates import (
+    LOCAL_DENSITY,
+    PERSISTENT_MIN_ANCHORS,
+    PERSISTENT_MIN_CLUSTERS,
+    analyze_repeating_headers,
+    clean_template,
 )
 
 
@@ -141,6 +143,19 @@ def test_a_statement_title_line_is_never_furniture() -> None:
         )
         is False
     )
+
+
+def test_a_cross_reference_line_is_never_furniture() -> None:
+    # Specimens: F-1/A 0001002334-08-000136 footer; SC 13G cover instructions.
+    for line in (
+        "See Accountants\u2019 Audit Report",
+        "See Note 1.",
+        "Please see Note 1.",
+        " *  SEE INSTRUCTIONS BEFORE FILLING OUT",
+        "**SEE ITEM 4(b).",
+    ):
+        assert eligible_line(line, set(), 0, None, allow_table=False) is False
+        assert eligible_line(line, set(), 0, "table", allow_table=True) is False
 
 
 def test_a_proxy_statement_running_head_stays_furniture_eligible() -> None:
@@ -470,3 +485,51 @@ def test_a_cusip_identifier_line_is_never_a_furniture_observation() -> None:
     assert (
         eligible_line("CUSIP No. 92335110", set(), 0, None, allow_table=True) is False
     )
+
+
+def test_a_lone_initial_is_never_a_furniture_candidate() -> None:
+    # A stacked letterhead's first fragment: 0001193125-25-164006 ("T.").
+    assert eligible_line("T.", set(), 0, None, allow_table=False) is False
+    assert eligible_line("T", set(), 0, None, allow_table=False) is False
+
+
+def test_a_continuation_title_is_never_a_furniture_candidate() -> None:
+    # Section-title continuation swept by a running-head block: 0001398344-19-019336.
+    line = "Company Management (Unaudited) (continued)"
+    assert eligible_line(line, set(), 0, None, allow_table=False) is False
+    # A bare continuation marker alone carries no title and stays eligible.
+    assert eligible_line("(continued)", set(), 0, None, allow_table=False) is True
+
+
+def test_a_dated_title_line_is_never_a_furniture_candidate() -> None:
+    # Dated prospectus title at a page edge: 0000072499-15-000002.
+    line = "Allianz Index Advantage\u00ae Variable Annuity Prospectus \u2013 April 27, 2015"
+    assert eligible_line(line, set(), 0, None, allow_table=False) is False
+    # A short line that merely ends in a date is not a dated title.
+    assert (
+        eligible_line("April 27, 2015 Prospectus", set(), 0, None, allow_table=False)
+        is True
+    )
+    # A period banner carries its date without a dash and stays furniture.
+    banner = "FOR THE YEAR END DECEMBER 31, 2025"
+    assert eligible_line(banner, set(), 0, None, allow_table=False) is True
+
+
+def test_a_stacked_fragment_letterhead_block_is_not_removed() -> None:
+    # Letterhead fragments stacked one token per line: 0001193125-25-164006.
+    lines: list[str] = []
+    for index in range(1, 7):
+        lines.extend(["<PAGE>", "ROWE", "", "PRICE", "", f"Body {index}"])
+    _templates, markers, _decisions = analyze_repeating_headers(
+        "\n".join(lines), [_marker(index * 6) for index in range(6)]
+    )
+    assert markers == []
+
+
+def test_a_two_line_banner_block_is_still_removed() -> None:
+    # Control: a multi-token banner block is line furniture, not a fragment stack.
+    text = _paged(5, header="ABC CORP\nANNUAL REPORT")
+    _templates, markers, _decisions = analyze_repeating_headers(
+        text, [_marker(index * 3) for index in range(5)]
+    )
+    assert markers

@@ -7,10 +7,10 @@ from __future__ import annotations
 
 import re
 from collections import defaultdict
-from dataclasses import dataclass
 
 from .candidates import line_offsets, looks_like_prose
-from .content_lines import is_content_line, is_rule_line
+from .content_lines import has_cross_reference, is_statement_title
+from .eligibility import eligible_line
 from .models import (
     PageMarker,
     PageMarkerAction,
@@ -18,11 +18,16 @@ from .models import (
     PageMarkerKind,
     TemplateEvidence,
 )
-from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.dates import MONTH_RE, NUMERIC_DATE_RE, parse_date
+from .observations import (
+    _ALPHA_WORD_RE,
+    Observation,
+    clusters,
+    collect_window,
+    is_table_tag,
+    merge_observations,
+)
 from .units import classify_units
 
-_STANDALONE_TAG_RE = re.compile(r"^\s*</?[a-zA-Z][^>\s]{0,30}>\s*$")
 _PAGE_TOKEN_RE = re.compile(r"\bpage\s+\d{1,4}\b", re.IGNORECASE)
 _TRAILING_NUMBER_RE = re.compile(
     r"\s+(?:[a-z]-)?(?:\d{1,4}|[ivxlcdm]{1,8})\s*$",
@@ -33,30 +38,9 @@ _STANDALONE_PAGE_NUMBER_RE = re.compile(
     re.IGNORECASE,
 )
 _WHITESPACE_RE = re.compile(r"\s+")
-_ALPHA_WORD_RE = re.compile(r"[a-z]")
-_ITEM_HEADING_ALT = build_alternation(
-    (
-        r"item\s+[0-9a-z]+[.:]?",
-        r"\(?[0-9]{1,2}\s*[\.\):]?",
-    ),
-    auto_escape=False,
-    compact=True,
-)
-_ITEM_HEADING_RE = re.compile(rf"(?i)^\s*(?:{_ITEM_HEADING_ALT})\s+[a-z]")
-_NOTE_CAPTION_RE = re.compile(r"(?i)^\s*note\s+\d{1,3}(?:\s*[\.\):\-]\s*|\s+)[a-z]")
-_FORM_PREFIX_RE = re.compile(r"(?i)^\s*form\s+")
-_BARE_ITEM_LABEL_RE = re.compile(r"(?i)^\(\s*[a-z0-9]{1,3}\s*\)$")
-_DATE_QUALIFIER_RE = re.compile(r"\((?:unaudited|continued)\)", re.IGNORECASE)
-_NON_DATE_TOKEN_RE = re.compile(r"[\d,.\s]+")
-_RE_BARE_PERCENT = re.compile(r"^[+-]?\d+(?:\.\d+)?%$")
-_RE_CHECKBOX_LINE = re.compile(r"\[[ xX_]\]")
-#: Templates are casefolded with values masked, so a bare vocabulary test suffices.
-_TITLE_TEMPLATE_RE = re.compile(r"statement|balance\s+sheet")
+_PURE_ALPHA_TOKEN_RE = re.compile(r"^[A-Za-z]{2,}\.?$")
 
-MAX_FURNITURE_LINES = 8
-MAX_FURNITURE_CHARS = 1200
 LOCAL_DENSITY = 0.65
-MAX_ANCHOR_GAP = 2
 PERSISTENT_MIN_ANCHORS = 8
 PERSISTENT_MIN_PRESENCE = 0.05
 PERSISTENT_MIN_CLUSTERS = 3
@@ -80,243 +64,15 @@ def clean_template(line: str) -> str:
     return trailing.strip() if alpha_words >= MIN_BANNER_WORDS else normalized.strip()
 
 
-@dataclass(frozen=True, slots=True)
-class Observation:
-    """One page-adjacent furniture candidate line observed from one anchor."""
-
-    side: str
-    slot: int
-    template: str
-    line_index: int
-    raw: str
-    anchor_position: int
-    anchor_line: int | None
-
-
-def is_table_tag(stripped: str) -> bool:
-    """Return whether the stripped line is a bare table open/close tag."""
-    return stripped.casefold() in {"<table>", "</table>"}
-
-
-def _is_form_caption(stripped: str) -> bool:
-    """Return whether the line is a form caption: "Form" plus its numeric designation.
-    The designation's shape is the governed numeric-date pattern, not a private one.
+def _is_fragment_stack(block_lines: list[str]) -> bool:
+    """Return whether a block is a letterhead set in stacked one-token fragments.
+    Every line a single token with at least two purely alphabetic tokens is one banner split across lines, not line furniture; a label stack ("Page", "12") has one alphabetic line and still goes.
     """
-    return bool(_FORM_PREFIX_RE.match(stripped) and NUMERIC_DATE_RE.search(stripped))
-
-
-def _is_date_line(stripped: str) -> bool:
-    """Return whether the whole line is one date, ignoring audit/continuation qualifiers."""
-    rest = _WHITESPACE_RE.sub(" ", _DATE_QUALIFIER_RE.sub(" ", stripped)).strip(" ,")
-    if not rest or len(rest.split()) > 5 or parse_date(rest) is None:
+    if len(block_lines) < 2:
         return False
-    return not _NON_DATE_TOKEN_RE.sub(" ", MONTH_RE.sub(" ", rest)).strip()
-
-
-def eligible_line(
-    line: str,
-    toc_lines: set[int],
-    line_index: int,
-    unit_kind: str | None,
-    *,
-    allow_table: bool,
-) -> bool:
-    """Return whether a candidate line may become a furniture observation.
-    In-table and contents lines repeat because their container does, so they are refused unless the caller admits table furniture. A bare table tag is structure, never furniture text: a table is considered only as a whole block.
-    """
-    stripped = line.strip()
-    if not stripped or line_index in toc_lines:
+    if any(len(line.split()) != 1 for line in block_lines):
         return False
-    if is_table_tag(stripped):
-        return False
-    if _STANDALONE_TAG_RE.match(stripped):
-        return False
-    if unit_kind == "table" and not allow_table:
-        return False
-    if looks_like_prose(stripped):
-        return False
-    if is_content_line(stripped):
-        return False
-    if _is_date_line(stripped):
-        return False
-    if _is_form_caption(stripped):
-        return False
-    if _BARE_ITEM_LABEL_RE.match(stripped):
-        return False
-    if is_rule_line(stripped):
-        return False
-    if _NOTE_CAPTION_RE.match(stripped):
-        return False
-    if _ITEM_HEADING_RE.search(stripped):
-        return False
-    if _RE_BARE_PERCENT.fullmatch(stripped):
-        return False
-    if _RE_CHECKBOX_LINE.search(stripped):
-        return False
-    return not len(stripped) > 140
-
-
-def collect_window(
-    lines: list[str],
-    anchor: int,
-    direction: int,
-    boundary_lines: set[int],
-    *,
-    allow_table: bool = False,
-) -> list[tuple[int, str]]:
-    """Collect a bounded non-empty furniture window around one anchor.
-    Bounded in lines, characters, and the next page boundary, so a breakless cover cannot donate its whole first page.
-    """
-    result: list[tuple[int, str]] = []
-    index = anchor + direction
-    # Skip contiguous boundary lines and <PAGE> tags at this anchor cluster
-    while 0 <= index < len(lines) and (
-        index in boundary_lines
-        or lines[index].strip().casefold() in {"<page>", "</page>"}
-    ):
-        index += direction
-    characters = 0
-    while 0 <= index < len(lines) and len(result) < MAX_FURNITURE_LINES:
-        if index in boundary_lines:
-            break
-        stripped = lines[index].strip()
-        if not stripped:
-            index += direction
-            continue
-        if stripped.casefold() in {"<page>", "</page>"}:
-            break
-        if is_table_tag(stripped):
-            if not allow_table:
-                break
-            if direction > 0 and stripped.casefold() == "<table>":
-                close_idx = next(
-                    (
-                        i
-                        for i in range(
-                            index + 1, min(len(lines), index + MAX_FURNITURE_LINES)
-                        )
-                        if lines[i].strip().casefold() == "</table>"
-                    ),
-                    None,
-                )
-                if close_idx is None:
-                    break
-                for tbl_i in range(index, close_idx + 1):
-                    result.append((tbl_i, lines[tbl_i]))
-                index = close_idx + 1
-                continue
-            if direction < 0 and stripped.casefold() == "</table>":
-                open_idx = next(
-                    (
-                        i
-                        for i in range(
-                            index - 1, max(-1, index - MAX_FURNITURE_LINES), -1
-                        )
-                        if lines[i].strip().casefold() == "<table>"
-                    ),
-                    None,
-                )
-                if open_idx is None:
-                    break
-                for tbl_i in range(index, open_idx - 1, -1):
-                    result.append((tbl_i, lines[tbl_i]))
-                index = open_idx - 1
-                continue
-            break
-        if _STANDALONE_TAG_RE.match(stripped):
-            break
-        characters += len(lines[index])
-        if characters > MAX_FURNITURE_CHARS:
-            break
-        result.append((index, lines[index]))
-        index += direction
-    return result
-
-
-def clusters(
-    members: list[Observation],
-) -> list[tuple[list[Observation], int, int, float]]:
-    """Split observations into local anchor clusters with local density.
-    Density is the fraction of anchor positions in the span carrying the template.
-    """
-    by_position: dict[int, list[Observation]] = defaultdict(list)
-    for member in members:
-        by_position[member.anchor_position].append(member)
-    positions = sorted(by_position)
-    groups: list[list[int]] = []
-    current: list[int] = []
-    for position in positions:
-        if current and position - current[-1] > MAX_ANCHOR_GAP:
-            groups.append(current)
-            current = []
-        current.append(position)
-    if current:
-        groups.append(current)
-    result: list[tuple[list[Observation], int, int, float]] = []
-    for cluster_positions in groups:
-        start, end = cluster_positions[0], cluster_positions[-1]
-        cluster_members = [
-            member for member in members if member.anchor_position in cluster_positions
-        ]
-        density = len(cluster_positions) / (end - start + 1)
-        result.append((cluster_members, start, end, density))
-    return result
-
-
-def merge_observations(
-    observations: list[Observation],
-    lines: list[str],
-    offsets: list[int],
-) -> list[tuple[int, int, int, int, str]]:
-    """Merge only fully validated adjacent lines into block spans.
-    A body line between two furniture lines splits the span, so removal never covers an unbacked line.
-    """
-    by_anchor: dict[tuple[str, int], list[Observation]] = defaultdict(list)
-    for observation in observations:
-        by_anchor[(observation.side, observation.anchor_position)].append(observation)
-    ranges: list[tuple[int, int, int, int, str]] = []
-    for (side, anchor_position), members in by_anchor.items():
-        del anchor_position
-        members.sort(key=lambda item: item.line_index)
-        selected = {member.line_index for member in members}
-        start = previous = members[0].line_index
-        for member in members[1:]:
-            between = range(previous + 1, member.line_index)
-            if any(
-                lines[index].strip()
-                and not is_table_tag(lines[index].strip())
-                and index not in selected
-                for index in between
-            ):
-                ranges.append(
-                    (
-                        start,
-                        previous,
-                        offsets[start],
-                        offsets[previous] + len(lines[previous]),
-                        side,
-                    )
-                )
-                start = member.line_index
-            previous = member.line_index
-        while start > 0 and lines[start - 1].strip().casefold() == "<table>":
-            start -= 1
-        end_line = previous
-        while (
-            end_line + 1 < len(lines)
-            and lines[end_line + 1].strip().casefold() == "</table>"
-        ):
-            end_line += 1
-        ranges.append(
-            (
-                start,
-                end_line,
-                offsets[start],
-                offsets[end_line] + len(lines[end_line]),
-                side,
-            )
-        )
-    return ranges
+    return sum(1 for line in block_lines if _PURE_ALPHA_TOKEN_RE.match(line)) >= 2
 
 
 def _deduplicate_anchors(anchor_lines: list[int]) -> list[int]:
@@ -597,7 +353,7 @@ def analyze_repeating_headers(
             and start <= other_end + 1
         }
         variable = len(variants) > 1
-        titled = side == "header" and _TITLE_TEMPLATE_RE.search(template) is not None
+        titled = side == "header" and is_statement_title(template)
         role = (
             "footer"
             if side == "footer"
@@ -698,6 +454,12 @@ def analyze_repeating_headers(
         ]
         if len(block_lines) >= 2 and looks_like_prose(" ".join(block_lines)):
             continue
+        if _is_fragment_stack(block_lines):
+            continue
+        # A cross-reference line fused into the block vetoes it whole: trimming
+        # around it would fragment the line the veto exists to keep intact.
+        if any(has_cross_reference(block_line) for block_line in block_lines):
+            continue
         raw = text[start:end]
         side = "header" if header_lines >= footer_lines else "footer"
         kind = (
@@ -733,18 +495,9 @@ def analyze_repeating_headers(
 
 __all__ = [
     "LOCAL_DENSITY",
-    "MAX_ANCHOR_GAP",
-    "MAX_FURNITURE_CHARS",
-    "MAX_FURNITURE_LINES",
     "PERSISTENT_MIN_ANCHORS",
     "PERSISTENT_MIN_CLUSTERS",
     "PERSISTENT_MIN_PRESENCE",
-    "Observation",
     "analyze_repeating_headers",
     "clean_template",
-    "clusters",
-    "collect_window",
-    "eligible_line",
-    "is_table_tag",
-    "merge_observations",
 ]
