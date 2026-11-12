@@ -10,6 +10,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 
 from .candidates import line_offsets, looks_like_prose
+from .content_lines import is_content_line, is_rule_line
 from .models import (
     PageMarker,
     PageMarkerAction,
@@ -18,6 +19,7 @@ from .models import (
     TemplateEvidence,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.dates import MONTH_RE, NUMERIC_DATE_RE, parse_date
 from .units import classify_units
 
 _STANDALONE_TAG_RE = re.compile(r"^\s*</?[a-zA-Z][^>\s]{0,30}>\s*$")
@@ -42,8 +44,14 @@ _ITEM_HEADING_ALT = build_alternation(
 )
 _ITEM_HEADING_RE = re.compile(rf"(?i)^\s*(?:{_ITEM_HEADING_ALT})\s+[a-z]")
 _NOTE_CAPTION_RE = re.compile(r"(?i)^\s*note\s+\d{1,3}(?:\s*[\.\):\-]\s*|\s+)[a-z]")
+_FORM_PREFIX_RE = re.compile(r"(?i)^\s*form\s+")
+_BARE_ITEM_LABEL_RE = re.compile(r"(?i)^\(\s*[a-z0-9]{1,3}\s*\)$")
+_DATE_QUALIFIER_RE = re.compile(r"\((?:unaudited|continued)\)", re.IGNORECASE)
+_NON_DATE_TOKEN_RE = re.compile(r"[\d,.\s]+")
 _RE_BARE_PERCENT = re.compile(r"^[+-]?\d+(?:\.\d+)?%$")
 _RE_CHECKBOX_LINE = re.compile(r"\[[ xX_]\]")
+#: Templates are casefolded with values masked, so a bare vocabulary test suffices.
+_TITLE_TEMPLATE_RE = re.compile(r"statement|balance\s+sheet")
 
 MAX_FURNITURE_LINES = 8
 MAX_FURNITURE_CHARS = 1200
@@ -90,6 +98,21 @@ def is_table_tag(stripped: str) -> bool:
     return stripped.casefold() in {"<table>", "</table>"}
 
 
+def _is_form_caption(stripped: str) -> bool:
+    """Return whether the line is a form caption: "Form" plus its numeric designation.
+    The designation's shape is the governed numeric-date pattern, not a private one.
+    """
+    return bool(_FORM_PREFIX_RE.match(stripped) and NUMERIC_DATE_RE.search(stripped))
+
+
+def _is_date_line(stripped: str) -> bool:
+    """Return whether the whole line is one date, ignoring audit/continuation qualifiers."""
+    rest = _WHITESPACE_RE.sub(" ", _DATE_QUALIFIER_RE.sub(" ", stripped)).strip(" ,")
+    if not rest or len(rest.split()) > 5 or parse_date(rest) is None:
+        return False
+    return not _NON_DATE_TOKEN_RE.sub(" ", MONTH_RE.sub(" ", rest)).strip()
+
+
 def eligible_line(
     line: str,
     toc_lines: set[int],
@@ -111,6 +134,16 @@ def eligible_line(
     if unit_kind == "table" and not allow_table:
         return False
     if looks_like_prose(stripped):
+        return False
+    if is_content_line(stripped):
+        return False
+    if _is_date_line(stripped):
+        return False
+    if _is_form_caption(stripped):
+        return False
+    if _BARE_ITEM_LABEL_RE.match(stripped):
+        return False
+    if is_rule_line(stripped):
         return False
     if _NOTE_CAPTION_RE.match(stripped):
         return False
@@ -564,10 +597,11 @@ def analyze_repeating_headers(
             and start <= other_end + 1
         }
         variable = len(variants) > 1
+        titled = side == "header" and _TITLE_TEMPLATE_RE.search(template) is not None
         role = (
             "footer"
             if side == "footer"
-            else ("section_header" if variable else "boilerplate")
+            else ("section_header" if variable or titled else "boilerplate")
         )
         retention = (
             "remove_all" if role != "section_header" else "keep_first_per_cohort"
@@ -595,7 +629,11 @@ def analyze_repeating_headers(
         )
         first_by_template: set[str] = set()
         for member in sorted(members, key=lambda item: item.anchor_position):
-            if role == "section_header" and member.template not in first_by_template:
+            if (
+                role == "section_header"
+                and position == 0
+                and member.template not in first_by_template
+            ):
                 first_by_template.add(member.template)
                 retained_lines.add(member.line_index)
                 continue
@@ -651,6 +689,15 @@ def analyze_repeating_headers(
                 ]
             )
     for start_line, end_line, start, end, header_lines, footer_lines in coalesced:
+        # A wrapped sentence escapes the per-line prose guard line by line; judged
+        # joined, the block is prose, so no line of it is furniture.
+        block_lines = [
+            lines[index].strip()
+            for index in range(start_line, end_line + 1)
+            if lines[index].strip() and not is_table_tag(lines[index].strip())
+        ]
+        if len(block_lines) >= 2 and looks_like_prose(" ".join(block_lines)):
+            continue
         raw = text[start:end]
         side = "header" if header_lines >= footer_lines else "footer"
         kind = (

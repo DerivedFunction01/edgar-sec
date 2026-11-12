@@ -19,6 +19,7 @@ from edgar_sec.engine.document.page_markers.candidates import (
     prose_stop_words,
     toc_lines,
 )
+from edgar_sec.engine.document.page_markers.content_lines import is_content_line
 from edgar_sec.engine.document.page_markers.models import (
     PageCandidate,
     PageMarkerKind,
@@ -125,6 +126,69 @@ def test_a_long_prose_line_is_not_a_label() -> None:
 def test_prose_needs_both_a_length_and_a_grammar_signal() -> None:
     assert len(prose_stop_words("the of and to")) >= 3
     assert looks_like_prose("the of and") is False
+
+
+# Specimen lines: iteration-2 census defect_5/defect_2 filings named per group.
+@pytest.mark.parametrize(
+    "line",
+    [
+        # Jurats: 0001104659-09-028708, 0000950123-09-040787, 0001104659-10-061548.
+        "STATE OF NEW YORK   )",
+        "COUNTY OF NEW YORK  )",
+        "THE COMMONWEALTH OF MASSACHUSETTS  )",
+        "County of Suffolk              )",
+        ")ss:",
+        ")  ss:",
+        # Signature blocks: 0000950123-09-044722, 0000950144-03-008143, 0000895345-05-000821.
+        "Title:  Group General Counsel",
+        "Title:  Chief Financial Officer",
+        "By:  LAMAR MEDIA CORP.,",
+        "By:",
+        "Name:  Kristin Jumper",
+        "Name:   Ted Chang",
+    ],
+)
+def test_jurat_and_signature_lines_are_content(line: str) -> None:
+    assert is_content_line(line) is True
+
+
+@pytest.mark.parametrize(
+    "line",
+    [
+        # Schedule title: 0000930413-04-005468; ISIN line: defect_2 family D2-C specimen.
+        "Schedule of Investments (unaudited) (continued)  September 30, 2004",
+        "Schedule of Investments",
+        "ISIN MHY271831056",
+        # Statement titles and cross-references: defect_1 families A, C, E.
+        "Notes to Financial Statements (Continued)  December 31, 2008",
+        "Notes to the Consolidated Financial Statements",
+        "CONSOLIDATED STATEMENTS OF OPERATIONS (Continued)",
+        "See accompanying notes to financial statements.",
+        "See Notes to Financial Statements",
+    ],
+)
+def test_schedule_statement_and_identifier_lines_are_content(line: str) -> None:
+    assert is_content_line(line) is True
+
+
+@pytest.mark.parametrize(
+    "line",
+    [
+        # A proxy running head is not a financial-statement title (defect_1 family F).
+        "SERVISFIRST BANCSHARES, INC. - Notice of 2023 Annual Meeting of Stockholders and Proxy Statement",
+        "Board of Directors",
+        "Milwaukee, Wisconsin",
+        "State Street Global Advisors  1 of 5",
+        "Provisions of the Investment Company Act of 1940",
+    ],
+)
+def test_running_heads_and_banners_are_not_content_lines(line: str) -> None:
+    assert is_content_line(line) is False
+
+
+@pytest.mark.parametrize("line", ["------", "============", "----", "——————"])
+def test_a_rule_only_line_is_not_a_page_label_candidate(line: str) -> None:
+    assert _cand(line) is None
 
 
 def test_candidate_template_masks_arabic_and_roman_values() -> None:
@@ -278,18 +342,56 @@ def test_a_lone_heading_digit_is_not_admitted_without_a_repeated_line_shape() ->
     assert markers == []
     assert runs == []
     assert accepted == []
-    assert "uncorroborated_sub_span_template" in rejections
+    assert "heading_runin_sub_span" in rejections
 
 
-def test_a_repeated_running_head_admits_its_trailing_numbers() -> None:
+def test_a_repeated_running_head_refuses_its_trailing_numbers() -> None:
     lines = [f"ACME Corp Annual Report  {value}" for value in (1, 2, 3, 4)]
     candidates = [c for c in (_cand(line, i * 2) for i, line in enumerate(lines)) if c]
     assert candidates and all(
         c.family == PageMarkerKind.TRAILING_NUMBER for c in candidates
     )
+    markers, runs, accepted, rejections = promote_groups(candidates, anchored=True)
+    assert (markers, runs, accepted) == ([], [], [])
+    assert "heading_runin_sub_span" in rejections
+
+
+def test_a_repeated_number_first_running_head_refuses_its_numbers() -> None:
+    lines = [f"{value}  ACME Corp Annual Report" for value in (1, 2, 3, 4)]
+    candidates = [c for c in (_cand(line, i * 2) for i, line in enumerate(lines)) if c]
+    assert candidates and all(
+        c.family == PageMarkerKind.NUMBER_FIRST for c in candidates
+    )
+    markers, runs, accepted, rejections = promote_groups(candidates, anchored=True)
+    assert (markers, runs, accepted) == ([], [], [])
+    assert "heading_runin_sub_span" in rejections
+
+
+def test_a_numbered_heading_sequence_refuses_its_digits() -> None:
+    lines = [
+        "1 Nature of Business and Basis of Presentation",
+        "2 Basis of Presentation",
+        "3 Summary of Significant Accounting Policies",
+        "4 Recent Accounting Pronouncements",
+    ]
+    candidates = [c for c in (_cand(line, i * 2) for i, line in enumerate(lines)) if c]
+    assert candidates and all(
+        c.family == PageMarkerKind.NUMBER_FIRST for c in candidates
+    )
+    markers, runs, accepted, rejections = promote_groups(candidates, anchored=True)
+    assert (markers, runs, accepted) == ([], [], [])
+    assert "heading_runin_sub_span" in rejections
+
+
+def test_a_short_loose_of_total_still_admits_its_numbers() -> None:
+    lines = [f"{value} of 4" for value in (1, 2, 3, 4)]
+    candidates = [c for c in (_cand(line, i * 2) for i, line in enumerate(lines)) if c]
+    assert candidates and all(
+        c.family == PageMarkerKind.NUMBER_FIRST for c in candidates
+    )
     markers, _runs, _accepted, rejections = promote_groups(candidates, anchored=True)
     assert [marker.page_number for marker in markers] == [1, 2, 3, 4]
-    assert "uncorroborated_sub_span_template" not in rejections
+    assert "heading_runin_sub_span" not in rejections
 
 
 def test_the_incorporation_cover_line_is_prose_under_the_guard() -> None:

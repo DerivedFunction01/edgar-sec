@@ -10,8 +10,10 @@ from edgar_sec.engine.document.page_markers.artifacts import (
 from edgar_sec.engine.document.page_markers.detector import analyze_page_markers
 from edgar_sec.engine.document.page_markers.models import (
     PageArtifactPolicy,
+    PageMarker,
     PageMarkerAction,
     PageMarkerAnalysis,
+    PageMarkerDecision,
     PageMarkerKind,
     PageMarkerTerminalState,
 )
@@ -518,3 +520,191 @@ def test_apply_page_markers_strips_continuation_line_completely() -> None:
     result, artifacts, _templates, _next_id = apply_page_markers(text)
     assert result == "First\nSecond\n"
     assert len(artifacts) == 1
+
+
+def test_a_repeated_signature_table_is_not_removed_as_a_block() -> None:
+    # A signature line is cover content: its table is never furniture, however
+    # often the signature block repeats across the filing's sections.
+    text = _paged_tables(6, ["ACME CORP", "By:  /s/ JANE DOE"])
+    analysis = analyze_page_markers(text, {"allow_table_furniture": True})
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert result.count("By:  /s/ JANE DOE") == 6
+    assert result.count("<TABLE>") == 6
+
+
+def test_a_table_line_decided_only_by_an_inline_marker_is_not_widened_into() -> None:
+    # The inline page-of-total decides its own span only; the prose sharing
+    # its line is content, so the table keeps everything but the marker.
+    text = (
+        "Intro\n"
+        "<TABLE>\n"
+        "Copyright Everest Reinsurance Company, 2009 Page 1 of 2\n"
+        "</TABLE>\n"
+        "Outro\n"
+    )
+    result, _artifacts, _templates, _next_id = apply_page_markers(text)
+    assert "Copyright Everest Reinsurance Company, 2009" in result
+    assert "<TABLE>" in result
+    assert "Page 1 of 2" not in result
+
+
+def _block_analysis(
+    text: str, first_line: int, last_line: int, kind: str
+) -> PageMarkerAnalysis:
+    # One REMOVE decision whose marker covers whole lines first..last exactly.
+    lines = text.split("\n")
+    start = sum(len(line) + 1 for line in lines[:first_line])
+    end = start + sum(len(line) + 1 for line in lines[first_line:last_line])
+    end += len(lines[last_line])
+    marker = PageMarker(
+        start=start,
+        end=end,
+        text=text[start:end],
+        kind=kind,
+        start_line=first_line,
+        end_line=last_line,
+    )
+    decision = PageMarkerDecision(
+        marker=marker, action=PageMarkerAction.REMOVE, reason="test"
+    )
+    return PageMarkerAnalysis(
+        markers=(marker,),
+        decisions=(decision,),
+        page_boundaries=(),
+        source_text=text,
+    )
+
+
+def test_a_block_range_overlapping_a_table_is_unioned_not_replaced() -> None:
+    # M1 reproduction (defect_2 census): the block decision starts before a
+    # fully-decided compact table; replacing its range with the table's kept
+    # the block's head line as silent under-removal — the sub='none' orphan
+    # shape of the "Division of Corporation Finance" letterheads
+    # (0000829224-21-000090). Union removes the head and the table together.
+    text = (
+        "Division of Corporation Finance\n"
+        "<TABLE>\n"
+        "ACME CORP\n"
+        "</TABLE>\n"
+        "Body text survives.\n"
+    )
+    analysis = _block_analysis(text, 0, 2, PageMarkerKind.REPEATING_FOOTER)
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "Division of Corporation Finance" not in result
+    assert "<TABLE>" not in result
+    assert "Body text survives." in result
+
+
+def test_a_marker_inside_a_compact_table_still_widens_to_the_whole_table() -> None:
+    # Union semantics keep the atomic-table behaviour: a lone decided banner
+    # line still takes the wrapper tags with it.
+    text = "Intro\n<TABLE>\nACME CORP\n</TABLE>\nOutro\n"
+    analysis = _block_analysis(text, 2, 2, PageMarkerKind.REPEATING_HEADER)
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "<TABLE>" not in result
+    assert "ACME CORP" not in result
+    assert "Outro" in result
+
+
+def test_a_fee_table_is_not_widened_into() -> None:
+    # Specimen 0000080248-06-000005 (defect_4 D4-B): every fee line is
+    # data-shaped (a bare percent), so the compact table is not furniture
+    # however fully a block decision covers its lines.
+    text = (
+        "Intro\n"
+        "<TABLE>\n"
+        "Maximum sales load imposed on purchases (%)       None\n"
+        "Maximum contingent deferred sales charge (%)      None\n"
+        "Redemption Fees (%)                           None (1)\n"
+        "</TABLE>\n"
+        "Outro\n"
+    )
+    analysis = _block_analysis(text, 2, 4, PageMarkerKind.REPEATING_FOOTER)
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "<TABLE>" in result
+    assert "</TABLE>" in result
+    assert "Outro" in result
+
+
+def test_a_proxy_header_table_is_not_widened_into() -> None:
+    # Specimen 0001213900-20-023787 (defect_4 D4-B): the meeting/record lines
+    # carry guttered figures, so the header table is not widened over.
+    text = (
+        "Intro\n"
+        "<TABLE>\n"
+        "Ticker:          MMM         Security ID:   88579Y101\n"
+        "Meeting Date:  MAY 12, 2020  Meeting Type:  Annual\n"
+        "Record Date:   MAR 17, 2020\n"
+        "</TABLE>\n"
+        "Outro\n"
+    )
+    analysis = _block_analysis(text, 2, 4, PageMarkerKind.REPEATING_FOOTER)
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "<TABLE>" in result
+    assert "</TABLE>" in result
+
+
+def test_a_rider_table_is_not_widened_into() -> None:
+    # Specimen 0001072613-20-000194 (defect_4 D4-B): the rider row is a
+    # guttered date/identifier row, so its table is not widened over.
+    text = (
+        "Intro\n"
+        "<TABLE>\n"
+        "Rider Effective Date     Bond Holder       Bond Number      Rider\n"
+        "     11/4/2019        Barings BDC, Inc.  64-MGU-19-A48107     1\n"
+        "</TABLE>\n"
+        "Outro\n"
+    )
+    analysis = _block_analysis(text, 2, 3, PageMarkerKind.REPEATING_FOOTER)
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "<TABLE>" in result
+    assert "</TABLE>" in result
+
+
+def test_a_date_table_is_not_widened_into() -> None:
+    # A one-line date table (residual_other R-E shape) is a data table: its
+    # only content line is a full date, so coverage alone cannot widen.
+    text = "Intro\n<TABLE>\nAugust 31, 2020 (unaudited)\n</TABLE>\nOutro\n"
+    analysis = _block_analysis(text, 2, 2, PageMarkerKind.REPEATING_HEADER)
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "<TABLE>" in result
+    assert "</TABLE>" in result
+
+
+def test_a_year_header_table_is_not_widened_into() -> None:
+    # Specimen shape 0001205613-04-000173 (residual_numeric R5): a year pair
+    # is a column header, content by position, invisible to prose tests.
+    text = "Intro\n<TABLE>\n2004 / 2003\n</TABLE>\nOutro\n"
+    analysis = _block_analysis(text, 2, 2, PageMarkerKind.REPEATING_HEADER)
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "<TABLE>" in result
+    assert "</TABLE>" in result
+
+
+def test_a_rule_lined_table_is_not_widened_into() -> None:
+    # Specimen 0001539497-21-001637: rule lines are table borders, not
+    # decided content lines, so they cannot satisfy full coverage.
+    text = (
+        "Intro\n"
+        "<TABLE>\n"
+        "-------------  --------------\n"
+        "Annex A-1 ID#  Mortgage Loans\n"
+        "-------------  --------------\n"
+        "</TABLE>\n"
+        "Outro\n"
+    )
+    analysis = _block_analysis(text, 2, 4, PageMarkerKind.REPEATING_FOOTER)
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "<TABLE>" in result
+    assert "</TABLE>" in result
+
+
+def test_a_page_label_table_still_widens() -> None:
+    # Furniture control for the data/date screens: a page-of-total line is
+    # neither data-shaped nor a date line, so its table still widens whole.
+    text = "Intro\n<TABLE>\nPage 1 of 2\n</TABLE>\nOutro\n"
+    analysis = _block_analysis(text, 2, 2, PageMarkerKind.PAGE_NUMBER_OF_TOTAL)
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "<TABLE>" not in result
+    assert "Page 1 of 2" not in result
+    assert "Outro" in result

@@ -45,6 +45,7 @@ from .models import (
     PageNumberRun,
 )
 from .sequence import (
+    heading_runin,
     heal_run,
     monotone_fraction,
     unify_alternating_runs,
@@ -646,16 +647,26 @@ def promote_groups(
     rejections: list[str] = []
     for members in groups.values():
         # A sub-span number is corroborated only when its line shape repeats inside the
-        # group: a running head recurs, a numbered heading's digit stands alone.
+        # group, and refused outright when its own line text runs on into heading
+        # words: the digit of a heading or running head is part of that line.
         template_counts = Counter(
             candidate.template for candidate in members if _is_sub_span(candidate)
         )
-        kept = [
-            candidate
-            for candidate in members
-            if not _is_sub_span(candidate) or template_counts[candidate.template] >= 2
-        ]
-        if len(kept) < len(members):
+        kept = []
+        dropped_runin = False
+        dropped_uncorroborated = False
+        for candidate in members:
+            if not _is_sub_span(candidate):
+                kept.append(candidate)
+            elif heading_runin(candidate):
+                dropped_runin = True
+            elif template_counts[candidate.template] >= 2:
+                kept.append(candidate)
+            else:
+                dropped_uncorroborated = True
+        if dropped_runin:
+            rejections.append("heading_runin_sub_span")
+        if dropped_uncorroborated:
             rejections.append("uncorroborated_sub_span_template")
         members = kept
         if not members:

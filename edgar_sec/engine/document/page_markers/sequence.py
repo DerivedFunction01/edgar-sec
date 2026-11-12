@@ -4,15 +4,40 @@ A bare page label proves nothing on its own. A run of labels does: the same shap
 
 from __future__ import annotations
 
+import re
 from collections.abc import Iterable
 from itertools import pairwise
 from statistics import median
 
-from .models import InferredBoundary, PageCandidate, PageNumberRun
+from .models import InferredBoundary, PageCandidate, PageMarkerKind, PageNumberRun
 
 # Upper bound on pages interpolated across one value gap. Larger jumps are
 # typically foreign values (years, totals) inside the run, not missing pages.
 MAX_INTERPOLATED_GAP = 64
+
+_LEADING_VALUE_RUN_RE = re.compile(r"^\d{1,4}[\s.\-–—:;)]*")
+_TRAILING_VALUE_RUN_RE = re.compile(r"[\s.\-–—:;(]*\d{1,4}$")
+_HEADING_RUNIN_MIN_ALPHA = 3
+
+
+def heading_runin(candidate: PageCandidate) -> bool:
+    """Whether a digit sub-span's own line text runs on into heading words.
+    A whole-line label is furniture by shape; a run-in is a heading, caption, or running head whose digits are part of the line, so the digit alone is not a page marker.
+    """
+    if candidate.family not in {
+        PageMarkerKind.NUMBER_FIRST,
+        PageMarkerKind.TRAILING_NUMBER,
+        PageMarkerKind.DOTTED_NUMBER,
+        PageMarkerKind.PAREN_NUMBER,
+    }:
+        return False
+    if candidate.end - candidate.start >= len(candidate.text.strip()):
+        return False
+    if candidate.family == PageMarkerKind.NUMBER_FIRST:
+        rest = _LEADING_VALUE_RUN_RE.sub("", candidate.text.strip(), count=1)
+    else:
+        rest = _TRAILING_VALUE_RUN_RE.sub("", candidate.text.strip(), count=1)
+    return sum(1 for char in rest if char.isalpha()) >= _HEADING_RUNIN_MIN_ALPHA
 
 
 def monotone_fraction(values: Iterable[int], max_delta: int = 3) -> float:
@@ -170,6 +195,7 @@ def heal_run(
         and candidate.family == run.family
         and (candidate.start_line, candidate.value) not in member_ids
         and candidate.value not in member_values
+        and not heading_runin(candidate)
     ]
     promoted: list[PageCandidate] = []
     for left, right in pairwise(members):
@@ -282,6 +308,7 @@ def unify_alternating_runs(
 
 __all__ = [
     "MAX_INTERPOLATED_GAP",
+    "heading_runin",
     "heal_run",
     "monotone_fraction",
     "unify_alternating_runs",

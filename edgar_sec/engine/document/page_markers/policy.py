@@ -11,11 +11,17 @@ from dataclasses import replace
 from typing import Any
 
 from edgar_sec.engine.document.html.breaks import render_html_to_break_text
+from edgar_sec.foundation.text.dates import (
+    NUMERIC_DATE_RE,
+    RE_FULL_DATE,
+    is_year_token,
+)
 from edgar_sec.foundation.text.healing import NEGATIVE_BOUNDARY_RE
 from edgar_sec.foundation.text.patterns import RE_TERMINAL_BOUNDARY
 
 from .artifacts import note_template, render_page_artifact, token_kind_for
-from .candidates import line_for_offset
+from .candidates import has_numeric_data_shape, line_for_offset
+from .content_lines import is_content_line, is_rule_line
 from .candidates import line_offsets as compute_line_offsets
 from .detector import analyze_page_markers
 from .models import (
@@ -62,14 +68,35 @@ def _expand_table_range(
     table_ranges: list[tuple[int, int]] | None = None,
 ) -> tuple[int, int]:
     """Make a page-furniture range atomic when it touches a tagged table.
-    A marker covering only the wrapper or only the body strands the counterpart tag. Only compact tables qualify.
+    The range unions with the table instead of being replaced by it: marker text outside the table was decided too, and replacing the range silently kept it. Only compact tables qualify.
     """
     if table_ranges is None:
         table_ranges = _find_compact_table_ranges(document)
     for t_start, t_end in table_ranges:
         if t_start < end and t_end > start:
-            return t_start, t_end
+            return min(start, t_start), max(end, t_end)
     return start, end
+
+
+def _is_number_or_date_line(stripped: str) -> bool:
+    """Return whether a line carries only a date or figures, with no prose riding along.
+    A numeric date, a year pair, or a full date (an "unaudited" qualifier aside) is a data header; a lone page label is not, so it stays furniture-shaped.
+    """
+    if not any(char.isdigit() for char in stripped):
+        return False
+    if not any(char.isalpha() for char in stripped):
+        tokens = stripped.split()
+        figures = sum(1 for token in tokens if any(c.isdigit() for c in token))
+        return bool(
+            figures >= 2
+            or NUMERIC_DATE_RE.search(stripped)
+            or any(is_year_token(token.strip(",/")) for token in tokens)
+        )
+    residue = RE_FULL_DATE.sub(" ", stripped)
+    if any(char.isdigit() for char in residue):
+        return False
+    words = [word.strip("(),.").casefold() for word in residue.split()]
+    return all(word in {"", "unaudited"} for word in words)
 
 
 def _table_fully_decided(
@@ -79,18 +106,26 @@ def _table_fully_decided(
     start: int,
     end: int,
 ) -> bool:
-    """Return whether every content line of a table carries a removal decision.
-    Tag and blank lines are structure, not content: they neither earn nor block widening.
+    """Return whether every content line of a table is fully covered by a removal decision.
+    Tag and blank lines are structure, not content; a signature or CUSIP line blocks widening outright, as do a data-shaped line and a rule-only line, and a table whose content is only numbers and dates is a data table, not furniture.
     """
     first = line_for_offset(offsets, start)
     last = line_for_offset(offsets, max(start, end - 1))
+    content_lines: list[str] = []
     for index in range(first, last + 1):
         stripped = document_lines[index].strip()
         if not stripped or stripped.casefold() in {"<table>", "</table>"}:
             continue
+        if is_content_line(stripped) or is_rule_line(stripped):
+            return False
+        if has_numeric_data_shape(stripped):
+            return False
         if index not in decided_lines:
             return False
-    return True
+        content_lines.append(stripped)
+    return not content_lines or not all(
+        _is_number_or_date_line(line) for line in content_lines
+    )
 
 
 def _removal_range(
@@ -208,7 +243,14 @@ def apply_page_markers(
             continue
         first = line_for_offset(offsets, marker.start)
         last = line_for_offset(offsets, max(marker.start, marker.end - 1))
-        decided_lines.update(range(first, last + 1))
+        for index in range(first, last + 1):
+            line = document_lines[index]
+            content_start = offsets[index] + (len(line) - len(line.lstrip()))
+            content_end = offsets[index] + len(line.rstrip())
+            # A sub-line marker (an inline page-of-total, a cut digit) decides
+            # only its own span: the line's content is not decided by it.
+            if marker.start <= content_start and marker.end >= content_end:
+                decided_lines.add(index)
     table_ranges = [
         (start, end)
         for start, end, lines in all_tables
@@ -219,6 +261,17 @@ def apply_page_markers(
         (start, end)
         for start, end, lines in all_tables
         if lines > _MAX_COMPACT_TABLE_LINES
+    ]
+    content_tables = [
+        (start, end)
+        for start, end, _line_count in all_tables
+        if any(
+            is_content_line(document_lines[index].strip())
+            for index in range(
+                line_for_offset(offsets, start),
+                line_for_offset(offsets, max(start, end - 1)) + 1,
+            )
+        )
     ]
     for decision in analysis.decisions:
         if decision.action not in {
@@ -238,6 +291,20 @@ def apply_page_markers(
         ):
             # A table is furniture only as a whole block, and this block is too
             # large to be furniture: the catch is rejected, not fragmented.
+            continue
+        if (
+            marker.kind
+            in {PageMarkerKind.REPEATING_HEADER, PageMarkerKind.REPEATING_FOOTER}
+            and marker.start_line is not None
+            and marker.end_line is not None
+            and marker.end_line > marker.start_line
+            and any(
+                t_start < marker.end and t_end > marker.start
+                for t_start, t_end in content_tables
+            )
+        ):
+            # A multi-line furniture block may not fragment a table carrying
+            # cover content: the catch is rejected, not trimmed to its head.
             continue
         start, end = _removal_range(document, marker.start, marker.end, table_ranges)
         artifact = _note(marker, _artifact_for_marker(marker, source_identity))

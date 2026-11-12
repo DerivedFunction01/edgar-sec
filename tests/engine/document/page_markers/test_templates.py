@@ -119,6 +119,89 @@ def test_item_and_numbered_form_headings_are_never_furniture() -> None:
     )
 
 
+def test_a_statement_title_line_is_never_furniture() -> None:
+    # Specimens: defect_1 families A and C title lines from the census finals.
+    assert (
+        eligible_line(
+            "Notes to Financial Statements (Continued)  December 31, 2008",
+            set(),
+            0,
+            None,
+            allow_table=True,
+        )
+        is False
+    )
+    assert (
+        eligible_line(
+            "Notes to the Consolidated Financial Statements",
+            set(),
+            0,
+            "table",
+            allow_table=True,
+        )
+        is False
+    )
+
+
+def test_a_proxy_statement_running_head_stays_furniture_eligible() -> None:
+    # Specimen shape: defect_1 family F, DEF 14A proxy running heads.
+    assert (
+        eligible_line(
+            "ACME CORP  2022 Proxy Statement",
+            set(),
+            0,
+            None,
+            allow_table=False,
+        )
+        is True
+    )
+
+
+def test_a_table_wrapped_statement_title_forms_no_template() -> None:
+    lines: list[str] = []
+    for index in range(1, 6):
+        lines.extend(
+            [
+                "<PAGE>",
+                "<TABLE>",
+                "Notes to Financial Statements (Continued)  December 31, 2008",
+                "</TABLE>",
+                f"Body {index}",
+            ]
+        )
+    templates, markers, _decisions = analyze_repeating_headers(
+        "\n".join(lines),
+        [_marker(index * 5) for index in range(5)],
+        allow_table_furniture=True,
+    )
+    assert templates == ()
+    assert markers == []
+
+
+@pytest.mark.parametrize(
+    "line",
+    [
+        # Date lines: residual R8 specimens (0000088053-19-000021, 0000949365-20-000444).
+        "January 15, 2019",
+        "August 31, 2020 (unaudited)",
+        "(Unaudited)  March 31, 2006",
+        "March 31, 2024 (Unaudited)",
+        # Bare item labels: residual R7 specimens (0001193125-26-364550).
+        "(d)",
+        "(h)",
+        # Form caption: residual R3 specimen 0000894189-06-001600.
+        "Form 17-02-1360 (Rev. 10-99)",
+        # Rule-only lines: defect_5 D7 / residual R2 specimens (0000757928-03-000016).
+        "------",
+        "============",
+        "——————",
+    ],
+)
+def test_short_content_and_rule_shapes_are_never_furniture(line: str) -> None:
+    assert eligible_line(line, set(), 0, None, allow_table=False) is False
+    assert eligible_line(line, set(), 0, "table", allow_table=True) is False
+
+
 def test_a_note_caption_line_is_never_furniture() -> None:
     assert (
         eligible_line("Note 1. Nature of Business", set(), 0, None, allow_table=False)
@@ -311,10 +394,29 @@ def test_a_repeated_banner_on_the_header_side_is_boilerplate() -> None:
     assert header.kind == PageMarkerKind.REPEATING_HEADER
 
 
+def test_a_repeated_statement_title_is_never_furniture() -> None:
+    title = "CONSOLIDATED STATEMENTS OF OPERATIONS (Continued)"
+    text = _paged(5, header=title)
+    templates, markers, _decisions = analyze_repeating_headers(
+        text, [_marker(index * 3) for index in range(5)]
+    )
+    assert templates == ()
+    assert markers == []
+
+
+def test_a_titled_line_on_the_footer_side_is_never_furniture() -> None:
+    text = _paged(5, footer="Notes to consolidated financial statements")
+    templates, markers, _decisions = analyze_repeating_headers(
+        text, [_marker(index * 3) for index in range(5)]
+    )
+    assert templates == ()
+    assert markers == []
+
+
 def test_a_block_carries_its_line_span_and_block_size_as_evidence() -> None:
     text = _paged(
         4,
-        header="ABC CORP\nFOR THE YEAR END DECEMBER 31, 2025\nNotes to statements",
+        header="ABC CORP\nFOR THE YEAR END DECEMBER 31, 2025\nInterim financial information",
     )
     _templates, markers, _decisions = analyze_repeating_headers(
         text, [_marker(index * 5) for index in range(4)]
@@ -355,3 +457,16 @@ def test_a_document_with_no_furniture_returns_no_templates() -> None:
     )
     assert templates == ()
     assert markers == []
+
+
+def test_a_signature_line_is_never_a_furniture_observation() -> None:
+    assert (
+        eligible_line("By:  /s/ ROBERT ABRAMOWSKI", set(), 0, None, allow_table=True)
+        is False
+    )
+
+
+def test_a_cusip_identifier_line_is_never_a_furniture_observation() -> None:
+    assert (
+        eligible_line("CUSIP No. 92335110", set(), 0, None, allow_table=True) is False
+    )
