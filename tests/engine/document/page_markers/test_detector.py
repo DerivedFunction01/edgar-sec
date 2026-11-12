@@ -118,7 +118,7 @@ def test_repeating_furniture_after_firm_breaks_uses_the_breaks_as_anchors() -> N
 
 def test_unnumbered_page_breaks_anchor_repeating_header() -> None:
     text = "\n".join(
-        f"<PAGE>\nABC CORP\nNotes to consolidated financial statements\nBody {index}"
+        f"<PAGE>\nABC CORP\nQuarterly report of operations\nBody {index}"
         for index in range(1, 5)
     )
     analysis = analyze_page_markers(text, NO_TOC)
@@ -141,7 +141,7 @@ def test_a_multiline_furniture_block_removes_as_one_block() -> None:
                 "<PAGE>",
                 "ABC CORP",
                 "FOR THE YEAR END DECEMBER 31, 2025",
-                "Notes to consolidated financial statements",
+                "Interim financial information",
                 "",
                 f"The company provides operating information for page {index}.",
             ]
@@ -178,13 +178,40 @@ def test_a_local_section_run_survives_the_document_denominator() -> None:
 def test_a_section_header_keeps_one_occurrence_per_local_cohort() -> None:
     pages = []
     for index in range(1, 7):
-        title = "PART I" if index <= 3 else "Notes to consolidated financial statements"
+        title = "PART I" if index <= 3 else "PART II"
         pages.extend([str(index), "<PAGE>", title, "", f"Body {index}"])
     analysis = analyze_page_markers("\n".join(pages), NO_TOC)
     assert any(
         evidence.role == "section_header"
         and evidence.retention == "keep_first_per_cohort"
         for evidence in analysis.header_footer_templates
+    )
+    assert [
+        marker.start_line
+        for marker in analysis.markers
+        if marker.text in {"PART I", "PART II"}
+    ] == [7, 12, 22, 27]
+
+
+def test_a_statement_title_is_never_removed_by_the_detector() -> None:
+    pages = []
+    for index in range(1, 7):
+        pages.extend(
+            [
+                str(index),
+                "<PAGE>",
+                "Notes to consolidated financial statements",
+                "",
+                f"Body {index}",
+            ]
+        )
+    analysis = analyze_page_markers("\n".join(pages), NO_TOC)
+    assert not any(
+        "financial statements" in evidence.template
+        for evidence in analysis.header_footer_templates
+    )
+    assert not any(
+        "financial statements" in marker.text.casefold() for marker in analysis.markers
     )
 
 
@@ -324,3 +351,45 @@ def test_a_line_that_is_not_a_firm_marker_is_refused(line: str) -> None:
 
 def test_a_namespaced_label_is_not_a_marker_line_on_its_shape_alone() -> None:
     assert is_page_marker_line("F-3") is False
+
+
+def test_a_wrapped_footer_sentence_survives_as_a_block() -> None:
+    # Each wrapped line is under the prose guard's floors on its own; joined,
+    # the block is one prose sentence, so neither line is furniture.
+    pages = []
+    for index in range(1, 5):
+        pages.extend(
+            [
+                "<PAGE>",
+                f"Body of page {index} with its own content.",
+                "The accompanying notes are an integral",
+                "part of these consolidated financial statements.",
+            ]
+        )
+    analysis = analyze_page_markers("\n".join(pages))
+    footer_texts = [
+        marker.text
+        for marker in analysis.markers
+        if marker.kind == PageMarkerKind.REPEATING_FOOTER
+    ]
+    assert not any("accompanying notes" in text for text in footer_texts)
+
+
+def test_a_two_line_furniture_block_still_removes() -> None:
+    pages = []
+    for index in range(1, 5):
+        pages.extend(
+            [
+                "<PAGE>",
+                "ABC CORP",
+                "Quarterly report of operations",
+                f"Body of page {index} with its own content.",
+            ]
+        )
+    analysis = analyze_page_markers("\n".join(pages))
+    headers = [
+        marker
+        for marker in analysis.markers
+        if marker.kind == PageMarkerKind.REPEATING_HEADER
+    ]
+    assert len(headers) == 4

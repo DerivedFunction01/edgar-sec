@@ -7,6 +7,7 @@ import pytest
 from edgar_sec.engine.document.page_markers.models import PageCandidate
 from edgar_sec.engine.document.page_markers.sequence import (
     MAX_INTERPOLATED_GAP,
+    heading_runin,
     heal_run,
     monotone_fraction,
     unify_alternating_runs,
@@ -134,6 +135,78 @@ def test_more_breaks_than_missing_values_is_weaker_evidence() -> None:
     run = _run((1, 2, 3, 6, 7), stride=4)
     _healed, inferred, _promoted = heal_run(run, page_break_lines={9, 10, 11})
     assert {item.reason for item in inferred} == {"page_break_supported"}
+
+
+def _textual_candidate(value: int, line: int, text: str, family: str) -> PageCandidate:
+    return PageCandidate(
+        start=line * 10,
+        end=line * 10 + len(str(value)),
+        start_line=line,
+        end_line=line,
+        text=text,
+        family=family,
+        namespace="arabic",
+        value=value,
+    )
+
+
+def test_heading_runin_reads_heading_and_running_head_lines() -> None:
+    assert heading_runin(
+        _textual_candidate(1, 0, "1. Nature of Business", "number_first")
+    )
+    assert heading_runin(
+        _textual_candidate(12, 0, "ACME Corp Annual Report  12", "trailing_number")
+    )
+    assert heading_runin(
+        _textual_candidate(
+            2001, 0, "Notes to Financial Statements  2001", "trailing_number"
+        )
+    )
+
+
+def test_heading_runin_covers_dotted_and_paren_trailing_shapes() -> None:
+    assert heading_runin(
+        _textual_candidate(
+            1,
+            0,
+            "NOTES TO THE FINANCIAL STATEMENTS DECEMBER 31, 2008  1.",
+            "dotted_number",
+        )
+    )
+    assert heading_runin(
+        _textual_candidate(2, 0, "Notes to Financial Statements (2)", "paren_number")
+    )
+
+
+def test_heading_runin_spares_short_rests_and_whole_line_labels() -> None:
+    assert not heading_runin(_textual_candidate(1, 0, "1 of 4", "number_first"))
+    whole_line = PageCandidate(
+        start=0,
+        end=11,
+        start_line=0,
+        end_line=0,
+        text="| Page | 12",
+        family="trailing_number",
+        namespace="arabic",
+        value=12,
+    )
+    assert not heading_runin(whole_line)
+    assert not heading_runin(_candidate(3, 0))
+
+
+def test_healing_never_promotes_a_heading_digit_into_a_run() -> None:
+    members = tuple(
+        _textual_candidate(value, index * 4, str(value), "number_first")
+        for index, value in enumerate((1, 2, 4, 5))
+    )
+    run = validate_group(members, strategy="test")
+    assert run is not None
+    heading = _textual_candidate(3, 6, "3 Summary of Policies", "number_first")
+    _healed, _inferred, promoted = heal_run(run, [heading])
+    assert promoted == ()
+    control = _textual_candidate(3, 6, "3", "number_first")
+    _healed, _inferred, promoted = heal_run(run, [control])
+    assert [candidate.value for candidate in promoted] == [3]
 
 
 def test_a_stronger_run_value_is_never_re_inferred() -> None:
