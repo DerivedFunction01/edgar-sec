@@ -19,7 +19,10 @@ from edgar_sec.engine.document.page_markers.candidates import (
     prose_stop_words,
     toc_lines,
 )
-from edgar_sec.engine.document.page_markers.content_lines import is_content_line
+from edgar_sec.engine.document.page_markers.content_lines import (
+    has_cross_reference,
+    is_content_line,
+)
 from edgar_sec.engine.document.page_markers.models import (
     PageCandidate,
     PageMarkerKind,
@@ -165,6 +168,14 @@ def test_jurat_and_signature_lines_are_content(line: str) -> None:
         "CONSOLIDATED STATEMENTS OF OPERATIONS (Continued)",
         "See accompanying notes to financial statements.",
         "See Notes to Financial Statements",
+        # Cross-references beyond the notes shapes: iteration-4 see-veto specimens.
+        "See Accountants\u2019 Audit Report",
+        "SEE INSTRUCTIONS BEFORE FILLING OUT!",
+        "**SEE ITEM 4(b).",
+        "See Note 1.",
+        "Please see Note 1.",
+        "See page A-3",
+        "(See Note 3)",
     ],
 )
 def test_schedule_statement_and_identifier_lines_are_content(line: str) -> None:
@@ -180,6 +191,9 @@ def test_schedule_statement_and_identifier_lines_are_content(line: str) -> None:
         "Milwaukee, Wisconsin",
         "State Street Global Advisors  1 of 5",
         "Provisions of the Investment Company Act of 1940",
+        # The veto keys on the bounded word: "see" inside a word is no reference.
+        "Oversee the fund operations",
+        "Seeley Industries, Inc.",
     ],
 )
 def test_running_heads_and_banners_are_not_content_lines(line: str) -> None:
@@ -189,6 +203,34 @@ def test_running_heads_and_banners_are_not_content_lines(line: str) -> None:
 @pytest.mark.parametrize("line", ["------", "============", "----", "——————"])
 def test_a_rule_only_line_is_not_a_page_label_candidate(line: str) -> None:
     assert _cand(line) is None
+
+
+@pytest.mark.parametrize(
+    "line",
+    [
+        "See discussion on page 3",
+        "Discussion (see page 3)",
+        "See Note 1.",
+        "Please see Note 1.",
+    ],
+)
+def test_a_cross_reference_line_yields_no_candidate(line: str) -> None:
+    # A sub-span label cut out of a cross-reference sentence would amputate prose.
+    assert has_cross_reference(line) is True
+    assert _cand(line) is None
+
+
+def test_an_inline_page_of_total_does_not_cut_a_cross_reference_line() -> None:
+    markers, _occupied, _lines = firm_markers("See page 2 of 9 pages\nBody\n", "ascii")
+    assert not any(
+        marker.kind == PageMarkerKind.PAGE_NUMBER_OF_TOTAL for marker in markers
+    )
+
+
+def test_an_inline_page_of_total_still_cuts_a_furniture_line() -> None:
+    text = "ACME page 2 of 9 pages\nBody\n"
+    markers, _occupied, _lines = firm_markers(text, "ascii")
+    assert any(marker.kind == PageMarkerKind.PAGE_NUMBER_OF_TOTAL for marker in markers)
 
 
 def test_candidate_template_masks_arabic_and_roman_values() -> None:
@@ -422,3 +464,18 @@ def test_toc_lines_excludes_the_span_the_caller_located() -> None:
 
 def test_toc_lines_excludes_nothing_when_the_resolver_finds_no_span() -> None:
     assert toc_lines("text", lambda _text: None) == set()
+
+
+@pytest.mark.parametrize(
+    "line",
+    [
+        # Letter subject and addressee lines: 0001477932-10-000251 (CORRESP).
+        "Re: Acquisition Capital Group, Inc.",
+        "Mr. Tom Kluck",
+        "Dr. Jane Smith",
+        # Footnote line glued to a bare page number: 0000932471-04-001270.
+        "*For underlying funds; annualized.",
+    ],
+)
+def test_letter_and_footnote_lines_are_content(line: str) -> None:
+    assert is_content_line(line) is True

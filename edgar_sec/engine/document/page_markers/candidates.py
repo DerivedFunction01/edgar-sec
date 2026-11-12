@@ -18,6 +18,7 @@ from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
 from edgar_sec.foundation.text.automaton import compile_lexical_matcher
 from edgar_sec.foundation.text.tokens import ROMAN_NUMERAL_PATTERN, roman_to_int
 
+from .content_lines import has_cross_reference
 from .models import (
     APPENDIX_ROMAN_LABEL,
     BARE_ARABIC,
@@ -282,6 +283,8 @@ def firm_markers(
             if (next_line_start > line_start and text[next_line_start - 1] == "\n")
             else next_line_start
         )
+        if has_cross_reference(text[line_start:line_end]):
+            continue
         prefix = text[line_start:m_start]
         suffix = text[m_end:line_end]
         has_prose_prefix = bool(prefix.strip()) and not bool(
@@ -390,13 +393,15 @@ def classify_candidate(
     allow_letter_number: bool = True,
 ) -> PageCandidate | None:
     """Classify one short, eligible ASCII line; the most specific shape wins.
-    Refused before any shape is tried: blank, bare ``<PAGE>``, a ``PART``/``ITEM``/``NOTE`` heading, or a numeric data shape.
+    Refused before any shape is tried: blank, bare ``<PAGE>``, a ``PART``/``ITEM``/``NOTE`` heading, a cross-reference line, or a numeric data shape.
     """
 
     stripped = line.strip()
     if not stripped or stripped.casefold() in {"<page>", "</page>"}:
         return None
     if STRUCTURAL_HEADING.match(stripped):
+        return None
+    if has_cross_reference(stripped):
         return None
     if has_numeric_data_shape(line) and not (
         RE_PAGE_VALUE.fullmatch(stripped)

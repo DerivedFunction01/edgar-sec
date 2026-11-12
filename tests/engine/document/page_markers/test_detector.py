@@ -375,6 +375,39 @@ def test_a_wrapped_footer_sentence_survives_as_a_block() -> None:
     assert not any("accompanying notes" in text for text in footer_texts)
 
 
+def test_a_repeated_cross_reference_footer_forms_no_template() -> None:
+    # Specimen: F-1/A 0001002334-08-000136, "See Accountants' Audit Report"
+    # repeated at every page foot in the iteration-3 draw's defect_2 residual.
+    pages = []
+    for index in range(1, 5):
+        pages.extend(
+            [
+                f"Body of page {index} with its own content.",
+                "See Accountants\u2019 Audit Report",
+                "<PAGE>",
+            ]
+        )
+    analysis = analyze_page_markers("\n".join(pages))
+    assert not any("Accountants" in marker.text for marker in analysis.markers)
+
+
+def test_a_cross_reference_fused_into_a_furniture_block_vetoes_it() -> None:
+    # The banner repeats at every page head, but the cross-reference fused
+    # under it is prose: the block goes nowhere.
+    pages = []
+    for index in range(1, 5):
+        pages.extend(
+            [
+                "<PAGE>",
+                "ABC CORP",
+                "See Note 1.",
+                f"Body of page {index} with its own content.",
+            ]
+        )
+    analysis = analyze_page_markers("\n".join(pages))
+    assert not any("See Note" in marker.text for marker in analysis.markers)
+
+
 def test_a_two_line_furniture_block_still_removes() -> None:
     pages = []
     for index in range(1, 5):

@@ -532,6 +532,37 @@ def test_a_repeated_signature_table_is_not_removed_as_a_block() -> None:
     assert result.count("<TABLE>") == 6
 
 
+def test_a_repeated_cross_reference_table_is_not_removed_as_a_block() -> None:
+    # Specimen: SC 13G cover table (0001011438-22-000070) — the instruction
+    # lines are cross-references, so their table is content, not furniture.
+    text = _paged_tables(
+        6,
+        [
+            " *  SEE INSTRUCTIONS BEFORE FILLING OUT",
+            "**  SEE ITEM 4.",
+        ],
+    )
+    analysis = analyze_page_markers(text, {"allow_table_furniture": True})
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert result.count("SEE INSTRUCTIONS BEFORE FILLING OUT") == 6
+    assert result.count("SEE ITEM 4.") == 6
+    assert result.count("<TABLE>") == 6
+
+
+def test_a_repeated_cross_reference_footer_survives_the_strip() -> None:
+    # Specimen: F-1/A 0001002334-08-000136 defect_2 residual footer.
+    text = _paged(6, footer="See Accountants\u2019 Audit Report")
+    result, _artifacts, _templates, _next_id = apply_page_markers(text)
+    assert result.count("See Accountants\u2019 Audit Report") == 6
+
+
+def test_a_cross_reference_line_keeps_its_inline_page_of_total() -> None:
+    text = "See page 2 of 9 pages\nBody line\n"
+    result, artifacts, _templates, _next_id = apply_page_markers(text)
+    assert result == text
+    assert artifacts == ()
+
+
 def test_a_table_line_decided_only_by_an_inline_marker_is_not_widened_into() -> None:
     # The inline page-of-total decides its own span only; the prose sharing
     # its line is content, so the table keeps everything but the marker.
@@ -708,3 +739,118 @@ def test_a_page_label_table_still_widens() -> None:
     assert "<TABLE>" not in result
     assert "Page 1 of 2" not in result
     assert "Outro" in result
+
+
+def test_a_stacked_fragment_letterhead_survives_the_strip() -> None:
+    # T. Rowe Price letterhead, fragmented one token per line: 0001193125-25-164006.
+    pages = []
+    for index in range(1, 9):
+        pages.append(f"Schedule body {index} with portfolio data and commentary.")
+        pages.append("<PAGE>")
+        pages.append("T.\n\nROWE\n\nPRICE\n\nRetirement\n\n2030\n\nFund")
+        pages.append(str(index + 1))
+    text = "\n".join(pages)
+    analysis = analyze_page_markers(
+        text, {"allow_table_furniture": True}, representation="ascii"
+    )
+    stripped, _artifacts, _templates, _next = apply_page_markers(
+        text, analysis, PageArtifactPolicy.STRIP
+    )
+    for fragment in ("T.", "ROWE", "PRICE", "Retirement", "Fund"):
+        assert fragment in stripped
+
+
+def test_a_running_head_and_page_number_strip_while_the_continuation_title_survives() -> (
+    None
+):
+    # Glued bare number + running head around <PAGE>: 0001398344-19-019336.
+    pages = []
+    for index in range(1, 9):
+        pages.append("SUMMIT GLOBAL INVESTMENTS")
+        pages.append("Company Management (Unaudited) (continued)")
+        pages.append(f"Management discussion body {index} in ordinary prose.")
+        pages.append(f"{59 + index}")
+        pages.append("<PAGE>")
+    text = "\n".join(pages)
+    analysis = analyze_page_markers(
+        text, {"allow_table_furniture": True}, representation="ascii"
+    )
+    stripped, _artifacts, _templates, _next = apply_page_markers(
+        text, analysis, PageArtifactPolicy.STRIP
+    )
+    # The continuation title is content; the running head, bare numbers, and
+    # <PAGE> tags are furniture and still go (no keep-first for short heads).
+    assert "Company Management (Unaudited) (continued)" in stripped
+    assert "SUMMIT GLOBAL INVESTMENTS" not in stripped
+    assert "<PAGE>" not in stripped
+    assert "\n60\n" not in stripped
+
+
+def _spanning_label_table(segments: list[list[str]]) -> str:
+    lines = ["Intro", "<TABLE>"]
+    for index, segment in enumerate(segments):
+        if index:
+            lines.append("<PAGE>")
+        lines.extend(segment)
+    lines.extend(["</TABLE>", "Outro"])
+    return "\n".join(lines) + "\n"
+
+
+def test_labels_inside_a_page_spanning_table_are_removed_with_the_table() -> None:
+    # E5 shape: one table element spanning several pages, every appendix
+    # label inside it; the whole furniture table widens away as one block.
+    text = _spanning_label_table(
+        [["------", "A - 1"], ["------", "A - 2"], ["------", "A - 3"]]
+    )
+    analysis = analyze_page_markers(text, {"allow_table_furniture": True})
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "<TABLE>" not in result
+    assert "------" not in result
+    assert "A - 1" not in result
+    assert "A - 3" not in result
+    assert "Intro" in result
+    assert "Outro" in result
+
+
+def test_labels_in_non_spanning_tables_are_not_newly_widened() -> None:
+    # Control (the S-4 specimen shape): each label in its own compact table
+    # is removed alone, exactly as before; its husk is not the spanning case.
+    text = (
+        "Intro\n"
+        "<TABLE>\n------\nA - 1\n</TABLE>\n<PAGE>\nBody 1\n"
+        "<TABLE>\n------\nA - 2\n</TABLE>\n<PAGE>\nBody 2\n"
+        "<TABLE>\n------\nA - 3\n</TABLE>\n<PAGE>\nBody 3\n"
+    )
+    analysis = analyze_page_markers(text, {"allow_table_furniture": True})
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "A - 1" not in result
+    assert result.count("<TABLE>") == 3
+    assert result.count("------") == 3
+    assert "Body 2" in result
+
+
+def test_a_spanning_table_with_content_lines_is_not_widened() -> None:
+    # A spanning table carrying undecided body rows is content: its labels
+    # are removed alone and the table survives whole.
+    text = _spanning_label_table(
+        [
+            ["------", "A - 1", "The merger agreement clause one applies."],
+            ["------", "A - 2", "The merger agreement clause two applies."],
+            ["------", "A - 3", "The merger agreement clause three applies."],
+        ]
+    )
+    analysis = analyze_page_markers(text, {"allow_table_furniture": True})
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "<TABLE>" in result
+    assert "A - 1" not in result
+    assert "clause two applies" in result
+
+
+def test_a_spanning_table_without_a_letter_label_is_not_widened() -> None:
+    # The spanning admission is scoped to appendix letter labels: bare page
+    # numbers spanning a table keep the line-at-a-time behaviour.
+    text = _spanning_label_table([["------", "1"], ["------", "2"], ["------", "3"]])
+    analysis = analyze_page_markers(text, {"allow_table_furniture": True})
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "<TABLE>" in result
+    assert result.count("------") == 3

@@ -11,17 +11,12 @@ from dataclasses import replace
 from typing import Any
 
 from edgar_sec.engine.document.html.breaks import render_html_to_break_text
-from edgar_sec.foundation.text.dates import (
-    NUMERIC_DATE_RE,
-    RE_FULL_DATE,
-    is_year_token,
-)
 from edgar_sec.foundation.text.healing import NEGATIVE_BOUNDARY_RE
 from edgar_sec.foundation.text.patterns import RE_TERMINAL_BOUNDARY
 
 from .artifacts import note_template, render_page_artifact, token_kind_for
 from .candidates import has_numeric_data_shape, line_for_offset
-from .content_lines import is_content_line, is_rule_line
+from .content_lines import is_content_line, is_number_or_date_line, is_rule_line
 from .candidates import line_offsets as compute_line_offsets
 from .detector import analyze_page_markers
 from .models import (
@@ -78,27 +73,6 @@ def _expand_table_range(
     return start, end
 
 
-def _is_number_or_date_line(stripped: str) -> bool:
-    """Return whether a line carries only a date or figures, with no prose riding along.
-    A numeric date, a year pair, or a full date (an "unaudited" qualifier aside) is a data header; a lone page label is not, so it stays furniture-shaped.
-    """
-    if not any(char.isdigit() for char in stripped):
-        return False
-    if not any(char.isalpha() for char in stripped):
-        tokens = stripped.split()
-        figures = sum(1 for token in tokens if any(c.isdigit() for c in token))
-        return bool(
-            figures >= 2
-            or NUMERIC_DATE_RE.search(stripped)
-            or any(is_year_token(token.strip(",/")) for token in tokens)
-        )
-    residue = RE_FULL_DATE.sub(" ", stripped)
-    if any(char.isdigit() for char in residue):
-        return False
-    words = [word.strip("(),.").casefold() for word in residue.split()]
-    return all(word in {"", "unaudited"} for word in words)
-
-
 def _table_fully_decided(
     document_lines: list[str],
     offsets: list[int],
@@ -124,8 +98,39 @@ def _table_fully_decided(
             return False
         content_lines.append(stripped)
     return not content_lines or not all(
-        _is_number_or_date_line(line) for line in content_lines
+        is_number_or_date_line(line) for line in content_lines
     )
+
+
+def _spanning_furniture_table(
+    document_lines: list[str],
+    offsets: list[int],
+    decided_lines: set[int],
+    label_lines: set[int],
+    start: int,
+    end: int,
+) -> bool:
+    """Return whether a page-spanning table carries only page furniture.
+    Every content line is a decided line, a rule line, or a page tag, and at least one decided line is an appendix letter label; any undecided text or data line makes the table content, however many pages it spans.
+    """
+    first = line_for_offset(offsets, start)
+    last = line_for_offset(offsets, max(start, end - 1))
+    pages = 0
+    has_label = False
+    for index in range(first, last + 1):
+        stripped = document_lines[index].strip()
+        if not stripped or stripped.casefold() in {"<table>", "</table>"}:
+            continue
+        if stripped.casefold() in {"<page>", "</page>"}:
+            pages += 1
+            continue
+        if is_content_line(stripped) or has_numeric_data_shape(stripped):
+            return False
+        if index in label_lines:
+            has_label = True
+        elif index not in decided_lines and not is_rule_line(stripped):
+            return False
+    return pages >= 2 and has_label
 
 
 def _removal_range(
@@ -232,6 +237,7 @@ def apply_page_markers(
     document_lines = document.splitlines()
     offsets = compute_line_offsets(document_lines)
     decided_lines: set[int] = set()
+    label_lines: set[int] = set()
     for decision in analysis.decisions:
         if decision.action not in {
             PageMarkerAction.REMOVE,
@@ -251,11 +257,21 @@ def apply_page_markers(
             # only its own span: the line's content is not decided by it.
             if marker.start <= content_start and marker.end >= content_end:
                 decided_lines.add(index)
+                if marker.kind == PageMarkerKind.LETTER_NUMBER:
+                    label_lines.add(index)
     table_ranges = [
         (start, end)
         for start, end, lines in all_tables
         if lines <= _MAX_COMPACT_TABLE_LINES
         and _table_fully_decided(document_lines, offsets, decided_lines, start, end)
+    ]
+    table_ranges += [
+        (start, end)
+        for start, end, lines in all_tables
+        if lines > _MAX_COMPACT_TABLE_LINES
+        and _spanning_furniture_table(
+            document_lines, offsets, decided_lines, label_lines, start, end
+        )
     ]
     oversized_tables = [
         (start, end)
