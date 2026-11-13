@@ -10,6 +10,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
+from edgar_sec.engine.tables.extraction.normalize import normalize_text
 from edgar_sec.engine.tables.extraction.signature_profiles import (
     CHANNEL_WEIGHTS,
     CONTAINMENT_EDGES,
@@ -33,16 +34,6 @@ FRAGMENT_MAX_STUBS = 8
 
 _HEADING_NOTE = re.compile(r"notes to|^\s*note\s+\d", re.IGNORECASE)
 _HEADING_NUMBERED = re.compile(r"^\d+\.\s+\S")
-_WS = re.compile(r"\s+")
-
-
-def normalize(text: str) -> str:
-    """Lowercase, unify quotes/dashes, collapse whitespace."""
-    text = (text or "").lower()
-    text = text.replace("’", "'").replace("‘", "'")
-    text = text.replace("“", '"').replace("”", '"')
-    text = text.replace("–", "-").replace("—", "-")
-    return _WS.sub(" ", text)
 
 
 def heading_text(prose_before: str, prose_after: str, caption: str) -> str:
@@ -60,7 +51,7 @@ def heading_text(prose_before: str, prose_after: str, caption: str) -> str:
                 if any(ch.isalpha() for ch in stripped):
                     lines.append(stripped)
     lines.append(caption or "")
-    return normalize(" ".join(lines))
+    return normalize_text(" ".join(lines))
 
 
 def lead_title_text(prose_before: str) -> str:
@@ -91,7 +82,7 @@ class GeometryText:
     @property
     def stub_text(self) -> str:
         """The stub distribution as one normalized skeleton text."""
-        return normalize(" ".join(self.stubs))
+        return normalize_text(" ".join(self.stubs))
 
     @property
     def is_fragment(self) -> bool:
@@ -160,10 +151,10 @@ def score_geometry(
 ) -> dict[str, FamilyScore]:
     """Score every family's signature profile over the geometry."""
     texts = {
-        "caption": normalize(geometry.caption),
-        "leadin": normalize(geometry.leadin),
-        "notehead": normalize(geometry.notehead),
-        "lead_title": normalize(geometry.lead_title),
+        "caption": normalize_text(geometry.caption),
+        "leadin": normalize_text(geometry.leadin),
+        "notehead": normalize_text(geometry.notehead),
+        "lead_title": normalize_text(geometry.lead_title),
         "stub": geometry.stub_text,
     }
     by_family: dict[str, dict[str, float]] = {}
