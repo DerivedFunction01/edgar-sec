@@ -160,16 +160,12 @@ def test_flags_year_token_defined_outside_dates_home(synthetic_repo: Path) -> No
     assert pattern_registry.scan_pattern_registry()
 
 
-def test_flags_separator_line_defined_in_the_corpus_tool(
+def test_flags_scale_patterns_defined_in_the_corpus_tool(
     synthetic_repo: Path,
 ) -> None:
     _build_repo(
         synthetic_repo,
-        {
-            "tools/table_extraction_corpus/label.py": (
-                "def is_separator_line(line):\n    return True\n"
-            )
-        },
+        {"tools/table_extraction_corpus/label.py": 'SCALE_PATTERNS = "x"\n'},
     )
     findings = pattern_registry.scan_pattern_registry()
     assert [f.path for f in findings] == ["tools/table_extraction_corpus/label.py"]
@@ -181,9 +177,10 @@ def test_allows_seed_definitions_in_their_foundation_homes(
     _build_repo(
         synthetic_repo,
         {
-            "edgar_sec/foundation/text/patterns.py": (
-                "def is_separator_line(line):\n    return True\n"
+            "edgar_sec/engine/tables/patterns.py": (
+                'SCALE_PATTERNS = "x"\nUNITS_LABEL_RE = "x"\n'
             ),
+            "edgar_sec/foundation/text/words.py": 'WORD_TOKEN_RE = "x"\n',
             "edgar_sec/foundation/text/dates.py": (
                 'RE_FULL_DATE = "x"\nYEAR_TOKEN_PATTERN = "x"\n'
                 'YEAR_TOKEN_RE = "x"\nYEAR_TOKEN_SEARCH_RE = "x"\n'
