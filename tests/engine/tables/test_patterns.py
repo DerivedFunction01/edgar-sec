@@ -10,6 +10,7 @@ from edgar_sec.engine.tables.patterns import (
     FOOTNOTE_RE,
     HIDDEN_ELEMENT_STYLE_RE,
     RE_TABLE_BLOCK,
+    SCALE_PATTERNS,
     _RE_TABLE_INTRO_CUE,
     UNITS_LABEL_RE,
 )
@@ -66,6 +67,29 @@ def test_units_label_rejects_an_unparenthetical_or_unscaled_phrase() -> None:
     assert UNITS_LABEL_RE.search("in thousands") is None
     assert UNITS_LABEL_RE.search("(in furlongs)") is None
     assert UNITS_LABEL_RE.search("(the following table)") is None
+
+
+def _scale_unit(text: str) -> str | None:
+    for pattern, unit in SCALE_PATTERNS:
+        if pattern.search(text):
+            return unit
+    return None
+
+
+def test_scale_patterns_match_bare_scale_qualifiers() -> None:
+    assert _scale_unit("in thousands") == "thousands"
+    assert _scale_unit("In Millions") == "millions"
+    assert _scale_unit("in  billions") == "billions"
+    assert _scale_unit("in hundreds") == "hundreds"
+    assert _scale_unit("in furlongs") is None
+
+
+def test_scale_patterns_match_parenthesised_scale_qualifiers() -> None:
+    assert _scale_unit("(in thousands)") == "thousands"
+    assert _scale_unit("(In Millions)") == "millions"
+    assert _scale_unit("(dollars in billions)") == "billions"
+    assert _scale_unit("(amounts in hundreds)") == "hundreds"
+    assert _scale_unit("(the following table)") is None
 
 
 def test_table_intro_cue_recognises_the_documented_cue_families() -> None:

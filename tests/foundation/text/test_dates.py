@@ -49,6 +49,32 @@ def test_full_date_regex() -> None:
     assert m2.group(0) == "March 15 2023"
 
 
+def test_year_recognizers_are_full_range_with_no_narrowed_variant() -> None:
+    """Pin: years span 1900-9999 and no 1900-2099 narrowed variant
+    is homed in foundation (a narrowed recognizer dies at 2099)."""
+    from edgar_sec.foundation.text import dates
+
+    assert YEAR_TOKEN_RE.match("1900")
+    assert YEAR_TOKEN_RE.match("2100")
+    assert YEAR_TOKEN_RE.match("9999")
+    assert not YEAR_TOKEN_RE.match("1899")
+    assert RE_FULL_DATE.search("December 31, 2100")
+    assert not hasattr(dates, "NARROWED_YEAR_RE")
+    assert not hasattr(dates, "NARROWED_YEAR_PATTERN")
+    assert not hasattr(dates, "RE_FULL_DATE_NARROWED")
+
+
+def test_year_token_search_form_shares_the_token_range() -> None:
+    """The unanchored search form recognizes the same 1900-9999
+    range in text; a bare 4-digit token outside it is not a year."""
+    from edgar_sec.foundation.text.dates import YEAR_TOKEN_SEARCH_RE
+
+    assert YEAR_TOKEN_SEARCH_RE.search("ended December 31, 2024")
+    assert YEAR_TOKEN_SEARCH_RE.search("ended December 31, 2100")
+    assert not YEAR_TOKEN_SEARCH_RE.search("ended December 31, 1899")
+    assert not YEAR_TOKEN_SEARCH_RE.search("a 1234 token")
+
+
 def test_year_in_text_regex() -> None:
     years = YEAR_IN_TEXT_RE.findall("In 2020 and 2021, compared to 2022.")
     assert years == ["2020", "2021", "2022"]

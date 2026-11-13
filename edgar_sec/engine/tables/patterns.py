@@ -30,10 +30,19 @@ _UNIT_TERMS = build_alternation(
     ]
 )
 
-# Scale qualifier for a whole statement: ``(dollars in millions)``, ``(in thousands)``.
+# One scale-label concept, two named variants — this home and no other.
+# Parenthesised variant: a whole statement's label, e.g. ``(in thousands)``.
 UNITS_LABEL_RE = re.compile(
     rf"\(\s*(?:(?:dollars|amounts?)\s+)?in\s+(?:{_UNIT_TERMS})[^)]*\)",
     re.IGNORECASE,
+)
+
+# Bare variant: the same label searched in caption text.
+SCALE_PATTERNS = (
+    (re.compile(r"in\s+thousands", re.IGNORECASE), "thousands"),
+    (re.compile(r"in\s+millions", re.IGNORECASE), "millions"),
+    (re.compile(r"in\s+billions", re.IGNORECASE), "billions"),
+    (re.compile(r"in\s+hundreds", re.IGNORECASE), "hundreds"),
 )
 
 _TABLE_INTRO_NOUNS = build_alternation(
@@ -89,6 +98,7 @@ __all__ = [
     "FOOTNOTE_RE",
     "HIDDEN_ELEMENT_STYLE_RE",
     "RE_TABLE_BLOCK",
+    "SCALE_PATTERNS",
     "_RE_TABLE_INTRO_CUE",
     "UNITS_LABEL_RE",
 ]
