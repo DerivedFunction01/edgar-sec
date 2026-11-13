@@ -40,6 +40,12 @@ classified tables into logical statements and arbitrates their relations.
 - **The engine owns no form vocabulary**: anchors, label rules, and location
   expectations are injected through the classification policy; with no location
   priors injected, the location tier contributes nothing.
+- **The subject-evidence map is data, not code**: `subject_evidence.py` loads
+  the versioned flat map beside the registry (per-term support/share/confidence
+  by family and text channel, measured containment edges, header/title
+  inheritance pricing, and channel weights); it carries free-text evidence
+  only, and arithmetic closure appears in it solely as a corroboration-only
+  policy, never as negative evidence.
 - **Assembly is relational arbitration over measured relations**: split
   fragments join on continuity signals and row bounds bind the assembled
   group; a subset family fires inside its measured parent only as a section;
