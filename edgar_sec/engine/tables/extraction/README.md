@@ -50,6 +50,15 @@ classified tables into logical statements and arbitrates their relations.
   statement candidate, whatever its vocabulary scores; regions derive from
   filing position, section membership, and the forms layer's signature
   classifier unless a builder stamps one on the context.
+- **Signature competition is scored claiming over measured profiles**:
+  each family's signature terms live once, as data, in
+  `signature_profiles` with per-term discriminativeness measured over
+  the adjudicated corpora; a claim issues only when the family's own
+  profile dominates the geometry's text and the foreign profile mass
+  is negligible or explained by a measured containment edge — single
+  foreign words never discriminate. Arithmetic closure corroborates
+  the leading family only; it never vetoes. Within a filing, header
+  inheritance and cross-parse ties feed back as context evidence.
 - **A filing is classified as a constellation, not table by table**:
   confident core anchors bound the statement zone, and a note satellite's
   win before the first anchor is discounted; a family's registered note
