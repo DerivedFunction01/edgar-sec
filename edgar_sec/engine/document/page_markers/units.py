@@ -8,7 +8,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
+from edgar_sec.foundation.text.patterns import is_separator_line
 from edgar_sec.foundation.text.tokens import is_list_or_bullet_marker
 
 _RE_GUTTER = re.compile(r"(?<=\S) {2,}(?=\S)")
@@ -40,7 +40,7 @@ def _is_table_row(line: str) -> bool:
         return False
     if "  " in line and _RE_GUTTER.search(line):
         return True
-    return bool(RE_SEPARATOR_LINE.fullmatch(stripped))
+    return is_separator_line(stripped)
 
 
 def _positions_overlap(

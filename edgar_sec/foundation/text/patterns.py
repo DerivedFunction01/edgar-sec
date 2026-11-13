@@ -17,7 +17,18 @@ RE_TERMINAL_BOUNDARY = re.compile(r"[.:;!?\"\x27\u201d\u2019)]\s*$")
 CONTINUATION_PUNCTUATION = (".", ";", ":", "!", "?")
 
 RE_SEPARATOR_RUN = re.compile(r"[-=_*]{4,}")
-RE_SEPARATOR_LINE = re.compile(r"^\s*[-=_+]{2,}(?:\s+[-=_+]{2,})*\s*$")
+
+_SEPARATOR_CHARS = frozenset("-=_+~*—–―")
+
+
+def is_separator_line(line: str) -> bool:
+    """Whether a line is only a rule: separator characters and whitespace."""
+    stripped = line.strip()
+    return bool(stripped) and all(
+        char in _SEPARATOR_CHARS or char.isspace() for char in stripped
+    )
+
+
 RE_FILL_IN_RUN = re.compile(r"[-_=]{2,}")
 RE_TRAILING_FILL_IN = re.compile(r"\s*[-_=]{2,}\s*$")
 RE_WHITESPACE = re.compile(r"\s+")
@@ -38,10 +49,10 @@ __all__ = [
     "RE_NON_ALNUM",
     "RE_PAGE_NUMBER_SUFFIX",
     "RE_SENTENCE_TERMINAL",
-    "RE_SEPARATOR_LINE",
     "RE_SEPARATOR_RUN",
     "RE_STRUCTURAL_SGML",
     "RE_TERMINAL_BOUNDARY",
     "RE_TRAILING_FILL_IN",
     "RE_WHITESPACE",
+    "is_separator_line",
 ]

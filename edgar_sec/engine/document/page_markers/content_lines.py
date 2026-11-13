@@ -11,11 +11,9 @@ from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import (
     MONTH_RE,
     NUMERIC_DATE_RE,
-    RE_FULL_DATE,
     is_year_token,
     parse_date,
 )
-from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
 
 _CONTENT_SHAPE_RE = re.compile(
     build_alternation(
@@ -68,9 +66,9 @@ _DATE_QUALIFIER_RE = re.compile(r"\((?:unaudited|continued)\)", re.IGNORECASE)
 _NON_DATE_TOKEN_RE = re.compile(r"[\d,.\s]+")
 
 
-def is_date_line(stripped: str) -> bool:
-    """Return whether the whole line is one date, ignoring audit/continuation qualifiers.
-    The template route's refusal predicate: stricter than is_number_or_date_line, which also admits figure-only lines that are data, not dates.
+def _is_date_only_line(stripped: str) -> bool:
+    """Whether the whole line is one date, ignoring audit/continuation qualifiers.
+    The one date core both public predicates share: the line must parse as a single date and leave no residue once month names and date numerals are removed.
     """
     rest = _WHITESPACE_RE.sub(" ", _DATE_QUALIFIER_RE.sub(" ", stripped)).strip(" ,")
     if not rest or len(rest.split()) > 5 or parse_date(rest) is None:
@@ -78,25 +76,41 @@ def is_date_line(stripped: str) -> bool:
     return not _NON_DATE_TOKEN_RE.sub(" ", MONTH_RE.sub(" ", rest)).strip()
 
 
+def is_date_line(stripped: str) -> bool:
+    """Return whether the whole line is one date, ignoring audit/continuation qualifiers.
+    The template route's refusal predicate: stricter than is_number_or_date_line, which also admits figure-only lines that are data, not dates.
+    """
+    return _is_date_only_line(stripped)
+
+
+def _has_amount_figures(stripped: str) -> bool:
+    """Whether the line carries at least two comma-separated amount figures.
+    Figures in SEC forms carry comma separators, so bare-digit tokens are years or addresses, not amounts.
+    """
+    figures = sum(
+        1
+        for token in stripped.split()
+        if "," in token and any(char.isdigit() for char in token)
+    )
+    return figures >= 2
+
+
 def is_number_or_date_line(stripped: str) -> bool:
     """Return whether a line carries only a date or figures, with no prose riding along.
-    A numeric date, a year pair, or a full date (an "unaudited" qualifier aside) is a data header; a lone page label is not, so it stays furniture-shaped.
+    The date case is the shared core; the figures case is its named extension — a numeric date, a year pair, or comma-separated amounts is a data header; a lone page label is not, so it stays furniture-shaped.
     """
+    if _is_date_only_line(stripped):
+        return True
     if not any(char.isdigit() for char in stripped):
         return False
-    if not any(char.isalpha() for char in stripped):
-        tokens = stripped.split()
-        figures = sum(1 for token in tokens if any(c.isdigit() for c in token))
-        return bool(
-            figures >= 2
-            or NUMERIC_DATE_RE.search(stripped)
-            or any(is_year_token(token.strip(",/")) for token in tokens)
-        )
-    residue = RE_FULL_DATE.sub(" ", stripped)
-    if any(char.isdigit() for char in residue):
+    if any(char.isalpha() for char in stripped):
         return False
-    words = [word.strip("(),.").casefold() for word in residue.split()]
-    return all(word in {"", "unaudited"} for word in words)
+    tokens = stripped.split()
+    return bool(
+        _has_amount_figures(stripped)
+        or NUMERIC_DATE_RE.search(stripped)
+        or any(is_year_token(token.strip(",/")) for token in tokens)
+    )
 
 
 #: The word alone, bounded: "oversee" and "Seeley" carry no cross-reference.
@@ -110,29 +124,10 @@ def has_cross_reference(text: str) -> bool:
     return bool(_SEE_RE.search(text))
 
 
-#: Em- and en-dash rule runs: the separator border RE_SEPARATOR_LINE's ASCII class misses.
-_DASH_RULE_RE = re.compile(r"^[—–]{2,}(?:\s+[—–]{2,})*$")
-#: A single rule run over the wider rule-character set, asterisks and the horizontal bar included.
-_RULE_ONLY_RE = re.compile(r"^[-_=—–―*]{3,}$")
-
-
-def is_rule_line(text: str) -> bool:
-    """Whether a line is only a rule: separator runs and nothing else.
-    A rule line is table structure, so it is neither a furniture observation nor table content.
-    """
-    stripped = text.strip()
-    return bool(
-        RE_SEPARATOR_LINE.fullmatch(stripped)
-        or _DASH_RULE_RE.fullmatch(stripped)
-        or _RULE_ONLY_RE.fullmatch(stripped)
-    )
-
-
 __all__ = [
     "has_cross_reference",
     "is_content_line",
     "is_date_line",
     "is_number_or_date_line",
-    "is_rule_line",
     "is_statement_title",
 ]

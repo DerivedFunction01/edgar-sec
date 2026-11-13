@@ -12,11 +12,11 @@ from typing import Any
 
 from edgar_sec.engine.document.html.breaks import render_html_to_break_text
 from edgar_sec.foundation.text.healing import NEGATIVE_BOUNDARY_RE
-from edgar_sec.foundation.text.patterns import RE_TERMINAL_BOUNDARY
+from edgar_sec.foundation.text.patterns import RE_TERMINAL_BOUNDARY, is_separator_line
 
 from .artifacts import note_template, render_page_artifact, token_kind_for
 from .candidates import has_numeric_data_shape, line_for_offset
-from .content_lines import is_content_line, is_number_or_date_line, is_rule_line
+from .content_lines import is_content_line, is_number_or_date_line
 from .candidates import line_offsets as compute_line_offsets
 from .detector import analyze_page_markers
 from .models import (
@@ -90,7 +90,7 @@ def _table_fully_decided(
         stripped = document_lines[index].strip()
         if not stripped or stripped.casefold() in {"<table>", "</table>"}:
             continue
-        if is_content_line(stripped) or is_rule_line(stripped):
+        if is_content_line(stripped) or is_separator_line(stripped):
             return False
         if has_numeric_data_shape(stripped):
             return False
@@ -128,7 +128,7 @@ def _spanning_furniture_table(
             return False
         if index in label_lines:
             has_label = True
-        elif index not in decided_lines and not is_rule_line(stripped):
+        elif index not in decided_lines and not is_separator_line(stripped):
             return False
     return pages >= 2 and has_label
 

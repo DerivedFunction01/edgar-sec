@@ -5,7 +5,7 @@ filing has one row; the signal is positional - numbers sit under established col
 
 from __future__ import annotations
 
-from edgar_sec.foundation.text.patterns import RE_SENTENCE_TERMINAL, RE_SEPARATOR_LINE
+from edgar_sec.foundation.text.patterns import RE_SENTENCE_TERMINAL, is_separator_line
 
 from ...reflow.types import ReflowPolicy
 from ..numeric_cells import is_numeric_cell
@@ -31,7 +31,7 @@ def is_table_row_continuation(
     raw_nonblank = tuple(line for line in continuation if line.strip())
     if not nonblank:
         return False
-    if all(RE_SEPARATOR_LINE.fullmatch(line) for line in nonblank):
+    if all(is_separator_line(line) for line in nonblank):
         return True
     prior_positions = tuple(
         position for line in previous for position in numeric_cell_starts(line)
@@ -56,7 +56,7 @@ def is_table_row_continuation(
         ):
             return False
         for line in raw_nonblank[1:]:
-            if RE_SEPARATOR_LINE.fullmatch(line.strip()):
+            if is_separator_line(line.strip()):
                 continue
             content_start = len(line) - len(line.lstrip())
             line_positions = numeric_cell_starts(line)
@@ -79,7 +79,7 @@ def is_table_row_continuation(
         words = line.split()
         if len(words) > 5 and RE_SENTENCE_TERMINAL.search(line):
             return False
-        if RE_SEPARATOR_LINE.match(line):
+        if is_separator_line(line):
             continue
         has_total = False
         all_numeric = True

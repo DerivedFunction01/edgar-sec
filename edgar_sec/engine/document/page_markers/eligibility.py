@@ -7,10 +7,11 @@ from __future__ import annotations
 import re
 
 from .candidates import looks_like_prose
-from .content_lines import is_content_line, is_date_line, is_rule_line
+from .content_lines import is_content_line, is_date_line
 from .observations import _ALPHA_WORD_RE, _STANDALONE_TAG_RE, is_table_tag
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE, RE_FULL_DATE
+from edgar_sec.foundation.text.patterns import is_separator_line
 
 _ITEM_HEADING_ALT = build_alternation(
     (
@@ -97,7 +98,7 @@ def eligible_line(
         return False
     if _BARE_ITEM_LABEL_RE.match(stripped):
         return False
-    if is_rule_line(stripped):
+    if is_separator_line(stripped):
         return False
     if _NOTE_CAPTION_RE.match(stripped):
         return False

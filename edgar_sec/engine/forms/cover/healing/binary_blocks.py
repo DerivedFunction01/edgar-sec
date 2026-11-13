@@ -20,7 +20,7 @@ from edgar_sec.domain.forms.common.checkmarks import (
     mark_token_state,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
+from edgar_sec.foundation.text.patterns import is_separator_line
 
 _RE_BRACKET_CHECKED = re.compile(r"(\[[Xx]\])(?=[A-Za-z0-9])")
 _RE_BRACKET_CHECKED_AFTER = re.compile(r"([A-Za-z0-9])(\[[Xx]\])")
@@ -203,7 +203,7 @@ def _render_binary_block(
         stripped = line.strip()
         if not stripped or stripped == ".":
             continue
-        if RE_SEPARATOR_LINE.fullmatch(stripped):
+        if is_separator_line(stripped):
             continue
         if (
             len(stripped) == 1
