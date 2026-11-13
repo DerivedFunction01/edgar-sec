@@ -21,6 +21,7 @@ from edgar_sec.engine.forms.cover.registrant import (
 )
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.engine.tables.protection.tags import find_table_spans
+from edgar_sec.foundation.text.dates import YEAR_TOKEN_RE
 
 _CLASSIFICATION_KEYS = (
     "classification_preliminary",
@@ -53,7 +54,6 @@ _PROPOSAL_HEADING_RE = re.compile(
 _COMP_TABLE_CAPTION_RE = re.compile(r"summary compensation table", re.IGNORECASE)
 _COMP_TABLE_HEADER_RE = re.compile(r"name and principal position", re.IGNORECASE)
 _CELL_SPLIT_RE = re.compile(r"\s{2,}")
-_YEAR_CELL_RE = re.compile(r"(?:19|20)\d{2}")
 _COMP_TABLE_WINDOW = 120
 _MIN_COMP_NUMERIC_CELLS = 3
 
@@ -94,7 +94,7 @@ def _is_comp_data_row(line: str) -> bool:
     if not any(any(ch.isdigit() for ch in raw) for _, raw in numeric):
         return False
     first = cells[0]
-    if _YEAR_CELL_RE.fullmatch(first) or not any(ch.isalpha() for ch in first):
+    if YEAR_TOKEN_RE.fullmatch(first) or not any(ch.isalpha() for ch in first):
         return False
     return True
 

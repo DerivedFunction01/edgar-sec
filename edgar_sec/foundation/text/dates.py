@@ -60,6 +60,7 @@ YEAR_TOKEN_PATTERN = build_alternation(
     [r"19[0-9]{2}", r"[2-9][0-9]{3}"], auto_escape=False
 )
 YEAR_TOKEN_RE = re.compile(rf"^\b({YEAR_TOKEN_PATTERN})\b$")
+YEAR_TOKEN_SEARCH_RE = re.compile(rf"\b(?:{YEAR_TOKEN_PATTERN})\b")
 YEAR_IN_TEXT_RE = re.compile(r"\b(\d{4})\b")
 NUMERIC_YEAR_RE = re.compile(r"\b(\d{2,4})\b")
 NUMERIC_DATE_RE = re.compile(r"\b\d{1,2}[-/]\d{1,2}[-/]\d{2,4}\b")
@@ -711,6 +712,7 @@ __all__ = [
     "YEAR_RANGE",
     "YEAR_TOKEN_PATTERN",
     "YEAR_TOKEN_RE",
+    "YEAR_TOKEN_SEARCH_RE",
     "DateComponents",
     "DateFormat",
     "ParsedDate",
