@@ -8,7 +8,7 @@ import re
 from collections.abc import Callable
 
 from edgar_sec.foundation.text.dates import COLUMN_YEAR_ROW_RE, PERIOD_SUBHEADING_RE
-from edgar_sec.foundation.text.patterns import RE_SENTENCE_TERMINAL, RE_SEPARATOR_LINE
+from edgar_sec.foundation.text.patterns import RE_SENTENCE_TERMINAL, is_separator_line
 from edgar_sec.foundation.text.tokens import (
     is_bullet_line,
     is_list_or_bullet_marker,
@@ -123,7 +123,7 @@ def is_header_prefix(lines: tuple[str, ...]) -> bool:
 
         if (
             COLUMN_DASH_RULE_RE.match(stripped)
-            or RE_SEPARATOR_LINE.fullmatch(stripped)
+            or is_separator_line(stripped)
             or UNITS_LABEL_RE.search(stripped)
             or COLUMN_YEAR_ROW_RE.match(stripped)
             or PERIOD_SUBHEADING_RE.match(stripped)
@@ -185,7 +185,7 @@ def is_structural_table_bridge(
             return False
         if len(numeric_cell_starts(stripped)) >= 2:
             return False
-        if RE_SEPARATOR_LINE.fullmatch(stripped):
+        if is_separator_line(stripped):
             continue
         if is_bridge_line is not None and is_bridge_line(stripped):
             continue
@@ -213,7 +213,7 @@ def is_structural_table_tail(
         if not stripped:
             continue
         has_nonblank = True
-        if not has_separator and RE_SEPARATOR_LINE.fullmatch(stripped):
+        if not has_separator and is_separator_line(stripped):
             has_separator = True
         if (
             not has_total_keyword

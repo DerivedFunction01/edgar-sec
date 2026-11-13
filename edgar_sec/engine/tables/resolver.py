@@ -15,7 +15,7 @@ from edgar_sec.engine.reflow.types import (
     ReflowPolicy,
     SpanDecision,
 )
-from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
+from edgar_sec.foundation.text.patterns import is_separator_line
 
 from .policy.continuation import is_table_row_continuation
 from .protection.constants import SENTINEL_PREFIX
@@ -311,7 +311,7 @@ def resolve_table_regions(
                         active_lines.extend(cand_lines)
                         active_lines.extend(lookahead_lines)
                         next_decision_idx += 2
-                        if RE_SEPARATOR_LINE.fullmatch(
+                        if is_separator_line(
                             lookahead_lines[-1].strip() if lookahead_lines else ""
                         ):
                             break

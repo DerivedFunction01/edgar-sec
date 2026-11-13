@@ -34,9 +34,9 @@ from edgar_sec.foundation.text.patterns import (
     RE_DOT_LEADER,
     RE_GRAMMATICAL_COMMA,
     RE_SENTENCE_TERMINAL,
-    RE_SEPARATOR_LINE,
     RE_SEPARATOR_RUN,
     RE_STRUCTURAL_SGML,
+    is_separator_line,
 )
 
 from ..rules.thresholds import FEATURE_REGISTRY
@@ -167,7 +167,7 @@ class BlockContext:
         return sum(
             1
             for l in self.non_blank_lines
-            if COLUMN_DASH_RULE_RE.match(l) or RE_SEPARATOR_LINE.match(l.strip())
+            if COLUMN_DASH_RULE_RE.match(l) or is_separator_line(l.strip())
         )
 
     @cached_property
@@ -194,7 +194,7 @@ class BlockContext:
     def has_separator_run(self) -> bool:
         return bool(
             RE_SEPARATOR_RUN.search(self._raw_text)
-            or any(RE_SEPARATOR_LINE.fullmatch(l.strip()) for l in self.non_blank_lines)
+            or any(is_separator_line(l.strip()) for l in self.non_blank_lines)
         )
 
     @property

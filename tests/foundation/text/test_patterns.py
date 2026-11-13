@@ -7,8 +7,8 @@ from edgar_sec.foundation.text.patterns import (
     RE_DOT_LEADER,
     RE_PAGE_NUMBER_SUFFIX,
     RE_SENTENCE_TERMINAL,
-    RE_SEPARATOR_LINE,
     RE_STRUCTURAL_SGML,
+    is_separator_line,
 )
 
 
@@ -36,10 +36,27 @@ def test_sentence_terminal() -> None:
 
 
 def test_separator_line() -> None:
-    assert RE_SEPARATOR_LINE.match("---") is not None
-    assert RE_SEPARATOR_LINE.match("=== === ===") is not None
-    assert RE_SEPARATOR_LINE.match("   ------   ") is not None
-    assert RE_SEPARATOR_LINE.match("--- header ---") is None
+    assert is_separator_line("---")
+    assert is_separator_line("=== === ===")
+    assert is_separator_line("   ------   ")
+    assert not is_separator_line("--- header ---")
+
+
+def test_separator_line_converged_edges() -> None:
+    assert is_separator_line("-")
+    assert is_separator_line("~")
+    assert is_separator_line("***")
+    assert is_separator_line("+++")
+    assert is_separator_line("—")
+    assert is_separator_line("――――――")
+    assert is_separator_line("- - -")
+    assert is_separator_line("-=-")
+    assert not is_separator_line("")
+    assert not is_separator_line("   ")
+    assert not is_separator_line("###")
+    assert not is_separator_line("|---|")
+    assert not is_separator_line("Item 1. Business")
+    assert not is_separator_line("2024")
 
 
 def test_structural_sgml() -> None:

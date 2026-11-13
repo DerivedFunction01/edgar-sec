@@ -20,6 +20,7 @@ from edgar_sec.engine.forms.common.entities import (
     TICKER_PAREN_RE,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text import patterns
 
 
 @dataclass(frozen=True, slots=True)
@@ -335,15 +336,10 @@ def parse_registrant_identity(cell_text: str) -> RegistrantIdentity:
     )
 
 
-_SEPARATOR_CHARS = frozenset("-_=~*")
-
-
 def is_separator_line(line: str) -> bool:
     """Return whether a line is a blank or rule/separator-only line."""
     stripped = line.strip().strip("|").strip()
-    return not stripped or all(
-        char in _SEPARATOR_CHARS or char.isspace() for char in stripped
-    )
+    return not stripped or patterns.is_separator_line(stripped)
 
 
 def previous_content_line(lines: list[str], index: int) -> tuple[int, str] | None:

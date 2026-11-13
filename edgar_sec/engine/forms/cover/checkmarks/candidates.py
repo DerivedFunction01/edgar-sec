@@ -39,7 +39,7 @@ from edgar_sec.engine.forms.common.mark_association import (
 )
 from edgar_sec.engine.tables.protection.tags import mask_tagged_tables
 from edgar_sec.foundation.text.dates import parse_date
-from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
+from edgar_sec.foundation.text.patterns import is_separator_line
 
 
 def _compile_label_pattern(phrase: str) -> re.Pattern[str]:
@@ -183,7 +183,7 @@ def _line_signals(
         marks=marks,
         answers=answers,
         date_present=_date_present(text),
-        dash_only=bool(RE_SEPARATOR_LINE.fullmatch(text)),
+        dash_only=is_separator_line(text),
     )
 
 

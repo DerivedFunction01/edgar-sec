@@ -239,6 +239,14 @@ def test_content_line_walks_skip_blanks_and_separators() -> None:
     assert next_content_line(lines, 3) is None
 
 
+def test_separator_line_composition_edges() -> None:
+    assert is_separator_line("|---|") is True
+    assert is_separator_line("-") is True
+    assert is_separator_line("~~~") is True
+    assert is_separator_line("| ACME INC. |") is False
+    assert is_separator_line("###") is False
+
+
 def test_commission_file_number_inline_and_caption_walk() -> None:
     inline = "Commission File Number: 001-12345\nACME INC."
     assert (

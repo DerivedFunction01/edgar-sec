@@ -14,7 +14,7 @@ from edgar_sec.foundation.text.patterns import (
     RE_COLUMN_GAP,
     RE_DOT_LEADER,
     RE_SENTENCE_TERMINAL,
-    RE_SEPARATOR_LINE,
+    is_separator_line,
 )
 
 _MIN_ROWS = 3
@@ -152,7 +152,7 @@ def _measure_block_rows(lines: tuple[str, ...]) -> tuple[RowGeometry, ...]:
     for line in nonblank:
         stripped = line.strip()
         if (
-            RE_SEPARATOR_LINE.fullmatch(stripped)
+            is_separator_line(stripped)
             or COLUMN_YEAR_ROW_RE.match(stripped)
             or PERIOD_SUBHEADING_RE.match(stripped)
         ):
@@ -262,7 +262,7 @@ def is_table_row_run_bridge(
     """Accept only bounded structural, separator, or numeric rows between runs."""
     for line in lines:
         stripped = line.strip()
-        if not stripped or RE_SEPARATOR_LINE.fullmatch(stripped):
+        if not stripped or is_separator_line(stripped):
             continue
         if (
             (is_page_boundary_line is not None and is_page_boundary_line(stripped))

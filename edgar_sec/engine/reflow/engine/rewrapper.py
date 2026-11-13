@@ -27,7 +27,7 @@ from edgar_sec.engine.tables.row_runs import (
     find_table_row_runs,
     is_table_row_run_bridge,
 )
-from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
+from edgar_sec.foundation.text.patterns import is_separator_line
 from edgar_sec.foundation.text.tokens import is_bullet_line
 
 from ..features.context import BlockContext
@@ -213,7 +213,7 @@ def _segment(
     start = 0
     for index, line in enumerate(lines):
         if line.strip():
-            if current and RE_SEPARATOR_LINE.fullmatch(current[-1].strip()):
+            if current and is_separator_line(current[-1].strip()):
                 has_numeric_tail = bool(numeric_cell_starts(line))
                 if not has_numeric_tail and line.lstrip()[:1].isalpha():
                     blocks.append((start, index, tuple(current)))
